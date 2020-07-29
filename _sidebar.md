@@ -3,14 +3,12 @@
   - [常见问题](/panel/faq)
 
 + 启动器
-  - [下载](/launcher/download)
-  - [使用](/launcher/use)
+  - 使用
     * [新版启动器](/launcher/use_wpf)
     * [传统启动器](/launcher/use_legacy)
   - [常见问题](/launcher/faq)
 
 + 命令行版 frpc
-  - [下载](/frpc/download)
   - [使用](/frpc/use)
   - [常见问题](/frpc/faq)
 
