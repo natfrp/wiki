@@ -1,5 +1,3 @@
-## 启动器使用常见问题
-
 ### 不支持请求的安全协议
 
 报错 `System.NotSupportedException: 不支持请求的安全协议。`
