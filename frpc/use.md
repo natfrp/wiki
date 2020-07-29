@@ -2,4 +2,6 @@
 
 ?> _TODO_
 
-<https://blog.berd.moe/archives/sakura-frp-new-frpc-usage-guide/>
+请移步：<https://blog.berd.moe/archives/sakura-frp-new-frpc-usage-guide/>
+
+
