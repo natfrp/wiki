@@ -1,14 +1,3 @@
-# 使用 Sakura Frp 启动器
-
-> 本部分内容转载自管理员的博客《Sakura Frp 启动器使用指南》，有修改。
-> 原文链接：<https://blog.berd.moe/archives/sakura-frp-launcher-user-guide/>
-
-## 前言
-
-[Sakura Frp](https://www.natfrp.com/) 是一个免费的内网穿透服务，其启动器由本人进行开发 & 维护. 受站长之托写一篇使用指南，请不要在 本文章/博客 评论区询问任何关于 Sakura Frp 的事宜，有问题请到 OWQ 进行咨询。
-
-### 0x01 WPF启动器
-
 首先，你需要从网站下载 WPF 启动器，在侧边栏点击 “软件下载” :
 
 ![](_images/launcher-image-0.png)
@@ -65,28 +54,3 @@
 
 
 如果 WPF 启动器能正常使用，请直接跳过下面的 0x02 章节，从 0x03 开始阅读
-
-## 0x02 传统启动器
-
-传统启动器是给一些打不开 WPF 启动器的用户使用的，正常系统不需要用这个.
-
-下载、解压流程相同，在此不再赘述. 左键双击 LegacyLauncher.exe 或者 右键 -&gt;选择 “打开”
-
-![](https://static.berd.moe/blog/wp-content/uploads/2020/07/image-13.png)
-
-类似的，把你的访问密钥复制过来点登录
-
-![](https://static.berd.moe/blog/wp-content/uploads/2020/07/image-14.png)
-
-操作和 WPF 启动器基本一致，按流程创建隧道
-
-![](https://static.berd.moe/blog/wp-content/uploads/2020/07/image-15.png)
-
-创建好后勾选要启动的隧道即可开启，然后稍等一会
-
-![](https://static.berd.moe/blog/wp-content/uploads/2020/07/image-16.png)
-
-传统启动器是没有消息框提示的，请关注日志输出，获取到连接方式就可以使用了
-
-![](https://static.berd.moe/blog/wp-content/uploads/2020/07/image-17.png)
-
