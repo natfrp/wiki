@@ -8,11 +8,17 @@
 
 ### 站点管理员
 
-- [羽川早苗](https://moe.do) **站长* 
-- [FENGberd](https://berd.moe/?from=frp_doc) **打杂的*
-- [boboliu](https://note.bobo.moe/) **frpc 技术支持*
+- [羽川早苗](https://moe.do) 
+  * *站长* 
+- [FENGberd](https://berd.moe/?from=frp_doc) 
+  * *打杂的*
+- [boboliu](https://note.bobo.moe/) 
+  * *frpc 技术支持*
 
 ### 非站点管理员
 
-- [宝硕](https://baoshuo.ren) **frp一键安装脚本、文档站点、部分帮助文档*
-- 其他热心网友们 **脚本测试、bug反馈*
+- [宝硕](https://baoshuo.ren) 
+  * *frp一键安装脚本、文档站点、部分帮助文档、志愿者* 
+  * *经常咕咕咕*
+- 其他热心网友们 
+  * *脚本测试、bug反馈*
