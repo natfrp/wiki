@@ -1,3 +1,6 @@
++ <font color="red">热门问题</font>
+  - [503 错误](/faq#503-错误)
+
 + 管理面板
   - [使用](/panel/use)
   - [常见问题](/panel/faq)
@@ -15,6 +18,6 @@
   - [用户手册](/frpc/manual)
   - [常见问题](/frpc/faq)
 
-+ [<font color="red">其他常见问题</font>](/faq)
-
-+ [关于](/about)
++ 其他
+  - [其他问题](/faq)
+  - [关于](/about)
