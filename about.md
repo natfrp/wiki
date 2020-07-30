@@ -9,10 +9,8 @@
 ### 站点管理员
 
 - [羽川早苗](https://moe.do) **站长* 
-- [FENGberd](https://berd.moe) **管理员* **frpc客户端、启动器*
-- [boboliu](https://note.bobo.moe/) **管理员*
-
-?> _TODO_  此处列表或许还不全，知情人士可联系修复
+- [FENGberd](https://berd.moe/?from=frp_doc) **打杂的*
+- [boboliu](https://note.bobo.moe/) **frpc 技术支持*
 
 ### 非站点管理员
 
