@@ -9,16 +9,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css">
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">加载中...</div>
   <script>
     window.$docsify = {
       name: 'Sakura Frp&nbsp;<small>v3.0α</small>',
       loadNavbar: true,
       loadSidebar: true,
       auto2top: true,
-      // relativePath: true,
+      relativePath: true,
       coverpage: true,
-      autoHeader: true,
+      autoHeader: false,
       executeScript: true,
       onlyCover: true,
       notFoundPage: true,
@@ -32,16 +32,20 @@
       }
     }
   </script>
+
+  <!-- Docsify -->
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+
+  <!-- Plugin -->
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/external-script.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code"></script>
 
+  <!-- Gitalk -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
   <script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
-
   <script>
     // md5.min.js
     !function(n){
@@ -63,21 +67,26 @@
       "function"==typeof define&&define.amd?define(function(){return t}):"object"==typeof module&&module.exports?module.exports=t:n.md5=t;
     }(this);
   </script>
-
   <script>
     const gitalk = new Gitalk({
       clientID: '4449f8fe12723954632e',
       clientSecret: 'a5ce69bfc2f2929f429b61983d2e5428a2734082',
       repo: 'discuss',
       owner: 'natfrp',
-      admin: ['renbaoshuo'],
+      admin: ['renbaoshuo', 'fengberd'],
       id: md5(location.href),
       // facebook-like distraction free mode
       distractionFreeMode: false
     });
   </script>
-
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+
+  <!-- PWA -->
+  <script>
+    if (typeof navigator.serviceWorker !== 'undefined') {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
 
 </body>
 </html>
