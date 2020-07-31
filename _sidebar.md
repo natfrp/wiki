@@ -25,6 +25,12 @@
   - [用户手册](/frpc/manual)
   - [常见问题](/frpc/faq)
 
+<!-- - API
+  
+  - [API列表](/api/list)
+  - [节点](/api/nodes)
+  - [隧道](/api/tunnel) -->
+
 - 其他
   - [其他问题](/faq)
   - [关于](/about)
