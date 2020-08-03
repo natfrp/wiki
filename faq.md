@@ -83,11 +83,13 @@
 
 ### FTP 映射
 
-FTP 为多端口协议，不支持映射。
+FTP 为多端口协议，不建议映射。 
+
+**如果你是大佬请忽略上面那行的内容*
 
 具体原因请 [点此查看](https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE#%E4%B8%BB%E5%8A%A8%E5%92%8C%E8%A2%AB%E5%8A%A8%E6%A8%A1%E5%BC%8F) 。
 
-如果需要传输文件，建议使用 HTTP(S) 协议进行传输，具体方法不再赘述，请自行使用 [百度](https://baidu.com) 或者 [谷歌](https://google.com) 等搜索引擎进行查询。
+如果需要传输文件，建议使用 HTTP(S)/SFTP 协议进行传输，具体方法不再赘述，请自行使用 [百度](https://baidu.com) 或者 [谷歌](https://google.com) 等搜索引擎进行查询。
 
 ### 什么是备案
 
