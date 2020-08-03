@@ -27,7 +27,7 @@
   - [常见问题](/frpc/faq)
 
 <!-- - API
-  
+  问就是没有，该部分文档废弃。
   - [API列表](/api/list)
   - [节点](/api/nodes)
   - [隧道](/api/tunnel) -->
