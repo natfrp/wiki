@@ -32,6 +32,8 @@ ping 一下就有了，例如你获取到的域名是 `cn-zz-bgp.sakurafrp.com`
 
 <!-- ?> _TODO_ 中英对照表 -->
 
+[点我查看如何翻译 frpc 日志](/frpc/translate)
+
 ### frpc 日志分析
 
 #### 无法连接到本地服务
