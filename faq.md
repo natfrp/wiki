@@ -109,7 +109,7 @@ FTP 为多端口协议，不建议映射。
 - **ICP 备案**不等同于**公安备案**。
   - 公安备案和 ICP 备案不是一个系统。
 - 本站不提供**任何形式**的代备案服务。
-  - 要备案推荐找[阿里云](https://www.aliyun.com/?source=5176.11533457&userCode=wbduu7yg&type=copy)、[腾讯云](https://cloud.teencent.com/)这种大厂，稳定。 <!-- 左侧 AFF 怪上线, 管理不爽可删除, 见谅. -->
+  - 要备案推荐找[阿里云](https://www.aliyun.com/?source=5176.11533457&userCode=wbduu7yg&type=copy)、[腾讯云](https://url.cn/MY10U76e)这种大厂，稳定。 <!-- 左侧 AFF 怪上线, 管理不爽可删除, 见谅. -->
 
 ### 哪个节点好用
 

@@ -7,6 +7,11 @@
 
 本文档使用 Github Pages 服务托管，[点我前往托管仓库](https://github.com/natfrp/wiki)。
 
+## **非官方** QQ 交流群
+
+$群号：\bold{1149532962}\ \ \ \small{验证问题答案：\large{1}}\ \ \ \ $
+<small>（也可点击链接快速加群：<https://jq.qq.com/?_wv=1027&k=Em3grmqF>）</small>
+
 ## 快速链接
 
 + [503 错误](/faq#_503-错误)
