@@ -1,2 +1,2 @@
-+ [主站](https://natfrp.github.io)
++ [主站](/)
 + [文档](#)
