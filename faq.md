@@ -141,4 +141,4 @@ FTP 为多端口协议，不建议映射。
 
 ### 其他
 
-?> _TODO_ 其他内容请移步 <https://baoshuo.blog/post/8tYaUDF47/> 。
+?> _TODO_ 其他内容请移步 <https://baoshuo.blog/post/8tYaUDF47/> 。  xxs/超级小白专用版文档 <https://www.ravi.cool/posts/sakura-frp.html>。
