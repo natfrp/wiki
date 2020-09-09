@@ -31,6 +31,7 @@
 
 - 各协议穿透指南
   - [HTTP(S) 穿透](/protocol/http)
+  - [FTP(S) 穿透](/protocol/ftp)
 
 <!-- - API
   问就是没有，该部分文档废弃。
