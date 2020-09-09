@@ -29,6 +29,9 @@
   - [用户手册](/frpc/manual)
   - [常见问题](/frpc/faq)
 
+- 各协议穿透指南
+  - [HTTP(S) 穿透](/protocol/http)
+
 <!-- - API
   问就是没有，该部分文档废弃。
   - [API列表](/api/list)
