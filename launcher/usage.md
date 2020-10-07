@@ -4,6 +4,9 @@
 
 ### 下载软件
 
+?> 启动器需要安装 `.NET Framework 4.5` 或以上版本才能正常运行  
+Windows 10 已内置此框架，不需要单独下载，旧版本系统 (Windows 7) [点击前往微软官方下载页面](https://dotnet.microsoft.com/download/dotnet-framework/net45)
+
 登录管理面板，在侧边栏点击 “软件下载” :
 
 ![](_images/usage-0.png)
@@ -72,3 +75,11 @@
 点击删除按钮，然后确认操作即可删除隧道
 
 ![](_images/usage-13.png)
+
+### 配置开机启动
+
+`2.0.0.0` 及以上版本的启动器提供两种开机启动方式，一般情况下直接勾选下图中的选项就能满足使用需求
+
+如需不进桌面自启（如穿透远程桌面服务），请参阅 [系统服务](/launcher/service) 页面了解服务启动方式
+
+![](_images/autostart.png)
