@@ -16,9 +16,7 @@
 
 - 启动器
 
-  - 使用教程
-    - [新版启动器](/launcher/use_wpf)
-    - [传统启动器](/launcher/use_legacy)
+  - [使用教程](/launcher/usage)
   - [系统服务](/launcher/service)
   - [常见问题](/launcher/faq)
 
