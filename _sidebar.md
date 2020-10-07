@@ -19,6 +19,7 @@
   - 使用教程
     - [新版启动器](/launcher/use_wpf)
     - [传统启动器](/launcher/use_legacy)
+  - [系统服务](/launcher/service)
   - [常见问题](/launcher/faq)
 
 - 命令行版 frpc
