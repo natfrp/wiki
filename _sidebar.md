@@ -17,6 +17,7 @@
 - 启动器
 
   - [使用教程](/launcher/usage)
+  - [远程管理](/launcher/remote)
   - [系统服务](/launcher/service)
   - [常见问题](/launcher/faq)
 
