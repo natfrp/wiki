@@ -19,7 +19,7 @@
   - [系统服务](/launcher/service)
   - [常见问题](/launcher/faq)
 
-- 命令行版 frpc
+- frpc
 
   - 使用教程
     - [Windows 系统](/frpc/use_windows)
