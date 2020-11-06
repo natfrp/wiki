@@ -24,6 +24,7 @@
   - 使用教程
     - [Windows](/frpc/usage/windows)
     - [Linux](/frpc/usage/linux)
+      - [Systemd 服务配置](/frpc/service/systemd)
     - [MacOS](/frpc/usage/macos)
   - [用户手册](/frpc/manual)
   - [常见问题](/frpc/faq)
