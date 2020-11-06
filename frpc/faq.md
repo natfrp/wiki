@@ -1,25 +1,5 @@
 ## frpc 常见问题
 
-### 隧道启动成功后么查看数字 IP
-
-!> 该部分内容已经过期，新版本已经恢复 IP 地址显示。
-
-ping 一下就有了，例如你获取到的域名是 `cn-zz-bgp.sakurafrp.com`
-
-![](_images/image-13.png)
-
-请直接执行命令 `ping cn-zz-bgp.sakurafrp.com`
-
-![](_images/image-14.png)
-
-### frpc 配置文件拼合
-
-!> 此部分内容仅适用于使用配置文件启动 frpc 的用户。
-
-![](_images/image-15.png)
-
-如图所示。
-
 ### 提示信息怎么是英文的，为什么不提供中文版
 
 ~~汉化提示信息有可能造成以下后果：~~
@@ -92,10 +72,3 @@ start error: router config conflict
   sc create frpc binPath=C:\frpc.bat start=auto
   ```
 - 第五步：重启系统，检查效果。
-
-### Linux 系统命令行版 frpc 开机自启设置方法
-
-- 获取 frpc 主程序&启动命令： `bash <(curl -s https://getfrp.sh)`
-- 由于发行版种类较多，且自启动配置方式各不相同，请百度 `开机自启+你的系统发行版名称+系统版本`。
-
-  - 开机自启需运行的命令：脚本运行完毕时提示的启动命令。
