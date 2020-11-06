@@ -70,6 +70,27 @@ $ frpc -v
 
 ### 使用 frpc
 
-请查看 [用户手册](/frpc/manual#普通用户) 中的 **普通用户** 一节学习 frpc 基本的指令使用方法
+请查看 [用户手册](/frpc/manual#普通用户) 中的 **普通用户** 一节学习 frpc 的基本使用方法
 
 通过本文档中介绍的方法安装后，您应该可以在任何目录直接输入 `frpc <参数>` 运行 frpc ，**不需要** 输入完整路径
+
+### 配置开机自启/后台运行
+
+如果您想让 frpc 在开机时自启或在后台运行，就需要将 frpc 注册为系统服务
+
+首先，您要搞清楚您的 Linux 系统使用的 ___初始化系统___ 是什么，本文档提供三种常见初始化系统的配置指南:
+  - Systemd
+  - Upstart
+  - SysV-Init
+
+执行下面的命令然后查看输出，找到您的初始化系统
+
+```bash
+# if [[ `/sbin/init --version` =~ upstart ]]; then echo Upstart; elif [[ `systemctl` =~ -\.mount ]]; then echo Systemd; elif [[ -f /etc/init.d/cron && ! -h /etc/init.d/cron ]]; then echo SysV-Init; else echo Unknown; fi
+```
+
+![](_images/linux-4.png)
+
+参考下面的教程配置服务:
+  - [Systemd 配置指南](/frpc/service/systemd)
+  - 另外两个还在写
