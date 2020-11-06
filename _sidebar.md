@@ -22,8 +22,9 @@
 - frpc
 
   - 使用教程
-    - [Windows 系统](/frpc/use_windows)
-    - [Linux/macOS 系统](/frpc/use_unix)
+    - [Windows](/frpc/usage/windows)
+    - [Linux](/frpc/usage/linux)
+    - [MacOS](/frpc/usage/macos)
   - [用户手册](/frpc/manual)
   - [常见问题](/frpc/faq)
 
