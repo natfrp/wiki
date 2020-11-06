@@ -9,41 +9,41 @@ Windows 10 已内置此框架，不需要单独下载，旧版本系统 (Windows
 
 登录管理面板，在侧边栏点击 “软件下载” :
 
-![](_images/usage-0.png)
+![](../_images/download.png)
 
 然后点击对应版本的下载地址来下载启动器，建议下载上面的 __推荐__ 版本，如果打不开再换下面的传统启动器
 
-![](_images/usage-1.png)
+![](_images/usage-0.png)
 
 下载完毕后 __不要直接运行__ ，解压到一个单独的文件夹，比如我这里解压到 `R:\`
 
-![](_images/usage-2.png)
-
-然后找到您解压出的文件，双击 (或者 右键单击->点打开 或者 选中后按回车键) `SakuraLauncher.exe` 运行启动器
-
-?> 如果您使用的是传统启动器，请打开 `LegacyLauncher.exe`
-
-![](_images/usage-3.png)
+![](_images/usage-1.png)
 
 ### 登录启动器
 
+找到刚才解压出的文件，双击 (或者 右键单击->点打开 或者 选中后按回车键) `SakuraLauncher.exe` 运行启动器
+
+?> 如果您使用的是传统启动器，请打开 `LegacyLauncher.exe`
+
+![](_images/usage-2.png)
+
 进入 [用户信息](https://www.natfrp.com/user/profile) 页面，复制访问密钥 (也叫做 Token) 到启动器点击登录
 
-![](_images/usage-4.png)
+![](_images/usage-3.png)
 
 ### 创建隧道
 
 登录成功后会自动切换到 __隧道__ 标签，点击加号新建隧道
 
-![](_images/usage-5.png)
+![](_images/usage-4.png)
 
 接下来选择你要映射的服务，本文以映射 `iperf3` 服务器为例，直接找到进程 `iperf3` 点击，然后选择一个服务器，最后点创建即可
 
-![](_images/usage-6.png)
+![](_images/usage-5.png)
 
 创建成功后按需要选择是否继续创建
 
-![](_images/usage-7.png)
+![](_images/usage-6.png)
 
 ### 启用隧道
 
@@ -52,29 +52,29 @@ Windows 10 已内置此框架，不需要单独下载，旧版本系统 (Windows
 
 在隧道标签中找到你要启用的隧道，点击右上方开关启用
 
-![](_images/usage-8.png)
+![](_images/usage-7.png)
 
 启动成功后会弹出提示框提示隧道连接方式，该提示可以在设置中通过 `关闭连接提示` 选项禁用
 
-![](_images/usage-9.png)
+![](_images/usage-8.png)
 
 当然，也可以到日志标签复制连接方式
 
-![](_images/usage-10.png)
+![](_images/usage-9.png)
 
 这样我们的服务就可以在外网被访问到了
 
-![](_images/usage-11.png)
+![](_images/usage-10.png)
 
 ### 删除隧道
 
 将鼠标放到隧道卡片上悬停一会，卡片右上角会出现删除按钮
 
-![](_images/usage-12.png)
+![](_images/usage-11.png)
 
 点击删除按钮，然后确认操作即可删除隧道
 
-![](_images/usage-13.png)
+![](_images/usage-12.png)
 
 ### 配置开机启动
 
@@ -82,4 +82,4 @@ Windows 10 已内置此框架，不需要单独下载，旧版本系统 (Windows
 
 如需不进桌面自启（如穿透远程桌面服务），请参阅 [系统服务](/launcher/service) 页面了解服务启动方式
 
-![](_images/autostart.png)
+![](_images/usage-13.png)
