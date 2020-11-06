@@ -119,6 +119,18 @@
 
 请您牢记：在没有亲身验证之前，任何关于 `XX节点最好用` 的言论都是不可靠的 ~~，因为有的人只是想让他自己用的节点人少一些罢了~~ 。
 
+### 隧道启动成功后么查看数字 IP
+
+!> 该部分内容已经过期，新版本已经恢复 IP 地址显示。
+
+ping 一下就有了，例如你获取到的域名是 `cn-zz-bgp.sakurafrp.com`
+
+![](_images/faq-1.png)
+
+请直接执行命令 `ping cn-zz-bgp.sakurafrp.com`
+
+![](_images/faq-2.png)
+
 ### 其他
 
 ?> _TODO_ 其他内容请移步 <https://baoshuo.blog/post/8tYaUDF47/> 。  xxs/超级小白专用版文档 <https://www.ravi.cool/posts/sakura-frp.html>。

@@ -4,41 +4,23 @@ Sakura Frp 基于原版 frpc 进行了一些修改，下面是 Sakura Frpc 的�
 
 ## 普通用户
 
-### 说明
+### 从命令行启动
 
-![](_images/image-7.png)
+!> 如果您没有按照 [Linux 使用教程](/usage/linux) 安装 frpc，只是下载了文件  
+或是使用 Windows 系统，启动时 frpc 要换成下载到的的文件名  
+如 `frpc_windows_386.exe` 、 `frpc_linux_amd64` 等
 
-此处的 frpc 在启动的时候要换成实际下载的文件名，如 `frpc_windows_386.exe` 、 `frpc_linux_amd64` 等文件名。
+![](_images/manual-0.png)
 
-### 使用TUI启动
+假设您的 Token 为 `wdnmdtoken6666666`
 
-在没有配置文件的情况下，直接不带参数运行 frpc 即可得到一个交互式 UI 选择需要使用的隧道。
+![](_images/manual-1.png)
 
-![](_images/image-tui-1.png)
+您的隧道列表如下图所示
 
-按 `Tab` 键切换到 Token 输入框后输入 Token（访问密钥），然后切换到 Login 按钮并回车（终端支持的话，也可使用鼠标操作）。
+![](_images/manual-2.png)
 
-![](_images/image-tui-2.png)
-
-然后选择你想要启动的节点，按空格标为绿色。
-
-![](_images/image-tui-3.png)
-
-选择了所有想要启动的节点后，按 `Ctrl-C` 即可启动，本次启动参数会被保存到配置文件 `./frpc.ini` 中，下次启动时默认不再显示 TUI ，而是直接启动。
-
-![](_images/image-tui-4.png)
-
-### 参数启动示例
-
-若用户 Token 为 `wdnmdtoken6666666`
-
-![](_images/image-8.png)
-
-用户隧道列表如下图所示
-
-![](_images/image-9.png)
-
-若当前运行的系统为 32 位的 Windows 系统，且下载的 frpc 文件名是 `frpc_windows_386.exe` 。
+假设当前运行的系统为 32 位的 Windows 系统，因此您下载到的 frpc 文件名是 `frpc_windows_386.exe` 。
 
 1. 启动图中的第一条隧道：
 ```cmd
@@ -54,6 +36,24 @@ frpc_windows_386.exe -f wdnmdtoken666666:n6
 ```cmd
 frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 ```
+
+### 使用TUI启动
+
+在没有配置文件的情况下，直接不带参数运行 frpc 即可得到一个交互式 UI 选择需要使用的隧道。
+
+![](_images/tui-0.png)
+
+按 `Tab` 键切换到 Token 输入框后输入 Token（访问密钥），然后切换到 Login 按钮并回车（终端支持的话，也可使用鼠标操作）。
+
+![](_images/tui-1.png)
+
+然后选择您想要启动的节点，按空格标为绿色。
+
+![](_images/tui-2.png)
+
+选择了所有想要启动的节点后，按 `Ctrl-C` 即可启动，本次启动参数会被保存到配置文件 `./frpc.ini` 中，下次启动时默认不再显示 TUI ，而是直接启动。
+
+![](_images/tui-3.png)
 
 ## 高级用户
 
