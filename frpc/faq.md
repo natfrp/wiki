@@ -24,7 +24,7 @@
 connect to local service [xxxx:xxxx] error: dial tcp 127.0.0.1:25565: connectex: No connection could be made because the target machine actively refused it.
 ```
 
-这类日志说明 frp 在正常工作中，但是 frpc 无法连接到你的本地服务，请检查是否出现以下情况：
+这类日志说明 frp 在正常工作中，但是 frpc 无法连接到您的本地服务，请检查是否出现以下情况：
 
 1. 本地服务 (例如 Minecraft 服务器，HTTP 服务器) 是否已经正常启动。
 2. 创建隧道时填写的 **本地端口**、**本地地址** 是否有误。
@@ -65,7 +65,7 @@ start error: router config conflict
 - 第二步：在 `C:\` 目录下新建一个空白文件，命名为 `frpc.bat` 。
 - 第三步：在 `C:\frpc.bat` 文件中写入以下内容
   ```bat
-  C:\frpc.exe -f <你的Token>:<隧道ID>
+  C:\frpc.exe -f <您的Token>:<隧道ID>
   ```
 - 第四步：以管理员身份运行命令提示符，运行以下命令：
   ```bat
