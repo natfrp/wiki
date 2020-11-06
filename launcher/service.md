@@ -10,7 +10,7 @@ SakuraFrp Launcher v2.0.0.0 后提供了切换运行模式的选项，您可以�
 
  - 守护进程: 负责用户登录，管理所有 frpc 的运行，与 SakuraFrp 服务通信等，基本上所有功能都是它实现的  
    对应文件 `SakuraFrpService.exe`
- - 启动器: 给你提供一个控制守护进程的界面  
+ - 启动器: 给您提供一个控制守护进程的界面  
    对应文件 `SakuraLauncher.exe` 或 `LegacyLauncher.exe`
 
 两种运行模式的区别:
@@ -50,7 +50,7 @@ SakuraFrp Launcher v2.0.0.0 后提供了切换运行模式的选项，您可以�
 
 ![](_images/service-5.png)
 
-__如果你是高级用户__ ，你可以在 `services.msc` 中找到 `SakuraFrp Daemon Sevice` 并对其进行自定义配置，普通用户不需要进行此操作
+__如果您是高级用户__ ，您可以在 `services.msc` 中找到 `SakuraFrp Daemon Sevice` 并对其进行自定义配置，普通用户不需要进行此操作
 
 ![](_images/service-6.png)
 

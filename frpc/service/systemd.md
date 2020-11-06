@@ -22,7 +22,7 @@ Systemd 的 **Unit 配置文件** 通常位于这些目录中:
 
 本教程将选用第一个目录来放置 frpc 的 **Unit 配置文件**，并且 frpc 启用后报错退出时每分钟会自动重启一次
 
-执行下面的命令，你应该会看到图中的提示
+执行下面的命令，您应该会看到图中的提示
 
 ```bash
 # vi /lib/systemd/system/frpc@.service
@@ -82,7 +82,7 @@ WantedBy=multi-user.target
 
 ### 查看隧道状态
 
-你可以通过下面的命令查看服务状态
+您可以通过下面的命令查看服务状态
 
 ```bash
 # systemctl status <Unit名称>
@@ -98,7 +98,7 @@ WantedBy=multi-user.target
 执行多次 `systemctl start` 是 **安全** 的  
 配置好 Systemd 后，**不要** 再用 `frpc -f <启动参数>` 的形式开启隧道
 
-如果你忘记了之前开启过哪些隧道，使用下面的命令可以列出当前运行中的隧道
+如果您忘记了之前开启过哪些隧道，使用下面的命令可以列出当前运行中的隧道
 
 ```bash
 # systemctl list-units frpc@*
@@ -119,13 +119,13 @@ WantedBy=multi-user.target
 # systemctl status <Unit名称>
 ```
 
-如果一切正常，你会看到我图中的两个红色标注的内容
+如果一切正常，您会看到我图中的两个红色标注的内容
 
 ?> 没看到第一个创建符号链接的提示也是正常的，只要下面的状态显示为 `enabled` 就行
 
 ![](_images/systemd-4.png)
 
-如果你忘记了之前设置过的自启隧道，可以使用下面的命令列出
+如果您忘记了之前设置过的自启隧道，可以使用下面的命令列出
 
 和上面是类似的，只是多了个 `--all` 确保停止了的服务也能被列出
 
