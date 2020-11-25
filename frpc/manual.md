@@ -91,6 +91,10 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 1. `concat_packet = <Int>`
    - 配置合并封包功能的最小字节数，有助于减少小包并降低服务器网卡 PPS，设置为 `-1` 将禁用此功能，默认值为 `-1`
 
+##### [https_proxy]
+1. `force_https = <Int>`
+   - 配置 frps 自动重定向 HTTP 请求到 HTTPS 的功能，有助于减少隧道占用。该值指示一个在重定向时返回给浏览器的 HTTP 状态码，设置为 `0` 将禁用此功能，默认值为 `0`
+
 ### 新增特性
 
 1. 日志输出会对用户 Token 进行打码，防止 Token 泄漏
