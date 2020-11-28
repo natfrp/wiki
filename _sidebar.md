@@ -23,9 +23,10 @@
   - [用户手册](/frpc/manual)
   - [常见问题](/frpc/faq)
 
-- 各协议穿透指南
+- 常见应用穿透指南
   - [HTTP(S) 穿透](/protocol/http)
   - [FTP(S) 穿透](/protocol/ftp)
+  - [远程桌面(RDP) 穿透](/protocol/rdp)
 
 - 其他
   - [关于](/about)
