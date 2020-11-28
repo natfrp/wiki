@@ -1,16 +1,10 @@
-- [**首页**](/README)
-
 - <font color="red">热门问题</font>
 
   - [503 错误](/faq#_503-错误)
   - [远程证书无效](/launcher/faq#远程证书无效)
-  - [什么是备案](/faq#什么是备案)
+  - [实名认证可以做什么](/faq#实名认证到底可以做什么)
   - [节点选择指南](/faq#哪个节点好用)
-
-- 管理面板
-
-  - [使用](/panel/use)
-  - [常见问题](/panel/faq)
+  - [其他常见问题](/faq)
 
 - 启动器
 
@@ -33,12 +27,11 @@
   - [HTTP(S) 穿透](/protocol/http)
   - [FTP(S) 穿透](/protocol/ftp)
 
+- 其他
+  - [关于](/about)
+
 <!-- - API
   问就是没有，该部分文档废弃。
   - [API列表](/api/list)
   - [节点](/api/nodes)
   - [隧道](/api/tunnel) -->
-
-- 其他
-  - [其他问题](/faq)
-  - [关于](/about)
