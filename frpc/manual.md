@@ -6,7 +6,7 @@ Sakura Frp 基于原版 frpc 进行了一些修改，下面是 Sakura Frpc 的�
 
 ### 从命令行启动
 
-!> 如果您没有按照 [Linux 使用教程](/usage/linux) 安装 frpc，只是下载了文件  
+!> 如果您没有按照 [Linux 使用教程](/frpc/usage/linux) 安装 frpc，只是下载了文件  
 或是使用 Windows 系统，启动时 frpc 要换成下载到的的文件名  
 如 `frpc_windows_386.exe` 、 `frpc_linux_amd64` 等
 
