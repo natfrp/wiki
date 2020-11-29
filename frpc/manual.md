@@ -90,6 +90,10 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 ##### [tcp_proxy]
 1. `concat_packet = <Int>`
    - 配置合并封包功能的最小字节数，有助于减少小包并降低服务器网卡 PPS，设置为 `-1` 将禁用此功能，默认值为 `-1`
+2. `auto_https = <String>`
+   - 当你需要通过TCP隧道转发 http 内容时，可能会被机房拦截，此时可以通过此项配置项将其在客户端转发为 https 内容，当配置内容为：
+     - 你所需要的域名时，Frpc 将会首先试图在当前目录加载 `<your-domain>.(crt|key)` 作为证书，如果不存在证书文件，则将自动生成自签名证书
+     - `auto` 时，Frpc 将使用`server_name`作为证书 Common Name
 
 ##### [https_proxy]
 1. `force_https = <Int>`
