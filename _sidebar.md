@@ -21,6 +21,7 @@
       - [Systemd 服务配置](/frpc/service/systemd)
     - [macOS](/frpc/usage/macos)
   - [用户手册](/frpc/manual)
+  - [远程管理](/frpc/remote)
   - [常见问题](/frpc/faq)
 
 - 常见应用穿透指南
