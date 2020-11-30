@@ -28,6 +28,7 @@
   - [HTTP(S) 穿透](/protocol/http)
   - [FTP(S) 穿透](/protocol/ftp)
   - [远程桌面(RDP) 穿透](/protocol/rdp)
+  - [穿透真实IP](/protocol/general-realip)
 
 - 其他
   - [关于](/about)

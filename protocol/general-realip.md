@@ -1,0 +1,36 @@
+# 通用的映射时客户端真实 IP 获取指南
+
+!> 该篇教程仅作一个通用的引导，具体配置将需要根据使用场景对您要映射的程序进行配置或修改
+
+## 方案选择
+
+Frp 支持两种获取真实 IP 的方案：
+ - HTTP Header
+ - Proxy Protocol
+
+## HTTP Header
+
+!> 该方法仅适用与 HTTP 隧道
+
+该方法无需配置，客户端真实 ip 会自动地 append 到 `X-Forwarded-For` 和 `X-Real-IP`。
+
+行为参考 [MDN相关文章](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Forwarded-For)
+
+## Proxy Protocol
+
+!> 该方法不支持 UDP 隧道
+
+在隧道配置时加入配置即可使用：
+
+```
+proxy_protocol_version = 版本(v1|v2)
+```
+
+?> Proxy Protocol 有两个版本：v1 和 v2，请检查你所使用的服务端程序的支持性以选择使用哪个版本
+
+常用的支持 Proxy Protocol 的程序举例：
+
+ - [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/)
+ - [HaProxy](https://www.haproxy.org/)
+ - [BungeeCord](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/)
+ - [Spigot插件](https://github.com/thijsa/SpigotProxy)
