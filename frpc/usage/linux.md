@@ -17,7 +17,7 @@
 下载 frpc 前，请先确认您的 Linux 系统的架构. 执行下面的命令，根据输出结果就可以确定系统架构
 
 ```bash
-$ uname -a
+$ uname -m
 ```
 
 | 架构 | 输出结果 |
@@ -94,3 +94,5 @@ $ frpc -v
 参考下面的教程配置服务:
   - [Systemd 配置指南](/frpc/service/systemd)
   - 另外两个还在写
+  - [Upstart 配置指南](/frpc/service/upstart)
+  - [SysV-Init 配置指南](/frpc/service/sysvinit)
