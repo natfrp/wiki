@@ -29,6 +29,7 @@
   - [FTP(S) 穿透](/app/ftp)
   - [远程桌面(RDP) 穿透](/app/rdp)
   - [群晖(Synology) NAS 穿透](/app/synology)
+  - [XTCP P2P 穿透](/app/xtcp)
   - [穿透真实IP](/app/general-realip)
 
 - 其他
