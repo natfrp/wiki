@@ -25,11 +25,11 @@
   - [常见问题](/frpc/faq)
 
 - 常见应用穿透指南
-  - [HTTP(S) 穿透](/protocol/http)
-  - [FTP(S) 穿透](/protocol/ftp)
-  - [远程桌面(RDP) 穿透](/protocol/rdp)
-  - [群晖(Synology) NAS 穿透](/protocol/synology)
-  - [穿透真实IP](/protocol/general-realip)
+  - [HTTP(S) 穿透](/app/http)
+  - [FTP(S) 穿透](/app/ftp)
+  - [远程桌面(RDP) 穿透](/app/rdp)
+  - [群晖(Synology) NAS 穿透](/app/synology)
+  - [穿透真实IP](/app/general-realip)
 
 - 其他
   - [关于](/about)
