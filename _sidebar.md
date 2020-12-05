@@ -24,13 +24,14 @@
   - [远程管理](/frpc/remote)
   - [常见问题](/frpc/faq)
 
-- 常见应用穿透指南
+- 常见应用配置指南
   - [HTTP(S) 穿透](/app/http)
   - [FTP(S) 穿透](/app/ftp)
   - [远程桌面(RDP) 穿透](/app/rdp)
   - [群晖(Synology) NAS 穿透](/app/synology)
   - [XTCP P2P 穿透](/app/xtcp)
-  - [穿透真实IP](/app/general-realip)
+  - [远程开机(WOL) 配置](/app/wol)
+  - [获取真实IP](/app/general-realip)
 
 - 其他
   - [关于](/about)
