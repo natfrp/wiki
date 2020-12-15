@@ -32,5 +32,5 @@ proxy_protocol_version = 版本(v1|v2)
 
  - [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/)
  - [HaProxy](https://www.haproxy.org/)
- - [BungeeCord (同时支持 v1 & v2, 无需关心版本)](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/)
+ - [BungeeCord or Waterfall (同时支持 v1 & v2, 无需关心版本)](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/)
  - [Spigot插件](https://github.com/thijsa/SpigotProxy)
