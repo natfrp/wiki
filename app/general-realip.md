@@ -10,7 +10,7 @@ Frp 支持两种获取真实 IP 的方案：
 
 ## HTTP Header
 
-!> 该方法仅适用与 HTTP 隧道
+!> 该方法仅适用于 HTTP 隧道
 
 该方法无需配置，客户端真实 ip 会自动地 append 到 `X-Forwarded-For` 和 `X-Real-IP`。
 
@@ -26,11 +26,11 @@ Frp 支持两种获取真实 IP 的方案：
 proxy_protocol_version = 版本(v1|v2)
 ```
 
-?> Proxy Protocol 有两个版本：v1 和 v2，请检查你所使用的服务端程序的支持性以选择使用哪个版本
+?> Proxy Protocol 有两个版本：v1 和 v2，请检查你所使用的服务端程序的支持性以选择使用哪个版本，对于两个都支持的，我们推荐使用 v2 以提高传输效率
 
-常用的支持 Proxy Protocol 的程序举例：
+常用的支持 Proxy Protocol 的程序举例，我们为版本支持在下述链接中未写明的提供了注释说明：
 
  - [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/)
  - [HaProxy](https://www.haproxy.org/)
- - [BungeeCord](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/)
+ - [BungeeCord (同时支持 v1 & v2, 无需关心版本)](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/)
  - [Spigot插件](https://github.com/thijsa/SpigotProxy)
