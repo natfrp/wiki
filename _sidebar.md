@@ -32,6 +32,7 @@
   - [XTCP P2P 穿透](/app/xtcp)
   - [远程开机(WOL) 配置](/app/wol)
   - [获取真实IP](/app/general-realip)
+  - [全端口穿透](/app/vpn)
 
 - 其他
   - [关于](/about)
