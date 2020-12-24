@@ -2,7 +2,7 @@
 
 SakuraFrp Launcher v2.0.0.0 及以上版本提供了远程管理功能，可以在 Sakura Frp 网站上对启动器进行管理
 
-!> 远程管理功能仅支持 Windows 8 及以上系统，且只有 WPF 启动器支持远程管理  
+!> 从 v2.0.1.2 开始，启动器远程管理支持 Windows 7 及以上系统。仅 WPF 启动器支持远程管理  
 该功能需要安装 `Visual C++ 2015 Runtime (x86)` 才能正常运行，[点此前往下载页面](https://support.microsoft.com/zh-cn/help/2977003/the-latest-supported-visual-c-downloads)
 
 远程管理功能使用端对端加密技术，这可以确保即使 Sakura Frp 的远程管理服务器遭到攻击，您的计算机也不会因为开启了远程管理功能而被攻击
