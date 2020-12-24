@@ -94,6 +94,10 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
    - 当你需要通过TCP隧道转发 http 内容时，可能会被机房拦截，此时可以通过此项配置项将其在客户端转发为 https 内容，当配置内容为：
      - 你所需要的域名时，Frpc 将会首先试图在当前目录加载 `<your-domain>.(crt|key)` 作为证书，如果不存在证书文件，则将自动生成自签名证书
      - `auto` 时，Frpc 将使用`server_name`作为证书 Common Name
+3. `auth_pass = <String>`
+   - 设置后在连接前必须使用浏览器打开 `https://你的映射地址` 输入密码进行认证，在认证通过前来自当前ip所有的连接都会被阻止，认证通过后一小时内此ip连接被许可，一小时后再次被阻止。该选项可有效保护安全。
+4. `auth_mode = <String>`
+   - 认证模式：如果设置为"online"即允许使用SakuraFrp用户面板在线认证，"standalone"即不启用。默认值为"online"。目前用户面板认证功能未上线。
 
 ##### [https_proxy]
 1. `force_https = <Int>`
