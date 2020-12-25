@@ -12,11 +12,11 @@
 
 ## 选择VPN程序
 
-对于高级用户：用你比较熟悉的VPN程序，并关闭该篇教程
+对于高级用户：用您比较熟悉的VPN程序，并关闭该篇教程
 
 ### OpenVPN （Windows 用户推荐）
 
-OpenVPN 的连接性较好，提供了充足的安全保障，以及较少被运营商截断，所以我们推荐使用 OpenVPN 来访问你的内网。
+OpenVPN 的连接性较好，提供了充足的安全保障，以及较少被运营商截断，所以我们推荐使用 OpenVPN 来访问您的内网。
 
 OpenVPN 的客户端应用存在于各种平台的各种分发渠道中，可以搜索并下载使用。
 
@@ -24,7 +24,7 @@ OpenVPN 的客户端应用存在于各种平台的各种分发渠道中，可以
 
 也可直接参考 [该篇文章](http://www.zhujian.org/vps/course/210.html) 搭建 OpenVPN 服务端后，映射对应端口。
 
-对于路由器用户：通常你的集成式固件会集成有 OpenVPN 服务器，如果没有，可以自行根据 [这篇官方教程](https://openwrt.org/docs/guide-user/services/vpn/openvpn/server) 创建。
+对于路由器用户：通常您的集成式固件会集成有 OpenVPN 服务器，如果没有，可以自行根据 [这篇官方教程](https://openwrt.org/docs/guide-user/services/vpn/openvpn/server) 创建。
 
 OpenVPN 提供了 tcp 或 udp 可选的传输方式，请注意映射隧道的类型应与设置相同。
 
