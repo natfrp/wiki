@@ -72,7 +72,7 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
    - 进行自动更新，如果不设置该选项默认只进行更新检查而不自动更新
 1. `-n, --no_check_update`
    - 启动时不检查更新
-2. `--watch`
+1. `--watch`
    - 监控指定 PID 并在进程退出时退出 frpc，该参数用于避免启动器崩溃造成的进程残留
    - 参数列表: `<PID>`
 
@@ -81,27 +81,27 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 ##### [common]
 1. `sakura_mode = <Boolean>`
    - 启用 Sakura Frp 自有的各类特性，设置为 `false` 将 **禁用所有** Sakura Frp 相关特性，默认值为 `false` 
-2. `use_recover = <Boolean>`
+1. `use_recover = <Boolean>`
    - 启用重连功能，默认值为 `false`
-3. `persist_runid = <Boolean>`
+1. `persist_runid = <Boolean>`
    - 该选项启用后 RunID 将不再从服务器拉取而是根据本机特征 & 隧道信息生成，默认值为 `true`
-4. `remote_control = <String>`
+1. `remote_control = <String>`
    - 配置 Sakura Frp 远程管理端对端加密密码，留空则禁用远程管理相关功能，默认值为空
    - 请参阅 [frpc 远程管理](/frpc/remote) 获取更多信息
 
 ##### [tcp_proxy]
 1. `concat_packet = <Int>`
    - 配置合并封包功能的最小字节数，有助于减少小包并降低服务器网卡 PPS，设置为 `-1` 将禁用此功能，默认值为 `-1`
-2. `auto_https = <String>`
+1. `auto_https = <String>`
    - 当您需要通过 TCP 隧道转发 HTTP 流量时，该流量可能会被机房拦截
    - 通过该配置项可将流量自动加上 TLS 层 (转为 HTTPS) 来避免拦截，取值如下:
      - 留空 **[默认值]**: 禁用自动 HTTPS 功能
      - `auto`: frpc 将使用`server_name`作为证书 Common Name
      - 自定义域名: frpc 将加载 `<自定义域名>.(crt|key)` 作为证书，若证书文件不存在，frpc 将生成一份自签名证书
-3. `auth_pass = <String>`
+1. `auth_pass = <String>`
    - 配置 SakuraFrp 访问认证功能的密码，留空则禁用访问认证相关功能，默认值为空
    - 请参阅 [安全指南](/app/security) 获取更多信息
-4. `auth_mode = <String>`
+1. `auth_mode = <String>`
    - 配置 SakuraFrp 访问认证功能的认证模式，取值如下:
      - `online` **[默认值]**: 允许通过密码认证或通过 SakuraFrp 面板进行授权
      - `standalone`: 仅允许通过密码认证, 忽略 frps 下发的 IP 授权信息
@@ -116,11 +116,15 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 
 1. 日志输出会对用户 Token 进行打码，防止 Token 泄漏
 1. 连接成功后会输出一段提示信息，提示用户当前隧道的连接方式
-   - 该提示信息不会匹配日志格式。目的是兼容启动器对旧版本 frpc 日志解析的逻辑
+   - 该提示信息不会匹配日志格式。目的是兼容旧版启动器对旧版本 frpc 日志解析的逻辑
 1. 与服务器连接断开后会尝试自动进行重连，客户端将尝试直接恢复 MUX 连接，因此短暂的断线 (10 秒内) 能实现用户无感知重连
 1. 根据本机特征 & 隧道信息生成 `RunID`
    - 这有助于服务端快速辨识掉线的 `frpc` 并进行重连作业。生成的 `RunID` 为一串 `Hash`，不会包含敏感信息
 1. 启动时会从 API 服务器的 `/client/get_version` 获取最新版本信息, 并提示用户进行更新或进行自动更新
 1. 内建 TUI，方便用户在无参数启动时进行配置
+1. 增加封包合并功能以减少小包
 1. 下发客户端限速，提升连接体验并有助于解决部分应用断线问题
    - 服务端读取限速存在上行速度在 **跑满本地带宽** 和 **0 Byte/s** 之间反复跳动的问题，在客户端也进行限制即可获得稳定的最大速度
+1. 增加自动 TLS 配置功能以简化通过 TCP 隧道调试 HTTP 应用的配置流程
+1. 增加自动 HTTPS 重定向功能以减少隧道占用
+1. 增加访问认证功能以提升隧道安全性
