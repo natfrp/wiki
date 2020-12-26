@@ -32,9 +32,11 @@
   - [群晖(Synology) NAS 穿透](/app/synology)
   - [XTCP P2P 穿透](/app/xtcp)
   - [远程开机(WOL) 配置](/app/wol)
-  - [获取真实IP](/app/general-realip)
-  - [全端口穿透](/app/vpn)
-  - [安全指南](/app/security)
+
+- 最佳实践
+  - [安全指南](/bestpractice/security)
+  - [获取访问者的真实 IP](/bestpractice/realip)
+  - [全端口穿透](/bestpractice/vpn)
 
 - 其他
   - [关于](/about)
