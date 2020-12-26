@@ -1,11 +1,15 @@
-- <font color="red">热门问题</font>
+- <span style="color:red">热门问题</span>
 
   - [503 错误](/faq#_503-错误)
   - [远程证书无效](/launcher/faq#远程证书无效)
   - [映射网页需要什么条件](/faq#实名认证到底可以做什么)
   - [节点选择指南](/faq#哪个节点好用)
   - [其他常见问题](/faq)
-  - [安全指南](/app/security)
+
+- <span style="color:orange">最佳实践</span>
+  - [安全指南](/bestpractice/security)
+  - [获取真实 IP](/bestpractice/realip)
+  - [全端口穿透](/bestpractice/vpn)
 
 - 启动器
 
@@ -32,11 +36,6 @@
   - [群晖(Synology) NAS 穿透](/app/synology)
   - [XTCP P2P 穿透](/app/xtcp)
   - [远程开机(WOL) 配置](/app/wol)
-
-- 最佳实践
-  - [安全指南](/bestpractice/security)
-  - [获取访问者的真实 IP](/bestpractice/realip)
-  - [全端口穿透](/bestpractice/vpn)
 
 - 其他
   - [关于](/about)
