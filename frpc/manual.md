@@ -100,7 +100,7 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
      - 自定义域名: frpc 将加载 `<自定义域名>.(crt|key)` 作为证书，若证书文件不存在，frpc 将生成一份自签名证书
 1. `auth_pass = <String>`
    - 配置 SakuraFrp 访问认证功能的密码，留空则禁用访问认证相关功能，默认值为空
-   - 请参阅 [安全指南](/app/security) 获取更多信息
+   - 请参阅 [安全指南-frpc 访问认证](/bestpractice/security#frpc-访问认证) 获取更多信息
 1. `auth_mode = <String>`
    - 配置 SakuraFrp 访问认证功能的认证模式，取值如下:
      - `online` **[默认值]**: 允许通过密码认证或通过 SakuraFrp 面板进行授权
