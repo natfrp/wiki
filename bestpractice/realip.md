@@ -30,7 +30,7 @@ proxy_protocol_version = 版本(v1|v2)
 
 常用的支持 Proxy Protocol 的程序举例，我们为版本支持在下述链接中未写明的提供了注释说明：
 
- - [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/)
- - [HaProxy](https://www.haproxy.org/)
- - [BungeeCord or Waterfall (同时支持 v1 & v2, 无需关心版本)](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/)
- - [Spigot插件](https://github.com/thijsa/SpigotProxy)
+- [Nginx](https://docs.nginx.com/nginx/admin-guide/load-balancer/using-proxy-protocol/)
+- [HaProxy](https://www.haproxy.org/)
+- [BungeeCord or Waterfall (同时支持 v1 & v2, 无需关心版本)](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/)
+- [Spigot插件](https://github.com/thijsa/SpigotProxy)
