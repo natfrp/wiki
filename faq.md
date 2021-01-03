@@ -19,12 +19,18 @@
 | 存在 frpc 进程残留 | 启动器: 右键点击托盘图标, **彻底退出** 后重新打开启动器 <br> frpc: 打开 **任务管理器** 查找并 **关闭** 残留的 frpc 进程 |
 | 重复开启隧道 | 一条隧道同一时间只能有一个实例, 请 **创建不同端口的隧道** 或者 **关闭重复开启的隧道** |
 
-### 错误: SakuraFrp API failure
+### 错误: Request failed: ...
 
 | 原因 | 解决方案 |
 | --- | --- |
 | 无法连接 API | 请检查本地网络能否正常访问 `https://api.natfrp.com` |
 | API 故障 | 联系管理员 |
+
+### 错误: SakuraFrp API failure, please contact administrator
+
+| 原因 | 解决方案 |
+| --- | --- |
+| 节点或 API 出现故障 | 及时联系管理员 |
 
 ### 实名认证到底可以做什么
 
