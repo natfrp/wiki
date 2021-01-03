@@ -74,7 +74,9 @@ WantedBy=multi-user.target
 # systemctl <start|stop> <Unit名称>
 ```
 
-举个例子
+?> 如果您想开启多条不同隧道，只要更换 `Unit 名称` 中的启动参数并多次执行对应的指令即可
+
+举个例子，开启访问密钥为 `wdnmdtoken666666` 的用户所拥有的 ID 为 `12345` 的隧道:
 
 ```bash
 # systemctl start frpc@wdnmdtoken666666:12345
@@ -103,6 +105,8 @@ WantedBy=multi-user.target
 ```bash
 # systemctl list-units frpc@*
 ```
+
+下图中的信息表示我们开启了访问密钥为 `wdnmdtoken666666` 的用户所拥有的两条 ID 分别为 `12345` 和 `67890` 的隧道
 
 ![](_images/systemd-3.png)
 
