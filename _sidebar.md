@@ -36,6 +36,7 @@
   - [群晖(Synology) NAS 穿透](/app/synology)
   - [XTCP P2P 穿透](/app/xtcp)
   - [远程开机(WOL) 配置](/app/wol)
+  - [Minecraft穿透](/app/mc)
 
 - 其他
   - [关于](/about)
