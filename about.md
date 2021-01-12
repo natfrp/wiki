@@ -26,5 +26,8 @@
 - [CursoR_光标](https://icursors.net)
   - _frpc macOS 帮助文档_
   - _咕咕咕_
+- 乔瘦子m
+  - _我的世界(Minecraft)穿透 帮助文档_
+  - _咕_
 - 其他热心网友们
   - _脚本测试、bug 反馈_
