@@ -140,12 +140,14 @@
 
 
 # Minecraft基岩版开服快速指北
-!> 此教程仅仅是一个简单的入门教程
-如果遇到了一些问题，请自行去[mcbbs](https://mcbbs.com/)中寻找答案或者提问
+>此教程仅仅是一个简单的入门教程，如果遇到了一些问题，请自行去[mcbbs](https://mcbbs.com/)中寻找答案或者提问
 
-!>此文不建议毫无经验的小白阅读
 
-?> 此指南针对的是**基岩版**用户，如果你是**JAVA版**用户，请转到[JAVA联机教程](https://doc.natfrp.com/#/app/mc)
+>此文不建议毫无经验的小白阅读 
+
+
+>此指南针对的是**基岩版**用户，如果你是**JAVA版**用户，请转到[JAVA联机教程](https://doc.natfrp.com/#/app/mc)
+
 
 目前基岩版服务器又两种核心可用，分别是：
 * BDS-bedrock dedicated server
