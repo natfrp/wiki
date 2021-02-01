@@ -55,6 +55,10 @@
 
 $群号：\bold{1149532962}\ \ \ \small{验证问题答案：\large{1}}\ \ \ \ $
 <small>（也可点击链接快速加群：<https://jq.qq.com/?_wv=1027&k=Em3grmqF>）</small>
+   
+$群号：\bold{1036050697}\ \ \ \small{验证问题答案：\large{628}}\ \ \ \ $
+<small>（也可点击链接快速加群：<https://jq.qq.com/?_wv=1027&k=SH5hWfQU>）</small>
+
 
 ## 提示
 
