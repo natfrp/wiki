@@ -10,6 +10,27 @@
 
 对于存储空间不足的路由器，可能需要（~换一个~）[使用 UPX 压缩二进制文件体积](https://github.com/upx/upx/releases)
 
+### 前置问题排除
+
+对于 Openwrt 用户来说，因为路由器的软件常年永不更新，视固件的年代，可能出现这样的错误：
+
+```
+x509: certificate signed by unknown authority
+```
+
+此时可以通过更新`ca-certificates`包来修复：
+
+```bash
+opkg update
+opkg install ca-certificates
+```
+
+对于固件年代更为久远的，已经散发出老坛香气的固件，更新`ca-certificates`很可能不能做到或者不可能，此时请跟随下面步骤：
+
+1. 找到一个比较新的 Linux 系统（更新的 openwrt 更佳，或直接拆包新版本的`ca-certificates`包最佳 如[此文件](https://downloads.openwrt.org/releases/19.07.6/packages/arm_cortex-a9/base/ca-certificates_20200601-1_all.ipk)）
+1. 使用`tar cf`打包它的`/etc/ssl/certs`目录
+1. 迁移到你的路由器同目录中
+
 ### 添加步骤如下
 
 1. 新建开机启动脚本：/etc/init.d/frp 脚本代码如下：
