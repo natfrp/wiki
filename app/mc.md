@@ -1,10 +1,9 @@
-# Minecraft局域网联机穿透指南
+# 我的世界(Minecraft)局域网联机穿透指南
 
 !> 如果您有相关不懂的问题可以先去[MCBBS的你问我答板块](https://www.mcbbs.net/forum-multiqanda-1.html)提问  
-或许您可以从那里得到更好的帮助  
-至于为什么不推荐询问站点管理员，请参看[这里](/faq#为什么你们客服态度这么差)
+或许您可以从那里得到更好的帮助
 
-?> 本指南针对的是**Java版**的用户，如果您是**PE版**的用户，那么请您往下翻
+# Java版局域网联机指南
 
 目前Minecraft局域网联机穿透有两种方案，即 **不装指定的Mod** 和 **要装指定的Mod**
 
@@ -115,7 +114,57 @@
 
 配置文件翻译如下图：
 
-![](./_images/mc-4.png)
+```json
+player-idle-timeout=<Int>
+# 玩家挂机多久后踢出
+# 0为禁止该功能
+
+resource-pack=
+# 服务器资源包（没有请留空）
+
+port=<Int>
+# 端口，对应Frp设置中的本地端口
+# 0为随机
+
+max-view-distance=<Int>
+# 最大视距
+# 0为不限制
+
+online-mode=<Boolean>
+# 是否开启正版验证
+# "true"(是)为开启, "false"(否)为关闭
+# 如果要和非正版玩家，请关闭
+
+spawn-animals=<Boolean>
+# 是否生成生物
+# "true"(是)为开启, "false"(否)为关闭
+
+pvp=<Boolean>
+# 玩家之间是否可以造成伤害
+# "true"(是)为开启, "false"(否)为关闭
+
+max-players=<Int>
+# 最大玩家数
+
+white-list=<Boolean>
+# 是否开启白名单
+# "true"(是)为开启, "false"(否)为关闭
+
+spawn-npcs=<Boolean>
+# 是否生成村民
+# "true"(是)为开启, "false"(否)为关闭
+
+max-build-height=<Int>
+# 最大建筑高度
+# 不能超过256
+
+resource-pack-sha1=
+# 资源包哈希算法（没有请留空）
+
+motd=
+# Motd设置
+# 默认会生成一个，可以自己设置
+```
 
 请根据您的需求进行设置，设置完成后请重新打开地图即可刷新配置
 
@@ -125,28 +174,24 @@
 
 !> `server.properties`文件配置完以后下一次使用**这个存档**联机就不用再次配置了，但是如果**换了个存档**联机，就需要**重新配置**或者复制之前的配置过来
 
-![](./_images/mc-5.png)
+![](./_images/mc-4.png)
 
 ## 0x03 创建隧道
 
 当您获取到了**本地端口**后，您即可开始**创建隧道**了，详细设置如下图
 
 ?> #39 40 41这三个节点**只可以**用来映射**WEB服务**，所以**不可**用来映射MC  
-**如果您的是用来映射MC服务器的话，那么我们十分建议您使用高防节点（如枣庄）（基友服除外）**
+**如果您是用来映射MC服务器，并且容易被[DOS](https://zh.wikipedia.org/wiki/拒绝服务攻击)的话，那么我们十分建议您使用高防节点（如枣庄）**
 
-![](./_images/mc-6.png)
+![](./_images/mc-5.png)
 
 如果您不会使用frpc客户端，建议查看 [用户手册](/frpc/manual#普通用户) 中的 **普通用户** 一节学习 frpc 的基本使用方法
 
 
 # Minecraft基岩版开服快速指北
->此教程仅仅是一个简单的入门教程，如果遇到了一些问题，请自行去[mcbbs](https://mcbbs.com/)中寻找答案或者提问
-
-
->此文不建议毫无经验的小白阅读 
-
-
->此指南针对的是**基岩版**用户，如果你是**JAVA版**用户，请转到[JAVA联机教程](https://doc.natfrp.com/#/app/mc)
+>此教程仅仅是一个简单的入门教程，如果遇到了一些问题，请自行去[mcbbs](https://mcbbs.com/)中寻找答案或者提问  
+>此文不建议毫无经验的小白阅读   
+>此指南针对的是**基岩版**用户，如果你是**JAVA版**用户，请转到[JAVA联机教程](#Java版局域网联机指南)
 
 
 目前基岩版服务器又两种核心可用，分别是：
@@ -173,99 +218,99 @@ NUKKIT核心则是基于java版开发的一款核心，开源，生态优于BDS�
     Server
     # 用作服务器名称
     # 允许值 : 任何字符串
-
+    
     gamemode=survival
     # 为新玩家设置游戏模式。
     # 允许值 : "survival"(生存), "creative"(创造), 或 "adventure"(冒险)
-
+    
     difficulty=easy
     # 设定世界的难度。
     # 允许值 : "peaceful"(和平), "easy"(简单), "normal"(普通), 或 "hard"(困难)
-
+    
     allow-cheats=false
     # 如果设置为"true"，则可以使用类似命令的作弊手段。
     # 允许值 : "true"(是) 或 "false"(否)
-
+    
     max-players=10
     # 服务端上可以同时在线的最大玩家数。
     # 允许值 : 任意正整数
-
+    
     online-mode=true
     # 如果设置为"true"，则必须对所有连接的玩家进行Xbox Live身份验证。
     # 无论此设置如何，连接到远程（非本地）服务端的客户端将始终需要Xbox Live身份验证。
     # 如果服务端接受来自互联网的连接，则强烈建议启用联机模式。
     # 允许值 : "true"(是) 或 "false"(否)
-
+    
     white-list=false
     # 如果为"true"，则必须在"whitelist.json"文件中列出所有连接的玩家。
     # 允许值 : "true"(是) 或 "false"(否)
-
+    
     server-port=19132
     # 服务端应监听哪个IPv4端口。
     # 允许值 : 1-65535闭区间内的整数 [1, 65535]
-
+    
     server-portv6=19133
     # 服务端应监听哪个IPv6端口。
     # 允许值 : 1-65535闭区间内的整数 [1, 65535]
-
+    
     view-distance=32
     # 允许的最大视距（以方块数为单位）。
     # 允许值 : 任意正整数
-
+    
     tick-distance=4
     # 停止加载区块的距离
     # 允许值 : 4-12闭区间内的整数 [4, 12]
-
+    
     player-idle-timeout=30
     # 挂机玩家被踢出的时间
     # 允许值 : 任意非负整数
-
+    
     max-threads=8
     # 服务端使用的最大线程数，如果设置为0，服务端会尽可能多地使用所有线程。
     # 允许值 : 任意非负整数
-
+    
     level-name=Bedrock level
     # 世界名称以及文件夹名
     # 允许值 : 任何字符串
-
+    
     level-seed=
     # 为世界定义一个种子
     # 允许值 : 任何字符串
-
+    
     default-player-permission-level=member
     # 新玩家的游戏模式
     # 允许值 : "visitor"(游客), "member"(会员), "operator"(管理员)
-
+    
     texturepack-required=false
     # 强制客户端加载服务端资源包
     # 允许值 : "true"(是) 或 "false"(否)
-
+    
     content-log-file-enabled=false
     # 启用将会使错误内容记录到日志文件中
     # 允许值 : "true"(是) 或 "false"(否)
-
+    
     compression-threshold=1
     # 要压缩的原始网络有效负载的最小大小
     # 允许值 : 0-65535
-
+    
     server-authoritative-movement=true
     # 启用服务端权威性移动。 如果为"true"，则服务端将在以下位置重设本地用户输入
     # 客户端的位置与服务端的位置不匹配时，发送服务端更正位置并向下发送至客户端更正。
     # 仅当正确的玩家移动设置为true时，才会进行更正。
-
+    
     player-movement-score-threshold=20
     # 报告异常行为之前所需的数据不一致的数量。
     # 在 server-authoritative-movement 选项为"false"时失效
-
+    
     player-movement-distance-threshold=0.3
     # 在检测到异常行为之前，服务端与客户端数值之差。
     # 在 server-authoritative-movement 选项为"false"时失效
-
+    
     player-movement-duration-threshold-in-ms=500
     # 服务端和客户端位置的时间长度可能不同步 (在 server-authoritative-movement 选项为"false"时失效)
     # 在异常移动计数增加之前。 此值以毫秒为单位定义。
     # 在 server-authoritative-movement 选项为"false"时失效
-
+    
     correct-player-movement=false
     # 如果为"true"，则移动值超过阈值，客户端的玩家位置将被校正为服务端玩家的位置。
     # 允许值 : "true"(是) 或 "false"(否)
@@ -276,7 +321,7 @@ NUKKIT核心则是基于java版开发的一款核心，开源，生态优于BDS�
     level-type=
     # 世界的类型
     # 可用值：DEFAULT，LEGACY，FLAT（无限，有限，超平坦）
-
+    
     world-type=
     # 是否开启教育版，实验性玩法
     # 可用值：未知
@@ -286,7 +331,7 @@ NUKKIT核心则是基于java版开发的一款核心，开源，生态优于BDS�
 | --------    | -----:           | :----:       |
 | UDP         | 19132             |   无要求    |
 
-## 0x03 其他注意事项
+### 0x03 其他注意事项
 如果您想同时在一台电脑上运行服务端和客户端，并且想通过客户端直接连接本地的话，可能会碰上点麻烦：
 
 某些Windows版本默认不允许UWP应用形成127回环
@@ -331,7 +376,7 @@ NUKKIT核心则是基于java版开发的一款核心，开源，生态优于BDS�
 * 1.目前NUKKIT Bedrock BUG较多，请及时更新
 * 2.支持开源社区！
 
-# BDS核心进阶教程
+## BDS核心进阶教程
 ### 白名单模式
 !>如果您不想让外来人进入您的服务器，这个机制不失为一个优质选项
 其中，你可以在"server.properties"中启用白名单(white-list=true)，但同时必须开启正版验证(online-mode=true)
