@@ -6,6 +6,9 @@
 
 这里使用 [procd init script](https://openwrt.org/docs/guide-developer/procd-init-scripts) 来实现开机自启动
 
+需要注意的是 Openwrt 自 bb(Barrier Breaker) 后引入了该系统，如果您使用 aa 或更早的上古系统，请使用 sysV 格式写启动脚本
+
+对于存储空间不足的路由器，可能需要（~换一个~）[使用 UPX 压缩二进制文件体积](https://github.com/upx/upx/releases)
 
 ### 添加步骤如下
 
@@ -42,5 +45,3 @@ chmod +x /etc/init.d/frp && /etc/init.d/frp enable
 ```bash
 /etc/init.d/frp start
 ```
-
-
