@@ -26,6 +26,7 @@
       - [Systemd 服务配置](/frpc/service/systemd)
       - [Openwrt 服务配置](/frpc/service/openwrt)
     - [macOS](/frpc/usage/macos)
+    - [使用 Docker 运行](/frpc/service/docker)
   - [用户手册](/frpc/manual)
   - [远程管理](/frpc/remote)
   - [常见问题](/frpc/faq)
