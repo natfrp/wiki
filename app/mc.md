@@ -163,7 +163,7 @@ motd=
 
 鉴于有很多用户都不会用百度查询如何进行 **SRV解析**，所有就有了这个文档
 
-本文档会教您如何在下列域名服务商的面板中为 **Minecraft Java版** 配置 **SRV解析**
+本文档会教您如何在下列域名服务商的面板中为 **Minecraft Java 版** 配置 **SRV解析**
 
  - [阿里云](#srv-aliyun)
  - [Cloudflare](#srv-cloudflare) 
@@ -171,6 +171,9 @@ motd=
 如果您有 **其他厂商** 的域名，并且会在对应面板中进行 **SRV解析**，欢迎提交 [Pull Request](https://github.com/natfrp/wiki/pulls ':target=_blank') 帮助我们完善该文档
 
 要进行 **SRV解析**，您就必须要有一个域名，本文档不会推荐您使用哪个厂商的域名，如果您 **不会花钱** 的话，那我们也没办法了
+
+!> 配置 SRV 记录后使用 `ping` 命令是无法测试连通性的，但是在游戏中填上就可以正常使用  
+除此之外，只有 Minecraft Java 版支持解析 SRV 记录，基岩版并不支持此特性
 
 ### 阿里云 :id=srv-aliyun
 
