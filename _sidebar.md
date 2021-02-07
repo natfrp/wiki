@@ -42,7 +42,9 @@
   - [我的世界(Minecraft) 穿透](/app/mc)
     - [Java 版局域网联机](/app/mc#java)
     - [设置 SRV 解析](/app/mc#srv)
-    - [基岩版开服快速指北](/app/mc#bedrock)
+
+- 一些杂项教程
+  - [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server)
 
 - 其他
   - [给高级用户的说明](/geek)
