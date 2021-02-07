@@ -194,7 +194,7 @@ motd=
 >此指南针对的是**基岩版**用户，如果你是**JAVA版**用户，请转到[JAVA联机教程](#Java版局域网联机指南)
 
 
-目前基岩版服务器又两种核心可用，分别是：
+目前基岩版服务器有两种核心可用，分别是：
 * BDS-bedrock dedicated server
 * NUKKIT-Nukkit BE
 
@@ -328,8 +328,8 @@ NUKKIT核心则是基于java版开发的一款核心，开源，生态优于BDS�
 
 #### 隧道配置：
 | 协议        | 本地端口(默认)    |  远程端口     |
-| --------    | -----:           | :----:       |
-| UDP         | 19132             |   无要求    |
+| --------    | -----:        | :----:       |
+| UDP         | 19132          |   无要求    |
 
 ### 0x03 其他注意事项
 如果您想同时在一台电脑上运行服务端和客户端，并且想通过客户端直接连接本地的话，可能会碰上点麻烦：
@@ -382,36 +382,24 @@ NUKKIT核心则是基于java版开发的一款核心，开源，生态优于BDS�
 其中，你可以在"server.properties"中启用白名单(white-list=true)，但同时必须开启正版验证(online-mode=true)
 #### 管理方式：
 可以直接在服务端控制台用如下指令编辑白名单
-    whitelist add "Example Name" # 根据昵称添加白名单
-    whitelist remove "Example Name" # 根据昵称移除白名单
-    whitelist list # 打印whitelist.json内容
+ * whitelist add "Example Name" # 根据昵称添加白名单
+ * whitelist remove "Example Name" # 根据昵称移除白名单
+ * whitelist list # 打印whitelist.json内容
 而你也可以在whitelist.json里直接进行编辑：
-    [
-        {
-            "ignoresPlayerLimit": false, 
-            # 是否无视玩家上线(即使服务器满员该玩家也可进入)
-            "name": "MyPlayer"
-        },
-        {
-            "ignoresPlayerLimit": false,
-            "name": "AnotherPlayer",
-            "xuid": "123456789" 
-            #其中xuid和昵称有一个就可以，该玩家第一次登入的时候会自动补全
-        }
-    ]
-
+    [{ "ignoresPlayerLimit": false,  # 是否无视玩家上线(即使服务器满员该玩家也可进入) "name": "MyPlayer"},{"ignoresPlayerLimit": false,"name": "AnotherPlayer","xuid": "123456789" #其中xuid和昵称有一个就可以，该玩家第一次登入的时候会自动补全}]
+* （不要打我，官方就没有缩进）
 ### 玩家管理
 管理您服务器里的op，如果op想在游戏内使用指令，则必须开启允许作弊(allow-cheat=true)
 
 可以通过以下指令编辑权限
-    op "example players" # 添加权限
-    deop "example players" # 剥夺权限
+ * op "example players" # 添加权限
+ * deop "example players" # 剥夺权限
 
 如果您看某人不顺眼，可以直接通过以下指令踢掉他
-    kick "example players"
+ * kick "example players"
 
 如果您想关闭服务器，可以通过以下指令来软关服
-    stop
+  * stop
 
 ### 游戏参数修改
 在根目录下会有一个行为包目录"behavior_packs"，可以通过修改这个文件来达成修改游戏数据的目的
@@ -425,7 +413,6 @@ NUKKIT核心则是基于java版开发的一款核心，开源，生态优于BDS�
 * 1.用客户端随便创建一个世界，创建时勾选想用的材质包
 * 2.进入后退出存档，找到MC数据文件夹，找到这个世界服文件夹
 * 3.找到以下两个文件
-    world_resource_pack_history.json
-    world_resource_pack.json
+world_resource_pack_history.json world_resource_pack.json
 * 4.将其拷贝到服务端根目录下worlds/"Bedrock level"/即可
 * 5.如果要所有人强制使用材质包，则把强制使用材质给打开(texturepack-required=true)
