@@ -41,6 +41,7 @@
   - [远程开机(WOL) 配置](/app/wol)
   - [我的世界(Minecraft) 穿透](/app/mc)
     - [Java版局域网联机指南](/app/mc#Java版局域网联机指南)
+    - [进行 SRV 解析](/srv)
     - [基岩版开服快速指北](/app/mc#Minecraft基岩版开服快速指北)
 
 - 其他
