@@ -51,14 +51,22 @@
 
 本文档使用 Github Pages 服务托管，[点我前往托管仓库](https://github.com/natfrp/wiki)。
 
-## **非官方** QQ 交流群
+## QQ 交流群
 
-$群号：\bold{1149532962}\ \ \ \small{验证问题答案：\large{1}}\ \ \ \ $
-<small>（也可点击链接快速加群：<https://jq.qq.com/?_wv=1027&k=Em3grmqF>）</small>
-   
-$群号：\bold{1036050697}\ \ \ \small{验证问题答案：\large{628}}\ \ \ \ $
-<small>（也可点击链接快速加群：<https://jq.qq.com/?_wv=1027&k=SH5hWfQU>）</small>
+### 内测反馈群
 
++ 群号：1142361664
++ 不提供任何使用帮助
++ 禁止水群
+
+### 水群
+
++ 群号：1149532962
++ 群内没有网站管理员
+
+### VIP 反馈群
+
+请前往 [用户信息](https://www.natfrp.com/user/profile) 页面查看详情。
 
 ## 提示
 
