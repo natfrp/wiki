@@ -92,11 +92,11 @@ echo | frpc -f wdnmdtoken666666:12345 &
 !> 由于文档维护者不了解 Upstart 和 SysV-Init 的传参模式，本文档暂不提供这两种初始化系统的配置指南  
 如果您熟悉这些初始化系统并且愿意为本文档作出贡献，欢迎开启 PR 完善相关文档
 
-首先，您要搞清楚您的 Linux 系统使用的 ___初始化系统___ 是什么~~，本文档提供三种常见初始化系统的配置指南~~:
+首先，您要搞清楚您的 Linux 系统使用的 ***初始化系统*** 是什么~~，本文档提供三种常见初始化系统的配置指南~~:
 
-  - Systemd
-  - Upstart
-  - SysV-Init
+- Systemd
+- Upstart
+- SysV-Init
 
 执行下面的命令然后查看输出，找到您的初始化系统
 
@@ -107,4 +107,5 @@ echo | frpc -f wdnmdtoken666666:12345 &
 ![](_images/linux-4.png)
 
 然后，请参考下面的教程配置系统服务:
-  - [Systemd 配置指南](/frpc/service/systemd)
+
+- [Systemd 配置指南](/frpc/service/systemd)
