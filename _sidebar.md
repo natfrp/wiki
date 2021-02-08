@@ -1,3 +1,5 @@
+- [**首页**](/HOME)
+
 - <span style="color: red;">热门问题</span>
 
   - [503 错误](/faq#_503-错误)
