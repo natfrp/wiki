@@ -4,7 +4,7 @@
 
 本篇教程内容为前者，您也可以选择（可能）更容易配置的 [Docker 教程](/frpc/service/docker)
 
-## 0x01 配置 DSM 面板
+## 配置 DSM 面板
 
 ?> 您也可以选择穿透 HTTP，但这可能会造成备案/机房屏蔽/ISP屏蔽等问题  
 如果您选择穿透 HTTP，出现问题请自行解决
@@ -17,7 +17,7 @@
 
 ![](./_images/synology-2.png)
 
-## 0x02 安装 frpc
+## 安装 frpc
 
 通过上面提到的 SSH 端口和 DSM 面板的账号、密码登入到 NAS，如果您不知道如何操作请自行百度
 
@@ -25,7 +25,7 @@
 
 注意这里需要采用 `sudo -s` 切换到 `root` 账户，不能使用 `su` 命令，提示输入密码时请输入 DSM 登录密码
 
-## 0x03 创建隧道
+## 创建隧道
 
 !> 标有 **拦截 HTTPS** 的节点可能无法正常使用
 
@@ -33,9 +33,9 @@
 
 ![](./_images/synology-3.png)
 
-## 0x04 配置服务文件
+## 配置服务文件
 
-!> 0x04 和 0x05 部分的教程是为 DSM5/6 准备的，如果您在使用 DSM7，本部分操作您应当参考 [systemd 配置教程](/frpc/service/systemd)；别担心，我们更喜欢 systemd
+!> 和 部分的教程是为 DSM5/6 准备的，如果您在使用 DSM7，本部分操作您应当参考 [systemd 配置教程](/frpc/service/systemd)；别担心，我们更喜欢 systemd
 
 执行下面的命令编辑配置文件
 
@@ -61,7 +61,7 @@ respawn limit 0 5
 exec /usr/local/bin/frpc -f <您的启动参数，如 wdnmdtoken666666:12345>
 ```
 
-## 0x05 测试服务
+## 测试服务
 
 执行下面的命令测试 frpc 是否能正常运行
 

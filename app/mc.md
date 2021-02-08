@@ -14,7 +14,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 - 不装辅助 Mod: 适用于同类型账号之间的联机 (如正版和正版、盗版和盗版、外置和外置) 
 - 安装辅助 Mod (推荐): 适用于不同类型账号之间的联机
 
-### 0x01 不装辅助 Mod :id=java-no-mod
+### 不装辅助 Mod :id=java-no-mod
 
 进入要联机的存档，按下键盘上的 **ESC** 键，在出现的界面里找到 `对局域网开放` 之类的按钮并且点击进入，对 **其他玩家** 进行设置，然后点击 `创造一个局域网世界`
 
@@ -26,7 +26,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
 上图中，我们获取到的端口号为 `61259`
 
-### 0x02 安装辅助 Mod
+### 安装辅助 Mod
 
 !> 通过辅助 Mod 关闭正版验证 **可能** 会改变玩家的 UUID 导致 **背包内物品丢失**，请关闭正版验证前 **备份存档**
 
@@ -37,11 +37,11 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
 !> 1.16.2 版由于 Forge 的原因可能会 **引发崩溃**，端口 **不能冲突**，否则也会崩溃
 
- - Mod 名称: LanServerProperties  
- - Mod 功能:
++ Mod 名称: LanServerProperties  
++ Mod 功能:
   1. 固定端口
   2. 开关正版验证
- - 下载链接: [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files/all)  
++ 下载链接: [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files/all)  
    _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 **可能** 会较慢，请耐心等待或自行寻找国内镜像_
 
 #### 使用方法
@@ -62,8 +62,8 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 <details>
 <summary><b style="font-size: 20px">游戏版本: 1.7.X ~ 1.12.X</b></summary>
 
- - Mod 名称: Server.Properties for LAN
- - Mod 功能:
++ Mod 名称: Server.Properties for LAN
++ Mod 功能:
   1. 玩家挂机多久后踢出
   2. 服务器资源包
   3. 固定端口
@@ -75,7 +75,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
   9. 是否生成村民
   10. 最大建筑高度
   11. Motd设置
- - 下载链接: [Curseforge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)
++ 下载链接: [Curseforge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)
    _该网站的服务器位于 **国外**，所以访问/下载的速度 **可能** 会较慢，请耐心等待或自行寻找国内镜像_
 
 #### 使用方法
@@ -93,7 +93,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
    !> `server.properties` 文件编辑完以后下一次使用 **这个存档** 联机就不用再次编辑了  
    如果 **换了个存档** 联机，就需要 **重新编辑** 或者复制之前的配置过来
-4. 现在请参考 [0x01 不装辅助 Mod](#java-no-mod) 一节开启局域网联机
+4. 现在请参考 [不装辅助 Mod](#java-no-mod) 一节开启局域网联机
 
 #### server.properties 配置文件翻译如下: 
 
@@ -151,7 +151,7 @@ motd=
 
 </details>
 
-### 0x03 创建隧道
+### 创建隧道
 
 当您获取到了 **本地端口** 后，您即可开始 **创建隧道** 了，详细设置如下图
 
@@ -165,8 +165,8 @@ motd=
 
 本文档会教您如何在下列域名服务商的面板中为 **Minecraft Java 版** 配置 **SRV解析**
 
- - [阿里云](#srv-aliyun)
- - [Cloudflare](#srv-cloudflare) 
++ [阿里云](#srv-aliyun)
++ [Cloudflare](#srv-cloudflare) 
 
 如果您有 **其他厂商** 的域名，并且会在对应面板中进行 **SRV解析**，欢迎提交 [Pull Request](https://github.com/natfrp/wiki/pulls ':target=_blank') 帮助我们完善该文档
 
@@ -199,8 +199,8 @@ motd=
 
 保存完毕后需要 **等待** 10 分钟 (按照您的 **TTL** 来决定，一般为 10 分钟) 
 
- - **假设** 您的域名为: natfrp.com，您的 **xx** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
- - **假设** 您的域名为: natfrp.com，您把 **.xx** 去掉了，那么使用 `natfrp.com` 即可连接到您的服务器
++ **假设** 您的域名为: natfrp.com，您的 **xx** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
++ **假设** 您的域名为: natfrp.com，您把 **.xx** 去掉了，那么使用 `natfrp.com` 即可连接到您的服务器
 
 ### Cloudflare :id=srv-cloudflare
 
@@ -233,5 +233,5 @@ motd=
 
 保存完毕后需要 **等待** 10 分钟 (按照您的 **TTL** 来决定，一般为 10 分钟) 
 
- - 假设您的域名为: natfrp.com，您的 **名称** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
- - 假设您的域名为: natfrp.com，您的 **名称** 设置为 `@`，那么使用 `natfrp.com` 即可连接到您的服务器
++ 假设您的域名为: natfrp.com，您的 **名称** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
++ 假设您的域名为: natfrp.com，您的 **名称** 设置为 `@`，那么使用 `natfrp.com` 即可连接到您的服务器
