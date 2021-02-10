@@ -47,5 +47,6 @@
   - [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server)
 
 - 其他
-  - [高级用户相关说明](/geek)
+  - [文档格式约定](/style)
+  - [给高级用户 (Geek) 的说明](/geek)
   - [关于](/about)
