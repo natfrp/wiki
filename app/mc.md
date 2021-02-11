@@ -166,7 +166,8 @@ motd=
 本文档会教您如何在下列域名服务商的面板中为 **Minecraft Java 版** 配置 **SRV解析**
 
 + [阿里云](#srv-aliyun)
-+ [Cloudflare](#srv-cloudflare) 
++ [腾讯云](#srv-tencent)
++ [Cloudflare](#srv-cloudflare)  
 
 如果您有 **其他厂商** 的域名，并且会在对应面板中进行 **SRV解析**，欢迎提交 [Pull Request](https://github.com/natfrp/wiki/pulls ':target=_blank') 帮助我们完善该文档
 
@@ -193,7 +194,7 @@ motd=
 | --- | --- |
 | 记录类型 | SRV |
 | 主机记录 | `_minecraft._tcp.xx` (后面的 `xx` 可以自定义，也可以直接把 `.xx` 去掉只写 `_minecraft._tcp`) |
-| 记录值 | `0 5 远程端口 隧道域名**` (例: `0 5 xxxxx cn-xx-xxx.sakurafrp.com`) |
+| 记录值 | `0 5 远程端口 隧道域名` (例: `0 5 xxxxx cn-xx-xxx.sakurafrp.com`) |
 
 ![](./_images/mc-srv-3.png)
 
@@ -201,6 +202,29 @@ motd=
 
 + **假设** 您的域名为: natfrp.com，您的 **xx** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
 + **假设** 您的域名为: natfrp.com，您把 **.xx** 去掉了，那么使用 `natfrp.com` 即可连接到您的服务器
+
+### 腾讯云 :id=srv-tencent
+
+点击 [这里](https://console.cloud.tencent.com/cns) 进入 **腾讯云** 的解析列表，如果您没有登录，请先登录。
+
+![](_images/mc-srv-tencent-1.png)
+
+找到您要解析的域名，点击右侧的 “解析” 进入解析配置页面。
+
+![](_images/mc-srv-tencent-2.png)
+
+点击左上方的 “添加记录” ，然后按下表进行填写，完毕后点击 **确认** 即可。
+
+| 字段 | 填写内容 |
+| --- | --- |
+| 记录类型 | SRV |
+| 主机记录 | `_minecraft._tcp.xx` (后面的 `xx` 可以自定义，也可以直接把 `.xx` 去掉只写 `_minecraft._tcp`) |
+| 记录值 | `0 5 远程端口 隧道域名` (例: `0 5 xxxxx cn-xx-xxx.sakurafrp.com`) |
+
+保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您的 **TTL** 来决定，一般为 10 分钟) 。
+
++ **假设** 您的域名为: natfrp.com，您的 **`.xx`** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
++ **假设** 您的域名为: natfrp.com，您把 **`.xx`** 去掉了，那么使用 `natfrp.com` 即可连接到您的服务器
 
 ### Cloudflare :id=srv-cloudflare
 
