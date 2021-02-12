@@ -1,37 +1,42 @@
-# 启动器基本使用教程
+# 启动器使用教程
 
-?> 传统启动器和新版 (WPF) 启动器使用方法基本一致，此处仅提供新版启动器的教程
+## 安装启动器
 
-## 下载软件
-
-?> 启动器需要安装 `.NET Framework 4.5` 或以上版本才能正常运行    
-Windows 10 已内置此框架，不需要单独下载，旧版本系统 (Windows 7) [请点击前往微软官方下载页面下载](https://dotnet.microsoft.com/download/dotnet-framework/net45)
-
-登录管理面板，在侧边栏点击 “软件下载” :
+登录管理面板，在侧边栏点击 **软件下载**:
 
 ![](../_images/download.png)
 
-然后点击对应版本的下载地址来下载启动器，建议下载上面的 **推荐** 版本，如果打不开再换下面的传统启动器
+!> 我们不提供自定义安装路径的选项，如有此类需求请自行编译启动器  
+默认安装路径为 `C:\Program Files\SakuraFrpLauncher`
+
+点击启动器右侧的下载地址来下载启动器安装程序:
 
 ![](_images/usage-0.png)
 
-下载完毕后 **不要直接运行** ，解压到一个单独的文件夹，比如我这里解压到 `R:\`
+下载完毕后双击安装程序并根据向导提示进行安装:
+
+?> 正常情况下，安装程序会自动下载系统中缺失的运行库  
+如果下载失败，请到 [这里](https://dotnet.microsoft.com/download/dotnet-framework/net48 ':target=_blank') 下载 `.NET Framework 4.8 Runtime`  
+并到 [这里](https://support.microsoft.com/zh-cn/help/2977003/the-latest-supported-visual-c-downloads ':target=_blank') 下载 `Visual Studio C++ 2015、2017 和 2019 (x86)`  
+手动安装这两个运行库，随后重新运行启动器安装程序即可
 
 ![](_images/usage-1.png)
 
-### 登录启动器
+## 登录启动器
 
-找到刚才解压出的文件，双击 (或者 右键单击->点打开 或者 选中后按回车键) `SakuraLauncher.exe` 运行启动器
+?> 传统启动器和新版 (WPF) 启动器使用方法基本一致，此处仅提供新版启动器的教程
 
-?> 如果您使用的是传统启动器，请打开 `LegacyLauncher.exe`
+安装完毕后双击桌面图标 (如果您选择了 `创建桌面快捷方式`) 来运行启动器。
 
+?> 如果您没有勾选 `创建桌面快捷方式`，请打开 `C:\Program Files\SakuraFrpLauncher` 文件夹  
+然后运行 `SakuraLauncher.exe`  (如果安装的是传统启动器，请运行 `LegacyLauncher.exe`)  
 ![](_images/usage-2.png)
 
-进入 [用户信息](https://www.natfrp.com/user/profile) 页面，复制访问密钥 (也叫做 Token) 到启动器点击登录
+进入 [用户信息](https://www.natfrp.com/user/profile ':target=_blank') 页面，复制 **访问密钥** 到启动器，点击登录
 
 ![](_images/usage-3.png)
 
-### 创建隧道
+## 创建隧道
 
 登录成功后会自动切换到 **隧道** 标签，点击加号新建隧道
 
@@ -45,7 +50,7 @@ Windows 10 已内置此框架，不需要单独下载，旧版本系统 (Windows
 
 ![](_images/usage-6.png)
 
-### 启用隧道
+## 启用隧道
 
 !> 不要频繁开关隧道，启用隧道后稍等一会才能连接成功  
 如果长时间 (超过一分钟) 没看到连接成功的提示框请检查日志
@@ -66,7 +71,7 @@ Windows 10 已内置此框架，不需要单独下载，旧版本系统 (Windows
 
 ![](_images/usage-10.png)
 
-### 删除隧道
+## 删除隧道
 
 将鼠标放到隧道卡片上悬停一会，卡片右上角会出现删除按钮
 
@@ -80,6 +85,6 @@ Windows 10 已内置此框架，不需要单独下载，旧版本系统 (Windows
 
 `2.0.0.0` 及以上版本的启动器提供两种开机启动方式，一般情况下直接勾选下图中的选项就能满足使用需求
 
-如需不进桌面自启（如穿透远程桌面服务），请参阅 [系统服务](/launcher/service) 页面了解服务启动方式
+如需不进桌面自启 (如穿透远程桌面服务)，请参阅 [系统服务](/launcher/service) 页面了解服务启动方式
 
 ![](_images/usage-13.png)
