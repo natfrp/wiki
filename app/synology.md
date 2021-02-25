@@ -2,7 +2,7 @@
 
 群晖 NAS 通常有两种配置方案，即 **直接在系统上安装** 和 **使用 Docker**
 
-本篇教程内容为前者，您也可以选择（可能）更容易配置的 [Docker 教程](/frpc/usage/docker-syno)
+本篇教程内容为前者，您也可以选择（可能）更容易配置的 [Docker 教程](/frpc/usage/docker)
 
 ## 配置 DSM 面板
 
