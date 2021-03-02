@@ -3,6 +3,24 @@
 !> 穿透远程桌面前务必阅读 [安全指南](/bestpractice/security)，确保您的系统已经 **安装了最新的补丁** 并且设置了 **强登录密码**  
 进行内网穿透等于 **绕过所有防火墙** 将您的计算机直接暴露于公网中，您需要自行承担由此带来的风险
 
+## 如果看不懂文字版可以看一分钟视频教程
+
+*注: 视频教程跳过了很多东西，不推荐阅读理解能力没有问题的用户观看*
+
+<details>
+<summary><b style="font-size: 20px">Windows 7 (点击展开)</b></summary>
+
+[filename](_videos/rdp-win7.mp4 ':include :type=video')
+
+</details>
+<br>
+<details>
+<summary><b style="font-size: 20px">Windows 10 (点击展开)</b></summary>
+
+[filename](_videos/rdp-win10.mp4 ':include :type=video')
+
+</details>
+
 ## 默认端口
 
 - RDP: 3389
