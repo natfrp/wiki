@@ -2,6 +2,26 @@
 
 ## 安装启动器
 
+### 如果看不懂文字版可以看一分钟视频安装教程
+
+*注: 视频教程跳过了很多东西，不推荐阅读理解能力没有问题的用户观看*
+
+<details>
+<summary><b style="font-size: 20px">Windows 7 安装运行库 (点击展开)</b></summary>
+
+[filename](_videos/install-win7-runtime.mp4 ':include :type=video')
+
+</details>
+<br>
+<details>
+<summary><b style="font-size: 20px">Windows 10 安装启动器并登录 (点击展开)</b></summary>
+
+[filename](_videos/install-win10.mp4 ':include :type=video')
+
+</details>
+
+### 图文安装教程
+
 登录管理面板，在侧边栏点击 **软件下载**:
 
 ![](../_images/download.png)
