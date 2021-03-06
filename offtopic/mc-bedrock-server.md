@@ -8,6 +8,7 @@
 
 + Bedrock Dedicated Server (简称 BDS)  
   由微软官方开发，与 **安卓版**、**Windows 10 版**、**iOS版** Minecraft 相同的核心，适合原版生存
+  但相比于原版核心，websocket指令无法使用
 + Nukkit  
   由第三方独立开发的开源核心，生态优于 BDS 但由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)
 
@@ -18,6 +19,7 @@
 1. 准备一个可用的 Sakura Launcher 或者 frpc
 2. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/en-us/download/server/bedrock/ ':target=_blank')
 3. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑(官方文档建议)
+>原因为缺少chakara.dll，如果您有能力可以尝试自己增加补丁
 4. 准备一台 CPU 核心数不低于2核，并配有不低于 1GB RAM 的电脑
 
 ### 开服配置
@@ -174,10 +176,14 @@ world-type =
 
 如果您想同时在一台电脑上运行服务端和客户端，并且想通过客户端直接连接本地的话，可能会碰上点麻烦：某些 Windows 版本默认不允许 UWP 应用形成 127 回环，需要手动解除限制。
 
-请使用管理员权限在 PowerShell 中执行以下命令并重启电脑：
+请使用管理员权限在 PowerShell 中执行以下两条命令之一并重启电脑：
 
 ```powershell
 CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436
+```
+
+```powershell
+CheckNetIsolation LoopbackExempt -a -n="Microsoft.MinecraftUWP_8wekyb3d8bbwe"
 ```
 
 ## BDS on Linux
