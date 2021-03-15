@@ -97,7 +97,10 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
    - 通过该配置项可将流量自动加上 TLS 层 (转为 HTTPS) 来避免拦截，取值如下:
      - 留空 **[默认值]**: 禁用自动 HTTPS 功能
      - `auto`: frpc 将使用`server_name`作为证书 Common Name
-     - 自定义域名: frpc 将加载 `<自定义域名>.(crt|key)` 作为证书，若证书文件不存在，frpc 将生成一份自签名证书
+     - 自定义域名:  
+       frpc 将尝试加载 `<自定义域名>.crt` 和 `<自定义域名>.key` 两个证书文件  
+       若文件不存在则使用 `自定义域名` 作为 *CommonName* 生成一份自签名证书并保存到上述文件中  
+       *注: 若文件已存在，`自定义域名` 就作为一个单纯的文件名进行处理，不会对证书产生影响*
 1. `auth_pass = <String>`
    - 配置 SakuraFrp 访问认证功能的密码，留空则禁用访问认证相关功能，默认值为空
    - 请参阅 [安全指南-frpc 访问认证](/bestpractice/security#frpc-访问认证) 获取更多信息
