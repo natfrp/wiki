@@ -26,7 +26,7 @@
 
 ![](../_images/download.png)
 
-!> 我们不提供自定义安装路径的选项，如有此类需求请自行编译启动器  
+!> 我们不提供自定义安装路径的选项，如有此类需求请参阅 [Inno Setup 文档](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline ':target=_blank')  
 默认安装路径为 `C:\Program Files\SakuraFrpLauncher`
 
 点击启动器右侧的下载地址来下载启动器安装程序:
@@ -36,9 +36,11 @@
 下载完毕后双击安装程序并根据向导提示进行安装:
 
 ?> 正常情况下，安装程序会自动下载系统中缺失的运行库  
-如果下载失败，请到 [这里](https://dotnet.microsoft.com/download/dotnet-framework/net48 ':target=_blank') 下载 `.NET Framework 4.8 Runtime`  
-并到 [这里](https://support.microsoft.com/zh-cn/help/2977003/the-latest-supported-visual-c-downloads ':target=_blank') 下载 `Visual Studio C++ 2015、2017 和 2019 (x86)`  
-手动安装这两个运行库，随后重新运行启动器安装程序即可
+如果下载失败，点击 [这里](https://dotnet.microsoft.com/download/dotnet-framework/net48 ':target=_blank') 然后点 **Download .NET Framework 4.8 Runtime** 下载框架  
+运行下载好的文件，根据向导安装后重新运行启动器安装程序即可
+
+!> 如果启动器安装后无法正常开启并且 **没有** 弹出报错，请尝试使用 `.NET Framework 修复工具` 修复框架  
+点击 [这里](https://www.microsoft.com/en-us/download/details.aspx?id=30135 ':target=_blank') 然后点 **Download** 按钮即可下载
 
 ![](_images/usage-1.png)
 
