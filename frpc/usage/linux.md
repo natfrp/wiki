@@ -1,11 +1,14 @@
 # Linux 系统使用 frpc
 
+<!--
+TODO: Update script
 如果您符合以下几种情况：
 + 对自己的技术没有信心
 + 不知道该下载什么版本
 + 不会写 systemd 服务
 
 请使用 **一键安装脚本（由 [@renbaoshuo](https://baoshuo.ren) 提供）**：`sudo bash <(curl -Ls getfrp.sh)` （需要 root 权限）
+-->
 
 ## 注意
 
@@ -15,7 +18,7 @@
 
 ## 确认系统架构
 
-下载 frpc 前，请先确认您的 Linux 系统的架构. 执行下面的命令，根据输出结果就可以确定系统架构
+下载 frpc 前，请先确认您的系统架构。执行下面的命令，根据输出结果查表：
 
 ```bash
 uname -m
@@ -25,22 +28,34 @@ uname -m
 | --- | --- |
 | i386 | `i386`, `i686` |
 | amd64 | `x86_64` |
-| arm | `arm`, `armv7l` |
+| armv6 | `arm` |
+| armv7 | `armv7l` |
 | arm64 | `aarch64`, `armv8l` |
-| mips | `mips` |
-| mips64 | `mips64` |
+| _mips*_ | `mips` |
+| _mips64*_ | `mips64` |
 | 不支持 | `alpha`, `arc`, `blackfin`, `c6x`, `cris`, `frv`, `h8300`, `hexagon`, `ia64`, `m32r`, `m68k`, `metag`, `microblaze`, `mn10300`, `nios2`, `openrisc`, `parisc`, `parisc64`, `ppc`, `ppcle`, `ppc64`, `ppc64le`, `s390`, `s390x`, `score`, `sh`, `sh64`, `sparc`, `sparc64`, `tile`, `unicore32`, `xtensa` |
 
-如果您看到了不在上面列表中的输出，请访问 [百度](https://www.baidu.com/) 或 [谷歌](https://www.google.com/) 进行搜索
+?> 如果您的架构为 `mips` 或 `mips64`，还需要使用下面的命令来确定系统的字节序  
+其他架构请直接跳到 [安装 frpc](#install-frpc) 一节
 
-### 安装 frpc
+```bash
+# 一般来说只需要使用这条命令:
+echo -n I | hexdump -o | awk '{print substr($2,6,1); exit}'
+
+# 如果上面的命令报错，请尝试这条:
+echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
+```
+
+| 下载文件 | 输出结果 |
+| --- | --- |
+| mips / mips64 | `0` |
+| mipsle / mips64le | `1` |
+
+### 安装 frpc :id=install-frpc
 
 登录管理面板，在侧边栏点击 “软件下载” :
 
 ![](../../_images/download.png)
-
-?> 本教程中使用的演示内核为 x86_64 架构，对应文件名为 `frpc_linux_amd64`  
-实际操作时需要根据您的架构文件名会有所不同，请自行修改命令中的文件名。
 
 找到 frpc 的各种下载地址和您的架构标志，复制右边蓝色的下载地址：
 
@@ -50,21 +65,27 @@ uname -m
 
 ```bash
 cd /usr/local/bin
-wget -O frpc ${downloadUrl} # ${downloadUrl} 代表您刚才复制的下载地址
+
+# 一般来说只需要使用这条命令:
+wget -O frpc <下载地址>
+
+# 如果上面的命令报错，请尝试这条:
+curl -Lo frpc <下载地址>
 ```
 
 ![](_images/linux-2.png)
 
-然后使用下面的命令设置正确的权限并检查输出
+然后设置权限并校验文件是否有损坏：
 
 ```bash
-sudo chmod 755 frpc
-sudo ls -ls frpc
+chmod 755 frpc
+ls -ls frpc
+md5sum frpc
 ```
 
 ![](_images/linux-3.png)
 
-如果您看到和图里一样的输出，frpc 就安装完成并可以正常使用了。您可以执行下面的命令来再次确认
+此时 frpc 就安装完成并可以正常使用了。您可以用此命令查看 frpc 版本号：
 
 ```bash
 frpc -v
