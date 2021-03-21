@@ -1,13 +1,12 @@
 - [**首页**](/HOME)
 
-- <span style="color: red;">热门问题</span>
+- <span style="color: red;">常见问题</span>
 
-  - [503 错误](/faq#_503-错误)
-  - [远程证书无效](/launcher/faq#远程证书无效)
-  - [映射网页的条件](/faq#实名认证)
-  - [节点选择指南](/faq#哪个节点好用)
-  - [UDP 服务端常见问题](/faq#UDP游戏服务端说明)
-  - [其他常见问题](/faq)
+  - [隧道连不上](/faq#client-error)
+  - [实名认证相关问题](/faq#realname)
+  - [备案相关问题](/faq#beian)
+  - [穿透的网站打不开](/faq#site-inaccessible)
+  - [其他常见问题](/faq#other)
 
 - <span style="color: orange;">最佳实践</span>
   - [安全指南](/bestpractice/security)
