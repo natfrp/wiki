@@ -5,6 +5,7 @@
   - [隧道连不上](/faq#client-error)
   - [实名认证相关问题](/faq#realname)
   - [备案相关问题](/faq#beian)
+  - [付款、订单相关问题](/faq#payment)
   - [穿透的网站打不开](/faq#site-inaccessible)
   - [其他常见问题](/faq#other)
 
