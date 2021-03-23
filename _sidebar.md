@@ -15,10 +15,12 @@
   - [全端口穿透](/bestpractice/vpn)
 
 - 启动器
-  - [使用教程](/launcher/usage)
+  - [安装、使用教程](/launcher/usage)
   - [远程管理](/launcher/remote)
   - [系统服务](/launcher/service)
   - [常见问题](/launcher/faq)
+    - [安装问题](/launcher/faq#install)
+    - [常见报错](/launcher/faq#error)
 
 - frpc
   - 使用教程
