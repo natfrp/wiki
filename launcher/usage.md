@@ -35,12 +35,7 @@
 
 下载完毕后双击安装程序并根据向导提示进行安装:
 
-?> 正常情况下，安装程序会自动下载系统中缺失的运行库  
-如果下载失败，点击 [这里](https://dotnet.microsoft.com/download/dotnet-framework/net48 ':target=_blank') 然后点 **Download .NET Framework 4.8 Runtime** 下载框架  
-运行下载好的文件，根据向导安装后重新运行启动器安装程序即可
-
-!> 如果启动器安装后无法正常开启并且 **没有** 弹出报错，请尝试使用 `.NET Framework 修复工具` 修复框架  
-点击 [这里](https://www.microsoft.com/en-us/download/details.aspx?id=30135 ':target=_blank') 然后点 **Download** 按钮即可下载
+!> 如果在安装过程中碰到问题，请参阅 [启动器常见安装问题](/launcher/faq#install)
 
 ![](_images/usage-1.png)
 
