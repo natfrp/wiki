@@ -66,7 +66,7 @@
 
 我们会严格遵守隐私保护的相关法律法规，并根据本站 [隐私策略](https://www.natfrp.com/policy/privacy ':target=_blank') 进行信息的储存、披露、删除等操作。
 
-同时，实名认证中涉及的刷脸、拍摄身份证等操作均由您在 [支付宝](https://www.alipay.com/ ':target=_blank') 或 [旷世](https://megvii.com/ ':target=_blank') 平台上进行操作，我们无法触及您的照片等信息。
+同时，实名认证中涉及的刷脸、拍摄身份证等操作均由您在 [支付宝](https://www.alipay.com/ ':target=_blank') 或 [旷视](https://megvii.com/ ':target=_blank') 平台上进行操作，我们无法触及您的照片等信息。
 
 ### 怎么删除我的实名信息
 
