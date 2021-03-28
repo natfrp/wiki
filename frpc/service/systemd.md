@@ -110,6 +110,22 @@ WantedBy=multi-user.target
 
 ![](_images/systemd-3.png)
 
+### 查看隧道日志
+
+您可以通过下面的命令查看隧道日志：
+
+```bash
+# journalctl -u <Unit名称>
+```
+
+举个例子，要查看上面开启的隧道状态可以使用
+
+``` bash
+# journalctl -u frpc@wdnmdtoken666666:12345
+```
+
+如果当前窗口无法显示所有日志，可以用 `↑`、`↓` 方向键滚动，输入大写的 `G` 跳转动到日志底部，输入 `q` 退出日志查看。更多使用方法请参阅 `man journalctl`。
+
 ### 配置开机自启
 
 装好服务后，实现开机自启非常简单，回顾一下前置知识
