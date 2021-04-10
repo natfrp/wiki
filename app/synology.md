@@ -35,6 +35,10 @@
 
 ARM 架构的 DSM 系统目前不提供 Docker GUI，请 [直接在系统中部署穿透服务](#直接在系统中部署穿透服务)
 
+如果没有 Docker 应用的，请参考下图安装 Docker
+
+![](_images/docker-dsm-installdocker.png)
+
 ### 设置隧道
 
 因为 docker 网络模型的原因，我们像从前一样把隧道的 本地IP 设置为 `127.0.0.1` 已经不再奏效，必须修改设置中的此项。
