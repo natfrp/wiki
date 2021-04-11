@@ -424,6 +424,15 @@ SakuraFrp 通过 Gravatar 获取头像，您可以 [前往 Gravatar](https://www
 - 如果这几条隧道都在同一个节点上，可以在一个 frpc 进程中连接多条隧道。请参阅 [frpc用户手册-从命令行启动](http://localhost:3000/#/frpc/manual?id=%e4%bb%8e%e5%91%bd%e4%bb%a4%e8%a1%8c%e5%90%af%e5%8a%a8)
 - 启动器会自动管理 frpc 进程并且总是确保一个 frpc 连接一条隧道，因此启动器开启的 frpc 无法连接多条隧道
 
+### 怎么申请账户注销
+
+1. 转到 [OpenID 用户中心](https://openid.13a.com/user ':target=_blank')
+1. 切换到 **账户注销** 标签
+1. 输入密码并点击 **提交注销请求**，按提示操作即可
+1. 如果一切顺利，三个月后您的账户信息会被自动删除。系统将向您发送一封通知邮件，如果您没有收到通知邮件或想确认账户注销状态，请 [联系我们](/about#contact-us)
+
+![](_images/faq-account-delete.png)
+
 ### 连接超时
 
 请检查是否出现以下问题
@@ -446,7 +455,7 @@ SakuraFrp 通过 Gravatar 获取头像，您可以 [前往 Gravatar](https://www
 
   节点域名查看方式：
 
-  ![](_images/faq-0.png)
+  ![](_images/faq-node-fqdn.png)
 
   红色方框框住的部分即是节点域名。
 
