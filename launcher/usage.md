@@ -9,14 +9,16 @@
 <details>
 <summary><b style="font-size: 20px">Windows 7 安装运行库 (点击展开)</b></summary>
 
-[filename](_videos/install-win7-runtime.mp4 ':include :type=video')
+!> 最新版启动器不再需要 VC 运行库，安装 .NET Framework 4.8 即可
+
+[安装运行库](_videos/install-win7-runtime.mp4 ':include :type=video')
 
 </details>
 <br>
 <details>
 <summary><b style="font-size: 20px">Windows 10 安装启动器并登录 (点击展开)</b></summary>
 
-[filename](_videos/install-win10.mp4 ':include :type=video')
+[安装启动器并登录](_videos/install-win10.mp4 ':include :type=video')
 
 </details>
 
