@@ -4,7 +4,7 @@
 
 本文档采用 **CC-BY-SA-4.0 协议** 发布，您可以在 [此处](https://github.com/natfrp/wiki/blob/master/LICENSE ':target=_blank') 查看完整的 LICENSE 文件。
 
-本文档中有引用部分已经注明原作者，在此表示感谢。如有错误或疏漏，请提交 [Issue](https://github.com/natfrp/wiki/issues ':target=_blank') 或 [Pull Request](https://github.com/natfrp/wiki/pulls ':target=_blank') 帮助我们进行更正。您也可以直接 [联系我们](#concat-us)。
+本文档中有引用部分已经注明原作者，在此表示感谢。如有错误或疏漏，请提交 [Issue](https://github.com/natfrp/wiki/issues ':target=_blank') 或发起 [Pull Request](https://github.com/natfrp/wiki/pulls ':target=_blank') 帮助我们进行更正。您也可以直接 [联系我们](#concat-us)。
 
 ## 联系我们 :id=contact-us
 
