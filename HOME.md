@@ -1,5 +1,19 @@
 # SakuraFrp 帮助文档
 
+## 快速索引
+
+!> 内容远多于索引，请善用左上角搜索
+
+[Linux 使用](/frpc/usage/linux) | [Linux 开机自启](/frpc/service/systemd) | [Docker](/frpc/usage/docker)
+
+[Windows 使用](/launcher/usage) | [Windows XP/Vista/Server2003](/geek#兼容性)
+
+[NAS: 群晖 DSM](/app/syno) | [NAS: 威联通 QNAP](/app/qnap)
+
+[常见问题](/faq) | [专属于 Windows 的常见问题](/launcher/faq)
+
+[映射网页应用](/app/http) | [远程桌面](/app/rdp) | [远程开机（局限较大）](/app/wol)
+
 ## 文档使用指南
 
 - 在左侧列表中根据目录查看对应内容
