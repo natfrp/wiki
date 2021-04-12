@@ -8,7 +8,7 @@
 
 [Windows 使用](/launcher/usage) | [Windows XP/Vista/Server2003](/geek#兼容性)
 
-[NAS: 群晖 DSM](/app/syno) | [NAS: 威联通 QNAP](/app/qnap)
+[NAS: 群晖 DSM](/app/synology) | [NAS: 威联通 QNAP](/app/qnap)
 
 [常见问题](/faq) | [专属于 Windows 的常见问题](/launcher/faq)
 
