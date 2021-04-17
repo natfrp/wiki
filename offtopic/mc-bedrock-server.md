@@ -6,19 +6,19 @@
 
 目前基岩版服务器有两种核心可用:
 
-+ Bedrock Dedicated Server (简称 BDS)  
-  由微软官方开发，与所有平台的 Minecraft基岩版 有相同的核心，且可以跨平台联机(NS,xbox除外），适合原版生存
-+ Nukkit  
-  由第三方独立开发的开源核心，生态优于 BDS 但由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)
+1. Bedrock Dedicated Server （简称 BDS）
+   由微软官方开发，与所有平台的 Minecraft 基岩版有相同的核心，且可以跨平台联机（NS, xbox除外），适合原版生存
+1. Nukkit  
+   由第三方独立开发的开源核心，生态优于 BDS 但由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)
 
 ## BDS on Windows
 
 ### 开服之前
 
 1. 准备一个可用的 Sakura Launcher 或者 frpc
-2. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/en-us/download/server/bedrock/ ':target=_blank')
-3. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑(官方文档建议)
-4. 准备一台 CPU 核心数不低于2核，并配有不低于 1GB RAM 的电脑
+1. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/en-us/download/server/bedrock/ ':target=_blank')
+1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑(官方文档建议)
+1. 准备一台 CPU 核心数不低于 2 核，并配有不低于 1GB RAM 的电脑
 
 ### 开服配置
 
@@ -124,9 +124,8 @@ content-log-file-enabled = false
 compression-threshold = 1
 # 要压缩的原始网络有效负载的最小大小
 # 允许值 : [0, 65535]
-```
-!> 当前版本(1.16.220.02)mojang正在重做服务器权威移动，无法正常使用
-```ini
+# 当前版本 (1.16.220.02) mojang 正在重做服务器权威移动，无法正常使用。
+
 server-authoritative-movement = true
 # 启用服务端权威性移动。
 # 如果值为 true ，则服务端将在以下位置重设本地用户输入。
@@ -253,16 +252,12 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 ### 规则管理
 
 ### 配置文件热更改
-如果想在服务器正常运行的情况下修改配置文件的内容
 
-可以通过以下指令管理规则
+如果想在服务器正常运行的情况下修改配置文件的内容，可以通过以下指令管理规则：
+
 | 指令                                 | 作用     |
-| ------------------------------------ | ------- |
-| `changesetting <setting> <value>`   | 修改配置 |
-
-例如：如果想在运行的时候改变服务器的MOTD信息，就可以：
-
-`changesetting server-name "114514server" `
+| ------------------------------------ | -------- |
+| `changesetting <setting> <value>`    | 修改配置 |
 
 ### 白名单热更改
 
@@ -270,8 +265,8 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 | ------------------------ | ------- |
 | `whitelist on`           | 开启白名单 |
 | `whitelist off`          | 关闭白名单 |
-| `whitelist list`         | 打印`whitelist.json`内容 |
-| `whitelist reload`       | 将`whitelist.json`内容重新加载到内存 |
+| `whitelist list`         | 打印 `whitelist.json` 内容 |
+| `whitelist reload`       | 将 `whitelist.json` 内容重新加载到内存 |
 
 ### 管理 OP
 
@@ -283,8 +278,8 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 | ------------------------ | ------- |
 | `op "example players"`   | 添加权限 |
 | `deop "example players"` | 剥夺权限 |
-| `permission list`        | 打印`permission.json`内容 |
-| `permission reload`      | 将`permission.json`内容重新加载到内存
+| `permission list`        | 打印 `permission.json` 内容 |
+| `permission reload`      | 将 `permission.json` 内容重新加载到内存
 
 ### 踢出用户
 
@@ -300,13 +295,11 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 
 ### 备份服务器
 
-| 指令         | 作用       | 说明      |
-| ------------ | --------- | --------- |
-| `save hold`  | 服务器做备份准备 | 它是异步的，并将立即返回。|
-| `save query` | 查询备份准备进度 | 返回准备进度，它将返回需要复制的文件的文件列表。|
-| `save resume`| 删除旧文件 | 当您完成文件的复制时，您可调用这个函数来告诉服务器删除旧文件。|
-
-
+| 指令         | 作用             | 说明                                                        |
+| ------------ | --------------- | ------------------------------------------------------------ |
+| `save hold`  | 服务器做备份准备 | 它是异步的，并将立即返回。                                   |
+| `save query` | 查询备份准备进度 | 返回准备进度，它将返回需要复制的文件的文件列表。              |
+| `save resume`| 删除旧文件       | 当您完成文件的复制时，您可调用这个函数来告诉服务器删除旧文件。|
 
 ### 游戏参数修改
 
@@ -320,24 +313,25 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 
 1. 用客户端随便创建一个世界，创建时勾选想用的材质包。
 2. 进入后退出存档，在数据文件夹，找到这个世界的文件夹。
-3. 找到 `world_resource_pack_history.json` 和 `world_resource_pack.json` 并将其拷贝到服务端的`worlds/Bedrock level/` 目录下即可。
+3. 找到 `world_resource_pack_history.json` 和 `world_resource_pack.json` 并将其拷贝到服务端的 `worlds/Bedrock level/` 目录下即可。
 4. 如果要所有人强制使用这些材质包，则需要开启强制使用材质的选项 (`texturepack-required = true`)
 
 ### BDS系基岩版服务端/拓展工具
- !> 其中部分是通过反编译以达成修改的目的，并不符合EULA准则，请慎用
+
+!> 其中部分是通过反编译以达成修改的目的，并不符合 EULA，请慎用。
  
-* [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方BDS插件加载器，已停更。
-* [BedrockX](https://github.com/Sysca11/BedrockX-bin) 第三方BDS插件加载器，已停更。
-* [ElementZero](https://github.com/Element-0/ElementZero) 第三方服务端，支持实验玩法和教育版。
-* [BDXCore](https://github.com/Sysca11/BDXCore) 第三方BDS插件加载器，有封装HOOK API，适配性强。
-* [BDSJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSRunner-Release) 符合工业标准规范的BDS跨版本插件开发解决方案。
-* [NetJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSR2) .Net版JS加载平台，依赖于BDSNetRunner.
-* [PFJSR](https://github.com/littlegao233/PFJSR) NetJSRunner衍生版
-* [BDSPyRunner](https://github.com/twoone-3/BDSpyrunne) python脚本插件运行平台
-* [IronPythonRunner](https://github.com/Sbaoor-fly/CSR-IronPythonRunner) IronPython拓展平台，依赖于BDSNetRunner.
-* [IronLuaRunner](https://github.com/Sbaoor-fly/CSR-IronLuaRunner) IronPython拓展平台，依赖于BDSNetRunner.
-* [IronLuaLoader](https://github.com/Sbaoor-fly/CSR-IronLuaLoader) IronPython拓展平台，依赖于BDSNetRunner.
-* [BDSJavaRunner](https://github.com/zhkj-liuxiaohua/BDSJavaRunner) Jar1.8加载器
-* [BDSAddonInstaller](https://github.com/chegele/BDSAddonInstaller) Add-on/node.js加载工具
-* [MCscripts](https://github.com/TapeWerm/MCscripts) 用于备份，更新，安装，警告的系统单元，bash脚本，聊天机器人。
-* [MCBEPlay](https://foxynotail.com/mcbeplay/) GUI版BDS
+* [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方 BDS 插件加载器，已停更
+* [BedrockX](https://github.com/Sysca11/BedrockX-bin) 第三方 BDS 插件加载器，已停更
+* [ElementZero](https://github.com/Element-0/ElementZero) 第三方服务端，支持实验玩法和教育版
+* [BDXCore](https://github.com/Sysca11/BDXCore) 第三方 BDS 插件加载器，有封装 HOOK API ，适配性强
+* [BDSJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSRunner-Release) 符合工业标准规范的 BDS 跨版本插件开发解决方案
+* [NetJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSR2) .NET 版 JS 加载平台，依赖于 BDSNetRunner
+* [PFJSR](https://github.com/littlegao233/PFJSR) NetJSRunner 衍生版
+* [BDSPyRunner](https://github.com/twoone-3/BDSpyrunne) python 脚本插件运行平台
+* [IronPythonRunner](https://github.com/Sbaoor-fly/CSR-IronPythonRunner) IronPython 拓展平台，依赖于 BDSNetRunner.
+* [IronLuaRunner](https://github.com/Sbaoor-fly/CSR-IronLuaRunner) IronPython 拓展平台，依赖于BDSNetRunner
+* [IronLuaLoader](https://github.com/Sbaoor-fly/CSR-IronLuaLoader) IronPython 拓展平台，依赖于BDSNetRunner
+* [BDSJavaRunner](https://github.com/zhkj-liuxiaohua/BDSJavaRunner) Jar1.8 加载器
+* [BDSAddonInstaller](https://github.com/chegele/BDSAddonInstaller) Add-on/node.js 加载工具
+* [MCscripts](https://github.com/TapeWerm/MCscripts) 用于备份、更新、安装、警告的系统单元，bash 脚本，聊天机器人
+* [MCBEPlay](https://foxynotail.com/mcbeplay/) GUI 版 BDS
