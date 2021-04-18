@@ -7,8 +7,8 @@
 目前基岩版服务器有两种核心可用:
 
 1. Bedrock Dedicated Server （简称 BDS）
-   由微软官方开发，与所有平台的 Minecraft 基岩版有相同的核心，且可以跨平台联机（NS, xbox 除外），适合原版生存
-   [历史版本下载(非官方)](https://mcbds.reh.tw/) [最新版本下载(官方)](https://www.minecraft.net/en-us/download/server/bedrock/)
+   由微软官方开发，与所有平台的 Minecraft 基岩版有相同的核心，且可以跨平台联机（NS, xbox 除外），适合原版生存  
+   [历史版本下载(非官方)](https://mcbds.reh.tw/) | [最新版本下载(官方)](https://www.minecraft.net/en-us/download/server/bedrock/)
 1. Nukkit  
    由第三方独立开发的开源核心，生态优于 BDS 但由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)
 
