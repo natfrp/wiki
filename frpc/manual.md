@@ -104,6 +104,9 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 1. `auth_pass = <String>`
    - 配置 SakuraFrp 访问认证功能的密码，留空则禁用访问认证相关功能，默认值为空
    - 请参阅 [安全指南-frpc 访问认证](/bestpractice/security#frpc-访问认证) 获取更多信息
+1. `auth_time = <String>`
+   - 配置访问认证功能在没有勾选「记住」时的过期时间，默认为 `2h`
+   - 接受的后缀为`h`/`m`/`s`，请从大到小排列，如 `1h3m10s`, `20m`
 1. `auth_mode = <String>`
    - 配置 SakuraFrp 访问认证功能的认证模式，取值如下:
      - `online` **[默认值]**: 允许通过密码认证或通过 SakuraFrp 面板进行授权
