@@ -199,6 +199,15 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 
 请参考 [BDS on Windows](#bds-on-windows) 章节中的 [开服配置](#开服配置) 。
 
+### 注意事项
+
+由于部分 RHEL( Rad Hat Enterprise Linux ) 系 Linux 发行版不自带 `libnsl` ，此时服务端将无法正常启动
+
+请使用 root 权限在终端中执行以下命令
+```bash
+sudo dnf install libnsl -y
+```
+
 ## NUKKIT on Linux
 
 ### 开服之前
