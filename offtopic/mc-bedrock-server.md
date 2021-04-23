@@ -151,6 +151,10 @@ correct-player-movement = false
 # 允许值:
 #   是: true
 #   否: false
+
+server-authoritative-block-breaking = false
+# 启用服务端权威性挖掘
+# 如果值为 true ，则服务端将与客户端同步计算挖掘，并且更正与服务端计算不符的非法挖掘
 ```
 
 !> 数据压缩如果阈值过低，压缩会占用 CPU ，而开太高会导致流量消耗过快，请自行权衡
@@ -221,6 +225,7 @@ sudo apt install openjdk-8-jre-headless -y
 **CentOS / RHEL**
 
 ```bash
+sudo yum update
 sudo yum install java -y
 ```
 
@@ -238,7 +243,7 @@ sudo yum install java -y
 
 您可以直接在 `whitelist.json` 里编辑白名单：
 
-```jsonc
+```json
 [
     {
         "ignoresPlayerLimit": false, // 是否无视玩家上限 (即使服务器满员该玩家也可进入)
