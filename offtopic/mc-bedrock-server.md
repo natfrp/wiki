@@ -201,11 +201,12 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 
 ### 注意事项
 
-由于部分 RHEL( Rad Hat Enterprise Linux ) 系 Linux 发行版不自带 `libnsl` ，此时服务端将无法正常启动
+RHEL 8 (CentOS 8) 可能缺少 `libnsl` 包，此时服务端将无法正常启动
 
-请使用 root 权限在终端中执行以下命令
+请使用以下命令进行安装：
+
 ```bash
-sudo dnf install libnsl -y
+sudo dnf install -y libnsl
 ```
 
 ## NUKKIT on Linux
