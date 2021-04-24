@@ -199,6 +199,16 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 
 请参考 [BDS on Windows](#bds-on-windows) 章节中的 [开服配置](#开服配置) 。
 
+### 注意事项
+
+RHEL 8 (CentOS 8) 可能缺少 `libnsl` 包，此时服务端将无法正常启动
+
+请使用以下命令进行安装：
+
+```bash
+sudo dnf install -y libnsl
+```
+
 ## NUKKIT on Linux
 
 ### 开服之前
