@@ -51,7 +51,7 @@
    执行 service frpc <restart|start>
    ```
 
-   您准备执该命令，则 **应该** 使用:
+   您如果要准备执行该命令，则 **应该** 使用:
 
    ```
    service frpc restart
