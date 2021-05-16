@@ -10,9 +10,18 @@
 
 关于我们的修改版客户端，我们提供配置文件项和参数可供自定义，详情请查看 [frpc 用户手册](/frpc/manual) 。
 
-要加入任何隧道参数，建议在隧道的「自定义设置」文本框中填入，从而在使用 `-f` 启动 frpc 时自动同步
+要加入任何隧道参数，建议在隧道的「自定义设置」文本框中填入，从而在使用 `-f` 启动 frpc 时自动同步。
 
 也可使用直接编辑 `frpc.ini` 的方式自定义，请从隧道列表的「配置文件」项目中复制并修改，只要不修改关键连接参数（`host`, `port`, `token`, `user`, ...），均可正常运行。
+
+## 启动器移植
+
+如果您想要自己实现启动器的话，可以查看我们的启动器开源项目中的 [API 部分源码](https://github.com/fengberd/SakuraFrpLauncher/blob/master/SakuraFrpService/Natfrp.cs) 以接入 SakuraFrp API。
+
+请注意该 API 并非稳定标准，属于内部使用 API，随时可能变更，如果存在相关修改不会进行通知。
+
+目前存在的第三方启动器实现：
+ - [yuhencloud/SakuraFrpLauncher in Qt](https://github.com/yuhencloud/SakuraFrpLauncher)
 
 ## 兼容性
 
