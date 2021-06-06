@@ -76,6 +76,26 @@ local_port = 179
 
 使用此配置文件启动 frpc，就可以同时连接两条隧道了。
 
+### macOS 提示 frpc 无法打开 :id=macos-run-frpc-issue
+
+当您通过浏览器下载 frpc 二进制文件并运行时，可能会出现下列错误：
+
+_无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软件。此软件需要更新，请联系开发者了解更多信息。_
+
+![](_images/macos-run-frpc-issue-1.png)
+
+我们推荐您 [通过命令行直接下载和安装 frpc](/frpc/usage/macos#install-frpc)，如果您仍想使运行此二进制文件，请转到 `系统偏好设置 > 安全与隐私`：
+
+![](_images/macos-run-frpc-issue-2.png)
+
+找到 frpc 对应的阻止提示，选择 `仍要打开`，您可能需要输入密码并确认操作：
+
+![](_images/macos-run-frpc-issue-3.png)
+
+再尝试运行一次 frpc，此时弹出的提示框会有变化。在这个提示框中选择 “打开”，后面就可以正常运行 frpc 了：
+
+![](_images/macos-run-frpc-issue-4.png)
+
 ### Windows 系统命令行版 frpc 开机自启设置方法
 
 !> 注意，此处列出的方法虽然 **【能用】** 但并不能算 **【正确】** 的操作  

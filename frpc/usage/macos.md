@@ -26,20 +26,32 @@ sudo -s
 
 如果您看到和图里一样的输出（出现 `#`），说明您已成功提升到 `root` 权限
 
-### 安装 frpc
+### 安装 frpc :id=install-frpc
 
 ?> 安装前请先确保您已提升到 `root` 权限
 
-使用下面的命令进入 `/usr/local/bin` 文件夹并下载 frpc
+使用下面的命令进入 `/usr/local/bin` 文件夹：
 
 ```bash
 mkdir -p -m 755 /usr/local/bin && cd /usr/local/bin
+```
+
+!> 我们建议您使用此处的命令下载 frpc，如果您使用浏览器下载可能会出现无法运行的问题  
+如果出现上述问题，您可以参考 [此 FAQ](/frpc/faq#macos-run-frpc-issue) 解决
+
+然后，使用下面的命令下载 frpc：
+
+```bash
+# 如果您使用的是 Apple Silicon 设备 (如 M1 CPU)，请使用下面的命令
+curl -Lo frpc https://getfrp.sh/d/frpc_darwin_arm64
+
+# 否则 (如 Intel CPU)，请使用下面的命令
 curl -Lo frpc https://getfrp.sh/d/frpc_darwin_amd64
 ```
 
 ![](_images/macos-4.png)
 
-使用下面的命令设置权限并检查输出
+使用下面的命令设置权限并检查输出：
 
 ```bash
 chmod 755 frpc
