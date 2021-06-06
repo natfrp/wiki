@@ -96,6 +96,12 @@ _无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软件�
 
 ![](_images/macos-run-frpc-issue-4.png)
 
+### ARM 运行提示 Illegal instruction
+
+首先，请确认您下载的文件 MD5 与软件下载页面显示的 MD5 相同。
+
+如果您的[架构](usage/linux)显示为 `armv7l`，请下载 `arm_garbage` 版本重试。否则，请联系管理员。
+
 ### Windows 系统命令行版 frpc 开机自启设置方法
 
 !> 注意，此处列出的方法虽然 **【能用】** 但并不能算 **【正确】** 的操作  
