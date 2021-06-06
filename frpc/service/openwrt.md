@@ -8,7 +8,7 @@
 
 需要注意的是 Openwrt 自 bb(Barrier Breaker) 后引入了该系统，如果您使用 aa 或更早的上古系统，您可能需要使用 sysV 格式写启动脚本
 
-对于存储空间不足的路由器，可能需要（~换一个~）[使用 UPX 压缩二进制文件体积](https://github.com/upx/upx/releases)
+SakuraFrp 分发的 frpc 均已经过 UPX 压缩 (除了 mips64 架构)，如果您的路由器剩余存储空间不足以存放 frpc，~可能需要换一个路由器~ 请自行寻找解决方案。
 
 ### 问题排除
 
@@ -25,7 +25,7 @@ opkg update
 opkg install ca-certificates
 ```
 
-对于固件年代更为久远的，已经散发出老坛香气的固件，更新`ca-certificates`很可能不能做到或者不可能，此时请跟随下面步骤：
+对于年代更为久远的，已经散发出老坛香气的固件，更新 `ca-certificates` 很可能不能做到或者不可能，此时请跟随下面步骤：
 
 1. 找到一个比较新的 Linux 系统（更新的 openwrt 更佳，或直接拆包新版本的`ca-certificates`包最佳 如[此文件](https://downloads.openwrt.org/releases/19.07.6/packages/arm_cortex-a9/base/ca-certificates_20200601-1_all.ipk)）
 1. 使用`tar cf`打包它的`/etc/ssl/certs`目录
