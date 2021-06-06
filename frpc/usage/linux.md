@@ -35,6 +35,8 @@ uname -m
 | _mips64*_ | `mips64` |
 | 不支持 | `alpha`, `arc`, `blackfin`, `c6x`, `cris`, `frv`, `h8300`, `hexagon`, `ia64`, `m32r`, `m68k`, `metag`, `microblaze`, `mn10300`, `nios2`, `openrisc`, `parisc`, `parisc64`, `ppc`, `ppcle`, `ppc64`, `ppc64le`, `s390`, `s390x`, `score`, `sh`, `sh64`, `sparc`, `sparc64`, `tile`, `unicore32`, `xtensa` |
 
+?> 如果您的架构显示为 `armv7l`，但在下载对应程序后无法运行，提示 `Illegal instruction` 的话，请下载 `arm_garbage` 版本重试
+
 ?> 如果您的架构为 `mips` 或 `mips64`，还需要使用下面的命令来确定系统的字节序  
 其他架构请直接跳到 [安装 frpc](#install-frpc) 一节
 
