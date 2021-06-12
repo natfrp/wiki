@@ -21,6 +21,7 @@
   - [常见问题](/launcher/faq)
     - [安装问题](/launcher/faq#install)
     - [常见报错](/launcher/faq#error)
+    - [其他问题](/launcher/faq#misc)
 
 - frpc
   - 使用教程
