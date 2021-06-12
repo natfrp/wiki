@@ -37,7 +37,7 @@ mkdir -p -m 755 /usr/local/bin && cd /usr/local/bin
 ```
 
 !> 我们建议您使用此处的命令下载 frpc，如果您使用浏览器下载可能会出现无法运行的问题  
-如果出现上述问题，您可以参考 [此 FAQ](/frpc/faq#macos-run-frpc-issue) 解决
+如果出现上述问题，您可以参考 [此 FAQ](/faq/frpc#macos-run-frpc-issue) 解决
 
 然后，使用下面的命令下载 frpc：
 
