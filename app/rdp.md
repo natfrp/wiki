@@ -10,14 +10,14 @@
 <details>
 <summary><b style="font-size: 20px">Windows 7 (点击展开)</b></summary>
 
-[filename](_videos/rdp-win7.mp4 ':include :type=video')
+[Windows 7 RDP 视频](_videos/rdp-win7.mp4 ':include :type=video')
 
 </details>
 <br>
 <details>
 <summary><b style="font-size: 20px">Windows 10 (点击展开)</b></summary>
 
-[filename](_videos/rdp-win10.mp4 ':include :type=video')
+[Windows 10 RDP 视频](_videos/rdp-win10.mp4 ':include :type=video')
 
 </details>
 

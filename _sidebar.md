@@ -1,13 +1,15 @@
 - [**首页**](/HOME)
 
-- <span style="color: red;">常见问题</span>
+- <a href="/#/faq"><span style="color: red;font-weight: 700;font-size: var(--bodyFontSize);">常见问题</span></a>
 
-  - [隧道连不上](/faq#client-error)
-  - [实名认证相关问题](/faq#realname)
-  - [备案相关问题](/faq#beian)
-  - [付款、订单相关问题](/faq#payment)
-  - [穿透的网站打不开](/faq#site-inaccessible)
-  - [其他常见问题](/faq#other)
+  - [客户端错误 (隧道打不开)](/faq/client-error)
+  - [穿透的网站打不开](/faq/site-inaccessible)
+  - [实名认证相关问题](/faq/realname)
+  - [备案相关问题](/faq/beian)
+  - [付款、订单相关问题](/faq/payment)
+  - [账户相关问题](/faq/account)
+  - [网络相关问题](/faq/network)
+  - [其他常见问题](/faq/misc)
 
 - <span style="color: orange;">最佳实践</span>
   - [安全指南](/bestpractice/security)
