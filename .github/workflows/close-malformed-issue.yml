@@ -9,29 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
-      - name: Match Template
-        id: match-tpl
-        uses: actions-cool/issues-helper@v2.2.1
-        with:
-          actions: 'check-issue'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          body-includes: '请保留头部'
-          
-      - name: Check Switch
-        id: check-switch
-        uses: actions-cool/issues-helper@v2.2.1
-        with:
-          actions: 'check-issue'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          body-includes: '- [ ] [R]/- [x] [U]'
-      
       - name: Close If Malformed
         uses: actions-cool/issues-helper@v2.2.1
-        if: steps.match-tpl.outputs.check-result != 'true' || steps.check-switch.outputs.check-result == 'true'
+        if: contains(github.event.issue.body, '请保留头部') == 'false' || contains(github.event.issue.body, '- [] [R]') == 'true' || contains(github.event.issue.body, '- [] [U]') == 'false'
         with:
           actions: 'close-issue'
-          token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
