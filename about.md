@@ -15,7 +15,7 @@
 ?> 查询账户注销状态、提交 Bug 报告 (**前提是真的是 Bug 而不是使用方法错误**)、付款后服务未到帐等问题可以使用此处的联系方式
 
 - 如果您是 SakuraFrp VIP，您可以进入 **VIP 用户反馈群** 联系群主或管理员
-- 或者，您也可以发送电子邮件到 `natfrp-support-berd@rbq.email` 直接联系 iDea Leaper 小组的相关成员
+- 或者，您也可以发送电子邮件到 `support@natfrp.cloud` 直接联系 iDea Leaper 小组的相关成员
 
 <h1 style="color: red">不会用、不会配置、隧道连不上、网站打不开等问题直接转送垃圾箱，一律不予回复</h1>
 
@@ -27,9 +27,6 @@
 
 - [羽川早苗](https://moe.do ':target=_blank')
   - _站长_
-- [FENGberd](https://berd.moe/?from=frp_doc ':target=_blank')
-  - _打杂的_
-  - _管理员_
 - [boboliu](https://note.bobo.moe/ ':target=_blank')
   - _frpc 技术支持_
   - _管理员_
