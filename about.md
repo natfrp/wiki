@@ -10,12 +10,10 @@
 
 <!-- BEGIN 请勿修改 -->
 
-!> 此处列出的联系方式不受理任何与 SakuraFrp 相关的使用问题  
-如果您想提出文档未覆盖到的使用问题，请在 OWQ 的 #natfrp 频道留言
+!> 此处列出的联系方式不受理任何使用相关的问题
 
 ?> 查询账户注销状态、提交 Bug 报告 (**前提是真的是 Bug 而不是使用方法错误**)、付款后服务未到帐等问题可以使用此处的联系方式
 
-- 如果您有 Nyatwork OpenID 账号，请前往 [OWQ](https://owq.moe/ ':target=_blank') 私聊 `@fengberd` 或 `@sanae`
 - 如果您是 SakuraFrp VIP，您可以进入 **VIP 用户反馈群** 联系群主或管理员
 - 或者，您也可以发送电子邮件到 `natfrp-support-berd@rbq.email` 直接联系 iDea Leaper 小组的相关成员
 
