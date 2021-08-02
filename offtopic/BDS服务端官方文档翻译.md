@@ -1,5 +1,4 @@
-# 如何使用基岩版专用服务器(Bedrock Dedicated Server/BDS)
-# How to use the dedicated server
+# 如何使用基岩版专用服务器(Bedrock Dedicated Server/BDS) How to use the dedicated server
 ## 免责声明 Disclaimer
 这是一个早期版本(alpha)，我们还未完全支持它。它可能包含严重的问题，我们也可能随时结束对其的支持。
 
