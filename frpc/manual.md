@@ -98,7 +98,7 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
      - 留空 **[默认值]**: 禁用自动 HTTPS 功能
      - `auto`: frpc 将使用`server_name`作为证书 Common Name
      - 自定义域名:  
-       frpc 将尝试加载 `<自定义域名>.crt` 和 `<自定义域名>.key` 两个证书文件  
+       frpc 将尝试加载当前工作目录(cwd)下 `<自定义域名>.crt` 和 `<自定义域名>.key` 两个证书文件  
        若文件不存在则使用 `自定义域名` 作为 *CommonName* 生成一份自签名证书并保存到上述文件中  
        *注: 若文件已存在，`自定义域名` 就作为一个单纯的文件名进行处理，不会对证书产生影响*
 1. `auth_pass = <String>`
