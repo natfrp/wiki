@@ -101,6 +101,7 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
        frpc 将尝试加载当前工作目录(cwd)下 `<自定义域名>.crt` 和 `<自定义域名>.key` 两个证书文件  
        若文件不存在则使用 `自定义域名` 作为 *CommonName* 生成一份自签名证书并保存到上述文件中  
        *注: 若文件已存在，`自定义域名` 就作为一个单纯的文件名进行处理，不会对证书产生影响*
+       *特别的，对于 Docker，cwd 默认为 `/`*
 1. `auth_pass = <String>`
    - 配置 SakuraFrp 访问认证功能的密码，留空则禁用访问认证相关功能，默认值为空
    - 请参阅 [安全指南-frpc 访问认证](/bestpractice/security#frpc-访问认证) 获取更多信息
