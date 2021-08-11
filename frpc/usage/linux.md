@@ -16,9 +16,9 @@ TODO: Update script
 
 如果您现在没有切换到 `root` 账户下，那么请使用 `su` 或者 `sudo -s` 命令来进行切换。
 
-## 确认系统架构
+## 确认处理器架构
 
-下载 frpc 前，请先确认您的系统架构。执行下面的命令，根据输出结果查表：
+下载 frpc 前，请先确认您的处理器架构。执行下面的命令，根据输出结果查表：
 
 ```bash
 uname -m
@@ -28,16 +28,15 @@ uname -m
 | --- | --- |
 | i386 | `i386`, `i686` |
 | amd64 | `x86_64` |
-| armv6 | `arm` |
-| armv7 | `armv7l` |
+| arm_garbage | `arm`, `armel` |
+| armv7 | `armv7l`, `armhf` |
 | arm64 | `aarch64`, `armv8l` |
 | _mips*_ | `mips` |
 | _mips64*_ | `mips64` |
-| 不支持 | `alpha`, `arc`, `blackfin`, `c6x`, `cris`, `frv`, `h8300`, `hexagon`, `ia64`, `m32r`, `m68k`, `metag`, `microblaze`, `mn10300`, `nios2`, `openrisc`, `parisc`, `parisc64`, `ppc`, `ppcle`, `ppc64`, `ppc64le`, `s390`, `s390x`, `score`, `sh`, `sh64`, `sparc`, `sparc64`, `tile`, `unicore32`, `xtensa` |
 
-?> 如果您的架构显示为 `armv7l`，但在下载对应程序后无法运行，提示 `Illegal instruction` 的话，请下载 `arm_garbage` 版本重试
+?> 如果您的架构显示为 `armv7l`，但在下载对应程序后无法运行，提示 `Illegal instruction` 的话，这是因为您其实是 `armel` 而不是 `armhf`，请下载 `arm_garbage` 版本重试
 
-?> 如果您的架构为 `mips` 或 `mips64`，还需要使用下面的命令来确定系统的字节序  
+?> 如果您的架构为 `mips` 或 `mips64`，还需要使用下面的命令来确定处理器的字节序  
 其他架构请直接跳到 [安装 frpc](#install-frpc) 一节
 
 ```bash
