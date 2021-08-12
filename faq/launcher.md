@@ -98,13 +98,13 @@
 
 如果这个 MD5 值是匹配的，建议您在杀毒软件中添加白名单然后重新安装启动器。
 
-您也可以选择到 [GitHub](https://github.com/fengberd/SakuraFrpLauncher ':target=_blank') 获取启动器源码自行编译，如果您决定自己编译启动器的 Release 版本，请记得修改 `SakuraLibrary/Utils.cs` 中的 `VerifySignature` 函数跳过签名验证。
+您也可以选择到 [GitHub](https://github.com/natfrp/SakuraFrpLauncher ':target=_blank') 获取启动器源码自行编译，如果您决定自己编译启动器的 Release 版本，请记得修改 `SakuraLibrary/Utils.cs` 中的 `VerifySignature` 函数跳过签名验证。
 
 ### 怎么关闭自动更新功能
 
 直接关闭 **设置** 标签中的 **自动更新** 开关即可，关闭后启动器不会进行任何更新检查或下载。
 
-您可以在 [GitHub](https://github.com/fengberd/SakuraFrpLauncher/blob/master/SakuraFrpService/Manager/UpdateManager.cs ':target=_blank') 审计相关代码，如果您想彻底移除此功能，请自行编译启动器。
+您可以在 [GitHub](https://github.com/natfrp/SakuraFrpLauncher/blob/master/SakuraFrpService/Manager/UpdateManager.cs ':target=_blank') 审计相关代码，如果您想彻底移除此功能，请自行编译启动器。
 
 ### 怎么更换启动器主界面显示的图标
 
