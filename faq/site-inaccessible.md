@@ -12,13 +12,36 @@
 
 不满足下表中的任一条件均会造成网站无法访问，此时请更换映射方式或节点：
 
-|   | HTTP(S) 隧道 | TCP 隧道映射 HTTP 流量 | TCP 隧道映射 HTTPS 流量 |
+| 节点类型 | HTTP(S) 隧道 | TCP 隧道映射 HTTP 流量 | TCP 隧道映射 HTTPS 流量 |
 | --- | --- | --- | --- |
-| 海外节点 | 需要实名认证 | √ | √ |
-| 国内节点 | 需要实名认证和 [ICP备案](https://baike.baidu.com/item/ICP%E5%A4%87%E6%A1%88) | × | 需要实名认证 |
-| `[高级]` 国内节点 | 需要实名认证和 [ICP备案](https://baike.baidu.com/item/ICP%E5%A4%87%E6%A1%88)，而且使用阿里云节点必须在阿里云备案，腾讯云同理 | 需要实名认证 | 需要实名认证 |
+| 非中国内地 | 需实名认证 | √ | √ |
+| 中国内地 | 需实名认证和 [ICP备案](https://baike.baidu.com/item/ICP%E5%A4%87%E6%A1%88) | × (请 [配置自动 HTTPS](#frpc-auto-https)) | 需实名认证 |
+| 标有 `[高级]` | 需实名认证和 [ICP备案](https://baike.baidu.com/item/ICP%E5%A4%87%E6%A1%88)<br>使用阿里云节点必须在阿里云备案，腾讯云同理 | 需实名认证 | 需实名认证 |
 
-## HTTP(S) 隧道 503 错误
+## 配置 frpc 的自动 HTTPS 功能 :id=frpc-auto-https
+
+!> 配置 "自动 HTTPS 功能" 的本质就是借助 frpc 给流量套了一层 TLS  
+我们推荐您尽可能使用所穿透服务内建的 TLS 实现，不要过度依赖此功能
+
+中国内地节点不允许直接通过 TCP 隧道转发明文 HTTP 流量，您可以配置 frpc 并将 HTTP 服务自动转换为 HTTPS 服务：
+
+1. 编辑隧道并在 **自动 HTTPS** 处填写 `auto`  
+   ![](_images/site-inaccessible-auto-https.png)
+2. 重启 frpc
+3. 使用 `https://连接方式` 的形式访问您穿透的服务即可
+4. (可选) 如果您想避免证书错误提示，请自己申请 SSL 证书并替换 frpc 工作目录下的相关证书文件
+
+如果您需要进行高级配置，请参考下面列出的 `auto_https` 的取值：
+
+- 留空 **[默认值]**: 禁用自动 HTTPS 功能
+- `auto`: frpc 将使用 `server_name` 作为证书 **CommonName** 生成自签证书
+- 其他值:  
+  frpc 将尝试加载当前工作目录(cwd)下 `<auto_https>.crt` 和 `<auto_https>.key` 两个证书文件  
+  *注: 对于 Docker，cwd 默认为 `/`*  
+  若文件不存在则使用 `<auto_https>` 作为 **CommonName** 生成一份自签名证书并保存到上述文件中  
+  *注: 若文件已存在，`<auto_https>` 就作为一个单纯的文件名进行处理，不会对证书产生影响*
+
+## HTTP 隧道出现 503 错误
 
 当您在访问网站时出现 `503 错误` 提示时，请检查是否存在以下情况：
 
