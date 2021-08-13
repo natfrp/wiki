@@ -1,8 +1,6 @@
 # frpc 用户手册
 
-SakuraFrp frpc 基于原版 frpc 进行了一些修改，下面是 SakuraFrp frpc 的用户手册，高级用户请直接查看 [此章节](#高级用户)
-
-## 普通用户
+下面是写给普通用户的一般使用教程，如果您是高级用户，请参阅 [此章节](#advanced) 获取更多信息。
 
 ### 使用 TUI 启动
 
@@ -56,68 +54,51 @@ frpc_windows_386.exe -f wdnmdtoken666666:n6
 frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 ```
 
-## 高级用户
+---
 
-下面的文档详细解释了 Sakura Frp 提供的 frpc 与原开源版本的差异
+## 高级用户手册 :id=advanced
 
-### 新增启动参数
+由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/docs/ ':target=_blank')。
 
-1. `-f, --fetch_config`
-   - 从 Sakura Frp 服务器自动拉取配置文件
-   - 参数列表 1: `<Token>:<TunnelID>[,<TunnelID>[,<TunnelID>...]]`
-   - 参数列表 2: `<Token>:n<NodeID>`
-1. `-w, --write_config`
-   - 拉取配置文件成功后将配置文件写入 `./frpc.ini` 中
-1. `--update`
-   - 进行自动更新，如果不设置该选项默认只进行更新检查而不自动更新
-1. `-n, --no_check_update`
-   - 启动时不检查更新
-1. `--watch`
-   - 监控指定 PID 并在进程退出时退出 frpc，该参数用于避免启动器崩溃造成的进程残留
-   - 参数列表: `<PID>`
+### 新增命令行开关
+
+| 开关 | 说明 |
+| --- | --- |
+| -f, --fetch_config | 从 Sakura Frp 服务器自动拉取配置文件<br>- 参数 1: `<Token>:<TunnelID>[,<TunnelID>...]`<br>- 参数 2: `<Token>:n<NodeID>` |
+| -w, --write_config | 拉取配置文件成功后将配置文件写入 `./frpc.ini` 中 |
+| -n, --no_check_update | 启动时不检查更新 |
+| -V, --version_full | 显示完整版本号并退出 frpc |
+| --remote_control `<密码>` | 配置远程管理 E2E 密码，请参阅 [frpc 远程管理](/frpc/remote) 获取更多信息 |
+| --update | 进行自动更新，如果不设置该选项默认只进行更新检查而不自动更新 |
+| --report | 向启动器上报信息<br>_* 这是一个内部开关，我们不建议您使用它_ |
+| --watch `<PID>` | 监控指定 PID 并在进程退出时退出 frpc，同时禁用日志颜色输出<br>_* 这是一个内部开关，我们不建议您使用它_ |
 
 ### 新增配置文件选项
 
 ##### [common]
-1. `sakura_mode = <Boolean>`
-   - 启用 Sakura Frp 自有的各类特性，设置为 `false` 将 **禁用所有** Sakura Frp 相关特性，默认值为 `false` 
-1. `use_recover = <Boolean>`
-   - 启用重连功能，默认值为 `false`
-1. `persist_runid = <Boolean>`
-   - 该选项启用后 RunID 将不再从服务器拉取而是根据本机特征 & 隧道信息生成，默认值为 `true`
-1. `remote_control = <String>`
-   - 配置 Sakura Frp 远程管理端对端加密密码，留空则禁用远程管理相关功能，默认值为空
-   - 请参阅 [frpc 远程管理](/frpc/remote) 获取更多信息
+
+| 选项 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| sakura_mode | Boolean | false | 启用 Sakura Frp 自有的各类 frpc 特性 |
+| use_recover | Boolean | false | 启用断线自动重连功能 |
+| persist_runid | Boolean | true | 根据本机特征 & 隧道信息生成唯一 RunID |
+| remote_control | String | 空 | 配置远程管理 E2E 密码，留空则禁用远程管理<br>请参阅 [frpc 远程管理](/frpc/remote) 获取更多信息 |
 
 ##### [tcp_proxy]
-1. `concat_packet = <Int>`
-   - 配置合并封包功能的最小字节数，有助于减少小包并降低服务器网卡 PPS，设置为 `-1` 将禁用此功能，默认值为 `-1`
-1. `auto_https = <String>`
-   - 当您需要通过 TCP 隧道转发 HTTP 流量时，该流量可能会被机房拦截
-   - 通过该配置项可将流量自动加上 TLS 层 (转为 HTTPS) 来避免拦截，取值如下:
-     - 留空 **[默认值]**: 禁用自动 HTTPS 功能
-     - `auto`: frpc 将使用`server_name`作为证书 Common Name
-     - 自定义域名:  
-       frpc 将尝试加载当前工作目录(cwd)下 `<自定义域名>.crt` 和 `<自定义域名>.key` 两个证书文件  
-       若文件不存在则使用 `自定义域名` 作为 *CommonName* 生成一份自签名证书并保存到上述文件中  
-       *注: 若文件已存在，`自定义域名` 就作为一个单纯的文件名进行处理，不会对证书产生影响*
-       *特别的，对于 Docker，cwd 默认为 `/`*
-1. `auth_pass = <String>`
-   - 配置 SakuraFrp 访问认证功能的密码，留空则禁用访问认证相关功能，默认值为空
-   - 请参阅 [安全指南-frpc 访问认证](/bestpractice/security#frpc-访问认证) 获取更多信息
-1. `auth_time = <String>`
-   - 配置访问认证功能在没有勾选「记住」时的过期时间，默认为 `2h`
-   - 接受的后缀为`h`/`m`/`s`，请从大到小排列，如 `1h3m10s`, `20m`
-1. `auth_mode = <String>`
-   - 配置 SakuraFrp 访问认证功能的认证模式，取值如下:
-     - `online` **[默认值]**: 允许通过密码认证或通过 SakuraFrp 面板进行授权
-     - `standalone`: 仅允许通过密码认证, 忽略 frps 下发的 IP 授权信息
+
+| 选项 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| concat_packet | Int | -1 | 配置合并封包功能的最小字节数，有助于减少小包并降低网卡 PPS<br>设置为 `-1` 禁用合并封包功能 |
+| auto_https | String | 空 | 配置自动给流量套上 TLS 的功能<br>请参阅 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible#frpc-auto-https) 获取更多信息 |
+| auth_pass | String | 空 | 配置访问认证功能的密码，留空则禁用访问认证<br>请参阅 [安全指南-frpc 访问认证](/bestpractice/security#frpc-访问认证) 获取更多信息 |
+| auth_time | String | 2h | 配置访问认证功能在没有勾选「记住」时授权过期时间<br>接受的后缀为 `h`/`m`/`s`，请从大到小排列，如 `1h3m10s` |
+| auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 frps 下发的 IP 授权信息 |
 
 ##### [https_proxy]
-1. `force_https = <Int>`
-   - 配置 frps 自动重定向 HTTP 请求到 HTTPS 的功能，有助于减少隧道占用，取值如下:
-     - `0` **[默认值]**: 禁用自动重定向功能
-     - 其他数字: 启用重定向功能并在重定向时返回该数字作为状态码，推荐使用 `301` 或 `302`
+
+| 选项 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| force_https | Int | 0 | 配置 frps 自动重定向 HTTP 请求到 HTTPS 的功能，有助于减少隧道占用。<br>- `0`: 禁用自动重定向功能<br>- 其他数字: 启用重定向功能并在重定向时返回该数字作为状态码，推荐使用 `301` 或 `302` |
 
 ### 新增特性
 
