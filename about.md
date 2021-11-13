@@ -44,5 +44,7 @@
   - _我的世界(Minecraft)穿透 部分帮助文档_
   - _如何进行SRV解析 帮助文档_
   - _咕_
+- [一纸荒年Trace](https://wtrace3zh.com ':target=_blank')
+  - _Source 引擎游戏开服指南 帮助文档_
 - 其他热心网友们
   - _脚本测试、bug 反馈_
