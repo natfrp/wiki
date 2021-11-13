@@ -51,6 +51,7 @@
 
 - 一些杂项教程
   - [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server)
+  - [Source 引擎游戏开服指南](/offtopic/source)
 
 - 其他
   - [文档格式约定](/style)
