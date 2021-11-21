@@ -54,11 +54,11 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 
 ### 安装 frpc :id=install-frpc
 
-登录管理面板，在侧边栏点击 “软件下载” :
+登录管理面板，转到 “软件下载” :
 
 ![](../../_images/download.png)
 
-找到 frpc 的各种下载地址和您的架构标志，复制右边蓝色的下载地址：
+选择 Linux 系统，然后选择正确的架构，点击按钮复制下载链接：
 
 ![](_images/linux-1.png)
 
