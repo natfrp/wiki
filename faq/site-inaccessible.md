@@ -25,7 +25,7 @@
 
 中国内地节点不允许直接通过 TCP 隧道转发明文 HTTP 流量，您可以配置 frpc 并将 HTTP 服务自动转换为 HTTPS 服务：
 
-1. 编辑隧道并在 **自动 HTTPS** 处填写 `auto`  
+1. 编辑隧道并在 **自动 HTTPS** 处选择 `自动` 
    ![](_images/site-inaccessible-auto-https.png)
 2. 重启 frpc
 3. 使用 `https://连接方式` 的形式访问您穿透的服务即可
