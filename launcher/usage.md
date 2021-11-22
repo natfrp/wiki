@@ -24,20 +24,17 @@
 
 ### 图文安装教程
 
-登录管理面板，在侧边栏点击 **软件下载**:
+登录管理面板，转到 **软件下载** 页面：
 
 ![](../_images/download.png)
 
-!> 我们不提供自定义安装路径的选项，如有此类需求请参阅 [Inno Setup 文档](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline ':target=_blank')  
-默认安装路径为 `C:\Program Files\SakuraFrpLauncher`
-
-点击启动器右侧的下载地址来下载启动器安装程序:
+选择 **启动器**，点击右侧下载按钮下载启动器安装程序：
 
 ![](_images/usage-0.png)
 
-下载完毕后双击安装程序并根据向导提示进行安装:
-
 !> 如果在安装过程中碰到问题，请参阅 [启动器常见安装问题](/faq/launcher#install)
+
+下载完毕后双击安装程序并根据向导提示进行安装：
 
 ![](_images/usage-1.png)
 
@@ -51,7 +48,7 @@
 然后运行 `SakuraLauncher.exe`  (如果安装的是传统启动器，请运行 `LegacyLauncher.exe`)  
 ![](_images/usage-2.png)
 
-进入 [用户信息](https://www.natfrp.com/user/profile ':target=_blank') 页面，复制 **访问密钥** 到启动器，点击登录
+进入 [用户信息](https://www.natfrp.com/user/profile ':target=_blank') 页面，复制 **访问密钥** 到启动器，点击 **登录**
 
 ![](_images/usage-3.png)
 
