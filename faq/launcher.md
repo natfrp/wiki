@@ -2,6 +2,14 @@
 
 ## 安装问题 :id=install
 
+### 如何自定义安装路径
+
+默认安装路径为 `C:\Program Files\SakuraFrpLauncher`，这通常能满足绝大多数用户的需求。
+
+部分启动器功能需要注册系统服务才能正常工作，为了确保这些功能不出问题，启动器安装程序不提供自定义安装路径的选项。
+
+如您确有特殊需要，想自定义启动器安装路径，您可以参阅 [Inno Setup 文档](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline ':target=_blank') 传入恰当的命令行参数来设置安装路径。
+
 ### 下载附加文件时出错
 
 如果在 **正在下载附加文件...** 时报错 **Server Certificate Invalid or not present**，请按顺序操作:
