@@ -22,7 +22,7 @@ SakuraFrp 通过 Gravatar 获取头像，您可以 [前往 Gravatar](https://www
 
 1. 转到 [OpenID 用户中心](https://openid.13a.com/user#tab-4 ':target=_blank')，切换到 **账户注销** 标签
 1. 输入密码并点击 **提交注销请求**，按提示操作即可
-1. 如果一切顺利，三个月后您的账户信息会被自动删除
+1. 如果一切顺利，冻结期满后您的账户信息会被自动删除
 1. 账户注销完成后，系统将向您发送一封通知邮件，如果您没有收到通知邮件或想确认账户注销状态，请 [联系我们](/about#contact-us)
 
 ![](_images/account-delete.png)
