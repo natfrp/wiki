@@ -39,7 +39,6 @@
 
 - 常见应用配置指南
   - [HTTP(S) 穿透](/app/http)
-  - [FTP(S) 穿透](/app/ftp)
   - [远程桌面(RDP) 穿透](/app/rdp)
   - [群晖(Synology) NAS 穿透](/app/synology)
   - [威联通(QNAP) NAS 穿透](/app/qnap)
@@ -49,6 +48,7 @@
   - [我的世界(Minecraft) 穿透](/app/mc)
     - [Java 版局域网联机](/app/mc#java)
     - [设置 SRV 解析](/app/mc#srv)
+  - [FTP(S) 穿透](/app/ftp)
 
 - 一些杂项教程
   - [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server)
