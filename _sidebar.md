@@ -43,6 +43,7 @@
   - [远程桌面(RDP) 穿透](/app/rdp)
   - [群晖(Synology) NAS 穿透](/app/synology)
   - [威联通(QNAP) NAS 穿透](/app/qnap)
+  - [穿透 SFTP 传输文件](/app/sftp)
   - [XTCP P2P 穿透](/app/xtcp)
   - [远程开机(WOL) 配置](/app/wol)
   - [我的世界(Minecraft) 穿透](/app/mc)
