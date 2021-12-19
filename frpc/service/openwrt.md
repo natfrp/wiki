@@ -10,10 +10,10 @@ SakuraFrp 分发的 frpc 均已经过 UPX 压缩 (除了 mips64 架构)，如果
 
 首先您需要下载 SakuraFrp 版本的 frpc 至您的路由器，并将其放置在 /sbin 目录下
 
-将其中的 `<arch>` 替换为您路由器的架构，具体请参考 Linux 使用文档
+将其中的 `<下载链接>` 根据您路由器的架构替换为 [软件下载页](https://www.natfrp.com/tunnel/download) 中具体的链接，具体如何选择请参考 Linux 使用文档
 
 ```bash
-wget https://getfrp.sh/d/frpc_linux_<arch> -O /sbin/natfrpc && \
+wget <下载链接> -O /sbin/natfrpc && \
 chmod a+wx /sbin/natfrpc # 修改可执行权限和可写权限(用于更新)
 ```
 
