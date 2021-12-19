@@ -133,3 +133,4 @@ if [[ `/sbin/init --version` =~ upstart ]]; then echo Upstart; elif [[ `systemct
 然后，请参考下面的教程配置系统服务:
 
 - [Systemd 配置指南](/frpc/service/systemd)
+- [OpenWRT 配置指南](/frpc/service/openwrt)
