@@ -25,12 +25,13 @@ chmod a+wx /sbin/natfrpc # 修改可执行权限和可写权限(用于更新)
 
 需要注意的是 Openwrt 自 bb(Barrier Breaker) 后引入了该系统，如果您使用 aa 或更早的上古系统，您可能需要使用 sysV 格式写启动脚本
 
-您需要在 `/etc/rc.d/S90natfrpc` 创建一个文件，内容如下：
+您需要在 `/etc/init.d/natfrpc` 创建一个文件，内容如下：
 
 ```bash
 #!/bin/sh /etc/rc.common
 
 USE_PROCD=1
+START=90
 
 start_service() {
     procd_open_instance SakuraFrp
@@ -45,15 +46,29 @@ start_service() {
     procd_set_param stderr 1
     procd_add_jail natfrp log
     procd_close_instance
+
+    ####### 如果您需要多隧道，请在此处添加 #######
+    procd_open_instance SakuraFrp2
+    procd_set_param command /sbin/natfrpc
+
+    procd_append_param command -f <您的隧道启动参数2> --update # 请修改此行为您的隧道启动参数，同时可添加远程控制隧道启停等配置
+ 
+    procd_set_param env LANG=zh_CN.UTF-8 # 用于显示中文日志，删除即显示英文日志
+    procd_set_param limits nofile="unlimited"
+    procd_set_param respawn 300 5 10
+    procd_set_param stdout 1
+    procd_set_param stderr 1
+    procd_add_jail natfrp log
+    procd_close_instance
 }
 ```
 
 然后执行：
 
 ```bash
-chmod +x /etc/rc.d/S90natfrpc # 为其赋予可执行权限
-/etc/rc.d/S90natfrpc start # 启动服务
-/etc/rc.d/S90natfrpc enable # 如果需要，启用开机自启动
+chmod +x /etc/init.d/natfrpc # 为其赋予可执行权限
+/etc/init.d/natfrpc start # 启动服务
+/etc/init.d/natfrpc enable # 如果需要，启用开机自启动
 ```
 
 ### 网页控制台
