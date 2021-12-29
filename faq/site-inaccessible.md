@@ -14,9 +14,9 @@
 
 | 节点类型 | HTTP(S) 隧道 | TCP 隧道映射 HTTP 流量 | TCP 隧道映射 HTTPS 流量 |
 | --- | --- | --- | --- |
-| 非中国内地 | 需实名认证 | √ | √ |
-| 中国内地 | 需实名认证和 [ICP备案](https://baike.baidu.com/item/ICP%E5%A4%87%E6%A1%88) | × (请 [配置自动 HTTPS](#frpc-auto-https)) | 需实名认证 |
-| 标有 `[高级]` | 需实名认证和 [ICP备案](https://baike.baidu.com/item/ICP%E5%A4%87%E6%A1%88)<br>使用阿里云节点必须在阿里云备案，腾讯云同理 | 需实名认证 | 需实名认证 |
+| 海外节点 | 需实名认证 | √ | √ |
+| 台州多线、嘉兴多线、绍兴多线 | × | × | × (任何 TLS 流量都会被阻断，包括部分 RDP 连接和 FTPS 连接) |
+| 其他节点 | 需实名认证和 [ICP备案](https://baike.baidu.com/item/ICP%E5%A4%87%E6%A1%88) | × (请 [配置自动 HTTPS](#frpc-auto-https)) | 需实名认证 |
 
 ## 配置 frpc 的自动 HTTPS 功能 :id=frpc-auto-https
 
