@@ -17,15 +17,15 @@ Systemd 的服务有两种状态:
 ### 编写配置文件
 
 Systemd 的 **Unit 配置文件** 通常位于这些目录中:
-  - /lib/systemd/system
-  - /etc/systemd/system
+  - /lib/systemd/system （供软件包使用）
+  - /etc/systemd/system （供管理员使用）
 
-本教程将选用第一个目录来放置 frpc 的 **Unit 配置文件**，并且 frpc 启用后报错退出时每分钟会自动重启一次
+本教程将选用第二个目录来放置 frpc 的 **Unit 配置文件**，并且 frpc 启用后报错退出时每分钟会自动重启一次
 
 执行下面的命令，您应该会看到图中的提示
 
 ```bash
-# vi /lib/systemd/system/frpc@.service
+# vi /etc/systemd/system/frpc@.service
 ```
 
 ![](_images/systemd-0.png)
