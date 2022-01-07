@@ -66,4 +66,4 @@
 
    ![](_images/basics-5.svg)
 
-   由于 `电脑 D` 并没有直接连接到游戏服务器，而是由 frpc 代为连接，因此游戏服务器看到的 IP 实际上是 frpc 的 IP，也就是 `127.0.0.1`。因此，如果小明想知道 `电脑 D` 的真实 IP，还需要进行 [额外配置](http://localhost:3000/#/bestpractice/realip)。
+   由于 `电脑 D` 并没有直接连接到游戏服务器，而是由 frpc 代为连接，因此游戏服务器看到的 IP 实际上是 frpc 的 IP，也就是 `127.0.0.1`。因此，如果小明想知道 `电脑 D` 的真实 IP，还需要进行 [额外配置](/bestpractice/realip)。
