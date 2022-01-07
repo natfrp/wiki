@@ -1,5 +1,7 @@
 # SakuraFrp 帮助文档
 
+!> 使用前必看：[内网穿透基础知识](/basics)
+
 [faq](/faq.md ':include')
 
 ## 文档快速索引
