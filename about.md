@@ -21,17 +21,16 @@
 
 <!-- END 请勿修改 -->
 
-## 贡献者
-
-### 站点管理员
+## Staffs
 
 - [羽川早苗](https://moe.do ':target=_blank')
   - _站长_
 - [boboliu](https://note.bobo.moe/ ':target=_blank')
   - _frpc 技术支持_
   - _管理员_
+- And 4 more...
 
-### 非站点管理员
+## Community Contributors
 
 - [宝硕](https://baoshuo.ren ':target=_blank')
   - _frp 一键安装脚本、文档站点、部分帮助文档_
@@ -48,3 +47,4 @@
   - _Source 引擎游戏开服指南 帮助文档_
 - 其他热心网友们
   - _脚本测试、bug 反馈_
+- 或许你是下一个？[PR on GitHub](https://github.com/natfrp/wiki)
