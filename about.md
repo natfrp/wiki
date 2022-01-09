@@ -6,18 +6,20 @@
 
 本文档中有引用部分已经注明原作者，在此表示感谢。如有错误或疏漏，请提交 [Issue](https://github.com/natfrp/wiki/issues ':target=_blank') 或发起 [Pull Request](https://github.com/natfrp/wiki/pulls ':target=_blank') 帮助我们进行更正。您也可以直接 [联系我们](#concat-us)。
 
-## 联系我们 :id=contact-us
+## 联系我们 / Contact us :id=contact-us
 
 <!-- BEGIN 请勿修改 -->
 
-!> 此处列出的联系方式不受理任何使用相关的问题
+!> 此处列出的联系方式不受理任何使用相关的问题。查询账户注销状态、提交 Bug 报告 (**前提是你有 90% 以上的把握认定这是 Bug 而不是使用方法错误**)、付款后服务未到帐等问题可以使用此处的联系方式。  
+<b style="color: red;font-size: 26px">不会用、不会配置、隧道连不上、网站打不开等问题一律不予回复，反复 SPAM 可获得黑名单名额一个</b>
 
-?> 查询账户注销状态、提交 Bug 报告 (**前提是真的是 Bug 而不是使用方法错误**)、付款后服务未到帐等问题可以使用此处的联系方式
+- 如果您需要举报滥用或违规内容，您可以前往 [举报滥用](https://www.natfrp.com/report.html ':target=_blank') 页面提交信息或直接通过邮件联系我们  
+  To submit abuse report, please head to [THIS PAGE](https://www.natfrp.com/report_en.html ':target=_blank') and fill out the form or mail us direcly
+  
 
-- 如果您是 SakuraFrp VIP，您可以进入 **VIP 用户反馈群** 联系群主或管理员
-- 或者，您也可以发送电子邮件到 `support@natfrp.cloud` 直接联系 iDea Leaper 小组的相关成员
-
-<h1 style="color: red">不会用、不会配置、隧道连不上、网站打不开等问题直接转送垃圾箱，一律不予回复</h1>
+- 如果您是 SakuraFrp VIP，您可以进入 **VIP 用户反馈群** 私聊群主或管理员。您可以在 [用户信息](https://www.natfrp.com/user/profile ':target=_blank') 页面找到群号
+- 或者，您也可以发送电子邮件到 `support@natfrp.cloud` 开启工单，我们会尽量在 7 个工作日内回复  
+  
 
 <!-- END 请勿修改 -->
 
