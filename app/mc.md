@@ -33,7 +33,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 请根据您的游戏版本展开下面的选项查看，下面提到的 Mod 都必须在 **联网** 条件下安装:
 
 <details>
-<summary><b style="font-size: 20px">游戏版本: 1.12.X ~ 1.16.X</b></summary>
+<summary><b style="font-size: 20px">游戏版本: 1.12.X ~ 1.17.1</b></summary>
 
 !> 1.16.2 版由于 Forge 的原因可能会 **引发崩溃**，端口 **不能冲突**，否则也会崩溃
 
