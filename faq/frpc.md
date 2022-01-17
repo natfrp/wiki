@@ -121,3 +121,26 @@ _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软�
    sc create frpc binPath=C:\frpc.bat start=auto
    ```
 1. 重启系统，检查效果
+
+----
+
+另一种行之有效的方法：
+
+!> 注意，此处的方法只有在用户登录以后才有效
+可能不适用于 Windows Server 版本
+
+!> 此方法可能依赖于 Windows 系统版本
+目前已知 `Windows 10 21H2` 可以正常使用
+
+1. 将 `frpc.exe` 放置到 `C:\` 目录下
+1. 在 `C:\` 目录下新建一个空白文件，命名为 `frpc.bat`
+1. 在 `C:\frpc.bat` 文件中写入以下内容
+   ```bat
+   C:\frpc.exe -f <您的Token>:<隧道ID>
+   ```
+1. 对 `frpc.bat` 创建一个快捷方式
+1. 将这个快捷方式移动到 `C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\` 目录下
+
+此时您可以通过任务管理器中的 `启动` 选项卡进行管理
+
+此方法是部分应用程序实现开机自动启动的方法，也是微软官方推荐的方法
