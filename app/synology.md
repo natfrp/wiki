@@ -1,163 +1,98 @@
 # 群晖(Synology) NAS 穿透指南
 
-群晖 NAS 通常有两种配置方案，即 **直接在系统上安装** 和 **使用 Docker**，本篇教程同时包含这两种方案，以保证覆盖 Docker激进人士，运维原教旨主义者，和电子垃圾玩家
+群晖 NAS 通常有两种配置方案，即 **「Docker 安装」** 和 **「直接安装」**，本篇教程同时包含这两种方案，以保证覆盖 Docker 激进人士、运维原教旨主义者和电子垃圾玩家。
 
-如果您的群晖不是电子垃圾的话，通常来讲适用更容易配置的 「Docker 安装」
+如果您的群晖不是电子垃圾的话，我们建议您选择更优雅的 **「Docker 安装」**。否则，请选用 **「直接安装」**。
 
-但是对于 ARM 架构的 NAS 来说，DSM 系统并不提供 Docker UI，此时我们并不推荐您使用野生第三方措施强行安装 Docker，这样安装的 Docker 只能使用 host 网络，也没有易于配置的 UI，我们更加建议您「直接在系统上安装 frpc」
+!> 如果您的 NAS 采用 ARM 架构，DSM 系统可能不会提供 Docker 套件。我们并不推荐您使用野生第三方措施强行安装 Docker，这样安装的 Docker 没有易于配置的 UI，也可能存在各类网络问题。这种情况下请选择 **「直接安装」**
+
+## 确认 DSM 版本
+
+在进行穿透之前，请先确认您的 DSM 系统版本。本指南对应的是 **DSM 7** 系统，如果您使用的是 **DSM 6**，请查看 [这篇指南](/app/synology-dsm6)。
+
+DSM 7 的登录界面是这样的：
+
+![](_images/dsm7-login.png)
+
+DSM 6 的登录界面是这样的：
+
+![](_images/dsm6-login.png)
 
 ## 使用准备
 
-### 配置 DSM 面板
+启动 **控制面板** 应用，转到 `系统 > 登录门户 > DSM > 网页服务 > DSM 端口 (HTTPS)`，记下这里的端口作为 **本地端口**。
 
-?> 您也可以选择穿透 HTTP，但这可能会造成备案/机房屏蔽/ISP屏蔽等问题  
-如果您选择穿透 HTTP，出现问题请自行解决
+![](_images/dsm7-prepare-portal.png)
 
-登录 DSM 面板，找到 `连接性->网络->DSM 设置->DSM 端口->HTTPS`，记下这里的端口，后面创建隧道时需要用到
+## Docker 安装
 
-![](./_images/synology-1.png)
+### 安装 Docker 套件和镜像
 
-如果您不使用 Docker 部署的话，找到 `应用程序->终端机和 SNMP`，确保 SSH 功能已启用并记下这里的 SSH 端口
+?> Docker 套件和镜像只要安装一次即可，无需重复操作。如需更新 frpc，请删除原有镜像并重新下载一次
 
-![](./_images/synology-2.png)
+如果您的系统里没有 Docker 套件，请安装 Docker 套件：
+
+![](_images/dsm7-docker-install.png)
+
+转到 **注册表** 页面，搜索 `natfrp`，选中 **natfrp/frpc** 并点击 **下载**：
+
+![](_images/dsm7-docker-pull.png)
+
+如果系统提示您选择标签，选择 `latest` 即可（通常这是默认选项）。
+
+稍等片刻，直到右上角出现 **已成功下载 Docker 镜像** 的通知，镜像就安装完成了：
+
+![](_images/dsm7-docker-pull-complete.png)
 
 ### 创建隧道
 
-!> 标有 **拦截 HTTPS** 的节点可能无法正常使用
+打开 Docker 套件，转到 **网络** 页面，查看 `bridge` 网络的 **子网** 地址，然后把 **最后一个** `0` 换成 `1` 作为 **本地IP**。
 
-选择隧道类型为 TCP，填写本地端口为 **0x01** 中记下的 HTTPS 端口，其他设置可以留空
+![](_images/dsm7-docker-local-ip.png)
 
-![](./_images/synology-3.png)
+前往 Sakura Frp 管理面板使用之前获取到的信息创建一条 **TCP 隧道**：
 
-## 使用 Docker 部署穿透服务
+![](_images/dsm-docker-create-tunnel.png)
 
-?> 本教程以 DSM 6 系统作为 GUI 操作举例，DSM 7 大同小异
+然后点击右边的三个点，选择 **配置文件** 并在弹出的对话框中复制隧道的 **启动参数**：
 
-ARM 架构的 DSM 系统目前不提供 Docker GUI，请 [直接在系统中部署穿透服务](#直接在系统中部署穿透服务)
+![](_images/dsm-launch-args.png)
 
-如果没有 Docker 应用的，请参考下图安装 Docker
+### 启动隧道
 
-![](_images/docker-dsm-installdocker.png)
+转到 **映像** 页面，选中刚才下载的 **natfrp/frpc:latest** 并点击 **启动**，输入一个自定义名称并点击 **高级设置**：
 
-### 设置隧道
+?> 如果您希望隧道开机自启，请勾选 **启用自动重新启动** 选项
 
-因为 docker 网络模型的原因，我们像从前一样把隧道的 本地IP 设置为 `127.0.0.1` 已经不再奏效，必须修改设置中的此项。
+![](_images/dsm7-docker-create-1.png)
 
-此处需要分情况讨论：
- - 当修改为 `host` 宿主网络模式时，只需要设置为上级网关分配给当前设备的 ip 即可（人话：设置为路由器给群晖的ip）
- - 当保持默认的 `bridge` 网桥模式时，我们需要设置为对应网桥的网关 ip 才能恰当的访问当前设备，因为该方案兼容性和安全性更高，**下面的教程默认采用此方案**
 
-首先打开群晖的 Docker 应用，根据图上的方法算出我们需要的 ip，即 网关ip
+转到 **环境** 标签，在 **命令** 处粘贴 **启动参数**，然后点击上面的 **新增** 按钮分别填写 `LANG` 和 `en_US.UTF-8`：
 
-![](_images/docker-dsm-network.png)
+!> 请全程复制粘贴，不要手动输入，不要手动输入，不要手动输入
 
-在 隧道列表 中，编辑要用的隧道，设置 本地IP 为该 IP
+![](_images/dsm7-docker-create-2.png)
 
-![](../frpc/usage/_images/docker-tunnel-mod.png)
+创建完成后，隧道会自动启动。如果一切正常，您就可以在日志中找到连接方式了（当然，也可以在 Sakura Frp 管理面板查看）：
 
-或者在新建隧道时将其设置为 本地IP
+![](_images/dsm7-docker-started.png)
 
-![](../frpc/usage/_images/docker-tunnel-new.png)
+在连接方式前面加上 `https://`，然后您就可以使用此 URL 访问 DSM 管理面板了。
 
-这样隧道就准备完了
+在这个例子中，我们使用 `https://idea-leaper-1.natfrp.cloud:23333/` 或者 `https://114.51.4.191:23333/` 即可访问。
 
-### 设置Docker
+## 直接安装
 
-首先我们需要获取镜像，跟着图片操作即可：
+首先，前往 Sakura Frp 管理面板创建一条 **TCP 隧道**，**本地IP** 留空使用默认值：
 
-![](_images/docker-dsm-get-image.png)
+![](_images/dsm-direct-create-tunnel.png)
 
-获取到镜像后就可以启动一个「实例」，请注意，此处「命令」栏中输入的是一个启动参数，如何写可以参考 [Docker指南](/frpc/usage/docker)
+启动 **控制面板** 应用，转到 `应用程序 > 终端机和 SNMP > 终端机`，启动 SSH 功能并记下这里的端口。
 
-!> 虽然图中只有 `-f` 部分，但我们非常建议您启用远程控制
+![](_images/dsm7-prepare-ssh.png)
 
-设置好后应用，然后启动即可
+然后通过此处的 SSH 端口和您登录 DSM 管理面板的帐号密码连接到 SSH 终端，使用 `sudo -i` 命令提升到 root 权限，您可能需要再输入一次 DSM 管理面板的密码。
 
-![](_images/docker-dsm-open.png)
+接下来请参考 [Linux 使用教程](/frpc/usage/linux) 中的 **安装 frpc** 一节安装 frpc。
 
-### 获取连接信息
-
-连接信息在 docker实例 的日志中，跟着图片打开它，你就能看到
-
-![](_images/docker-dsm-log.png)
-
-打开浏览器，试一下
-
-![](_images/docker-dsm-browser.png)
-
-### 注意事项
-
-群晖的编辑容器中有「启用自动重启启动」的选项，该选项默认关闭，建议打开它
-
-![](_images/docker-dsm-autorerun.png)
-
-### 如何更新
-
-首先，再进行一次下载
-
-![](_images/docker-dsm-get-image.png)
-
-接下来你应该看到右下角网络监控处的下载流量提升
-
-等到右上角出现提示时即已经更新完成
-
-![](_images/docker-dsm-pull-complete.png)
-
-接下来停止需要升级的容器，选中它点击 「操作 - 清除」，然后再启动时即升级到了最新版
-
-## 直接在系统中部署穿透服务
-
-### 安装 frpc
-
-通过上面提到的 SSH 端口和 DSM 面板的账号、密码登入到 NAS，如果您不知道如何操作请自行百度
-
-接下来，请参考 [Linux 使用教程](/frpc/usage/linux) 中的 **安装 frpc** 一节安装 frpc
-
-注意这里需要采用 `sudo -s` 切换到 `root` 账户，不能使用 `su` 命令，提示输入密码时请输入 DSM 登录密码
-
-### 配置服务文件
-
-!> 配置服务文件 和 测试服务 部分的教程是为 DSM5/6 准备的，如果您在使用 DSM7，本部分操作您应当参考 [systemd 配置教程](/frpc/service/systemd)；别担心，我们更喜欢 systemd
-
-执行下面的命令编辑配置文件
-
-```bash
-# vim /etc/init/frpc.conf
-```
-
-?> 如果您按照本文档进行配置并使用了下面的内容，frpc 会在系统启动时自启并在出错时自动重启，无需额外配置
-
-直接写入下面的内容即可，注意把文件中的启动参数换成您的启动参数
-
-```upstart
-description "SakuraFrp synology frpc service"
-
-author "FENGberd"
-
-start on syno.network.ready
-stop on runlevel [016]
-
-respawn
-respawn limit 0 5
-
-exec /usr/local/bin/frpc -f <您的启动参数，如 wdnmdtoken666666:12345>
-```
-
-## 测试服务
-
-执行下面的命令测试 frpc 是否能正常运行
-
-```bash
-# start frpc
-# tail /var/log/upstart/frpc.log
-```
-
-如果您看到了图中的两个提示，则 frpc 已安装完毕并可以正常使用了
-
-![](./_images/synology-4.png)
-
-现在您可以通过 `https://<节点域名>:<远程端口>` 的方式访问 DSM 面板，也可以使用 `https://<日志中标出的连接方式>` 访问，推荐使用节点域名
-
-在本示例中，我使用的是 `https://cn-bj-bgp.sakurafrp.com:39147`
-
-![](./_images/synology-5.png)
+最后，参考 [这篇指南](/frpc/service/systemd) 配置 Systemd 服务即可。
