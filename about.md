@@ -47,6 +47,5 @@
   - _咕_
 - [一纸荒年Trace](https://wtrace3zh.com ':target=_blank')
   - _Source 引擎游戏开服指南 帮助文档_
-- 其他热心网友们
-  - _脚本测试、bug 反馈_
+- [我们的其他社区贡献者](https://github.com/natfrp/wiki/graphs/contributors)
 - 或许你是下一个？[PR on GitHub](https://github.com/natfrp/wiki)
