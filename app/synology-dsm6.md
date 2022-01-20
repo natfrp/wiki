@@ -88,9 +88,13 @@
 # vim /etc/init/frpc.conf
 ```
 
+按一下 `i` 键，左下角应该会出现 `-- INSERT --` 或者 `-- 插入 --` 字样
+
+![](../frpc/service/_images/systemd-1.png)
+
 ?> 如果您按照本文档进行配置并使用了下面的内容，frpc 会在系统启动时自启并在出错时自动重启，无需额外配置
 
-直接写入下面的内容即可，注意把文件中的启动参数换成您的启动参数
+粘贴下面的内容即可，注意把文件中的启动参数换成您的启动参数
 
 ```upstart
 description "SakuraFrp synology frpc service"
@@ -103,8 +107,15 @@ stop on runlevel [016]
 respawn
 respawn limit 0 5
 
-exec /usr/local/bin/frpc -f <您的启动参数，如 wdnmdtoken666666:12345>
+exec /usr/local/bin/frpc -f <您的启动参数，如 wdnmdtoken666666:12345，不要带尖括号>
 ```
+
+粘贴完成后按一下 `ESC`，左下角的 `-- INSERT --` 会消失，此时输入 `:wq` 并按回车退出
+
+> 下面的图片来自 systemd 教程，因此内容会与您复制的内容不同，不要惊慌。
+> DSM7 已经正式发布，且可无缝升级，我们建议普通用户使用最新版。
+
+![](../frpc/service/_images/systemd-2.png)
 
 ### 测试服务
 
