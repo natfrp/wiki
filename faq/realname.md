@@ -11,7 +11,9 @@
 
 我们推荐您注册一个支付宝账号，然后使用支付宝 APP 完成实名认证。
 
-如果因为特殊原因无法通过支付宝进行认证，请使用手机访问 [备用接口](https://www.natfrp.com/user/realname_megvii ':target=_blank') 进行操作。
+如果因为特殊原因无法通过支付宝进行认证，请使用 **手机** 访问 **备用接口** 进行操作。
+
+![](_images/realname-backup.png)
 
 !> 如果您已提交验证请求，请点一下二维码页面上的 "我已完成认证" 按钮使当前认证失败，否则无法进入备用接口  
 ![](_images/realname-recheck.png)
