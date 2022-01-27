@@ -7,8 +7,8 @@
 目前基岩版服务器有两种核心可用:
 
 1. Bedrock Dedicated Server （简称 BDS）
-   由微软官方开发，与所有平台的 Minecraft 基岩版有相同的核心，且可以跨平台联机（NS, xbox 除外），适合原版生存  
-   [历史版本下载(非官方)](https://mcbds.reh.tw/) | [最新版本下载(官方)](https://www.minecraft.net/en-us/download/server/bedrock/)
+   由微软官方开发，与所有平台的 Minecraft 基岩版有几乎相同的核心，目前可以全平台联机，适合原版生存  
+   [历史版本下载(非官方)](https://mcbds.reh.tw/) | [最新版本下载(官方)](https://www.minecraft.net/zh-cn/download/server/bedrock/)
 1. Nukkit  
    由第三方独立开发的开源核心，生态优于 BDS 但由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)
 
@@ -17,7 +17,7 @@
 ### 开服之前
 
 1. 准备一个可用的 Sakura Launcher 或者 frpc
-1. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/en-us/download/server/bedrock/ ':target=_blank')
+1. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/zh-cn/download/server/bedrock/ ':target=_blank')
 1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议) 
 1. 准备一台 CPU 核心数不低于 2 核，并配有不低于 1GB RAM 的电脑
 
@@ -28,6 +28,8 @@
 我们可以通过更改配置文件来达到初始化世界的目的。
 
 #### 配置文件注释
+
+!> 表中所填数据均为缺省值
 
 ```ini
 server-name = Dedicated Server
@@ -102,6 +104,7 @@ level-name = Bedrock level
 
 level-seed = 
 # 为世界定义一个种子
+# 缺省值为随机
 
 default-player-permission-level = member
 # 新玩家的游戏模式
@@ -125,7 +128,6 @@ content-log-file-enabled = false
 compression-threshold = 1
 # 要压缩的原始网络有效负载的最小大小
 # 允许值 : [0, 65535]
-# 当前版本 (1.16.220.02) mojang 正在重做服务器权威移动，无法正常使用。
 
 server-authoritative-movement = true
 # 启用服务端权威性移动。
@@ -165,16 +167,23 @@ server-authoritative-block-breaking = false
 level-type = DEFAULT
 # 世界的类型
 # 可用值: DEFAULT，LEGACY，FLAT (无限，有限，超平坦) 
+# LEGCY (有限) 选项仅在 1.18 前可用
 
 world-type = 
 # 是否开启教育版，实验性玩法
 # 可用值: 未知
+
+trusted-key =
+# 服务端所信任的公钥，拥有该公钥的玩家不进行Xbox身份验证
+# 可出现多行
 ```
 #### 隧道配置
 
 | 协议 | 本地端口(默认) | 远程端口 |
 | ---- | :----------:  | :-----: |
 | UDP  | 19132         | 任意    |
+
+!> 使用frpc时MOTD信息无法正常显示
 
 ### 注意事项
 
@@ -191,7 +200,7 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 ### 开服之前
 
 1. 一个可用的 frpc
-2. 最新版本的 [BDS-Linux 核心](https://www.minecraft.net/en-us/download/server/bedrock/)
+2. 最新版本的 [BDS-Linux 核心](https://www.minecraft.net/zh-cn/download/server/bedrock/)
 3. 一台装载着 **Ubuntu 18.04** 或更高版本的操作系统的电脑
 4. CPU 核心数大于等于 2 核，1GB RAM
 
@@ -200,6 +209,8 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 请参考 [BDS on Windows](#bds-on-windows) 章节中的 [开服配置](#开服配置) 。
 
 ### 注意事项
+
+!> Linux下无法同时运行多个服务端
 
 RHEL 8 (CentOS 8) 可能缺少 `libnsl` 包，此时服务端将无法正常启动
 
