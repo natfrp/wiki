@@ -25,7 +25,7 @@ Systemd 的 **Unit 配置文件** 通常位于这些目录中:
 执行下面的命令，您应该会看到图中的提示
 
 ```bash
-# vi /etc/systemd/system/frpc@.service
+vi /etc/systemd/system/frpc@.service
 ```
 
 ![](_images/systemd-0.png)
@@ -59,7 +59,7 @@ WantedBy=multi-user.target
 执行下面的命令重载 Systemd，这样服务就配置完成了
 
 ```bash
-# systemctl daemon-reload
+systemctl daemon-reload
 ```
 
 !> 请记住后续操作中用到的 `Unit 名称` 是 `frpc@<启动参数>`，例如 `frpc@wdnmdtoken666666:12345`
@@ -71,7 +71,7 @@ WantedBy=multi-user.target
 启动/停止隧道非常简单，使用下面的命令即可，`start` 是启动，`stop` 是停止
 
 ```bash
-# systemctl <start|stop> <Unit名称>
+systemctl <start|stop> <Unit名称>
 ```
 
 ?> 如果您想开启多条不同隧道，只要更换 `Unit 名称` 中的启动参数并多次执行对应的指令即可
@@ -79,7 +79,7 @@ WantedBy=multi-user.target
 举个例子，开启访问密钥为 `wdnmdtoken666666` 的用户所拥有的 ID 为 `12345` 的隧道:
 
 ```bash
-# systemctl start frpc@wdnmdtoken666666:12345
+systemctl start frpc@wdnmdtoken666666:12345
 ```
 
 ### 查看隧道状态
@@ -87,13 +87,13 @@ WantedBy=multi-user.target
 您可以通过下面的命令查看服务状态
 
 ```bash
-# systemctl status <Unit名称>
+systemctl status <Unit名称>
 ```
 
 举个例子，要查看上面开启的隧道状态可以使用
 
 ``` bash
-# systemctl status frpc@wdnmdtoken666666:12345
+systemctl status frpc@wdnmdtoken666666:12345
 ```
 
 !> **绝对不要** 开启重复的隧道，这会造成出现各种不可预计的 Bug  
@@ -103,7 +103,7 @@ WantedBy=multi-user.target
 如果您忘记了之前开启过哪些隧道，使用下面的命令可以列出当前运行中的隧道
 
 ```bash
-# systemctl list-units frpc@*
+systemctl list-units "frpc@*"
 ```
 
 下图中的信息表示我们开启了访问密钥为 `wdnmdtoken666666` 的用户所拥有的两条 ID 分别为 `12345` 和 `67890` 的隧道
@@ -115,13 +115,13 @@ WantedBy=multi-user.target
 您可以通过下面的命令查看隧道日志：
 
 ```bash
-# journalctl -u <Unit名称>
+journalctl -u <Unit名称>
 ```
 
 举个例子，要查看上面开启的隧道状态可以使用
 
 ``` bash
-# journalctl -u frpc@wdnmdtoken666666:12345
+journalctl -u frpc@wdnmdtoken666666:12345
 ```
 
 如果当前窗口无法显示所有日志，可以用 `↑`、`↓` 方向键滚动，输入大写的 `G` 跳转动到日志底部，输入 `q` 退出日志查看。更多使用方法请参阅 `man journalctl`。
@@ -135,8 +135,8 @@ WantedBy=multi-user.target
 使用下面的命令启用/禁用服务，`enable` 是启用，`disable` 是禁用，操作完成后再用 `status` 检查一下状态
 
 ```bash
-# systemctl <enable|disable> <Unit名称>
-# systemctl status <Unit名称>
+systemctl <enable|disable> <Unit名称>
+systemctl status <Unit名称>
 ```
 
 如果一切正常，您会看到我图中的两个红色标注的内容
@@ -150,5 +150,5 @@ WantedBy=multi-user.target
 和上面是类似的，只是多了个 `--all` 确保停止了的服务也能被列出
 
 ```bash
-# systemctl list-units --all frpc@*
+systemctl list-units --all "frpc@*"
 ```

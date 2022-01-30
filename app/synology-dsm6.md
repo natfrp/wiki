@@ -85,7 +85,7 @@
 执行下面的命令编辑配置文件
 
 ```bash
-# vim /etc/init/frpc.conf
+vim /etc/init/frpc.conf
 ```
 
 按一下 `i` 键，左下角应该会出现 `-- INSERT --` 或者 `-- 插入 --` 字样
@@ -122,8 +122,8 @@ exec /usr/local/bin/frpc -f <您的启动参数，如 wdnmdtoken666666:12345，�
 执行下面的命令测试 frpc 是否能正常运行
 
 ```bash
-# start frpc
-# tail /var/log/upstart/frpc.log
+start frpc
+tail /var/log/upstart/frpc.log
 ```
 
 如果您看到了图中的两个提示，则 frpc 已安装完毕并可以正常使用了
