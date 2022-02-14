@@ -36,6 +36,8 @@ uname -m
 
 ?> 如果您的架构显示为 `armv7l`，但在下载对应程序后无法运行，提示 `Illegal instruction` 的话，这是因为您其实是 `armel` 而不是 `armhf`，请下载 `arm_garbage` 版本重试
 
+?> 如果您使用 Termux+PRoot 运行其他发行版，或使用某神秘"开源"手机 AI 开发框架，程序运行提示 `Segmentation fault` 的话，这是一个已知的 upx 与 PRoot 及部分 Linux 内核协作的 bug，请使用 `upx -d` 解压程序使用，或在下载地址后加 `_noupx` 下载已解压的版本
+
 ?> 如果您的架构为 `mips` 或 `mips64`，还需要使用下面的命令来确定处理器的字节序  
 其他架构请直接跳到 [安装 frpc](#install-frpc) 一节
 
