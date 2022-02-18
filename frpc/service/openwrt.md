@@ -1,12 +1,12 @@
 # OpenWRT 配置 开机启动 服务
 
-?> 查看此文档前请确保您已阅读 [Linux 使用](/frpc/usage/linux)，否则您可能会对一些操作感到疑惑
+?> 查看此文档前请确保您已阅读 [Linux 使用教程](/frpc/usage/linux)，否则您可能会对一些操作感到疑惑
 
 ## 安装并实现开机自启动
 
 ### 安装
 
-SakuraFrp 分发的 frpc 均已经过 UPX 压缩 (除了 mips64 架构)，如果您的路由器剩余存储空间不足以存放 frpc，~可能需要换一个路由器~ 请自行寻找解决方案
+SakuraFrp 分发的 frpc 均已经过 UPX 压缩 (除了 mips64 架构)，如果您的路由器剩余存储空间不足以存放 frpc，~可能需要换一个路由器~ 请自行寻找解决方案（例如插一个 U 盘）。
 
 首先您需要下载 SakuraFrp 版本的 frpc 至您的路由器，并将其放置在 /sbin 目录下
 
@@ -25,7 +25,7 @@ chmod a+wx /sbin/natfrpc # 修改可执行权限和可写权限(用于更新)
 
 需要注意的是 Openwrt 自 bb(Barrier Breaker) 后引入了该系统，如果您使用 aa 或更早的上古系统，您可能需要使用 sysV 格式写启动脚本
 
-您需要在 `/etc/init.d/natfrpc` 创建一个文件，内容如下：
+创建一个名为 `/etc/init.d/natfrpc` 的文件，内容如下（请注意修改下面的启动参数）：
 
 ```bash
 #!/bin/sh /etc/rc.common
@@ -34,6 +34,7 @@ USE_PROCD=1
 START=90
 
 start_service() {
+    ####### 第一条隧道 #######
     procd_open_instance SakuraFrp
     procd_set_param command /sbin/natfrpc
 
@@ -47,11 +48,11 @@ start_service() {
     procd_add_jail natfrp log
     procd_close_instance
 
-    ####### 如果您需要多隧道，请在此处添加 #######
-    procd_open_instance SakuraFrp2
+    ####### 第二条隧道 #######
+    procd_open_instance SakuraFrp2 # 注意这里的名字是 SakuraFrp2，后面有个数字编号
     procd_set_param command /sbin/natfrpc
 
-    procd_append_param command -f <您的隧道启动参数2> --update # 请修改此行为您的隧道启动参数，同时可添加远程控制隧道启停等配置
+    procd_append_param command -f <另外一个启动参数> --update # 请修改此行为您的隧道启动参数，同时可添加远程控制隧道启停等配置
  
     procd_set_param env LANG=zh_CN.UTF-8 # 用于显示中文日志，删除即显示英文日志
     procd_set_param limits nofile="unlimited"
