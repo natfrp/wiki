@@ -33,7 +33,7 @@
 
 ### 使用 frpc
 
-请查看 [frpc 用户手册-普通用户](/frpc/manual#普通用户) 一节学习 frpc 的基本使用方法
+请查看 [frpc 用户手册](/frpc/manual)  学习 frpc 的基本使用方法
 
 ### 操作示例
 
