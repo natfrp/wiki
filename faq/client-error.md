@@ -12,6 +12,8 @@
 | write message to control connection error: `XXX` | 控制连接写入失败, 可能是网络不稳定: `XXX` | 字面意思，看不懂我也没办法 |
 | login to server failed: `XXX` | 登录节点失败, 请检查网络连接: `XXX` | [点此查看详细说明](#login-to-server-failed) |
 | connect to local service [`XXX`] error: `YYY` | 连接映射目标 [`XXX`] 失败, 请检查本地服务是否打开: `YYY` | [点此查看详细说明](#connect-to-local-service-error) |
+| proxy conflict | *隧道冲突* | 该问题是由于隧道重复开启造成的，请查找 **所有设备** 上的 frpc 进程并关闭重复开启的隧道。如果此问题持续存在，请尝试重置访问密钥 |
+| multi-instance racing, this one failed | *多实例竞争* | 该问题是 frpc 重复开启且生成了相同的 RunID，在 frps 上争抢同一个隧道造成的。请在 **当前设备** 上查找所有存在冲突的 frpc 进程并关闭，或检查 supervisor 配置是否有误 |
 | port already used | *服务端端口被占用* | [点此查看详细说明](#port-already-used) |
 | router config conflict | *URL 路由冲突* | [点此查看详细说明](#router-config-conflict) |
 | Request failed: `XXX` `YYY` | *API 请求失败* | [点此查看详细说明](#api-request-failed) |
@@ -32,7 +34,7 @@
 | 上游防火墙拦截 7000 / 7001 端口 | √ | 换网络 / 找别家 |
 | 公司 / 学校网管不允许使用 frp | √ | 那就别用 |
 
-## 端口被占用 :id=port-already-used
+## 服务端端口被占用 :id=port-already-used
 
 | 原因 | 解决方案 |
 | --- | --- |
