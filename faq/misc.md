@@ -40,6 +40,8 @@
 
 除了名字与之前保持一致，目前的 SakuraFrp 与托管于 GitHub 的开源面板及其作者无任何关联。
 
+其给出的任何授权行为皆只代表其个人行为，与 SakuraFrp 网站及项目无关，即使您获得其授权仍不可以使用、重标、改编 SakuraFrp 的创意项目、前端页面、用户条款、帮助文档等内容。
+
 ## 我想通过 GitHub 上的 SakuraFrp 源码搭建穿透面板，能帮帮我吗
 
 我们不提供此类支持，请联系原作者 [@kasuganosoras](https://github.com/kasuganosoras ':target=_blank')。
