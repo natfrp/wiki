@@ -16,7 +16,6 @@
 - <span style="color: orange;">最佳实践</span>
   - [安全指南](/bestpractice/security)
   - [获取真实 IP](/bestpractice/realip)
-  - [全端口穿透](/bestpractice/vpn)
 
 - 启动器
   - [安装、使用教程](/launcher/usage)
