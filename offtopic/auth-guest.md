@@ -8,7 +8,7 @@
 
 ## 下载 SakuraFrp AuthPanel GuestTool
 
-请于 [GitHub Release](https://github.com/natfrp/auth-guest/releases/latest) 按照您的系统和架构下载程序。
+请于 [GitHub Release](https://github.com/natfrp/auth-guest/releases/latest) 或 [Nyatwork Static CDN](https://nyat-static.globalslb.net/natfrp/client/auth-guest-0.1/) 按照您的系统和架构下载程序。
 
 ## 制作访问认证工具
 
