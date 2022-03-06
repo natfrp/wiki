@@ -74,6 +74,8 @@ csrf=`curl https://<tunnel_url> -k | grep csrf | sed -En "s/.*value\=\"(.*)\">/\
 curl -k -X POST -d "csrf=$csrf" -d "ip=<your_ip>" -d "pw=<your_password>" https://<tunnel_url>
 ```
 
+或者 [使用 SakuraFrp AuthPanel GuestTool 制作专用的访问认证工具](/offtopic/authpass)
+
 ---
 
 ## HTTP(S) 安全提示
