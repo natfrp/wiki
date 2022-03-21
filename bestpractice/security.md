@@ -67,14 +67,16 @@
 1. 此时，使用 `远程桌面连接` 程序像以前一样正常连接远程桌面即可  
    ![](_images/auth-4.png)
 
-如果您需要以一些自动化的方式登录，下面是一些实现参考（以 shell 为例）：
+### 自动化认证
+
+如果您需要一个自动化的认证方案，可以参考下方实现：
 
 ```bash
 csrf=`curl https://<tunnel_url> -k | grep csrf | sed -En "s/.*value\=\"(.*)\">/\1/p"`
 curl -k -X POST -d "csrf=$csrf" -d "ip=<your_ip>" -d "pw=<your_password>" https://<tunnel_url>
 ```
 
-或者 [使用 SakuraFrp AuthPanel GuestTool 制作专用的访问认证工具](/offtopic/authpass)
+也可以 [使用 SakuraFrp AuthPanel GuestTool 制作专用的访问认证工具](/offtopic/auth-guest)
 
 ---
 
