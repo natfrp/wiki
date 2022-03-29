@@ -24,6 +24,22 @@
 
 ![](_images/auth-guest-run.jpg)
 
+## macOS arm64 注意事项
+
+苹果在 arm64 版本的 macOS 上强制所有二进制文件进行签名，否则不允许执行，因为 auth-guest 在本质上是在生成一个修改版的二进制文件，所以将不被允许运行。表现如下：
+
+```
+user@devName auth-guest_0.2_darwin_arm64 % ./authpass_generated.exe
+zsh: killed     ./authpass_generated.exe
+```
+
+解决方案为：
+
+* 执行 `codesign -s - authpass_generated.exe` 以本地签名生成的程序
+* 使用 `darwin_amd64` 版程序，此限制仅适用于 arm64 程序
+
+选一执行即可。
+
 ## 其他参数
 
 SakuraFrp AuthPanel GuestTool 提供的其他可自定义项，请通过 `-h` 参数查看。
