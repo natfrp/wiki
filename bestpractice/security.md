@@ -21,6 +21,17 @@
 
 对于 SSH、RDP 等易被尝试爆破攻击的服务来说，启用访问认证将有助于减少被爆破的经济损失
 
+### 如果看不懂文字版可以看视频教程
+
+*注: 视频教程又长又啰嗦，不推荐阅读理解能力没有问题的用户观看*
+
+<details>
+<summary><b style="font-size: 20px">点击展开</b></summary>
+
+[frpc 访问认证 视频](_videos/security.mp4 ':include :type=video')
+
+</details>
+
 ### 注意事项
 
 1. 若当前 IP 因为未认证而被 frpc 拦截，直接访问隧道可能会出现各种奇怪的错误  
