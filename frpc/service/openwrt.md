@@ -67,6 +67,7 @@ start_service() {
 然后执行：
 
 ```bash
+sed -i 's/\r//' /etc/init.d/natfrpc # 如果您在 Windows 创建了上述文件并上传，执行此命令去除 \r 换行符
 chmod +x /etc/init.d/natfrpc # 为其赋予可执行权限
 /etc/init.d/natfrpc start # 启动服务
 /etc/init.d/natfrpc enable # 如果需要，启用开机自启动
