@@ -81,13 +81,14 @@
 
 ---
 
-## QQ 交流群
+## 交流群
 
 ### 水群
 
-- 群号：1036050697 ( 已满员 ) , 766865191 ( 已满员 ) , 1011690081
+- QQ:群号 ：1036050697 ( 已满员 ) , 766865191 , 1011690081
 - 入群问题不是摆设 , 你不好好填是不会让你进的
-- 非官方群，群内没有网站管理员
+- [Telegram](https://t.me/natfrp_unofficial) [Matrix](https://matrix.to/#/!GFWDTqltQmjaSCDGij:atunemic.cn?via=atunemic.cn&via=t2bot.io)( 点击即可加入 )
+- 均为非官方群，群内没有网站管理员
 
 ### VIP 反馈群
 
