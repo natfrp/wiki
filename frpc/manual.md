@@ -112,7 +112,9 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 | auto_https | String | 空 | 配置自动给流量套上 TLS 的功能<br>请参阅 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible#frpc-auto-https) 获取更多信息 |
 | auth_pass | String | 空 | 配置访问认证功能的密码，留空则禁用访问认证<br>请参阅 [安全指南-frpc 访问认证](/bestpractice/security#frpc-访问认证) 获取更多信息 |
 | auth_time | String | 2h | 配置访问认证功能在没有勾选「记住」时授权过期时间<br>接受的后缀为 `h`/`m`/`s`，请从大到小排列，如 `1h3m10s` |
-| auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 frps 下发的 IP 授权信息 |
+| auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 frps 下发的 IP 授权信息<br>- `server`: 不启用密码，只能通过 SakuraFrp 面板进行授权 |
+
+?> 在强制访问认证的节点上未设置访问密码（即未启用访问认证）时，将强制打开访问认证，使用 `server` 模式，您将需要在用户面板进行授权
 
 #### HTTPS 隧道
 
