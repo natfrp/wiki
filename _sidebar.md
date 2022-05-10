@@ -53,6 +53,7 @@
 
 - 一些杂项教程
   - [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server)
+  - [Minecraft Geyser 互通服务端开服指南](/offtopic/mc-geyser)
   - [Source 引擎游戏开服指南](/offtopic/source)
   - [常见应用配置 Proxy Protocol](/offtopic/proxy-protocol)
   - [制作专用访问认证工具](/offtopic/auth-guest)
