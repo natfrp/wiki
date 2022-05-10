@@ -68,9 +68,18 @@ online-mode = true
 #   是: true
 #   否: false
 
-white-list = false
+allow-list = false
+# 是否启用白名单模式
+# 如果值为 true，则必须在 allowlist.json 文件中列出所有连接的玩家。
+# 仅对 BDS 1.18.10 及更高版本有效，更低版本请使用下方的 white-list 配置项
+# 允许值:
+#   是: true
+#   否: false
+
+# white-list = false
 # 是否启用白名单模式
 # 如果值为 true，则必须在 whitelist.json 文件中列出所有连接的玩家。
+# 仅对 BDS 1.18.2 及更低版本有效，使用时应删除上方的 allow-list 配置项和 white-list 前的 #。
 # 允许值:
 #   是: true
 #   否: false
@@ -183,7 +192,7 @@ trusted-key =
 | ---- | :----------:  | :-----: |
 | UDP  | 19132         | 任意    |
 
-!> 使用frpc时MOTD信息无法正常显示
+!> 使用 frpc 时 MOTD 信息无法正常显示
 
 ### 注意事项
 
@@ -256,13 +265,23 @@ sudo yum install java -y
 
 可以直接在服务端控制台用如下指令编辑白名单：
 
+在 1.18.10 及更高版本，使用：
+
+| 指令                              | 作用                         |
+| --------------------------------- | ---------------------------- |
+| `allowlist add "Example Name"`    | 根据昵称添加白名单           |
+| `allowlist remove "Example Name"` | 根据昵称移除白名单           |
+| `allowlist list`                  | 输出 `allowlist.json` 的内容 |
+
+在 1.18.2 及更低版本，使用：
+
 | 指令                              | 作用                         |
 | --------------------------------- | ---------------------------- |
 | `whitelist add "Example Name"`    | 根据昵称添加白名单           |
 | `whitelist remove "Example Name"` | 根据昵称移除白名单           |
 | `whitelist list`                  | 输出 `whitelist.json` 的内容 |
 
-您可以直接在 `whitelist.json` 里编辑白名单：
+您可以直接在 `allowlist.json` 或 `whitelist.json` 里编辑白名单：
 
 ```json
 [
@@ -284,22 +303,29 @@ sudo yum install java -y
 
 如果想在服务器正常运行的情况下修改配置文件的内容，可以通过以下指令管理规则：
 
-| 指令                                 | 作用     |
-| ------------------------------------ | -------- |
-| `changesetting <setting> <value>`    | 修改配置 |
+| 指令                               | 作用             |
+| ---------------------------------- | ---------------- |
+| `changesetting allow-cheats true`  | 允许作弊         |
+| `changesetting allow-cheats false` | 禁止作弊         |
+| `changesetting difficulty peaceful`| 游戏难度设为和平 |
+| `changesetting difficulty easy`    | 游戏难度设为简单 |
+| `changesetting difficulty normal`  | 游戏难度设为普通 |
+| `changesetting difficulty hard`    | 游戏难度设为困难 |
+
+`peaceful` `easy` `normal` `hard` 分别可用 `0` `1` `2` `3` 代替。
 
 ### 白名单热更改
 
-| 指令                     | 作用     |
-| ------------------------ | ------- |
-| `whitelist on`           | 开启白名单 |
-| `whitelist off`          | 关闭白名单 |
-| `whitelist list`         | 打印 `whitelist.json` 内容 |
-| `whitelist reload`       | 将 `whitelist.json` 内容重新加载到内存 |
+| 指令                     | 作用                                   |
+| ------------------------ | -------------------------------------- |
+| `allowlist on`           | 开启白名单                             |
+| `allowlist off`          | 关闭白名单                             |
+| `allowlist list`         | 打印 `allowlist.json` 内容             |
+| `allowlist reload`       | 将 `allowlist.json` 内容重新加载到内存 |
 
 ### 管理 OP
 
-如果 OP 想在游戏内使用指令，则必须开启允许作弊的选项 (`allow-cheat = true`)
+如果 OP 想在游戏内使用指令，则必须开启允许作弊的选项 (`allow-cheats = true`)
 
 可以通过以下指令编辑权限：
 
@@ -345,10 +371,11 @@ sudo yum install java -y
 1. 找到 `world_resource_pack_history.json` 和 `world_resource_pack.json` 并将其拷贝到服务端的 `worlds/Bedrock level/` 目录下即可。
 1. 如果要所有人强制使用这些材质包，则需要开启强制使用材质的选项 (`texturepack-required = true`)
 
-### BDS系基岩版服务端/拓展工具
+### BDS 系基岩版服务端/拓展工具
 
 !> 其中部分是通过反编译以达成修改的目的, 并不符合 EULA, 请慎用。
  
+- [LiteLoader](https://github.com/LiteLDev/LiteLoaderBDS) 第三方 BDS 插件加器，支持 C++、GoLang、JavaScript、Lua
 - [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方 BDS 插件加载器，已停更
 - [BedrockX](https://github.com/Sysca11/BedrockX-bin) 第三方 BDS 插件加载器，已停更
 - [ElementZero](https://github.com/Element-0/ElementZero) 第三方服务端，支持实验玩法和教育版
@@ -356,7 +383,7 @@ sudo yum install java -y
 - [BDSJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSRunner-Release) 符合工业标准规范的 BDS 跨版本插件开发解决方案
 - [NetJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSR2) .NET 版 JS 加载平台，依赖于 BDSNetRunner
 - [PFJSR](https://github.com/littlegao233/PFJSR) NetJSRunner 衍生版
-- [BDSPyRunner](https://github.com/twoone-3/BDSpyrunne) python 脚本插件运行平台
+- [BDSPyRunner](https://github.com/twoone-3/BDSpyrunner) python 脚本插件运行平台
 - [IronPythonRunner](https://github.com/Sbaoor-fly/CSR-IronPythonRunner) IronPython 拓展平台，依赖于 BDSNetRunner.
 - [IronLuaRunner](https://github.com/Sbaoor-fly/CSR-IronLuaRunner) IronPython 拓展平台，依赖于BDSNetRunner
 - [IronLuaLoader](https://github.com/Sbaoor-fly/CSR-IronLuaLoader) IronPython 拓展平台，依赖于BDSNetRunner
