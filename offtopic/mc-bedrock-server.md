@@ -71,7 +71,8 @@ online-mode = true
 allow-list = false
 # 是否启用白名单模式
 # 如果值为 true，则必须在 allowlist.json 文件中列出所有连接的玩家。
-# 仅对 BDS 1.18.10 及更高版本有效，更低版本请使用下方的 white-list 配置项
+# 仅对 BDS 1.18.10 及更高版本有效，更低版本请使用下方的 white-list 配置项。
+# 当此项不存在时服务端将使用 white-list 项的设置。
 # 允许值:
 #   是: true
 #   否: false
@@ -79,7 +80,7 @@ allow-list = false
 # white-list = false
 # 是否启用白名单模式
 # 如果值为 true，则必须在 whitelist.json 文件中列出所有连接的玩家。
-# 仅对 BDS 1.18.2 及更低版本有效，使用时应删除上方的 allow-list 配置项和 white-list 前的 #。
+# 用于 BDS 1.18.10 以下版本，使用时应删除上方的 allow-list 配置项和 white-list 前的 #。
 # 允许值:
 #   是: true
 #   否: false
@@ -192,7 +193,7 @@ trusted-key =
 | ---- | :----------:  | :-----: |
 | UDP  | 19132         | 任意    |
 
-!> 使用 frpc 时 MOTD 信息无法正常显示
+!> 使用 frpc 时，除非配置本地端口与远程端口一致，否则 MOTD 信息将无法正常显示
 
 ### 注意事项
 
