@@ -1,15 +1,14 @@
 # Minecraft Geyser 互通服开服指南
 
-> **互通** 即使 Java 版 与 基岩版 间的玩家和服务器可建立连接，而不只局限于 Java 版玩家加入Java 版服务器、基岩版服务端加入基岩版服务器。
+> **互通** 即使 Java 版 与 基岩版 间的玩家和服务器可建立连接，而不只局限于 Java 版玩家加入 Java 版服务器、基岩版服务端加入基岩版服务器。
 
 Minecraft 的国际版存在多种互通方案。
 1. Geyser:
    利用一个 Geyser 服务端作为代理
-   Java版玩家正常连接原版服务端
-   基岩版玩家则连接该 Geyser 代理服务端，由它将玩家发送的数据转为 Java 版，并发送至 Java服务端
+   Java 版玩家正常连接原版服务端
+   基岩版玩家则连接该 Geyser 代理服务端，由它将玩家发送的数据转为 Java 版，并发送至 Java 服务端
 1. Floodgate: 
-   这是 Geyser 的附属插件
-   不同于 Geyser 本身，它在皮肤、数据、正版认证等方面有更多支持，且可以使用 **Skript 脚本语言** 制作插件。
+   这是用于扩展服务端对 Geyser 进行管理的插件
 
 因此，本教程所适用的环境是 **使基岩版版玩家加入 Java 版服务端**，而 **不能** 用于使 Java 版玩家加入基岩版服务端。
 若它不适用于您的使用环境，请移步 [Java 版局域网联机](/app/mc#java) 页面或 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server) 页面。
@@ -25,9 +24,9 @@ Minecraft 的国际版存在多种互通方案。
    [Spigot](https://www.spigotmc.org/ ':target=_blank') | [Spigot](https://papermc.io/ ':target=_blank') | [Fabric](https://fabricmc.net/ ':target=_blank') | [CatServer](https://catmc.org/ ':target=_blank') | [MohistMC](https://mohistmc.com/ ':target=_blank')
 1. 最新版本的 [Geyser 服务端](https://ci.opencollab.dev//job/GeyserMC/job/Geyser/job/master/ ':target=_blank')
 1. JDK 17 运行环境 [下载](https://www.oracle.com/java/technologies/downloads/#jdk17-windows ':target=_blank')
-   | 较低版本的 Java 版服务端可能需要 JDK16 等历史版本，请参阅相应的服务端文档。
-1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议) 
-1. 电脑： CPU 核心数至少 2 核，RAM 至少 4GB。
+   | 较低版本的 Java 版服务端可能需要 JDK16 等历史版本，请参阅相应的服务端文档
+1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议)
+1. 电脑： CPU 核心数至少 2 核，RAM 至少 4GB
 
 ### 配置运行环境
 
@@ -391,7 +390,7 @@ max-world-size = 29999984
 [HH:MM:SS INFO] 完成 (X.XXXs)! 执行 /geyser help 来获取帮助信息!
 ```
 
-在看到上述信息后，执行 `^c` 以关闭 Geyser 服务端。
+在看到上述信息后，执行 `Ctrl+C` 以关闭 Geyser 服务端。
 
 
 #### 编辑配置文件
@@ -770,7 +769,7 @@ Java 版玩家使用 UDP 隧道进入服务器。
 
 1. `geyser shutdown`
 1. `geyser stop`
-1. `^C`
+1. `Ctrl+C`
 
 !> **请不要通过直接关闭 Geyser 服务端窗口的方式关闭 Geyser 服务端**，这将导致端口仍被占用。
 
