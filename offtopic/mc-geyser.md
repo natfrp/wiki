@@ -1,6 +1,6 @@
 # Minecraft Geyser 互通服开服指南
 
-> **互通** 即使 Java 版 与 基岩版 间的玩家和服务器可建立连接，而不只局限于 Java 版玩家加入 Java 版服务器、基岩版服务端加入基岩版服务器。
+> **互通** 即使 Java 版 与 基岩版 间的玩家和服务器可建立连接，而不只局限于 Java 版玩家加入 Java 版服务器、基岩版玩家加入基岩版服务器。
 
 Minecraft 的国际版存在多种互通方案。
 1. Geyser:
@@ -10,7 +10,7 @@ Minecraft 的国际版存在多种互通方案。
 1. Floodgate: 
    这是用于扩展服务端对 Geyser 进行管理的插件
 
-因此，本教程所适用的环境是 **使基岩版版玩家加入 Java 版服务端**，而 **不能** 用于使 Java 版玩家加入基岩版服务端。
+因此，本教程所适用的环境是 **使基岩版玩家加入 Java 版服务端**，而 **不能** 用于使 Java 版玩家加入基岩版服务端。
 若它不适用于您的使用环境，请移步 [Java 版局域网联机](/app/mc#java) 页面或 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server) 页面。
 
 
@@ -19,7 +19,7 @@ Minecraft 的国际版存在多种互通方案。
 ### 软硬件
 
 1. SakuraFrp Launcher 或 frpc
-1. 最新版本的 [Java 版服务端](https://www.minecraft.net/en-us/download/server ':target=_blank')
+1. 最新版本的 [Java 版服务端](https://www.minecraft.net/zh-hans/download/server ':target=_blank')
    | 第三方服务端：
    [Spigot](https://www.spigotmc.org/ ':target=_blank') | [Spigot](https://papermc.io/ ':target=_blank') | [Fabric](https://fabricmc.net/ ':target=_blank') | [CatServer](https://catmc.org/ ':target=_blank') | [MohistMC](https://mohistmc.com/ ':target=_blank')
 1. 最新版本的 [Geyser 服务端](https://ci.opencollab.dev//job/GeyserMC/job/Geyser/job/master/ ':target=_blank')
@@ -32,11 +32,11 @@ Minecraft 的国际版存在多种互通方案。
 
 下载完成各个资源后，您会得到这些文件：
 
-1. server.jar
+1. `server.jar`
    Java 版服务端
-1. geyser.jar
+1. `geyser.jar`
    Geyser 服务端
-1. jdk-17_windows-x64_bin.exe
+1. `jdk-17_windows-x64_bin.exe`
    JDK 运行环境
 
 #### 安装 JDK环境
@@ -46,6 +46,7 @@ Minecraft 的国际版存在多种互通方案。
 #### 编辑启动脚本
 
 您应将上述文件列表中的 Java 版服务端及 Geyser 服务端放置到不同的文件夹中。
+
 这里使用 `mcje` 文件夹代表放置 `server.jar` 的文件夹；使用 `geyser` 代表放置 `geyser.jar` 的文件夹。
 
 接下来，您应在 `mcje` 和 `geyser` 目录中分别新建一个 `start.txt` 文件，并使用文本编辑工具打开它。
@@ -729,7 +730,7 @@ Java 版玩家使用 UDP 隧道进入服务器。
 | :---------------: | ---- | :----------:  | :-----: | :-------------------------: |
 | 未屏蔽 UDP 的节点 | UDP  | 19132         | 任意    | Geyser 服务端运行的 IP 地址 |
 
-!> 使用frpc时MOTD信息无法正常显示
+!> 使用 frpc 时 MOTD 信息无法正常显示
 
 ## 运行服务端
 
