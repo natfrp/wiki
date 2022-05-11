@@ -1,6 +1,6 @@
 # Minecraft 基岩版开服指南
 
-> 此教程仅仅是一个简单的入门教程，遇到任何问题，请自行去 [MCBBS](https://www.mcbbs.net/ ':target=_blank') 中寻找答案或者提问。  
+> 此教程仅仅是一个简单的入门教程，遇到任何问题，请自行去 [MCBBS](https://www.mcbbs.net/ ':target=_blank') 或 [MineBBS](https://www.minebbs.com/ ':target=_blank') 中寻找答案或者提问。  
 > 此文不建议毫无经验的小白用户阅读。  
 > 此指南针对的是 **基岩版** 用户，如果您是 **Java 版** 用户，请查看 [Java 版局域网联机](/app/mc#java) 页面。
 
@@ -8,7 +8,7 @@
 
 1. Bedrock Dedicated Server （简称 BDS）
    由微软官方开发，与所有平台的 Minecraft 基岩版有几乎相同的核心，目前可以全平台联机，适合原版生存  
-   [历史版本下载(非官方)](https://mcbds.reh.tw/) | [最新版本下载(官方)](https://www.minecraft.net/zh-cn/download/server/bedrock/)
+   [历史版本下载(非官方)](https://meteormc.cn/threads/49/) | [最新版本下载(官方)](https://www.minecraft.net/zh-hans/download/server/bedrock/)
 1. Nukkit  
    由第三方独立开发的开源核心，生态优于 BDS 但由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)
 
@@ -17,7 +17,7 @@
 ### 开服之前
 
 1. 准备一个可用的 Sakura Launcher 或者 frpc
-1. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/zh-cn/download/server/bedrock/ ':target=_blank')
+1. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/zh-hans/download/server/bedrock/ ':target=_blank')
 1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议) 
 1. 准备一台 CPU 核心数不低于 2 核，并配有不低于 1GB RAM 的电脑
 
@@ -210,7 +210,7 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 ### 开服之前
 
 1. 一个可用的 frpc
-2. 最新版本的 [BDS-Linux 核心](https://www.minecraft.net/zh-cn/download/server/bedrock/)
+2. 最新版本的 [BDS-Linux 核心](https://www.minecraft.net/zh-hans/download/server/bedrock/)
 3. 一台装载着 **Ubuntu 18.04** 或更高版本的操作系统的电脑
 4. CPU 核心数大于等于 2 核，1GB RAM
 

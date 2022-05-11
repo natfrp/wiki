@@ -49,5 +49,6 @@
   - _Source 引擎游戏开服指南 帮助文档_
 - [红羽早苗](https://fro.moe ':target=_blank')
   - _Minecraft Geyser 互通服务端开服指南 帮助文档_
+  - _Minecraft 基岩版开服指南 中的部分帮助文档_
 - [我们的其他社区贡献者](https://github.com/natfrp/wiki/graphs/contributors)
 - 或许你是下一个？[PR on GitHub](https://github.com/natfrp/wiki)
