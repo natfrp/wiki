@@ -39,7 +39,7 @@ Minecraft 的国际版存在多种互通方案。
 1. `jdk-17_windows-x64_bin.exe`
    JDK 运行环境
 
-#### 安装 JDK环境
+#### 安装 JDK 环境
 
 直接双击 `jdk-17_windows-x64_bin.exe` 并一路 Next 以安装。
 
