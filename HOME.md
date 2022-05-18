@@ -89,6 +89,11 @@
 - 入群问题不是摆设, 你不好好填是不会让你进的
 - 非官方群, 群内没有网站管理员
 
+### 社区论坛
+
+- [点击访问 SakuraFrp BBS](https://www.natfrpbbs.com)
+- **非官方论坛**，由社区人员管理
+
 ### 其他 IM 水群
 
 - [Telegram](https://t.me/natfrp_unofficial) 
