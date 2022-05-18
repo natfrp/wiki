@@ -91,7 +91,7 @@
 
 ### 社区论坛
 
-- [点击访问 SakuraFrp BBS](https://nat.frp.cx)
+- [点击访问 SakuraFrp BBS](https://www.natfrpbbs.com)
 - **非官方论坛**，由社区人员管理
 
 ### 其他 IM 水群
