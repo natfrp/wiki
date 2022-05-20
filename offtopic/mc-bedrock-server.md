@@ -372,12 +372,12 @@ sudo yum install java -y
 1. 用客户端随便创建一个世界，创建时勾选想用的材质包、行为包。
 2. 进入后退出存档，在数据文件夹，找到这个世界的文件夹。
 3. 将以下文件与文件夹拷贝到服务器所用存档的根目录，即 `/worlds/Bedrock level/` 下
-* `behavior_packs/`
-* `resource_packs/`
-* `world_behavior_pack_history.json`
-* `world_behavior_packs.json`
-* `world_resource_pack_history.json`
-* `world_resource_packs.json`
+   * `behavior_packs/`
+   * `resource_packs/`
+   * `world_behavior_pack_history.json`
+   * `world_behavior_packs.json`
+   * `world_resource_pack_history.json`
+   * `world_resource_packs.json`
 
 4. 所有行为包将会强制玩家使用，如果要所有人强制使用这些材质包，则需要开启强制使用材质的选项 (`texturepack-required = true`)
 5. 玩家进入服务器时，会自动对比服务器所用材质包的 UUID列表 与本地拥有的材质包的 UUID列表 ，如果不匹配，将会通过游戏端口下载对应缺失包。所以为避免影响服务器性能与节省流量，建议将所用材质包与行为包提前下发给玩家。 
