@@ -222,7 +222,7 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 
 !> Linux下无法同时运行多个服务端
 
-RHEL 8 (CentOS 8) 可能缺少 `libnsl` 包，此时服务端将无法正常启动
+RHEL 8 可能缺少 `libnsl` 包，此时服务端将无法正常启动
 
 请使用以下命令进行安装：
 
@@ -253,7 +253,7 @@ sudo apt update
 sudo apt install openjdk-8-jre-headless -y
 ```
 
-**CentOS / RHEL**
+**Fedora / RHEL**
 
 ```bash
 sudo yum update
@@ -268,19 +268,21 @@ sudo yum install java -y
 
 在 1.18.10 及更高版本，使用：
 
-| 指令                              | 作用                         |
-| --------------------------------- | ---------------------------- |
-| `allowlist add "Example Name"`    | 根据昵称添加白名单           |
-| `allowlist remove "Example Name"` | 根据昵称移除白名单           |
-| `allowlist list`                  | 输出 `allowlist.json` 的内容 |
+
+| 指令                              | 作用                         |  说明                         |
+| --------------------------------- | ---------------------------- | --------------------------  |
+| `allowlist add "Example Name"`    | 根据昵称添加白名单           | 无法使用实体选择器的 '@a' 选项  |
+| `allowlist remove "Example Name"` | 根据昵称移除白名单           | 无法使用实体选择器的 '@a' 选项  |
+| `allowlist list`                  | 输出 `allowlist.json` 的内容 |                              |
 
 在 1.18.2 及更低版本，使用：
 
-| 指令                              | 作用                         |
-| --------------------------------- | ---------------------------- |
-| `whitelist add "Example Name"`    | 根据昵称添加白名单           |
-| `whitelist remove "Example Name"` | 根据昵称移除白名单           |
-| `whitelist list`                  | 输出 `whitelist.json` 的内容 |
+| 指令                              | 作用                         |  说明                        |
+| --------------------------------- | ---------------------------- | --------------------------  |
+| `whitelist add "Example Name"`    | 根据昵称添加白名单           | 无法使用实体选择器的 '@a' 选项  |
+| `whitelist remove "Example Name"` | 根据昵称移除白名单           | 无法使用实体选择器的 '@a' 选项  |
+| `whitelist list`                  | 输出 `whitelist.json` 的内容 |                              |
+
 
 您可以直接在 `allowlist.json` 或 `whitelist.json` 里编辑白名单：
 
@@ -330,24 +332,24 @@ sudo yum install java -y
 
 可以通过以下指令编辑权限：
 
-| 指令                     | 作用     |
-| ------------------------ | ------- |
-| `op "example players"`   | 添加权限 |
-| `deop "example players"` | 剥夺权限 |
-| `permission list`        | 打印 `permission.json` 内容 |
-| `permission reload`      | 将 `permission.json` 内容重新加载到内存
+| 指令                     | 作用     |  说明                        |
+| ------------------------ | ------- | --------------------------  |
+| `op "example players"`   | 添加权限 | 无法使用实体选择器的 '@a' 选项  |
+| `deop "example players"` | 剥夺权限 | 无法使用实体选择器的 '@a' 选项  |
+| `permission list`        | 打印 `permission.json` 内容 |            |
+| `permission reload`      | 将 `permission.json` 内容重新加载到内存  |
 
 ### 踢出用户
 
-| 指令                     | 作用     |
-| ------------------------ | ------- |
-| `kick "example players"` | 踢出用户 |
+| 指令                     | 作用     |  说明                        |
+| ------------------------ | ------- | --------------------------  |
+| `kick "example players"` | 踢出用户 | 无法使用实体选择器的 '@a' 选项  |
 
 ### 关闭服务器
 
-| 指令   | 作用         |
-| ------ | ----------- |
-| `stop` | 软关闭服务器 |
+| 指令   | 作用         |  说明                        |
+| ------ | ----------- | --------------------------  |
+| `stop` | 软关闭服务器 |  如果服务器存档较大，可能需要几分钟 |
 
 ### 备份服务器
 
@@ -363,14 +365,22 @@ sudo yum install java -y
 
 其中有多个小文件，名称上带有 `experience` 或者 `developing` 的是实验性行为包，如果没有开启实验性玩法的话是不用修改这个文件夹里的内容的。
 
-### 材质包
+### 材质包与行为包装载
 
-!> 基岩版的材质包的对应关系是具体到某个世界的。将材质包放入 `resource_packs` 文件夹后需要再进行一些配置。
+!> 基岩版的材质包与行为包的对应关系是具体到某个世界的。如果想让玩家使用材质包与行为包，需要以下工序。
 
-1. 用客户端随便创建一个世界，创建时勾选想用的材质包。
-1. 进入后退出存档，在数据文件夹，找到这个世界的文件夹。
-1. 找到 `world_resource_pack_history.json` 和 `world_resource_pack.json` 并将其拷贝到服务端的 `worlds/Bedrock level/` 目录下即可。
-1. 如果要所有人强制使用这些材质包，则需要开启强制使用材质的选项 (`texturepack-required = true`)
+1. 用客户端随便创建一个世界，创建时勾选想用的材质包、行为包。
+2. 进入后退出存档，在数据文件夹，找到这个世界的文件夹。
+3. 将以下文件与文件夹拷贝到服务器所用存档的根目录，即 `/worlds/Bedrock level/` 下
+   * `behavior_packs/`
+   * `resource_packs/`
+   * `world_behavior_pack_history.json`
+   * `world_behavior_packs.json`
+   * `world_resource_pack_history.json`
+   * `world_resource_packs.json`
+
+4. 所有行为包将会强制玩家使用，如果要所有人强制使用这些材质包，则需要开启强制使用材质的选项 (`texturepack-required = true`)
+5. 玩家进入服务器时，会自动对比服务器所用材质包的 UUID列表 与本地拥有的材质包的 UUID列表 ，如果不匹配，将会通过游戏端口下载对应缺失包。所以为避免影响服务器性能与节省流量，建议将所用材质包与行为包提前下发给玩家。 
 
 ### BDS 系基岩版服务端/拓展工具
 
