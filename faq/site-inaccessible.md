@@ -35,6 +35,8 @@
 
    ?> 对于使用 Systemd 方式启动的 frpc，您可能需要配置 `WorkingDirectory` 项来指定一个工作目录
 
+   ?> 对于 v2.0.5.0 及以上版本的启动器，工作目录在 `%ProgramData%\SakuraFrpService\FrpcWorkingDirectory`，通常为 `C:\ProgramData\SakuraFrpService\FrpcWorkingDirectory`
+
 如果您需要进行高级配置，请参考下面列出的 `auto_https` 的取值：
 
 - 留空 **[默认值]**: 禁用自动 HTTPS 功能
