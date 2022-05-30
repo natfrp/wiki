@@ -3,9 +3,9 @@
 !> SakuraFrp 不提供 Minecraft 服务器相关帮助，文档主要由热心网友提供  
 如果您有不懂的问题建议到 [MCBBS 你问我答板块](https://www.mcbbs.net/forum-multiqanda-1.html ':target=_blank') 提问
 
-## 基岩版联机
+## 基岩版或 Geyser 联机和开服 :id=bedrock
 
-请参阅 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server) 开启服务器
+请参阅 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server) | [Geyser 互通开服指南](/offtopic/mc-geyser) 以开启服务器
 
 ## Java 版局域网联机 :id=java
 
@@ -261,3 +261,7 @@ motd=
 
 + 假设您的域名为: natfrp.com，您的 **名称** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
 + 假设您的域名为: natfrp.com，您的 **名称** 设置为 `@`，那么使用 `natfrp.com` 即可连接到您的服务器
+
+## 无法进服解决方法 :id=java-inaccessible
+
+![](./_images/mc-javaia-1.png)
