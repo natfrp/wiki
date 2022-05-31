@@ -109,7 +109,8 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 | 选项 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
 | concat_packet | Int | -1 | 配置合并封包功能的最小字节数，有助于减少小包并降低网卡 PPS<br>设置为 `-1` 禁用合并封包功能 |
-| auto_https | String | 空 | 配置自动给流量套上 TLS 的功能<br>请参阅 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible#frpc-auto-https) 获取更多信息 |
+| auto_https | String | 空 | 配置自动 HTTPS 功能<br>请参阅 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible#frpc-auto-https) 获取更多信息 |
+| auto_https_mode | String | 空 | 配置自动 HTTPS 的工作模式<br>- 留空 **[默认值]**: 自动探测是否为 HTTP 服务并选择恰当的工作模式<br>- `http`: 使用 HTTP 服务器进行反代并在发给本地服务的请求中追加 `X-Forwarded-For` 请求头<br>- `passthrough`: 直通模式，单纯的在 TCP 流外面套上一层 TLS，不对数据包进行其他修改操作 |
 | auth_pass | String | 空 | 配置访问认证功能的密码，留空则禁用访问认证<br>请参阅 [安全指南-frpc 访问认证](/bestpractice/security#frpc-访问认证) 获取更多信息 |
 | auth_time | String | 2h | 配置访问认证功能在没有勾选「记住」时授权过期时间<br>接受的后缀为 `h`/`m`/`s`，请从大到小排列，如 `1h3m10s` |
 | auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 frps 下发的 IP 授权信息<br>- `server`: 不启用密码，只能通过 SakuraFrp 面板进行授权 |
@@ -122,6 +123,7 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 | --- | --- | --- | --- |
 | force_https | Int | 0 | 配置 frps 自动重定向 HTTP 请求到 HTTPS 的功能，有助于减少隧道占用。<br>- `0`: 禁用自动重定向功能<br>- 其他数字: 启用重定向功能并在重定向时返回该数字作为状态码，推荐使用 `301` 或 `302`<br>_* 设置为 301 时，返回的 Location 头只包含 Host 和 Path，Query 及后面的部分会被丢弃_ |
 | auto_https | String | 空 | 与 [TCP 隧道](#tcp_proxy) 中同名选项相同 |
+| auto_https_mode | String | 空 | 与 [TCP 隧道](#tcp_proxy) 中同名选项相同 |
 
 #### WOL 隧道 :id=wol_proxy
 
