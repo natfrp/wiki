@@ -50,6 +50,7 @@
   - [我的世界(Minecraft) 穿透](/app/mc)
     - [Java 版局域网联机](/app/mc#java)
     - [设置 SRV 解析](/app/mc#srv)
+    - [无法进服解决方法](/app/mc#java-inaccessible)
   - [FTP(S) 穿透](/app/ftp)
 
 - 一些杂项教程
