@@ -33,7 +33,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 请根据您的游戏版本展开下面的选项查看，下面提到的 Mod 都必须在 **联网** 条件下安装:
 
 <details>
-<summary><b style="font-size: 20px">游戏版本: 1.12.X ~ 1.17.1</b></summary>
+<summary><b style="font-size: 20px">游戏版本: 1.12.X ~ 1.18.2</b></summary>
 
 !> 1.16.2 版由于 Forge 的原因可能会 **引发崩溃**，端口 **不能冲突**，否则也会崩溃
 
@@ -42,7 +42,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
   1. 固定端口
   2. 开关正版验证
 + 下载链接: [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files/all)  
-   _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 **可能** 会较慢，请耐心等待或自行寻找国内镜像_
+_这两个网站的服务器都位于 **国外**，所以访问/下载的速度 **可能** 会较慢，请耐心等待或自行寻找国内镜像_
 
 #### 使用方法
 
@@ -75,8 +75,8 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
   9. 是否生成村民
   10. 最大建筑高度
   11. Motd设置
-+ 下载链接: [Curseforge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)
-   _该网站的服务器位于 **国外**，所以访问/下载的速度 **可能** 会较慢，请耐心等待或自行寻找国内镜像_
++ 下载链接: [Curseforge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)  
+_该网站的服务器位于 **国外**，所以访问/下载的速度 **可能** 会较慢，请耐心等待或自行寻找国内镜像_
 
 #### 使用方法
 
