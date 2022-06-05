@@ -104,7 +104,7 @@ curl -k -X POST -d "csrf=$csrf" -d "ip=<your_ip>" -d "pw=<your_password>" https:
 
 为了保护您的页面不被直接窥视，通过 Basic Auth 添加一个鉴权会是一个低成本的解决方案
 
-Basic Auth 的配置方式大同小异，下面是常见web server的相关文档链接：
+Basic Auth 的配置方式大同小异，下面是常见 Web 服务器的相关文档链接：
  - [Nginx](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/)
  - [Apache](https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-apache-on-ubuntu-16-04)
  - [Caddy](https://caddyserver.com/docs/caddyfile/directives/basicauth)

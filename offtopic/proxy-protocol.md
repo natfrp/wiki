@@ -102,6 +102,42 @@ listeners:
 
 如果您想同时允许 frp 和直接连接，请使用 [这个插件](https://github.com/andylizi/bc-haproxy-detector)，配置指南见 [MCBBS 帖子](https://www.mcbbs.net/thread-1111852-1-1.html)。
 
+### Paper
+
+> Paper 1.18.2 服务端支持使用 v2 版本的 Proxy Protocol。
+
+请先为 隧道配置 增加 `proxy_protocol_version = v2` 自定义设置。
+
+#### 修改服务端配置文件
+
+首先，需要确认服务端自带的 **防止代理连接** 功能已经关闭。
+
+请打开 `server.properties` 文件，并按下方示例作修改。
+
+```properties
+sync-chunk-writes = true
+op-permission-level = 4
+
+# 修改此行
+prevent-proxy-connections = false
+# false 是默认值。如果您将其调为了 true，那么需要重新修改为 false。
+```
+
+> 关于 `server.properties` 每个参数的详细用法，请看 [Geyser 开服指南中的 编辑 Java 版服务端配置文件](/offtopic/mc-geyser#编辑配置文件)
+
+#### 修改 Paper 配置文件
+
+请打开 `paper.yml` 文件，并对此部分作出如下修改:
+
+```yml
+settings:
+  max-joins-per-tick: 3
+  bungee-online-mode: true
+  
+  # 修改此行
+  proxy-protocol: true
+```
+
 ### 其他服务端
 
 STFW。
