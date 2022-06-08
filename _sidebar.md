@@ -49,6 +49,7 @@
   - [远程开机(WOL) 配置](/app/wol)
   - [我的世界(Minecraft) 穿透](/app/mc)
   - [FTP(S) 穿透](/app/ftp)
+  - [邮件服务穿透](/app/mail)
 
 - 一些杂项教程
   - [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server)
