@@ -176,8 +176,10 @@ server-authoritative-block-breaking = false
 ```ini
 level-type = DEFAULT
 # 世界的类型
-# 可用值: DEFAULT，LEGACY，FLAT (无限，有限，超平坦) 
-# LEGCY (有限) 选项仅在 1.18 前可用
+# 允许值: 
+#   DEFAULT 无限
+#   LEGACY 有限 (仅在 1.18 前可用)
+#   FLAT 超平坦
 
 world-type = 
 # 是否开启教育版，实验性玩法
@@ -186,6 +188,14 @@ world-type =
 trusted-key =
 # 服务端所信任的公钥，拥有该公钥的玩家不进行Xbox身份验证，但其昵称必须在白名单内
 # 可出现多行
+
+emit-server-telemetry = true
+# 是否启用服务器遥测功能
+# 启用后，将把服务端部分数据发送至 Mojang，以帮助其改善游戏。效果与各平台常见的 "用户体验改进计划" 相似。
+# 仅在 1.19.1.01 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
 ```
 #### 隧道配置
 
