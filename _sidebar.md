@@ -56,7 +56,7 @@
   - [Source 引擎游戏开服指南](/offtopic/source)
   - [常见应用配置 Proxy Protocol](/offtopic/proxy-protocol)
   - [制作专用访问认证工具](/offtopic/auth-guest)
-  - [邮件服务穿透](/app/mail)
+  - [hMailServer 邮件服务穿透](/app/mail)
 
 - 其他
   - [文档格式约定](/style)
