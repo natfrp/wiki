@@ -43,7 +43,7 @@
 
 此时将显示默认的主机名 `localhost`。选中它，并点击右下角的 `Connect` 以连接。
 
-> 连接时需要输入密码。[我的密码是什么？](#install-hmailserver)
+> 连接时需要输入密码。[我的密码是什么？](#hmailserver-install)
 
 连接后，将进入如下图所示的主页。
 
