@@ -36,6 +36,7 @@
     - [使用 Docker 运行](/frpc/usage/docker)
   - [用户手册](/frpc/manual)
   - [远程管理](/frpc/remote)
+  - [配置 SSL 证书](/frpc/ssl)
   - [常见问题](/faq/frpc)
 
 - 常见应用配置指南
