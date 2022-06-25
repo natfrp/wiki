@@ -41,7 +41,7 @@
 
 1. 首先找到您之前下载的 frpc，在本示例中，文件名为 `frpc_windows_amd64.exe`
 
-2. 按住 **Shift** 然后 **右键** 点击空白区域，选择 `在此处打开命令窗口` 或者 `在此处打开 Windows Powershell`
+2. 按住 **Shift** 然后 **右键** 点击空白区域，选择 `在此处打开 Powershell 窗口`
 
    ![](_images/windows-3.png)
 
