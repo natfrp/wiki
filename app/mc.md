@@ -75,7 +75,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
   9. 是否生成村民
   10. 最大建筑高度
   11. Motd设置
-+ 下载链接: [MineBBS](https://www.minebbs.com/resources/4335/)  
++ 下载链接: [MineBBS](https://www.minebbs.com/resources/4335/) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)  
 
 #### 使用方法
 
@@ -84,7 +84,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
 
    ?> **ESC** - **选项** - **资源包** - **打开资源包文件夹**  
    **返回上一级** - **打开saves文件夹** - **找到您要联机的存档的名字并双击进入**  
-   里面有一个 `server.properties` 文件，请使用文本编辑器软件打开。
+   里面有一个 `server.properties` 文件，请使用文本编辑器软件打开。  
    建议使用 [Visual Studio Code](https://code.visualstudio.com/) 或者 [Sublime Text 3](http://www.sublimetext.com/) 等专业文字编辑器
 
    ![](./_images/mc-3.png)
