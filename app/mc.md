@@ -75,7 +75,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
   9. 是否生成村民
   10. 最大建筑高度
   11. Motd设置
-+ 下载链接: [MineBBS](https://www.minebbs.com/resources/4335/) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)  
++ 下载链接: [MeteorMC](https://meteormc.cn/threads/53/) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)  
 
 #### 使用方法
 
