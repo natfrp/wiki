@@ -33,7 +33,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 请根据您的游戏版本展开下面的选项查看，下面提到的 Mod 都必须在 **联网** 条件下安装:
 
 <details>
-<summary><b style="font-size: 20px">游戏版本: 1.12.X ~ 1.18.2</b></summary>
+<summary><b style="font-size: 20px">游戏版本: 1.12.X ~ 1.19</b></summary>
 
 !> 1.16.2 版由于 Forge 的原因可能会 **引发崩溃**，端口 **不能冲突**，否则也会崩溃
 
@@ -75,8 +75,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
   9. 是否生成村民
   10. 最大建筑高度
   11. Motd设置
-+ 下载链接: [Curseforge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)  
-_该网站的服务器位于 **国外**，所以访问/下载的速度 **可能** 会较慢，请耐心等待或自行寻找国内镜像_
++ 下载链接: [MeteorMC](https://meteormc.cn/threads/53/) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)  
 
 #### 使用方法
 
@@ -85,7 +84,7 @@ _该网站的服务器位于 **国外**，所以访问/下载的速度 **可能*
 
    ?> **ESC** - **选项** - **资源包** - **打开资源包文件夹**  
    **返回上一级** - **打开saves文件夹** - **找到您要联机的存档的名字并双击进入**  
-   里面会有个叫 `server.properties` 的文件，**右键** 通过 **记事本**打开  
+   里面有一个 `server.properties` 文件，请使用文本编辑器软件打开。  
    建议使用 [Visual Studio Code](https://code.visualstudio.com/) 或者 [Sublime Text 3](http://www.sublimetext.com/) 等专业文字编辑器
 
    ![](./_images/mc-3.png)
@@ -161,19 +160,19 @@ motd=
 
 ## 设置 SRV 解析 :id=srv
 
-?> 设置 **SRV解析** 只是为了美观，**并非必须**
+?> 设置 **SRV 解析** 只是为了美观，**并非必须**。设置后，在游戏中添加服务器时， **无需填写端口号**。
 
-鉴于有很多用户都不会用百度查询如何进行 **SRV解析**，所有就有了这个文档
+鉴于有很多用户都不会用百度查询如何进行 **SRV 解析**，所有就有了这个文档。
 
-本文档会教您如何在下列域名服务商的面板中为 **Minecraft Java 版** 配置 **SRV解析**
+本文档会教您如何在下列域名服务商的面板中为 **Minecraft Java 版** 配置 **SRV 解析**。
 
 + [阿里云](#srv-aliyun)
-+ [腾讯云](#srv-tencent)
-+ [Cloudflare](#srv-cloudflare)  
++ [腾讯云 DNSPod](#srv-tencent)
++ [Cloudflare](#srv-cloudflare)
 
-如果您有 **其他厂商** 的域名，并且会在对应面板中进行 **SRV解析**，欢迎提交 [Pull Request](https://github.com/natfrp/wiki/pulls ':target=_blank') 帮助我们完善该文档
+如果您有 **其他厂商** 的域名，并且会在对应面板中进行 **SRV 解析**，欢迎提交 [Pull Request](https://github.com/natfrp/wiki/pulls ':target=_blank') 帮助我们完善该文档
 
-要进行 **SRV解析**，您就必须要有一个域名，本文档不会推荐您使用哪个厂商的域名，如果您 **不会花钱** 的话，那我们也没办法了
+要进行 **SRV 解析**，您就必须要有一个域名，本文档不会推荐您使用哪个厂商的域名，如果您 **不会花钱** 的话，那我们也没办法了
 
 !> 配置 SRV 记录后使用 `ping` 命令是无法测试连通性的，但是在游戏中填上就可以正常使用  
 除此之外，只有 Minecraft Java 版支持解析 SRV 记录，基岩版并不支持此特性
@@ -182,7 +181,7 @@ motd=
 
 点击 [这里](https://dc.console.aliyun.com/next/index#/domain/list/all-domain ':target=_blank') 进入 **阿里云** 的 **域名列表**，如果您 **没有登录**，请登录
 
-找到您想要进行 **SRV解析的域名**，点击 **最后一栏** 操作中的解析
+找到您想要进行 **SRV 解析的域名**，点击 **最后一栏** 操作中的解析
 
 ![](./_images/mc-srv-1.png)
 
@@ -192,75 +191,75 @@ motd=
 
 按下表进行填写，然后点击 **确认** 即可
 
-| 字段 | 填写内容 |
-| --- | --- |
-| 记录类型 | SRV |
-| 主机记录 | `_minecraft._tcp.xx` (后面的 `xx` 可以自定义，也可以直接把 `.xx` 去掉只写 `_minecraft._tcp`) |
-| 记录值 | `0 5 远程端口 隧道域名` (例: `0 5 xxxxx cn-xx-xxx.sakurafrp.com`) |
+| 字段     | 填写内容                | 说明                                       |
+| -------- | ----------------------- | ------------------------------------------ |
+| 主机记录 | `_minecraft._tcp.xx`    | `xx` 可以自定义，亦可去除 `.xx`。          |
+| 记录类型 | SRV                     |                                            |
+| 记录值   | `0 5 远程端口 节点域名` | 例: `0 5 12345 idea-leaper-1.natfrp.cloud` |
 
-![](./_images/mc-srv-3.png)
+保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您设置的 **TTL** 来决定，一般为 10 分钟) 。
 
-保存完毕后需要 **等待** 10 分钟 (按照您的 **TTL** 来决定，一般为 10 分钟) 
++ **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
++ **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
-+ **假设** 您的域名为: natfrp.com，您的 **xx** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
-+ **假设** 您的域名为: natfrp.com，您把 **.xx** 去掉了，那么使用 `natfrp.com` 即可连接到您的服务器
+### 腾讯云 DNSPod :id=srv-tencent
 
-### 腾讯云 :id=srv-tencent
+> 腾讯云解析正在长期引导用户前往 DNSPod 控制台设置解析，故这里使用 **DNSPod 控制台** 作演示。腾讯云解析与之基本一致。
 
-点击 [这里](https://console.cloud.tencent.com/cns) 进入 **腾讯云** 的解析列表，如果您没有登录，请先登录。
+点击 [这里](https://console.dnspod.cn/dns/list) 进入 **DNSPod** 的解析列表，如果您没有登录，请先登录。
 
 ![](_images/mc-srv-tencent-1.png)
 
-找到您要解析的域名，点击右侧的 “解析” 进入解析配置页面。
+找到您要解析的域名，直接点击域名名称，以进入解析配置页面。
 
 ![](_images/mc-srv-tencent-2.png)
 
 点击左上方的 “添加记录” ，然后按下表进行填写，完毕后点击 **确认** 即可。
 
-| 字段 | 填写内容 |
-| --- | --- |
-| 记录类型 | SRV |
-| 主机记录 | `_minecraft._tcp.xx` (后面的 `xx` 可以自定义，也可以直接把 `.xx` 去掉只写 `_minecraft._tcp`) |
-| 记录值 | `0 5 远程端口 隧道域名` (例: `0 5 xxxxx cn-xx-xxx.sakurafrp.com`) |
+| 字段     | 填写内容                | 说明                                       |
+| -------- | ----------------------- | ------------------------------------------ |
+| 主机记录 | `_minecraft._tcp.xx`    | `xx` 可以自定义，亦可去除 `.xx`。          |
+| 记录类型 | SRV                     |                                            |
+| 记录值   | `0 5 远程端口 节点域名` | 例: `0 5 12345 idea-leaper-1.natfrp.cloud` |
 
-保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您的 **TTL** 来决定，一般为 10 分钟) 。
+保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您设置的 **TTL** 来决定，一般为 10 分钟) 。
 
-+ **假设** 您的域名为: natfrp.com，您的 **`.xx`** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
-+ **假设** 您的域名为: natfrp.com，您把 **`.xx`** 去掉了，那么使用 `natfrp.com` 即可连接到您的服务器
++ **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
++ **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
 ### Cloudflare :id=srv-cloudflare
 
 点击 [这里](https://dash.cloudflare.com/ ':target=_blank') 进入 **Cloudflare** 的 **域名列表**，如果您 **没有登录**，请登录
 
-找到您想要进行**SRV解析**的域名并且**点击它**
+找到您想要进行 **SRV 解析** 的域名，**点击它**
 
 ![](./_images/mc-srv-4.png)
 
-然后点击最顶上的**第三个** DNS
+然后点击最顶上的 **第三个** DNS
 
-点击**添加记录**
+点击 **添加记录**
 
 ![](./_images/mc-srv-5.png)
 
 按下表进行填写，然后点击 **保存** 即可
 
-| 字段 | 填写内容 |
-| --- | --- |
-| 类型 | SRV |
-| 名称 | 自定义，或者填写 `@` |
-| 服务 | _minecraft |
-| 协议 | TCP |
-| 优先级 | 0 |
-| 权重 | 5 |
-| 端口 | 远程端口 (例: `12345`) |
-| 目标 | 隧道域名 (例: `cn-xx-xxx.sakurafrp.com`) |
+| 字段   | 填写内容   | 说明                             |
+| ------ | ---------- | -------------------------------- |
+| 类型   | SRV        |                                  |
+| 名称   | 自定义     | 亦可填写 `@`                     |
+| 服务   | _minecraft |                                  |
+| 协议   | TCP        |                                  |
+| 优先级 | 0          |                                  |
+| 权重   | 5          |                                  |
+| 端口   | 远程端口   | 例: `12345`                      |
+| 目标   | 隧道域名   | 例: `idea-leaper-1.natfrp.cloud` |
 
 ![](./_images/mc-srv-6.png)
 
-保存完毕后需要 **等待** 10 分钟 (按照您的 **TTL** 来决定，一般为 10 分钟) 
+保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您设置的 **TTL** 来决定，一般为 10 分钟) 。
 
-+ 假设您的域名为: natfrp.com，您的 **名称** 设置为 `test`，那么使用 `test.natfrp.com` 即可连接到您的服务器
-+ 假设您的域名为: natfrp.com，您的 **名称** 设置为 `@`，那么使用 `natfrp.com` 即可连接到您的服务器
++ **假设** 您的域名为: example.com，您的 **名称** 设置为 `sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
++ **假设** 您的域名为: example.com，您的 **名称** 设置为 `@`，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
 ## 无法进服解决方法 :id=java-inaccessible
 
