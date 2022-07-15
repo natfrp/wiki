@@ -386,16 +386,17 @@ max-world-size = 29999984
 # 仅在 1.19 及更高版本有效。
 # 允许值: [∞, ∞]
 
-# enforce-secure-profile = false
+# enforce-secure-profile = true
 # 是否强制要求使用签名公钥
 # 启用后，玩家必须具有由 Mojang 签名的公钥，才能进入服务器。
-# 仅在 1.19 及更高版本有效。
+# 仅在 1.19 及更高版本有效，1.19 默认值为 false。
 # 允许值:
 #   是: true
 #   否: false
 
 # previews-chat = true
 # 是否启用聊天预览功能
+# 仅在 1.19 及更高版本有效。
 # 允许值:
 #   是: true
 #   否: false
