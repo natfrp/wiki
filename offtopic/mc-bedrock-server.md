@@ -196,6 +196,21 @@ emit-server-telemetry = true
 # 允许值:
 #   是: true
 #   否: false
+
+disable-player-interaction = false
+# 是否禁用玩家间交互
+# 仅在 1.19.20 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
+chat-restriction = none
+# 是否限制玩家聊天
+# 仅在 1.19.20 及更高版本的服务端中生效。
+# 允许值:
+#   不限制: none
+#   部分限制: dropped
+#   完全限制: disabled
 ```
 #### 隧道配置
 
@@ -203,9 +218,11 @@ emit-server-telemetry = true
 | ---- | :----------:  | :-----: |
 | UDP  | 19132         | 任意    |
 
+请根据 `server.properties` 内 `server-port` 项的值设置本地端口。
+
 !> 使用 frpc 时，除非配置本地端口与远程端口一致，否则 MOTD 信息将无法正常显示
 
-!> 基岩版服务端客户端使用的通信协议不支持 SRV 解析
+!> 基岩版服务端客户端使用的 UDP 通信协议不支持 SRV 解析
 
 ### 注意事项
 
