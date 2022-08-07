@@ -60,7 +60,7 @@
 检查 API 连接性问题:
 
 - 检查 SSL 问题
-  - Windows 系统请使用 **Internet Explorer** 访问 `https://api.natfrp.com/` 查看是否出现安全警告，如果出现请参考 [这篇 FAQ](/faq/launcher#远程证书无效) 安装根证书
+  - Windows 系统请使用 **Internet Explorer** 访问 `https://api.natfrp.com/` 查看是否出现安全警告，如果出现请参考 [这篇 FAQ](/faq/launcher#remote-cert-invalid) 安装根证书
   - Linux 系统可以使用 `curl https://api.natfrp.com/` 检查是否存在证书错误，如果出现证书错误可以尝试安装 `ca-certificates` 包
 - 检查防火墙、杀毒软件是否拦截了 frpc 的请求
 - 检查宽带是否存在到期未续费等情况

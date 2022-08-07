@@ -3,7 +3,7 @@
 ## 如何通过一个 frpc 开启多条隧道 :id=multi-tunnels-in-single-frpc
 
 ?> 一个 frpc 只能连接一个 **节点**，但可以连接多条 **隧道**  
-详见 [其他常见问题-一个 frpc 可以连接多条隧道吗](/faq/misc#一个-frpc-可以连接多条隧道吗)
+详见 [其他常见问题-一个 frpc 可以连接多条隧道吗](/faq/misc#frpc-connect-to-multiple-tunnels)
 
 如果您使用 **启动参数** 启动 frpc，只需要在启动参数中加上半角逗号 `,` 分隔的其他隧道 ID 即可，例如：
 
