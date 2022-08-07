@@ -67,6 +67,20 @@
         code::-webkit-scrollbar-thumb:hover {
             background-color: #bbb
         }
+
+        :root {
+            /* Hacky fix for tip element */
+            --docsifytabs-margin: 1.5rem 0 0 -10px;
+            --docsifytabs-content-padding: 1.5rem 0 0 10px;
+        }
+
+        .docsify-tabs__tab {
+            cursor: pointer;
+        }
+
+        .docsify-tabs__content {
+            border-bottom-width: 0 !important;
+        }
     </style>
 </head>
 
@@ -76,7 +90,7 @@
         window.$docsify = {
             name: 'Sakura Frp',
             loadSidebar: true,
-            subMaxLevel: 3,
+            subMaxLevel: 2,
             auto2top: true,
             relativePath: true,
             autoHeader: false,
@@ -94,7 +108,10 @@
             darklightTheme: {
                 siteFont: 'Source Sans Pro,Helvetica Neue,Helvetica,Arial,PingFang SC,Hiragino Sans GB,Heiti SC,Microsoft Yahei,STHeiti',
                 defaultTheme: 'light | dark',
-            }
+            },
+            tabs: {
+                theme: 'material',
+            },
         };
     </script>
 
@@ -107,6 +124,7 @@
     <script src="https://nyat-static.globalslb.net/npm/docsify@4.12.2/lib/plugins/external-script.min.js"></script>
     <script src="https://nyat-static.globalslb.net/npm/docsify@4.12.2/lib/plugins/zoom-image.min.js"></script>
     <script src="https://nyat-static.globalslb.net/npm/docsify-darklight-theme@3.2.0/dist/index.min.js"></script>
+    <script src="https://nyat-static.globalslb.net/npm/docsify-tabs@1.5.3/dist/docsify-tabs.min.js"></script>
 
     <!-- Code Highlight -->
     <script src="https://nyat-static.globalslb.net/npm/prismjs@1.28.0/components/prism-nginx.min.js"></script>

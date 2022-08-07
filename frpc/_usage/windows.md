@@ -1,7 +1,4 @@
-# Windows 系统使用 frpc
-
-!> 我们不推荐在 Windows 系统上直接使用 frpc，没有特殊需求请 [使用启动器](/launcher/usage)  
-本文档也不提供 frpc 开机自启配置教程，如有需要请使用启动器
+我们不推荐在 Windows 系统上直接使用 frpc，除非您有特殊需求，否则请 [使用启动器](/launcher/usage)。
 
 ### 确认系统架构
 
