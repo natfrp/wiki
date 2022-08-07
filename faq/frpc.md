@@ -1,6 +1,6 @@
-# frpc 常见问题
+# 常见问题: frpc
 
-### 如何通过一个 frpc 开启多条隧道
+## 如何通过一个 frpc 开启多条隧道
 
 ?> 一个 frpc 只能连接一个 **节点**，但可以连接多条 **隧道**  
 详见 [其他常见问题-一个 frpc 可以连接多条隧道吗](/faq/misc#一个-frpc-可以连接多条隧道吗)
@@ -76,7 +76,7 @@ local_port = 179
 
 使用此配置文件启动 frpc，就可以同时连接两条隧道了。
 
-### macOS 提示 frpc 无法打开 :id=macos-run-frpc-issue
+## macOS 提示 frpc 无法打开 :id=macos-run-frpc-issue
 
 !> 我们已对 macOS frpc 文件进行签名和公正，我们建议您不要使用第三方分发的 frpc
 
@@ -99,13 +99,13 @@ _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软�
 
    ![](_images/frpc-macos-run-issue-4.png)
 
-### ARM 运行提示 Illegal instruction
+## ARM 运行提示 Illegal instruction
 
 首先，请确认您下载的文件 MD5 与软件下载页面显示的 MD5 相同。
 
 如果您的 [Linux 使用教程/安装 frpc](/frpc/usage#linux-check-arch) 显示为 `armv7l`，请下载 `arm_garbage` 版本重试。否则，请联系管理员。
 
-### Windows 系统命令行版 frpc 开机自启设置方法
+## Windows 系统命令行版 frpc 开机自启设置方法
 
 !> 注意，此处列出的方法虽然 **【能用】** 但并不能算 **【正确】** 的操作  
 使用此方法会产生大量不可控因素或潜在的安全隐患，如果没有特殊需求请 [使用启动器](/launcher/usage)

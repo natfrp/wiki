@@ -4,12 +4,14 @@
 
 - <a href="/#/faq"><b style="color: red;font-size: var(--bodyFontSize);">常见问题</b></a>
 
-  - [客户端错误 (隧道打不开)](/faq/client-error)
+  - [客户端错误 (隧道启动失败)](/faq/client-error)
   - [穿透的网站打不开](/faq/site-inaccessible)
   - [实名认证相关问题](/faq/realname)
   - [备案相关问题](/faq/beian)
   - [付款、订单相关问题](/faq/payment)
   - [账户相关问题](/faq/account)
+  - [SakuraFrp 启动器相关问题](/faq/launcher)
+  - [frpc 相关问题](/faq/frpc)
   - [网络相关问题](/faq/network)
   - [其他常见问题](/faq/misc)
 
@@ -17,21 +19,16 @@
   - [安全指南](/bestpractice/security)
   - [获取真实 IP](/bestpractice/realip)
 
-- 启动器
+- SakuraFrp 启动器
   - [安装、使用教程](/launcher/usage)
   - [远程管理](/launcher/remote)
-  - [系统服务](/launcher/service)
-  - [常见问题](/faq/launcher)
-    - [安装问题](/faq/launcher#install)
-    - [常见报错](/faq/launcher#error)
-    - [其他问题](/faq/launcher#misc)
+  - [配置系统服务](/launcher/service)
 
-- frpc
+- frpc 使用文档
   - [基本使用指南](/frpc/usage)
   - [用户手册](/frpc/manual)
   - [远程管理](/frpc/remote)
   - [配置 SSL 证书](/frpc/ssl)
-  - [常见问题](/faq/frpc)
 
 - 常见应用配置指南
   - [HTTP(S) 穿透](/app/http)
@@ -45,7 +42,7 @@
   - [我的世界(Minecraft) 穿透](/app/mc)
   - [FTP(S) 穿透](/app/ftp)
 
-- 一些杂项教程
+- 杂项教程
   - [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server)
   - [Minecraft Geyser 互通服务端开服指南](/offtopic/mc-geyser)
   - [Source 引擎游戏开服指南](/offtopic/source)

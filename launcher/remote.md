@@ -1,4 +1,4 @@
-# 启动器远程管理
+# SakuraFrp 启动器远程管理指南
 
 SakuraFrp Launcher v2.0.0.0 及以上版本提供了远程管理功能，可以在 Sakura Frp 网站上对启动器进行管理。
 
@@ -6,7 +6,7 @@ SakuraFrp Launcher v2.0.0.0 及以上版本提供了远程管理功能，可以�
 
 远程管理功能使用 **端对端加密** 技术，这可以确保即使 Sakura Frp 的远程管理服务器遭到入侵，您的计算机也不会因为开启了远程管理功能而被攻击。您可以前往 [GitHub](https://github.com/natfrp/SakuraFrpLauncher/blob/master/SakuraFrpService/Manager/RemoteManager.cs ':target=_blank') 审计相关代码。
 
-### 配置远程管理
+## 配置远程管理
 
 1. 首先，您需要配置端对端加密密码，点击 “设置密码” 按钮：
 
@@ -26,7 +26,7 @@ SakuraFrp Launcher v2.0.0.0 及以上版本提供了远程管理功能，可以�
 
    ![](_images/remote-3.png)
 
-### 连接远程设备
+## 连接远程设备
 
 1. 登录管理面板，在侧边栏点击 “远程管理”：
 
@@ -44,7 +44,7 @@ SakuraFrp Launcher v2.0.0.0 及以上版本提供了远程管理功能，可以�
 
    ![](_images/remote-6.png)
 
-### 管理远程设备
+## 管理远程设备
 
 - 在 **隧道列表** 卡片中可以开关各个隧道或从 Sakura Frp 重新同步隧道信息：
 
@@ -56,7 +56,7 @@ SakuraFrp Launcher v2.0.0.0 及以上版本提供了远程管理功能，可以�
 
   ![](_images/remote-8.png)
 
-### 强制下线
+## 强制下线
 
 !> 强制下线后启动器会重新初始化远程管理，不保证能正常重连到管理服务器，请小心操作。  
 目前远程管理功能运行稳定，没有已知 Bug，绝大多数情况下无需使用此功能。碰到问题请先等几分钟或者刷新页面重试，不要急着点下线。
