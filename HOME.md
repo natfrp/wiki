@@ -18,7 +18,7 @@
 
 - [frpc Linux/macOS/Docker 基本使用指南](/frpc/usage) | [Linux 开机自启](/frpc/service/systemd)
 
-- [Windows 使用](/launcher/usage) | [Windows XP/Vista/Server 2003](/geek#兼容性)
+- [Windows 使用](/launcher/usage) | [Windows XP/Vista/Server 2003](/geek#compatibility)
 
 - NAS 相关教程: [群晖 DSM](/app/synology) | [威联通 QNAP](/app/qnap)
 
