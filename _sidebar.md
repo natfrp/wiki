@@ -27,13 +27,7 @@
     - [其他问题](/faq/launcher#misc)
 
 - frpc
-  - 使用教程
-    - [Windows](/frpc/usage/windows)
-    - [Linux](/frpc/usage/linux)
-      - [Systemd 服务配置](/frpc/service/systemd)
-      - [Openwrt 服务配置](/frpc/service/openwrt)
-    - [macOS](/frpc/usage/macos)
-    - [使用 Docker 运行](/frpc/usage/docker)
+  - [基本使用指南](/frpc/usage)
   - [用户手册](/frpc/manual)
   - [远程管理](/frpc/remote)
   - [配置 SSL 证书](/frpc/ssl)

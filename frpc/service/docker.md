@@ -1,3 +1,3 @@
 # 使用 docker 管理 frpc 运行
 
-Moved to [使用 docker 管理 frpc 运行](/frpc/usage/docker)
+该页面已移动，请前往 [此处](/frpc/usage) 查看教程。

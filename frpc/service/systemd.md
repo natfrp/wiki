@@ -1,6 +1,6 @@
 # Systemd 配置 frpc 服务
 
-?> 查看此教程前请确保您已阅读 [Linux 使用教程](/frpc/usage/linux)
+?> 查看此教程前请确保您已阅读 [frpc 基本使用指南](/frpc/usage) 中的 **Linux** 页面
 
 ### 前置知识
 

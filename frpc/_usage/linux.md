@@ -1,22 +1,8 @@
-# Linux 系统使用 frpc
-
-<!--
-TODO: Update script
-如果您符合以下几种情况：
-+ 对自己的技术没有信心
-+ 不知道该下载什么版本
-+ 不会写 systemd 服务
-
-请使用 **一键安装脚本（由 [@renbaoshuo](https://baoshuo.ren) 提供）**：`sudo bash <(curl -Ls getfrp.sh)` （需要 root 权限）
--->
-
-## 注意
-
 本文档中给出的命令大多需要 `root` 权限才能运行，请确保您现在已经处于有 `root` 权限的环境下。
 
 如果您现在没有切换到 `root` 账户下，那么请使用 `su` 或者 `sudo -s` 命令来进行切换。
 
-## 确认处理器架构
+### 确认处理器架构 :id=linux-check-arch
 
 下载 frpc 前，请先确认您的处理器架构。执行下面的命令，根据输出结果查表：
 
@@ -39,7 +25,7 @@ uname -m
 ?> 如果您使用 Termux+PRoot 运行其他发行版，或使用某神秘"开源"手机 AI 开发框架，程序运行提示 `Segmentation fault` 的话，这是一个已知的 upx 与 PRoot 及部分 Linux 内核协作的 bug，请使用 `upx -d` 解压程序使用，或在下载地址后加 `_noupx` 下载已解压的版本
 
 ?> 如果您的架构为 `mips` 或 `mips64`，还需要使用下面的命令来确定处理器的字节序  
-其他架构请直接跳到 [安装 frpc](#install-frpc) 一节
+其他架构请直接跳到 [安装 frpc](#linux-install-frpc) 一节
 
 ```bash
 # 一般来说只需要使用这条命令:
@@ -54,49 +40,49 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 | mips / mips64 | `0` |
 | mipsle / mips64le | `1` |
 
-### 安装 frpc :id=install-frpc
+### 安装 frpc :id=linux-install-frpc
 
-登录管理面板，转到 “软件下载” :
+1. 登录管理面板，转到 “软件下载” :
 
-![](../../_images/download.png)
+   ![](../../_images/download.png)
 
-选择 Linux 系统，然后选择正确的架构，点击按钮复制下载链接：
+2. 选择 Linux 系统，然后选择正确的架构，点击按钮复制下载链接：
 
-![](_images/linux-1.png)
+   ![](_images/linux-1.png)
 
-使用下面的命令进入 `/usr/local/bin` 目录并下载文件：
+3. 使用下面的命令进入 `/usr/local/bin` 目录并下载文件：
 
-```bash
-cd /usr/local/bin
+   ```bash
+   cd /usr/local/bin
 
-# 一般来说只需要使用这条命令:
-wget -O frpc <下载地址>
+   # 一般来说只需要使用这条命令:
+   wget -O frpc <下载地址>
 
-# 如果上面的命令报错，请尝试这条:
-curl -Lo frpc <下载地址>
-```
+   # 如果上面的命令报错，请尝试这条:
+   curl -Lo frpc <下载地址>
+   ```
 
-![](_images/linux-2.png)
+   ![](_images/linux-2.png)
 
-然后设置权限并校验文件是否有损坏：
+4. 然后设置权限并校验文件是否有损坏：
 
-```bash
-chmod 755 frpc
-ls -ls frpc
-md5sum frpc
-```
+   ```bash
+   chmod 755 frpc
+   ls -ls frpc
+   md5sum frpc
+   ```
 
-![](_images/linux-3.png)
+   ![](_images/linux-3.png)
 
-此时 frpc 就安装完成并可以正常使用了。您可以用此命令查看 frpc 版本号：
+5. 此时 frpc 就安装完成并可以正常使用了。您可以用此命令查看 frpc 版本号：
 
-```bash
-frpc -v
-```
+   ```bash
+   frpc -v
+   ```
 
 ### 使用 frpc
 
-请查看 [frpc 用户手册](/frpc/manual)  学习 frpc 的基本使用方法
+请查看 [frpc 用户手册](/frpc/manual) 学习 frpc 的基本使用方法
 
 通过本文档中介绍的方法安装后，您应该可以在任何目录直接输入 `frpc <参数>` 运行 frpc ，**不需要** 输入完整路径
 
@@ -104,9 +90,8 @@ frpc -v
 
 !> 不推荐采用 `&` 将 frpc 放到后台运行，建议参考下面的 **配置开机自启** 一节将 frpc 注册为系统服务
 
-如果要临时将 frpc 放到后台运行，可以在运行命令的后面加 `&`。
+如果要临时将 frpc 放到后台运行，可以在运行命令的后面加 `&`，例如：
 
-举个例子:
 ```bash
 frpc -f wdnmdtoken666666:12345 &
 ```

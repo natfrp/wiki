@@ -93,6 +93,6 @@ DSM 6 的登录界面是这样的：
 
 然后通过此处的 SSH 端口和您登录 DSM 管理面板的帐号密码连接到 SSH 终端，使用 `sudo -i` 命令提升到 root 权限，您可能需要再输入一次 DSM 管理面板的密码。
 
-接下来请参考 [Linux 使用教程](/frpc/usage/linux) 中的 **安装 frpc** 一节安装 frpc。
+接下来请参考 [Linux 使用教程/安装 frpc](/frpc/usage#linux-install-frpc) 一节安装 frpc。
 
 最后，参考 [这篇指南](/frpc/service/systemd) 配置 Systemd 服务即可。

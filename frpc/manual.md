@@ -25,7 +25,7 @@
 
 ### 启动参数格式
 
-!> 如果您没有按照 [Linux 使用教程](/frpc/usage/linux) 安装 frpc，或您使用的是 Windows 系统，启动时要把 "frpc" 换成下载到的的文件名  
+!> 如果您没有按照 [frpc 基本使用指南](/frpc/usage) 安装 frpc，或您使用的是 Windows 系统，启动时要把 "frpc" 换成下载到的的文件名  
 如 `frpc_windows_386.exe` 、 `./frpc_linux_amd64` 等
 
 frpc 支持启动单条、多条或位于某个节点上的所有隧道。同时启动多条隧道时，这些隧道必须位于同一节点。

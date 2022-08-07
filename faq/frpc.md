@@ -85,7 +85,7 @@ local_port = 179
 ![](_images/frpc-macos-run-issue-1.png)  
 _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软件。此软件需要更新，请联系开发者了解更多信息。”_
 
-我们推荐您 [通过命令行直接下载和安装 frpc](/frpc/usage/macos#install-frpc)，如果您仍想使运行此二进制文件，请参考下面的指南：
+我们推荐您 [通过命令行直接下载和安装 frpc](/frpc/usage#macos-install-frpc)，如果您仍想使运行此二进制文件，请参考下面的指南：
 
 1. 转到 `系统偏好设置 > 安全与隐私`：
 
@@ -103,7 +103,7 @@ _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软�
 
 首先，请确认您下载的文件 MD5 与软件下载页面显示的 MD5 相同。
 
-如果您的[架构](usage/linux)显示为 `armv7l`，请下载 `arm_garbage` 版本重试。否则，请联系管理员。
+如果您的 [Linux 使用教程/安装 frpc](/frpc/usage#linux-check-arch) 显示为 `armv7l`，请下载 `arm_garbage` 版本重试。否则，请联系管理员。
 
 ### Windows 系统命令行版 frpc 开机自启设置方法
 
