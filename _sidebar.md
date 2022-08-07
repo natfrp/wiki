@@ -56,7 +56,7 @@
   - [Minecraft Geyser 互通服务端开服指南](/offtopic/mc-geyser)
   - [Source 引擎游戏开服指南](/offtopic/source)
   - [常见应用配置 Proxy Protocol](/offtopic/proxy-protocol)
-  - [制作专用访问认证工具](/offtopic/auth-guest)
+  - [SakuraFrp 专用认证工具使用指南](/offtopic/auth-guest)
   - [hMailServer 邮件服务穿透](/offtopic/mail)
 
 - 其他

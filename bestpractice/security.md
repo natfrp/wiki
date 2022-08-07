@@ -13,7 +13,7 @@
 
 ---
 
-## frpc 访问认证
+## frpc 访问认证 :id=auth
 
 ?> 建议使用 启动器 v2.0.2.0 或 frpc v0.35.1-sakura-1 及以上版本，以获得此功能的完整体验  
 如需启用 TOTP 支持，请使用 frpc v0.42.0-sakura-3 及以上版本
@@ -88,7 +88,7 @@ csrf=`curl https://<tunnel_url> -k | grep csrf | sed -En "s/.*value\=\"(.*)\">/\
 curl -k -X POST -d "csrf=$csrf" -d "ip=<your_ip>" -d "pw=<your_password>" https://<tunnel_url>
 ```
 
-也可以 [使用 SakuraFrp AuthPanel GuestTool 制作专用的访问认证工具](/offtopic/auth-guest)
+此外，我们也推荐您使用 [SakuraFrp 认证代理](/offtopic/auth-guest) 自动完成认证流程。
 
 ---
 
