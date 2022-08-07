@@ -1,6 +1,6 @@
 # 常见问题: 其他
 
-## 点击签到时卡住怎么办
+## 点击签到时卡住怎么办 :id=daily-checkin-stuck
 
 通常此问题是由网络不好造成的，您可以尝试下列操作：
 
@@ -8,11 +8,11 @@
 - 更换网络环境或更换设备重试
 - 更换浏览器重试，我们推荐使用 Google Chrome、Microsoft Edge 或 Firefox 浏览器
 
-## 创建隧道时提示 您选择的端口不可用 (被其他人占用)
+## 创建隧道时提示 您选择的端口不可用 (被其他人占用) :id=port-unavailable-occupied
 
 端口被别人占用了，您没有抢过来使用的特权。请换一个端口或者换一个节点试试。我们建议留空远程端口让系统自动生成。
 
-## 创建隧道时提示 您选择的端口不可用 (超出允许端口范围)
+## 创建隧道时提示 您选择的端口不可用 (超出允许端口范围) :id=port-unavailable-out-of-range
 
 请点击远程端口旁边的 **查看规则** 查看节点允许使用的端口。
 
@@ -20,19 +20,19 @@
 
 不能，开放这些端口可能造成安全隐患或加重服务滥用。
 
-## 但是我就是想用 / 我的 XXX 服务一定要用 XXXX 端口，能不能开放一下
+### 但是我就是想用 / 我的 XXX 服务一定要用 XXXX 端口，能不能开放一下
 
 您没有使用这些端口的特权，建议您找其他服务商。
 
-## 有没有全端口映射
+## 有没有全端口映射 :id=mapping-all-ports
 
 没有。
 
-## HTTP(S) 隧道支持泛域名匹配吗
+## HTTP(S) 隧道支持泛域名匹配吗 :id=http-wildcard
 
 由于滥用严重，目前我们不支持泛域名匹配，并且每条隧道最大只允许绑定 3 个域名。
 
-## GitHub 上的 SakuraFrp 源码和你们是什么关系
+## GitHub 上的 SakuraFrp 源码和你们是什么关系 :id=relationship-with-sakurapanel-on-github
 
 原站长已于 **2020.01.20** 将 SakuraFrp 转交给 **iDea Leaper** 进行运营。
 
@@ -42,17 +42,17 @@
 
 其给出的任何授权行为皆只代表其个人行为，与 SakuraFrp 网站及项目无关，即使您获得其授权仍不可以使用、重标、改编 SakuraFrp 的创意项目、前端页面、用户条款、帮助文档等内容。
 
-## 我想通过 GitHub 上的 SakuraFrp 源码搭建穿透面板，能帮帮我吗
+## 我想通过 GitHub 上的 SakuraFrp 源码搭建穿透面板，能帮帮我吗 :id=i-wanna-use-sakurapanel-on-github
 
 我们不提供此类支持，请联系原作者 [@kasuganosoras](https://github.com/kasuganosoras ':target=_blank')。
 
-## 你们的 frpc 可以开源吗
+## 你们的 frpc 可以开源吗 :id=frpc-open-source
 
 可以，但没必要。因为要把 frps 和 frpc 的源码分开太麻烦了。
 
 如果您不信任我们分发的二进制文件，请使用 [上游的开源 frpc](https://github.com/fatedier/frp ':target=_blank')，我们会尽量保持对 `0.18.0` 到最新版上游 frpc 的兼容性。
 
-## 隧道或软件可以重复开启吗
+## 隧道或软件可以重复开启吗 :id=run-multiple-clients
 
 一条隧道只能对应一个运行中的 frpc 进程。“重复开启” 的定义较为模糊，请参考下表中的说明：
 
@@ -63,7 +63,7 @@
 | 在一台电脑上开启多条 **ID 不同的** 隧道 | 可以 | 这是很常见的场景 |
 | 在多台电脑的 **启动器** 上 **登录同一个账号** | 可以 | 我们不限制启动器的登录设备数量 |
 
-## 一个 frpc 可以连接多条隧道吗
+## 一个 frpc 可以连接多条隧道吗 :id=frpc-connect-to-multiple-tunnels
 
 ?> 请注意区别 **进程** 和 **文件**。如果您无法理解这两个概念，可以参考 [百度百科: 进程](https://baike.baidu.com/item/%E8%BF%9B%E7%A8%8B/382503 ':target=_blank')、[百度百科: 计算机文件](https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%96%87%E4%BB%B6 ':target=_blank')
 
@@ -73,7 +73,7 @@
 - 如果这几条隧道都在同一个节点上，可以在一个 frpc 进程中连接多条隧道。请参阅 [frpc 用户手册-从命令行启动隧道](/frpc/manual#cli-usage)
 - 启动器会自动管理 frpc 进程并且总是确保一个 frpc 连接一条隧道，因此启动器开启的 frpc 无法连接多条隧道
 
-## 如何设置解析
+## 如何设置解析 :id=configure-dns-for-domain
 
 - 请自行查看您域名解析提供商的帮助文档，并设置 `CNAME` 记录到节点域名。
 
@@ -81,7 +81,7 @@
 
   ![](_images/misc-node-fqdn.png)
 
-## 游戏连不上的解决办法
+## 游戏连不上的解决办法 :id=game-not-connecting
 
 - 部分游戏需要本地端口与远程端口相同才可以连接。
 - 检查隧道启动状态。
@@ -89,7 +89,7 @@
 - 请检查端口是否配置正确。
 - 请检查游戏服务端配置是否正确。
 
-## 哪个节点好用
+## 哪个节点好用 :id=choosing-node
 
 节点速度受以下因素影响：
 

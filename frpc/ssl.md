@@ -25,14 +25,14 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 ### 申领证书 :id=ssl-get
 
-#### 设置证书域名
+#### 设置证书域名 :id=ssl-get-domain
 
 如您打算通过 `sub.example.com` 访问隧道，那么就应为 `sub.example.com` 或 `*.example.com` 申请证书。
 
 - `sub.example.com`: 这是单域名证书，仅对绑定的 `sub.example.com` 有效。
 - `*.example.com`: 这是泛域名证书，针对任何 `example.com` 下的二级域名均有效，如 `sub.example.com`。
 
-#### 验证域名所有权
+#### 验证域名所有权 :id=ssl-verify-domain
 
 在申请证书后，服务商为了验证该证书绑定的 **域名** 是您所有，需要您为域名在解析服务商处添加 DNS 记录。
 
@@ -45,14 +45,14 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 ### 启用自动 HTTPS :id=autohttps-enable
 
-#### 配置隧道
+#### 配置隧道 :id=autohttps-setup
 
 请先参考 [配置 frpc 的自动 HTTPS 功能](/fap/site-inaccessible#frpc-auto-https) 页面，来启用自动 HTTPS。
 
 !> 此时不要直接在隧道配置的 **自动 HTTPS** 处选择 `自动`。
 由于您有自定义域名，因此请直接在该参数处输入 `你的域名`，该域名应与您申请的 SSL 证书的绑定域名一致。
 
-#### 测试隧道
+#### 测试隧道 :id=autohttps-test
 
 此时，您可以先 **启动隧道** 以进行测试，由 frpc 生成自签名的证书文件。
 

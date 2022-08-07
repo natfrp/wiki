@@ -23,7 +23,7 @@
 
 <!-- END 请勿修改 -->
 
-## Staffs
+## Staffs :id=staffs
 
 - [羽川早苗](https://moe.do ':target=_blank')
   - _站长_
@@ -32,7 +32,7 @@
   - _管理员_
 - And 4 more...
 
-## Community Contributors
+## Community Contributors :id=community-contributors
 
 - [宝硕](https://baoshuo.ren ':target=_blank')
   - _frp 一键安装脚本、文档站点、部分帮助文档_

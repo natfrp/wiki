@@ -2,7 +2,7 @@
 
 如果您对 macOS 的命令行操作不熟悉，请严格按照文档进行操作避免出现意外。
 
-### 打开终端并提升到 root 权限
+### 打开终端并提升到 root 权限 :id=macos-open-terminal
 
 1. 按下键盘上的 `⌘ + 空格` 调出聚焦搜索并键入 `终端`，双击终端图标
 
@@ -68,7 +68,7 @@
    frpc -v
    ```
 
-### 使用 frpc
+### 使用 frpc :id=macos-using
 
 请查看 [frpc 用户手册](/frpc/manual)  学习 frpc 的基本使用方法
 

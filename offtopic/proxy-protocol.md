@@ -4,9 +4,9 @@
 
 在进行下列配置前，请先阅读 [获取真实 IP](/bestpractice/realip#proxy-protocol) 并修改隧道配置，否则可能造成 **隧道完全不可用**。
 
-## Web 服务器
+## Web 服务器 :id=web-servers
 
-### Nginx
+### Nginx :id=nginx
 
 在需要启用 Proxy Protocol 的 `server` 块找到 `listen` 字段，并在尾部（分号前面）添加用空格分开的 `proxy_protocol` 即可。举个例子：
 
@@ -68,7 +68,7 @@ server {
 
 现在，您可以通过 `X-Forwarded-For` 和 `X-Real-IP` 两个请求头获取真实 IP 了。
 
-### Apache
+### Apache :id=apache
 
 如果您的 Apache 版本 **>= 2.4.30**，启用 [mod_remoteip](https://httpd.apache.org/docs/current/mod/mod_remoteip.html#remoteipproxyprotocol) 模块后只需在 Apache 配置文件的对应 `VirtualHost` 中添加 `RemoteIPProxyProtocol On` 即可。
 
@@ -85,9 +85,9 @@ server {
 
 如果您使用的 **Ubuntu 18.04** 和 **CentOS 7** 正大步迈向 EOL 以至于源中没有 Apache 2.4.30 以上的版本，您可以考虑升级系统、自己编译或是使用 [mod-proxy-protocol](https://github.com/roadrunner2/mod-proxy-protocol/) 模块。具体配置方式请参考 README。
 
-## Minecraft 服务器
+## Minecraft 服务器 :id=minecraft
 
-### BungeeCord / Waterfall
+### BungeeCord / Waterfall :id=bungeecord-waterfall
 
 请参考 [官方文档](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/) 进行配置，您可以搜索 `proxy_protocol` 找到对应内容（在页面底部）。
 
@@ -102,13 +102,13 @@ listeners:
 
 如果您想同时允许 frp 和直接连接，请使用 [这个插件](https://github.com/andylizi/bc-haproxy-detector)，配置指南见 [MCBBS 帖子](https://www.mcbbs.net/thread-1111852-1-1.html)。
 
-### Paper
+### Paper :id=paper
 
 > Paper 1.18.2 服务端支持使用 v2 版本的 Proxy Protocol。
 
 请先为 隧道配置 增加 `proxy_protocol_version = v2` 自定义设置。
 
-#### 修改服务端配置文件
+#### 修改服务端配置文件 :id=paper-properties
 
 首先，需要确认服务端自带的 **防止代理连接** 功能已经关闭。
 
@@ -125,7 +125,7 @@ prevent-proxy-connections = false
 
 > 关于 `server.properties` 每个参数的详细用法，请看 [Geyser 开服指南中的 编辑 Java 版服务端配置文件](/offtopic/mc-geyser#编辑配置文件)
 
-#### 修改 Paper 配置文件
+#### 修改 Paper 配置文件 :id=paper-yml
 
 请打开 `paper.yml` 文件，并对此部分作出如下修改:
 
@@ -138,6 +138,6 @@ settings:
   proxy-protocol: true
 ```
 
-### 其他服务端
+### 其他服务端 :id=other
 
 STFW。

@@ -80,13 +80,13 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
    frpc -v
    ```
 
-### 使用 frpc
+### 使用 frpc :id=linux-usage
 
 请查看 [frpc 用户手册](/frpc/manual) 学习 frpc 的基本使用方法
 
 通过本文档中介绍的方法安装后，您应该可以在任何目录直接输入 `frpc <参数>` 运行 frpc ，**不需要** 输入完整路径
 
-### 简易后台运行
+### 简易后台运行 :id=linux-simple-background
 
 !> 不推荐采用 `&` 将 frpc 放到后台运行，建议参考下面的 **配置开机自启** 一节将 frpc 注册为系统服务
 
@@ -96,7 +96,7 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 frpc -f wdnmdtoken666666:12345 &
 ```
 
-### 配置开机自启
+### 配置开机自启 :id=linux-autostart
 
 如果您想让 frpc 在开机时自启或在后台运行，就需要将 frpc 注册为系统服务。
 
