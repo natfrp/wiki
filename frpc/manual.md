@@ -4,20 +4,22 @@
 
 ## 从 TUI 启动隧道 :id=tui-usage
 
-在 `frpc.ini` 不存在的情况下，不带参数直接运行 frpc 会出现一个交互式 UI
+在 `frpc.ini` 不存在的情况下，不带参数直接运行 frpc 会出现一个交互式 UI。
 
-输入 **访问密钥**，然后使用 `Tab` 键切换到 **Login** 按钮并按 `回车` 键登录 (若终端支持也可使用鼠标进行操作)
+输入 **访问密钥**，然后使用 `Tab` 键切换到 **Login** 按钮并按 `回车` 键登录 (若终端支持也可使用鼠标进行操作)：
 
 ![](_images/tui-0.png)
 
-登录成功后 TUI 会显示当前账户下的隧道列表，使用方向键选中想要启动的隧道，按空格标为绿色 (或使用鼠标直接点击隧道)
+登录成功后 TUI 会显示当前账户下的隧道列表，使用方向键选中想要启动的隧道，按空格标为绿色 (或使用鼠标直接点击隧道)：
 
 ?> 可以一次性启用多个隧道，但是这些隧道必须位于同一节点下  
 您也可以直接选中节点来启用该节点下的所有隧道
 
 ![](_images/tui-1.png)
 
-选择完毕后，按 `Ctrl-C` 即可启动隧道，相关启动参数会被保存到配置文件 `frpc.ini` 中，下次不带参数直接运行 frpc 时不再显示 TUI 而是直接启动隧道
+选择完毕后，按 `Ctrl-C` 即可启动隧道，相关启动参数会被保存到配置文件 `frpc.ini` 中，下次不带参数直接运行 frpc 时不再显示 TUI 而是直接启动隧道：
+
+?> 自 `v0.42.0-sakura-3` 版本起，启动时若不带参数 且 `frpc.ini` 存在，您会看到 `正在使用配置文件运行，在 3 秒内按任意键进入配置模式` 的提示。按下任意按键即可进入配置界面，否则 frpc 会自动加载 `frpc.ini` 并启动里面保存的隧道
 
 ![](_images/tui-2.png)
 
@@ -51,17 +53,17 @@ frpc 支持启动单条、多条或位于某个节点上的所有隧道。同时
 
 1. 启动图中的第一条隧道：
 ```cmd
-frpc_windows_386.exe -f wdnmdtoken666666:85823
+frpc_windows_386.exe -f wdnmdtoken666666:114514
 ```
 
-1. 启动 **#6 镇江双线** 节点下的所有隧道，可以不输入隧道 ID：
+1. 启动 **#29 圣何塞CUVIP** 节点下的所有隧道，可以不输入隧道 ID：
 ```cmd
-frpc_windows_386.exe -f wdnmdtoken666666:n6
+frpc_windows_386.exe -f wdnmdtoken666666:n29
 ```
 
 1. 第二条命令也可以替换为手动输入两个隧道 ID，效果是相同的：
 ```cmd
-frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
+frpc_windows_386.exe -f wdnmdtoken666666:114514,114515
 ```
 
 ---
@@ -69,6 +71,8 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 ## 高级用户手册 :id=advanced
 
 由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/docs/ ':target=_blank')。
+
+我们总是推荐（并假设）您使用最新版客户端，因此文档中列出的特性不会专门标注可用的版本。如果您需要使用旧版并了解该版本对应的特性，建议您参考 [Nyatwork Static CDN](https://nyat-static.globalslb.net/natfrp/client/) 中的文件修改时间并对照文档的 Commit History 作出判断。
 
 ### 新增命令行开关 :id=advanced-switches
 
@@ -116,6 +120,7 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 | auth_totp | String | 空 | 配置访问认证的 TOTP 功能，留空则禁用 TOTP 认证<br>- 留空 **[默认值]**: 不启用 TOTP 验证<br>- Base32 种子: 使用默认配置启用 TOTP<br>- TOTP URI: 使用自定义配置启用 TOTP, 可选参数有 `digits`、`skew`、`algorithm`<br>&nbsp;&nbsp;_例: `otpauth://totp/auto?secret=<种子>&digits=<数字>&skew=<周期>&algorithm=<算法>`_<br>&nbsp;&nbsp;_* algorithm 参数取值为 `md5`、`sha1` (默认)、`sha256`、`sha512`_<br>_* frpc v0.42.0-sakura-3 及以上版本可用_ |
 | auth_time | String | 2h | 配置访问认证功能在没有勾选「记住」时授权过期时间<br>接受的后缀为 `h`/`m`/`s`，请从大到小排列，如 `1h3m10s` |
 | auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 frps 下发的 IP 授权信息<br>- `server`: 不启用密码，只能通过 SakuraFrp 面板进行授权 |
+| auth_redirect | String | 空 | 配置 SakuraFrp 访问认证通过后自动跳转 (或打开) 到的页面 |
 
 ?> 在强制访问认证的节点上未设置访问密码（即未启用访问认证）时，将强制打开访问认证，使用 `server` 模式，您将需要在用户面板进行授权
 
