@@ -1,6 +1,6 @@
 SakuraFrp 提供 [frpc 镜像](https://hub.docker.com/r/natfrp/frpc) 以便您借助 Docker 管理 frpc。
 
-### 前置知识说明
+### 前置知识说明 :id=docker-note
 
 首先您需要知道启动参数的写法，即：`-f <启动密钥>:<隧道ID>`，如果要启动多个隧道可以 `-f <启动密钥>:<隧道ID1>,隧道ID2,隧道ID3,...`，如果还需深入了解请参阅 [frpc 用户手册-从命令行启动隧道](/frpc/manual#cli-usage)。
 
@@ -8,13 +8,13 @@ SakuraFrp 提供 [frpc 镜像](https://hub.docker.com/r/natfrp/frpc) 以便您�
 
 如果您感觉本篇教程对您来讲难以理解，可以试试隔壁 [Systemd 教程](/frpc/service/systemd)
 
-### 关于图形化
+### 关于图形化 :id=docker-gui
 
 我们同时提供以下平台的 GUI 操作说明： 
  - [群晖 DSM](/app/synology)
  - [威联通 QNAP](/app/qnap)
 
-### 设置隧道
+### 设置隧道 :id=docker-create-tunnel
 
 因为 docker 网络模型的原因，我们像从前一样把隧道的 本地IP 设置为 `127.0.0.1` 已经不再奏效，必须修改设置中的此项。
 
@@ -45,7 +45,7 @@ SakuraFrp 提供 [frpc 镜像](https://hub.docker.com/r/natfrp/frpc) 以便您�
 
 这样隧道就准备完了
 
-### 设置Docker
+### 设置Docker :id=docker-setup-docker
 
 首先我们需要获取镜像：
 
@@ -76,7 +76,9 @@ registry.cn-hongkong.aliyuncs.com/natfrp/frpc:latest
 
 接下来我们执行：`docker run -d --restart=always <你刚复制的镜像tag> -f <启动参数> --remote_control <远程控制密码>`，如果一切顺利，就能看到只有一行奇怪的hash的输出，就是实例ID
 
-### 获取连接信息
+_* `--restart=always` 选项并不是必须，但开启此选项后可以自动重启容器实例_
+
+### 获取连接信息 :id=docker-how-to-connect
 
 连接信息在 docker实例 的日志中，执行 `docker logs <实例ID>` 就能看到，如对于这样的启动参数：
 
@@ -85,7 +87,3 @@ registry.cn-hongkong.aliyuncs.com/natfrp/frpc:latest
 我们取实例ID的随便前几位就能查到日志：
 
 ![](_images/docker-cli-log.png)
-
-### 注意事项
-
-`--restart=always` 选项并不是必须，但开启此选项后可以自动重启容器实例

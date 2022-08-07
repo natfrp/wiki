@@ -49,7 +49,7 @@
 
 ?> 自动 HTTPS 功能会在隧道启动时发送 `HEAD /\r\n\r\n` 请求检测您穿透的服务是否真的为 HTTPS 服务，该行为在 0.42.0-sakura-2.1 及以上版本的 frpc 中可以被 [auto_https_mode](/frpc/manual#tcp_proxy) 开关强制覆写
 
-## HTTP 隧道出现 503 错误
+## HTTP 隧道出现 503 错误 :id=http-503
 
 当您在访问网站时出现 `503 错误` 提示时，请检查是否存在以下情况：
 

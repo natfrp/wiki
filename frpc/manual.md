@@ -23,7 +23,7 @@
 
 ## 从命令行启动隧道 :id=cli-usage
 
-### 启动参数格式
+### 启动参数格式 :id=startup-parameter
 
 !> 如果您没有按照 [frpc 基本使用指南](/frpc/usage) 安装 frpc，或您使用的是 Windows 系统，启动时要把 "frpc" 换成下载到的的文件名  
 如 `frpc_windows_386.exe` 、 `./frpc_linux_amd64` 等
@@ -37,7 +37,7 @@ frpc 支持启动单条、多条或位于某个节点上的所有隧道。同时
    - `frpc -f wdnmdtoken6666666:1234,6666,7777,114514`
    - `frpc -f wdnmdtoken6666666:n95`
 
-### 使用举例
+### 使用举例 :id=cli-example
 
 假设您的 Token 为 `wdnmdtoken6666666`
 
@@ -70,7 +70,7 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 
 由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/docs/ ':target=_blank')。
 
-### 新增命令行开关
+### 新增命令行开关 :id=advanced-switches
 
 | 开关 | 说明 |
 | --- | --- |
@@ -84,7 +84,7 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 | --report | 向启动器上报信息<br>_* 这是一个内部开关，我们不建议您使用它_ |
 | --watch `<PID>` | 监控指定 PID 并在进程退出时退出 frpc，同时禁用日志颜色输出<br>_* 这是一个内部开关，我们不建议您使用它_ |
 
-### 新增环境变量选项
+### 新增环境变量选项 :id=advanced-env
 
 自 `v0.39.1-sakura-1.1` 版本起，您可以用环境变量代替 `-f` 开关。
 
@@ -93,9 +93,9 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 | NATFRP_TOKEN | 访问密钥 | wdnmdtoken666666 |
 | NATFRP_TARGET | `隧道 ID 列表` 或 `n<节点 ID>` | 1234,6666,7777 |
 
-### 新增配置文件选项
+### 新增配置文件选项 :id=advanced-config
 
-#### common 段
+#### common 段 :id=common
 
 | 选项 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -135,7 +135,7 @@ frpc_windows_386.exe -f wdnmdtoken666666:85823,94617
 | from_ip | String | 空 | 指定 WOL 发送时使用的源 IP |
 | from_if | String | 空 | 指定 WOL 发送时使用的网卡 |
 
-## 部分 frpc 新增特性
+## 部分 frpc 新增特性 :id=advanced-feature
 
 1. 日志输出会对用户 Token 进行打码，防止 Token 泄漏
 1. 连接成功后会输出一段提示信息，提示用户当前隧道的连接方式
