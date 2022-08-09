@@ -12,9 +12,13 @@
 
 !> 如果在安装过程中碰到问题，请参阅 [启动器常见安装问题](/faq/launcher#install)
 
-下载完毕后双击安装程序并根据向导提示进行安装：
+下载完毕后运行安装程序并根据向导提示进行安装：
 
 ![](_images/usage-1.png)
+
+通常情况下一直点 **下一步** 即可，您也可以参考下图选择需要安装的功能：
+
+![](_images/usage-1.5.png)
 
 ## 登录启动器 :id=login
 
@@ -26,23 +30,25 @@
 然后运行 `SakuraLauncher.exe`  (如果安装的是传统启动器，请运行 `LegacyLauncher.exe`)  
 ![](_images/usage-2.png)
 
-进入 [用户信息](https://www.natfrp.com/user/profile ':target=_blank') 页面，复制 **访问密钥** 到启动器，点击 **登录**
+进入 [用户信息](https://www.natfrp.com/user/profile ':target=_blank') 页面，复制 **访问密钥** 到启动器，点击 **登录**：
 
 ![](_images/usage-3.png)
 
 ## 创建隧道 :id=create-tunnel
 
-!> 启动器的创建隧道功能相对简陋，我们推荐您到 [SakuraFrp 管理面板](https://www.natfrp.com/user/) 创建隧道，以获取更好的使用体验。
+?> 启动器的创建隧道功能相对简陋，我们推荐您到 [SakuraFrp 管理面板](https://www.natfrp.com/user/) 创建隧道以获得更好的使用体验
 
-登录成功后会自动切换到 **隧道** 标签，点击加号新建隧道
+登录成功后会自动切换到 **隧道** 标签，点击加号新建隧道：
 
 ![](_images/usage-4.png)
 
-接下来选择您要映射的服务，本文以映射 `iperf3` 服务器为例，直接找到进程 `iperf3` 点击，然后选择一个服务器，最后点创建即可
+?> 本文档提供了 HTTP、RDP 等常见应用的配置指南，请查看左侧边栏的 **常见应用配置指南** 列表
+
+接下来选择您要映射的服务，此处以映射 `iperf3` 服务器为例，直接找到进程 `iperf3` 点击，然后选择一个服务器，最后点创建即可：
 
 ![](_images/usage-5.png)
 
-创建成功后按需要选择是否继续创建
+创建成功后按需要选择是否继续创建：
 
 ![](_images/usage-6.png)
 
