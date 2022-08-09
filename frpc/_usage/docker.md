@@ -6,6 +6,7 @@ SakuraFrp 提供 [frpc 镜像](https://hub.docker.com/r/natfrp/frpc) 以便您�
 
  - [群晖 DSM](/app/synology)
  - [威联通 QNAP](/app/qnap)
+ - [unRAID](/app/unraid)
 
 ### 设置隧道 :id=docker-create-tunnel
 
@@ -38,45 +39,61 @@ SakuraFrp 提供 [frpc 镜像](https://hub.docker.com/r/natfrp/frpc) 以便您�
 
 这样隧道就准备完了
 
-### 设置Docker :id=docker-setup-docker
+### 设置 Docker :id=docker-setup-docker
 
-首先我们需要获取镜像：
+只需要执行：
 
 ```bash
 # 默认 DockerHub 源，国内可能较慢：
-docker pull natfrp/frpc
+docker run \
+-d \ # 后台运行
+--restart=always \ # 自动启动
+--pull=always \ # 自动更新
+--name=sakura1 \ # 为容器设定一个名字
+natfrp/frpc \
+-f <启动参数> --remote_control <远程控制密码>
 
 ###### 或者 ######
 
 # 阿里云容器镜像 香港地区源，适合国内用户：
-docker pull registry.cn-hongkong.aliyuncs.com/natfrp/frpc
+docker run \
+-d \ # 后台运行
+--restart=always \ # 自动启动
+--pull=always \ # 自动更新
+--name=sakura1 \ # 为容器设定一个名字
+registry.cn-hongkong.aliyuncs.com/natfrp/frpc \
+-f <启动参数> --remote_control <远程控制密码>
 ```
 
-如果成功的话，返回应该会是下面这样：
+如果一切顺利，Docker 会为我们下载并启动镜像，您会看到只有一行奇怪的hash的输出，也就是运行容器的 ID。
 
-```
-~# docker pull registry.cn-hongkong.aliyuncs.com/natfrp/frpc
-Using default tag: latest
-latest: Pulling from natfrp/frpc
-4c0d98bf9879: Pull complete 
-292f768886fd: Pull complete 
-Digest: sha256:9d33d6110ee53480f28cc99e39476d3d845ce70cf8a4d775da78f15620bbab5a
-Status: Downloaded newer image for registry.cn-hongkong.aliyuncs.com/natfrp/frpc:latest
-registry.cn-hongkong.aliyuncs.com/natfrp/frpc:latest
-```
-
-其中最后一行复制一下，这个是实际被下载到本地的镜像tag，启动时会用得上
-
-接下来我们执行：`docker run -d --restart=always <你刚复制的镜像tag> -f <启动参数> --remote_control <远程控制密码>`，如果一切顺利，就能看到只有一行奇怪的hash的输出，就是实例ID
-
-_* `--restart=always` 选项并不是必须，但开启此选项后可以自动重启容器实例_
+_* `--restart=always` 选项并非必须，但开启此选项后可以自动重启容器实例_
 
 ### 获取连接信息 :id=docker-how-to-connect
 
-连接信息在 docker实例 的日志中，执行 `docker logs <实例ID>` 就能看到，如对于这样的启动参数：
+连接信息在 docker实例 的日志中，执行 `docker logs <容器名字|容器ID>` 即可查看。
 
-![](_images/docker-cli-run.png)
+如对于上面设置的启动参数，执行 `docker logs sakura1` 即可。
 
-我们取实例ID的随便前几位就能查到日志：
+### 停止、删除与更新容器 :id=docker-stop-delete-update
 
-![](_images/docker-cli-log.png)
+停止： `docker stop <容器名字|容器ID>`
+
+删除： `docker rm <容器名字|容器ID>`
+
+更新： 在使用带有 `--pull=always` 的启动指令另启动一个备用容器后，停止并删除当前容器。
+
+### 挂载文件 :id=docker-mount-file
+
+如果您需要挂载文件到容器内（如为 自动 HTTPS 使用自定义证书），您可以在启动命令中加入 `--mount` 参数：
+
+```
+docker run \
+-d \ # 后台运行
+--restart=always \ # 自动启动
+--pull=always \ # 自动更新
+--name=sakura1 \ # 为容器设定一个名字
+--mount type=bind,source=/home/homo/zhengshu.crt,target=/example.crt \ # 将容器外的 /home/homo/zhengshu.crt 映射到容器内的 /example.crt
+natfrp/frpc \
+-f <启动参数> --remote_control <远程控制密码>
+```

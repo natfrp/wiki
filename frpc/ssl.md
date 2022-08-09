@@ -92,27 +92,7 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 > 请先参考 [frpc 访问认证](/bestpractice/security#auth) 为您的隧道启用访问认证。
 
-### 替换 SSL 证书文件 :id=authpanel-sslfile
-
-> 替换步骤与自动 HTTPS 基本一致，但有一些细微的区别。
-
-启动启用了访问认证的隧道后，frpc 将在工作目录中创建两个证书文件:
-
-- `authpanel.crt`: 访问认证页面的证书文件。
-- `authpanel.key`: 访问认证页面的证书私钥文件。
-
-此时应先 **确保隧道已关闭**，随后替换这两个 **自签名证书**:
-
-1. 将您自己申领的 SSL 证书下载到本地，找到其中的 `xxx.crt` 和 `xxx.key` 文件。
-1. 将 `xxx.crt` 重命名为 `authpanel.crt`。
-1. 将 `xxx.key` 重命名为 `authpanel.key`。
-1. 将重命名后的 SSL 证书放到 frpc 工作目录，并 **直接替换** 自签名证书。
-1. 重新启动隧道。
-
-> 启动后，请尝试访问该隧道，并检查是否有错误提示。
-如果您的配置步骤、申请的 SSL 证书没有问题，那么将不再出现证书错误提示。
-
-!> 如果您发现启动隧道后，frpc 工作目录中您替换的 SSL 证书重新被 frpc 替换为自签名证书，那么说明 frpc 未能解析您的 SSL 证书，请检查证书完整性、各文件是否正确。
+访问认证会遵循 自动 HTTPS 配置项的规则加载证书，参考 [配置 frpc 的自动 HTTPS 功能](/fap/site-inaccessible#frpc-auto-https) 和上面的 [替换 SSL 证书文件](#autohttps-sslfile) 配置即可。
 
 ### 设置域名解析 :id=authpanel-dns
 
