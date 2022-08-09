@@ -24,8 +24,8 @@
   - [远程管理](/launcher/remote)
   - [配置系统服务](/launcher/service)
 
-- frpc 使用文档
-  - [基本使用指南](/frpc/usage)
+- frpc 客户端
+  - [安装、使用教程](/frpc/usage)
   - [用户手册](/frpc/manual)
   - [远程管理](/frpc/remote)
   - [配置 SSL 证书](/frpc/ssl)

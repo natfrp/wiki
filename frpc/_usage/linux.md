@@ -10,22 +10,21 @@
 uname -m
 ```
 
-| 架构 | 输出结果 |
+| 输出 | 架构 |
 | --- | --- |
-| i386 | `i386`, `i686` |
-| amd64 | `x86_64` |
-| arm_garbage | `arm`, `armel` |
-| armv7 | `armv7l`, `armhf` |
-| arm64 | `aarch64`, `armv8l` |
-| _mips*_ | `mips` |
-| _mips64*_ | `mips64` |
+| `i386`, `i686` | i386 |
+| `x86_64` | amd64 |
+| `arm`, `armel` | arm_garbage |
+| `armv7l`, `armhf` | _armv7*_ |
+| `aarch64`, `armv8l` | arm64 |
+| `mips` | _mips*_ |
+| `mips64` | _mips64*_ |
 
-?> 如果您的架构显示为 `armv7l`，但在下载对应程序后无法运行，提示 `Illegal instruction` 的话，这是因为您其实是 `armel` 而不是 `armhf`，请下载 `arm_garbage` 版本重试
+- 如果您使用 `armv7` 版时出现 `Illegal instruction` 报错，请下载 `arm_garbage` 版本重试
+- mips/mips64 架构还需要确认字节序，请参考 [下一节](#linux-check-endian) 进行操作，其他架构无需执行此操作
+- 如果您使用 Termux+PRoot 运行其他发行版，或使用某 "开源手机 AI 开发框架"，可能会碰到 `Segmentation fault` 报错。这是一个已知的 UPX 与 PRoot 及部分 Linux 内核协作的 Bug，请使用 `upx -d` 解压程序使用，或在下载地址后加 `_noupx` 下载已解压的版本
 
-?> 如果您使用 Termux+PRoot 运行其他发行版，或使用某神秘"开源"手机 AI 开发框架，程序运行提示 `Segmentation fault` 的话，这是一个已知的 upx 与 PRoot 及部分 Linux 内核协作的 bug，请使用 `upx -d` 解压程序使用，或在下载地址后加 `_noupx` 下载已解压的版本
-
-?> 如果您的架构为 `mips` 或 `mips64`，还需要使用下面的命令来确定处理器的字节序  
-其他架构请直接跳到 [安装 frpc](#linux-install-frpc) 一节
+### 确认处理器字节序 (mips/mips64) :id=linux-check-endian
 
 ```bash
 # 一般来说只需要使用这条命令:
@@ -35,10 +34,10 @@ echo -n I | hexdump -o | awk '{print substr($2,6,1); exit}'
 echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 ```
 
-| 下载文件 | 输出结果 |
+| 输出 | 架构 |
 | --- | --- |
-| mips / mips64 | `0` |
-| mipsle / mips64le | `1` |
+| `0` | mips / mips64 |
+| `1` | mipsle / mips64le |
 
 ### 安装 frpc :id=linux-install-frpc
 
@@ -60,6 +59,8 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 
    # 如果上面的命令报错，请尝试这条:
    curl -Lo frpc <下载地址>
+
+   # Linux frpc 通常已经过 UPX 压缩，如需下载未压缩的版本请在下载地址尾部加上 _noupx
    ```
 
    ![](_images/linux-2.png)
@@ -82,7 +83,7 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 
 ### 使用 frpc :id=linux-usage
 
-请查看 [frpc 用户手册](/frpc/manual) 学习 frpc 的基本使用方法
+请查看 [启动隧道](#running-frpc) 一节了解如何启动 frpc 并连接到您的隧道。
 
 通过本文档中介绍的方法安装后，您应该可以在任何目录直接输入 `frpc <参数>` 运行 frpc ，**不需要** 输入完整路径
 
@@ -98,26 +99,22 @@ frpc -f wdnmdtoken666666:12345 &
 
 ### 配置开机自启 :id=linux-autostart
 
-如果您想让 frpc 在开机时自启或在后台运行，就需要将 frpc 注册为系统服务。
+?> 本文档暂未覆盖到 Upstart 和 SysV-Init，如果您熟悉这些初始化系统，[欢迎提交 PR](https://github.com/natfrp/wiki/pulls)
 
-!> 由于文档维护者不了解 Upstart 和 SysV-Init 的传参模式，本文档暂不提供这两种初始化系统的配置指南  
-如果您熟悉这些初始化系统并且愿意为本文档作出贡献，欢迎开启 PR 完善相关文档（[GitHub 仓库](https://github.com/natfrp/wiki)）
+本文档提供下列初始化系统的自启配置指南：
 
-首先，您要搞清楚您的 Linux 系统使用的 ***初始化系统*** 是什么，常见的初始化系统：
+- [Systemd](/frpc/service/systemd)
+- ~Upstart~
+- ~SysV~
 
-- Systemd
-- Upstart
-- SysV-Init
+以及下列发行版的服务配置指南：
 
-执行下面的命令然后查看输出，找到您的初始化系统：
+- [OpenWRT](/frpc/service/openwrt)
+
+如果您不清楚您的 Linux 系统使用的 **初始化系统** 是什么，请执行下面的命令然后查看输出：
 
 ```bash
 if [[ `/sbin/init --version` =~ upstart ]]; then echo Upstart; elif [[ `systemctl` =~ -\.mount ]]; then echo Systemd; elif [[ -f /etc/init.d/cron && ! -h /etc/init.d/cron ]]; then echo SysV-Init; else echo Unknown; fi
 ```
 
 ![](_images/linux-4.png)
-
-然后，请参考下面的教程配置系统服务:
-
-- [Systemd 配置指南](/frpc/service/systemd)
-- [OpenWRT 配置指南](/frpc/service/openwrt)

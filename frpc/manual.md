@@ -1,76 +1,8 @@
 # frpc 用户手册
 
-下面是写给普通用户的一般使用教程，如果您是高级用户，请参阅 [此章节](#advanced) 获取更多信息。
+!> 这是面向高级用户的手册，如果您尚不熟悉 frpc，请移步 [frpc 简明使用教程](/frpc/usage#basic-usage)
 
-## 从 TUI 启动隧道 :id=tui-usage
-
-在 `frpc.ini` 不存在的情况下，不带参数直接运行 frpc 会出现一个交互式 UI。
-
-输入 **访问密钥**，然后使用 `Tab` 键切换到 **Login** 按钮并按 `回车` 键登录 (若终端支持也可使用鼠标进行操作)：
-
-![](_images/tui-0.png)
-
-登录成功后 TUI 会显示当前账户下的隧道列表，使用方向键选中想要启动的隧道，按空格标为绿色 (或使用鼠标直接点击隧道)：
-
-?> 可以一次性启用多个隧道，但是这些隧道必须位于同一节点下  
-您也可以直接选中节点来启用该节点下的所有隧道
-
-![](_images/tui-1.png)
-
-选择完毕后，按 `Ctrl-C` 即可启动隧道，相关启动参数会被保存到配置文件 `frpc.ini` 中，下次不带参数直接运行 frpc 时不再显示 TUI 而是直接启动隧道：
-
-?> 自 `v0.42.0-sakura-3` 版本起，启动时若不带参数 且 `frpc.ini` 存在，您会看到 `正在使用配置文件运行，在 3 秒内按任意键进入配置模式` 的提示。按下任意按键即可进入配置界面，否则 frpc 会自动加载 `frpc.ini` 并启动里面保存的隧道
-
-![](_images/tui-2.png)
-
-## 从命令行启动隧道 :id=cli-usage
-
-### 启动参数格式 :id=startup-parameter
-
-!> 如果您没有按照 [frpc 基本使用指南](/frpc/usage) 安装 frpc，或您使用的是 Windows 系统，启动时要把 "frpc" 换成下载到的的文件名  
-如 `frpc_windows_386.exe` 、 `./frpc_linux_amd64` 等
-
-frpc 支持启动单条、多条或位于某个节点上的所有隧道。同时启动多条隧道时，这些隧道必须位于同一节点。
-
- - `frpc -f <访问密钥>:<隧道ID>[,隧道ID[,隧道ID...]]`
- - `frpc -f <访问密钥>:n<节点ID>`
- - 示例：
-   - `frpc -f wdnmdtoken6666666:1234`
-   - `frpc -f wdnmdtoken6666666:1234,6666,7777,114514`
-   - `frpc -f wdnmdtoken6666666:n95`
-
-### 使用举例 :id=cli-example
-
-假设您的 Token 为 `wdnmdtoken6666666`
-
-![](_images/manual-1.png)
-
-您的隧道列表如下图所示
-
-![](_images/manual-2.png)
-
-假设当前运行的系统为 32 位的 Windows 系统，因此您下载到的 frpc 文件名是 `frpc_windows_386.exe` 。
-
-1. 启动图中的第一条隧道：
-```cmd
-frpc_windows_386.exe -f wdnmdtoken666666:114514
-```
-
-1. 启动 **#29 圣何塞CUVIP** 节点下的所有隧道，可以不输入隧道 ID：
-```cmd
-frpc_windows_386.exe -f wdnmdtoken666666:n29
-```
-
-1. 第二条命令也可以替换为手动输入两个隧道 ID，效果是相同的：
-```cmd
-frpc_windows_386.exe -f wdnmdtoken666666:114514,114515
-```
-
----
-
-## 高级用户手册 :id=advanced
-
-由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/docs/ ':target=_blank')。
+由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/docs/ ':target=_blank') 或 [frp/README.md](https://github.com/fatedier/frp/blob/dev/README.md)。
 
 我们总是推荐（并假设）您使用最新版客户端，因此文档中列出的特性不会专门标注可用的版本。如果您需要使用旧版并了解该版本对应的特性，建议您参考 [Nyatwork Static CDN](https://nyat-static.globalslb.net/natfrp/client/) 中的文件修改时间并对照文档的 Commit History 作出判断。
 

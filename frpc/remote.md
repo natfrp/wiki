@@ -31,7 +31,7 @@ frpc 的设备名均为 `frpc-随机字符串`，且后面会带有 `(frpc)` 标
 
 ![](_images/remote-1.png)
 
-请参阅 [frpc 用户手册-从命令行启动隧道](/frpc/manual#cli-usage) 获取更多关于启动参数的信息
+请参阅 [frpc 基本使用指南/从命令行启动隧道](/frpc/usage#cli-usage) 获取更多关于启动参数的信息
 
 ### 限制条件 :id=limitations
 
