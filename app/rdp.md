@@ -3,63 +3,61 @@
 !> 穿透远程桌面前务必阅读 [安全指南](/bestpractice/security)，确保您的系统已经 **安装了最新的补丁** 并且设置了 **强登录密码**  
 进行内网穿透等于 **绕过所有防火墙** 将您的计算机直接暴露于公网中，您需要自行承担由此带来的风险
 
-## 如果看不懂文字版可以看一分钟视频教程
+## 视频教程 :id=video
 
-*注: 视频教程跳过了很多东西，不推荐阅读理解能力没有问题的用户观看*
+<style>
+.docsify-tabs {
+    max-width: 1380px;
+    --docsifytabs-content-padding: 8px 8px 4px 8px;
+}
 
-<details>
-<summary><b style="font-size: 20px">Windows 7 (点击展开)</b></summary>
+.docsify-tabs__content video {
+    max-width: 1360px;
+    margin: 0 auto;
+    width: 100%;
+}
+</style>
 
-[Windows 7 RDP 视频](_videos/rdp-win7.mp4 ':include :type=video')
+<!-- tabs:start -->
 
-</details>
-<br>
-<details>
-<summary><b style="font-size: 20px">Windows 10 (点击展开)</b></summary>
+# **Windows 10**
 
 [Windows 10 RDP 视频](_videos/rdp-win10.mp4 ':include :type=video')
 
-</details>
+# **Windows 7**
 
-## 默认端口
+[Windows 7 RDP 视频](_videos/rdp-win7.mp4 ':include :type=video')
+
+<!-- tabs:end -->
+
+## 默认端口 :id=default-port
 
 - RDP: 3389
 - VNC: 您来错地方了，这篇教程和 VNC 没关系
 
-## 前置需求
+## 前置需求 :id=requirements
 
 如果您还没有启用远程桌面的话，请遵循 [微软的说明](https://support.microsoft.com/zh-cn/windows/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2-5fe128d5-8fb1-7a23-3b8a-41e636865e8c ':target=_blank') 启用远程桌面，然后继续下面的步骤。
 
 为了保证您在系统启动后无需操作就能使用远程桌面连接电脑，在安装启动器时请勾选 `安装为系统服务` 项。如果启动器已经装好了，可以直接覆盖安装一次或参考 [系统服务](/launcher/service) 一文安装系统服务。
 
-## 确认目标服务
+## 确认目标服务 :id=target-service
 
-?> 如果是穿透到本地计算机 (运行 frpc 的电脑)，一般可以跳过这一节，使用 IP 为 `127.0.0.1`，端口为 `3389` 即可
+?> 如果运行 frpc 的电脑和启用远程桌面的电脑是同一台，请跳过这一节并使用 `127.0.0.1` 作为本地 IP、`3389` 作为本地端口
 
 进行穿透前请先确认要穿透到的服务能被正常访问到，用 `远程桌面连接` 在 **运行 frpc 的电脑上** 访问一下您的服务，确保远程桌面可以正常连接后，参考下图找到您的目标 IP 和端口:
 
-![](./_images/rdp-1.png)
+![](./_images/rdp-local-service.png)
 
-上图中，我们要穿透的 IP 是 `10.0.1.130`，端口是 `12345`。
+上图中，我们要穿透的 IP 是 `192.168.1.100`，端口是 `3389`。
 
-## 选择穿透节点
-
-- **海外节点** 一般不会出问题，不需要备案域名
-- 明确标注 **拦截 HTTPS** 的节点基本上用不了 _(此类节点几乎都被下架了)_
-- 其他可建站节点 **可能** 需要 **使用备案域名 CNAME 到节点** 才可以正常连接
-- 不在上述范围内的节点不一定能用也不一定连不上，请自行测试
-
-参考下图选择一个穿透节点:
-
-![](./_images/rdp-2.png)
-
-## 创建隧道
+## 创建隧道 :id=create-tunnel
 
 选择隧道类型为 `TCP` 后直接填写刚才获取到的 `IP` 和 `端口` 即可。
 
-![](./_images/rdp-3.png)
+![](./_images/rdp-create.png)
 
-## 启动隧道
+## 启动隧道 :id=start-tunnel
 
 启动隧道，获取穿透后的连接方式并尝试连接。
 
