@@ -1,16 +1,9 @@
 SakuraFrp 提供 [frpc 镜像](https://hub.docker.com/r/natfrp/frpc) 以便您借助 Docker 管理 frpc。
 
-### 前置知识说明 :id=docker-note
+### 图形用户界面 :id=docker-gui
 
-首先您需要知道启动参数的写法，即：`-f <启动密钥>:<隧道ID>`，如果要启动多个隧道可以 `-f <启动密钥>:<隧道ID1>,隧道ID2,隧道ID3,...`，如果还需深入了解请参阅 [frpc 用户手册-从命令行启动隧道](/frpc/manual#cli-usage)。
+本教程只展示命令行操作，如果您使用以下平台，点击链接可查看对应的 GUI 操作说明：
 
-为了提高可用性，建议您开启远程控制功能，即在启动参数后面加上 ` --remote_control <设置一个远程控制密码>`，最终的形态即为： `-f <启动密钥>:<隧道ID> --remote_control <远程控制密码>`
-
-如果您感觉本篇教程对您来讲难以理解，可以试试隔壁 [Systemd 教程](/frpc/service/systemd)
-
-### 关于图形化 :id=docker-gui
-
-我们同时提供以下平台的 GUI 操作说明： 
  - [群晖 DSM](/app/synology)
  - [威联通 QNAP](/app/qnap)
 
