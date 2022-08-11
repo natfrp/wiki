@@ -12,7 +12,7 @@
 ## 获取 SSL 证书 :id=ssl
 
 > 如果您还不知道如何设置、申领 SSL 证书，请阅读此章节。
-否则，请直接跳到 [后续内容](#auto-https)。
+否则，请直接跳到 [后续内容](#autohttps)。
 
 ### 选择 SSL 服务商 :id=ssl-choose
 

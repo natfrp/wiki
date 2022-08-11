@@ -199,18 +199,22 @@ emit-server-telemetry = true
 
 disable-player-interaction = false
 # 是否禁用玩家间交互
-# 仅在 1.19.20 及更高版本的服务端中生效。
+# 仅在 1.19.20.02 及更高版本的服务端中生效。
 # 允许值:
 #   是: true
 #   否: false
 
-chat-restriction = none
+chat-restriction = None
 # 是否限制玩家聊天
-# 仅在 1.19.20 及更高版本的服务端中生效。
+# 仅在 1.19.20.02 及更高版本的服务端中生效。
 # 允许值:
-#   不限制: none
-#   部分限制: dropped
-#   完全限制: disabled
+#   不限制: None
+#   部分限制: Dropped
+#   完全限制: Disabled
+
+disable-custom-skins = false
+# 是否在服务器范围内禁用指定指定皮肤
+# 仅在 1.19.30 及更高版本的服务端钟生效。
 ```
 #### 隧道配置
 
