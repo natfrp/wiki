@@ -92,7 +92,7 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 > 请先参考 [frpc 访问认证](/bestpractice/security#auth) 为您的隧道启用访问认证。
 
-访问认证会遵循 自动 HTTPS 配置项的规则加载证书，参考 [配置 frpc 的自动 HTTPS 功能](/fap/site-inaccessible#frpc-auto-https) 和上面的 [替换 SSL 证书文件](#autohttps-sslfile) 配置即可。
+访问认证会遵循 自动 HTTPS 配置项的规则加载证书，参考 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible#frpc-auto-https) 和上面的 [替换 SSL 证书文件](#autohttps-sslfile) 配置即可。
 
 ### 设置域名解析 :id=authpanel-dns
 
