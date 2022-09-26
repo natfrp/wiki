@@ -93,7 +93,8 @@ docker run \
 --restart=always \ # 自动启动
 --pull=always \ # 自动更新
 --name=sakura1 \ # 为容器设定一个名字
---mount type=bind,source=/home/homo/zhengshu.crt,target=/example.crt \ # 将容器外的 /home/homo/zhengshu.crt 映射到容器内的 /example.crt
+--mount type=bind,source=/home/homo/zhengshu.crt,target=/run/frpc/example.crt \ # 将容器外的 /home/homo/zhengshu.crt 映射到容器内的 /example.crt
+--mount type=bind,source=/home/homo/zhengshu.key,target=/run/frpc/example.key \ # 将容器外的 /home/homo/zhengshu.key 映射到容器内的 /example.key
 natfrp/frpc \
 -f <启动参数> --remote_control <远程控制密码>
 ```
