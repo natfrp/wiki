@@ -109,7 +109,7 @@ frpc -f wdnmdtoken666666:12345 &
 
 以及下列发行版的服务配置指南：
 
-- [OpenWRT](/frpc/service/openwrt)
+- [OpenWrt](/frpc/service/openwrt)
 
 如果您不清楚您的 Linux 系统使用的 **初始化系统** 是什么，请执行下面的命令然后查看输出：
 
