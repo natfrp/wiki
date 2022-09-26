@@ -1,4 +1,4 @@
-# OpenWRT 配置 开机启动 服务
+# OpenWrt 配置 开机启动 服务
 
 ?> 查看此文档前请确保您已阅读 [frpc 基本使用指南](/frpc/usage) 中的 **Linux** 页面，否则您可能会对一些操作感到疑惑
 
@@ -21,7 +21,7 @@ chmod a+wx /sbin/natfrpc # 修改可执行权限和可写权限(用于更新)
 
 我们这里以 [Procd Init Script](https://openwrt.org/docs/guide-developer/procd-init-scripts) 实现自启动
 
-需要注意的是 Openwrt 自 bb(Barrier Breaker) 后引入了该系统，如果您使用 aa 或更早的上古系统，您可能需要使用 sysV 格式写启动脚本
+需要注意的是 OpenWrt 自 bb(Barrier Breaker) 后引入了该系统，如果您使用 aa 或更早的上古系统，您可能需要使用 sysV 格式写启动脚本
 
 创建一个名为 `/etc/init.d/natfrpc` 的文件，内容如下（请注意修改下面的启动参数）：
 
@@ -73,7 +73,7 @@ chmod +x /etc/init.d/natfrpc # 为其赋予可执行权限
 
 ### 网页控制台 :id=openwrt-web-panel
 
-此时您已经可以在 OpenWRT 的 Web 面板，即 LuCI 中查看 frpc 的状态
+此时您已经可以在 OpenWrt 的 Web 面板，即 LuCI 中查看 frpc 的状态
 
 如在 `状态 - 系统日志` 可以看到 frpc 的运行日志和连接信息（新日志内容在底部，请下滑）：
 
@@ -83,7 +83,7 @@ chmod +x /etc/init.d/natfrpc # 为其赋予可执行权限
 
 ### 问题排除 :id=openwrt-troubleshoot
 
-对于 Openwrt 用户来说，因为路由器的软件常年永不更新，视固件的年代，可能出现这样的错误：
+对于 OpenWrt 用户来说，因为路由器的软件常年永不更新，视固件的年代，可能出现这样的错误：
 
 ```
 x509: certificate signed by unknown authority
@@ -98,7 +98,7 @@ opkg install ca-certificates
 
 对于年代更为久远的，已经散发出老坛香气的固件，在线更新 `ca-certificates` 很可能不能做到或者不可能，此时请跟随下面步骤：
 
-1. 找到一个其他版本的 OpenWRT 源中的 `ca-certificates`包，如[此文件](https://downloads.openwrt.org/releases/21.02.1/packages/aarch64_generic/base/ca-certificates_20210119-1_all.ipk)
+1. 找到一个其他版本的 OpenWrt 源中的 `ca-certificates`包，如[此文件](https://downloads.openwrt.org/releases/21.02.1/packages/aarch64_generic/base/ca-certificates_20210119-1_all.ipk)
 1. 下载到路由器中，如果您的网络仍正常工作，可以使用 `wget https://downloads.openwrt.org/releases/21.02.1/packages/aarch64_generic/base/ca-certificates_20210119-1_all.ipk -O /tmp/ca-certificates.ipk`
 1. 如果上一步执行出错，请手动下载后将文件上传到 `/tmp/ca-certificates.ipk`
 1. 执行 `opkg install /tmp/ca-certificates.ipk` 安装
