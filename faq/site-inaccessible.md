@@ -43,8 +43,8 @@
 - `auto`: frpc 将使用 `server_name` 作为证书 **CommonName** 生成自签证书
 - 其他值:  
   frpc 将尝试加载当前工作目录(cwd)下 `<auto_https>.crt` 和 `<auto_https>.key` 两个证书文件  
-  *注: 对于 Docker，cwd 默认为 `/`*  
-  若文件不存在则使用 `<auto_https>` 作为 **CommonName** 生成一份自签名证书并保存到上述文件中  
+  *注: 对于 Docker，cwd 默认为 `/run/frpc`*  
+  若文件不存在或解析失败则使用 `<auto_https>` 作为 **CommonName** 生成一份自签名证书并保存到上述文件中  
   *注: 若文件已存在，`<auto_https>` 就作为一个单纯的文件名进行处理，不会对证书产生影响*
 
 ?> 自动 HTTPS 功能会在隧道启动时发送 `HEAD /\r\n\r\n` 请求检测您穿透的服务是否真的为 HTTPS 服务，该行为在 0.42.0-sakura-2.1 及以上版本的 frpc 中可以被 [auto_https_mode](/frpc/manual#tcp_proxy) 开关强制覆写
