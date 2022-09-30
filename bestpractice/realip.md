@@ -27,7 +27,8 @@ X-Forwarded-For: '; drop database natfrp --, 114.51.4.191
 ## Proxy Protocol :id=proxy-protocol
 
 !> 使用该方案时必须在本地服务也做相应的配置，只修改 frp 配置会造成 **隧道完全不可用**  
-   _\* 暂不支持 UDP 隧道，我们知道 CF 提出了 [Simple Proxy Protocol Header](https://developers.cloudflare.com/spectrum/reference/simple-proxy-protocol-header)，但目前没有开发计划_
+
+!> UDP 隧道需更新到 0.42.0-sakura-4 以上才能使用此功能
 
 Proxy Protocol 是由 HAProxy 开发者 Willy 提出的一种反向代理协议，目前已被广泛支持。您可以参考 [HAProxy 文档](http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) 获取更多信息。
 
@@ -38,5 +39,7 @@ proxy_protocol_version = <v1|v2>
 ```
 
 目前 Proxy Protocol 有两个版本：**v1** 和 **v2**，请先调查您所使用的本地服务支持哪个版本再进行配置。如果两个版本都支持的，我们推荐您使用 **v2** 以提高传输效率。
+
+Proxy Protocol v1 并未为 UDP 设计，在 UDP 隧道中您总是应该使用 **v2**。
 
 我们为常见的支持 Proxy Protocol 的程序提供一个简单的 [配置说明](/offtopic/proxy-protocol)，如果这个说明中没有列出您使用的本地服务，请咨询程序开发者或 STFW。
