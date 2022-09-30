@@ -138,6 +138,18 @@ settings:
   proxy-protocol: true
 ```
 
+### Geyser :id=geyser
+
+#### 入 Geyser 流量
+
+只需将 Geyser 配置项中 `enable-proxy-protocol` 设置为 `true`，Geyser 即可解析 frp 提供的真实 IP 信息。
+
+#### 出 Geyser 流量
+
+要在 Geyser 后的 Java 版服务端中使用真实 IP，您需要将配置文件中的 `use-proxy-protocol` 设置为 `true`，并参照本段的其他主题为您的 Java 版服务端启用 Proxy Protocol。
+
 ### 其他服务端 :id=other
+
+对于 Spigot，[这个插件](https://github.com/andylizi/bc-haproxy-detector) 已提供支持，配置指南可见 [MCBBS 帖子](https://www.mcbbs.net/thread-1111852-1-1.html)。
 
 STFW。
