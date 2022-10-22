@@ -167,6 +167,13 @@ correct-player-movement = false
 server-authoritative-block-breaking = false
 # 启用服务端权威性挖掘
 # 如果值为 true ，则服务端将与客户端同步计算挖掘，并且更正与服务端计算不符的非法挖掘
+
+enable-lan-visibility = true
+# 是否使服务器在局域网 (好友界面) 可见。
+# 仅在 1.19.50 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
 ```
 
 !> 数据压缩如果阈值过低，压缩会占用 CPU ，而开太高会导致流量消耗过快，请自行权衡
