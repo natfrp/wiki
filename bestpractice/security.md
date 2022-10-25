@@ -84,8 +84,7 @@
 如果您需要一个自动化的认证方案，可以参考下方实现：
 
 ```bash
-csrf=`curl https://<tunnel_url> -k | grep csrf | sed -En "s/.*value\=\"(.*)\">/\1/p"`
-curl -k -X POST -d "csrf=$csrf" -d "ip=<your_ip>" -d "pw=<your_password>" https://<tunnel_url>
+curl -k -X POST -d "ip=<your_ip>" -d "pw=<your_password>" https://<tunnel_url>
 ```
 
 此外，我们也推荐您使用 [SakuraFrp 认证代理](/offtopic/auth-guest) 自动完成认证流程。
