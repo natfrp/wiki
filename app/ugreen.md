@@ -20,7 +20,7 @@
 
 进入 `SakuraFrp-服务-隧道列表`，创建一个tcp隧道。其中本地 ip 填 `172.17.0.1`，本地端口填您需要穿透的 docker 容器端口，需开启 `自动https`：
 
->示例所用 qbitorrent 的 `web ui `本地端口为8990，SakuraFrp 设置中的本地端口即填写8990
+>示例所用 qbitorrent 的 `web ui` 本地端口为8990，SakuraFrp 设置中的本地端口即填写8990
 
 ![ugreen-add-tcp](./_images/ugreen-add-tcp.png)
 
