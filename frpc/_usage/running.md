@@ -27,8 +27,7 @@
 
 登录成功后 TUI 会显示当前账户下的隧道列表，使用方向键选中想要启动的隧道，按空格标为绿色 (或使用鼠标直接点击隧道)：
 
-?> 可以一次性启用多个隧道，但是这些隧道必须位于同一节点下  
-您也可以直接选中节点来启用该节点下的所有隧道
+?> 可以一次性启用多个隧道，您也可以直接选中节点来启用该节点下的所有隧道
 
 ![](_images/tui-1.png)
 
@@ -40,41 +39,73 @@
 
 ### 通过命令行启动隧道 :id=cli-usage
 
+#### 从面板获取启动参数 :id=view-startup-parameter
+
+要获取启动参数，最简单的方法就是在管理面板中直接查看了。点击隧道操作中的 **配置文件** 选项即可进行查看：
+
+![](_images/view-startup-parameter-1.png)
+
+如果要同时启动多条隧道，先勾选要启动的隧道再点击 **批量操作** 中的 **配置文件** 选项：
+
+![](_images/view-startup-parameter-2.png)
+
+弹出对话框后，如图所示复制启动参数并粘贴到 `frpc ` 命令后面即可，注意中间要用空格分开。
+
+![](_images/view-startup-parameter-3.png)
+
+在上面这个例子中，我们启动隧道的命令就是：
+
+```bash
+frpc -f wdnmdtoken6666666:114514,114516
+#   ^
+# 注意这里有一个空格
+```
+
 #### 启动参数格式 :id=startup-parameter
 
 !> 如果您没有按照 **基本使用指南** 安装 frpc，或您使用的是 Windows 系统，启动时要把 "frpc" 换成下载到的的文件名，例如 `frpc_windows_386.exe`、`./frpc_linux_amd64`
 
-frpc 支持启动单条、多条或位于某个节点上的所有隧道。同时启动多条隧道时，这些隧道必须位于同一节点。
+frpc 支持通过 ID 启动单条或多条隧道，也可以直接开启位于某个节点的所有隧道。旧版 frpc 同时启动多条隧道时，这些隧道必须位于同一节点，新版 frpc 无此限制，详见 [常见问题-一个 frpc 可以连接多条隧道吗](/faq/frpc#frpc-connect-to-multiple-tunnels)。
 
- - `frpc -f <访问密钥>:<隧道ID>[,隧道ID[,隧道ID...]]`
- - `frpc -f <访问密钥>:n<节点ID>`
- - 示例：
-   - `frpc -f wdnmdtoken6666666:1234`
-   - `frpc -f wdnmdtoken6666666:1234,6666,7777,114514`
-   - `frpc -f wdnmdtoken6666666:n95`
+启动参数的格式如下：
+
+```bash
+frpc -f <访问密钥>:<启动目标1>[,启动目标2[,启动目标3...]]
+```
+
+多个 **启动目标** 使用半角逗号 "," 分开，中间不能有空格或其他字符。每个 **启动目标** 可以是一个隧道 ID（如 `123456`）或是 `n` 前缀加上节点 ID（如 `n233`）。
 
 #### 使用举例 :id=cli-example
 
-假设您的隧道列表如下图所示：
+假设您使用的是 Linux 系统，且已跟随文档正确安装了 frpc，您的隧道列表如下图所示：
 
 ![](_images/tunnel-list.png)
 
-假设当前运行的系统为 **32 位的 Windows 系统**，您根据文档操作下载到的 frpc 文件名应是 `frpc_windows_386.exe`。
+- 启动第一条 **隧道 ID** 为 `114514` 的隧道：
+  ```bash
+  frpc -f wdnmdtoken666666:114514
+  ```
 
-1. 启动图中的第一条隧道：
-```cmd
-frpc_windows_386.exe -f wdnmdtoken666666:114514
-```
+- 启动 **#29 圣何塞CUVIP** 节点下的所有隧道，则有两种方法：
+  ```bash
+  # 直接使用节点 ID
+  frpc -f wdnmdtoken666666:n29
 
-1. 启动 **#29 圣何塞CUVIP** 节点下的所有隧道，可以不输入隧道 ID：
-```cmd
-frpc_windows_386.exe -f wdnmdtoken666666:n29
-```
+  # 一个个输隧道 ID
+  frpc -f wdnmdtoken666666:114514,114515
+  ```
 
-1. 第二条命令也可以替换为手动输入两个隧道 ID，效果是相同的：
-```cmd
-frpc_windows_386.exe -f wdnmdtoken666666:114514,114515
-```
+- 启动图中的所有隧道
+  ```bash
+  # 使用节点 ID
+  frpc -f wdnmdtoken666666:n20,n29
+
+  # 一个个输隧道 ID
+  frpc -f wdnmdtoken666666:114514,114515,114516
+
+  # 混着用也可以
+  frpc -f wdnmdtoken666666:n29,114516
+  ```
 
 ### 进阶使用 :id=advanced
 
