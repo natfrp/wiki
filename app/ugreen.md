@@ -18,9 +18,9 @@
 ![ugreen-docker-bridge](./_images/ugreen-docker-bridge.png)
 
 
-进入`樱花frp-服务-隧道列表`，创建一个tcp隧道，其中本地ip填`172.17.0.1`，本地端口填你需要穿透的docker容器端口，需开启自动https
+进入`樱花frp-服务-隧道列表`，创建一个tcp隧道，其中本地ip填`172.17.0.1`，本地端口填您需要穿透的docker容器端口，需开启自动https
 
->示例所用qbitorrent的`web ui`端口为8990，本地端口即填写8990
+>示例所用qbitorrent的`web ui`本地端口为8990，樱花frp设置中的本地端口即填写8990
 
 
 ![ugreen-add-tcp](./_images/ugreen-add-tcp.png)
@@ -31,7 +31,7 @@
 
 记录下这里的**token**和**隧道id**。
 
-token是你在樱花frp的身份令牌，请不要交给任何你不信任的人。
+token是您在樱花frp的身份令牌，请不要交给任何您不信任的人。
 
 ![ugreen-token-id](./_images/ugreen-token-id.png)
 
