@@ -4,7 +4,7 @@
 
 由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/docs/ ':target=_blank') 或 [frp/README.md](https://github.com/fatedier/frp/blob/dev/README.md)。
 
-我们总是推荐（并假设）您使用最新版客户端，因此文档中列出的特性不会专门标注可用的版本。如果您需要使用旧版并了解该版本对应的特性，建议您参考 [Nyatwork Static CDN](https://nyat-static.globalslb.net/natfrp/client/) 中的文件修改时间并对照文档的 Commit History 作出判断。
+我们总是推荐（并假设）您使用最新版客户端，因此文档中列出的特性不会专门标注可用的版本。如果您需要使用旧版并了解该版本对应的特性，建议您参考 [Nyatwork Static CDN](https://nyat-static.globalslb.net/natfrp/client/) 中的文件修改时间并对照文档的 Commit History 作出判断，或者参考 [部分 frpc 新增特性](#advanced-feature) 一节。
 
 ### 新增命令行开关 :id=advanced-switches
 
@@ -39,7 +39,7 @@
 | use_recover | Boolean | false | 启用不断线重连功能 |
 | persist_runid | Boolean | true | 根据本机特征 & 隧道信息生成唯一 RunID 以便快速重连 |
 | remote_control | String | 空 | 配置远程管理 E2E 密码，留空则禁用远程管理<br>请参阅 [frpc 远程管理](/frpc/remote) 获取更多信息 |
-| dynamic_key | Boolean | true | 启用 DKC，即使用 SM2 和 AES-128-GCM / AES-128-CFB 加密控制连接和数据连接（如果启用） |
+| dynamic_key | Boolean | true | 启用 DKC，即使用 SM2 和 AES-128-GCM / AES-128-CFB 加密数据连接（如果启用数据加密）和控制连接 |
 
 #### TCP 隧道 :id=tcp_proxy
 
@@ -74,17 +74,28 @@
 
 ## 部分 frpc 新增特性 :id=advanced-feature
 
-1. 日志输出会对用户 Token 进行打码，防止 Token 泄漏
-1. 连接成功后会输出一段提示信息，提示用户当前隧道的连接方式
-   - 该提示信息不会匹配日志格式。目的是兼容旧版启动器对旧版本 frpc 日志解析的逻辑
-1. 与服务器连接断开后会尝试自动进行重连，客户端将尝试直接恢复 MUX 连接，因此短暂的断线 (10 秒内) 能实现用户无感知重连
-1. 根据本机特征 & 隧道信息生成 `RunID`
-   - 这有助于服务端快速辨识掉线的 `frpc` 并进行重连作业。生成的 `RunID` 为一串 `Hash`，不会包含敏感信息
-1. 启动时会从 API 服务器的 `/client/get_version` 获取最新版本信息, 并提示用户进行更新或进行自动更新
-1. 内建 TUI，方便用户在无参数启动时进行配置
-1. 增加封包合并功能以减少小包
-1. 下发客户端限速，提升连接体验并有助于解决部分应用断线问题
-   - 服务端读取限速存在上行速度在 **跑满本地带宽** 和 **0 Byte/s** 之间反复跳动的问题，在客户端也进行限制即可获得稳定的最大速度
-1. 增加自动 TLS 配置功能以简化通过 TCP 隧道调试 HTTP 应用的配置流程
-1. 增加自动 HTTPS 重定向功能以减少隧道占用
-1. 增加访问认证功能以提升隧道安全性
+此处只列出 frpc 的部分特性变更，服务端由于变更过多（几乎完全重构）而无法在此处列出。
+
+| 最早版本 | 特性 |
+| --- | --- |
+| 0.33.0-sakura-1 | 增加 `-f` 参数从 API 拉取配置文件 |
+| | 增加日志输出 Token 打码功能 |
+| 0.33.0-sakura-2 | 增加 `sakura_mode` 配置项，允许开关自有特性来改善对原版的兼容性 |
+| | 增加 `-w` 写入配置文件开关 |
+| 0.33.0-sakura-3 | 增加无感知重连功能 |
+| | 增加 TUI 方便用户在无参数启动时进行配置 |
+| 0.33.0-sakura-4 | 增加输出信息本地化支持，在中文环境下自动以中文输出 |
+| | 增加 `stop\n` 指令正常退出功能 |
+| | 增加根据本机特征 & 隧道信息生成 `RunID` 功能 |
+| 0.33.0-sakura-5 | 增加更新检查、自动更新功能 |
+| 0.33.0-sakura-6 | 增加自动 HTTPS 重定向功能 |
+| 0.34.1-sakura-1 | 增加封包合并功能（需要用户手动配置） |
+| 0.34.1-sakura-2 | 增加客户端限速下发功能 |
+| 0.34.2-sakura-1 | 增加自动 TLS 配置功能 |
+| 0.34.2-sakura-3 | 增加 WOL 隧道支持 |
+| | 增加访问认证功能 |
+| 0.39.1-sakura-1 | 增加 DKC 加密实现，使用 SM2 和 AES-128-GCM / AES-128-CFB 进行数据加密 |
+| 0.42.0-sakura-2 | 在自动 HTTPS 中增加 Proxy Protocol 支持 |
+| 0.42.0-sakura-2.1 | 增加切换自动 HTTPS 工作模式的配置项 |
+| 0.42.0-sakura-3 | 增加访问认证功能 TOTP 支持 |
+| 0.42.0-sakura-6 | 增加多节点模式（不是上游那个奇妙多实例实现） |
