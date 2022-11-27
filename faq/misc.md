@@ -63,16 +63,6 @@
 | 在一台电脑上开启多条 **ID 不同的** 隧道 | 可以 | 这是很常见的场景 |
 | 在多台电脑的 **启动器** 上 **登录同一个账号** | 可以 | 我们不限制启动器的登录设备数量 |
 
-## 一个 frpc 可以连接多条隧道吗 :id=frpc-connect-to-multiple-tunnels
-
-?> 请注意区别 **进程** 和 **文件**。如果您无法理解这两个概念，可以参考 [百度百科: 进程](https://baike.baidu.com/item/%E8%BF%9B%E7%A8%8B/382503 ':target=_blank')、[百度百科: 计算机文件](https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%96%87%E4%BB%B6 ':target=_blank')
-
-一个 frpc 进程只能连接一个 **节点**，这就是说：
-
-- 如果这几条隧道不在同一个节点，不能，必须开启多个 frpc 进程
-- 如果这几条隧道都在同一个节点上，可以在一个 frpc 进程中连接多条隧道。请参阅 [frpc 基本使用指南/从命令行启动隧道](/frpc/usage#cli-usage)
-- 启动器会自动管理 frpc 进程并且总是确保一个 frpc 连接一条隧道，因此启动器开启的 frpc 无法连接多条隧道
-
 ## 如何设置解析 :id=configure-dns-for-domain
 
 - 请自行查看您域名解析提供商的帮助文档，并设置 `CNAME` 记录到节点域名。

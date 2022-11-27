@@ -1,24 +1,53 @@
 # 常见问题: frpc
 
+## 一个 frpc 可以连接多条隧道吗 :id=frpc-connect-to-multiple-tunnels
+
+自 **v0.42.0-sakura-5** 版本开始，frpc 已支持多节点模式，现在可以连接位于不同节点的多个隧道了。
+
+下方划线的内容仅针对旧版或原版（无 `-sakura-` 后缀）的 frpc。
+
+<s>
+
+?> 请注意区别 **进程** 和 **文件**。如果您无法理解这两个概念，可以参考 [百度百科: 进程](https://baike.baidu.com/item/%E8%BF%9B%E7%A8%8B/382503 ':target=_blank')、[百度百科: 计算机文件](https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%96%87%E4%BB%B6 ':target=_blank')
+
+一个 frpc 进程只能连接一个 **节点**，这就是说：
+
+- 如果这几条隧道不在同一个节点，不能，必须开启多个 frpc 进程
+- 如果这几条隧道都在同一个节点上，可以在一个 frpc 进程中连接多条隧道。请参阅 [frpc 基本使用指南/从命令行启动隧道](/frpc/usage#cli-usage)
+- 启动器会自动管理 frpc 进程并且总是确保一个 frpc 连接一条隧道，因此启动器开启的 frpc 无法连接多条隧道
+
+</s>
+
 ## 如何通过一个 frpc 开启多条隧道 :id=multi-tunnels-in-single-frpc
 
-?> 一个 frpc 只能连接一个 **节点**，但可以连接多条 **隧道**  
-详见 [其他常见问题-一个 frpc 可以连接多条隧道吗](/faq/misc#frpc-connect-to-multiple-tunnels)
+?> 旧版 frpc 只能连接一个 **节点**，但可以开启多条 **隧道**，新版 frpc 无此限制，详见上一条 FAQ。
 
-如果您使用 **启动参数** 启动 frpc，只需要在启动参数中加上半角逗号 `,` 分隔的其他隧道 ID 即可，例如：
+如果您使用 **启动参数** 启动 frpc，只需要在启动参数中加上半角逗号 `,` 分隔的其他隧道 ID 或节点 ID 即可，例如：
 
 ```bash
-frpc -f <访问密钥>:<隧道ID>,<另外一个隧道ID>,<更多隧道ID>,...
+frpc -f <访问密钥>:<隧道ID>,<另外一个隧道ID>,<更多隧道ID>,n<节点ID>,n<另外一个节点ID>,...
 ```
 
-如果您使用 **配置文件** 启动 frpc，可以简单的对配置文件进行合并，例如：
+如果您使用 **配置文件** 启动 frpc，可以通过合并配置文件来此目的。但是请注意区分 **所有隧道位于同一节点** 与 **需要连接多个节点** 的情况。
+
+<style>
+.docsify-tabs {
+    --docsifytabs-content-padding: 24px 16px;
+}
+</style>
+
+<!-- tabs:start -->
+
+# **隧道位于同一节点**
+
+所有隧道位于同一节点时，可以简单的对配置文件进行拼接。假设我们有以下两个配置文件：
 
 <table style="border-style: none;">
 <tr style="border-style: none;">
 <td style="border-style: none;">
-隧道 1 的配置文件如下：
 
 ```ini
+# 隧道 ALICE 的配置文件
 [common]
 server_addr = idea-leaper-1.natfrp.cloud
 server_port = 7000
@@ -33,9 +62,9 @@ local_port = 2333
 ```
 </td>
 <td style="border-style: none;">
-隧道 2 的配置文件如下：
 
 ```ini
+# 隧道 BOB 的配置文件
 [common]
 server_addr = idea-leaper-1.natfrp.cloud
 server_port = 7000
@@ -75,6 +104,92 @@ local_port = 179
 ```
 
 使用此配置文件启动 frpc，就可以同时连接两条隧道了。
+
+# **隧道位于不同节点**
+
+合并多个节点的配置时操作比较复杂，并且我们需要知道对应的节点 ID，推荐您直接到管理面板勾选所需隧道让系统自动生成配置文件。
+
+假设我们有以下两个配置文件：
+
+<table style="border-style: none;">
+<tr style="border-style: none;">
+<td style="border-style: none;">
+
+```ini
+# 隧道 ALICE 的配置文件
+[common]
+# 假设此节点的 ID 是 233
+server_addr = idea-leaper-1.natfrp.cloud
+server_port = 7000
+token = SakuraFrpClientToken
+// 其余部分省略
+
+[TUNNEL_FOR_ALICE]
+type = tcp
+local_ip = 127.0.0.1
+local_port = 2333
+// 其余部分省略
+```
+</td>
+<td style="border-style: none;">
+
+```ini
+# 隧道 BOB 的配置文件
+[common]
+# 假设此节点的 ID 是 234
+server_addr = idea-leaper-2.natfrp.cloud
+server_port = 7000
+token = SakuraFrpClientToken
+// 其余部分省略
+
+[TUNNEL_FOR_BOB]
+type = udp
+local_ip = 127.0.0.1
+local_port = 179
+// 其余部分省略
+```
+</td>
+</tr>
+</table>
+
+由于两个隧道位于不同，我们需要在 `[common]` 段填写相同的部分，然后以 `[common.<节点ID>]` 的格式增加两个覆写段，并且在隧道段中加上 `node = <节点 ID>` 一项：
+
+```ini
+[common]
+server_port = 7000
+token = SakuraFrpClientToken
+# server_addr 不同，因此此处不填写
+// 其余部分省略
+
+# 在两个覆写段中写上不同的部分
+[common.233]
+server_addr = idea-leaper-1.natfrp.cloud
+
+[common.234]
+server_addr = idea-leaper-2.natfrp.cloud
+
+[TUNNEL_FOR_ALICE]
+# 在此处增加了节点 ID
+node = 233
+
+type = tcp
+local_ip = 127.0.0.1
+local_port = 2333
+// 其余部分省略
+
+[TUNNEL_FOR_BOB]
+# 在此处增加了节点 ID
+node = 234
+
+type = udp
+local_ip = 127.0.0.1
+local_port = 179
+// 其余部分省略
+```
+
+使用此配置文件启动 frpc，就可以同时连接位于两个不同节点的隧道了。
+
+<!-- tabs:end -->
 
 ## macOS 提示 frpc 无法打开 :id=macos-run-frpc-issue
 
