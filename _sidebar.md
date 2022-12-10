@@ -33,15 +33,17 @@
 - 常见应用配置指南
   - [HTTP(S) 穿透](/app/http)
   - [远程桌面(RDP) 穿透](/app/rdp)
-  - [群晖(Synology) NAS 穿透](/app/synology)
-  - [威联通(QNAP) NAS 穿透](/app/qnap)
-  - [使用 unRAID 服务器穿透](/app/unraid)
   - [穿透 SFTP 传输文件](/app/sftp)
   - [XTCP P2P 穿透](/app/xtcp)
   - [远程开机(WOL) 配置](/app/wol)
   - [我的世界(Minecraft) 穿透](/app/mc)
   - [FTP(S) 穿透](/app/ftp)
-  - [在绿联 NAS 中使用穿透](/app/ugreen)
+
+- 常见 NAS 配置指南
+  - [群晖(Synology) NAS](/app/synology)
+  - [威联通(QNAP) NAS](/app/qnap)
+  - [Unraid 服务器](/app/unraid)
+  - [绿联 NAS](/app/ugreen)
 
 - 杂项教程
   - [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server)
