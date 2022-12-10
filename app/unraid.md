@@ -1,28 +1,28 @@
-# 以 unRAID 为中心的家庭服务穿透指南
+# 以 Unraid 为中心的家庭服务穿透指南
 
-unRAID 在很多社区的热度较高，而其配置较为简单，只需使用 CA(Community Applications) 搜索 Dockerhub 的镜像然后简单地配置即可。
+Unraid 在很多社区的热度较高，而其配置较为简单，只需使用 CA(Community Applications) 搜索 Dockerhub 的镜像然后简单地配置即可。
 
-但是因为仍有一定的门槛，且 unRAID 未官方提供直接从 Docker 镜像创建的功能，取而代之的是被称为 模板(template) 的机制，所以我们提供了一个官方的 [模板仓库](https://github.com/natfrp/unraid-docker-templates) 帮助各位简化部署。
+但是因为仍有一定的门槛，且 Unraid 未官方提供直接从 Docker 镜像创建的功能，取而代之的是被称为 模板(template) 的机制，所以我们提供了一个官方的 [模板仓库](https://github.com/natfrp/unraid-docker-templates) 帮助各位简化部署。
 
-本文旨在提供易于理解的教程，考虑到 unRAID 服务器通常本身并不提供主要服务，而是为其他内网服务做支撑，本文中的 Docker 网络模型选择了 `host` 而非 `bridge`。
+本文旨在提供易于理解的教程，考虑到 Unraid 服务器通常本身并不提供主要服务，而是为其他内网服务做支撑，本文中的 Docker 网络模型选择了 `host` 而非 `bridge`。
 
 ## 使用前准备
 
 ### 安全警告
 
-根据 [unRAID 官方的配置指南](https://wiki.unraid.net/index.php/Configuration_Tutorial#Security)，unRAID 在任何情况下都不应直接连接到互联网。
+根据 [Unraid 官方的配置指南](https://wiki.unraid.net/index.php/Configuration_Tutorial#Security)，Unraid 在任何情况下都不应直接连接到互联网。
 
-为了表达我们最大程度的不建议，我们将映射 unRAID 自身的教程单独放在了这篇文章的最后，并进行了折叠。
+为了表达我们最大程度的不建议，我们将映射 Unraid 自身的教程单独放在了这篇文章的最后，并进行了折叠。
 
 ### 添加 Templates
 
-unRAID 在 6.10.0-rc1 之后的版本中弃用了自定义 Templates Repository 的功能，我们需要将仓库文件下载到 unRAID U盘的特定路径。
+Unraid 在 6.10.0-rc1 之后的版本中弃用了自定义 Templates Repository 的功能，我们需要将仓库文件下载到 Unraid U盘的特定路径。
 
-我们提供使用 unRAID 终端直接下载文件的在线部署和手动复制文件的离线部署方法。
+我们提供使用 Unraid 终端直接下载文件的在线部署和手动复制文件的离线部署方法。
 
 #### 在线部署（推荐）
 
-点击 unRAID webGui 右上角的 Terminal 按钮，在打开的页面中复制粘贴下面的命令执行：
+点击 Unraid webGui 右上角的 Terminal 按钮，在打开的页面中复制粘贴下面的命令执行：
 
 ```bash
 curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-static.globalslb.net/natfrp/misc/natfrpc.xml
@@ -38,9 +38,9 @@ curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-s
 
 ?> 通常情况下离线部署并无必要，如果您发现自己对 Linux 命令行操作过敏，请考虑离线部署。
 
-要离线部署，请先将 unRAID 服务器关机，将启动盘拔出插到 PC 上。
+要离线部署，请先将 Unraid 服务器关机，将启动盘拔出插到 PC 上。
 
-手动下载 [模板文件](https://nyat-static.globalslb.net/natfrp/misc/natfrpc.xml)，将此文件放置到 `X:\config\plugins\dockerMan\templates-user` （X 为 unRAID 启动盘盘符）。
+手动下载 [模板文件](https://nyat-static.globalslb.net/natfrp/misc/natfrpc.xml)，将此文件放置到 `X:\config\plugins\dockerMan\templates-user` （X 为 Unraid 启动盘盘符）。
 
 ![](_images/unraid-usbstick-tpl.png)
 
@@ -79,7 +79,7 @@ curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-s
 <details id='unraid-self'>
 <summary>在点击展开前，请确认您完全理解自己正在做的行为，并了解其中的安全风险</summary>
 
-## 穿透 unRAID web 控制台
+## 穿透 Unraid web 控制台
 
 !> 请在阅读前完全理解自己正在做的行为，并了解其中的安全风险
 
@@ -91,9 +91,9 @@ curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-s
 
 但请注意，不要选择一个不支持 HTTPS 的节点使用。
 
-unRAID 不提供 HTTPS 控制台，因为我们的大部分节点均不允许使用 HTTP 访问，请将 自动 HTTPS 配置项设为 自动 或您使用的域名。
+Unraid 不提供 HTTPS 控制台，因为我们的大部分节点均不允许使用 HTTP 访问，请将 自动 HTTPS 配置项设为 自动 或您使用的域名。
 
-为了给 unRAID 提供保护，您**不得**将访问密码留空，且**必须**在此处填写一个足够强的长密码。
+为了给 Unraid 提供保护，您**不得**将访问密码留空，且**必须**在此处填写一个足够强的长密码。
 
 ### 创建容器
 
@@ -107,6 +107,6 @@ unRAID 不提供 HTTPS 控制台，因为我们的大部分节点均不允许使
 
 在登录后，使用 `https://114.5.1.4:1919/Main` 即可访问您的控制台。
 
-?> 因为 unRAID 控制台的自动跳转功能，使用 `https://114.5.1.4:1919/` 会被跳转到 `http://114.5.1.4:1919/Main` （没有 s）从而无法访问，所以请务必访问 `https://114.5.1.4:1919/Main`
+?> 因为 Unraid 控制台的自动跳转功能，使用 `https://114.5.1.4:1919/` 会被跳转到 `http://114.5.1.4:1919/Main` （没有 s）从而无法访问，所以请务必访问 `https://114.5.1.4:1919/Main`
 
 </details>
