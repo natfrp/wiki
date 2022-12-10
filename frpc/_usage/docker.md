@@ -6,7 +6,8 @@ SakuraFrp 提供 [frpc 镜像](https://hub.docker.com/r/natfrp/frpc) 以便您�
 
  - [群晖 DSM](/app/synology)
  - [威联通 QNAP](/app/qnap)
- - [unRAID](/app/unraid)
+ - [Unraid](/app/unraid)
+ - [绿联 NAS](/app/ugreen)
 
 ### 设置隧道 :id=docker-create-tunnel
 
