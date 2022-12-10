@@ -6,29 +6,53 @@ unRAID 在很多社区的热度较高，而其配置较为简单，只需使用 
 
 本文旨在提供易于理解的教程，考虑到 unRAID 服务器通常本身并不提供主要服务，而是为其他内网服务做支撑，本文中的 Docker 网络模型选择了 `host` 而非 `bridge`。
 
-## 安全警告
+## 使用前准备
 
-根据 [unRAID 官方的配置指南](https://wiki.unraid.net/index.php/Configuration_Tutorial#Security)，unRAID 不应直接连接到互联网，因此我们的教程将会隐藏关于如何穿透 unRAID web 控制台本身的内容。
+### 安全警告
 
-如果您很确信自己在做什么，并确认自己会做好必要的安全措施（包括但不限于启用访问认证），请在当前页面键入上述链接文档段落的第一个加粗单词并前往页面末尾。
+根据 [unRAID 官方的配置指南](https://wiki.unraid.net/index.php/Configuration_Tutorial#Security)，unRAID 在任何情况下都不应直接连接到互联网。
 
-## 穿透内网其他应用
+为了表达我们最大程度的不建议，我们将映射 unRAID 自身的教程单独放在了这篇文章的最后，并进行了折叠。
+
+### 添加 Templates
+
+unRAID 在 6.10.0-rc1 之后的版本中弃用了自定义 Templates Repository 的功能，我们需要将仓库文件下载到 unRAID U盘的特定路径。
+
+我们提供使用 unRAID 终端直接下载文件的在线部署和手动复制文件的离线部署方法。
+
+#### 在线部署（推荐）
+
+点击 unRAID webGui 右上角的 Terminal 按钮，在打开的页面中复制粘贴下面的命令执行：
+
+```bash
+curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-static.globalslb.net/natfrp/misc/natfrpc.xml
+```
+
+![](_images/unraid-terminal-btn.png)
+
+此时模板文件已经被下载到指定位置，可以使用了。
+
+如果在后面创建容器时发现不可用，请检查 `/boot/config/plugins/dockerMan/templates-user/natfrpc.xml` 文件的内容。
+
+#### 离线部署 :id=tpl-offline
+
+?> 通常情况下离线部署并无必要，如果您发现自己对 Linux 命令行操作过敏，请考虑离线部署。
+
+要离线部署，请先将 unRAID 服务器关机，将启动盘拔出插到 PC 上。
+
+手动下载 [模板文件](https://nyat-static.globalslb.net/natfrp/misc/natfrpc.xml)，将此文件放置到 `X:\config\plugins\dockerMan\templates-user` （X 为 unRAID 启动盘盘符）。
+
+![](_images/unraid-usbstick-tpl.png)
+
+## 穿透内网其他服务 :id=others
 
 ### 创建隧道
 
-使用内网其他设备访问时的端口和 ip 在 [隧道列表](https://www.natfrp.com/tunnel/) 页面使用“新建隧道”即可，因为我们使用 `host` 网络，此处限制较少。
+使用内网访问时的端口和 ip 在 [隧道列表](https://www.natfrp.com/tunnel/) 页面使用“新建隧道”即可，因为我们使用 `host` 网络，此处限制较少。
 
 对于 HTTP 访问的限制 和 部分机房合规要求访问认证 仍存在，请在创建隧道时注意。
 
-### 运行隧道 :id=other-start
-
-1. 添加 Templates
-
- 在 web 控制台中选择 Docker 页并在 Template Repositories 中添加一行 `https://github.com/natfrp/unraid-docker-templates`，然后点击 Save 即可。如图所示：
-
- ![](_images/unraid-add-tpl.png)
-
-2. 创建容器
+### 创建容器 :id=start-container
 
  在 Docker 页中点击 `Add Container` ，并选择 `natfrpc` 模板后配置即可，其中的 隧道 ID 可以在 [隧道列表](https://www.natfrp.com/tunnel/) 页面获得。
 
@@ -44,7 +68,7 @@ unRAID 在很多社区的热度较高，而其配置较为简单，只需使用 
 
  ![](_images/unraid-running-container.png)
 
-3. 查看日志
+#### 查看日志
 
  此时点击已经完成创建的容器图标（图中为问号）即可进行管理，点击此菜单中的 Logs 项即可在弹出的新窗口中查看运行日志。在向他人提问时请务必截图并提供此窗口内容。
 
@@ -52,21 +76,7 @@ unRAID 在很多社区的热度较高，而其配置较为简单，只需使用 
 
  ![](_images/unraid-log-window.png)
 
-<script>
-var done = 0;
-window.addEventListener("keypress", (e) => {
-    if (done == 3) return;
-    else if (done == 2 && e.key.toLowerCase() == "t") {
-        done = 3;
-        document.getElementById("unraid-self").style.display = "";
-        window.scrollTo(0, document.body.scrollHeight);
-    } 
-    else if (done == 1 && e.key.toLowerCase() == "o") done = 2;
-    else if (done == 0 && e.key.toLowerCase() == "n") done = 1;
-    else done = 0;
-}); 
-</script>
-<details id='unraid-self' style='display:none;'>
+<details id='unraid-self'>
 <summary>在点击展开前，请确认您完全理解自己正在做的行为，并了解其中的安全风险</summary>
 
 ## 穿透 unRAID web 控制台
@@ -85,9 +95,9 @@ unRAID 不提供 HTTPS 控制台，因为我们的大部分节点均不允许使
 
 为了给 unRAID 提供保护，您**不得**将访问密码留空，且**必须**在此处填写一个足够强的长密码。
 
-### 运行隧道
+### 创建容器
 
-参考上面的 [运行隧道](#other-start) 即可。
+参考上面的 [运行隧道](#start-container) 即可。
 
 ### 访问隧道
 
