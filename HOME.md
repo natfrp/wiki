@@ -8,7 +8,7 @@
 
 ## 关于首页到处乱飞的文档链接有四个关闭按钮这件事
 
-只有右下角那个是真的，您也可以设置 `localStorage.close_rtfm_alert = '20220119'` 手动关闭。
+只有右下角那个是永久关闭，您也可以设置 `localStorage.close_rtfm_alert = '20220119'` 手动关闭。
 
 [faq](/faq.md ':include')
 
