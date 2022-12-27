@@ -3,6 +3,20 @@
 !> SakuraFrp 不提供 Minecraft 服务器相关帮助，文档主要由热心网友提供  
 如果您有不懂的问题建议到 [MCBBS 你问我答板块](https://www.mcbbs.net/forum-multiqanda-1.html ':target=_blank') 提问
 
+## 常见问题 :id=faq
+
+<details>
+<summary>我还是进不去服务器 / 用不了 / 进服时报 XXX 错误怎么办</summary>
+
+![](./_images/mc-javaia-1.png)
+</details>
+<br>
+<details>
+<summary>第一次开服能用，怎么现在就不行了 / 报错 “请检查本地服务是否可访问”</summary>
+
+![](./_images/mc-localsrv-checkflow.png)
+</details>
+
 ## 基岩版或 Geyser 联机和开服 :id=bedrock
 
 请参阅 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server) | [Geyser 互通开服指南](/offtopic/mc-geyser) 以开启服务器
