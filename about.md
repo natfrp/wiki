@@ -47,6 +47,8 @@
   - _咕_
 - [一纸荒年Trace](https://wtrace3zh.com ':target=_blank')
   - _Source 引擎游戏开服指南 帮助文档_
+- [邓清辰 Leodeng](https://leosblog.xyz ':target=_blank')
+  - _Source 引擎游戏开服指南 帮助文档修正_ 
 - [红羽早苗](https://fro.moe ':target=_blank')
   - _邮件服务穿透、Minecraft 穿透及开服指南 部分帮助文档_
   - _社区论坛站点_
