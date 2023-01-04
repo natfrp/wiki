@@ -1,6 +1,6 @@
 # 起源引擎 (CSGO, 求生之路 2) 等游戏服务器穿透指南
 
-!> 本教程内容由社区贡献。[_了解详情_](https://github.com/natfrp/wiki/pull/33)。
+!> 本教程内容由社区贡献：[pr/33](https://github.com/natfrp/wiki/pull/33) & [pr/250](https://github.com/natfrp/wiki/pull/250)。
 
 !> 请注意我们 **并不推荐** 您使用 SakuraFrp 穿透 CSGO 社区服务器，因为这很可能会为 SakuraFrp 招来无差别的打击，影响其他用户的正常使用。
 
@@ -14,11 +14,11 @@
 
 !> 反恐精英 1.6、Sven CO-OP、半条命等属于 GoldSrc 引擎游戏，不适用于本教程。
 
-起源引擎游戏服务器指使用起源引擎制作的支持网络对战的游戏，比较知名的游戏有反恐精英：全球攻势 (CSGO) , 求生之路 1/2 (Left 4 Dead 1/2) ，军团要塞，反恐精英：起源，盖瑞模组 (Garry's Mod) 等。
+起源引擎游戏服务器指使用起源引擎制作的支持网络对战的游戏，比较知名的游戏有反恐精英：全球攻势 (CSGO) , 求生之路 1/2 (Left 4 Dead 1/2) ，军团要塞2 (Team Fortress 2)，反恐精英：起源 (Counter-Strike Source)，盖瑞模组 (Garry's Mod)，胜利之日：起源 (Day of Defeat: Source) 等。
 
-这些游戏 (或模组) 都遵循 Valve 制定的 Source Dedicated Server 规则。
+这些游戏 (或模组) 都遵循 Valve 制定的 Source Dedicated Server (srcds) 规则。
 
-需要注意的是，不是所有由起源引擎开发的网络对战游戏都遵循 Source Dedicated Server 规则 (如原罪前传) 。如果您的游戏服务器启动程序为 `srcds_run` (Windows 下为 `srcds.exe`) 则表明该游戏 (或模组) 遵循 Source Dedicated Server 规则。
+需要注意的是，不是所有由起源引擎开发的网络对战游戏都遵循 Source Dedicated Server 规则 (如原罪前传) 。如果您的游戏服务器启动程序为 `srcds_run` (Linux) 或 `srcds.exe` (Windows) 则表明该游戏 (或模组) 遵循 Source Dedicated Server 规则。
 
 ### 启动命令与 Server 配置文件
 
@@ -82,7 +82,7 @@ Source Dedicated Server 官方标准是使用 `27015` 到 `27019` 端口为游�
 
 确认好端口开通后，您需要修改 `server.cfg` 文件并在任意位置向其添加`sv_lan 1` 选项。
 
-?> 由于 Valve 的新规定，部分游戏服务器需要在 `server.cfg` 中使用 Steam 游戏服务器帐户令牌才能连接，请访问 [GSTL 令牌帐户管理页面](https://steamcommunity.com/dev/managegameservers) 了解详情。
+?> 由于 Valve 的新规定，部分游戏服务器需要在 `server.cfg` 中使用 Steam 游戏服务器帐户令牌才能连接，请查看 [GSLT 令牌](#get-gslt)。
 
 ### 启动
 
@@ -102,10 +102,49 @@ Source Dedicated Server 官方标准是使用 `27015` 到 `27019` 端口为游�
 ./srcds_run -game left4dead2 -port 33562 -ip 192.168.2.103 +hostip 192.168.2.103 +map c1m1_hotel
 ```
 
+- 启动并穿透 胜利之日：起源 (Day of Defeat: Source) 服务器：
+
+```bash
+./srcds_run -game dod -port 33562 -ip 192.168.2.168 +hostip 192.168.2.168 +map dod_avalanche +maxplayers 20
+```
+
 - 启动并穿透 反恐精英：全球攻势 (CSGO) 服务器：
 
 ```bash
 ./srcds_run -game csgo -port 33562 -ip 192.168.2.168 +hostip 192.168.2.168 +map de_dust2 +maxplayers 10 +sv_setsteamaccount 1145141919810sodayo
 ```
 
-!> 启动 CSGO 服务器需要 GSTL 令牌，使用 `+sv_setsteamaccount` 选项来在服务器启动时使用您的账户令牌。
+!> 启动 CSGO 服务器需要 GSLT 令牌，查看下面的段落以获取 GSLT 令牌。
+
+### GSLT 令牌 :id=get-gslt
+
+由于 Valve 的新规定，在启动 **某些** 起源游戏服务器时，**需要** 有GSLT令牌。
+那什么是 GSLT 令牌呢？ GSLT 令牌是一个专属的服务器身份识别码，类似于身份证，有了 GSLT，Valve 可以确定服务器属于谁，
+收藏了带有 GSLT 令牌的服务器，即使更换 IP 地址，仍能出现在服务器列表里。
+
+打开 [SteamDB](https://steamdb.info/) 在搜索框里打出您的游戏名字，记下详情页的 APPID 备用。
+
+对于常用的游戏，下面是它们的 APPID：
+
+| 游戏名 | APPID |
+|---|----|
+| 反恐精英：全球攻势 | 730 |
+| 泰坦陨落 2 | 440 |
+| 反恐精英：起源 | 240 |
+
+接下来打开 [Valve 官方的 GSLT 令牌管理页面](https://steamcommunity.com/dev/managegameservers) 进行创建。
+
+!> 如果您的 Steam 账号 **不拥有** 某一个游戏，将 **无法** 为那个游戏创建GSLT令牌
+
+然后把 SteamDB 详情页的第一行（APPID）后面的一串数字码填到第一个框里去，下一个框可以填一个自己喜欢的名字，便于记忆。
+
+
+![](_images/source-gslt.png)
+
+点击 `Create`，复制 `Login Token`，即是您的 GSLT 令牌。
+
+在您的服务器开启指令中，加入下面的参数即可：
+
+```
++sv_setsteamaccount <您的 GSL T令牌>
+```
