@@ -127,15 +127,15 @@ prevent-proxy-connections = false
 
 #### 修改 Paper 配置文件 :id=paper-yml
 
-请打开 `paper.yml` 文件，并对此部分作出如下修改:
+请打开 `config/paper-global.yml` 文件，并对此部分作出如下修改:
 
 ```yml
-settings:
-  max-joins-per-tick: 3
-  bungee-online-mode: true
+proxies:
+  bungee-cord:
+    online-mode: true
   
   # 修改此行
-  proxy-protocol: true
+  proxy-protocol: false
 ```
 
 ### Geyser :id=geyser
