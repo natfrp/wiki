@@ -3,5 +3,5 @@
 ARG VARIANT="16-bullseye"
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${VARIANT}
 
-# Install docsify-cli
-RUN su node -c "npm install -g docsify-cli"
+# Install yarn
+RUN su node -c "npm install -g yarn"
