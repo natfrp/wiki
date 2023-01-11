@@ -208,22 +208,22 @@ local_port = 179
 
 当您通过其他渠道下载并运行 frpc 时，可能会出现下列错误：  
 
-![](_images/frpc-macos-run-issue-1.png)  
+![](./_images/frpc-macos-run-issue-1.png)  
 _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软件。此软件需要更新，请联系开发者了解更多信息。”_
 
 我们推荐您 [通过命令行直接下载和安装 frpc](/frpc/usage#macos-install-frpc)，如果您仍想使运行此二进制文件，请参考下面的指南：
 
 1. 转到 `系统偏好设置 > 安全与隐私`：
 
-   ![](_images/frpc-macos-run-issue-2.png)
+   ![](./_images/frpc-macos-run-issue-2.png)
 
 2. 找到 frpc 对应的阻止提示，选择 `仍要打开`，您可能需要输入密码并确认操作：
 
-   ![](_images/frpc-macos-run-issue-3.png)
+   ![](./_images/frpc-macos-run-issue-3.png)
 
 3. 再尝试运行一次 frpc，此时弹出的提示框会有变化。在这个提示框中选择 “打开”，后面就可以正常运行 frpc 了：
 
-   ![](_images/frpc-macos-run-issue-4.png)
+   ![](./_images/frpc-macos-run-issue-4.png)
 
 ## ARM 运行提示 Illegal instruction {#arm-illegal-instruction}
 

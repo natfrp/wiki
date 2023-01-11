@@ -15,7 +15,7 @@
 
 您可以在 [管理面板](https://www.natfrp.com/user/) 点击 **查看访问密钥** 按钮查看并复制访问密钥：
 
-![](_images/get-token.png)
+![](../_images/get-token.png)
 
 本文档通常使用 `wdnmdtoken6666666` 作为示例密钥，实际操作时请将其替换为您自己的访问密钥。
 
@@ -25,7 +25,7 @@
 
 在 **Token** 后面的文本框内输入访问密钥，然后使用 `Tab` 键切换到 **Login** 按钮并按 `回车` 键登录 (若终端支持也可使用鼠标进行操作)：
 
-![](_images/tui-0.png)
+![](../_images/tui-0.png)
 
 登录成功后 TUI 会显示当前账户下的隧道列表，使用方向键选中想要启动的隧道，按空格标为绿色 (或使用鼠标直接点击隧道)：
 
@@ -33,7 +33,7 @@
 可以一次性启用多个隧道，您也可以直接选中节点来启用该节点下的所有隧道
 :::
 
-![](_images/tui-1.png)
+![](../_images/tui-1.png)
 
 选择完毕后，按 `Ctrl-C` 即可启动隧道，相关启动参数会被保存到配置文件 `frpc.ini` 中，下次不带参数直接运行 frpc 时不再显示 TUI 而是直接启动隧道：
 
@@ -41,7 +41,7 @@
 自 `v0.42.0-sakura-3` 版本起，启动时若不带参数 且 `frpc.ini` 存在，您会看到 `正在使用配置文件运行，在 3 秒内按任意键进入配置模式` 的提示。按下任意按键即可进入配置界面，否则 frpc 会自动加载 `frpc.ini` 并启动里面保存的隧道
 :::
 
-![](_images/tui-2.png)
+![](../_images/tui-2.png)
 
 ### 通过命令行启动隧道 {#cli-usage}
 
@@ -49,15 +49,15 @@
 
 要获取启动参数，最简单的方法就是在管理面板中直接查看了。点击隧道操作中的 **配置文件** 选项即可进行查看：
 
-![](_images/view-startup-parameter-1.png)
+![](../_images/view-startup-parameter-1.png)
 
 如果要同时启动多条隧道，先勾选要启动的隧道再点击 **批量操作** 中的 **配置文件** 选项：
 
-![](_images/view-startup-parameter-2.png)
+![](../_images/view-startup-parameter-2.png)
 
-弹出对话框后，如图所示复制启动参数并粘贴到 `frpc ` 命令后面即可，注意中间要用空格分开。
+弹出对话框后，如图所示复制启动参数并粘贴到 `frpc` 命令后面即可，注意中间要用空格分开。
 
-![](_images/view-startup-parameter-3.png)
+![](../_images/view-startup-parameter-3.png)
 
 在上面这个例子中，我们启动隧道的命令就是：
 
@@ -87,14 +87,16 @@ frpc -f <访问密钥>:<启动目标1>[,启动目标2[,启动目标3...]]
 
 假设您使用的是 Linux 系统，且已跟随文档正确安装了 frpc，您的隧道列表如下图所示：
 
-![](_images/tunnel-list.png)
+![](../_images/tunnel-list.png)
 
 - 启动第一条 **隧道 ID** 为 `114514` 的隧道：
+
   ```bash
   frpc -f wdnmdtoken666666:114514
   ```
 
 - 启动 **#29 圣何塞CUVIP** 节点下的所有隧道，则有两种方法：
+
   ```bash
   # 直接使用节点 ID
   frpc -f wdnmdtoken666666:n29
@@ -104,6 +106,7 @@ frpc -f <访问密钥>:<启动目标1>[,启动目标2[,启动目标3...]]
   ```
 
 - 启动图中的所有隧道
+
   ```bash
   # 使用节点 ID
   frpc -f wdnmdtoken666666:n20,n29

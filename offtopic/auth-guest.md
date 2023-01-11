@@ -10,15 +10,15 @@
 
 1. 当您完成访问认证相关配置后，对应的隧道操作菜单中就会出现 **一键认证** 选项，点击该选项：
 
-   ![](_images/panel-generator-1.png)
+   ![](./_images/panel-generator-1.png)
 
 2. 在一键认证对话框中选择运行认证代理的目标系统架构，随后点击 **开始生成** 按钮：
 
-   ![](_images/panel-generator-2.png)
+   ![](./_images/panel-generator-2.png)
 
 3. 生成完成后即可点击底部按钮下载该隧道的专用认证工具：
 
-   ![](_images/panel-generator-3.png)
+   ![](./_images/panel-generator-3.png)
 
 ## 通过认证代理生成 {#generate-from-auth-guest}
 
@@ -30,15 +30,15 @@
 
 2. 直接执行您下载的程序，程序会询问您的信息，并生成一个访问认证工具，如图所示
 
-   ![](_images/auth-guest-gen.png)
+   ![](./_images/auth-guest-gen.png)
 
 3. 您会在同目录下看到文件名为 `authpass_generated.exe` 的程序，只需执行该程序即会自动进行访问认证，无需打开浏览器
 
-   ![](_images/auth-guest-generated.png)
+   ![](./_images/auth-guest-generated.png)
 
 4. 将此程序分发给您的访客，访客只需在访问前执行一次此程序即可自动通过访问认证
 
-   ![](_images/auth-guest-run.png)
+   ![](./_images/auth-guest-run.png)
 
 ## macOS arm64 注意事项 {#macos-arm-note}
 

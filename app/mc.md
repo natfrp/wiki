@@ -244,11 +244,11 @@ motd=
 
 点击 [这里](https://console.dnspod.cn/dns/list) 进入 **DNSPod** 的解析列表，如果您没有登录，请先登录。
 
-![](_images/mc-srv-tencent-1.png)
+![](./_images/mc-srv-tencent-1.png)
 
 找到您要解析的域名，直接点击域名名称，以进入解析配置页面。
 
-![](_images/mc-srv-tencent-2.png)
+![](./_images/mc-srv-tencent-2.png)
 
 点击左上方的 “添加记录” ，然后按下表进行填写，完毕后点击 **确认** 即可。
 

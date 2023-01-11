@@ -47,7 +47,7 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 
 2. 选择 Linux 系统，然后选择正确的架构，点击按钮复制下载链接：
 
-   ![](_images/linux-1.png)
+   ![](../_images/linux-1.png)
 
 3. 使用下面的命令进入 `/usr/local/bin` 目录并下载文件：
 
@@ -63,7 +63,7 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
    # Linux frpc 通常已经过 UPX 压缩，如需下载未压缩的版本请在下载地址尾部加上 _noupx
    ```
 
-   ![](_images/linux-2.png)
+   ![](../_images/linux-2.png)
 
 4. 然后设置权限并校验文件是否有损坏：
 
@@ -73,7 +73,7 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
    md5sum frpc
    ```
 
-   ![](_images/linux-3.png)
+   ![](../_images/linux-3.png)
 
 5. 此时 frpc 就安装完成并可以正常使用了。您可以用此命令查看 frpc 版本号：
 
@@ -121,4 +121,4 @@ frpc -f wdnmdtoken666666:12345 &
 if [[ `/sbin/init --version` =~ upstart ]]; then echo Upstart; elif [[ `systemctl` =~ -\.mount ]]; then echo Systemd; elif [[ -f /etc/init.d/cron && ! -h /etc/init.d/cron ]]; then echo SysV-Init; else echo Unknown; fi
 ```
 
-![](_images/linux-4.png)
+![](../_images/linux-4.png)

@@ -152,7 +152,7 @@ Source Dedicated Server 官方标准是使用 `27015` 到 `27019` 端口为游�
 然后把 SteamDB 详情页的第一行（APPID）后面的一串数字码填到第一个框里去，下一个框可以填一个自己喜欢的名字，便于记忆。
 
 
-![](_images/source-gslt.png)
+![](./_images/source-gslt.png)
 
 点击 `Create`，复制 `Login Token`，即是您的 GSLT 令牌。
 

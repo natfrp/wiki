@@ -36,7 +36,7 @@ tagline:
 - 在左侧列表中根据目录查看对应内容
 - 在顶部搜索框中输入关键字、报错信息等内容查询
 
-![](_images/index-1.png)
+![](./_images/index-1.png)
 
 ## 重要提示 {#important-note}
 

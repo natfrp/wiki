@@ -10,44 +10,44 @@
 
 打开控制台，勾选 `使用安全连接(HTTPS)`，并记下下面的 端口号 备用：
 
-![](_images/qnap-settings.png)
+![](./_images/qnap-settings.png)
 
 在 `App Center` 中安装 `Container Station` 以使用 Docker：
 
-![](_images/qnap-install-docker.png)
+![](./_images/qnap-install-docker.png)
 
 在 `Container Station` 如下图读出 网关ip 备用：
 
-![](_images/qnap-gateway-ip.png)
+![](./_images/qnap-gateway-ip.png)
 
 ### 创建隧道
 
 使用上一步中记下的参数，如下图所示创建隧道备用：
 
-![](_images/qnap-new-tunnel.png)
+![](./_images/qnap-new-tunnel.png)
 
 ### 设置Docker
 
 首先我们在 `Container Station` 中找到并下载 natfrp/frpc 的 latest 标签：
 
-![](_images/qnap-docker-pull.png)
-![](_images/qnap-docker-tag-latest.png)
+![](./_images/qnap-docker-pull.png)
+![](./_images/qnap-docker-tag-latest.png)
 
 然后设置启动参数：
 
 请注意，此处「命令」栏中输入的是一个启动参数，如何写可以参考 [frpc 基本使用指南](/frpc/usage#running-frpc)
 
-![](_images/qnap-docker-setup.png)
+![](./_images/qnap-docker-setup.png)
 
 ### 获取连接信息
 
 打开 Docker Container 的详情信息就能看到连接信息了，报错也可以在这里看到：
 
-![](_images/qnap-docker-info.png)
+![](./_images/qnap-docker-info.png)
 
 到浏览器试一下：
 
-![](_images/qnap-docker-try.png)
+![](./_images/qnap-docker-try.png)
 
 请注意，因为我们穿透了 HTTPS 访问端口，所以在访问时需要在前面加 `https://`
 

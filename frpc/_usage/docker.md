@@ -32,11 +32,11 @@ SakuraFrp 提供 [frpc 镜像](https://hub.docker.com/r/natfrp/frpc) 以便您�
 
 然后在新建隧道时将其设置为 本地IP
 
-![](_images/docker-tunnel-new.png)
+![](../_images/docker-tunnel-new.png)
 
 或者在 隧道列表 中，编辑一条隧道，设置 本地IP 为该 IP
 
-![](_images/docker-tunnel-mod.png)
+![](../_images/docker-tunnel-mod.png)
 
 这样隧道就准备完了
 

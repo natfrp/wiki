@@ -28,7 +28,7 @@ Unraid 在 6.10.0-rc1 之后的版本中弃用了自定义 Templates Repository 
 curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-static.globalslb.net/natfrp/misc/natfrpc.xml
 ```
 
-![](_images/unraid-terminal-btn.png)
+![](./_images/unraid-terminal-btn.png)
 
 此时模板文件已经被下载到指定位置，可以使用了。
 
@@ -44,7 +44,7 @@ curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-s
 
 手动下载 [模板文件](https://nyat-static.globalslb.net/natfrp/misc/natfrpc.xml)，将此文件放置到 `X:\config\plugins\dockerMan\templates-user` （X 为 Unraid 启动盘盘符）。
 
-![](_images/unraid-usbstick-tpl.png)
+![](./_images/unraid-usbstick-tpl.png)
 
 ## 穿透内网其他服务 {#others}
 
@@ -60,23 +60,23 @@ curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-s
 
  共有高达两个需配置的输入框，请在确保均已被配置后点击 Apply 按钮创建容器实例并启动。
 
- ![](_images/unraid-add-container.png)
+ ![](./_images/unraid-add-container.png)
 
  添加完成的界面如下图所示，如果您的英语水平无法阅读，请注意关键词 `finished successfully`，即为成功。请注意此图中会存在明文暴露访问密钥，即红框处，截图分享时请注意打码。
 
- ![](_images/unraid-add-done.png)
+ ![](./_images/unraid-add-done.png)
 
  点击 Done 后页面将跳转回 Docker 页的首页，此时即可看到新创建的实例：
 
- ![](_images/unraid-running-container.png)
+ ![](./_images/unraid-running-container.png)
 
 #### 查看日志
 
  此时点击已经完成创建的容器图标（图中为问号）即可进行管理，点击此菜单中的 Logs 项即可在弹出的新窗口中查看运行日志。在向他人提问时请务必截图并提供此窗口内容。
 
- ![](_images/unraid-log-dropdown.png)
+ ![](./_images/unraid-log-dropdown.png)
 
- ![](_images/unraid-log-window.png)
+ ![](./_images/unraid-log-window.png)
 
 <details id='unraid-self'>
 <summary>在点击展开前，请确认您完全理解自己正在做的行为，并了解其中的安全风险</summary>

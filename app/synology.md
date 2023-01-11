@@ -14,17 +14,17 @@
 
 DSM 7 的登录界面是这样的：
 
-![](_images/dsm7-login.png)
+![](./_images/dsm7-login.png)
 
 DSM 6 的登录界面是这样的：
 
-![](_images/dsm6-login.png)
+![](./_images/dsm6-login.png)
 
 ## 使用准备
 
 启动 **控制面板** 应用，转到 `系统 > 登录门户 > DSM > 网页服务 > DSM 端口 (HTTPS)`，记下这里的端口作为 **本地端口**。
 
-![](_images/dsm7-prepare-portal.png)
+![](./_images/dsm7-prepare-portal.png)
 
 ## Docker 安装
 
@@ -36,31 +36,31 @@ Docker 套件和镜像只要安装一次即可，无需重复操作。如需更�
 
 如果您的系统里没有 Docker 套件，请安装 Docker 套件：
 
-![](_images/dsm7-docker-install.png)
+![](./_images/dsm7-docker-install.png)
 
 转到 **注册表** 页面，搜索 `natfrp`，选中 **natfrp/frpc** 并点击 **下载**：
 
-![](_images/dsm7-docker-pull.png)
+![](./_images/dsm7-docker-pull.png)
 
 如果系统提示您选择标签，选择 `latest` 即可（通常这是默认选项）。
 
 稍等片刻，直到右上角出现 **已成功下载 Docker 镜像** 的通知，镜像就安装完成了：
 
-![](_images/dsm7-docker-pull-complete.png)
+![](./_images/dsm7-docker-pull-complete.png)
 
 ### 创建隧道
 
 打开 Docker 套件，转到 **网络** 页面，查看 `bridge` 网络的 **子网** 地址，然后把 **最后一个** `0` 换成 `1` 作为 **本地IP**。
 
-![](_images/dsm7-docker-local-ip.png)
+![](./_images/dsm7-docker-local-ip.png)
 
 前往 Sakura Frp 管理面板使用之前获取到的信息创建一条 **TCP 隧道**：
 
-![](_images/dsm-docker-create-tunnel.png)
+![](./_images/dsm-docker-create-tunnel.png)
 
 创建隧道后，在隧道列表中点击对应隧道右边的三个点，选择 **配置文件** 并在弹出的对话框中复制隧道的 **启动参数**：
 
-![](_images/dsm-launch-args.png)
+![](./_images/dsm-launch-args.png)
 
 ### 启动隧道
 
@@ -70,7 +70,7 @@ Docker 套件和镜像只要安装一次即可，无需重复操作。如需更�
 如果您希望隧道开机自启，请勾选 **启用自动重新启动** 选项
 :::
 
-![](_images/dsm7-docker-create-1.png)
+![](./_images/dsm7-docker-create-1.png)
 
 
 转到 **环境** 标签，在 **命令** 处粘贴 **启动参数**，然后点击上面的 **新增** 按钮分别填写 `LANG` 和 `en_US.UTF-8`：
@@ -79,11 +79,11 @@ Docker 套件和镜像只要安装一次即可，无需重复操作。如需更�
 请全程复制粘贴，不要手动输入，不要手动输入，不要手动输入
 :::
 
-![](_images/dsm7-docker-create-2.png)
+![](./_images/dsm7-docker-create-2.png)
 
 创建完成后，隧道会自动启动。如果一切正常，您就可以在日志中找到连接方式了（当然，也可以在 Sakura Frp 管理面板查看）：
 
-![](_images/dsm7-docker-started.png)
+![](./_images/dsm7-docker-started.png)
 
 在连接方式前面加上 `https://`，然后您就可以使用此 URL 访问 DSM 管理面板了。
 
@@ -93,11 +93,11 @@ Docker 套件和镜像只要安装一次即可，无需重复操作。如需更�
 
 首先，前往 Sakura Frp 管理面板创建一条 **TCP 隧道**，**本地IP** 留空使用默认值：
 
-![](_images/dsm-direct-create-tunnel.png)
+![](./_images/dsm-direct-create-tunnel.png)
 
 启动 **控制面板** 应用，转到 `应用程序 > 终端机和 SNMP > 终端机`，启动 SSH 功能并记下这里的端口。
 
-![](_images/dsm7-prepare-ssh.png)
+![](./_images/dsm7-prepare-ssh.png)
 
 然后通过此处的 SSH 端口和您登录 DSM 管理面板的帐号密码连接到 SSH 终端，使用 `sudo -i` 命令提升到 root 权限，您可能需要再输入一次 DSM 管理面板的密码。
 

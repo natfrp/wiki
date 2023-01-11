@@ -79,7 +79,7 @@ chmod +x /etc/init.d/natfrpc # 为其赋予可执行权限
 
 如在 `状态 - 系统日志` 可以看到 frpc 的运行日志和连接信息（新日志内容在底部，请下滑）：
 
-![](_images/openwrt-syslog.png)
+![](./_images/openwrt-syslog.png)
 
 在 `系统 - 启动项` 中可以看到名为 `natfrpc` 的项目，并控制开机自启情况，启动/停止/重启等操作
 
