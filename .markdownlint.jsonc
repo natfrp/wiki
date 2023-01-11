@@ -8,5 +8,6 @@
     "ol-prefix": {
         "style": "one_or_ordered"
     },
-    "no-duplicate-heading": false
+    "no-duplicate-heading": false,
+    "link-image-reference-definitions": false
 }

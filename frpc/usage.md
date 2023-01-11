@@ -1,48 +1,25 @@
 # frpc 基本使用指南
 
-<style>
-.docsify-tabs {
-    --docsifytabs-margin: 1.5rem -10px;
-    --docsifytabs-content-padding: 1.5rem 10px;
-}
+::::: tabs
 
-.docsify-tabs__tab {
-    margin-bottom: calc(var(--docsifytabs-tab-highlight-px) - var(--docsifytabs-border-px)) !important;
-    background: transparent !important;
-    border: 0 !important;
-}
+@tab Linux 安装
 
-.docsify-tabs__tab--active {
-    box-shadow: 0 var(--docsifytabs-tab-highlight-px) 0 0 var(--docsifytabs-tab-highlight-color) !important;
-}
+@include(./_usage/linux.md)
 
-.docsify-tabs__content {
-    border-width: var(--docsifytabs-border-px) 0 0 0 !important;
-    border-style: solid !important;
-    border-color: var(--docsifytabs-border-color) !important;
-}
-</style>
+@tab macOS 安装
 
-<!-- tabs:start -->
+@include(./_usage/macos.md)
 
-# **Linux 安装**
+@tab Windows 安装
 
-[](_usage/linux.md ':include')
+@include(./_usage/windows.md)
 
-# **macOS 安装**
+@tab 启动隧道
 
-[](_usage/macos.md ':include')
+@include(./_usage/running.md)
 
-# **Windows 安装**
+@tab Docker 配置
 
-[](_usage/windows.md ':include')
+@include(./_usage/docker.md)
 
-# **启动隧道**
-
-[](_usage/running.md ':include')
-
-# **Docker 配置**
-
-[](_usage/docker.md ':include')
-
-<!-- tabs:end -->
+:::::

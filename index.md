@@ -15,7 +15,7 @@ tagline:
 
 只有右下角那个是永久关闭，您也可以设置 `localStorage.close_rtfm_alert = '20220119'` 手动关闭。
 
-[faq](/faq.md ':include')
+@include(./faq.md)
 
 ## 文档快速索引 {#quick-index}
 

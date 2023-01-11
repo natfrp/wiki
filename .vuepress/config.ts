@@ -1,6 +1,8 @@
 import { defaultTheme, defineUserConfig } from 'vuepress';
 
-import markdownItAttrs from 'markdown-it-attrs';
+import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
+
+import { html5Media as mdItHtml5Media } from 'markdown-it-html5-media';
 
 import sections from './sections';
 
@@ -72,6 +74,17 @@ export default defineUserConfig({
 	}),
 
 	extendsMarkdown: (md => {
-		md.use(markdownItAttrs);
+		md.use(mdItHtml5Media);
 	}),
+
+	plugins: [
+		mdEnhancePlugin({
+			tabs: true,
+			attrs: true,
+			footnote: true,
+			include: {
+				currentPath: (env) => env.filePath,
+			},
+		}),
+	],
 });

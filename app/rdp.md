@@ -20,17 +20,17 @@
 }
 </style>
 
-<!-- tabs:start -->
+::: tabs
 
-# **Windows 10**
+@tab Windows 10
 
-[Windows 10 RDP 视频](_videos/rdp-win10.mp4 ':include :type=video')
+![](@source/app/_videos/rdp-win10.mp4)
 
-# **Windows 7**
+@tab Windows 7
 
-[Windows 7 RDP 视频](_videos/rdp-win7.mp4 ':include :type=video')
+![](@source/app/_videos/rdp-win7.mp4)
 
-<!-- tabs:end -->
+:::
 
 ## 默认端口 {#default-port}
 
