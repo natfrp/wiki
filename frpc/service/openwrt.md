@@ -1,7 +1,7 @@
 # OpenWrt 配置 开机启动 服务
 
 ::: tip
-查看此文档前请确保您已阅读 [frpc 基本使用指南](/frpc/usage) 中的 **Linux** 页面，否则您可能会对一些操作感到疑惑
+查看此文档前请确保您已阅读 [frpc 基本使用指南](/frpc/usage.md) 中的 **Linux** 页面，否则您可能会对一些操作感到疑惑
 :::
 
 ### 安装 {#openwrt-install}

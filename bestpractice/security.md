@@ -1,6 +1,6 @@
 # 安全指南
 
-为了防止出现 [这种情况](https://www.v2ex.com/t/692012 ':target=_blank')，我们为您准备了一些安全设定的指南。
+为了防止出现 [这种情况](https://www.v2ex.com/t/692012)，我们为您准备了一些安全设定的指南。
 
 ## 全球通用的安全准则 {#security-principal}
 
@@ -44,7 +44,7 @@
 
 在 TCP 隧道的 **访问密码** 一栏设置一个密码并重启隧道即可启用访问认证功能。高级用户在 **访问认证 TOTP** 一栏可配置 TOTP 种子或 URI，TOTP 和密码认证可同时启用以实现 2FA，您也可以只配置其中的一项。
 
-如有需要，请参阅 [frpc 用户手册](/frpc/manual#tcp_proxy) 获取更多配置信息。
+如有需要，请参阅 [frpc 用户手册](/frpc/manual.md#tcp_proxy) 获取更多配置信息。
 
 ![](./_images/auth-0.png)
 
@@ -58,7 +58,7 @@
 
    ::: warning
    注意输入完整的 **<https://>** 前缀，否则您可能无法访问认证界面  
-   浏览器提示证书错误是正常现象。对于 v0.42.0-sakura-3.1 及更高版本的 frpc，请参阅 [访问认证配置 SSL 证书](/frpc/ssl#authpanel) 来解决这一问题。  
+   浏览器提示证书错误是正常现象。对于 v0.42.0-sakura-3.1 及更高版本的 frpc，请参阅 [访问认证配置 SSL 证书](/frpc/ssl.md#authpanel) 来解决这一问题。  
    对于 v0.42.0-sakura-3 及更低版本，您可以通过配置 frpc 工作目录下的 'authpanel.<crt|key>' 并使用恰当的域名访问。
    :::
 
@@ -96,7 +96,7 @@
 curl -k -X POST -d "ip=<your_ip>" -d "pw=<your_password>" https://<tunnel_url>
 ```
 
-此外，我们也推荐您使用 [SakuraFrp 认证代理](/offtopic/auth-guest) 自动完成认证流程。
+此外，我们也推荐您使用 [SakuraFrp 认证代理](/offtopic/auth-guest.md) 自动完成认证流程。
 
 ---
 

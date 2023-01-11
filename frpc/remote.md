@@ -21,7 +21,7 @@ SakuraFrp frpc v0.34.2-sakura-2 及以上版本提供了远程管理功能，可
 
 ### 连接远程设备 {#connect}
 
-请参考 [启动器远程管理-连接远程设备](/launcher/remote#连接远程设备) 连接到 frpc
+请参考 [启动器远程管理-连接远程设备](/launcher/remote.md#连接远程设备) 连接到 frpc
 
 frpc 的设备名均为 `frpc-随机字符串`，且后面会带有 `(frpc)` 标注，便于与启动器远程管理进行区分
 
@@ -37,7 +37,7 @@ frpc 远程管理有较大局限性，您只能查看日志、隧道状态或通
 
 ![](./_images/remote-1.png)
 
-请参阅 [frpc 基本使用指南/从命令行启动隧道](/frpc/usage#cli-usage) 获取更多关于启动参数的信息
+请参阅 [frpc 基本使用指南/从命令行启动隧道](/frpc/usage.md#cli-usage) 获取更多关于启动参数的信息
 
 ### 限制条件 {#limitations}
 

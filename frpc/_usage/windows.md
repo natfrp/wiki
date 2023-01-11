@@ -1,4 +1,4 @@
-我们不推荐在 Windows 系统上直接使用 frpc，除非您有特殊需求，否则请 [使用启动器](/launcher/usage)。
+我们不推荐在 Windows 系统上直接使用 frpc，除非您有特殊需求，否则请 [使用启动器](/launcher/usage.md)。
 
 ### 确认系统架构 {#windows-check-arch}
 

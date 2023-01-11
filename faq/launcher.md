@@ -6,14 +6,14 @@
 
 部分启动器功能需要注册系统服务才能正常工作，为了确保这些功能不出问题，启动器安装程序不提供自定义安装路径的选项。
 
-如您确有特殊需要，想自定义启动器安装路径，您可以参阅 [Inno Setup 文档](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline ':target=_blank') 传入恰当的命令行参数来设置安装路径。
+如您确有特殊需要，想自定义启动器安装路径，您可以参阅 [Inno Setup 文档](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline) 传入恰当的命令行参数来设置安装路径。
 
 ## 下载附加文件时出错 {#error-on-download-extra-files}
 
 如果在 **正在下载附加文件...** 时报错 **Server Certificate Invalid or not present**，请按顺序操作:
 
 1. 检查系统时间是否正确，然后重试
-1. 点击 [这里](https://dotnet.microsoft.com/download/dotnet-framework/net48 ':target=_blank')，然后点击 **Download .NET Framework 4.8 Runtime** 下载框架安装程序
+1. 点击 [这里](https://dotnet.microsoft.com/download/dotnet-framework/net48)，然后点击 **Download .NET Framework 4.8 Runtime** 下载框架安装程序
 1. 关闭启动器安装程序，运行刚才下载的框架安装程序，安装框架
 1. 重新运行启动器安装程序，正常进行安装
 
@@ -67,7 +67,7 @@
 
 出现 `该软件需要安装 .NET Framework 4.0 及以上` 类似提示。
 
-- 安装 `.NET Framework 4.8` 即可 ([点击前往微软官方下载页面](https://dotnet.microsoft.com/download/dotnet-framework/net48 ':target=_blank'))。
+- 安装 `.NET Framework 4.8` 即可 ([点击前往微软官方下载页面](https://dotnet.microsoft.com/download/dotnet-framework/net48))。
 
 ## 远程证书无效 {#remote-cert-invalid}
 
@@ -75,7 +75,7 @@
 
 碰到这个问题说明您的系统上缺少 *USERTrust RSA Certification Authority* 根证书，需要安装此证书。
 
-1. 首先，点击 [这里](https://crt.sh/?d=1199354 ':target=_blank') 下载证书文件。
+1. 首先，点击 [这里](https://crt.sh/?d=1199354) 下载证书文件。
 
    ![](./_images/launcher-cert-0.png)
 
@@ -107,13 +107,13 @@
 
 如果这个 MD5 值是匹配的，建议您在杀毒软件中添加白名单然后重新安装启动器。
 
-您也可以选择到 [GitHub](https://github.com/natfrp/SakuraFrpLauncher ':target=_blank') 获取启动器源码自行编译，如果您决定自己编译启动器的 Release 版本，请记得修改 `SakuraLibrary/Utils.cs` 中的 `VerifySignature` 函数跳过签名验证。
+您也可以选择到 [GitHub](https://github.com/natfrp/SakuraFrpLauncher) 获取启动器源码自行编译，如果您决定自己编译启动器的 Release 版本，请记得修改 `SakuraLibrary/Utils.cs` 中的 `VerifySignature` 函数跳过签名验证。
 
 ## 怎么关闭自动更新功能 {#disable-update}
 
 直接关闭 **设置** 标签中的 **自动更新** 开关即可，关闭后启动器不会进行任何更新检查或下载。
 
-您可以在 [GitHub](https://github.com/natfrp/SakuraFrpLauncher/blob/master/SakuraFrpService/Manager/UpdateManager.cs ':target=_blank') 审计相关代码，如果您想彻底移除此功能，请自行编译启动器。
+您可以在 [GitHub](https://github.com/natfrp/SakuraFrpLauncher/blob/master/SakuraFrpService/Manager/UpdateManager.cs) 审计相关代码，如果您想彻底移除此功能，请自行编译启动器。
 
 ## 怎么更换启动器主界面显示的图标 {#change-icon}
 

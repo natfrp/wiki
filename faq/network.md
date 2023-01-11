@@ -8,7 +8,7 @@
 
 - 内网穿透的速度还受限于您 **运行 frpc 的电脑** 的 **上行带宽**
 
-   您可以使用 **运行 frpc 的电脑** 访问 [speedtest.net](https://www.speedtest.net ':target=_blank')，点击 `GO` 进行测速，测速完成后显示的 `UPLOAD` 速度就是您的实际上行带宽。
+   您可以使用 **运行 frpc 的电脑** 访问 [speedtest.net](https://www.speedtest.net)，点击 `GO` 进行测速，测速完成后显示的 `UPLOAD` 速度就是您的实际上行带宽。
 
    例如，在下面这张截图中，实际上行带宽只有 `2.11 Mibps`，也就是说即使我们限速 `36 Mibps`，通过内网穿透下载文件也只能得到 `2.11 Mibps = 263 KiB/s` 的下载速度。
 
@@ -38,8 +38,8 @@
 - 更换设备访问 (如手机更换为电脑)
 - 更换网络环境访问 (如 WiFi 更换为 4G、5G 网络)
 - 更换浏览器访问 (推荐使用 Google Chrome / Microsoft Edge / Firefox)
-- 查看 [状态监控页面](https://status.natfrp.com/ ':target=_blank') 中 `Sakura Frp 主站` 监测点是否正常
-- 查看 [SakuraFrp 状态通知频道](https://t.me/natfrp_status ':target=_blank') 是否有故障通知  
+- 查看 [状态监控页面](https://status.natfrp.com/) 中 `Sakura Frp 主站` 监测点是否正常
+- 查看 [SakuraFrp 状态通知频道](https://t.me/natfrp_status) 是否有故障通知  
   _* 您可能无法在中国内地境内直接访问此频道，请自行寻找解决方案_
 - 如果您在 VIP 反馈群中，可以查看群内是否有相关通知或直接向管理员发送无法访问面板的错误截图进行咨询
 
