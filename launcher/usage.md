@@ -22,13 +22,16 @@
 
 ## 登录启动器 {#login}
 
-?> 传统启动器和新版 (WPF) 启动器使用方法基本一致，此处仅提供新版启动器的教程
+::: tip
+传统启动器和新版 (WPF) 启动器使用方法基本一致，此处仅提供新版启动器的教程
+:::
 
 安装完毕后双击桌面图标 (如果您选择了 `创建桌面快捷方式`) 来运行启动器。
 
-?> 如果您没有勾选 `创建桌面快捷方式`，请打开 `C:\Program Files\SakuraFrpLauncher` 文件夹  
-然后运行 `SakuraLauncher.exe`  (如果安装的是传统启动器，请运行 `LegacyLauncher.exe`)  
+::: tip
+如果您没有勾选 `创建桌面快捷方式`，请打开 `C:\Program Files\SakuraFrpLauncher` 文件夹，然后运行 `SakuraLauncher.exe`  (如果安装的是传统启动器，请运行 `LegacyLauncher.exe`)  
 ![](_images/usage-2.png)
+:::
 
 进入 [用户信息](https://www.natfrp.com/user/profile ':target=_blank') 页面，复制 **访问密钥** 到启动器，点击 **登录**：
 
@@ -36,13 +39,17 @@
 
 ## 创建隧道 {#create-tunnel}
 
-?> 启动器的创建隧道功能相对简陋，我们推荐您到 [SakuraFrp 管理面板](https://www.natfrp.com/user/) 创建隧道以获得更好的使用体验
+::: tip
+启动器的创建隧道功能相对简陋，我们推荐您到 [SakuraFrp 管理面板](https://www.natfrp.com/user/) 创建隧道以获得更好的使用体验
+:::
 
 登录成功后会自动切换到 **隧道** 标签，点击加号新建隧道：
 
 ![](_images/usage-4.png)
 
-?> 本文档提供了 HTTP、RDP 等常见应用的配置指南，请查看左侧边栏的 **常见应用配置指南** 列表
+::: tip
+本文档提供了 HTTP、RDP 等常见应用的配置指南，请查看左侧边栏的 **常见应用配置指南** 列表
+:::
 
 接下来选择您要映射的服务，此处以映射 `iperf3` 服务器为例，直接找到进程 `iperf3` 点击，然后选择一个服务器，最后点创建即可：
 

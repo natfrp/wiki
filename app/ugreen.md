@@ -1,6 +1,8 @@
 # UGREEEN 绿联 NAS 穿透指南
 
-?> 此文档由 [社区贡献者 @Aewait 提供](https://github.com/natfrp/wiki/pull/223)，其内容不受 SakuraFrp 项目工作人员支持，供您参考。
+::: tip
+此文档由 [社区贡献者 @Aewait 提供](https://github.com/natfrp/wiki/pull/223)，其内容不受 SakuraFrp 项目工作人员支持，供您参考。
+:::
 
 截至 `2022-11-27`，绿联 NAS 客户端穿透方式未被此文档作者发现。
 

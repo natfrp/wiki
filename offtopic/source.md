@@ -82,7 +82,9 @@ Source Dedicated Server 官方标准是使用 `27015` 到 `27019` 端口为游�
 
 确认好端口开通后，您需要修改 `server.cfg` 文件并在任意位置向其添加`sv_lan 1` 选项。
 
-?> 由于 Valve 的新规定，部分游戏服务器需要在 `server.cfg` 中使用 Steam 游戏服务器帐户令牌才能连接，请查看 [GSLT 令牌](#get-gslt)。
+::: tip
+由于 Valve 的新规定，部分游戏服务器需要在 `server.cfg` 中使用 Steam 游戏服务器帐户令牌才能连接，请查看 [GSLT 令牌](#get-gslt)。
+:::
 
 ### 启动
 
