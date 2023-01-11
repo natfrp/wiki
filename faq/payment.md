@@ -37,8 +37,7 @@
 
 如果订单状态仍然为 *待付款*，请不要着急，按下面的步骤获取必要信息，然后将这些信息发给管理员处理：
 
-<details>
-<summary><b style="font-size: 16px">支付宝用户操作方法 (点击展开)</b></summary>
+:::: details 支付宝用户操作方法 (点击展开)
 
 1. 打开支付宝，点击右下角 **我的**，然后点击 **账单**：
 
@@ -61,10 +60,9 @@
 
    ![](./_images/payment-recover-alipay-3.png ':size=700x')
 
-</details>
-<br>
-<details>
-<summary><b style="font-size: 16px">微信用户操作方法 (点击展开)</b></summary>
+::::
+
+:::: details 微信用户操作方法 (点击展开)
 
 1. 打开微信，点击右下角 **我**，然后点击 **支付**：
 
@@ -91,7 +89,7 @@
    
    ![](./_images/payment-recover-wechat-4.png ':size=700x')
 
-</details>
+::::
 
 ## 有没有年费 VIP {#vip-annual-plan}
 
