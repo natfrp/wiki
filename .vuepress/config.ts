@@ -32,6 +32,7 @@ export default defineUserConfig({
 			},
 			sections.faq,
 			sections.client,
+			sections.offtopic,
 			sections.misc,
 		],
 		sidebar: {
@@ -41,6 +42,8 @@ export default defineUserConfig({
 
 			'/app': [sections.app, sections.bestpractice],
 			'/bestpractice': [sections.app, sections.bestpractice],
+
+			'/offtopic': sections.offtopic.children,
 
 			'/frpc/': sections.client.children,
 			'/launcher/': sections.client.children,
