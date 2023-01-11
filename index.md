@@ -1,44 +1,31 @@
 ---
 home: true
 tagline:
+title: 首页
+footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 ---
-
-::: warning
-使用前必看：[内网穿透基础知识](/basics.md)
+ 
+::: tip 如何永久关闭首页到处飞的文档链接
+点击右下角那个关闭按钮即可永久关闭，您也可以在控制台运行 `localStorage.close_rtfm_alert = '20220119'` 进行关闭
 :::
 
-## 字形注意
+## 帮助文档的正确使用姿势 {#how-to-use}
 
-所有命令建议复制使用，如果要自行输入，请注意区分 `0` (数字) 和 `O` (大写字母) 和 `o` (小写字母)。
+- 顶栏右侧有常用条目的链接，部分页面的左边栏会显示相关条目的链接
+- 在顶部搜索框中输入关键字、报错信息等可进行全文搜索，请善用搜索功能
+- 本文档托管于 GitHub，您可以 [前往托管仓库](https://github.com/natfrp/wiki)，或是点击页面底部的编辑链接帮助我们完善文档
 
-## 关于首页到处乱飞的文档链接有四个关闭按钮这件事
-
-只有右下角那个是永久关闭，您也可以设置 `localStorage.close_rtfm_alert = '20220119'` 手动关闭。
-
-@include(./faq.md)
-
-## 文档快速索引 {#quick-index}
-
-::: tip
-本文档内容丰富，此处索引只列出了一小部分内容，请善用搜索功能
-:::
-
-- [frpc Linux/macOS/Docker 基本使用指南](/frpc/usage) | [Linux 开机自启](/frpc/service/systemd)
-
-- [Windows 使用](/launcher/usage) | [Windows XP/Vista/Server 2003](/geek#compatibility)
-
-- NAS 相关教程: [群晖 DSM](/app/synology) | [威联通 QNAP](/app/qnap)
-
-- 其他常见应用: [映射网页应用](/app/http) | [远程桌面](/app/rdp) | [远程开机](/app/wol)
-
-## 文档使用指南 {#how-to-use}
-
-- 在左侧列表中根据目录查看对应内容
-- 在顶部搜索框中输入关键字、报错信息等内容查询
+::: details 点击展开图片说明
 
 ![](./_images/index-1.png)
 
+![](./_images/index-2.png)
+
+:::
+
 ## 重要提示 {#important-note}
+
+所有命令建议复制使用，如果要自行输入，请注意区分 `0` (数字) 和 `O` (大写字母) 和 `o` (小写字母)。
 
 本文档中所有 **必须参数** 使用 `<>` 标出，所有 **可选参数** 使用 `[]` 标出，多个可选项使用 `|` 分开。
 
@@ -82,12 +69,6 @@ tagline:
    ```bash
    service frpc restart|start
    ```
-
----
-
-本文档使用 Github Pages 服务托管，[点我前往托管仓库](https://github.com/natfrp/wiki)。
-
----
 
 ## 交流群 {#community}
 
