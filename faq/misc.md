@@ -69,7 +69,7 @@
 
   您可以前往隧道页面查看节点域名：
 
-  ![](_images/misc-node-fqdn.png)
+  ![](./_images/misc-node-fqdn.png)
 
 ## 游戏连不上的解决办法 {#game-not-connecting}
 

@@ -6,11 +6,11 @@
 
 1. 按下键盘上的 `⌘ + 空格` 调出聚焦搜索并键入 `终端`，双击终端图标
 
-   ![](_images/macos-0.png)
+   ![](../_images/macos-0.png)
 
    您应该会看到类似下图的窗口
 
-   ![](_images/macos-1.png)
+   ![](../_images/macos-1.png)
 
 2. 执行下面的命令
 
@@ -18,7 +18,7 @@
    sudo -s
    ```
 
-   ![](_images/macos-2.png)
+   ![](../_images/macos-2.png)
 
 3. 输入您当前账户的密码并按下回车
 
@@ -26,7 +26,7 @@
    您会发现终端并没有显示您输入的密码，不用担心，“摸黑”输入密码后按下回车即可，退格按键同样可用
    :::
 
-   ![](_images/macos-3.png)
+   ![](../_images/macos-3.png)
 
 4. 如果您看到和图里一样的输出（出现 `#`），说明您已成功提升到 `root` 权限
 
@@ -53,7 +53,7 @@
    curl -Lo frpc https://getfrp.sh/d/frpc_darwin_amd64
    ```
 
-   ![](_images/macos-4.png)
+   ![](../_images/macos-4.png)
 
 2. 使用下面的命令设置权限并检查输出：
 
@@ -64,7 +64,7 @@
 
 3. 如果您看到和图中红框标记匹配的输出，说明 frpc 已完成安装并准备就绪
 
-   ![](_images/macos-5.png)
+   ![](../_images/macos-5.png)
 
 4. 您可以执行下面的命令再次确认以及查看 frpc 版本号
 

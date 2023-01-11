@@ -25,7 +25,7 @@ SakuraFrp frpc v0.34.2-sakura-2 及以上版本提供了远程管理功能，可
 
 frpc 的设备名均为 `frpc-随机字符串`，且后面会带有 `(frpc)` 标注，便于与启动器远程管理进行区分
 
-![](_images/remote-0.png)
+![](./_images/remote-0.png)
 
 ### 管理远程设备 {#manage}
 
@@ -35,7 +35,7 @@ frpc 远程管理有较大局限性，您只能查看日志、隧道状态或通
 
 点击 **重载 frpc** 后输入形如 `wdnmdtoken666666:114514` 或 `wdnmdtoken666666:n95` 的启动参数后即可让 frpc 重载配置
 
-![](_images/remote-1.png)
+![](./_images/remote-1.png)
 
 请参阅 [frpc 基本使用指南/从命令行启动隧道](/frpc/usage#cli-usage) 获取更多关于启动参数的信息
 

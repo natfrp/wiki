@@ -47,7 +47,7 @@
 
 如有需要，请参阅 [frpc 用户手册](/frpc/manual#tcp_proxy) 获取更多配置信息。
 
-![](_images/auth-0.png)
+![](./_images/auth-0.png)
 
 ### 连接隧道 {#auth-connect}
 
@@ -63,27 +63,27 @@
    对于 v0.42.0-sakura-3 及更低版本，您可以通过配置 frpc 工作目录下的 'authpanel.<crt|key>' 并使用恰当的域名访问。
    :::
 
-   ![](_images/auth-1.png)
+   ![](./_images/auth-1.png)
 1. 您可以选择以下认证方式:
    - 直接输入之前配置的访问密码，按需勾选 "记住我" 并点击 **提交** 按钮  
      认证成功后您应该会看到下图中的提示
 
-     ![](_images/auth-6.png)
+     ![](./_images/auth-6.png)
    - 或点击 `通过 Sakura Frp 进行认证`，跳转到 Sakura Frp 面板  
      登录隧道对应的账户后，点击 **授权访问** 来授权当前 IP 访问隧道
 
-     ![](_images/auth-2.png)
+     ![](./_images/auth-2.png)
 
      ::: tip
      注: 您也可以在 **隧道列表** 中打开此授权界面手动输入 IP 进行授权  
-     ![](_images/auth-5.png)
+     ![](./_images/auth-5.png)
      :::
 
 1. 认证完成后，再次通过浏览器访问认证界面时您可能会看到 **无法访问此网站** 的错误  
    这是正常现象，如果隧道没有掉线则该错误说明当前 IP 已完成认证并可以正常访问服务了
-   ![](_images/auth-3.png)
+   ![](./_images/auth-3.png)
 1. 此时，使用 `远程桌面连接` 程序像以前一样正常连接远程桌面即可  
-   ![](_images/auth-4.png)
+   ![](./_images/auth-4.png)
    
    ::: warning
    请注意：若您想让他人连接，则对方也 **必须** 进行 **相同** 操作，或使用下方的 `自动化认证`，否则会出现 `连接中断` 等各种奇奇怪怪的错误

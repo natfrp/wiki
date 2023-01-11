@@ -32,7 +32,7 @@ SakuraFrp Launcher v2.0.0.0 后提供了切换运行模式的选项，您可以�
 
 如果您正在安装启动器，直接按下图勾选 `安装为系统服务` 和 `WPF 界面` 并完成安装即可：
 
-![](_images/service-0.png?v=1)
+![](./_images/service-0.png?v=1)
 
 ---
 
@@ -44,15 +44,15 @@ SakuraFrp Launcher v2.0.0.0 后提供了切换运行模式的选项，您可以�
 
 1. 退出登录，然后点击 `安装服务` 按钮
 
-   ![](_images/service-1.png?v=1)
+   ![](./_images/service-1.png?v=1)
 
 2. 阅读操作说明，然后点击确认继续操作
 
-   ![](_images/service-2.png?v=1)
+   ![](./_images/service-2.png?v=1)
 
 3. 系统会弹出 UAC 提示框，点击 **是**
 
-   ![](_images/service-3.png?v=1)
+   ![](./_images/service-3.png?v=1)
 
 4. 如果一切正常，服务安装成功后启动器会自动退出，随后再打开启动器正常登录即可。此时运行模式会显示为 **系统服务**
 
@@ -60,11 +60,11 @@ SakuraFrp Launcher v2.0.0.0 后提供了切换运行模式的选项，您可以�
    运行模式显示为 **系统服务** 后，**不需要** 打开 `启动器开机自启` 这个开关，开机时服务会自动启动
    :::
 
-   ![](_images/service-4.png?v=1)
+   ![](./_images/service-4.png?v=1)
 
 5. **普通用户不需要进行下面的操作**。如果您是高级用户，您可以在 `services.msc` 中找到 `SakuraFrp Daemon Sevice` 并对其进行自定义配置
 
-   ![](_images/service-5.png?v=1)
+   ![](./_images/service-5.png?v=1)
 
 ## 卸载服务 {#uninstall}
 

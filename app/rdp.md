@@ -77,19 +77,19 @@
 
 只创建一个 TCP 隧道会使您在连接时被 RDP 程序鄙视，看起来信号很差的样子:
 
-![](_images/rdp-conn-no-udp.png)
+![](./_images/rdp-conn-no-udp.png)
 
 如果我们想优化这个隧道的远程桌面连接质量:
 
-![](_images/rdp-tun-udp-old.png)
+![](./_images/rdp-tun-udp-old.png)
 
 就需要建立一个 `节点` 相同、`远程端口` 相同 的 `UDP` 隧道 （如果相同远程端口的 UDP 隧道无法创建，请回到前面的 [创建隧道](#创建隧道) 重新创建一个 TCP 隧道再试）:
 
-![](_images/rdp-tun-udp-new.png)
+![](./_images/rdp-tun-udp-new.png)
 
 然后确保在启动器中启动 **两个隧道**:
 
-![](_images/rdp-tun-udp-launcher.png)
+![](./_images/rdp-tun-udp-launcher.png)
 
 ::: warning
 **对于某些运营商，开启 UDP 反而会降低连接质量**，请根据您的测试结果决定要不要开这个额外的隧道
@@ -97,4 +97,4 @@
 
 此时再进行连接，RDP 程序可能就会显示信号很好了:
 
-![](_images/rdp-conn-udp.png)
+![](./_images/rdp-conn-udp.png)

@@ -12,7 +12,7 @@
 
    例如，在下面这张截图中，实际上行带宽只有 `2.11 Mibps`，也就是说即使我们限速 `36 Mibps`，通过内网穿透下载文件也只能得到 `2.11 Mibps = 263 KiB/s` 的下载速度。
 
-  ![](_images/network-speedtest.png)  
+  ![](./_images/network-speedtest.png)  
   _* 图中显示的是 Mbps，实际上应该是 Mibps 才对。不过很少有人会把那个 i 写出来。_
 
 - 节点带宽由所有用户共享，因此节点负载过高时您可能无法获取到标称带宽

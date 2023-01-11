@@ -13,11 +13,11 @@
 
 如果因为特殊原因无法通过支付宝进行认证，请使用 **手机** 访问 **备用接口** 进行操作。
 
-![](_images/realname-backup.png)
+![](./_images/realname-backup.png)
 
 ::: warning
 如果您已提交验证请求，请点一下二维码页面上的 "我已完成认证" 按钮使当前认证失败，否则无法进入备用接口  
-![](_images/realname-recheck.png)
+![](./_images/realname-recheck.png)
 :::
 
 ## 没有手机怎么进行实名认证 {#no-mobile}
@@ -34,7 +34,7 @@
 
 转到 [实名认证](https://www.natfrp.com/user/realname ':target=_blank') 页面，点击 `申请清除实名信息` 按钮并根据提示进行操作。
 
-![](_images/realname-delete.png)
+![](./_images/realname-delete.png)
 
 ## 使用海外节点建站是否需要备案 / 实名 {#oversea-node-site}
 

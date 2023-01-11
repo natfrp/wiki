@@ -30,11 +30,11 @@ Systemd 的 **Unit 配置文件** 通常位于这些目录中:
 vi /etc/systemd/system/frpc@.service
 ```
 
-![](_images/systemd-0.png)
+![](./_images/systemd-0.png)
 
 按一下 `i` 键，左下角应该会出现 `-- INSERT --` 或者 `-- 插入 --` 字样
 
-![](_images/systemd-1.png)
+![](./_images/systemd-1.png)
 
 然后复制并粘贴下面提供的服务文件内容，请注意 **不要** 多复制或少复制任何东西，确保粘贴后的内容和图中一模一样
 
@@ -56,7 +56,7 @@ WantedBy=multi-user.target
 
 粘贴完成后按一下 `ESC`，左下角的 `-- INSERT --` 会消失，此时输入 `:wq` 并按回车退出
 
-![](_images/systemd-2.png)
+![](./_images/systemd-2.png)
 
 执行下面的命令重载 Systemd，这样服务就配置完成了
 
@@ -116,7 +116,7 @@ systemctl list-units "frpc@*"
 
 下图中的信息表示我们开启了访问密钥为 `wdnmdtoken666666` 的用户所拥有的两条 ID 分别为 `12345` 和 `67890` 的隧道
 
-![](_images/systemd-3.png)
+![](./_images/systemd-3.png)
 
 ### 查看隧道日志 {#systemd-log}
 
@@ -153,7 +153,7 @@ systemctl status <Unit名称>
 没看到第一个创建符号链接的提示也是正常的，只要下面的状态显示为 `enabled` 就行
 :::
 
-![](_images/systemd-4.png)
+![](./_images/systemd-4.png)
 
 如果您忘记了之前设置过的自启隧道，可以使用下面的命令列出
 

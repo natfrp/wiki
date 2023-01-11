@@ -77,19 +77,19 @@
 
 1. 首先，点击 [这里](https://crt.sh/?d=1199354 ':target=_blank') 下载证书文件。
 
-   ![](_images/launcher-cert-0.png)
+   ![](./_images/launcher-cert-0.png)
 
 2. 下载完成后，双击打开这个 crt 文件，点击 `安装证书`：
 
-   ![](_images/launcher-cert-1.png)
+   ![](./_images/launcher-cert-1.png)
 
 3. 存储位置选择 `当前用户`：
 
-   ![](_images/launcher-cert-2.png)
+   ![](./_images/launcher-cert-2.png)
 
 4. 按照下图选择好证书存储路径，注意不要选错了，然后点下一步：
 
-   ![](_images/launcher-cert-3.png)
+   ![](./_images/launcher-cert-3.png)
 
 5. 这个时候计算机应该会弹出安全警告，确认图中红框圈出的部分和您看到的提示完全一致后点击 `是`，证书就安装完成了。
 
@@ -97,7 +97,7 @@
    如果您看到的证书指纹和图中不一致，请立即点击 `否` 取消安装
    :::
 
-   ![](_images/launcher-cert-4.png)
+   ![](./_images/launcher-cert-4.png)
 
 ---
 
@@ -123,7 +123,7 @@
 
 如果您在使用 v2.0.4.0 及以上版本启动器，前往设置页面更换皮肤即可。更换后需要重启启动器才能生效。
 
-![](_images/launcher-theme.png)
+![](./_images/launcher-theme.png)
 
 如果您在使用旧版本启动器，关闭启动器，修改 `%localappdata%/SakuraLauncher/<Hash>/<版本号>/user.config` 中 `Theme` 项对应的值:
 

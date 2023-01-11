@@ -25,13 +25,13 @@ OpenSSH 是最常见的 SSH/SFTP 客户端/服务器软件。微软现为 Window
 
 对于此类较新的系统，可以直接从设置中打开「应用」-「可选功能」-「添加可选功能」，选中「OpenSSH 服务器」并点击安装来快速安装。
 
-![](_images/sftp-win-setting-app.png)
+![](./_images/sftp-win-setting-app.png)
 
-![](_images/sftp-win-setting-enable-feature.png)
+![](./_images/sftp-win-setting-enable-feature.png)
 
-![](_images/sftp-win-setting-add-feature.png)
+![](./_images/sftp-win-setting-add-feature.png)
 
-![](_images/sftp-win-setting-add-sshd.png)
+![](./_images/sftp-win-setting-add-sshd.png)
 
 ### Windows 7+
 
@@ -46,13 +46,13 @@ OpenSSH 是最常见的 SSH/SFTP 客户端/服务器软件。微软现为 Window
 将其中的文件解压到 `C:\Program Files\OpenSSH` 中，
 （在解压/复制过程中，您可能被要求管理员权限，请同意。如果您希望拒绝，请将文件解压到另一个不需要管理员权限的目录，然后设置为仅允许管理员和`SYSTEM`账户访问。）：
 
-![](_images/sftp-win-extract-sshd.png)
+![](./_images/sftp-win-extract-sshd.png)
 
 启动一个有管理员权限的 PowerShell 或 命令提示符，请确认窗口标题中存在 `管理员` 字样（如果您不希望使用管理员权限安装服务，请自行配置并跳过下面的教程）：
 
-![](_images/sftp-win-run-pwsh-admin.png)
+![](./_images/sftp-win-run-pwsh-admin.png)
 
-![](_images/sftp-win-is-admin.png)
+![](./_images/sftp-win-is-admin.png)
 
 在此窗口中执行（复制后使用右键点击其中可以粘贴）：
 
@@ -61,7 +61,7 @@ cd "C:\Program Files\OpenSSH"
 powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
 ```
 
-![](_images/sftp-win-win7-inst.png)
+![](./_images/sftp-win-win7-inst.png)
 
 ## 启动服务
 
@@ -70,12 +70,12 @@ powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
 首先打开任务管理器（Win7/10 右键菜单栏，Win11 使用 Ctrl-Shift-Esc 组合键），
 在「服务」tab 下，点击「服务」或「打开服务」按钮即可打开服务管理器：
 
-![](_images/sftp-win-services-btn.png)
+![](./_images/sftp-win-services-btn.png)
 
 找到「OpenSSH SSH Server」项，如果只需要启动一次或每次需要时手动启动，点击「启动此服务」即可，
 如需令其开机自启动，双击项目，更改启动类型至「自动」即可开机启动：
 
-![](_images/sftp-win-services-manage.png)
+![](./_images/sftp-win-services-manage.png)
 
 ## 登录凭据设置
 

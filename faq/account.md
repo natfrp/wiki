@@ -25,4 +25,4 @@ SakuraFrp 通过 Gravatar 获取头像，您可以 [前往 Gravatar](https://www
 1. 如果一切顺利，冻结期满后您的账户信息会被自动删除
 1. 账户注销完成后，系统将向您发送一封通知邮件，如果您没有收到通知邮件或想确认账户注销状态，请 [联系我们](/about#contact-us)
 
-![](_images/account-delete.png)
+![](./_images/account-delete.png)

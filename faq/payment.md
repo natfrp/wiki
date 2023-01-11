@@ -10,11 +10,11 @@
 
 2. 转到 [订单列表](https://www.natfrp.com/purchase/list ':target=_blank') 页面找到您想退款的订单，点击右侧的 **申请退款**：
 
-   ![](_images/payment-refund-0.png)
+   ![](./_images/payment-refund-0.png)
 
 3. 按提示进行操作，系统将会自动进行审批和退款。如果一切正常，您应该会看到下面的提示：
 
-   ![](_images/payment-refund-1.png)
+   ![](./_images/payment-refund-1.png)
 
 4. 一分钟内对应的款项会被原路退回，如果您没有收到退款或看到错误提示，请 **截图错误提示** 并立即联系管理员处理。
 
@@ -42,15 +42,15 @@
 
 1. 打开支付宝，点击右下角 **我的**，然后点击 **账单**：
 
-   ![](_images/payment-recover-alipay-0.png ':size=700x')
+   ![](./_images/payment-recover-alipay-0.png ':size=700x')
 
 2. 找到您的未到帐账单，点击进入详情页面：
 
-   ![](_images/payment-recover-alipay-1.png ':size=700x')
+   ![](./_images/payment-recover-alipay-1.png ':size=700x')
 
 3. 点击 **更多** 展开订单号：
 
-   ![](_images/payment-recover-alipay-2.png ':size=700x')
+   ![](./_images/payment-recover-alipay-2.png ':size=700x')
 
 4. 对整个页面进行截图，然后复制 **商家订单号** 一起发给管理员等待处理。
 
@@ -59,7 +59,7 @@
    请不要遮盖截图中的任何信息，此处因演示需要进行了打码
    :::
 
-   ![](_images/payment-recover-alipay-3.png ':size=700x')
+   ![](./_images/payment-recover-alipay-3.png ':size=700x')
 
 </details>
 <br>
@@ -68,19 +68,19 @@
 
 1. 打开微信，点击右下角 **我**，然后点击 **支付**：
 
-   ![](_images/payment-recover-wechat-0.png ':size=700x')
+   ![](./_images/payment-recover-wechat-0.png ':size=700x')
 
 2. 点击 **钱包**：
 
-   ![](_images/payment-recover-wechat-1.png ':size=700x')
+   ![](./_images/payment-recover-wechat-1.png ':size=700x')
 
 3. 点击右上角 **账单**：
 
-   ![](_images/payment-recover-wechat-2.png ':size=700x')
+   ![](./_images/payment-recover-wechat-2.png ':size=700x')
 
 4. 找到您的未到帐账单，点击进入详情页面：
 
-   ![](_images/payment-recover-wechat-3.png ':size=700x')
+   ![](./_images/payment-recover-wechat-3.png ':size=700x')
 
 5. 对整个页面进行截图，然后复制 **商户单号** 一起发给管理员等待处理。
 
@@ -89,7 +89,7 @@
    请不要遮盖截图中的任何信息，此处因演示需要进行了打码
    :::
    
-   ![](_images/payment-recover-wechat-4.png ':size=700x')
+   ![](./_images/payment-recover-wechat-4.png ':size=700x')
 
 </details>
 
