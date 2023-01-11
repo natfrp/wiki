@@ -1,8 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: SakuraFrp 使用帮助文档
-    url: https://doc.natfrp.com/
-    about: 此 repo 的部署
-  - name: 关于
-    url: https://doc.natfrp.com/about.html
-    about: 发起 issue 前您应该先看的内容，以及其他联系和问题解决方式
