@@ -1,6 +1,6 @@
 # 常见问题: frpc
 
-## 一个 frpc 可以连接多条隧道吗 :id=frpc-connect-to-multiple-tunnels
+## 一个 frpc 可以连接多条隧道吗 {#frpc-connect-to-multiple-tunnels}
 
 自 **v0.42.0-sakura-5** 版本开始，frpc 已支持多节点模式，现在可以连接位于不同节点的多个隧道了。
 
@@ -18,7 +18,7 @@
 
 </s>
 
-## 如何通过一个 frpc 开启多条隧道 :id=multi-tunnels-in-single-frpc
+## 如何通过一个 frpc 开启多条隧道 {#multi-tunnels-in-single-frpc}
 
 ?> 旧版 frpc 只能连接一个 **节点**，但可以开启多条 **隧道**，新版 frpc 无此限制，详见上一条 FAQ。
 
@@ -194,7 +194,7 @@ local_port = 179
 
 <!-- tabs:end -->
 
-## macOS 提示 frpc 无法打开 :id=macos-run-frpc-issue
+## macOS 提示 frpc 无法打开 {#macos-run-frpc-issue}
 
 !> 我们已对 macOS frpc 文件进行签名和公正，我们建议您不要使用第三方分发的 frpc
 
@@ -217,13 +217,13 @@ _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软�
 
    ![](_images/frpc-macos-run-issue-4.png)
 
-## ARM 运行提示 Illegal instruction :id=arm-illegal-instruction
+## ARM 运行提示 Illegal instruction {#arm-illegal-instruction}
 
 首先，请确认您下载的文件 MD5 与软件下载页面显示的 MD5 相同。
 
 如果您的 [Linux 使用教程/安装 frpc](/frpc/usage#linux-check-arch) 显示为 `armv7l`，请下载 `arm_garbage` 版本重试。否则，请联系管理员。
 
-## Windows 系统命令行版 frpc 开机自启设置方法 :id=windows-simple-autostart
+## Windows 系统命令行版 frpc 开机自启设置方法 {#windows-simple-autostart}
 
 !> 注意，此处列出的方法虽然 **【能用】** 但并不能算 **【正确】** 的操作  
 使用此方法会产生大量不可控因素或潜在的安全隐患，如果没有特殊需求请 [使用启动器](/launcher/usage)

@@ -1,6 +1,6 @@
 # 常见问题: SakuraFrp 启动器
 
-## 如何自定义安装路径 :id=installation-path
+## 如何自定义安装路径 {#installation-path}
 
 默认安装路径为 `C:\Program Files\SakuraFrpLauncher`，这通常能满足绝大多数用户的需求。
 
@@ -8,7 +8,7 @@
 
 如您确有特殊需要，想自定义启动器安装路径，您可以参阅 [Inno Setup 文档](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline ':target=_blank') 传入恰当的命令行参数来设置安装路径。
 
-## 下载附加文件时出错 :id=error-on-download-extra-files
+## 下载附加文件时出错 {#error-on-download-extra-files}
 
 如果在 **正在下载附加文件...** 时报错 **Server Certificate Invalid or not present**，请按顺序操作:
 
@@ -17,13 +17,13 @@
 1. 关闭启动器安装程序，运行刚才下载的框架安装程序，安装框架
 1. 重新运行启动器安装程序，正常进行安装
 
-## 这个程序需要 Windows 服务包 1 或更高 :id=requires-sp1
+## 这个程序需要 Windows 服务包 1 或更高 {#requires-sp1}
 
 出现此提示说明系统版本过旧，Windows 7 用户必须更新到 Service Pack 1 或以上才可以正常使用。
 
 我们推荐您更新到最新版 Windows 10 来获取更好的使用体验，关于兼容性问题请参阅 [启动器系统需求](#system-requirement)。
 
-## 启动器系统需求 :id=system-requirement
+## 启动器系统需求 {#system-requirement}
 
 | 硬件 | 最低需求 | 推荐配置 |
 | --- | --- | --- |
@@ -47,11 +47,11 @@
 
 ---
 
-## 系统服务状态异常, 启动器可能无法正常运行 :id=service-abnormal
+## 系统服务状态异常, 启动器可能无法正常运行 {#service-abnormal}
 
 打开启动器，点击 **卸载服务** 并等待卸载完成，随后重新点击 **安装服务** 安装即可。
 
-## 未连接到守护进程, 大部分功能将不可用, 请尝试重启启动器 :id=service-disconnected
+## 未连接到守护进程, 大部分功能将不可用, 请尝试重启启动器 {#service-disconnected}
 
 请按顺序尝试以下操作:
 
@@ -62,13 +62,13 @@
 ?> 如果您之前使用的是压缩包 (绿色版) 启动器，在更新后无法正常使用  
 请 **删除所有启动器文件** 后重新安装启动器，然后点击 **卸载服务**
 
-## 该软件需要安装 .NET Framework 4.0 及以上 :id=dotnet-required
+## 该软件需要安装 .NET Framework 4.0 及以上 {#dotnet-required}
 
 出现 `该软件需要安装 .NET Framework 4.0 及以上` 类似提示。
 
 - 安装 `.NET Framework 4.8` 即可 ([点击前往微软官方下载页面](https://dotnet.microsoft.com/download/dotnet-framework/net48 ':target=_blank'))。
 
-## 远程证书无效 :id=remote-cert-invalid
+## 远程证书无效 {#remote-cert-invalid}
 
 报错 `System.Net.WebException: 基础连接已关闭，根据验证过程，远程证书无效`。
 
@@ -98,7 +98,7 @@
 
 ---
 
-## 杀毒软件提示启动器有病毒怎么办 :id=misc
+## 杀毒软件提示启动器有病毒怎么办 {#misc}
 
 您可以校验启动器安装程序的 MD5 是否与我们网站上发布的 MD5 值相匹配，如果这个值不匹配可能说明您下载到的安装程序被病毒感染了。
 
@@ -106,17 +106,17 @@
 
 您也可以选择到 [GitHub](https://github.com/natfrp/SakuraFrpLauncher ':target=_blank') 获取启动器源码自行编译，如果您决定自己编译启动器的 Release 版本，请记得修改 `SakuraLibrary/Utils.cs` 中的 `VerifySignature` 函数跳过签名验证。
 
-## 怎么关闭自动更新功能 :id=disable-update
+## 怎么关闭自动更新功能 {#disable-update}
 
 直接关闭 **设置** 标签中的 **自动更新** 开关即可，关闭后启动器不会进行任何更新检查或下载。
 
 您可以在 [GitHub](https://github.com/natfrp/SakuraFrpLauncher/blob/master/SakuraFrpService/Manager/UpdateManager.cs ':target=_blank') 审计相关代码，如果您想彻底移除此功能，请自行编译启动器。
 
-## 怎么更换启动器主界面显示的图标 :id=change-icon
+## 怎么更换启动器主界面显示的图标 {#change-icon}
 
 快速点击图标，只要您手速够快就可以更换图标。我们有三个图标供您选择。
 
-## 怎么更换启动器主题皮肤 (主题) :id=change-theme
+## 怎么更换启动器主题皮肤 (主题) {#change-theme}
 
 如果您在使用 v2.0.4.0 及以上版本启动器，前往设置页面更换皮肤即可。更换后需要重启启动器才能生效。
 

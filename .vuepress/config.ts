@@ -1,5 +1,7 @@
 import { defaultTheme, defineUserConfig } from 'vuepress';
 
+import markdownItAttrs from 'markdown-it-attrs';
+
 import sections from './sections';
 
 export default defineUserConfig({
@@ -47,5 +49,9 @@ export default defineUserConfig({
 
 			'/bestpractice/': sections.bestpractice.children,
 		},
+	}),
+
+	extendsMarkdown: (md => {
+		md.use(markdownItAttrs);
 	}),
 });

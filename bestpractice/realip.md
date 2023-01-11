@@ -6,7 +6,7 @@
 
 请根据您穿透的本地服务选用合适的方案。
 
-## XFF 请求头 :id=xff-header
+## XFF 请求头 {#xff-header}
 
 !> 该方案仅适用于 **HTTP** 隧道，不适用于 HTTPS、TCP、UDP 等隧道
 
@@ -24,7 +24,7 @@ X-Forwarded-For: 127.0.0.1, 1.1.1.1, 6.6.6.6, 114.51.4.191
 X-Forwarded-For: '; drop database natfrp --, 114.51.4.191
 ```
 
-## Proxy Protocol :id=proxy-protocol
+## Proxy Protocol {#proxy-protocol}
 
 !> 使用该方案时必须在本地服务也做相应的配置，只修改 frp 配置会造成 **隧道完全不可用**  
 

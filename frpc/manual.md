@@ -6,7 +6,7 @@
 
 我们总是推荐（并假设）您使用最新版客户端，因此文档中列出的特性不会专门标注可用的版本。如果您需要使用旧版并了解该版本对应的特性，建议您参考 [Nyatwork Static CDN](https://nyat-static.globalslb.net/natfrp/client/) 中的文件修改时间并对照文档的 Commit History 作出判断，或者参考 [部分 frpc 新增特性](#advanced-feature) 一节。
 
-### 新增命令行开关 :id=advanced-switches
+### 新增命令行开关 {#advanced-switches}
 
 | 开关 | 说明 |
 | --- | --- |
@@ -20,7 +20,7 @@
 | --report | 向启动器上报信息<br>_* 这是一个内部开关，我们不建议您使用它_ |
 | --watch `<PID>` | 监控指定 PID 并在进程退出时退出 frpc，同时禁用日志颜色输出<br>_* 这是一个内部开关，我们不建议您使用它_ |
 
-### 新增环境变量选项 :id=advanced-env
+### 新增环境变量选项 {#advanced-env}
 
 自 `v0.39.1-sakura-1.1` 版本起，您可以用环境变量代替 `-f` 开关。
 
@@ -29,9 +29,9 @@
 | NATFRP_TOKEN | 访问密钥 | wdnmdtoken666666 |
 | NATFRP_TARGET | 启动目标列表，详见 `-f` 开关 | 1234,6666,7777,n233 |
 
-### 新增配置文件选项 :id=advanced-config
+### 新增配置文件选项 {#advanced-config}
 
-#### common 段 :id=common
+#### common 段 {#common}
 
 | 选项 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -41,7 +41,7 @@
 | remote_control | String | 空 | 配置远程管理 E2E 密码，留空则禁用远程管理<br>请参阅 [frpc 远程管理](/frpc/remote) 获取更多信息 |
 | dynamic_key | Boolean | true | 启用 DKC，即使用 SM2 和 AES-128-GCM / AES-128-CFB 加密数据连接（如果启用数据加密）和控制连接 |
 
-#### TCP 隧道 :id=tcp_proxy
+#### TCP 隧道 {#tcp_proxy}
 
 | 选项 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -56,7 +56,7 @@
 
 ?> 在强制访问认证的节点上未设置访问密码（即未启用访问认证）时，将强制打开访问认证，使用 `server` 模式，您将需要在用户面板进行授权
 
-#### HTTPS 隧道 :id=https_proxy
+#### HTTPS 隧道 {#https_proxy}
 
 | 选项 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -64,7 +64,7 @@
 | auto_https | String | 空 | 与 [TCP 隧道](#tcp_proxy) 中同名选项相同 |
 | auto_https_mode | String | 空 | 与 [TCP 隧道](#tcp_proxy) 中同名选项相同 |
 
-#### WOL 隧道 :id=wol_proxy
+#### WOL 隧道 {#wol_proxy}
 
 | 选项 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
@@ -72,7 +72,7 @@
 | from_ip | String | 空 | 指定 WOL 发送时使用的源 IP |
 | from_if | String | 空 | 指定 WOL 发送时使用的网卡 |
 
-## frpc 重点更新日志 :id=advanced-feature
+## frpc 重点更新日志 {#advanced-feature}
 
 此处只列出 frpc 的部分重要的特性变更。
 

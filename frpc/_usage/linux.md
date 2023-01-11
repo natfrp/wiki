@@ -2,7 +2,7 @@
 
 如果您现在没有切换到 `root` 账户下，那么请使用 `su` 或者 `sudo -s` 命令来进行切换。
 
-### 确认处理器架构 :id=linux-check-arch
+### 确认处理器架构 {#linux-check-arch}
 
 下载 frpc 前，请先确认您的处理器架构。执行下面的命令，根据输出结果查表：
 
@@ -24,7 +24,7 @@ uname -m
 - mips/mips64 架构还需要确认字节序，请参考 [下一节](#linux-check-endian) 进行操作，其他架构无需执行此操作
 - 如果您使用 Termux+PRoot 运行其他发行版，或使用某 "开源手机 AI 开发框架"，可能会碰到 `Segmentation fault` 报错。这是一个已知的 UPX 与 PRoot 及部分 Linux 内核协作的 Bug，请使用 `upx -d` 解压程序使用，或在下载地址后加 `_noupx` 下载已解压的版本
 
-### 确认处理器字节序 (mips/mips64) :id=linux-check-endian
+### 确认处理器字节序 (mips/mips64) {#linux-check-endian}
 
 ```bash
 # 一般来说只需要使用这条命令:
@@ -39,7 +39,7 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 | `0` | mips / mips64 |
 | `1` | mipsle / mips64le |
 
-### 安装 frpc :id=linux-install-frpc
+### 安装 frpc {#linux-install-frpc}
 
 1. 登录管理面板，转到 “软件下载” :
 
@@ -81,13 +81,13 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
    frpc -v
    ```
 
-### 使用 frpc :id=linux-usage
+### 使用 frpc {#linux-usage}
 
 请查看 [启动隧道](#running-frpc) 一节了解如何启动 frpc 并连接到您的隧道。
 
 通过本文档中介绍的方法安装后，您应该可以在任何目录直接输入 `frpc <参数>` 运行 frpc ，**不需要** 输入完整路径
 
-### 简易后台运行 :id=linux-simple-background
+### 简易后台运行 {#linux-simple-background}
 
 !> 不推荐采用 `&` 将 frpc 放到后台运行，建议参考下面的 **配置开机自启** 一节将 frpc 注册为系统服务
 
@@ -97,7 +97,7 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 frpc -f wdnmdtoken666666:12345 &
 ```
 
-### 配置开机自启 :id=linux-autostart
+### 配置开机自启 {#linux-autostart}
 
 ?> 本文档暂未覆盖到 Upstart 和 SysV-Init，如果您熟悉这些初始化系统，[欢迎提交 PR](https://github.com/natfrp/wiki/pulls)
 

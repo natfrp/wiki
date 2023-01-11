@@ -1,6 +1,6 @@
 # 常见问题: 客户端错误
 
-## frpc 常见日志对照 :id=frpc-log
+## frpc 常见日志对照 {#frpc-log}
 
 | 英文 | 中文 | 备注 |
 | --- | --- | --- |
@@ -19,7 +19,7 @@
 | Request failed: `XXX` `YYY` | *API 请求失败* | [点此查看详细说明](#api-request-failed) |
 | SakuraFrp API failure | *SakuraFrp API 出现故障* | 看到此错误请及时联系管理员 |
 
-## 登录节点失败, 请检查网络连接 :id=login-to-server-failed
+## 登录节点失败, 请检查网络连接 {#login-to-server-failed}
 
 1. 请运行 PING 测试节点连通性
 2. 请查看管理面板的的 **统计信息** (节点受到攻击或故障时 **在线** 一栏会显示 `-`)
@@ -34,7 +34,7 @@
 | 上游防火墙拦截 7000 / 7001 端口 | √ | 换网络 / 找别家 |
 | 公司 / 学校网管不允许使用 frp | √ | 那就别用 |
 
-## 服务端端口被占用 :id=port-already-used
+## 服务端端口被占用 {#port-already-used}
 
 | 原因 | 解决方案 |
 | --- | --- |
@@ -42,7 +42,7 @@
 | 存在 frpc 进程残留 | 启动器: 右键点击托盘图标, **彻底退出** 后重新打开启动器 <br> frpc: 打开 **任务管理器** 查找并 **关闭** 残留的 frpc 进程 |
 | 重复开启隧道 | 一条隧道同一时间只能有一个实例, 请 **创建不同端口的隧道** 或者 **关闭重复开启的隧道** |
 
-## URL 路由冲突 :id=router-config-conflict
+## URL 路由冲突 {#router-config-conflict}
 
 | 原因 | 解决方案 |
 | --- | --- |
@@ -50,7 +50,7 @@
 | 服务端路由未释放 | 和 [端口被占用](#port-already-used) 类似，解决方案也相同 |
 | **高级设置** 中 URL 路由配置错误 | 您是高级用户，请自行寻找解决方案 |
 
-## API 请求失败 :id=api-request-failed
+## API 请求失败 {#api-request-failed}
 
 | 原因 | 解决方案 |
 | --- | --- |
@@ -65,7 +65,7 @@
 - 检查防火墙、杀毒软件是否拦截了 frpc 的请求
 - 检查宽带是否存在到期未续费等情况
 
-## 无法连接到本地服务 :id=connect-to-local-service-error
+## 无法连接到本地服务 {#connect-to-local-service-error}
 
 此日志说明 **frpc 工作正常**，但是 frpc 无法连接到您的本地服务。
 

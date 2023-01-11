@@ -2,7 +2,7 @@
 
 ?> 查看此教程前请确保您已阅读 [frpc 基本使用指南](/frpc/usage) 中的 **Linux** 页面
 
-### 前置知识 :id=systemd-note
+### 前置知识 {#systemd-note}
 
 Systemd 是 Linux 系统的一种初始化系统实现，它管理的各种服务叫做 **Unit**，每个服务对应一个 **Unit 配置文件**
 
@@ -14,7 +14,7 @@ Systemd 的服务有两种状态:
 
 如果 **启用** 了服务，开机的时候服务就会自启，反之就不会
 
-### 编写配置文件 :id=systemd-unit
+### 编写配置文件 {#systemd-unit}
 
 Systemd 的 **Unit 配置文件** 通常位于这些目录中:
   - /lib/systemd/system （供软件包使用）
@@ -66,7 +66,7 @@ systemctl daemon-reload
 
 下面本教程将介绍一些 Systemd 的基本操作
 
-### 启动/停止隧道 :id=systemd-start-stop
+### 启动/停止隧道 {#systemd-start-stop}
 
 启动/停止隧道非常简单，使用下面的命令即可，`start` 是启动，`stop` 是停止
 
@@ -82,7 +82,7 @@ systemctl <start|stop> <Unit名称>
 systemctl start frpc@wdnmdtoken666666:12345
 ```
 
-### 查看隧道状态 :id=systemd-status
+### 查看隧道状态 {#systemd-status}
 
 您可以通过下面的命令查看服务状态
 
@@ -110,7 +110,7 @@ systemctl list-units "frpc@*"
 
 ![](_images/systemd-3.png)
 
-### 查看隧道日志 :id=systemd-log
+### 查看隧道日志 {#systemd-log}
 
 您可以通过下面的命令查看隧道日志：
 
@@ -126,7 +126,7 @@ journalctl -u frpc@wdnmdtoken666666:12345
 
 如果当前窗口无法显示所有日志，可以用 `↑`、`↓` 方向键滚动，输入大写的 `G` 跳转动到日志底部，输入 `q` 退出日志查看。更多使用方法请参阅 `man journalctl`。
 
-### 配置开机自启 :id=systemd-autostart
+### 配置开机自启 {#systemd-autostart}
 
 装好服务后，实现开机自启非常简单，回顾一下前置知识
   - 我们只要 `启用` 服务就可以实现开机自启

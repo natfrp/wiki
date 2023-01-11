@@ -9,12 +9,12 @@
 
 此页将介绍如何为 **frpc** 在这两种环境下配置 SSL 证书。
 
-## 获取 SSL 证书 :id=ssl
+## 获取 SSL 证书 {#ssl}
 
 > 如果您还不知道如何设置、申领 SSL 证书，请阅读此章节。
 否则，请直接跳到 [后续内容](#autohttps)。
 
-### 选择 SSL 服务商 :id=ssl-choose
+### 选择 SSL 服务商 {#ssl-choose}
 
 通常，域名注册商会一并提供 DNS 解析，部分服务商还会同时提供 SSL 证书申请。
 
@@ -23,16 +23,16 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 > [Nyatwork SSL](https://get.ssl.moe) 证书成本价售卖中。
 
-### 申领证书 :id=ssl-get
+### 申领证书 {#ssl-get}
 
-#### 设置证书域名 :id=ssl-get-domain
+#### 设置证书域名 {#ssl-get-domain}
 
 如您打算通过 `sub.example.com` 访问隧道，那么就应为 `sub.example.com` 或 `*.example.com` 申请证书。
 
 - `sub.example.com`: 这是单域名证书，仅对绑定的 `sub.example.com` 有效。
 - `*.example.com`: 这是泛域名证书，针对任何 `example.com` 下的二级域名均有效，如 `sub.example.com`。
 
-#### 验证域名所有权 :id=ssl-verify-domain
+#### 验证域名所有权 {#ssl-verify-domain}
 
 在申请证书后，服务商为了验证该证书绑定的 **域名** 是您所有，需要您为域名在解析服务商处添加 DNS 记录。
 
@@ -41,25 +41,25 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 > 以上都是基础的证书相关知识，不再作过多说明。
 
-## 自动 HTTPS 配置 SSL 证书 :id=autohttps
+## 自动 HTTPS 配置 SSL 证书 {#autohttps}
 
-### 启用自动 HTTPS :id=autohttps-enable
+### 启用自动 HTTPS {#autohttps-enable}
 
-#### 配置隧道 :id=autohttps-setup
+#### 配置隧道 {#autohttps-setup}
 
 请先参考 [配置 frpc 的自动 HTTPS 功能](/fap/site-inaccessible#frpc-auto-https) 页面，来启用自动 HTTPS。
 
 !> 此时不要直接在隧道配置的 **自动 HTTPS** 处选择 `自动`。
 由于您有自定义域名，因此请直接在该参数处输入 `你的域名`，该域名应与您申请的 SSL 证书的绑定域名一致。
 
-#### 测试隧道 :id=autohttps-test
+#### 测试隧道 {#autohttps-test}
 
 此时，您可以先 **启动隧道** 以进行测试，由 frpc 生成自签名的证书文件。
 
 > 现在，通过 `htttps://节点域名:远程端口` 访问隧道时，仍会提示证书错误。
 因为该 `自签名证书` 没有绑定相应的域名。
 
-### 替换 SSL 证书文件 :id=autohttps-sslfile
+### 替换 SSL 证书文件 {#autohttps-sslfile}
 
 自签名证书在 frpc 的工作目录中。您需要将其替换为您申领的 SSL 证书。
 
@@ -88,13 +88,13 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 !> 如果您发现启动隧道后，frpc 工作目录中您替换的 SSL 证书重新被 frpc 替换为自签名证书，那么说明 frpc 未能解析您的 SSL 证书，请检查证书完整性、各文件是否正确。
 
-## 访问认证配置 SSL 证书 :id=authpanel
+## 访问认证配置 SSL 证书 {#authpanel}
 
 > 请先参考 [frpc 访问认证](/bestpractice/security#auth) 为您的隧道启用访问认证。
 
 访问认证会遵循 自动 HTTPS 配置项的规则加载证书，参考 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible#frpc-auto-https) 和上面的 [替换 SSL 证书文件](#autohttps-sslfile) 配置即可。
 
-### 设置域名解析 :id=authpanel-dns
+### 设置域名解析 {#authpanel-dns}
 
 > 您为您的 **启用访问认证的隧道** 设置了绑定指定域名的 SSL 证书。
 因此在访问时，若要避免证书错误提示，需要通过您的域名访问隧道。
