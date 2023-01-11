@@ -1,6 +1,7 @@
 import { defaultTheme, defineUserConfig } from 'vuepress';
 
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
+import { nextSearchPlugin } from 'vuepress-plugin-next-search';
 
 import { html5Media as mdItHtml5Media } from 'markdown-it-html5-media';
 
@@ -78,6 +79,14 @@ export default defineUserConfig({
 			include: {
 				currentPath: (env) => env.filePath,
 			},
+		}),
+		nextSearchPlugin({
+			fullText: true,
+			placeholder: '搜索',
+			frontmatter: {
+				tag: '标签',
+				category: '分类',
+			}
 		}),
 	],
 });
