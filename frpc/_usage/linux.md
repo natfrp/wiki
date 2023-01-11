@@ -107,7 +107,7 @@ frpc -f wdnmdtoken666666:12345 &
 
 本文档提供下列初始化系统的自启配置指南：
 
-- [Systemd](/frpc/service/systemd)
+- [Systemd](/frpc/service/systemd.md)
 - ~Upstart~
 - ~SysV~
 
