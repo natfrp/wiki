@@ -1,40 +1,60 @@
+---
+sidebar: false
+---
+
 # 文档格式约定
 
-::: tip
-创建新的文档以及对文档进行重构 (大规模修改已有内容) 时应套用此文件中约定的格式  
-编辑他人创建的文档时，请套用已有的格式并尽量与其他部分保持一致，不要随意修改他人的格式
-:::
+本文档采用 [markdownlint](https://www.npmjs.com/package/markdownlint) 作为所有 Markdown 文件的格式化工具，格式规则存储于 [.markdownlint.jsonc](https://github.com/natfrp/wiki/blob/master/.markdownlint.jsonc) 文件中，原则上所有 Markdown 文件均需通过验证、没有任何错误或警告信息才能提交到存储库中。
+
+推荐使用 [Visual Studio Code](https://code.visualstudio.com/Download) 作为本文档的编辑器，并安装 `.vscode/extensions.json` 中推荐的拓展以获得最佳编辑体验。
 
 ## 标题格式 {#heading}
 
 - 每个标题均由简短的几个字组成，向用户说明下一节内容的大致格式
-- 通常情况下，每个文档的第一行均为 `#` 开头的大标题
-- 本文档的 Docsify 被配置为自动识别二级标题，这就意味着 `##` 标题会在侧边栏被列出，而 `###` 标题不会在侧边栏被列出
-- 请合理的安排二级、三级乃至四级标题，避免出现多层标题叠在一起产生大量空白区域的问题
-- 除首个大标题外，所有标题均应在末尾带有 `{#<ID>` 来指定其 ID，以便快速定位到内容}
-- 标题 ID 应由若干翻译准确、能清晰体现标题内容的英文单词组成，中间用 `-` 隔开。若标题本身由英文组成，请提供一个全小写、由 `-` 替换下划线的 ID
+- 除首个大标题外，所有标题均应在末尾带有一个空格分隔的 `{#<ID>}` 来指定一个合理的 URL slug
+- URL slug 应由若干翻译准确、能清晰体现标题内容的英文单词组成，中间用 `-` 隔开。若标题本身由英文组成，请提供一个全小写、由 `-` 替换下划线的 slug
 
 ## 用语约定 {#term}
 
-- 文档阅读者: `您`
-- 本平台: `SakuraFrp`
-- HTTP 或 HTTPS 隧道: `HTTP(S) 隧道`
-- 提供内网穿透的服务器：`节点`
-- 用于演示的节点域名：`idea-leaper-1.natfrp.cloud`、`idea-leaper-2.natfrp.cloud` 等
-- 用于演示的隧道名称：`ExampleTunnel1`、`ExampleTunnel2`、`SampleTunnel1`、`SampleTunnel2` 等
-- 用于演示的节点 ID 和名称：`#233 一个神奇的节点`、`#5 Demo Node`
-- 用于演示的 TLD：`example.com`、`example.net` 或其他 [RFC2606](https://tools.ietf.org/html/rfc2606) 中规定的 TLD
+| 对象 | 用语 |
+| --- | --- |
+| 文档阅读者 | `您` |
+| 本平台 | `SakuraFrp` |
+| 计算机知识丰富的 Geek / 专业用户 | `高级用户` |
+| HTTP 或 HTTPS 隧道 | `HTTP(S) 隧道` |
+| 提供内网穿透的服务器 | `节点` |
+| 用于演示的节点域名 | `idea-leaper-1.natfrp.cloud`、`idea-leaper-2.natfrp.cloud` 等 |
+| 用于演示的隧道名称 | `ExampleTunnel1`、`ExampleTunnel2`、`SampleTunnel1`、`SampleTunnel2` 等 |
+| 用于演示的节点 ID 和名称 | `#233 一个神奇的节点`、`#5 Demo Node` |
+| 用于演示的 TLD | `example.com`、`example.net` 或其他 [RFC2606](https://tools.ietf.org/html/rfc2606) 中规定的 TLD |
 
 如果您发明了一个新名词，请注意在不同地方使用时保持其一致性。
 
 ## 符号约定 {#symbol}
 
-- 用 `空格` 而不是 `Tab` 进行缩进
+- 用 `空格` 而不是 `Tab` 进行缩进，缩进请交给 markdownlint 处理
 - 用 `\n` 进行换行，文件内通常不应出现 `\r`
-- 空行不能包含空白字符，应该为单纯的 `\n\n`
+- 空行不能包含空白字符，应该为单纯的 `\n\n`，请交给 markdownlint 处理
 - 在没有特殊说明的地方均使用半角符号，如: `:`，`.`，`<`，`>`，`(`，`)`。通常这些符号后面需要加上一个空格来确保间距合理
-- 在文字段落中均采用 `，` 逗号，每句话结尾需添加 `。` 句号，段末通常以 `。` 或 `:` 结尾，也可以按个人喜好用 `：`，只要保持整个文件一致即可
-- 列表条目、`?>` 提示块、`!>` 提示块通常不以 `。` 结尾
+- 在文字段落中均采用 `，` 逗号，每句话结尾需添加 `。` 句号，段末通常以 `。` 或 `:` 结尾
+- 列表条目、`tip`/`warning`/`danger` 等提示容器中的文本通常不以 `。` 结尾
+
+## 文件结构 {#filesystem}
+
+- 将所有图片放置于和 Markdown 文件位于同一级的 `_images` 文件夹中
+- 将所有视频放置于和 Markdown 文件位于同一级的 `_videos` 文件夹中
+
+## 设计元素 {#design-elements}
+
+本文档支持引入视频、音频并展示播放组件，引入方式和图片一样，采用 `![](./_videos/example.mp4)` 的形式。
+
+本文档启用了 [Markdown Enhance](https://vuepress-theme-hope.github.io/v2/md-enhance/zh/guide/) 插件的
+[选项卡](https://vuepress-theme-hope.github.io/v2/md-enhance/zh/guide/tabs.html)、
+[属性支持](https://vuepress-theme-hope.github.io/v2/md-enhance/zh/guide/attrs.html)、
+[脚注](https://vuepress-theme-hope.github.io/v2/md-enhance/zh/guide/footnote.html) 和
+[导入文件](https://vuepress-theme-hope.github.io/v2/md-enhance/zh/guide/include.html) 模块。
+
+本文档启用了 VuePress 默认主题的 [内置组件](https://v2.vuepress.vuejs.org/zh/reference/default-theme/components.html) 和 [自定义容器](https://v2.vuepress.vuejs.org/zh/reference/default-theme/markdown.html) 支持。
 
 ## 文本间距 {#spacing}
 
@@ -53,6 +73,10 @@
 
 ## 文本修饰 {#markup}
 
+::: warning
+markdownlint 被配置为不自动修复粗体或斜体的修饰字符，请注意遵守下方规则
+:::
+
 使用 `*` 添加粗体、斜体效果:
 
 ```markdown
@@ -69,6 +93,14 @@
 _* 这是一条温馨提示_
 ```
 
+## 链接格式 {#links}
+
+- 在链接到文档内部元素时，请使用 `/` 开头的绝对路径链接，并确保链接中包含了文件扩展名 `.md`  
+  例：`![prprrpr](/pa47.md)`
+- 在链接到外部站点时，请清理链接中不必要的追踪参数  
+  正确示例：`![这是好的](https://www.bilibili.com/video/BV1va411w7aM/)`  
+  错误示例：`![这很不好](https://www.bilibili.com/video/BV1va411w7aM/?share_source=xxx&yyy=zzz)`
+
 ## 无序列表 {#unordered-list}
 
 使用 `-` 作为列表标记，标记后添加一个空格:
@@ -76,20 +108,6 @@ _* 这是一条温馨提示_
 ```markdown
 - ItemA
 - ItemB
-```
-
-如果存在多级列表，每级列表均缩进两个空格，使得下一级的 `-` 与上一级内容的第一个字符对齐:
-
-```markdown
-- ItemA
-- ItemB
-  - ItemB1
-  - ItemB2
-- ItemC
-  - ItemC1
-    - ItemC11
-    - ItemC12
-      - ItemC121
 ```
 
 ## 有序列表 {#ordered-list}
@@ -101,16 +119,5 @@ _* 这是一条温馨提示_
 ```markdown
 1. ItemA
 1. ItemB
-1. ItemC
-```
-
-如果存在多级列表，每级列表均缩进三个空格，使得下一级的 `1` 与上一级内容的第一个字符对齐:
-
-```markdown
-1. ItemA
-1. ItemB
-   1. ItemB1
-   1. ItemB2
-      1. ItemB21
 1. ItemC
 ```
