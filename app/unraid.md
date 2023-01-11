@@ -78,8 +78,7 @@ curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-s
 
  ![](./_images/unraid-log-window.png)
 
-<details id='unraid-self'>
-<summary>在点击展开前，请确认您完全理解自己正在做的行为，并了解其中的安全风险</summary>
+:::: details 在点击展开前，请确认您完全理解自己正在做的行为，并了解其中的安全风险
 
 ## 穿透 Unraid web 控制台
 
@@ -114,4 +113,4 @@ Unraid 不提供 HTTPS 控制台，因为我们的大部分节点均不允许使
 因为 Unraid 控制台的自动跳转功能，使用 `https://114.5.1.4:1919/` 会被跳转到 `http://114.5.1.4:1919/Main` （没有 s）从而无法访问，所以请务必访问 `https://114.5.1.4:1919/Main`
 :::
 
-</details>
+::::

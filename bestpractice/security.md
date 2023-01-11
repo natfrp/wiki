@@ -26,12 +26,11 @@
 
 *注: 视频教程又长又啰嗦，不推荐阅读理解能力没有问题的用户观看*
 
-<details>
-<summary><b style="font-size: 20px">点击展开</b></summary>
+::: details 点击展开
 
 [frpc 访问认证 视频](_videos/security.mp4 ':include :type=video')
 
-</details>
+:::
 
 ### 注意事项 {#auth-note}
 

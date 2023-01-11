@@ -8,17 +8,17 @@ SakuraFrp 不提供 Minecraft 服务器相关帮助，文档主要由热心网�
 
 ## 常见问题 {#faq}
 
-<details>
-<summary>我还是进不去服务器 / 用不了 / 进服时报 XXX 错误怎么办</summary>
+::: details 我还是进不去服务器 / 用不了 / 进服时报 XXX 错误怎么办
 
 ![](./_images/mc-javaia-1.png)
-</details>
-<br>
-<details>
-<summary>第一次开服能用，怎么现在就不行了 / 报错 “请检查本地服务是否可访问”</summary>
+
+:::
+
+::: details 第一次开服能用，怎么现在就不行了 / 报错 “请检查本地服务是否可访问”
 
 ![](./_images/mc-localsrv-checkflow.png)
-</details>
+
+:::
 
 ## 基岩版或 Geyser 联机和开服 {#bedrock}
 
@@ -53,8 +53,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
 请根据您的游戏版本展开下面的选项查看，下面提到的 Mod 都必须在 **联网** 条件下安装:
 
-<details>
-<summary><b style="font-size: 20px">游戏版本: 1.12.X ~ 1.19</b></summary>
+:::: details 游戏版本: 1.12.X ~ 1.19
 
 ::: warning
 1.16.2 版由于 Forge 的原因可能会 **引发崩溃**，端口 **不能冲突**，否则也会崩溃
@@ -82,10 +81,9 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
 
 ![](./_images/mc-2.png)
 
-</details>
-<br>
-<details>
-<summary><b style="font-size: 20px">游戏版本: 1.7.X ~ 1.12.X</b></summary>
+::::
+
+:::: details 游戏版本: 1.7.X ~ 1.12.X
 
 + Mod 名称: Server.Properties for LAN
 + Mod 功能:
@@ -177,7 +175,7 @@ motd=
 # 默认会生成一个，可以自己设置
 ```
 
-</details>
+::::
 
 ### 创建隧道
 
