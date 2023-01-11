@@ -57,7 +57,7 @@
 1. 在连接远程桌面前，通过浏览器访问 `https://cn-bj-ali-1.sakurafrp.com:59246`，此时应该会看到访问认证界面
 
    ::: warning
-   注意输入完整的 **https://** 前缀，否则您可能无法访问认证界面  
+   注意输入完整的 **<https://>** 前缀，否则您可能无法访问认证界面  
    浏览器提示证书错误是正常现象。对于 v0.42.0-sakura-3.1 及更高版本的 frpc，请参阅 [访问认证配置 SSL 证书](/frpc/ssl#authpanel) 来解决这一问题。  
    对于 v0.42.0-sakura-3 及更低版本，您可以通过配置 frpc 工作目录下的 'authpanel.<crt|key>' 并使用恰当的域名访问。
    :::
@@ -83,7 +83,7 @@
    ![](./_images/auth-3.png)
 1. 此时，使用 `远程桌面连接` 程序像以前一样正常连接远程桌面即可  
    ![](./_images/auth-4.png)
-   
+
    ::: warning
    请注意：若您想让他人连接，则对方也 **必须** 进行 **相同** 操作，或使用下方的 `自动化认证`，否则会出现 `连接中断` 等各种奇奇怪怪的错误
    :::
@@ -113,9 +113,10 @@ curl -k -X POST -d "ip=<your_ip>" -d "pw=<your_password>" https://<tunnel_url>
 为了保护您的页面不被直接窥视，通过 Basic Auth 添加一个鉴权会是一个低成本的解决方案
 
 Basic Auth 的配置方式大同小异，下面是常见 Web 服务器的相关文档链接：
- - [Nginx](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/)
- - [Apache](https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-apache-on-ubuntu-16-04)
- - [Caddy](https://caddyserver.com/docs/caddyfile/directives/basicauth)
+
+- [Nginx](https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/)
+- [Apache](https://www.digitalocean.com/community/tutorials/how-to-set-up-password-authentication-with-apache-on-ubuntu-16-04)
+- [Caddy](https://caddyserver.com/docs/caddyfile/directives/basicauth)
 
 ---
 

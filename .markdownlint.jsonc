@@ -1,0 +1,12 @@
+{
+    "default": true,
+    "line-length": false,
+    "no-alt-text": false,
+    "link-fragments": false,
+    "no-inline-html": false,
+    "heading-increment": false,
+    "ol-prefix": {
+        "style": "one_or_ordered"
+    },
+    "no-duplicate-heading": false
+}

@@ -38,7 +38,6 @@ OpenSSH 是最常见的 SSH/SFTP 客户端/服务器软件。微软现为 Window
 对于此类稍老的系统，您需要在 [GitHub](https://github.com/PowerShell/Win32-OpenSSH/releases/latest) 手动下载安装包。
 
 > 对于国内不可控的网络环境，您对 GitHub 的访问可能不稳定，此时可以使用 [FastGit 提供的镜像服务](https://github.com/PowerShell/Win32-OpenSSH/releases/latest) 下载安装包。
-
 > 下面的教程步骤部分源于 PowerShell/Win32-OpenSSH 项目中的[文档](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)，如需更详细配置或遇疑难杂症，请参考此文档。
 
 通常下载其中的 `OpenSSH-Win32.zip` 即可。
@@ -56,7 +55,7 @@ OpenSSH 是最常见的 SSH/SFTP 客户端/服务器软件。微软现为 Window
 
 在此窗口中执行（复制后使用右键点击其中可以粘贴）：
 
-```
+```batch
 cd "C:\Program Files\OpenSSH"
 powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
 ```
@@ -109,7 +108,7 @@ powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
 
 如果需要在局域网内的其他设备上访问，您可能需要配置防火墙，使用：
 
-```
+```batch
 netsh advfirewall firewall add rule name=sshd dir=in action=allow protocol=TCP localport=22
 ```
 

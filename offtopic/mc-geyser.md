@@ -3,16 +3,16 @@
 > **互通** 即使 Java 版 与 基岩版 间的玩家和服务器可建立连接，而不只局限于 Java 版玩家加入 Java 版服务器、基岩版玩家加入基岩版服务器。
 
 Minecraft 的国际版存在多种互通方案。
+
 1. Geyser:
    利用一个 Geyser 服务端作为代理
    Java 版玩家正常连接原版服务端
    基岩版玩家则连接该 Geyser 代理服务端，由它将玩家发送的数据转为 Java 版，并发送至 Java 服务端
-1. Floodgate: 
+1. Floodgate:
    这是用于扩展服务端对 Geyser 进行管理的插件
 
 因此，本教程所适用的环境是 **使基岩版玩家加入 Java 版服务端**，而 **不能** 用于使 Java 版玩家加入基岩版服务端。
 若它不适用于您的使用环境，请移步 [Java 版局域网联机](/app/mc#java) 页面或 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server) 页面。
-
 
 ## 准备事项
 
@@ -404,17 +404,15 @@ max-world-size = 29999984
 #   否: false
 ```
 
-
 ### 编辑 Geyser 服务端配置文件
 
 运行 `geyser` 中的 `start.bat` 文件，随后等待加载。
 
-```console
+```log
 [HH:MM:SS INFO] 完成 (X.XXXs)! 执行 /geyser help 来获取帮助信息!
 ```
 
 在看到上述信息后，执行 `Ctrl+C` 以关闭 Geyser 服务端。
-
 
 #### 编辑配置文件
 
@@ -748,7 +746,7 @@ Java 版玩家使用 TCP 隧道进入服务器。
 
 Java 版玩家使用 UDP 隧道进入服务器。
 
-|        节点       | 协议 | 本地端口(默认) | 远程端口 |           本地 IP         | 
+|        节点       | 协议 | 本地端口(默认) | 远程端口 |           本地 IP         |
 | :---------------: | ---- | :----------:  | :-----: | :-------------------------: |
 | 未屏蔽 UDP 的节点 | UDP  | 19132         | 任意    | Geyser 服务端运行的 IP 地址 |
 
@@ -764,7 +762,7 @@ Java 版玩家使用 UDP 隧道进入服务器。
 
 若您看到如下内容，说明 **Java 版服务端已启动成功**：
 
-```console
+```log
 [HH:MM:SS] [Server thread/INFO] Done(X.XXXs)! For help, type "help"
 ```
 
@@ -774,7 +772,7 @@ Java 版玩家使用 UDP 隧道进入服务器。
 
 若您看到如下内容，说明 **Geyser 服务端已启动成功**：
 
-```console
+```log
 [HH:MM:SS INFO] 完成 (X.XXXs)! 执行 /geyser help 来获取帮助信息!
 ```
 
@@ -835,9 +833,11 @@ Java 版玩家使用 UDP 隧道进入服务器。
 | `实例名称`           | 任意字符串              |
 
 #### 启动命令模板
+
 ```ini
 java -Xmx<最大内存>M -Xms<启动内存>M -Dfile.encoding=UTF-8 -Duser.language=cn -Duser.country=ZH -jar geyser.jar nogui
 ```
+
 随后，上传 `Geyser.jar` 服务端文件，并等待自动创建。
 
 ### 编辑实例参数
