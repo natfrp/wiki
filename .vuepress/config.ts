@@ -23,33 +23,26 @@ export default defineUserConfig({
 	theme: defaultTheme({
 		navbar: [
 			{
-				text: '快速上手',
+				text: '配置指南',
 				children: [
-					'/basics.md',
+					...sections.app.children,
+					sections.bestpractice,
 				],
 			},
 			sections.faq,
 			sections.client,
-			sections.app,
-			sections.bestpractice,
-			{
-				text: '其他',
-				children: [
-					'/style.md',
-					'/geek.md',
-					'/about.md',
-				],
-			},
+			sections.misc,
 		],
 		sidebar: {
 			'/': Object.values(sections),
 
-			'/faq/': sections.faq.children,
+			'/faq': sections.faq.children,
+
+			'/app': [sections.app, sections.bestpractice],
+			'/bestpractice': [sections.app, sections.bestpractice],
 
 			'/frpc/': sections.client.children,
 			'/launcher/': sections.client.children,
-
-			'/bestpractice/': sections.bestpractice.children,
 		},
 
 		docsRepo: 'natfrp/wiki',
