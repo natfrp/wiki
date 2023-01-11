@@ -91,7 +91,9 @@ java -Xmx<最大内存>M -Xms<启动内存>M -jar geyser.jar
 
 #### 同意 EULA
 
-!> [EULA](https://account.mojang.com/documents/minecraft_eula ':target=_blank') (End User License Agreement, 终端用户许可协议) 是 Java 版服务端的协议文件。在运行服务端前，必须同意该文件，才能正常启动。
+::: warning
+[EULA](https://account.mojang.com/documents/minecraft_eula ':target=_blank') (End User License Agreement, 终端用户许可协议) 是 Java 版服务端的协议文件。在运行服务端前，必须同意该文件，才能正常启动。
+:::
 
 1. 打开运行服务端后自动生成的 `eula.txt`
 1. 将其中的 `eula=false` 改为 `eula=true`
@@ -750,7 +752,9 @@ Java 版玩家使用 UDP 隧道进入服务器。
 | :---------------: | ---- | :----------:  | :-----: | :-------------------------: |
 | 未屏蔽 UDP 的节点 | UDP  | 19132         | 任意    | Geyser 服务端运行的 IP 地址 |
 
-!> 使用 frpc 时 MOTD 信息无法正常显示
+::: warning
+使用 frpc 时 MOTD 信息无法正常显示
+:::
 
 ## 运行服务端
 
@@ -792,7 +796,9 @@ Java 版玩家使用 UDP 隧道进入服务器。
 1. `geyser stop`
 1. `Ctrl+C`
 
-!> **请不要通过直接关闭 Geyser 服务端窗口的方式关闭 Geyser 服务端**，这将导致端口仍被占用。
+::: warning
+**请不要通过直接关闭 Geyser 服务端窗口的方式关闭 Geyser 服务端**，这将导致端口仍被占用。
+:::
 
 #### 命令列表
 

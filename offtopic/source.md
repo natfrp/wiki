@@ -1,10 +1,13 @@
 # 起源引擎 (CSGO, 求生之路 2) 等游戏服务器穿透指南
 
-!> 本教程内容由社区贡献：[pr/33](https://github.com/natfrp/wiki/pull/33) & [pr/250](https://github.com/natfrp/wiki/pull/250)。
+::: warning
+本教程内容由社区贡献：[pr/33](https://github.com/natfrp/wiki/pull/33) & [pr/250](https://github.com/natfrp/wiki/pull/250)。  
+请注意我们 **并不推荐** 您使用 SakuraFrp 穿透 CSGO 社区服务器，因为这很可能会为 SakuraFrp 招来无差别的打击，影响其他用户的正常使用。
+:::
 
-!> 请注意我们 **并不推荐** 您使用 SakuraFrp 穿透 CSGO 社区服务器，因为这很可能会为 SakuraFrp 招来无差别的打击，影响其他用户的正常使用。
-
-!> 本教程主要针对正版 (通过 Steam 认证) 的服务器。
+::: warning
+本教程主要针对正版 (通过 Steam 认证) 的服务器。
+:::
 
 在我们开始进行穿透之前，您需要先了解一些关于起源引擎服务器的前置知识，这些知识将在您遇到困难时提供有利的帮助信息。
 
@@ -12,7 +15,9 @@
 
 ### 哪些游戏属于起源引擎游戏
 
-!> 反恐精英 1.6、Sven CO-OP、半条命等属于 GoldSrc 引擎游戏，不适用于本教程。
+::: tip
+反恐精英 1.6、Sven CO-OP、半条命等属于 GoldSrc 引擎游戏，不适用于本教程。
+:::
 
 起源引擎游戏服务器指使用起源引擎制作的支持网络对战的游戏，比较知名的游戏有反恐精英：全球攻势 (CSGO) , 求生之路 1/2 (Left 4 Dead 1/2) ，军团要塞2 (Team Fortress 2)，反恐精英：起源 (Counter-Strike Source)，盖瑞模组 (Garry's Mod)，胜利之日：起源 (Day of Defeat: Source) 等。
 
@@ -44,7 +49,9 @@ srcds 支持启动时增加命令，命令又分为服务器内命令与启动�
 
 ### 游戏端口相关
 
-!> Source Dedicated Server 要求启动时指定的游戏端口与实际游戏服务器端口一致！这意味着您在启动时 `-port` 指定的端口必须与隧道的 TCP/UDP 端口号相同
+::: warning
+Source Dedicated Server 要求启动时指定的游戏端口与实际游戏服务器端口一致！这意味着您在启动时 `-port` 指定的端口必须与隧道的 TCP/UDP 端口号相同
+:::
 
 Source Dedicated Server 官方标准是使用 `27015` 到 `27019` 端口为游戏数据传输 (其他端口也可以) 、pings 和 rcon 端口。27020 为 Source TV 端口 (游戏观战) ，27005 为客户端端口 (玩家端口) ，26900 为服务器与 Steam 通信端口。
 
@@ -116,7 +123,9 @@ Source Dedicated Server 官方标准是使用 `27015` 到 `27019` 端口为游�
 ./srcds_run -game csgo -port 33562 -ip 192.168.2.168 +hostip 192.168.2.168 +map de_dust2 +maxplayers 10 +sv_setsteamaccount 1145141919810sodayo
 ```
 
-!> 启动 CSGO 服务器需要 GSLT 令牌，查看下面的段落以获取 GSLT 令牌。
+::: warning
+启动 CSGO 服务器需要 GSLT 令牌，查看下面的段落以获取 GSLT 令牌。
+:::
 
 ### GSLT 令牌 {#get-gslt}
 
@@ -136,7 +145,9 @@ Source Dedicated Server 官方标准是使用 `27015` 到 `27019` 端口为游�
 
 接下来打开 [Valve 官方的 GSLT 令牌管理页面](https://steamcommunity.com/dev/managegameservers) 进行创建。
 
-!> 如果您的 Steam 账号 **不拥有** 某一个游戏，将 **无法** 为那个游戏创建GSLT令牌
+::: warning
+如果您的 Steam 账号 **不拥有** 某一个游戏，将 **无法** 为那个游戏创建GSLT令牌
+:::
 
 然后把 SteamDB 详情页的第一行（APPID）后面的一串数字码填到第一个框里去，下一个框可以填一个自己喜欢的名字，便于记忆。
 

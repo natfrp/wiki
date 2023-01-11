@@ -10,8 +10,10 @@
 
 <!-- BEGIN 请勿修改 -->
 
-!> 此处列出的联系方式不受理任何使用相关的问题。查询账户注销状态、提交 Bug 报告 (**前提是你有 90% 以上的把握认定这是 Bug 而不是使用方法错误**)、付款后服务未到帐等问题可以使用此处的联系方式。  
-<b style="color: red;font-size: 26px">不会用、不会配置、隧道连不上、网站打不开等问题一律不予回复，反复 SPAM 可获得黑名单名额一个</b>
+::: danger
+此处列出的联系方式不受理任何使用相关的问题。查询账户注销状态、提交 Bug 报告 (**前提是你有 90% 以上的把握认定这是 Bug 而不是使用方法错误**)、付款后服务未到帐等问题可以使用此处的联系方式。  
+<b style="color: red;font-size: 22px">不会用、不会配置、隧道连不上、网站打不开等问题一律不予回复，反复 SPAM 可获得黑名单名额一个</b>
+:::
 
 - 如果您需要举报滥用或违规内容，您可以前往 [举报滥用](https://www.natfrp.com/report.html ':target=_blank') 页面提交信息或直接通过邮件联系我们  
   To submit abuse report, please head to [THIS PAGE](https://www.natfrp.com/report_en.html ':target=_blank') and fill out the form or mail us direcly

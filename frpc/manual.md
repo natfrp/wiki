@@ -1,6 +1,8 @@
 # frpc 用户手册
 
-!> 这是面向高级用户的手册，如果您尚不熟悉 frpc，请移步 [frpc 简明使用教程](/frpc/usage#basic-usage)
+::: tip
+这是面向高级用户的手册，如果您尚不熟悉 frpc，请移步 [frpc 简明使用教程](/frpc/usage#basic-usage)
+:::
 
 由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/docs/ ':target=_blank') 或 [frp/README.md](https://github.com/fatedier/frp/blob/dev/README.md)。
 

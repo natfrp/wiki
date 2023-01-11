@@ -24,7 +24,9 @@
 
 ## 选择隧道类型
 
-!> 因为节点地理位置与其他因素，不同的节点可能有不同的限制，请您参考节点名中的信息和 [建站条件](/faq/site-inaccessible#site-requirement)
+::: tip
+因为节点地理位置与其他因素，不同的节点可能有不同的限制，请您参考节点名中的信息和 [建站条件](/faq/site-inaccessible#site-requirement)
+:::
 
 Sakura Frp 提供两种类型的隧道供您穿透 HTTP(S) 服务:
 + TCP 隧道
@@ -80,7 +82,9 @@ HTTP(S) 隧道必须设置解析，TCP 隧道可以设置也可以直接用节�
 
 ![](./_images/http-7.png)
 
-!> <strong style="color: red">绑定域名必须和您解析到的域名完全一致</strong>
+::: warning
+绑定域名必须和您解析到的域名完全一致
+:::
 
 然后到隧道列表找到节点域名，并确认您的子域名。这里子域名就是 `www`，如果您直接使用根域名 `example.com`，子域名当作是空的就行。
 
