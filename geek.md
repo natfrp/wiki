@@ -1,3 +1,7 @@
+---
+sidebar: false
+---
+
 # 高级用户相关说明
 
 ## 数据安全 {#data-security}

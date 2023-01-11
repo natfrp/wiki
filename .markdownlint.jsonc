@@ -9,5 +9,7 @@
         "style": "one_or_ordered"
     },
     "no-duplicate-heading": false,
-    "link-image-reference-definitions": false
+    "link-image-reference-definitions": false,
+    "strong-style": false,
+    "emphasis-style": false
 }

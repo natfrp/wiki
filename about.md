@@ -1,3 +1,8 @@
+---
+sidebar: false
+contributors: false
+---
+
 # 关于
 
 ## 版权及授权协议 {#license}
@@ -34,8 +39,10 @@
 
 ## Community Contributors {#community-contributors}
 
+大部分页面底部会自动列出页面贡献者，您也可以将自己添加到下面的列表中。
+
 - [宝硕](https://baoshuo.ren)
-  - _frp 一键安装脚本、文档站点、部分帮助文档_
+  - _frp 一键安装脚本、前文档站点、部分帮助文档_
   - _志愿者_
   - _经常咕咕咕，一般周日在线_
 - [CursoR_光标](https://icursors.net)
