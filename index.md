@@ -46,39 +46,40 @@ tagline:
 
 1. 例如文档中写道:
 
-   ```
+   ```ini
    force_https = <Int>
    ```
 
    您准备将 `force_https` 选项设置为 `302`，则 **应该** 输入:
 
-   ```
+   ```ini
    force_https = 302
    ```
 
    而 **不应该** 输入:
 
-   ```
+   ```ini
    force_https = <302>
    ```
 
 2. 例如文档中写道:
 
-   ```
-   执行 service frpc <restart|start>
+   ```bash
+   # 执行
+   service frpc <restart|start>
    ```
 
    您准备执行该命令，则 **应该** 使用:
 
-   ```
+   ```bash
    service frpc restart
-   或
+   # 或
    service frpc start
    ```
 
    而 **不应该** 使用:
 
-   ```
+   ```bash
    service frpc restart|start
    ```
 
@@ -103,7 +104,7 @@ tagline:
 
 ### 其他 IM 水群 {#community-other-im}
 
-- [Telegram](https://t.me/natfrp_unofficial) 
+- [Telegram](https://t.me/natfrp_unofficial)
 - [Matrix](https://matrix.to/#/!GFWDTqltQmjaSCDGij:atunemic.cn?via=atunemic.cn&via=t2bot.io)
 - 非官方群, 群内没有网站管理员
 

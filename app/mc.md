@@ -28,7 +28,7 @@ SakuraFrp 不提供 Minecraft 服务器相关帮助，文档主要由热心网�
 
 Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与不装的区别:
 
-- 不装辅助 Mod: 适用于同类型账号之间的联机 (如正版和正版、盗版和盗版、外置和外置) 
+- 不装辅助 Mod: 适用于同类型账号之间的联机 (如正版和正版、盗版和盗版、外置和外置)
 - 安装辅助 Mod (推荐): 适用于不同类型账号之间的联机，如不安装，则会出现 “无效会话” 问题
 
 ### 不装辅助 Mod {#java-no-mod}
@@ -61,11 +61,11 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
 > 此 Mod 在游戏版本 1.16.5 + 高版本 Java 运行时会[出现问题](https://github.com/rikka0w0/LanServerProperties/issues/15)，如果您需要 1.16.5，请使用 Java 8/11
 
-+ Mod 名称: LanServerProperties  
-+ Mod 功能:
+- Mod 名称: LanServerProperties  
+- Mod 功能:
   1. 固定端口
   2. 开关正版验证
-+ 下载链接: [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files/all)  
+- 下载链接: [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files/all)  
 _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 **可能** 会较慢，请耐心等待或自行寻找国内镜像_
 
 #### 使用方法
@@ -85,8 +85,8 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
 
 :::: details 游戏版本: 1.7.X ~ 1.12.X
 
-+ Mod 名称: Server.Properties for LAN
-+ Mod 功能:
+- Mod 名称: Server.Properties for LAN
+- Mod 功能:
   1. 玩家挂机多久后踢出
   2. 服务器资源包
   3. 固定端口
@@ -98,7 +98,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
   9. 是否生成村民
   10. 最大建筑高度
   11. Motd设置
-+ 下载链接: [MeteorMC](https://meteormc.cn/threads/53/) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)  
+- 下载链接: [MeteorMC](https://meteormc.cn/threads/53/) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all)  
 
 #### 使用方法
 
@@ -121,7 +121,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
    如果 **换了个存档** 联机，就需要 **重新编辑** 或者复制之前的配置过来
 4. 现在请参考 [不装辅助 Mod](#java-no-mod) 一节开启局域网联机
 
-#### server.properties 配置文件翻译如下: 
+#### server.properties 配置文件翻译如下
 
 ```properties
 player-idle-timeout=<Int>
@@ -190,16 +190,16 @@ motd=
 ## 设置 SRV 解析 {#srv}
 
 ::: tip
-设置 **SRV 解析** 只是为了美观，**并非必须**。设置后，在游戏中添加服务器时， **无需填写端口号*
+设置 **SRV 解析** 只是为了美观，**并非必须**。设置后，在游戏中添加服务器时， **无需填写端口号**
 :::
 
 鉴于有很多用户都不会用百度查询如何进行 **SRV 解析**，所有就有了这个文档。
 
 本文档会教您如何在下列域名服务商的面板中为 **Minecraft Java 版** 配置 **SRV 解析**。
 
-+ [阿里云](#srv-aliyun)
-+ [腾讯云 DNSPod](#srv-tencent)
-+ [Cloudflare](#srv-cloudflare)
+- [阿里云](#srv-aliyun)
+- [腾讯云 DNSPod](#srv-tencent)
+- [Cloudflare](#srv-cloudflare)
 
 如果您有 **其他厂商** 的域名，并且会在对应面板中进行 **SRV 解析**，欢迎提交 [Pull Request](https://github.com/natfrp/wiki/pulls ':target=_blank') 帮助我们完善该文档
 
@@ -233,8 +233,11 @@ motd=
 
 保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您设置的 **TTL** 来决定，一般为 10 分钟) 。
 
-+ **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
-+ **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
+1. aa
+1. bb
+
+- **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
+- **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
 ### 腾讯云 DNSPod {#srv-tencent}
 
@@ -258,8 +261,8 @@ motd=
 
 保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您设置的 **TTL** 来决定，一般为 10 分钟) 。
 
-+ **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
-+ **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
+- **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
+- **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
 ### Cloudflare {#srv-cloudflare}
 
@@ -292,8 +295,8 @@ motd=
 
 保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您设置的 **TTL** 来决定，一般为 10 分钟) 。
 
-+ **假设** 您的域名为: example.com，您的 **名称** 设置为 `sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
-+ **假设** 您的域名为: example.com，您的 **名称** 设置为 `@`，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
+- **假设** 您的域名为: example.com，您的 **名称** 设置为 `sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
+- **假设** 您的域名为: example.com，您的 **名称** 设置为 `@`，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
 ## 无法进服解决方法 {#java-inaccessible}
 

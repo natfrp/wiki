@@ -64,6 +64,7 @@ local_ip = 127.0.0.1
 local_port = 2333
 // 其余部分省略
 ```
+
 </td>
 <td style="border-style: none;">
 
@@ -81,6 +82,7 @@ local_ip = 127.0.0.1
 local_port = 179
 // 其余部分省略
 ```
+
 </td>
 </tr>
 </table>
@@ -139,6 +141,7 @@ local_ip = 127.0.0.1
 local_port = 2333
 // 其余部分省略
 ```
+
 </td>
 <td style="border-style: none;">
 
@@ -157,6 +160,7 @@ local_ip = 127.0.0.1
 local_port = 179
 // 其余部分省略
 ```
+
 </td>
 </tr>
 </table>
@@ -241,11 +245,15 @@ _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软�
 1. 将 `frpc.exe` 放置到 `C:\` 目录下
 1. 在 `C:\` 目录下新建一个空白文件，命名为 `frpc.bat`
 1. 在 `C:\frpc.bat` 文件中写入以下内容
+
    ```bat
    C:\frpc.exe -f <您的Token>:<隧道ID>
    ```
+
 1. 以管理员身份运行命令提示符，运行以下命令：
+
    ```bat
    sc create frpc binPath=C:\frpc.bat start=auto
    ```
+
 1. 重启系统，检查效果

@@ -18,7 +18,7 @@
 
 1. 准备一个可用的 Sakura Launcher 或者 frpc
 1. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/zh-hans/download/server/bedrock/ ':target=_blank')
-1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议) 
+1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议)
 1. 准备一台 CPU 核心数不低于 2 核，并配有不低于 1GB RAM 的电脑
 
 ### 开服配置
@@ -227,6 +227,7 @@ disable-custom-skins = false
 # 是否在服务器范围内禁用指定指定皮肤
 # 仅在 1.19.30 及更高版本的服务端钟生效。
 ```
+
 #### 隧道配置
 
 | 协议 | 本地端口(默认) | 远程端口 |
@@ -318,7 +319,6 @@ sudo yum install java -y
 
 在 1.18.10 及更高版本，使用：
 
-
 | 指令                              | 作用                         |  说明                         |
 | --------------------------------- | ---------------------------- | --------------------------  |
 | `allowlist add "Example Name"`    | 根据昵称添加白名单           | 无法使用实体选择器的 '@a' 选项  |
@@ -332,7 +332,6 @@ sudo yum install java -y
 | `whitelist add "Example Name"`    | 根据昵称添加白名单           | 无法使用实体选择器的 '@a' 选项  |
 | `whitelist remove "Example Name"` | 根据昵称移除白名单           | 无法使用实体选择器的 '@a' 选项  |
 | `whitelist list`                  | 输出 `whitelist.json` 的内容 |                              |
-
 
 您可以直接在 `allowlist.json` 或 `whitelist.json` 里编辑白名单：
 
@@ -432,27 +431,27 @@ sudo yum install java -y
    * `world_resource_packs.json`
 
 4. 仅 **行为包** 会强制玩家使用。如要强制所有人使用资源包，则需在 'server.properties' 中开启相应选项: `texturepack-required = true`
-5. 玩家进入服务器时，会自动对比 **服务器所用资源包的 UUID 列表** 与 **本地拥有的资源包的 UUID 列表**。如果不匹配，将会通过游戏端口下载对应缺失包。为节省流量并避免服务器性能受影响，建议将所用资源包与行为包提前下发给玩家。 
+5. 玩家进入服务器时，会自动对比 **服务器所用资源包的 UUID 列表** 与 **本地拥有的资源包的 UUID 列表**。如果不匹配，将会通过游戏端口下载对应缺失包。为节省流量并避免服务器性能受影响，建议将所用资源包与行为包提前下发给玩家。
 
 ### BDS 系基岩版服务端/拓展工具
 
 ::: warning
 其中部分是通过反编译以达成修改的目的, 并不符合 EULA, 请慎用。
 :::
- 
-- [LiteLoader](https://github.com/LiteLDev/LiteLoaderBDS) 第三方 BDS 插件加器，支持 C++、GoLang、JavaScript、Lua
-- [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方 BDS 插件加载器，已停更
-- [BedrockX](https://github.com/Sysca11/BedrockX-bin) 第三方 BDS 插件加载器，已停更
-- [ElementZero](https://github.com/Element-0/ElementZero) 第三方服务端，支持实验玩法和教育版
-- [BDXCore](https://github.com/Sysca11/BDXCore) 第三方 BDS 插件加载器，有封装 HOOK API ，适配性强
-- [BDSJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSRunner-Release) 符合工业标准规范的 BDS 跨版本插件开发解决方案
-- [NetJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSR2) .NET 版 JS 加载平台，依赖于 BDSNetRunner
-- [PFJSR](https://github.com/littlegao233/PFJSR) NetJSRunner 衍生版
-- [BDSPyRunner](https://github.com/twoone-3/BDSpyrunner) python 脚本插件运行平台
-- [IronPythonRunner](https://github.com/Sbaoor-fly/CSR-IronPythonRunner) IronPython 拓展平台，依赖于 BDSNetRunner.
-- [IronLuaRunner](https://github.com/Sbaoor-fly/CSR-IronLuaRunner) IronPython 拓展平台，依赖于BDSNetRunner
-- [IronLuaLoader](https://github.com/Sbaoor-fly/CSR-IronLuaLoader) IronPython 拓展平台，依赖于BDSNetRunner
-- [BDSJavaRunner](https://github.com/zhkj-liuxiaohua/BDSJavaRunner) Jar1.8 加载器
-- [BDSAddonInstaller](https://github.com/chegele/BDSAddonInstaller) Add-on/node.js 加载工具
-- [MCscripts](https://github.com/TapeWerm/MCscripts) 用于备份、更新、安装、警告的系统单元，bash 脚本，聊天机器人
-- [MCBEPlay](https://foxynotail.com/mcbeplay/) GUI 版 BDS
+
+* [LiteLoader](https://github.com/LiteLDev/LiteLoaderBDS) 第三方 BDS 插件加器，支持 C++、GoLang、JavaScript、Lua
+* [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方 BDS 插件加载器，已停更
+* [BedrockX](https://github.com/Sysca11/BedrockX-bin) 第三方 BDS 插件加载器，已停更
+* [ElementZero](https://github.com/Element-0/ElementZero) 第三方服务端，支持实验玩法和教育版
+* [BDXCore](https://github.com/Sysca11/BDXCore) 第三方 BDS 插件加载器，有封装 HOOK API ，适配性强
+* [BDSJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSRunner-Release) 符合工业标准规范的 BDS 跨版本插件开发解决方案
+* [NetJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSR2) .NET 版 JS 加载平台，依赖于 BDSNetRunner
+* [PFJSR](https://github.com/littlegao233/PFJSR) NetJSRunner 衍生版
+* [BDSPyRunner](https://github.com/twoone-3/BDSpyrunner) python 脚本插件运行平台
+* [IronPythonRunner](https://github.com/Sbaoor-fly/CSR-IronPythonRunner) IronPython 拓展平台，依赖于 BDSNetRunner.
+* [IronLuaRunner](https://github.com/Sbaoor-fly/CSR-IronLuaRunner) IronPython 拓展平台，依赖于BDSNetRunner
+* [IronLuaLoader](https://github.com/Sbaoor-fly/CSR-IronLuaLoader) IronPython 拓展平台，依赖于BDSNetRunner
+* [BDSJavaRunner](https://github.com/zhkj-liuxiaohua/BDSJavaRunner) Jar1.8 加载器
+* [BDSAddonInstaller](https://github.com/chegele/BDSAddonInstaller) Add-on/node.js 加载工具
+* [MCscripts](https://github.com/TapeWerm/MCscripts) 用于备份、更新、安装、警告的系统单元，bash 脚本，聊天机器人
+* [MCBEPlay](https://foxynotail.com/mcbeplay/) GUI 版 BDS

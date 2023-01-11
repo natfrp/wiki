@@ -1,10 +1,11 @@
 {
     "files.exclude": {
         "node_modules/": true,
-        "src/.vuepress/.*": true,
+        ".vuepress/.*": true,
     },
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true,
+        "source.fixAll.markdownlint": true,
     },
     "eslint.validate": [
         "javascript",
@@ -12,5 +13,8 @@
     ],
     "[markdown]": {
         "files.trimTrailingWhitespace": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
     },
 }

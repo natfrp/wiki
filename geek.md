@@ -29,7 +29,8 @@
 请注意该 API 并非稳定标准，属于内部使用 API，随时可能变更，如果存在相关修改不会进行通知。
 
 目前存在的第三方启动器实现：
- - [yuhencloud/SakuraFrpLauncher in Qt](https://github.com/yuhencloud/SakuraFrpLauncher)
+
+- [yuhencloud/SakuraFrpLauncher in Qt](https://github.com/yuhencloud/SakuraFrpLauncher)
 
 ## 兼容性 {#compatibility}
 
