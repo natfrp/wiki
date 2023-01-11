@@ -6,6 +6,7 @@ import sections from './sections';
 
 export default defineUserConfig({
 	base: '/',
+	lang: 'zh-CN',
 
 	title: 'SakuraFrp 帮助文档',
 	description: 'SakuraFrp 帮助文档',
@@ -17,8 +18,6 @@ export default defineUserConfig({
 	],
 
 	theme: defaultTheme({
-		repo: 'natfrp/wiki',
-
 		navbar: [
 			{
 				text: '快速上手',
@@ -49,6 +48,26 @@ export default defineUserConfig({
 
 			'/bestpractice/': sections.bestpractice.children,
 		},
+
+		docsRepo: 'natfrp/wiki',
+		docsBranch: 'master',
+
+		editLinkText: '在 GitHub 上编辑此页',
+		lastUpdatedText: '更新时间',
+		contributorsText: '贡献者',
+
+		tip: '提示',
+		warning: '注意',
+		danger: '警告',
+
+		notFound: [
+			'页面不存在',
+		],
+		backToHome: '返回首页',
+
+		openInNewWindow: '在新窗口打开',
+		toggleColorMode: '切换夜间模式',
+		toggleSidebar: '开关侧边栏',
 	}),
 
 	extendsMarkdown: (md => {
