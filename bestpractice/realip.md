@@ -8,7 +8,9 @@
 
 ## XFF 请求头 {#xff-header}
 
-!> 该方案仅适用于 **HTTP** 隧道，不适用于 HTTPS、TCP、UDP 等隧道
+::: warning
+该方案仅适用于 **HTTP** 隧道，不适用于 HTTPS、TCP、UDP 等隧道
+:::
 
 使用 HTTP 隧道时，frpc 会自动将客户端的请求 IP 追加到 `X-Forwarded-For` 尾部，您的应用程序可以通过读取这两个请求头来获取客户端真实 IP。您可以参考 [MDN 文档](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/X-Forwarded-For) 获取更多信息。
 
@@ -26,9 +28,10 @@ X-Forwarded-For: '; drop database natfrp --, 114.51.4.191
 
 ## Proxy Protocol {#proxy-protocol}
 
-!> 使用该方案时必须在本地服务也做相应的配置，只修改 frp 配置会造成 **隧道完全不可用**  
-
-!> UDP 隧道需更新到 0.42.0-sakura-4 以上才能使用此功能
+::: warning
+使用该方案时必须在本地服务也做相应的配置，只修改 frp 配置会造成 **隧道完全不可用**  
+UDP 隧道需更新到 0.42.0-sakura-4 以上才能使用此功能
+:::
 
 Proxy Protocol 是由 HAProxy 开发者 Willy 提出的一种反向代理协议，目前已被广泛支持。您可以参考 [HAProxy 文档](http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) 获取更多信息。
 

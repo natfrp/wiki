@@ -3,7 +3,9 @@ home: true
 tagline:
 ---
 
-!> 使用前必看：[内网穿透基础知识](/basics)
+::: warning
+使用前必看：[内网穿透基础知识](/basics)
+:::
 
 ## 字形注意
 
@@ -17,7 +19,9 @@ tagline:
 
 ## 文档快速索引 {#quick-index}
 
-!> 本文档内容丰富，此处索引只列出了一小部分内容，请善用搜索功能
+::: tip
+本文档内容丰富，此处索引只列出了一小部分内容，请善用搜索功能
+:::
 
 - [frpc Linux/macOS/Docker 基本使用指南](/frpc/usage) | [Linux 开机自启](/frpc/service/systemd)
 

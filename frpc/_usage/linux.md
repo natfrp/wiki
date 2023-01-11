@@ -89,7 +89,9 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 
 ### 简易后台运行 {#linux-simple-background}
 
-!> 不推荐采用 `&` 将 frpc 放到后台运行，建议参考下面的 **配置开机自启** 一节将 frpc 注册为系统服务
+::: warning
+不推荐采用 `&` 将 frpc 放到后台运行，建议参考下面的 **配置开机自启** 一节将 frpc 注册为系统服务
+:::
 
 如果要临时将 frpc 放到后台运行，可以在运行命令的后面加 `&`，例如：
 

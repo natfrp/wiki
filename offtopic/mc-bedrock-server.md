@@ -29,7 +29,9 @@
 
 #### 配置文件注释
 
-!> 表中所填数据均为缺省值
+::: tip
+表中所填数据均为缺省值
+:::
 
 ```ini
 server-name = Dedicated Server
@@ -176,7 +178,9 @@ enable-lan-visibility = true
 #   否: false
 ```
 
-!> 数据压缩如果阈值过低，压缩会占用 CPU ，而开太高会导致流量消耗过快，请自行权衡
+::: warning
+数据压缩如果阈值过低，压缩会占用 CPU ，而开太高会导致流量消耗过快，请自行权衡
+:::
 
 #### 可选配置
 
@@ -264,7 +268,9 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 
 ### 注意事项
 
-!> Linux下无法同时运行多个服务端
+::: warning
+Linux下无法同时运行多个服务端
+:::
 
 RHEL 8 可能缺少 `libnsl` 包，此时服务端将无法正常启动
 
@@ -411,7 +417,9 @@ sudo yum install java -y
 
 ### 资源包与行为包装载
 
-!> 基岩版的资源包与行为包的对应关系是具体到某个世界的。如果想让玩家使用资源包与行为包，需要以下工序。
+::: warning
+基岩版的资源包与行为包的对应关系是具体到某个世界的。如果想让玩家使用资源包与行为包，需要以下工序。
+:::
 
 1. 使用客户端创建一个世界，创建时勾选想用的资源包、行为包。
 2. 创建并进入世界后退出，找到这个世界的文件夹目录。对于 Android 外部存储，该目录通常为 'storage/emulated/0/Android/data/com.mojang.minecraftpe/files/games/com.mojang/minecraftWorlds'
@@ -428,7 +436,9 @@ sudo yum install java -y
 
 ### BDS 系基岩版服务端/拓展工具
 
-!> 其中部分是通过反编译以达成修改的目的, 并不符合 EULA, 请慎用。
+::: warning
+其中部分是通过反编译以达成修改的目的, 并不符合 EULA, 请慎用。
+:::
  
 - [LiteLoader](https://github.com/LiteLDev/LiteLoaderBDS) 第三方 BDS 插件加器，支持 C++、GoLang、JavaScript、Lua
 - [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方 BDS 插件加载器，已停更

@@ -9,7 +9,9 @@
 
 本文档所提到的 **访问密钥**（有时也叫 **Token**）是专门用于客户端（启动器、frpc）登录的一个 **专用密码**，与您的账户登录密码 **不同**。
 
-!> 请妥善保管您的访问密钥，截图时注意打码。若访问密钥不慎泄露，请尽快到 [用户信息](https://www.natfrp.com/user/profile) 界面进行重置
+::: danger 安全警告
+请妥善保管您的访问密钥，截图时注意打码。若访问密钥不慎泄露，请尽快到 [用户信息](https://www.natfrp.com/user/profile) 界面进行重置
+:::
 
 您可以在 [管理面板](https://www.natfrp.com/user/) 点击 **查看访问密钥** 按钮查看并复制访问密钥：
 
@@ -67,7 +69,9 @@ frpc -f wdnmdtoken6666666:114514,114516
 
 #### 启动参数格式 {#startup-parameter}
 
-!> 如果您没有按照 **基本使用指南** 安装 frpc，或您使用的是 Windows 系统，启动时要把 "frpc" 换成下载到的的文件名，例如 `frpc_windows_386.exe`、`./frpc_linux_amd64`
+::: warning
+如果您没有按照 **基本使用指南** 安装 frpc，或您使用的是 Windows 系统，启动时要把 "frpc" 换成下载到的的文件名，例如 `frpc_windows_386.exe`、`./frpc_linux_amd64`
+:::
 
 frpc 支持通过 ID 启动单条或多条隧道，也可以直接开启位于某个节点的所有隧道。旧版 frpc 同时启动多条隧道时，这些隧道必须位于同一节点，新版 frpc 无此限制，详见 [常见问题-一个 frpc 可以连接多条隧道吗](/faq/frpc#frpc-connect-to-multiple-tunnels)。
 

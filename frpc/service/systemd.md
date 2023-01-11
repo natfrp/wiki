@@ -64,7 +64,9 @@ WantedBy=multi-user.target
 systemctl daemon-reload
 ```
 
-!> 请记住后续操作中用到的 `Unit 名称` 是 `frpc@<启动参数>`，例如 `frpc@wdnmdtoken666666:12345`
+::: tip
+请记住后续操作中用到的 `Unit 名称` 是 `frpc@<启动参数>`，例如 `frpc@wdnmdtoken666666:12345`
+:::
 
 下面本教程将介绍一些 Systemd 的基本操作
 
@@ -100,9 +102,11 @@ systemctl status <Unit名称>
 systemctl status frpc@wdnmdtoken666666:12345
 ```
 
-!> **绝对不要** 开启重复的隧道，这会造成出现各种不可预计的 Bug  
+::: warning
+**绝对不要** 开启重复的隧道，这会造成出现各种不可预计的 Bug  
 执行多次 `systemctl start` 是 **安全** 的  
 配置好 Systemd 后，**不要** 再用 `frpc -f <启动参数>` 的形式开启隧道
+:::
 
 如果您忘记了之前开启过哪些隧道，使用下面的命令可以列出当前运行中的隧道
 
