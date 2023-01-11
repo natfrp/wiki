@@ -28,7 +28,7 @@
 
 ::: details 点击展开
 
-[frpc 访问认证 视频](_videos/security.mp4 ':include :type=video')
+![](@source/bestpractice/_videos/security.mp4)
 
 :::
 
