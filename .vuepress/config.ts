@@ -1,7 +1,6 @@
 import { defaultTheme, defineUserConfig } from 'vuepress';
 
-import navbar from './navbar';
-import sidebar from './sidebar';
+import sections from './sections';
 
 export default defineUserConfig({
 	base: '/',
@@ -18,7 +17,35 @@ export default defineUserConfig({
 	theme: defaultTheme({
 		repo: 'natfrp/wiki',
 
-		navbar,
-		sidebar,
+		navbar: [
+			{
+				text: '快速上手',
+				children: [
+					'/basics.md',
+				],
+			},
+			sections.faq,
+			sections.client,
+			sections.app,
+			sections.bestpractice,
+			{
+				text: '其他',
+				children: [
+					'/style.md',
+					'/geek.md',
+					'/about.md',
+				],
+			},
+		],
+		sidebar: {
+			'/': Object.values(sections),
+
+			'/faq/': sections.faq.children,
+
+			'/frpc/': sections.client.children,
+			'/launcher/': sections.client.children,
+
+			'/bestpractice/': sections.bestpractice.children,
+		},
 	}),
 });
