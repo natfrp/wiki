@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".vuepress",
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "jsx": "preserve",
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "lib": [
+            "esnext"
+        ]
+    },
+    "include": [
+        ".vuepress/**/*.ts",
+        ".vuepress/**/*.d.ts",
+        ".vuepress/**/*.tsx",
+        ".vuepress/**/*.vue"
+    ],
+}

@@ -1,3 +1,16 @@
 {
-    "files.trimTrailingWhitespace": false
+    "files.exclude": {
+        "node_modules/": true,
+        "src/.vuepress/.*": true,
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+    },
+    "eslint.validate": [
+        "javascript",
+        "typescript",
+    ],
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false,
+    },
 }
