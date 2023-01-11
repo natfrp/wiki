@@ -44,13 +44,13 @@
 
 ## 我想通过 GitHub 上的 SakuraFrp 源码搭建穿透面板，能帮帮我吗 {#i-wanna-use-sakurapanel-on-github}
 
-我们不提供此类支持，请联系原作者 [@kasuganosoras](https://github.com/kasuganosoras ':target=_blank')。
+我们不提供此类支持，请联系原作者 [@kasuganosoras](https://github.com/kasuganosoras)。
 
 ## 你们的 frpc 可以开源吗 {#frpc-open-source}
 
 可以，但没必要。因为要把 frps 和 frpc 的源码分开太麻烦了。
 
-如果您不信任我们分发的二进制文件，请使用 [上游的开源 frpc](https://github.com/fatedier/frp ':target=_blank')，我们会尽量保持对 `0.18.0` 到最新版上游 frpc 的兼容性。
+如果您不信任我们分发的二进制文件，请使用 [上游的开源 frpc](https://github.com/fatedier/frp)，我们会尽量保持对 `0.18.0` 到最新版上游 frpc 的兼容性。
 
 ## 隧道或软件可以重复开启吗 {#run-multiple-clients}
 

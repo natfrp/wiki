@@ -14,7 +14,7 @@ SFTP 在 Linux 平台上使用体验较佳，能提供几乎无需配置的便�
 为了教程的简洁和易于操作，我们于此省略了在配置中为此 SSH 服务加固的措施，如果您仍有余裕，请在互联网上查看相关文章进行配置。
 
 ::: danger 安全警告
-为了保证安全，此 SSH/SFTP 隧道 **必须 打开「[访问认证](/bestpractice/security)」**，且配置后完整观看前述文档。
+为了保证安全，此 SSH/SFTP 隧道 **必须 打开「[访问认证](/bestpractice/security.md)」**，且配置后完整观看前述文档。
 :::
 
 ## OpenSSH 服务器安装
@@ -89,7 +89,7 @@ powershell.exe -ExecutionPolicy Bypass -File install-sshd.ps1
 创建一个 `TCP` 隧道，映射目标为 `127.0.0.1`，端口 `22` 即可。
 
 ::: danger 安全警告
-为了保证安全，此 SSH/SFTP 隧道 **必须 打开「[访问认证](/bestpractice/security)」**，且配置后完整观看前述文档。
+为了保证安全，此 SSH/SFTP 隧道 **必须 打开「[访问认证](/bestpractice/security.md)」**，且配置后完整观看前述文档。
 :::
 
 ## 进阶用法（可选）

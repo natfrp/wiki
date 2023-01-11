@@ -2,7 +2,7 @@
 
 配置 Proxy Protocol 可以让您穿透的本地服务获取到客户端真实 IP。
 
-在进行下列配置前，请先阅读 [获取真实 IP](/bestpractice/realip#proxy-protocol) 并修改隧道配置，否则可能造成 **隧道完全不可用**。
+在进行下列配置前，请先阅读 [获取真实 IP](/bestpractice/realip.md#proxy-protocol) 并修改隧道配置，否则可能造成 **隧道完全不可用**。
 
 ## Web 服务器 {#web-servers}
 
@@ -125,7 +125,7 @@ prevent-proxy-connections = false
 # false 是默认值。如果您将其调为了 true，那么需要重新修改为 false。
 ```
 
-> 关于 `server.properties` 每个参数的详细用法，请看 [Geyser 开服指南中的 编辑 Java 版服务端配置文件](/offtopic/mc-geyser#编辑配置文件)
+> 关于 `server.properties` 每个参数的详细用法，请看 [Geyser 开服指南中的 编辑 Java 版服务端配置文件](/offtopic/mc-geyser.md#编辑配置文件)
 
 #### 修改 Paper 配置文件 {#paper-yml}
 

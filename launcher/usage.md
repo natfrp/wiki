@@ -11,7 +11,7 @@
 ![](./_images/usage-0.png)
 
 ::: tip
-如果在安装过程中碰到问题，请参阅 [启动器常见安装问题](/faq/launcher#install)
+如果在安装过程中碰到问题，请参阅 [启动器常见安装问题](/faq/launcher.md#install)
 :::
 
 下载完毕后运行安装程序并根据向导提示进行安装：
@@ -35,7 +35,7 @@
 ![](./_images/usage-2.png)
 :::
 
-进入 [用户信息](https://www.natfrp.com/user/profile ':target=_blank') 页面，复制 **访问密钥** 到启动器，点击 **登录**：
+进入 [用户信息](https://www.natfrp.com/user/profile) 页面，复制 **访问密钥** 到启动器，点击 **登录**：
 
 ![](./_images/usage-3.png)
 
@@ -97,6 +97,6 @@
 
 `2.0.0.0` 及以上版本的启动器提供两种开机启动方式，一般情况下直接勾选下图中的选项就能满足使用需求
 
-如需不进桌面自启 (如穿透远程桌面服务)，请参阅 [系统服务](/launcher/service) 页面了解服务启动方式
+如需不进桌面自启 (如穿透远程桌面服务)，请参阅 [系统服务](/launcher/service.md) 页面了解服务启动方式
 
 ![](./_images/usage-13.png)

@@ -2,7 +2,7 @@
 
 ## 为什么要备案 {#why}
 
-您可以在 [工业和信息化部政务服务平台](https://beian.miit.gov.cn/#/Integrated/lawStatute ':target=_blank') 查询相关政策文件。
+您可以在 [工业和信息化部政务服务平台](https://beian.miit.gov.cn/#/Integrated/lawStatute) 查询相关政策文件。
 
 《互联网信息服务管理办法》 部分内容摘录：
 
@@ -19,8 +19,8 @@
   - 部分厂商在您购买域名时要求您提交的 "域名实名认证" 身份信息与备案无关
   - 在 SakuraFrp 进行的实名认证也与备案无关
 - **ICP 备案** 不等于 **公安网备案**  
-  - `ICP 备案` 就是我们通常所说的 "备案"，指的是在 [工业和信息化部政务服务平台](https://beian.miit.gov.cn/#/ ':target=_blank') 进行的备案操作，必须完成此备案才可以建站
-  - `公安网备案` 指的是在 [全国互联网安全管理服务平台](http://www.beian.gov.cn/portal/index ':target=_blank') 进行的备案操作，通常无需进行此备案
+  - `ICP 备案` 就是我们通常所说的 "备案"，指的是在 [工业和信息化部政务服务平台](https://beian.miit.gov.cn/#/) 进行的备案操作，必须完成此备案才可以建站
+  - `公安网备案` 指的是在 [全国互联网安全管理服务平台](http://www.beian.gov.cn/portal/index) 进行的备案操作，通常无需进行此备案
 
 ## 怎么进行备案 {#how}
 

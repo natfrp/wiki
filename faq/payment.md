@@ -6,9 +6,9 @@
 滥用系统机制大量退款将被封禁账户，此时需联系管理员说明情况并人工解封
 :::
 
-1. 首先请确保您满足 [退款策略](https://www.natfrp.com/policy/refund ':target=_blank') 中的退款条件，不满足退款条件的原则上不予退款。
+1. 首先请确保您满足 [退款策略](https://www.natfrp.com/policy/refund) 中的退款条件，不满足退款条件的原则上不予退款。
 
-2. 转到 [订单列表](https://www.natfrp.com/purchase/list ':target=_blank') 页面找到您想退款的订单，点击右侧的 **申请退款**：
+2. 转到 [订单列表](https://www.natfrp.com/purchase/list) 页面找到您想退款的订单，点击右侧的 **申请退款**：
 
    ![](./_images/payment-refund-0.png)
 
@@ -33,7 +33,7 @@
 
 ## 付款后服务没有到帐怎么办 {#payment-not-received}
 
-首先请耐心等待 1~2 分钟，然后转到 [订单列表](https://www.natfrp.com/purchase/list ':target=_blank') 页面查看订单 **状态** 一栏是否显示 *交易成功*。
+首先请耐心等待 1~2 分钟，然后转到 [订单列表](https://www.natfrp.com/purchase/list) 页面查看订单 **状态** 一栏是否显示 *交易成功*。
 
 如果订单状态仍然为 *待付款*，请不要着急，按下面的步骤获取必要信息，然后将这些信息发给管理员处理：
 
@@ -41,15 +41,15 @@
 
 1. 打开支付宝，点击右下角 **我的**，然后点击 **账单**：
 
-   ![](./_images/payment-recover-alipay-0.png ':size=700x')
+   ![](./_images/payment-recover-alipay-0.png)
 
 2. 找到您的未到帐账单，点击进入详情页面：
 
-   ![](./_images/payment-recover-alipay-1.png ':size=700x')
+   ![](./_images/payment-recover-alipay-1.png)
 
 3. 点击 **更多** 展开订单号：
 
-   ![](./_images/payment-recover-alipay-2.png ':size=700x')
+   ![](./_images/payment-recover-alipay-2.png)
 
 4. 对整个页面进行截图，然后复制 **商家订单号** 一起发给管理员等待处理。
 
@@ -58,7 +58,7 @@
    请不要遮盖截图中的任何信息，此处因演示需要进行了打码
    :::
 
-   ![](./_images/payment-recover-alipay-3.png ':size=700x')
+   ![](./_images/payment-recover-alipay-3.png)
 
 ::::
 
@@ -66,19 +66,19 @@
 
 1. 打开微信，点击右下角 **我**，然后点击 **支付**：
 
-   ![](./_images/payment-recover-wechat-0.png ':size=700x')
+   ![](./_images/payment-recover-wechat-0.png)
 
 2. 点击 **钱包**：
 
-   ![](./_images/payment-recover-wechat-1.png ':size=700x')
+   ![](./_images/payment-recover-wechat-1.png)
 
 3. 点击右上角 **账单**：
 
-   ![](./_images/payment-recover-wechat-2.png ':size=700x')
+   ![](./_images/payment-recover-wechat-2.png)
 
 4. 找到您的未到帐账单，点击进入详情页面：
 
-   ![](./_images/payment-recover-wechat-3.png ':size=700x')
+   ![](./_images/payment-recover-wechat-3.png)
 
 5. 对整个页面进行截图，然后复制 **商户单号** 一起发给管理员等待处理。
 
@@ -87,7 +87,7 @@
    请不要遮盖截图中的任何信息，此处因演示需要进行了打码
    :::
 
-   ![](./_images/payment-recover-wechat-4.png ':size=700x')
+   ![](./_images/payment-recover-wechat-4.png)
 
 ::::
 
@@ -105,7 +105,7 @@
 
 本平台支持下列付款方式：
 
-- [支付宝](https://www.alipay.com/ ':target=_blank')
-- [微信支付](https://pay.weixin.qq.com/ ':target=_blank')
+- [支付宝](https://www.alipay.com/)
+- [微信支付](https://pay.weixin.qq.com/)
 
 目前没有添加其他付款方式 (如 QQ 钱包) 的计划。

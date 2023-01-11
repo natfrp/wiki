@@ -1,8 +1,8 @@
 # Minecraft 基岩版开服指南
 
-> 此教程仅仅是一个简单的入门教程，遇到任何问题，请自行去 [MCBBS](https://www.mcbbs.net/ ':target=_blank') 或 [MineBBS](https://www.minebbs.com/ ':target=_blank') 中寻找答案或者提问。  
+> 此教程仅仅是一个简单的入门教程，遇到任何问题，请自行去 [MCBBS](https://www.mcbbs.net/) 或 [MineBBS](https://www.minebbs.com/) 中寻找答案或者提问。  
 > 此文不建议毫无经验的小白用户阅读。  
-> 此指南针对的是 **基岩版** 用户，如果您是 **Java 版** 用户，请查看 [Java 版局域网联机](/app/mc#java) 页面。
+> 此指南针对的是 **基岩版** 用户，如果您是 **Java 版** 用户，请查看 [Java 版局域网联机](/app/mc.md#java) 页面。
 
 目前基岩版服务器有两种核心可用:
 
@@ -17,7 +17,7 @@
 ### 开服之前
 
 1. 准备一个可用的 Sakura Launcher 或者 frpc
-1. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/zh-hans/download/server/bedrock/ ':target=_blank')
+1. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/zh-hans/download/server/bedrock/)
 1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议)
 1. 准备一台 CPU 核心数不低于 2 核，并配有不低于 1GB RAM 的电脑
 

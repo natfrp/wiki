@@ -27,7 +27,7 @@
 ## 选择隧道类型
 
 ::: tip
-因为节点地理位置与其他因素，不同的节点可能有不同的限制，请您参考节点名中的信息和 [建站条件](/faq/site-inaccessible#site-requirement)
+因为节点地理位置与其他因素，不同的节点可能有不同的限制，请您参考节点名中的信息和 [建站条件](/faq/site-inaccessible.md#site-requirement)
 :::
 
 Sakura Frp 提供两种类型的隧道供您穿透 HTTP(S) 服务:

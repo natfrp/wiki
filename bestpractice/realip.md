@@ -46,4 +46,4 @@ proxy_protocol_version = <v1|v2>
 
 Proxy Protocol v1 并未为 UDP 设计，在 UDP 隧道中您总是应该使用 **v2**。
 
-我们为常见的支持 Proxy Protocol 的程序提供一个简单的 [配置说明](/offtopic/proxy-protocol)，如果这个说明中没有列出您使用的本地服务，请咨询程序开发者或 STFW。
+我们为常见的支持 Proxy Protocol 的程序提供一个简单的 [配置说明](/offtopic/proxy-protocol.md)，如果这个说明中没有列出您使用的本地服务，请咨询程序开发者或 STFW。

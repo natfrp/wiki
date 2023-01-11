@@ -52,7 +52,7 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 #### 配置隧道 {#autohttps-setup}
 
-请先参考 [配置 frpc 的自动 HTTPS 功能](/fap/site-inaccessible#frpc-auto-https) 页面，来启用自动 HTTPS。
+请先参考 [配置 frpc 的自动 HTTPS 功能](/fap/site-inaccessible.md#frpc-auto-https) 页面，来启用自动 HTTPS。
 
 ::: warning
 此时不要直接在隧道配置的 **自动 HTTPS** 处选择 `自动`。
@@ -98,9 +98,9 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 ## 访问认证配置 SSL 证书 {#authpanel}
 
-> 请先参考 [frpc 访问认证](/bestpractice/security#auth) 为您的隧道启用访问认证。
+> 请先参考 [frpc 访问认证](/bestpractice/security.md#auth) 为您的隧道启用访问认证。
 
-访问认证会遵循 自动 HTTPS 配置项的规则加载证书，参考 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible#frpc-auto-https) 和上面的 [替换 SSL 证书文件](#autohttps-sslfile) 配置即可。
+访问认证会遵循 自动 HTTPS 配置项的规则加载证书，参考 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible.md#frpc-auto-https) 和上面的 [替换 SSL 证书文件](#autohttps-sslfile) 配置即可。
 
 ### 设置域名解析 {#authpanel-dns}
 

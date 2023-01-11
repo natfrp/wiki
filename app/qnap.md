@@ -35,7 +35,7 @@
 
 然后设置启动参数：
 
-请注意，此处「命令」栏中输入的是一个启动参数，如何写可以参考 [frpc 基本使用指南](/frpc/usage#running-frpc)
+请注意，此处「命令」栏中输入的是一个启动参数，如何写可以参考 [frpc 基本使用指南](/frpc/usage.md#running-frpc)
 
 ![](./_images/qnap-docker-setup.png)
 

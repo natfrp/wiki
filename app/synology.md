@@ -10,7 +10,7 @@
 
 ## 确认 DSM 版本
 
-在进行穿透之前，请先确认您的 DSM 系统版本。本指南对应的是 **DSM 7** 系统，如果您使用的是 **DSM 6**，请查看 [这篇指南](/app/synology-dsm6)。
+在进行穿透之前，请先确认您的 DSM 系统版本。本指南对应的是 **DSM 7** 系统，如果您使用的是 **DSM 6**，请查看 [这篇指南](/app/synology-dsm6.md)。
 
 DSM 7 的登录界面是这样的：
 
@@ -100,6 +100,6 @@ Docker 套件和镜像只要安装一次即可，无需重复操作。如需更�
 
 然后通过此处的 SSH 端口和您登录 DSM 管理面板的帐号密码连接到 SSH 终端，使用 `sudo -i` 命令提升到 root 权限，您可能需要再输入一次 DSM 管理面板的密码。
 
-接下来请参考 [Linux 使用教程/安装 frpc](/frpc/usage#linux-install-frpc) 一节安装 frpc。
+接下来请参考 [Linux 使用教程/安装 frpc](/frpc/usage.md#linux-install-frpc) 一节安装 frpc。
 
 最后，参考 [这篇指南](/frpc/service/systemd) 配置 Systemd 服务即可。
