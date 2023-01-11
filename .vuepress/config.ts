@@ -1,5 +1,6 @@
 import { defaultTheme, defineUserConfig } from 'vuepress';
 
+import { sitemapPlugin } from 'vuepress-plugin-sitemap2';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { nextSearchPlugin } from 'vuepress-plugin-next-search';
 
@@ -9,7 +10,13 @@ import sections from './sections';
 
 export default defineUserConfig({
 	base: '/',
-	pagePatterns: ['**/*.md', '!README.md', '!.vuepress', '!node_modules'],
+	pagePatterns: [
+		'**/*.md',
+		'!frpc/_usage/*.md',
+		'!README.md',
+		'!.vuepress',
+		'!node_modules'
+	],
 
 	lang: 'zh-CN',
 	title: 'SakuraFrp 帮助文档',
@@ -89,7 +96,18 @@ export default defineUserConfig({
 			frontmatter: {
 				tag: '标签',
 				category: '分类',
-			}
+			},
+		}),
+		sitemapPlugin({
+			hostname: 'doc.natfrp.com',
+			excludeUrls: [
+				'/404.html',
+				'/frpc/service/docker.html',
+				'/frpc/usage/docker.html',
+				'/frpc/usage/linux.html',
+				'/frpc/usage/macos.html',
+				'/frpc/usage/windows.html',
+			],
 		}),
 	],
 });
