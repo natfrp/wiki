@@ -6,8 +6,9 @@ import sections from './sections';
 
 export default defineUserConfig({
 	base: '/',
-	lang: 'zh-CN',
+	pagePatterns: ['**/*.md', '!README.md', '!.vuepress', '!node_modules'],
 
+	lang: 'zh-CN',
 	title: 'SakuraFrp 帮助文档',
 	description: 'SakuraFrp 帮助文档',
 
