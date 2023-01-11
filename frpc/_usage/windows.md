@@ -1,6 +1,6 @@
 我们不推荐在 Windows 系统上直接使用 frpc，除非您有特殊需求，否则请 [使用启动器](/launcher/usage)。
 
-### 确认系统架构 :id=windows-check-arch
+### 确认系统架构 {#windows-check-arch}
 
 下载 frpc 前，请先确认您的处理器架构。按 `Win+R` 打开运行窗口：
 
@@ -18,7 +18,7 @@
 | `x64` | amd64 |
 | `ARM64` | ARM64 |
 
-### 下载 frpc :id=windows-install
+### 下载 frpc {#windows-install}
 
 1. 登录管理面板，转到 “软件下载”：
 
@@ -28,7 +28,7 @@
 
    ![](_images/windows-0.png)
 
-### 使用 frpc :id=windows-usage
+### 使用 frpc {#windows-usage}
 
 请查看 [启动隧道](#running-frpc) 一节了解如何启动 frpc 并连接到您的隧道。
 

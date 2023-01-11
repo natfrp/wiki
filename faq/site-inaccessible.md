@@ -8,7 +8,7 @@
 | `http://www.example.com:12345` (注意此处带了端口 `12345`) | TCP 隧道映射 HTTP 流量 |
 | `https://www.example.com:54321` (注意此处带了端口 `54321`) | TCP 隧道映射 HTTPS 流量 |
 
-## 建站条件 :id=site-requirement
+## 建站条件 {#site-requirement}
 
 不满足下表中的任一条件均会造成网站无法访问，此时请更换映射方式或节点：
 
@@ -20,7 +20,7 @@
 | 台州多线、嘉兴多线、绍兴多线 | × | × | × (任何 TLS 流量都会被阻断，包括部分 RDP 连接和 FTPS 连接) |
 | 其他节点 | 需实名认证和 [ICP备案](https://baike.baidu.com/item/ICP%E5%A4%87%E6%A1%88) | × (请 [配置自动 HTTPS](#frpc-auto-https)) | 需实名认证 |
 
-## 配置 frpc 的自动 HTTPS 功能 :id=frpc-auto-https
+## 配置 frpc 的自动 HTTPS 功能 {#frpc-auto-https}
 
 !> 配置 "自动 HTTPS 功能" 的本质就是借助 frpc 给流量套了一层 TLS  
 我们推荐您尽可能使用所穿透服务内建的 TLS 实现，不要过度依赖此功能
@@ -49,7 +49,7 @@
 
 ?> 自动 HTTPS 功能会在隧道启动时发送 `HEAD /\r\n\r\n` 请求检测您穿透的服务是否真的为 HTTPS 服务，该行为在 0.42.0-sakura-2.1 及以上版本的 frpc 中可以被 [auto_https_mode](/frpc/manual#tcp_proxy) 开关强制覆写
 
-## HTTP 隧道出现 503 错误 :id=http-503
+## HTTP 隧道出现 503 错误 {#http-503}
 
 当您在访问网站时出现 `503 错误` 提示时，请检查是否存在以下情况：
 

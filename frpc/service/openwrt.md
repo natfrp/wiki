@@ -2,7 +2,7 @@
 
 ?> 查看此文档前请确保您已阅读 [frpc 基本使用指南](/frpc/usage) 中的 **Linux** 页面，否则您可能会对一些操作感到疑惑
 
-### 安装 :id=openwrt-install
+### 安装 {#openwrt-install}
 
 SakuraFrp 分发的 frpc 均已经过 UPX 压缩 (除了 mips64 架构)，如果您的路由器剩余存储空间不足以存放 frpc，~可能需要换一个路由器~ 请自行寻找解决方案（例如插一个 U 盘）。
 
@@ -17,7 +17,7 @@ chmod a+wx /sbin/natfrpc # 修改可执行权限和可写权限(用于更新)
 
 此时您就可以使用 `natfrpc` 命令来执行 frpc 了，但是还需下面的操作实现自启动
 
-### 开机自启动 :id=openwrt-autostart
+### 开机自启动 {#openwrt-autostart}
 
 我们这里以 [Procd Init Script](https://openwrt.org/docs/guide-developer/procd-init-scripts) 实现自启动
 
@@ -71,7 +71,7 @@ chmod +x /etc/init.d/natfrpc # 为其赋予可执行权限
 /etc/init.d/natfrpc enable # 如果需要，启用开机自启动
 ```
 
-### 网页控制台 :id=openwrt-web-panel
+### 网页控制台 {#openwrt-web-panel}
 
 此时您已经可以在 OpenWrt 的 Web 面板，即 LuCI 中查看 frpc 的状态
 
@@ -81,7 +81,7 @@ chmod +x /etc/init.d/natfrpc # 为其赋予可执行权限
 
 在 `系统 - 启动项` 中可以看到名为 `natfrpc` 的项目，并控制开机自启情况，启动/停止/重启等操作
 
-### 问题排除 :id=openwrt-troubleshoot
+### 问题排除 {#openwrt-troubleshoot}
 
 对于 OpenWrt 用户来说，因为路由器的软件常年永不更新，视固件的年代，可能出现这样的错误：
 

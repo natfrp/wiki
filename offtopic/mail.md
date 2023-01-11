@@ -5,9 +5,9 @@
 
 > 如果您穿透的邮件服务 **不需要外网访问**，那么穿透它 **并没有实际意义**，仅在你的邮件服务需要配置 SSL 证书时才是必须的。
 
-## 准备事项 :id=prepare
+## 准备事项 {#prepare}
 
-### 安装 hMailServer :id=prepare-hms
+### 安装 hMailServer {#prepare-hms}
 
 若要使用 SakuraFrp 搭建邮件服务器，那么首先需要有本地的邮件服务端。
 
@@ -20,15 +20,15 @@
 
 > 此教程使用 hMailServer 作演示。如您有使用其他邮件服务端的经验，欢迎补充。
 
-### 安装测试客户端 :id=prepare-foxmail
+### 安装测试客户端 {#prepare-foxmail}
 
 请在 [这里](https://www.foxmail.com/) 下载 FoxMail。
 
 安装后，请先不要登录或添加邮件。添加邮件需要在配置邮件服务器后进行。
 
-## 使用 hMailServer 搭建邮件服务器 :id=hmailserver
+## 使用 hMailServer 搭建邮件服务器 {#hmailserver}
 
-### 安装 hMailServer :id=hmailserver-install
+### 安装 hMailServer {#hmailserver-install}
 
 安装时，通常一路 Next 即可。但有两个界面需要注意：
 
@@ -51,7 +51,7 @@
 
 > hMailServer 不自带中文，因此已写出对于菜单的部分简体中文翻译。标红的项为稍后需要用到的。
 
-### 配置 hMailServer :id=hmailserver-config
+### 配置 hMailServer {#hmailserver-config}
 
 #### 设置邮件域名
 
@@ -105,7 +105,7 @@
 
 随后，您也可以在左侧菜单找到 POP3 的页面进行设置，方法同上。
 
-### 隧道配置 :id=hmailserver-tunnel
+### 隧道配置 {#hmailserver-tunnel}
 
 > 虽然仅 SMTP 穿透有效，但由于 **邮件客户端** 通常需要同时连接 **POP3** (收件) 和 **SMTP** (发件) 端口，因此需要两个隧道。
 
@@ -114,7 +114,7 @@
 | SMTP     | 任意 | TCP      | 25             | 任意     | hMailServer 运行的 IP 地址 | 保留默认值或留空 |
 | POP3     | 任意 | TCP      | 110            | 任意     | hMailServer 运行的 IP 地址 | 保留默认值或留空 |
 
-### 设置域名解析 :id=hmailserver-dns
+### 设置域名解析 {#hmailserver-dns}
 
 不同于其他服务，邮件服务有专用的 `MX` 解析类型。
 
@@ -140,7 +140,7 @@
 
 > 您可以通过 **ping** 或 **查看隧道启动日志** 来查看节点 IP 地址。
 
-### 测试邮件系统 :id=hmailserver-test
+### 测试邮件系统 {#hmailserver-test}
 
 搭建邮件服务器基本已经完成。接下来，需要测试邮件系统是否可正常发信。
 
@@ -169,11 +169,11 @@
 
 填写完成后，发送此邮件，并在其他客户端中登录相应的收件邮箱，检查是否可以正常发信。
 
-## 常见应用接入 hMailServer :id=app
+## 常见应用接入 hMailServer {#app}
 
-### Web 程序 :id=app-web
+### Web 程序 {#app-web}
 
-#### xenForo :id=app-web-xenforo
+#### xenForo {#app-web-xenforo}
 
 这里以最新的 xenForo 作演示。
 
@@ -195,11 +195,11 @@
 
 您可以通过 **注册账号** 等方式，来验证邮件系统是否正常。
 
-### 其他程序 :id=app-others
+### 其他程序 {#app-others}
 
 STFW。
 
-## POP3 穿透说明 :id=pop3
+## POP3 穿透说明 {#pop3}
 
 > POP3 不同于 SMTP 的发信，它是收信时的常用协议。
 

@@ -1,6 +1,6 @@
 # SakuraFrp 启动器基本使用指南
 
-## 安装启动器 :id=install
+## 安装启动器 {#install}
 
 登录管理面板，转到 **软件下载** 页面：
 
@@ -20,7 +20,7 @@
 
 ![](_images/usage-1.5.png)
 
-## 登录启动器 :id=login
+## 登录启动器 {#login}
 
 ?> 传统启动器和新版 (WPF) 启动器使用方法基本一致，此处仅提供新版启动器的教程
 
@@ -34,7 +34,7 @@
 
 ![](_images/usage-3.png)
 
-## 创建隧道 :id=create-tunnel
+## 创建隧道 {#create-tunnel}
 
 ?> 启动器的创建隧道功能相对简陋，我们推荐您到 [SakuraFrp 管理面板](https://www.natfrp.com/user/) 创建隧道以获得更好的使用体验
 
@@ -52,7 +52,7 @@
 
 ![](_images/usage-6.png)
 
-## 启用隧道 :id=start-tunnel
+## 启用隧道 {#start-tunnel}
 
 !> 不要频繁开关隧道，启用隧道后稍等一会才能连接成功  
 如果长时间 (超过一分钟) 没看到连接成功的提示框请检查日志
@@ -73,7 +73,7 @@
 
 ![](_images/usage-10.png)
 
-## 删除隧道 :id=delete-tunnel
+## 删除隧道 {#delete-tunnel}
 
 将鼠标放到隧道卡片上悬停一会，卡片右上角会出现删除按钮
 
@@ -83,7 +83,7 @@
 
 ![](_images/usage-12.png)
 
-## 开机启动 :id=autostart
+## 开机启动 {#autostart}
 
 `2.0.0.0` 及以上版本的启动器提供两种开机启动方式，一般情况下直接勾选下图中的选项就能满足使用需求
 

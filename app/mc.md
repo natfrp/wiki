@@ -3,7 +3,7 @@
 !> SakuraFrp 不提供 Minecraft 服务器相关帮助，文档主要由热心网友提供  
 如果您有不懂的问题建议到 [MCBBS 你问我答板块](https://www.mcbbs.net/forum-multiqanda-1.html ':target=_blank') 提问
 
-## 常见问题 :id=faq
+## 常见问题 {#faq}
 
 <details>
 <summary>我还是进不去服务器 / 用不了 / 进服时报 XXX 错误怎么办</summary>
@@ -17,18 +17,18 @@
 ![](./_images/mc-localsrv-checkflow.png)
 </details>
 
-## 基岩版或 Geyser 联机和开服 :id=bedrock
+## 基岩版或 Geyser 联机和开服 {#bedrock}
 
 请参阅 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server) | [Geyser 互通开服指南](/offtopic/mc-geyser) 以开启服务器
 
-## Java 版局域网联机 :id=java
+## Java 版局域网联机 {#java}
 
 Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与不装的区别:
 
 - 不装辅助 Mod: 适用于同类型账号之间的联机 (如正版和正版、盗版和盗版、外置和外置) 
 - 安装辅助 Mod (推荐): 适用于不同类型账号之间的联机，如不安装，则会出现 “无效会话” 问题
 
-### 不装辅助 Mod :id=java-no-mod
+### 不装辅助 Mod {#java-no-mod}
 
 进入要联机的存档，按下键盘上的 **ESC** 键，在出现的界面里找到 `对局域网开放` 之类的按钮并且点击进入，对 **其他玩家** 进行设置，然后点击 `创造一个局域网世界`
 
@@ -174,7 +174,7 @@ motd=
 
 ![](./_images/mc-5.png)
 
-## 设置 SRV 解析 :id=srv
+## 设置 SRV 解析 {#srv}
 
 ?> 设置 **SRV 解析** 只是为了美观，**并非必须**。设置后，在游戏中添加服务器时， **无需填写端口号**。
 
@@ -193,7 +193,7 @@ motd=
 !> 配置 SRV 记录后使用 `ping` 命令是无法测试连通性的，但是在游戏中填上就可以正常使用  
 除此之外，只有 Minecraft Java 版支持解析 SRV 记录，基岩版并不支持此特性
 
-### 阿里云 :id=srv-aliyun
+### 阿里云 {#srv-aliyun}
 
 点击 [这里](https://dc.console.aliyun.com/next/index#/domain/list/all-domain ':target=_blank') 进入 **阿里云** 的 **域名列表**，如果您 **没有登录**，请登录
 
@@ -218,7 +218,7 @@ motd=
 + **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
 + **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
-### 腾讯云 DNSPod :id=srv-tencent
+### 腾讯云 DNSPod {#srv-tencent}
 
 > 腾讯云解析正在长期引导用户前往 DNSPod 控制台设置解析，故这里使用 **DNSPod 控制台** 作演示。腾讯云解析与之基本一致。
 
@@ -243,7 +243,7 @@ motd=
 + **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
 + **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
-### Cloudflare :id=srv-cloudflare
+### Cloudflare {#srv-cloudflare}
 
 点击 [这里](https://dash.cloudflare.com/ ':target=_blank') 进入 **Cloudflare** 的 **域名列表**，如果您 **没有登录**，请登录
 
@@ -277,6 +277,6 @@ motd=
 + **假设** 您的域名为: example.com，您的 **名称** 设置为 `sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
 + **假设** 您的域名为: example.com，您的 **名称** 设置为 `@`，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
-## 无法进服解决方法 :id=java-inaccessible
+## 无法进服解决方法 {#java-inaccessible}
 
 ![](./_images/mc-javaia-1.png)

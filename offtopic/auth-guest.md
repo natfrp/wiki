@@ -6,7 +6,7 @@
 
 嵌入了相关信息的工具运行后会自动完成认证流程，且能够在多个平台运行，便于分发给多个访客。
 
-## 通过管理面板自动生成 (推荐) :id=generate-from-panel
+## 通过管理面板自动生成 (推荐) {#generate-from-panel}
 
 1. 当您完成访问认证相关配置后，对应的隧道操作菜单中就会出现 **一键认证** 选项，点击该选项：
 
@@ -20,7 +20,7 @@
 
    ![](_images/panel-generator-3.png)
 
-## 通过认证代理生成 :id=generate-from-auth-guest
+## 通过认证代理生成 {#generate-from-auth-guest}
 
 ?> 下面的操作以 Windows 系统为例，其它系统大同小异，不再赘述
 
@@ -38,7 +38,7 @@
 
    ![](_images/auth-guest-run.png)
 
-## macOS arm64 注意事项 :id=macos-arm-note
+## macOS arm64 注意事项 {#macos-arm-note}
 
 苹果在 arm64 版本的 macOS 上强制所有二进制文件进行签名，否则不允许执行，因为 auth-guest 在本质上是在生成一个修改版的二进制文件，所以将不被允许运行。表现如下：
 
@@ -52,7 +52,7 @@ zsh: killed     ./authpass_generated
 * 执行 `codesign -s - authpass_generated` 以本地签名生成的程序
 * 使用 `darwin_amd64` 版程序，此限制仅适用于 arm64 程序
 
-## 命令行开关一览 :id=switches
+## 命令行开关一览 {#switches}
 
 | 开关 | 说明 |
 | --- | --- |

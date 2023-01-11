@@ -116,7 +116,7 @@ Source Dedicated Server 官方标准是使用 `27015` 到 `27019` 端口为游�
 
 !> 启动 CSGO 服务器需要 GSLT 令牌，查看下面的段落以获取 GSLT 令牌。
 
-### GSLT 令牌 :id=get-gslt
+### GSLT 令牌 {#get-gslt}
 
 由于 Valve 的新规定，在启动 **某些** 起源游戏服务器时，**需要** 有GSLT令牌。
 那什么是 GSLT 令牌呢？ GSLT 令牌是一个专属的服务器身份识别码，类似于身份证，有了 GSLT，Valve 可以确定服务器属于谁，

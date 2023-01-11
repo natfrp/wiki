@@ -3,7 +3,7 @@
 !> 穿透远程桌面前务必阅读 [安全指南](/bestpractice/security)，确保您的系统已经 **安装了最新的补丁** 并且设置了 **强登录密码**  
 进行内网穿透等于 **绕过所有防火墙** 将您的计算机直接暴露于公网中，您需要自行承担由此带来的风险
 
-## 视频教程 :id=video
+## 视频教程 {#video}
 
 <style>
 .docsify-tabs {
@@ -30,18 +30,18 @@
 
 <!-- tabs:end -->
 
-## 默认端口 :id=default-port
+## 默认端口 {#default-port}
 
 - RDP: 3389
 - VNC: 您来错地方了，这篇教程和 VNC 没关系
 
-## 前置需求 :id=requirements
+## 前置需求 {#requirements}
 
 如果您还没有启用远程桌面的话，请遵循 [微软的说明](https://support.microsoft.com/zh-cn/windows/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2-5fe128d5-8fb1-7a23-3b8a-41e636865e8c ':target=_blank') 启用远程桌面，然后继续下面的步骤。
 
 为了保证您在系统启动后无需操作就能使用远程桌面连接电脑，在安装启动器时请勾选 `安装为系统服务` 项。如果启动器已经装好了，可以直接覆盖安装一次或参考 [系统服务](/launcher/service) 一文安装系统服务。
 
-## 确认目标服务 :id=target-service
+## 确认目标服务 {#target-service}
 
 ?> 如果运行 frpc 的电脑和启用远程桌面的电脑是同一台，请跳过这一节并使用 `127.0.0.1` 作为本地 IP、`3389` 作为本地端口
 
@@ -51,13 +51,13 @@
 
 上图中，我们要穿透的 IP 是 `192.168.1.100`，端口是 `3389`。
 
-## 创建隧道 :id=create-tunnel
+## 创建隧道 {#create-tunnel}
 
 选择隧道类型为 `TCP` 后直接填写刚才获取到的 `IP` 和 `端口` 即可。
 
 ![](./_images/rdp-create.png)
 
-## 启动隧道 :id=start-tunnel
+## 启动隧道 {#start-tunnel}
 
 启动隧道，获取穿透后的连接方式并尝试连接。
 

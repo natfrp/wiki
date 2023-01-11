@@ -34,7 +34,7 @@ curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-s
 
 如果在后面创建容器时发现不可用，请检查 `/boot/config/plugins/dockerMan/templates-user/natfrpc.xml` 文件的内容。
 
-#### 离线部署 :id=tpl-offline
+#### 离线部署 {#tpl-offline}
 
 ?> 通常情况下离线部署并无必要，如果您发现自己对 Linux 命令行操作过敏，请考虑离线部署。
 
@@ -44,7 +44,7 @@ curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-s
 
 ![](_images/unraid-usbstick-tpl.png)
 
-## 穿透内网其他服务 :id=others
+## 穿透内网其他服务 {#others}
 
 ### 创建隧道
 
@@ -52,7 +52,7 @@ curl -o /boot/config/plugins/dockerMan/templates-user/natfrpc.xml https://nyat-s
 
 对于 HTTP 访问的限制 和 部分机房合规要求访问认证 仍存在，请在创建隧道时注意。
 
-### 创建容器 :id=start-container
+### 创建容器 {#start-container}
 
  在 Docker 页中点击 `Add Container` ，并选择 `natfrpc` 模板后配置即可，其中的 隧道 ID 可以在 [隧道列表](https://www.natfrp.com/tunnel/) 页面获得。
 
