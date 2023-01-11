@@ -22,7 +22,9 @@
 
 ## 通过认证代理生成 {#generate-from-auth-guest}
 
-?> 下面的操作以 Windows 系统为例，其它系统大同小异，不再赘述
+::: tip
+下面的操作以 Windows 系统为例，其它系统大同小异，不再赘述
+:::
 
 1. 请于 [GitHub Release](https://github.com/natfrp/auth-guest/releases/latest) 或 [Nyatwork Static CDN](https://nyat-static.globalslb.net/natfrp/client/auth-guest-0.5/) 按照您的系统和架构下载程序。
 

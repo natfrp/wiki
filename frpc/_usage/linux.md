@@ -99,7 +99,9 @@ frpc -f wdnmdtoken666666:12345 &
 
 ### 配置开机自启 {#linux-autostart}
 
-?> 本文档暂未覆盖到 Upstart 和 SysV-Init，如果您熟悉这些初始化系统，[欢迎提交 PR](https://github.com/natfrp/wiki/pulls)
+::: tip
+本文档暂未覆盖到 Upstart 和 SysV-Init，如果您熟悉这些初始化系统，[欢迎提交 PR](https://github.com/natfrp/wiki/pulls)
+:::
 
 本文档提供下列初始化系统的自启配置指南：
 

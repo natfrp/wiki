@@ -1,6 +1,8 @@
 # Systemd 配置 frpc 服务
 
-?> 查看此教程前请确保您已阅读 [frpc 基本使用指南](/frpc/usage) 中的 **Linux** 页面
+::: tip
+查看此教程前请确保您已阅读 [frpc 基本使用指南](/frpc/usage) 中的 **Linux** 页面
+:::
 
 ### 前置知识 {#systemd-note}
 
@@ -74,7 +76,9 @@ systemctl daemon-reload
 systemctl <start|stop> <Unit名称>
 ```
 
-?> 如果您想开启多条不同隧道，只要更换 `Unit 名称` 中的启动参数并多次执行对应的指令即可
+::: tip
+如果您想开启多条不同隧道，只要更换 `Unit 名称` 中的启动参数并多次执行对应的指令即可
+:::
 
 举个例子，开启访问密钥为 `wdnmdtoken666666` 的用户所拥有的 ID 为 `12345` 的隧道:
 
@@ -141,7 +145,9 @@ systemctl status <Unit名称>
 
 如果一切正常，您会看到我图中的两个红色标注的内容
 
-?> 没看到第一个创建符号链接的提示也是正常的，只要下面的状态显示为 `enabled` 就行
+::: tip
+没看到第一个创建符号链接的提示也是正常的，只要下面的状态显示为 `enabled` 就行
+:::
 
 ![](_images/systemd-4.png)
 
