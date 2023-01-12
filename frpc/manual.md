@@ -72,9 +72,9 @@
 
 | 选项 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| password | String | 空 | 指定防止未授权 WOL 访问的密码，尚未在管理面板实装相关 UI |
-| from_ip | String | 空 | 指定 WOL 发送时使用的源 IP |
-| from_if | String | 空 | 指定 WOL 发送时使用的网卡 |
+| password | String | 空 | 指定防止未授权 WOL 访问的密码，设置后请将计算机类型修改为 `WOL (密码保护)` |
+| from_ip | String | 空 | 指定 WOL 发送时使用的源 IP，默认使用所有 IP |
+| from_if | String | 空 | 指定 WOL 发送时使用的网卡名称，例如 `eth0`，默认使用所有网卡，该选项与 `from_ip` 冲突 |
 
 ## frpc 重点更新日志 {#advanced-feature}
 
