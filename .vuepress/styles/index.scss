@@ -1,6 +1,27 @@
 :root {
     --content-width: 850px;
 
+    .tab-list {
+        border-radius: 6px;
+
+        .tab-list-nav {
+            border-radius: 4px 4px 0 0;
+
+            .tab-list-nav-item {
+                border-radius: 4px 4px 0 0;
+
+                &::before,
+                &::after {
+                    width: 6px;
+                }
+            }
+        }
+
+        .tab-item {
+            padding: 0 0.75rem;
+        }
+    }
+
     .html5-video-player {
         max-width: 100%;
     }
