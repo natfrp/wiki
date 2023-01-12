@@ -7,19 +7,6 @@
 
 ## 视频教程 {#video}
 
-<style>
-.docsify-tabs {
-    max-width: 1380px;
-    --docsifytabs-content-padding: 8px 8px 4px 8px;
-}
-
-.docsify-tabs__content video {
-    max-width: 1360px;
-    margin: 0 auto;
-    width: 100%;
-}
-</style>
-
 ::: tabs
 
 @tab Windows 10

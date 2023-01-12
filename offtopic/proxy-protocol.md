@@ -10,8 +10,8 @@
 
 在需要启用 Proxy Protocol 的 `server` 块找到 `listen` 字段，并在尾部（分号前面）添加用空格分开的 `proxy_protocol` 即可。举个例子：
 
-<div style="display: flex;overflow: auto">
-<div style="flex:1;padding-right: 8px">
+<div class="natfrp-side-by-side"><div>
+
 修改前：
 
 ```nginx
@@ -24,8 +24,8 @@ http {
 }
 ```
 
-</div>
-<div style="flex:1;padding-left: 8px">
+</div><div>
+
 修改后：
 
 ```nginx
@@ -38,8 +38,7 @@ http {
 }
 ```
 
-</div>
-</div>
+</div></div>
 
 配置完成后，您可以通过 `$proxy_protocol_addr` 变量获取到真实 IP。一个常见的做法是将该变量设置为一个 HTTP 头以便后续应用使用：
 
