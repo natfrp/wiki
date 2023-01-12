@@ -34,21 +34,13 @@ frpc -f <访问密钥>:<隧道ID>,<另外一个隧道ID>,<更多隧道ID>,n<节�
 
 如果您使用 **配置文件** 启动 frpc，可以通过合并配置文件来此目的。但是请注意区分 **所有隧道位于同一节点** 与 **需要连接多个节点** 的情况。
 
-<style>
-.docsify-tabs {
-    --docsifytabs-content-padding: 24px 16px;
-}
-</style>
+:::: tabs
 
-<!-- tabs:start -->
-
-# **隧道位于同一节点**
+@tab 隧道位于同一节点
 
 所有隧道位于同一节点时，可以简单的对配置文件进行拼接。假设我们有以下两个配置文件：
 
-<table style="border-style: none;">
-<tr style="border-style: none;">
-<td style="border-style: none;">
+<div class="natfrp-side-by-side"><div>
 
 ```ini
 # 隧道 ALICE 的配置文件
@@ -65,8 +57,7 @@ local_port = 2333
 // 其余部分省略
 ```
 
-</td>
-<td style="border-style: none;">
+</div><div>
 
 ```ini
 # 隧道 BOB 的配置文件
@@ -83,9 +74,8 @@ local_port = 179
 // 其余部分省略
 ```
 
-</td>
-</tr>
-</table>
+</div></div>
+
 由于两个隧道均位于同一节点，我们可以保留一个 `[common]` 段并将剩余部分合并，得到以下配置文件：
 
 ```ini
@@ -111,20 +101,18 @@ local_port = 179
 
 使用此配置文件启动 frpc，就可以同时连接两条隧道了。
 
-# **隧道位于不同节点**
-
-合并多个节点的配置时操作比较复杂，并且我们需要知道对应的节点 ID，推荐您直接到管理面板勾选所需隧道让系统自动生成配置文件。
+@tab 隧道位于不同节点
 
 ::: tip
 若合并后配置文件中存在重名隧道，请在隧道名后加上 `@<序号>` 以确保 frpc 能够正常解析  
 例如存在两个 `[TUNNEL_NAME]` 段时，将其中一个改为 `[TUNNEL_NAME@1]` 即可避免产生冲突
 :::
 
+合并多个节点的配置时操作比较复杂，并且我们需要知道对应的节点 ID，推荐您直接到管理面板勾选所需隧道让系统自动生成配置文件。
+
 假设我们有以下两个配置文件：
 
-<table style="border-style: none;">
-<tr style="border-style: none;">
-<td style="border-style: none;">
+<div class="natfrp-side-by-side"><div>
 
 ```ini
 # 隧道 ALICE 的配置文件
@@ -142,8 +130,7 @@ local_port = 2333
 // 其余部分省略
 ```
 
-</td>
-<td style="border-style: none;">
+</div><div>
 
 ```ini
 # 隧道 BOB 的配置文件
@@ -161,9 +148,7 @@ local_port = 179
 // 其余部分省略
 ```
 
-</td>
-</tr>
-</table>
+</div></div>
 
 由于两个隧道位于不同，我们需要在 `[common]` 段填写相同的部分，然后以 `[common.<节点ID>]` 的格式增加两个覆写段，并且在隧道段中加上 `node = <节点 ID>` 一项：
 
@@ -202,7 +187,7 @@ local_port = 179
 
 使用此配置文件启动 frpc，就可以同时连接位于两个不同节点的隧道了。
 
-<!-- tabs:end -->
+::::
 
 ## macOS 提示 frpc 无法打开 {#macos-run-frpc-issue}
 
