@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD041 -->
+
 在 macOS 安装 frpc 需要在 **终端** (`Terminal.app`) 下执行一些命令。
 
 如果您对 macOS 的命令行操作不熟悉，请严格按照文档进行操作避免出现意外。
