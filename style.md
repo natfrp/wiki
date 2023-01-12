@@ -46,6 +46,10 @@ sidebar: false
 
 ## 设计元素 {#design-elements}
 
+:::: tabs
+
+@tab 基本说明
+
 本文档支持引入视频、音频并展示播放组件，引入方式和图片一样，采用 `![](./_videos/example.mp4)` 的形式。
 
 本文档启用了 [Markdown Enhance](https://vuepress-theme-hope.github.io/v2/md-enhance/zh/guide/) 插件的
@@ -55,6 +59,46 @@ sidebar: false
 [导入文件](https://vuepress-theme-hope.github.io/v2/md-enhance/zh/guide/include.html) 模块。
 
 本文档启用了 VuePress 默认主题的 [内置组件](https://v2.vuepress.vuejs.org/zh/reference/default-theme/components.html) 和 [自定义容器](https://v2.vuepress.vuejs.org/zh/reference/default-theme/markdown.html) 支持。
+
+此外，本文档还有其他自己实现的功能和自定义 CSS 类，例如 **并排显示**，请切换到其他标签查看。
+
+@tab 并排显示
+
+需要并排显示两块内容（较为常用的场景是并排展示代码块）时，请使用 `natfrp-side-by-side` 类，示例如下：
+
+````markdown
+<div class="natfrp-side-by-side"><div>
+
+```javascript
+console.info('114514')
+```
+
+</div><div>
+
+```javascript
+console.info('1919')
+```
+
+</div></div>
+````
+
+展现效果：
+
+<div class="natfrp-side-by-side"><div>
+
+```javascript
+console.info('114514')
+```
+
+</div><div>
+
+```javascript
+console.info('1919')
+```
+
+</div></div>
+
+::::
 
 ## 文本间距 {#spacing}
 

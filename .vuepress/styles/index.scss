@@ -1,6 +1,17 @@
 :root {
     --content-width: 850px;
 
+    .natfrp-side-by-side {
+        gap: 0 16px;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        &>div {
+            flex: 1;
+        }
+    }
+
     .tab-list {
         border-radius: 6px;
 
