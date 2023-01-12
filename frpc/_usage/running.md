@@ -1,4 +1,6 @@
-<a id="running-frpc"></a>使用 frpc 前，请先 [查看您的访问密钥](#get-token)。您可以通过下列方式启动 frpc：
+<!-- markdownlint-disable MD041 -->
+
+使用 frpc 前，请先 [查看您的访问密钥](#get-token)。您可以通过下列方式启动 frpc：
 
 | 启动方式 | 说明 |
 | --- | --- |
