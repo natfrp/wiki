@@ -1,10 +1,9 @@
 # 我的世界(Minecraft) 局域网联机穿透指南
 
-::: warning
-SakuraFrp 不提供 Minecraft 服务器相关帮助，文档主要由热心网友提供  
+::: warning 非官方文档
+SakuraFrp 不提供 Minecraft 服务器相关帮助，本文档主要由社区用户维护  
+如果您有相关问题建议到 [MCBBS 你问我答板块](https://www.mcbbs.net/forum-multiqanda-1.html) 提问
 :::
-
-如果您有不懂的问题建议到 [MCBBS 你问我答板块](https://www.mcbbs.net/forum-multiqanda-1.html) 提问
 
 ## 常见问题 {#faq}
 
@@ -190,28 +189,20 @@ motd=
 ## 设置 SRV 解析 {#srv}
 
 ::: tip
-设置 **SRV 解析** 只是为了美观，**并非必须**。设置后，在游戏中添加服务器时， **无需填写端口号**
+设置 **SRV 解析** 只是为了美观，**并非必须**。设置后，在游戏中添加服务器时， **无需填写端口号**  
+配置 SRV 记录后使用 `ping` 命令是 **无法测试** 连通性的，但是在游戏中填上就可以正常使用  
+需要留意的是，**只有 Minecraft Java 版支持解析 SRV 记录**，基岩版并不支持此特性
 :::
 
-鉴于有很多用户都不会用百度查询如何进行 **SRV 解析**，所有就有了这个文档。
+这一节文档会教您如何在部分域名注册商的面板中为 **Minecraft Java 版** 配置 **SRV 解析**。
 
-本文档会教您如何在下列域名服务商的面板中为 **Minecraft Java 版** 配置 **SRV 解析**。
+要进行 **SRV 解析**，您就必须要有一个域名，本文档不会推荐您使用哪个注册商的域名，请自己选择。
 
-- [阿里云](#srv-aliyun)
-- [腾讯云 DNSPod](#srv-tencent)
-- [Cloudflare](#srv-cloudflare)
+如果您正在使用文档未覆盖到的注册商，并且会在对应面板中进行 **SRV 解析**，欢迎点击页面底部的编辑按钮帮助我们完善该文档。
 
-如果您有 **其他厂商** 的域名，并且会在对应面板中进行 **SRV 解析**，欢迎提交 [Pull Request](https://github.com/natfrp/wiki/pulls) 帮助我们完善该文档
+:::: tabs
 
-要进行 **SRV 解析**，您就必须要有一个域名，本文档不会推荐您使用哪个厂商的域名，如果您 **不会花钱** 的话，那我们也没办法了
-
-::: tip
-配置 SRV 记录后使用 `ping` 命令是无法测试连通性的，但是在游戏中填上就可以正常使用  
-:::
-
-除此之外，只有 Minecraft Java 版支持解析 SRV 记录，基岩版并不支持此特性
-
-### 阿里云 {#srv-aliyun}
+@tab 阿里云
 
 点击 [这里](https://dc.console.aliyun.com/next/index#/domain/list/all-domain) 进入 **阿里云** 的 **域名列表**，如果您 **没有登录**，请登录
 
@@ -233,13 +224,10 @@ motd=
 
 保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您设置的 **TTL** 来决定，一般为 10 分钟) 。
 
-1. aa
-1. bb
-
 - **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
 - **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
-### 腾讯云 DNSPod {#srv-tencent}
+@tab 腾讯云 / DNSPod
 
 > 腾讯云解析正在长期引导用户前往 DNSPod 控制台设置解析，故这里使用 **DNSPod 控制台** 作演示。腾讯云解析与之基本一致。
 
@@ -264,7 +252,7 @@ motd=
 - **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
 - **假设** 您的域名为: example.com，您把 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
-### Cloudflare {#srv-cloudflare}
+@tab Cloudflare
 
 点击 [这里](https://dash.cloudflare.com/) 进入 **Cloudflare** 的 **域名列表**，如果您 **没有登录**，请登录
 
@@ -297,6 +285,8 @@ motd=
 
 - **假设** 您的域名为: example.com，您的 **名称** 设置为 `sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
 - **假设** 您的域名为: example.com，您的 **名称** 设置为 `@`，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
+
+::::
 
 ## 无法进服解决方法 {#java-inaccessible}
 
