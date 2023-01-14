@@ -1,4 +1,4 @@
-import { defaultTheme, defineUserConfig } from 'vuepress';
+import { defaultTheme, defineUserConfig, viteBundler } from 'vuepress';
 import { getDirname, path } from '@vuepress/utils';
 
 import { sitemapPlugin } from 'vuepress-plugin-sitemap2';
@@ -24,6 +24,14 @@ export default defineUserConfig({
 	lang: 'zh-CN',
 	title: 'SakuraFrp 帮助文档',
 	description: 'SakuraFrp 帮助文档',
+
+	bundler: viteBundler({
+		viteOptions: {
+			ssr: {
+				noExternal: ['naive-ui'],
+			},
+		},
+	}),
 
 	head: [
 		['meta', { name: 'application-name', content: 'SakuraFrp 帮助文档' }],
