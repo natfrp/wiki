@@ -11,7 +11,8 @@
         "esModuleInterop": true,
         "skipLibCheck": true,
         "lib": [
-            "esnext"
+            "esnext",
+            "DOM"
         ]
     },
     "include": [

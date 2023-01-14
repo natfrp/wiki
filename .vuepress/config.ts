@@ -1,12 +1,16 @@
 import { defaultTheme, defineUserConfig } from 'vuepress';
+import { getDirname, path } from '@vuepress/utils';
 
 import { sitemapPlugin } from 'vuepress-plugin-sitemap2';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { nextSearchPlugin } from 'vuepress-plugin-next-search';
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 
 import { html5Media as mdItHtml5Media } from 'markdown-it-html5-media';
 
 import sections from './sections';
+
+const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
 	base: '/',
@@ -82,6 +86,9 @@ export default defineUserConfig({
 	}),
 
 	plugins: [
+		registerComponentsPlugin({
+			componentsDir: path.resolve(__dirname, './components'),
+		}),
 		mdEnhancePlugin({
 			tabs: true,
 			attrs: true,

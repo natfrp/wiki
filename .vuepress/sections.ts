@@ -91,6 +91,7 @@ const sections = {
 		text: '最佳实践',
 		children: [
 			'/bestpractice/security.md',
+			'/bestpractice/frpc-auth.md',
 			'/bestpractice/realip.md',
 		],
 	},

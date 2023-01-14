@@ -1,6 +1,6 @@
-# 生成并使用 SakuraFrp 专用认证工具
+# 生成并使用 SakuraFrp 认证代理
 
-如果您已按照 [最佳实践/安全指南/frpc 访问认证](/bestpractice/security.md#auth) 一节配置过访问认证功能，想必您会对于经常需要打开浏览器进行验证感到厌烦。
+如果您已按照 [配置访问认证](/bestpractice/frpc-auth.md) 一节配置过访问认证功能，想必您会对于经常需要打开浏览器进行验证感到厌烦。
 
 除了参考上述文档中给出的示例制作 bash 脚本外，您可以使用 [SakuraFrp 认证代理](https://github.com/natfrp/auth-guest/) 制作内嵌了认证信息的专用工具。
 
