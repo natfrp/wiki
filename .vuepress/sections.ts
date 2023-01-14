@@ -81,7 +81,7 @@ const sections = {
 				children: [
 					{ text: '群晖 / Synology', link: '/app/synology.html' },
 					{ text: '威联通 / QNAP', link: '/app/qnap.html' },
-					{ text: 'Unraid', link: '/app/unraid.html' },
+					{ text: 'unRAID', link: '/app/unraid.html' },
 					{ text: '绿联 / UGREEN', link: '/app/ugreen.html' },
 				],
 			},
