@@ -3,7 +3,6 @@ import { getDirname, path } from '@vuepress/utils';
 
 import { sitemapPlugin } from 'vuepress-plugin-sitemap2';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
-import { nextSearchPlugin } from 'vuepress-plugin-next-search';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 
 import { html5Media as mdItHtml5Media } from 'markdown-it-html5-media';
@@ -95,14 +94,6 @@ export default defineUserConfig({
 			footnote: true,
 			include: {
 				currentPath: (env) => env.filePath,
-			},
-		}),
-		nextSearchPlugin({
-			fullText: true,
-			placeholder: '搜索',
-			frontmatter: {
-				tag: '标签',
-				category: '分类',
 			},
 		}),
 		sitemapPlugin({
