@@ -52,7 +52,7 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 #### 配置隧道 {#autohttps-setup}
 
-请先参考 [配置 frpc 的自动 HTTPS 功能](/fap/site-inaccessible.md#frpc-auto-https) 页面，来启用自动 HTTPS。
+请先参考 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible.md#frpc-auto-https) 页面，来启用自动 HTTPS。
 
 ::: warning
 此时不要直接在隧道配置的 **自动 HTTPS** 处选择 `自动`。

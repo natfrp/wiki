@@ -23,40 +23,48 @@
 
 ## 配置 frpc 的自动 HTTPS 功能 {#frpc-auto-https}
 
-::: tip
-配置 "自动 HTTPS 功能" 的本质就是借助 frpc 给流量套了一层 TLS  
-我们推荐您尽可能使用所穿透服务内建的 TLS 实现，不要过度依赖此功能
+::: danger 请确保您完全理解这个功能再进行配置
+我们已经碰到上百例因为 **乱开自动 HTTPS 开关** 造成隧道访问不了、出现神秘报错的问题了  
+在打开自动 HTTPS 前请先 **完全搞清楚** 这个功能有什么用、在什么情况下需要打开
 :::
+
+自动 HTTPS 功能的本质就是借助 frpc 给流量套一层 TLS，frpc 采用 TLS 暴露端口并采用明文连接本地服务。
+
+我们推荐您尽可能使用所穿透服务内建的 TLS 实现，不要过度依赖此功能。
+
+:::: tabs
+
+@tab 简易配置
 
 中国内地节点不允许直接通过 TCP 隧道转发明文 HTTP 流量，您可以配置 frpc 并将 HTTP 服务自动转换为 HTTPS 服务：
 
 1. 编辑隧道并在 **自动 HTTPS** 处选择 `自动`
+
    ![](./_images/site-inaccessible-auto-https.png)
-2. 重启 frpc
-3. 使用 `https://连接方式` 的形式访问您穿透的服务即可
-4. (可选) 如果您想避免证书错误提示，请自己申请 SSL 证书并替换 frpc 工作目录下的相关证书文件
 
-   ::: tip
-   对于使用 Systemd 方式启动的 frpc，您可能需要配置 `WorkingDirectory` 项来指定一个工作目录
-   :::
+1. 重启 frpc
+1. 使用 `https://连接方式` 的形式访问您穿透的服务即可
+1. (可选) 如果您想避免证书错误提示，请 [配置 SSL 证书](/frpc/ssl.md)
 
-   ::: tip
-   对于 v2.0.5.0 及以上版本的启动器，工作目录在 `%ProgramData%\SakuraFrpService\FrpcWorkingDirectory`，通常为 `C:\ProgramData\SakuraFrpService\FrpcWorkingDirectory`
-   :::
+@tab 高级配置
 
-如果需进行高级配置，请参考下面列出的 `auto_https` 的取值：
+`auto_https` 开关取值如下：
 
-- 留空 **[默认值]**: 禁用自动 HTTPS 功能
-- `auto`: frpc 将使用 `server_name` 作为证书 **CommonName** 生成自签证书
-- 其他值:  
-  frpc 将尝试加载当前工作目录(cwd)下 `<auto_https>.crt` 和 `<auto_https>.key` 两个证书文件  
-  *注: 对于 Docker，cwd 默认为 `/run/frpc`*  
-  若文件不存在或解析失败则使用 `<auto_https>` 作为 **CommonName** 生成一份自签名证书并保存到上述文件中  
-  *注: 若文件已存在，`<auto_https>` 就作为一个单纯的文件名进行处理，不会对证书产生影响*
+| auto_https | 说明 |
+| :---: | --- |
+| 留空<br>**[默认值]** | 禁用自动 HTTPS 功能 |
+| auto | frpc 将使用 `server_name` 作为证书 **CommonName** 生成自签证书 |
+| 其他值 | frpc 将尝试加载 工作目录 下的 `<auto_https>.crt` 和 `<auto_https>.key` 两个证书文件<br>- 若加载成功，`<auto_https>` 就作为一个单纯的文件名进行处理，不会对证书产生影响<br>- 若文件不存在或解析失败则使用 `<auto_https>` 作为 **CommonName** 生成一份自签名证书并保存到上述文件中 |
 
-::: tip
-自动 HTTPS 功能会在隧道启动时发送 `HEAD /\r\n\r\n` 请求检测您穿透的服务是否真的为 HTTPS 服务，该行为在 0.42.0-sakura-2.1 及以上版本的 frpc 中可以被 [auto_https_mode](/frpc/manual.md#tcp_proxy) 开关强制覆写
-:::
+自 **v0.42.0-sakura-2.1** 起，您可以通过 `auto_https_mode` 开关强制覆写自动 HTTPS 的工作模式：
+
+| auto_https_mode | 说明 |
+| :---: | --- |
+| 留空<br>**[默认值]** | 自动探测是否为 HTTP 服务并选择恰当的工作模式<br>- frpc 会在隧道启动时发送 `HEAD /\r\n\r\n` 请求检测您穿透的服务是否真的为 HTTPS 服务 |
+| http | 使用 HTTP 服务器进行反代并在发给本地服务的请求中追加 `X-Forwarded-For` 请求头 |
+| passthrough | 直通模式，单纯的在 TCP 流外面套上一层 TLS，不对数据包进行其他修改操作 |
+
+::::
 
 ## HTTP 隧道出现 503 错误 {#http-503}
 
