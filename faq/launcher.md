@@ -33,6 +33,7 @@
 
 | 操作系统 | 兼容性 |
 | --- | --- |
+| Windows 11 | 直接安装启动器即可使用 |
 | Windows 10, 1903 及以上 | 直接安装启动器即可使用 |
 | Windows 10, 1607~1809 | 需额外安装 .NET Framework 4.8 |
 | Windows 10, 1511 及以下 | 不兼容 |
@@ -44,8 +45,6 @@
 | Windows Vista SP1 | 不兼容 |
 | Windows Vista | 不兼容 |
 | Windows XP | 不兼容 |
-
----
 
 ## 系统服务状态异常, 启动器可能无法正常运行 {#service-abnormal}
 
@@ -69,38 +68,6 @@
 
 - 安装 `.NET Framework 4.8` 即可 ([点击前往微软官方下载页面](https://dotnet.microsoft.com/download/dotnet-framework/net48))。
 
-## 远程证书无效 {#remote-cert-invalid}
-
-报错 `System.Net.WebException: 基础连接已关闭，根据验证过程，远程证书无效`。
-
-碰到这个问题说明您的系统上缺少 *USERTrust RSA Certification Authority* 根证书，需要安装此证书。
-
-1. 首先，点击 [这里](https://crt.sh/?d=1199354) 下载证书文件。
-
-   ![](./_images/launcher-cert-0.png)
-
-2. 下载完成后，双击打开这个 crt 文件，点击 `安装证书`：
-
-   ![](./_images/launcher-cert-1.png)
-
-3. 存储位置选择 `当前用户`：
-
-   ![](./_images/launcher-cert-2.png)
-
-4. 按照下图选择好证书存储路径，注意不要选错了，然后点下一步：
-
-   ![](./_images/launcher-cert-3.png)
-
-5. 这个时候计算机应该会弹出安全警告，确认图中红框圈出的部分和您看到的提示完全一致后点击 `是`，证书就安装完成了。
-
-   ::: warning
-   如果您看到的证书指纹和图中不一致，请立即点击 `否` 取消安装
-   :::
-
-   ![](./_images/launcher-cert-4.png)
-
----
-
 ## 杀毒软件提示启动器有病毒怎么办 {#misc}
 
 您可以校验启动器安装程序的 MD5 是否与我们网站上发布的 MD5 值相匹配，如果这个值不匹配可能说明您下载到的安装程序被病毒感染了。
@@ -119,9 +86,11 @@
 
 快速点击图标，只要您手速够快就可以更换图标。我们有三个图标供您选择。
 
+如果想换回来，退出启动器并修改 `%localappdata%/SakuraLauncher/<Hash>/<版本号>/user.config` 中 `LogoIndex` 项对应的值为 `0` 即可。
+
 ## 怎么更换启动器主题皮肤 (主题) {#change-theme}
 
-如果您在使用 v2.0.4.0 及以上版本启动器，前往设置页面更换皮肤即可。更换后需要重启启动器才能生效。
+如果您在使用 **v2.0.4.0** 及以上版本启动器，前往设置页面更换皮肤即可。更换后需要重启启动器才能生效。
 
 ![](./_images/launcher-theme.png)
 
