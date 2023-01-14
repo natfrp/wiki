@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import { toRefs } from 'vue';
+import crypto from 'crypto';
 
 const props = defineProps({
 	seed: {
@@ -19,10 +20,9 @@ const { seed, length } = toRefs(props);
 
 let result = '';
 const characters = seed.value;
-if (window.crypto?.getRandomValues !== undefined) {
-	const rng = new Uint8Array(length.value);
-	window.crypto.getRandomValues(rng);
-	for (const r of rng) {
+
+if (import.meta.env.SSR) {
+	for (const r of crypto.randomBytes(length.value)) {
 		result += characters.charAt(Math.floor((r / 0xFF) * characters.length));
 	}
 } else {
