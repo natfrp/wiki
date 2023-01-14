@@ -1,0 +1,34 @@
+diff --git a/.vuepress/config.ts b/.vuepress/config.ts
+index f09c539..a34ef94 100644
+--- a/.vuepress/config.ts
++++ b/.vuepress/config.ts
+@@ -11,5 +11,6 @@ import sections from './sections';
+
+ const __dirname = getDirname(import.meta.url);
+
++import { nextSearchPlugin } from 'vuepress-plugin-next-search';
+ export default defineUserConfig({
+ 	base: '/',
+@@ -96,4 +97,12 @@ export default defineUserConfig({
+ 				currentPath: (env) => env.filePath,
+ 			},
+ 		}),
++		nextSearchPlugin({
++			fullText: true,
++			placeholder: '搜索',
++			frontmatter: {
++				tag: '标签',
++				category: '分类',
++			},
++		}),
+ 		sitemapPlugin({
+diff --git a/package.json b/package.json
+index 8d29a33..29852ce 100644
+--- a/package.json
++++ b/package.json
+@@ -10,4 +10,5 @@
+     },
+     "license": "SEE LICENSE IN LICENSE",
+     "devDependencies": {
++        "vuepress-plugin-next-search": "file:../vuepress-plugin-next-search-fix",
+         "@typescript-eslint/eslint-plugin": "^5.48.1",
