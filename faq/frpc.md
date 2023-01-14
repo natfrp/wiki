@@ -4,12 +4,11 @@
 
 自 **v0.42.0-sakura-5** 版本开始，frpc 已支持多节点模式，现在可以连接位于不同节点的多个隧道了。
 
-下方划线的内容仅针对旧版或原版（无 `-sakura-` 后缀）的 frpc。
-
-<s>
+:::: details 如果您还在使用旧版或原版（无 -sakura- 后缀）的 frpc
 
 ::: tip
-请注意区别 **进程** 和 **文件**。如果您无法理解这两个概念，可以参考 [百度百科: 进程](https://baike.baidu.com/item/%E8%BF%9B%E7%A8%8B/382503)、[百度百科: 计算机文件](https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%96%87%E4%BB%B6)
+请注意区别 **进程** 和 **文件**。如果您无法理解这两个概念，可以参考 [进程](https://baike.baidu.com/item/%E8%BF%9B%E7%A8%8B/382503)、[计算机文件](https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%96%87%E4%BB%B6)  
+&nbsp;
 :::
 
 一个 frpc 进程只能连接一个 **节点**，这就是说：
@@ -18,12 +17,12 @@
 - 如果这几条隧道都在同一个节点上，可以在一个 frpc 进程中连接多条隧道。请参阅 [frpc 基本使用指南/从命令行启动隧道](/frpc/usage.md#cli-usage)
 - 启动器会自动管理 frpc 进程并且总是确保一个 frpc 连接一条隧道，因此启动器开启的 frpc 无法连接多条隧道
 
-</s>
+::::
 
 ## 如何通过一个 frpc 开启多条隧道 {#multi-tunnels-in-single-frpc}
 
 ::: tip
-旧版 frpc 只能连接一个 **节点**，但可以开启多条 **隧道**，新版 frpc 无此限制，详见上一条 FAQ。
+旧版 frpc 只能连接一个 **节点**，但可以开启多条 **隧道**，新版 frpc 无此限制，详见上一条 FAQ
 :::
 
 如果您使用 **启动参数** 启动 frpc，只需要在启动参数中加上半角逗号 `,` 分隔的其他隧道 ID 或节点 ID 即可，例如：
@@ -191,11 +190,7 @@ local_port = 179
 
 ## macOS 提示 frpc 无法打开 {#macos-run-frpc-issue}
 
-::: warning
-我们已对 macOS frpc 文件进行签名和公正，我们建议您不要使用第三方分发的 frpc
-:::
-
-当您通过其他渠道下载并运行 frpc 时，可能会出现下列错误：  
+当您在 macOS 运行 frpc 时，可能会出现下列错误：
 
 ![](./_images/frpc-macos-run-issue-1.png)  
 _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软件。此软件需要更新，请联系开发者了解更多信息。”_
@@ -216,11 +211,18 @@ _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软�
 
 ## ARM 运行提示 Illegal instruction {#arm-illegal-instruction}
 
-首先，请确认您下载的文件 MD5 与软件下载页面显示的 MD5 相同。
+首先，请使用下方命令确认您下载的文件 MD5 与软件下载页面显示的 MD5 相同，如果不同可能是文件损坏了：
 
-如果您的 [Linux 使用教程/安装 frpc](/frpc/usage.md#linux-check-arch) 显示为 `armv7l`，请下载 `arm_garbage` 版本重试。否则，请联系管理员。
+```bash
+md5sum $(which frpc)
+```
 
-## Windows 系统命令行版 frpc 开机自启设置方法 {#windows-simple-autostart}
+如果确认文件没有损坏但还是打不开，请 [确认处理器架构
+](/frpc/usage.md#linux-check-arch)，如果显示为 `armv7l`，请下载 `arm_garbage` 版本重试。
+
+如果上述方法都不行，请 [联系我们](/about.md#contact-us)。
+
+## Windows 系统 frpc 开机自启 {#windows-simple-autostart}
 
 ::: warning
 注意，此处列出的方法虽然 **【能用】** 但并不能算 **【正确】** 的操作  
