@@ -13,7 +13,7 @@
 不满足下表中的任一条件均会造成网站无法访问，此时请更换映射方式或节点：
 
 ::: tip
-此处的 *需实名认证* 指的是在 **SakuraFrp 管理面板** 完成[实名认证](https://doc.natfrp.com/faq/realname.html)，而非 **域名提供商的** 实名认证
+此处的 *需实名认证* 指的是在 **SakuraFrp 管理面板** 完成 [实名认证](https://doc.natfrp.com/faq/realname.html)，而非 **域名提供商的** 实名认证
 :::
 
 | 节点类型 | HTTP(S) 隧道 | TCP 隧道映射 HTTP 流量 | TCP 隧道映射 HTTPS 流量 |
