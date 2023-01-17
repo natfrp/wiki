@@ -22,9 +22,10 @@ contributors: false
 
 - 如果您需要举报滥用或违规内容，您可以前往 [举报滥用](https://www.natfrp.com/report.html) 页面提交信息或直接通过邮件联系我们  
   To submit abuse report, please head to [THIS PAGE](https://www.natfrp.com/report_en.html) and fill out the form or mail us direcly
-  
+
 - 如果您是 SakuraFrp VIP，您可以进入 **VIP 用户反馈群** 使用群聊获得来自管理员和其他用户的帮助。您可以在 [用户信息](https://www.natfrp.com/user/profile) 页面找到群号
-- 或者，您也可以发送电子邮件到 `support@natfrp.cloud` 开启工单，我们会尽快回复  
+
+- 如果您在处理订单问题、退款、实名问题、提交 Bug 等，请发送电子邮件到 `support@natfrp.cloud` 开启工单，我们会尽快回复
   
 <!-- END 请勿修改 -->
 
