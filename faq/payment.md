@@ -108,6 +108,6 @@
 本平台支持下列付款方式：
 
 - [支付宝](https://www.alipay.com/)
-- [微信支付](https://pay.weixin.qq.com/)
+- ~~[微信支付](https://pay.weixin.qq.com/)~~ (自 **2023/01/12** 起无限期暂停)
 
 目前没有添加其他付款方式 (如 QQ 钱包) 的计划。
