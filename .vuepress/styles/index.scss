@@ -1,5 +1,5 @@
 :root {
-    --content-width: 850px;
+    //// CUSTOM STYLES //////////////////////////////
 
     .natfrp-side-by-side {
         gap: 0 16px;
@@ -12,6 +12,12 @@
         }
     }
 
+    //// FIXES //////////////////////////////
+
+    // Extend content width
+    --content-width: 850px;
+
+    // Reduce tab radius
     .tab-list {
         border-radius: 6px;
 
@@ -33,10 +39,17 @@
         }
     }
 
+    // Fix bottom padding of container nested in details
+    .custom-container.details .custom-container>p:last-child {
+        margin-bottom: 1em;
+    }
+
+    // Fix video max width
     .html5-video-player {
         max-width: 100%;
     }
 
+    // Fix search box margin
     .search-box {
         margin-left: 1rem;
         margin-right: 0;

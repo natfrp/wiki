@@ -122,8 +122,7 @@ curl -sSLo /boot/config/plugins/dockerMan/templates-user/natfrpc.xml \
 1. 完成访问认证后，使用 `https://114.5.1.4:1919/Main` 即可访问您的控制台
 
    ::: tip
-   因为 unRAID 控制台的自动跳转功能缺陷，使用 `https://114.5.1.4:1919/` 会被跳转到 `http://114.5.1.4:1919/Main` (没有 s) 从而无法访问，所以请务必访问 `https://114.5.1.4:1919/Main`  
-   &nbsp;
+   因为 unRAID 控制台的自动跳转功能缺陷，使用 `https://114.5.1.4:1919/` 会被跳转到 `http://114.5.1.4:1919/Main` (没有 s) 从而无法访问，所以请务必访问 `https://114.5.1.4:1919/Main`
    :::
 
 ::::

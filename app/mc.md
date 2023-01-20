@@ -55,8 +55,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 :::: details 游戏版本: 1.12.X ~ 1.19
 
 ::: warning
-1.16.2 版由于 Forge 的原因可能会 **引发崩溃**，端口 **不能冲突**，否则也会崩溃  
-&nbsp;
+1.16.2 版由于 Forge 的原因可能会 **引发崩溃**，端口 **不能冲突**，否则也会崩溃
 :::
 
 > 此 Mod 在游戏版本 1.16.5 + 高版本 Java 运行时会[出现问题](https://github.com/rikka0w0/LanServerProperties/issues/15)，如果您需要 1.16.5，请使用 Java 8/11
@@ -109,8 +108,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
    **ESC** - **选项** - **资源包** - **打开资源包文件夹**  
    **返回上一级** - **打开saves文件夹** - **找到您要联机的存档的名字并双击进入**  
    里面有一个 `server.properties` 文件，请使用文本编辑器软件打开。  
-   建议使用 [Visual Studio Code](https://code.visualstudio.com/) 或者 [Sublime Text 3](http://www.sublimetext.com/) 等专业文字编辑器  
-   &nbsp;
+   建议使用 [Visual Studio Code](https://code.visualstudio.com/) 或者 [Sublime Text 3](http://www.sublimetext.com/) 等专业文字编辑器
    :::
 
    ![](./_images/mc-3.png)
@@ -118,8 +116,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
 3. 编辑完成后重新打开地图即可刷新配置
 
    ::: tip
-   `server.properties` 文件编辑完以后下一次使用 **这个存档** 联机就不用再次编辑了  
-   &nbsp;
+   `server.properties` 文件编辑完以后下一次使用 **这个存档** 联机就不用再次编辑了
    :::
 
    如果 **换了个存档** 联机，就需要 **重新编辑** 或者复制之前的配置过来

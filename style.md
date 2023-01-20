@@ -60,8 +60,6 @@ sidebar: false
 
 本文档启用了 VuePress 默认主题的 [内置组件](https://v2.vuepress.vuejs.org/zh/reference/default-theme/components.html) 和 [自定义容器](https://v2.vuepress.vuejs.org/zh/reference/default-theme/markdown.html) 支持。
 
-需要注意的是，目前在 `details` 容器中嵌入 `tip`、`warning`、`error` 容器时会出现底部边距消失的 Bug，如果需要进行此类嵌套请在最后一行添加一个 `&nbsp`。
-
 此外，本文档还有其他自己实现的功能和自定义 CSS 类，例如 **并排显示**，请切换到其他标签查看。
 
 @tab 并排显示
