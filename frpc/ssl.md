@@ -52,7 +52,7 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 #### 配置隧道 {#autohttps-setup}
 
-请先参考 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible.md#frpc-auto-https) 页面，来启用自动 HTTPS。
+请先参考 [配置 frpc 的自动 HTTPS 功能](/frpc/auto-https.md) 页面，来启用自动 HTTPS。
 
 ::: warning
 此时不要直接在隧道配置的 **自动 HTTPS** 处选择 `自动`。
@@ -100,7 +100,7 @@ SSL 服务商通常使用 DNS 解析记录来验证域名所有权，因此选�
 
 > 请查看 [配置访问认证功能](/bestpractice/frpc-auth.md) 获取启用访问认证功能的帮助
 
-- frpc **v0.42.0-sakura-3.1** 及以上版本访问认证会遵循 **自动 HTTPS** 配置项的规则加载证书，参考 [配置 frpc 的自动 HTTPS 功能](/faq/site-inaccessible.md#frpc-auto-https) 和上面的 [替换 SSL 证书文件](#autohttps-sslfile) 配置即可。
+- frpc **v0.42.0-sakura-3.1** 及以上版本访问认证会遵循 **自动 HTTPS** 配置项的规则加载证书，参考 [配置 frpc 的自动 HTTPS 功能](/frpc/auto-https.md) 和上面的 [替换 SSL 证书文件](#autohttps-sslfile) 配置即可。
 - 对于 **v0.42.0-sakura-3** 及更低版本，您可以通过配置 frpc 工作目录下的 'authpanel.<crt|key>' 并使用恰当的域名访问。
 
 ### 设置域名解析 {#authpanel-dns}

@@ -103,6 +103,7 @@ export default defineUserConfig({
 			include: {
 				currentPath: (env) => env.filePath,
 			},
+			imgMark: true,
 		}),
 		sitemapPlugin({
 			hostname: 'doc.natfrp.com',
