@@ -111,8 +111,9 @@ const sections = {
 	misc: {
 		text: '其他',
 		children: [
-			'/style.md',
 			'/geek.md',
+			'/style.md',
+			'/devcontainer.md',
 			'/about.md',
 		],
 	},

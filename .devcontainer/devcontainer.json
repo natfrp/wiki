@@ -12,13 +12,17 @@
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
+			"settings": {
+				"workbench.colorTheme": "Default Dark+",
+				"telemetry.telemetryLevel": "off"
+			},
+
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"yzhang.markdown-all-in-one",
 				"DavidAnson.vscode-markdownlint",
 				"Vue.volar",
 				"dbaeumer.vscode-eslint",
-				"eamodio.gitlens",
 				"mhutchie.git-graph"
 			]
 		}
