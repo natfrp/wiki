@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.236.0/containers/javascript-node
 {
-	"name": "SakuraFrp wiki editor",
+	"name": "SakuraFrp Wiki Editor",
 	"build": {
 		"dockerfile": "Dockerfile",
 		"context": "..",
@@ -16,7 +16,10 @@
 			"extensions": [
 				"yzhang.markdown-all-in-one",
 				"DavidAnson.vscode-markdownlint",
-				"eamodio.gitlens"
+				"Vue.volar",
+				"dbaeumer.vscode-eslint",
+				"eamodio.gitlens",
+				"mhutchie.git-graph"
 			]
 		}
 	},
@@ -25,7 +28,7 @@
 	"forwardPorts": [8080],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "yarn && yarn dev",
+	"postCreateCommand": "pnpm install && pnpm dev",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "node"
