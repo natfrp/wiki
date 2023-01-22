@@ -100,10 +100,10 @@ export default defineUserConfig({
 			tabs: true,
 			attrs: true,
 			footnote: true,
+			imgMark: true,
 			include: {
 				currentPath: (env) => env.filePath,
 			},
-			imgMark: true,
 		}),
 		sitemapPlugin({
 			hostname: 'doc.natfrp.com',
