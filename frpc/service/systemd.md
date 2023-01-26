@@ -40,7 +40,7 @@ vi /etc/systemd/system/frpc@.service
 
 然后复制并粘贴下面提供的服务文件内容，请注意 **不要** 多复制或少复制任何东西，确保粘贴后的内容和图中一模一样
 
-```systemd.unit
+```systemd
 [Unit]
 Description=SakuraFrp Service
 After=network.target
