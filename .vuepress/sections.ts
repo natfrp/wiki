@@ -58,6 +58,7 @@ const sections = {
 					{ text: '远程管理', link: '/frpc/remote.html' },
 					{ text: '配置 SSL 证书', link: '/frpc/ssl.html' },
 					{ text: '自动 HTTPS', link: '/frpc/auto-https.html' },
+					{ text: '端口导出 (P2P)', link: '/frpc/export-port.html' },
 					{ text: '用户手册', link: '/frpc/manual.html' },
 				],
 			},

@@ -216,8 +216,7 @@ _“无法打开 “frpc”，因为 Apple 无法检查它是否包含恶意软�
 md5sum $(which frpc)
 ```
 
-如果确认文件没有损坏但还是打不开，请 [确认处理器架构
-](/frpc/usage.md#linux-check-arch)，如果显示为 `armv7l`，请下载 `arm_garbage` 版本重试。
+如果确认文件没有损坏但还是打不开，请 [确认处理器架构](/frpc/usage.md#linux-check-arch)，如果显示为 `armv7l`，请下载 `arm_garbage` 版本重试。
 
 如果上述方法都不行，请 [联系我们](/about.md#contact-us)。
 
