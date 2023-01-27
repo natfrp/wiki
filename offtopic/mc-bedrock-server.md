@@ -4,13 +4,19 @@
 > 此文不建议毫无经验的小白用户阅读。  
 > 此指南针对的是 **基岩版** 用户，如果您是 **Java 版** 用户，请查看 [Java 版局域网联机](/app/mc.md#java) 页面。
 
-目前基岩版服务器有两种核心可用:
+目前基岩版服务器有多种核心可用:
 
-1. Bedrock Dedicated Server （简称 BDS）
+1. Bedrock Dedicated Server (BDS)
    由微软官方开发，与所有平台的 Minecraft 基岩版有几乎相同的核心，目前可以全平台联机，适合原版生存  
    [历史版本下载(非官方)](https://meteormc.cn/threads/49/) | [最新版本下载(官方)](https://www.minecraft.net/zh-hans/download/server/bedrock/)
-1. Nukkit  
+1. Nukkit (NK)
    由第三方独立开发的开源核心，生态优于 BDS 但由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)
+   [下载(官方)](https://ci.opencollab.dev//job/NukkitX/job/Nukkit/job/master/)
+   **分支版本**
+   - PowerNukkitX (PNX)，部分国内开发者开发的版本，支持完整的 Nukkit 生态。[官方网站](https://powernukkitx.cn/)
+1. PocketMine-MP (PMMP)
+   由第三方独立开发的核心，用于创建高度自定义的服务器，不适合原版生存，主要依赖于插件
+   [下载(官方)](https://doc.pmmp.io/en/rtfd/installation/downloads.html)
 
 ## BDS on Windows
 
@@ -169,9 +175,41 @@ correct-player-movement = false
 server-authoritative-block-breaking = false
 # 启用服务端权威性挖掘
 # 如果值为 true ，则服务端将与客户端同步计算挖掘，并且更正与服务端计算不符的非法挖掘
+# 允许值:
+#   是: true
+#   否: false
+
+disable-player-interaction = false
+# 是否禁用玩家间交互
+# 仅在 1.19.20.02 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
+chat-restriction = None
+# 是否限制玩家聊天
+# 仅在 1.19.20.02 及更高版本的服务端中生效。
+# 允许值:
+#   不限制: None
+#   部分限制: Dropped
+#   完全限制: Disabled
+
+disable-custom-skins = false
+# 是否在服务器范围内禁用指定指定皮肤
+# 仅在 1.19.30 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
+client-side-chunk-generation-enabled = true
+# 是否允许客户端自行生成区块
+# 仅在 1.19.41 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
 
 enable-lan-visibility = true
-# 是否使服务器在局域网 (好友界面) 可见。
+# 是否使服务器在局域网 (好友界面) 可见
 # 仅在 1.19.50 及更高版本的服务端中生效。
 # 允许值:
 #   是: true
@@ -207,25 +245,6 @@ emit-server-telemetry = true
 # 允许值:
 #   是: true
 #   否: false
-
-disable-player-interaction = false
-# 是否禁用玩家间交互
-# 仅在 1.19.20.02 及更高版本的服务端中生效。
-# 允许值:
-#   是: true
-#   否: false
-
-chat-restriction = None
-# 是否限制玩家聊天
-# 仅在 1.19.20.02 及更高版本的服务端中生效。
-# 允许值:
-#   不限制: None
-#   部分限制: Dropped
-#   完全限制: Disabled
-
-disable-custom-skins = false
-# 是否在服务器范围内禁用指定指定皮肤
-# 仅在 1.19.30 及更高版本的服务端钟生效。
 ```
 
 #### 隧道配置
