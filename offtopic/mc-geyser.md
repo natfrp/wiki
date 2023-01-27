@@ -398,10 +398,18 @@ max-world-size = 29999984
 
 # previews-chat = true
 # 是否启用聊天预览功能
-# 仅在 1.19 及更高版本有效。
+# 仅在 1.19 至 1.19.2 有效。
 # 允许值:
 #   是: true
 #   否: false
+
+initial-disabled-packs =
+# 不会自动启用的数据包名称
+# 仅在 1.19.3 及更高版本有效。
+
+initial-enabled-packs = vanilla
+# 在创建世界过程中，需要启用并加载的数据包名称
+# 仅在 1.19.3 及更高版本有效。
 ```
 
 ### 编辑 Geyser 服务端配置文件

@@ -4,13 +4,25 @@
 > 此文不建议毫无经验的小白用户阅读。  
 > 此指南针对的是 **基岩版** 用户，如果您是 **Java 版** 用户，请查看 [Java 版局域网联机](/app/mc.md#java) 页面。
 
-目前基岩版服务器有两种核心可用:
+目前基岩版服务器有多种核心可用:
 
-1. Bedrock Dedicated Server （简称 BDS）
-   由微软官方开发，与所有平台的 Minecraft 基岩版有几乎相同的核心，目前可以全平台联机，适合原版生存  
+1. Bedrock Dedicated Server (BDS)
+   由微软官方开发，与所有平台的 Minecraft 基岩版有几乎相同的核心，目前可以全平台联机，适合原版生存<br>
    [历史版本下载(非官方)](https://meteormc.cn/threads/49/) | [最新版本下载(官方)](https://www.minecraft.net/zh-hans/download/server/bedrock/)
-1. Nukkit  
+
+1. Nukkit (NK)
    由第三方独立开发的开源核心，生态优于 BDS 但由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)
+
+   因为 Nukkit 的主要维护者已经弃坑， Nukkit 有较多分支项目，通常您只需选用最顺眼的那个：
+
+   - Nukkit/Nukkit (2016-1018)，项目创建社区，已弃坑。[源码存档](https://github.com/Nukkit/Nukkit)
+   - CloudburstMC/Nukkit (2018-至今), 由 CubeCraft(即 GeyserMC 开发商) 接手产生的 Nukkit/Nukkit 分支，仍在维护支持新版本。[源码](https://github.com/CloudburstMC/Nukkit)，[下载](https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/)
+   - PowerNukkit (2020-2022)，CloudburstMC/Nukkit 的分支，更加活跃开发以提供新功能，2022 年后不再活跃。[源码](https://github.com/PowerNukkit/PowerNukkit)
+   - PowerNukkitX (2022-至今)，PowerNukkit 的分支，目前活跃开发中。[项目说明](https://github.com/PowerNukkitX/PowerNukkitX/blob/master/blob/zh-hans/README.md)
+
+1. PocketMine-MP (PMMP)
+   由第三方独立开发的核心，用于创建高度自定义的服务器，不适合原版生存，主要依赖于插件<br>
+   [下载(官方)](https://doc.pmmp.io/en/rtfd/installation/downloads.html)
 
 ## BDS on Windows
 
@@ -169,9 +181,41 @@ correct-player-movement = false
 server-authoritative-block-breaking = false
 # 启用服务端权威性挖掘
 # 如果值为 true ，则服务端将与客户端同步计算挖掘，并且更正与服务端计算不符的非法挖掘
+# 允许值:
+#   是: true
+#   否: false
+
+disable-player-interaction = false
+# 是否禁用玩家间交互
+# 仅在 1.19.20.02 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
+chat-restriction = None
+# 是否限制玩家聊天
+# 仅在 1.19.20.02 及更高版本的服务端中生效。
+# 允许值:
+#   不限制: None
+#   部分限制: Dropped
+#   完全限制: Disabled
+
+disable-custom-skins = false
+# 是否在服务器范围内禁用指定指定皮肤
+# 仅在 1.19.30 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
+client-side-chunk-generation-enabled = true
+# 是否允许客户端自行生成区块
+# 仅在 1.19.41 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
 
 enable-lan-visibility = true
-# 是否使服务器在局域网 (好友界面) 可见。
+# 是否使服务器在局域网 (好友界面) 可见
 # 仅在 1.19.50 及更高版本的服务端中生效。
 # 允许值:
 #   是: true
@@ -207,25 +251,6 @@ emit-server-telemetry = true
 # 允许值:
 #   是: true
 #   否: false
-
-disable-player-interaction = false
-# 是否禁用玩家间交互
-# 仅在 1.19.20.02 及更高版本的服务端中生效。
-# 允许值:
-#   是: true
-#   否: false
-
-chat-restriction = None
-# 是否限制玩家聊天
-# 仅在 1.19.20.02 及更高版本的服务端中生效。
-# 允许值:
-#   不限制: None
-#   部分限制: Dropped
-#   完全限制: Disabled
-
-disable-custom-skins = false
-# 是否在服务器范围内禁用指定指定皮肤
-# 仅在 1.19.30 及更高版本的服务端钟生效。
 ```
 
 #### 隧道配置
@@ -297,14 +322,14 @@ sudo dnf install -y libnsl
 
 #### 安装 JAVA
 
-**Ubuntu / Debian**
+##### Ubuntu / Debian
 
 ```bash
 sudo apt update
 sudo apt install openjdk-8-jre-headless -y
 ```
 
-**Fedora / RHEL**
+##### Fedora / RHEL
 
 ```bash
 sudo yum update
@@ -423,12 +448,12 @@ sudo yum install java -y
 1. 使用客户端创建一个世界，创建时勾选想用的资源包、行为包。
 2. 创建并进入世界后退出，找到这个世界的文件夹目录。对于 Android 外部存储，该目录通常为 'storage/emulated/0/Android/data/com.mojang.minecraftpe/files/games/com.mojang/minecraftWorlds'
 3. 将以下文件与文件夹拷贝到服务器所用存档的根目录，即 `/worlds/Bedrock level/` 下
-   * `behavior_packs/`
-   * `resource_packs/`
-   * `world_behavior_pack_history.json`
-   * `world_behavior_packs.json`
-   * `world_resource_pack_history.json`
-   * `world_resource_packs.json`
+   - `behavior_packs/`
+   - `resource_packs/`
+   - `world_behavior_pack_history.json`
+   - `world_behavior_packs.json`
+   - `world_resource_pack_history.json`
+   - `world_resource_packs.json`
 
 4. 仅 **行为包** 会强制玩家使用。如要强制所有人使用资源包，则需在 'server.properties' 中开启相应选项: `texturepack-required = true`
 5. 玩家进入服务器时，会自动对比 **服务器所用资源包的 UUID 列表** 与 **本地拥有的资源包的 UUID 列表**。如果不匹配，将会通过游戏端口下载对应缺失包。为节省流量并避免服务器性能受影响，建议将所用资源包与行为包提前下发给玩家。
@@ -439,19 +464,19 @@ sudo yum install java -y
 其中部分是通过反编译以达成修改的目的, 并不符合 EULA, 请慎用。
 :::
 
-* [LiteLoader](https://github.com/LiteLDev/LiteLoaderBDS) 第三方 BDS 插件加器，支持 C++、GoLang、JavaScript、Lua
-* [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方 BDS 插件加载器，已停更
-* [BedrockX](https://github.com/Sysca11/BedrockX-bin) 第三方 BDS 插件加载器，已停更
-* [ElementZero](https://github.com/Element-0/ElementZero) 第三方服务端，支持实验玩法和教育版
-* [BDXCore](https://github.com/Sysca11/BDXCore) 第三方 BDS 插件加载器，有封装 HOOK API ，适配性强
-* [BDSJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSRunner-Release) 符合工业标准规范的 BDS 跨版本插件开发解决方案
-* [NetJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSR2) .NET 版 JS 加载平台，依赖于 BDSNetRunner
-* [PFJSR](https://github.com/littlegao233/PFJSR) NetJSRunner 衍生版
-* [BDSPyRunner](https://github.com/twoone-3/BDSpyrunner) python 脚本插件运行平台
-* [IronPythonRunner](https://github.com/Sbaoor-fly/CSR-IronPythonRunner) IronPython 拓展平台，依赖于 BDSNetRunner.
-* [IronLuaRunner](https://github.com/Sbaoor-fly/CSR-IronLuaRunner) IronPython 拓展平台，依赖于BDSNetRunner
-* [IronLuaLoader](https://github.com/Sbaoor-fly/CSR-IronLuaLoader) IronPython 拓展平台，依赖于BDSNetRunner
-* [BDSJavaRunner](https://github.com/zhkj-liuxiaohua/BDSJavaRunner) Jar1.8 加载器
-* [BDSAddonInstaller](https://github.com/chegele/BDSAddonInstaller) Add-on/node.js 加载工具
-* [MCscripts](https://github.com/TapeWerm/MCscripts) 用于备份、更新、安装、警告的系统单元，bash 脚本，聊天机器人
-* [MCBEPlay](https://foxynotail.com/mcbeplay/) GUI 版 BDS
+- [LiteLoader](https://github.com/LiteLDev/LiteLoaderBDS) 第三方 BDS 插件加器，支持 C++、GoLang、JavaScript、Lua
+- [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方 BDS 插件加载器，已停更
+- [BedrockX](https://github.com/Sysca11/BedrockX-bin) 第三方 BDS 插件加载器，已停更
+- [ElementZero](https://github.com/Element-0/ElementZero) 第三方服务端，支持实验玩法和教育版
+- [BDXCore](https://github.com/Sysca11/BDXCore) 第三方 BDS 插件加载器，有封装 HOOK API ，适配性强
+- [BDSJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSRunner-Release) 符合工业标准规范的 BDS 跨版本插件开发解决方案
+- [NetJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSR2) .NET 版 JS 加载平台，依赖于 BDSNetRunner
+- [PFJSR](https://github.com/littlegao233/PFJSR) NetJSRunner 衍生版
+- [BDSPyRunner](https://github.com/twoone-3/BDSpyrunner) python 脚本插件运行平台
+- [IronPythonRunner](https://github.com/Sbaoor-fly/CSR-IronPythonRunner) IronPython 拓展平台，依赖于 BDSNetRunner.
+- [IronLuaRunner](https://github.com/Sbaoor-fly/CSR-IronLuaRunner) IronPython 拓展平台，依赖于BDSNetRunner
+- [IronLuaLoader](https://github.com/Sbaoor-fly/CSR-IronLuaLoader) IronPython 拓展平台，依赖于BDSNetRunner
+- [BDSJavaRunner](https://github.com/zhkj-liuxiaohua/BDSJavaRunner) Jar1.8 加载器
+- [BDSAddonInstaller](https://github.com/chegele/BDSAddonInstaller) Add-on/node.js 加载工具
+- [MCscripts](https://github.com/TapeWerm/MCscripts) 用于备份、更新、安装、警告的系统单元，bash 脚本，聊天机器人
+- [MCBEPlay](https://foxynotail.com/mcbeplay/) GUI 版 BDS
