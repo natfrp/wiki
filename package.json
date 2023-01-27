@@ -24,11 +24,14 @@
         "vue": "^3.2.45",
         "vue-router": "^4.1.6",
         "vuepress": "2.0.0-beta.60",
-        "vuepress-plugin-md-enhance": "2.0.0-beta.165",
-        "vuepress-plugin-sitemap2": "2.0.0-beta.165"
+        "vuepress-plugin-md-enhance": "file:.patches/vuepress-plugin-md-enhance-2.0.0-beta.168.tgz",
+        "vuepress-plugin-sitemap2": "2.0.0-beta.168"
     },
     "peerDependencies": {
         "vue": "^3.2.45",
         "vue-router": "^4.1.6"
+    },
+    "resolutions": {
+        "@mdit/plugin-tab": "file:.patches/mdit-plugin-tab-0.2.3.tgz"
     }
 }
