@@ -322,14 +322,14 @@ sudo dnf install -y libnsl
 
 #### 安装 JAVA
 
-**Ubuntu / Debian**
+##### Ubuntu / Debian
 
 ```bash
 sudo apt update
 sudo apt install openjdk-8-jre-headless -y
 ```
 
-**Fedora / RHEL**
+##### Fedora / RHEL
 
 ```bash
 sudo yum update
