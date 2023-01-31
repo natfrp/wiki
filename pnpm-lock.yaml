@@ -12,6 +12,7 @@ specifiers:
   '@vuepress/utils': 2.0.0-beta.60
   eslint: ^8.32.0
   eslint-plugin-vue: ^9.9.0
+  flowchart.js: ^1.17.1
   markdown-it-html5-media: ^0.7.1
   naive-ui: ^2.34.3
   typescript: ^4.9.4
@@ -30,6 +31,7 @@ devDependencies:
   '@vuepress/utils': 2.0.0-beta.60
   eslint: 8.32.0
   eslint-plugin-vue: 9.9.0_eslint@8.32.0
+  flowchart.js: 1.17.1
   markdown-it-html5-media: 0.7.1
   naive-ui: 2.34.3_vue@3.2.45
   typescript: 4.9.4
@@ -2492,6 +2494,13 @@ packages:
 
   /flatted/3.2.7:
     resolution: {integrity: sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==}
+    dev: true
+
+  /flowchart.js/1.17.1:
+    resolution: {integrity: sha512-zphTaxdyqvHHu+8Cdf6HvamhArXpq9SyNe1zQ61maCIfTenaj3cMvjS1e/0gfPj7QTLTx3HroSzVqDXpL8naoQ==}
+    engines: {node: '>=4.0.0'}
+    dependencies:
+      raphael: 2.3.0
     dev: true
 
   /flowchart.ts/0.1.2:

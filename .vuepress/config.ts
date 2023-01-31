@@ -101,6 +101,7 @@ export default defineUserConfig({
 			attrs: true,
 			footnote: true,
 			imgMark: true,
+			flowchart: true,
 			include: {
 				currentPath: (env) => env.filePath,
 			},
