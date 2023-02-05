@@ -26,7 +26,13 @@ Systemd 的 **Unit 配置文件** 通常位于这些目录中:
 
 本教程将选用第二个目录来放置 frpc 的 **Unit 配置文件**，并且 frpc 启用后报错退出时每分钟会自动重启一次
 
-执行下面的命令，您应该会看到图中的提示
+执行下面的命令以准备一个工作目录，您应该不会看到任何提示
+
+```bash
+mkdir -p /usr/local/etc/natfrp
+```
+
+执行下面的命令开始编辑配置文件，您应该会看到图中的提示
 
 ```bash
 vi /etc/systemd/system/frpc@.service
@@ -51,6 +57,7 @@ User=nobody
 Restart=on-failure
 RestartSec=60s
 ExecStart=/usr/local/bin/frpc -f %i
+WorkingDirectory=/usr/local/etc/natfrp
 
 [Install]
 WantedBy=multi-user.target

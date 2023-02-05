@@ -56,14 +56,18 @@ SSL 服务商 **不必** 是当前域名的注册商，按需选择适合您的�
 
 @tab Systemd
 
-您可以配置 `WorkingDirectory` 项来指定一个工作目录，例如：
+如果您直接复制了文档中的 Unit 示例，您的工作目录为 `/usr/local/etc/natfrp`。
+
+您可也可以自己配置 `WorkingDirectory` 项来指定一个工作目录，例如：
 
 ```systemd
 [Service]
 WorkingDirectory=/etc/frpc
 ```
 
-如果没有单独进行配置（例如您直接复制了文档中的 Unit 示例），工作目录通常是 `/root`。
+如果需要确认您目前的配置，请执行 `grep "WorkingDirectory" /etc/systemd/system/frpc@.service`。
+
+如果上面的指令不显示任何内容，请编辑 `/etc/systemd/system/frpc@.service` 加入 `WorkingDirectory=一个目录`。
 
 @tab Docker
 
