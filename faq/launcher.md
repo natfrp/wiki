@@ -68,11 +68,19 @@
 
 - 安装 `.NET Framework 4.8` 即可 ([点击前往微软官方下载页面](https://dotnet.microsoft.com/download/dotnet-framework/net48))。
 
+## 启动器文件损害，提示下列文件不存在
+
+这种情况通常是杀毒软件误杀了启动器相关组件造成的，请参考 [这篇文档](/launcher/antivirus.md) 在杀软中添加白名单然后重新安装启动器。
+
+## 突然不能启动隧道，提示隧道启动失败: 拒绝访问 / 系统找不到指定的文件
+
+这种情况通常是杀毒软件误杀了 frpc 造成的，请参考 [这篇文档](/launcher/antivirus.md) 在杀软中添加白名单然后重新安装启动器或从杀软隔离区恢复 frpc。
+
 ## 杀毒软件提示启动器有病毒怎么办 {#misc}
 
 您可以校验启动器安装程序的 MD5 是否与我们网站上发布的 MD5 值相匹配，如果这个值不匹配可能说明您下载到的安装程序被病毒感染了。
 
-如果这个 MD5 值是匹配的，建议您在杀毒软件中添加白名单然后重新安装启动器。
+如果这个 MD5 值是匹配的，建议您参考 [这篇文档](/launcher/antivirus.md) 在杀软中添加白名单然后重新安装启动器。
 
 您也可以选择到 [GitHub](https://github.com/natfrp/SakuraFrpLauncher) 获取启动器源码自行编译，如果您决定自己编译启动器的 Release 版本，请记得修改 `SakuraLibrary/Utils.cs` 中的 `VerifySignature` 函数跳过签名验证。
 
