@@ -49,7 +49,7 @@ token 是您在 SakuraFrp 的身份令牌，请不要交给任何您不信任的
 
 - 在环境变量中添加 `LANG`，值为 `en_US.UTF-8`
 - 修改 `NATFPR_TOKEN` 为刚刚记录下来的用户 token
-- 修改 `NATFRP_TRRGET` 为刚刚记录下来的隧道 id
+- 修改 `NATFRP_TARGET` 为刚刚记录下来的隧道 id
 
 修改完毕后，点击 **下一步 - 确认** 创建容器：
 
