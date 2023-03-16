@@ -209,4 +209,4 @@ STFW。
 
 而 SakuraFrp 并不支持将 `远程端口` 设为 `25` `995` 等低位端口，因此无法直接穿透 POP3。
 
-关于 **无法穿透超出范围端口** 的原因，见[此页](/faq/misc?id=lower-ports.md)。
+关于 **无法穿透超出范围端口** 的原因，见[此页](/faq/misc.md?id=lower-ports)。

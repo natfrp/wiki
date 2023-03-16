@@ -117,6 +117,7 @@ const sections = {
 			'/style.md',
 			'/devcontainer.md',
 			'/about.md',
+			{ text: 'SakuraFrp API', link: 'https://api.natfrp.com/docs/' },
 		],
 	},
 };
