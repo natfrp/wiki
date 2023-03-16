@@ -161,55 +161,6 @@ WOL 类型隧道启动成功
 
 ## 通过 API 唤醒
 
-您可以在不登录 SakuraFrp 面板的情况下通过 REST API 发起 WOL 唤醒请求。
+您可以在不登录 SakuraFrp 面板的情况下通过 API 发起 WOL 唤醒请求，请求端点为 `/computer/poweron`。
 
-#### API 端点
-
-向 `https://api.natfrp.com/v1/pc/poweron` 发起 HTTP 请求。
-
-| 请求方式 | 传参方式 |
-| --- | --- |
-| POST | 支持 `x-www-form-urlencoded` / `multipart/form-data` 类型的请求 |
-| GET | 通过查询字符串传参 |
-
-#### API 参数
-
-| 请求参数 | 类型 | 说明 |
-| --- | --- | --- |
-| `token` | string | 您的访问密钥 |
-| `pc` | number | 计算机 ID |
-| `password` | string? | 可选的 WOL 密码，如果没有配置则不需要传 |
-
-cURL 请求示例：
-
-```bash
-curl "https://api.natfrp.com/v1/pc/poweron?token=wdnmdtoken666666&pc=114514"
-```
-
-| 返回参数 | 类型 | 说明 |
-| --- | --- | --- |
-| `success` | boolean | 操作是否成功, 注意 WOL 隧道不在线时此值也为 `true` |
-| `message` | string | 提示消息 |
-
-返回示例：
-
-```json
-{
-   "success": true,
-   "message": "WOL 请求成功"
-}
-```
-
-```json
-{
-   "success": true,
-   "message": "WOL 隧道不在线, 开机失败"
-}
-```
-
-```json
-{
-   "success": false,
-   "message": "请先将计算机绑定到隧道"
-}
-```
+请访问 [SakuraFrp API 文档](https://api.natfrp.com/docs/#/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%A1%E7%90%86/post_computer_poweron) 获取此 API 的详细信息。

@@ -28,9 +28,7 @@ sidebar: false
 
 ## 启动器移植 {#porting-launcher}
 
-如果您想要自己实现启动器的话，可以查看我们的启动器开源项目中的 [API 部分源码](https://github.com/natfrp/SakuraFrpLauncher/blob/master/SakuraFrpService/Natfrp.cs) 以接入 SakuraFrp API。
-
-请注意该 API 并非稳定标准，属于内部使用 API，随时可能变更，如果存在相关修改不会进行通知。
+如果您想要自己实现启动器的话，可以参考 [SakuraFrp API 文档](https://api.natfrp.com/docs/) 接入我们的服务。
 
 目前存在的第三方启动器实现：
 
