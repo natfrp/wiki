@@ -123,7 +123,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
    :::
 
    如果 **换了个存档** 联机，就需要 **重新编辑** 或者复制之前的配置过来
-   您也可以考虑编辑config文件夹（与save文件夹同级）中的serverGlobalConfig.properties文件，里面的参数会影响**以后新建的存档**
+   您也可以考虑编辑config文件夹（与save文件夹同级）中的serverGlobalConfig.properties文件，里面的参数会影响 **以后新建的存档**
 4. 现在请参考 [不装辅助 Mod](#java-no-mod) 一节开启局域网联机
 
 #### server.properties 配置文件翻译如下
