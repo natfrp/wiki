@@ -49,10 +49,10 @@ SakuraFrp 提供 [frpc 镜像](https://hub.docker.com/r/natfrp/frpc) 以便您�
 ```bash
 # 默认 DockerHub 源，国内可能较慢：
 docker run \
--d \ # 后台运行
---restart=always \ # 自动启动
---pull=always \ # 自动更新
---name=sakura1 \ # 为容器设定一个名字
+-d `# 后台运行` \
+--restart=always `# 自动启动` \
+--pull=always `# 自动更新` \
+--name=sakura1 `# 为容器设定一个名字` \
 natfrp/frpc \
 -f <启动参数> --remote_control <远程控制密码>
 
@@ -60,10 +60,10 @@ natfrp/frpc \
 
 # 阿里云容器镜像 香港地区源，适合国内用户：
 docker run \
--d \ # 后台运行
---restart=always \ # 自动启动
---pull=always \ # 自动更新
---name=sakura1 \ # 为容器设定一个名字
+-d `# 后台运行` \
+--restart=always `# 自动启动` \
+--pull=always `# 自动更新` \
+--name=sakura1 `# 为容器设定一个名字` \
 registry.cn-hongkong.aliyuncs.com/natfrp/frpc \
 -f <启动参数> --remote_control <远程控制密码>
 ```
@@ -92,12 +92,12 @@ _* `--restart=always` 选项并非必须，但开启此选项后可以自动重�
 
 ```
 docker run \
--d \ # 后台运行
---restart=always \ # 自动启动
---pull=always \ # 自动更新
---name=sakura1 \ # 为容器设定一个名字
---mount type=bind,source=/home/homo/zhengshu.crt,target=/run/frpc/example.crt \ # 将容器外的 /home/homo/zhengshu.crt 映射到容器内的 /example.crt
---mount type=bind,source=/home/homo/zhengshu.key,target=/run/frpc/example.key \ # 将容器外的 /home/homo/zhengshu.key 映射到容器内的 /example.key
+-d `# 后台运行` \
+--restart=always `# 自动启动` \
+--pull=always `# 自动更新` \
+--name=sakura1 `# 为容器设定一个名字` \
+--mount type=bind,source=/home/homo/zhengshu.crt,target=/run/frpc/example.crt `# 将容器外的 /home/homo/zhengshu.crt 映射到容器内的 /example.crt` \
+--mount type=bind,source=/home/homo/zhengshu.key,target=/run/frpc/example.key `# 将容器外的 /home/homo/zhengshu.key 映射到容器内的 /example.key` \
 natfrp/frpc \
 -f <启动参数> --remote_control <远程控制密码>
 ```
