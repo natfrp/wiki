@@ -163,4 +163,4 @@ WOL 类型隧道启动成功
 
 您可以在不登录 SakuraFrp 面板的情况下通过 API 发起 WOL 唤醒请求，请求端点为 `/computer/poweron`。
 
-请访问 [SakuraFrp API 文档](https://api.natfrp.com/docs/#/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%A1%E7%90%86/post_computer_poweron) 获取此 API 的详细信息。
+请访问 [SakuraFrp API 文档](https://natfrp-api.globalslb.net/docs/#/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%A1%E7%90%86/post_computer_poweron) 获取此 API 的详细信息。

@@ -31,4 +31,4 @@ index 8d29a33..29852ce 100644
      "license": "SEE LICENSE IN LICENSE",
      "devDependencies": {
 +        "vuepress-plugin-next-search": "file:../vuepress-plugin-next-search-fix",
-         "@typescript-eslint/eslint-plugin": "^5.48.2",
+         "@typescript-eslint/eslint-plugin": "5",

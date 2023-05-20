@@ -28,7 +28,7 @@ sidebar: false
 
 ## 启动器移植 {#porting-launcher}
 
-如果您想要自己实现启动器的话，可以参考 [SakuraFrp API 文档](https://api.natfrp.com/docs/) 接入我们的服务。
+如果您想要自己实现启动器的话，可以参考 [SakuraFrp API 文档](https://natfrp-api.globalslb.net/docs/) 接入我们的服务。
 
 目前存在的第三方启动器实现：
 
