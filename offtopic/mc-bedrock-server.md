@@ -185,13 +185,6 @@ server-authoritative-block-breaking = false
 #   是: true
 #   否: false
 
-disable-player-interaction = false
-# 是否禁用玩家间交互
-# 仅在 1.19.20.02 及更高版本的服务端中生效。
-# 允许值:
-#   是: true
-#   否: false
-
 chat-restriction = None
 # 是否限制玩家聊天
 # 仅在 1.19.20.02 及更高版本的服务端中生效。
@@ -200,9 +193,9 @@ chat-restriction = None
 #   部分限制: Dropped
 #   完全限制: Disabled
 
-disable-custom-skins = false
-# 是否在服务器范围内禁用指定指定皮肤
-# 仅在 1.19.30 及更高版本的服务端中生效。
+disable-player-interaction = false
+# 是否禁用玩家间交互
+# 仅在 1.19.20.02 及更高版本的服务端中生效。
 # 允许值:
 #   是: true
 #   否: false
@@ -214,12 +207,36 @@ client-side-chunk-generation-enabled = true
 #   是: true
 #   否: false
 
+disable-custom-skins = false
+# 是否在服务器范围内禁用指定指定皮肤
+# 仅在 1.19.30 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
 enable-lan-visibility = true
 # 是否使服务器在局域网 (好友界面) 可见
 # 仅在 1.19.50 及更高版本的服务端中生效。
 # 允许值:
 #   是: true
 #   否: false
+
+# block-network-ids-are-hashes = true
+# 是否使服务端发送散列的方块网络 ID，这些 ID 不会被随意更改
+# 设为 false 时，将发送从 0 开始递增的 ID。
+# 仅在 1.20.10.20 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
+# server-build-radius-ratio = Disabled
+# 是否根据覆盖比率的多少来生成玩家的视距，不考虑客户端的硬件功能
+# 设为 false 时，将由服务器动态计算玩家的视距多少。
+# 仅在 client-side-chunk-generation-enabled 配置项启用时生效
+# 仅在 1.20.10.20 及更高版本的服务端中生效。
+# 允许值:
+#   启用: [0.0, 1.0]
+#   禁用: Disabled
 ```
 
 ::: warning
@@ -248,6 +265,14 @@ emit-server-telemetry = true
 # 是否启用服务器遥测功能
 # 启用后，将把服务端部分数据发送至 Mojang，以帮助其改善游戏。效果与各平台常见的 "用户体验改进计划" 相似。
 # 仅在 1.19.1.01 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
+disable-persona = false
+# 是否禁用角色
+# 原版 server.properties 文件中提到此项配置 "仅供内部使用"，且没有更多注释，禁用与否可能对实际游戏没有影响。
+# 仅在 1.20.10.20 的服务端中出现。
 # 允许值:
 #   是: true
 #   否: false
