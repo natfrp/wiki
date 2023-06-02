@@ -2,6 +2,13 @@
 
 SakuraFrp 提供 frpc 镜像 ([Docker Hub](https://hub.docker.com/r/natfrp/frpc), [GitHub Packages](https://github.com/orgs/natfrp/packages/container/package/frpc)) 以便您借助 Docker 运行 frpc。
 
+:::info
+如果您的网络访问 Docker Hub 存在困难，对于所有使用 `natfrp/frpc` 镜像名处，您可以尝试替换为下面的内容之一：
+
+- `ghcr.io/natfrp/frpc`
+- `registry.cn-hongkong.aliyuncs.com/natfrp/frpc`
+:::
+
 ### 图形用户界面 {#docker-gui}
 
 本教程只介绍命令行操作，如果您使用以下平台，点击链接可查看对应的 GUI 操作说明：

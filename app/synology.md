@@ -55,6 +55,25 @@ Docker 套件和镜像只要安装一次即可，无需重复操作。如需更�
 
    ![](./_images/dsm7-docker-pull.png)
 
+   ::: warning 2023 年最新情况
+   如果您的 NAS 没有神奇的上网技巧的话，您在进行到这一步时应当会遇到 **注册表请求失败** 或类似错误，这是国内的网络新常态。
+
+   要绕过此问题，您需要按照 [启用 SSH](#direct-enable-ssh) 中的方法连接到您的 NAS，然后执行下面的命令（期间需要输入密码，密码输入后没有回显）：
+
+   ```bash
+   sudo docker pull registry.cn-hongkong.aliyuncs.com/natfrp/frpc
+   ```
+
+   直到您看到回显：
+
+   ```text
+   Status: Downloaded newer image for registry.cn-hongkong.aliyuncs.com/natfrp/frpc:latest
+   registry.cn-hongkong.aliyuncs.com/natfrp/frpc:latest
+   ```
+
+   接下来您可以进行 [创建隧道](#docker-create-tunnel) 了。
+   :::
+
 1. 稍等片刻，直到右上角出现 **已成功下载 Docker 镜像** 的通知，镜像就安装完成了：
 
    ![](./_images/dsm7-docker-pull-complete.png)
@@ -78,6 +97,10 @@ Docker 套件和镜像只要安装一次即可，无需重复操作。如需更�
 ### 启动隧道 {#docker-start-tunnel}
 
 1. 转到 **映像** 页面，选中刚才下载的 **natfrp/frpc:latest** 并点击 **启动**，输入一个自定义名称并点击 **高级设置**：
+
+   ::: warning
+   如果您在安装镜像时使用了上面的命令法，请寻找下方写着 `注册表: Aliyun Hub` 的项目。
+   :::
 
    ::: tip
    如果您希望隧道开机自启，请勾选 **启用自动重新启动** 选项
