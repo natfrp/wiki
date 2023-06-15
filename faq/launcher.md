@@ -68,7 +68,7 @@
 
 - 安装 `.NET Framework 4.8` 即可 ([点击前往微软官方下载页面](https://dotnet.microsoft.com/download/dotnet-framework/net48))。
 
-## 启动器文件损害，提示下列文件不存在
+## 启动器文件损坏，提示下列文件不存在
 
 这种情况通常是杀毒软件误杀了启动器相关组件造成的，请参考 [这篇文档](/launcher/antivirus.md) 在杀软中添加白名单然后重新安装启动器。
 
@@ -83,6 +83,14 @@
 如果这个 MD5 值是匹配的，建议您参考 [这篇文档](/launcher/antivirus.md) 在杀软中添加白名单然后重新安装启动器。
 
 您也可以选择到 [GitHub](https://github.com/natfrp/SakuraFrpLauncher) 获取启动器源码自行编译，如果您决定自己编译启动器的 Release 版本，请记得修改 `SakuraLibrary/Utils.cs` 中的 `VerifySignature` 函数跳过签名验证。
+
+## 点击 创建隧道/加号 按钮后闪退
+
+出现此问题说明您的系统中存在一些有问题软件塞满了系统的临时文件夹后没有及时释放。
+
+一般出现此问题时，会伴随出现系统不稳定、其他软件假死、闪退等问题。
+
+请在 文件资源管理器 的地址栏中输入 `%TEMP%` 并回车进入临时文件夹，删除其中较旧的文件即可。
 
 ## 怎么关闭自动更新功能 {#disable-update}
 
