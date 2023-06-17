@@ -90,6 +90,15 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 - [Matrix](https://matrix.to/#/!GFWDTqltQmjaSCDGij:atunemic.cn?via=atunemic.cn&via=t2bot.io)
 - 非官方群, 群内没有网站管理员
 
-### VIP 反馈群 {#community-vip}
+### 官方 QQ 反馈群 {#community-official-qq}
 
-请前往 [用户信息](https://www.natfrp.com/user/profile) 页面查看详情。
+::: warning 注意
+官方 QQ 群需在验证问题处填写访问密钥，由机器人自动审核加群请求并绑定账户。  
+请不要在加入非官方群时填写访问密钥，否则可能造成您的账户信息被泄露。
+:::
+
+- 公开用户群：  
+  请前往 [管理面板](https://www.natfrp.com/user/) 点击 `帮助 > QQ 反馈群`，阅读加群须知后点击 `确认加群` 按钮。
+
+- VIP 反馈群：  
+  请前往 [用户信息](https://www.natfrp.com/user/profile) 页面查看详情。
