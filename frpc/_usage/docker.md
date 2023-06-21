@@ -2,11 +2,13 @@
 
 SakuraFrp 提供 frpc 镜像 ([Docker Hub](https://hub.docker.com/r/natfrp/frpc), [GitHub Packages](https://github.com/orgs/natfrp/packages/container/package/frpc)) 以便您借助 Docker 运行 frpc。
 
-:::info
+:::tip 关于镜像源
 如果您的网络访问 Docker Hub 存在困难，对于所有使用 `natfrp/frpc` 镜像名处，您可以尝试替换为下面的内容之一：
 
 - `ghcr.io/natfrp/frpc`
 - `registry.cn-hongkong.aliyuncs.com/natfrp/frpc`
+
+部分位于中国大陆的镜像源缓存了一个有问题的 frpc 且一直没更新，如果您碰到 `exec: "infocmp": executable file not found in $PATH` 的错误，请使用上面列出的镜像源或官方源
 :::
 
 ### 图形用户界面 {#docker-gui}
