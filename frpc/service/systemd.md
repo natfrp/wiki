@@ -44,7 +44,12 @@ vi /etc/systemd/system/frpc@.service
 
 ![](./_images/systemd-1.png)
 
-然后复制并粘贴下面提供的服务文件内容，请注意 **不要** 多复制或少复制任何东西，确保粘贴后的内容和图中一模一样
+然后复制并粘贴下面提供的服务文件内容，请注意 **不要** 多复制或少复制任何东西
+
+::: tip
+如果您希望提高安全性，降低被入侵造成的危险，请反注释下面的 `DynamicUser` 配置项。
+启用此功能将导致自动 HTTPS 等功能需要写入文件时出现不完全与教程相同的行为，请在确认您有相关能力的情况下启用。
+:::
 
 ```systemd
 [Unit]
@@ -53,7 +58,7 @@ After=network.target
 
 [Service]
 Type=idle
-User=nobody
+#DynamicUser=yes
 Restart=on-failure
 RestartSec=60s
 ExecStart=/usr/local/bin/frpc -f %i
