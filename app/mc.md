@@ -27,8 +27,8 @@ SakuraFrp 不提供 Minecraft 服务器相关帮助，本文档主要由社区�
 
 Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与不装的区别:
 
-- 不装辅助 Mod: 适用于同类型账号之间的联机 (如正版和正版、盗版和盗版、外置和外置)
-- 安装辅助 Mod (推荐): 适用于不同类型账号之间的联机，如不安装，则会出现 “无效会话” 问题
+- 不装辅助 Mod: 适用于同类型已验证账号之间的联机 (如正版和正版、外置和外置)
+- 安装辅助 Mod (推荐): 适用于离线账号或不同类型账号之间的联机，如不安装，则会出现 “无效会话” 问题
 
 ### 不装辅助 Mod {#java-no-mod}
 
@@ -37,7 +37,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 在聊天框里会提示 `本地游戏已在端口 xxxxx 上开启` ，这个 **五位数的端口号** 对应的是 **创建隧道** 里的 **本地端口**
 
 ::: tip
-这个 **五位数的端口号** 为并不固定，如果您想获取一个固定的端口号，就需要 **安装辅助 Mod**
+这个 **五位数的端口号** 并不固定，如果您想获取一个固定的端口号，就需要 **安装辅助 Mod**
 :::
 
 ![](./_images/mc-1.png)
@@ -47,13 +47,41 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 ### 安装辅助 Mod {#java-mod}
 
 ::: warning
-通过辅助 Mod 关闭正版验证 **可能** 会改变玩家的 UUID 导致 **背包内物品丢失**，请关闭正版验证前 **备份存档**
+通过辅助 Mod 关闭正版验证 **可能** 会改变玩家的 UUID 导致 **背包内物品和玩家数据丢失**，请关闭正版验证前 **备份存档**
 所有辅助 Mod 都 **不能** 互相兼容 **请勿重复添加联机模组**
 :::
 
 请根据您的游戏版本展开下面的选项查看，下面提到的 Mod 都必须在 **联网** 条件下安装:
 
-:::: details 游戏版本: 1.12.X ~ 1.19
+:::: details 游戏版本: Forge: 1.15.2 ~ 1.20.1, Fabric: 1.15.2 ~ 1.20.1, Quilt: 1.15.2 ~ 1.20.1
+
+- Mod 名称: LAN World Plug-n-Play (mcwifipnp)  
+- Mod 功能:
+  1. 固定端口
+  2. 开关正版验证
+  3. 更多对其他人的自定义功能
+  4. 通过uPnP功能进行联机
+- 下载链接: [mcmod](https://www.mcmod.cn/download/4498.html) | [modrinth](https://modrinth.com/mod/mcwifipnp/versions) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/mcwifipnp/files) 
+
+#### 使用方法
+
+1. 安装 Mod 并进入游戏，打开您要联机的 **存档**
+2. 按下键盘上的 **ESC** 键，在出现的界面里找到 `对局域网开放` 之类的按钮并且点击进入
+3. 对 **其他玩家** 进行设置，同时安装此 Mod 后 **设置局域网世界** 界面后会增加下列选项，请按需配置:
+   - 端口号: *随机五位数*
+     `可以固定端口，此端口对应的就是创建隧道里的本地端口`
+   - 允许玩家数: 10
+     `允许的最大在线玩家数`
+   - 服务器信息: A Minecraft LAN World
+     `即为 MOTD 。对应其他人在多人游戏列表里看到的服务器介绍`
+   - 正版验证: 开/关
+     `关闭可以让离线账号玩家或其他账号和您联机`
+   此模组的其他功能请在游戏内将鼠标指针指向按钮获得详细提示。
+4. 点击 `创建局域网世界`，在聊天框里会提示 `本地游戏已在端口 xxxxx 上开启`，这个五位数的端口号就会固定为您设置的端口号。对应您在创建隧道时的本地端口选项。
+
+::::
+
+:::: details 游戏版本: Forge: 1.12.X ~ 1.19.4, fabric: 1.16.1 ~ 1.19.4
 
 ::: warning
 1.16.2 版由于 Forge 的原因可能会 **引发崩溃**，端口 **不能冲突**，否则也会崩溃
@@ -65,8 +93,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 - Mod 功能:
   1. 固定端口
   2. 开关正版验证
-- 下载链接: [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files/all)  
-_这两个网站的服务器都位于 **国外**，所以访问/下载的速度 **可能** 会较慢，请耐心等待或自行寻找国内镜像_
+- 下载链接: [mcmod](https://www.mcmod.cn/download/2754.html) | [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files) 
 
 #### 使用方法
 
@@ -74,7 +101,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
 2. 按下键盘上的 **ESC** 键，在出现的界面里找到 `对局域网开放` 之类的按钮并且点击进入
 3. 对 **其他玩家** 进行设置，同时安装此 Mod 后 **设置局域网世界** 界面后会增加下列选项，请按需配置:
    - 在线模式: 开/关  
-     `关闭可以让非正版玩家和您联机`
+     `关闭可以让离线账号玩家或其他账号和您联机`
    - 监听端口: 25565  
      `可以固定端口，监听端口对应的就是创建隧道里的本地端口`
 4. 点击 `创造一个局域网世界`，在聊天框里会提示 `本地游戏已在端口 xxxxx 上开启`，这个 **五位数的端口号** 就会变成您设置的 **监听端口**
@@ -83,7 +110,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
 
 ::::
 
-:::: details 游戏版本: 1.7.X ~ 1.12.X, 1.13 ~ 1.19.X
+:::: details 游戏版本: Forge: 1.7.X ~ 1.12.X, 1.13 ~ 1.20.X
 
 - Mod 名称: Server.Properties for LAN
 - Mod 功能:
@@ -99,7 +126,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
   10. 最大建筑高度
   11. Motd设置
 - 下载链接 (1.7.X ~ 1.12.X): [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all) | [MC百科](https://www.mcmod.cn/download/1158.html)
-- 下载连接 (1.13 ~ 1.19.X): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/releases/latest)
+- 下载连接 (1.13 ~ 1.20.X): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/releases/latest)
 - 下载链接 (全版本，搬运有延迟，无法访问以上网站再考虑): [MeteorMC](https://meteormc.cn/threads/53/)
 
 #### 使用方法
@@ -123,7 +150,7 @@ _这两个网站的服务器都位于 **国外**，所以访问/下载的速度 
    :::
 
    如果 **换了个存档** 联机，就需要 **重新编辑** 或者复制之前的配置过来
-   您也可以考虑编辑 config 文件夹（与 save 文件夹同级）中的 serverGlobalConfig.properties 文件，里面的参数会影响 **以后新建的存档**
+   您也可以编辑 config 文件夹（与 save 文件夹同级）中的 serverGlobalConfig.properties 文件，里面的参数会影响 **以后新建的存档**
 4. 现在请参考 [不装辅助 Mod](#java-no-mod) 一节开启局域网联机
 
 #### server.properties 配置文件翻译如下
@@ -170,7 +197,7 @@ spawn-npcs=<Boolean>
 
 max-build-height=<Int>
 # 最大建筑高度
-# 不能超过256
+# 不能超过游戏限制 (低版本为256)
 
 resource-pack-sha1=
 # 资源包哈希算法 (没有请留空) 
