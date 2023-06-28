@@ -2,7 +2,9 @@
 
 配置 Proxy Protocol 可以让您穿透的本地服务获取到客户端真实 IP。
 
-在进行下列配置前，请先阅读 [获取真实 IP](/bestpractice/realip.md#proxy-protocol) 并修改隧道配置，否则可能造成 **隧道完全不可用**。
+::: warning 注意
+在进行下列配置前，请先阅读 [获取真实 IP](/bestpractice/realip.md#proxy-protocol) 并 **修改隧道配置**，否则可能造成**隧道完全不可用**。
+:::
 
 ## Web 服务器 {#web-servers}
 

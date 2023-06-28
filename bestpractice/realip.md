@@ -36,7 +36,7 @@ UDP 隧道需更新到 0.42.0-sakura-4 以上才能使用此功能
 
 Proxy Protocol 是由 HAProxy 开发者 Willy 提出的一种反向代理协议，目前已被广泛支持。您可以参考 [HAProxy 文档](http://www.haproxy.org/download/1.8/doc/proxy-protocol.txt) 获取更多信息。
 
-在隧道配置中启用 **高级设置** 并添加如下自定义配置后，frpc 就会在请求本地服务时应用 HAProxy 协议：
+启用 [高级用户模式](/geek.md#advanced-mode) 并添加如下 **隧道自定义设置** 后，frpc 就会在请求本地服务时应用 Proxy Protocol 协议：
 
 ```ini
 proxy_protocol_version = <v1|v2>
