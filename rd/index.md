@@ -11,7 +11,7 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 
 - **严禁** 将此服务用于非法控制他人设备、窃取信息、电信诈骗等非法用途
 - 主控和被控都必须登录 **已完成实名认证** 且 **具有使用权限** 的 SakuraFrp 账户
-- 目前主控只能控制登录了同一个账户的设备，后续如果用户多一些可能会增加授权其他人连接的 UI
+- 被控默认只接受登录了同一个账户的设备连接，如需授权其他人连接请在 [会话管理](https://www.natfrp.com/remote/rd_session) 界面为被控配置授权 UID
 - 目前普通用户可登录 5 个客户端，VIP 用户可登录 50 个客户端
 - 原则上我们不支持使用 TCP 隧道功能，滥用该功能可能会造成您的账户被封禁
 - 文件传输功能同理，滥用（频繁传输超大文件等）可能会造成您的账户被封禁
@@ -20,16 +20,16 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 
 ## 下载软件
 
-您可以选用 [RustDesk 官方发布的版本](https://github.com/rustdesk/rustdesk/releases/latest) 或是 [SakuraFrp 分发的版本](https://github.com/natfrp/rustdesk/releases)。
+您可以选用 [RustDesk 官方发布的版本](https://github.com/rustdesk/rustdesk/releases/latest) 或是 [SakuraFrp 分发的版本](https://github.com/natfrp/rustdesk/releases/latest)。
 
 - 官方版本需 [配置服务器](#configure) 才能正常连接 SakuraFrp 提供的 RustDesk 服务。  
-  该版本具有虚拟显示器支持，且经过了数字签名，推荐 Geek 用户使用
+  该版本经过了数字签名，推荐不喜欢折腾的用户使用
 - 由 SakuraFrp 分发的客户端无需配置服务器，且针对我们的服务进行了优化。  
-  该版本目前还在开发中，您可以下载 Bleeding Edge 构建进行试用
+  推荐 Geek 用户使用
 
 ::: warning 客户端兼容性说明
 ~~RustDesk 官方发布的 v1.1.9 版本已一年多未更新过，与我们的 HBBS 存在兼容问题，请下载 Nightly 版本使用~~  
-就在我们写这篇文档的时候，RustDesk 官方发布了 [1.2.0](https://github.com/rustdesk/rustdesk/releases/tag/1.2.0) 版本，使用该版本即可正常连接我们的中继服务器
+就在我们写这篇文档的时候，RustDesk 官方发布了 `1.2.0` 版本，使用该版本即可正常连接我们的中继服务器
 :::
 
 ## 配置指南 {#configure}
@@ -75,3 +75,7 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 ### “正在连接” 一段时间后提示连接错误，点击中继连接可正常使用
 
 这是由于官方版本无论 NAT 类型如何均会尝试进行直连。请在连接 ID 后加上 `/r` 强制走中继服务器连接。
+
+### 会话管理页面设备信息显示未知
+
+这是由于您使用了 Nyatwork OpenID 登录，使用用户名 + 访问密钥登录才会记录设备信息。
