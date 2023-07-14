@@ -85,6 +85,33 @@ chmod +x /etc/init.d/natfrpc # 为其赋予可执行权限
 
 ### 问题排除 {#openwrt-troubleshoot}
 
+#### jail 错误 {#jail-error}
+
+:::tip
+理论上，这个问题在 OpenWrt v23 版本已经修复，但并非所有人都会升级
+:::
+
+frpc 使用的是静态编译，而 jail 依旧会报动态 section 缺失错误，像这样：
+
+```
+jail: failed to load the .dynamic section from /sbin/natfrpc
+```
+
+此时只需要通过禁用 jail 即可解决。将 `/etc/init.d/natfrpc` 下相应代码删除或注释即可：
+
+```bash
+...
+procd_set_param stderr 1
+#procd_add_jail natfrp log
+procd_close_instance
+...
+```
+::: warning
+所有隧道的相应字段都要删除或注释
+:::
+
+#### 证书错误 {#cert-error}
+
 对于 OpenWrt 用户来说，因为路由器的软件常年永不更新，视固件的年代，可能出现这样的错误：
 
 ```
