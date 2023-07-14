@@ -88,7 +88,7 @@ chmod +x /etc/init.d/natfrpc # 为其赋予可执行权限
 #### jail 错误 {#jail-error}
 
 :::tip
-理论上，这个问题在 OpenWrt v23 版本已经修复，但并非所有人都会升级。
+理论上，这个问题在 OpenWrt v23 版本已经修复，但并非所有人都会升级
 :::
 
 frpc 使用的是静态编译，而 jail 依旧会报动态 section 缺失错误，像这样：
@@ -107,7 +107,7 @@ procd_close_instance
 ...
 ```
 ::: warning
-所有隧道的相应字段都要删除或注释！
+所有隧道的相应字段都要删除或注释
 :::
 
 #### 证书错误 {#cert-error}
