@@ -1,5 +1,15 @@
 # 常见问题: SakuraFrp 启动器
 
+## 远程服务器返回错误：（403）已禁止。 {#api-error-403}
+
+这通常是由于您的 IP 被 Cloudflare 判定为高危造成的。
+
+请打开此网页检查您的 Cloudflare 威胁指数：[cf.qn.md](https://cf.qn.md/)
+
+通常情况下，您的 IP 威胁指数应该是 0。超过 0 的指数都可能碰到此错误。
+
+如果威胁指数超过 0，建议您更换 IP（重启光猫和路由器）或是尝试使用手机热点进行操作。
+
 ## 如何自定义安装路径 {#installation-path}
 
 默认安装路径为 `C:\Program Files\SakuraFrpLauncher`，这通常能满足绝大多数用户的需求。
