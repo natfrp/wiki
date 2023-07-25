@@ -50,6 +50,8 @@ contributors: false
 - [boboliu](https://note.bobo.moe/)
   - _frp 主要开发 & 技术顾问_
   - _管理员_
+- [蚊子](https://mozz.ie/)
+  - _用户界面设计 (客户端 & 面板)_
 - And 4 more...
 
 <!-- END 此部分不接受 Pull Request 修改 -->
