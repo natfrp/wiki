@@ -1,5 +1,9 @@
 # SakuraFrp 启动器远程管理指南
 
+::: warning 注意：过时的文档
+本页面的内容仅适用于 2.0 启动器，新版启动器请查看 [远程管理 V2](/launcher/remote-v2.md)
+:::
+
 SakuraFrp Launcher v2.0.0.0 及以上版本提供了远程管理功能，可以在 Sakura Frp 网站上对启动器进行管理。
 
 ::: tip
