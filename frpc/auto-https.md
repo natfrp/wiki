@@ -78,3 +78,24 @@
 | 留空<br>**[默认值]** | 自动探测是否为 HTTP 服务并选择恰当的工作模式 |
 | http | 使用 HTTP 服务器进行反代并在发给本地服务的请求中追加 `X-Forwarded-For` 请求头 |
 | passthrough | 直通模式，单纯的在 TCP 流外面套上一层 TLS，不对数据包进行其他修改操作 |
+
+::: tip
+下面的请求修改功能仅当工作在 http 模式时可用，如果您在使用 直通模式，配置下面的参数将没有任何效果。
+:::
+
+对于特定应用需要修改请求中的 Host 的情况，您可以在高级设置中使用下面的配置来修改请求：
+
+```ini
+plugin_host_header_rewrite = <指定 Host，如 www.natfrp.com>
+```
+
+对于特定应用或情况需要修改请求中 Header 的，您可以使用下面的配置来修改请求：
+
+```ini
+plugin_header_<头部名> = <值>
+
+; 例如，您可以使用下面的配置来替换请求中的 Cookie
+plugin_header_cookie = "logged_in=yes;"
+; 或者为所有用户都返回移动端页面
+plugin_header_user-agent = "Mozilla/5.0 (Linux; Android 13; Pixel 6 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36"
+```
