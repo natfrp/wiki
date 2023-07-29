@@ -90,7 +90,7 @@
 
 1. 然后先把浏览器放到一边，参考发行版的相关教程配置您的初始化系统来启动 `natfrp-service --daemon`。
 
-   以 Systemd 为例，在用户文件夹建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](./manual.md)。
+   以 Systemd 为例，在用户文件夹建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
 
    这是一个简单的示例文件，你可以直接把它复制到 `~/.config/systemd/user/natfrp.service`：
 

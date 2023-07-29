@@ -46,10 +46,11 @@ const sections = {
 			{
 				text: 'SakuraFrp 启动器',
 				children: [
-					{ text: '基本使用指南', link: '/launcher/usage.html' },
+					{ text: '安装、使用指南', link: '/launcher/usage.html' },
 					{ text: '远程管理', link: '/launcher/remote.html' },
 					{ text: '配置系统服务', link: '/launcher/service.html' },
 					{ text: '配置杀软白名单', link: '/launcher/antivirus.html' },
+					{ text: '用户手册', link: '/launcher/manual.html' },
 				],
 			},
 			{
