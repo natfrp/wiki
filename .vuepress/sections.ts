@@ -55,7 +55,7 @@ const sections = {
 			{
 				text: 'frpc 客户端',
 				children: [
-					{ text: '基本使用指南', link: '/frpc/usage.html' },
+					{ text: '安装、使用指南', link: '/frpc/usage.html' },
 					{ text: '远程管理', link: '/frpc/remote.html' },
 					{ text: '配置 SSL 证书', link: '/frpc/ssl.html' },
 					{ text: '自动 HTTPS', link: '/frpc/auto-https.html' },
