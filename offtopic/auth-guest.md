@@ -26,7 +26,7 @@
 下面的操作以 Windows 系统为例，其它系统大同小异，不再赘述
 :::
 
-1. 请于 [GitHub Release](https://github.com/natfrp/auth-guest/releases/latest) 或 [Nyatwork Static CDN](https://nyat-static.globalslb.net/natfrp/client/auth-guest/) 按照您的系统和架构下载程序。
+1. 请于 [GitHub Release](https://github.com/natfrp/auth-guest/releases/latest) 或 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/auth-guest/) 按照您的系统和架构下载程序。
 
 2. 直接执行您下载的程序，程序会询问您的信息，并生成一个访问认证工具，如图所示
 

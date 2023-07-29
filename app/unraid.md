@@ -28,7 +28,7 @@ unRAID 在 **6.10.0-rc1** 之后的版本中弃用了自定义 **Templates Repos
 
 ```bash
 curl -sSLo /boot/config/plugins/dockerMan/templates-user/natfrpc.xml \
-   https://nyat-static.globalslb.net/natfrp/misc/natfrpc.xml
+   https://nya.globalslb.net/natfrp/misc/natfrpc.xml
 ```
 
 ![](./_images/unraid-terminal-btn.png)
@@ -45,7 +45,7 @@ curl -sSLo /boot/config/plugins/dockerMan/templates-user/natfrpc.xml \
 
 要离线部署，请先将 unRAID 服务器关机，将启动盘拔出插到 PC 上。
 
-手动下载 [模板文件](https://nyat-static.globalslb.net/natfrp/misc/natfrpc.xml)，将此文件放置到 `X:\config\plugins\dockerMan\templates-user` （X 为 unRAID 启动盘盘符）。
+手动下载 [模板文件](https://nya.globalslb.net/natfrp/misc/natfrpc.xml)，将此文件放置到 `X:\config\plugins\dockerMan\templates-user` （X 为 unRAID 启动盘盘符）。
 
 ![](./_images/unraid-usbstick-tpl.png)
 

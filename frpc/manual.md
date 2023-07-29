@@ -6,7 +6,7 @@
 
 由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/docs/) 或 [frp/README.md](https://github.com/fatedier/frp/blob/dev/README.md)。
 
-我们总是推荐（并假设）您使用最新版客户端，因此文档中列出的特性不会专门标注可用的版本。如果您需要使用旧版并了解该版本对应的特性，建议您参考 [Nyatwork Static CDN](https://nyat-static.globalslb.net/natfrp/client/) 中的文件修改时间并对照文档的 Commit History 作出判断，或者参考 [部分 frpc 新增特性](#advanced-feature) 一节。
+我们总是推荐（并假设）您使用最新版客户端，因此文档中列出的特性不会专门标注可用的版本。如果您需要使用旧版并了解该版本对应的特性，建议您参考 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/) 中的文件修改时间并对照文档的 Commit History 作出判断，或者参考 [部分 frpc 新增特性](#advanced-feature) 一节。
 
 ### 新增命令行开关 {#advanced-switches}
 
