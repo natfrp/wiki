@@ -31,11 +31,11 @@
 | -------- | ----------------------- | ----------------------------------------------------------------------------- |
 | 所有     | `-h` / `--help`         | 显示帮助信息并退出                                                            |
 |          | `-v` / `--version`      | 显示版本号并退出                                                              |
-|          | `-V` / `--version_full` | 显示完整版本信息并退出                                                        |
+|          | `-V` / `--version-full` | 显示完整版本信息并退出                                                        |
 |          | `--init-webui`          | 初始化 Web UI 并打开 PWA 安装 URL                                             |
 |          | `-w` / `--webui`        | 打开带有连接凭据的 Web UI 连接 URL (使用 `web+natfrpl://` 协议，必须安装 PWA) |
 |          | `--daemon`              | 运行守护进程，不带此开关启动时会显示提示信息并退出                            |
-|          | `--config`              | 指定配置文件路径，默认为 `${工作目录}/config.json`                            |
+|          | `-c` / `--config`       | 指定配置文件路径，默认为 `${工作目录}/config.json`                            |
 | Windows  | `--install`             | 安装系统服务                                                                  |
 |          | `--uninstall`           | 卸载系统服务                                                                  |
 | Unix     | `--force-root`          | 强制以 root 用户身份运行 (请确认你知道自己在做什么)                           |
@@ -86,9 +86,57 @@
 | auto_start_tunnels | `Int[]`   | 空        | 自动登录后启动的隧道 ID 列表                        |
 | update_interval    | `Int`     | `86400`   | 自动更新检查间隔，单位为秒，设置为 -1 禁用自动更新  |
 | update_channel     | `String`  | `current` | 更新通道，可选值为 `lts`，`current`，`beta`，`edge` |
-| bypass_proxy       | `Boolean` | `true`    | 绕过系统代理                                        |
 | frpc_force_tls     | `Boolean` | `false`   | 强制启用 frpc TLS 连接                              |
-| api_timeout        | `Int`     | `30`      | API 请求超时时间，单位为秒                          |
+| frpc_enable_stats  | `Boolean` | `true`    | 将 frpc 统计信息回报到启动器，用于 Web UI 展示      |
+
+### API 连接性保障 {#config-api}
+
+| 配置项                 | 类型       | 默认值     | 说明                                        |
+| ---------------------- | ---------- | ---------- | ------------------------------------------- |
+| api_proxy              | `String`   | 空         | 配置 API 使用的代理                         |
+| api_timeout            | `Int`      | `30`       | API 请求超时时间，单位为秒                  |
+| api_ca_mode            | `String`   | `embedded` | API 根证书验证模式                          |
+| api_dns_override       | `String[]` | `null`     | 用于解析 API 地址的 DNS 服务器地址列表      |
+| api_dns_system_only    | `Boolean`  | `false`    | 仅使用系统 DNS 解析 API 地址                |
+| api_dns_encrypted_only | `Boolean`  | `false`    | 使用内置 DNS 服务器列表时，仅启用加密服务器 |
+
+#### 关于 api_proxy {#config-api-proxy}
+
+该选项接受一个代理 URI，如 `socks5h://user:pass@host:port`。
+
+填写 `system` 则使用系统代理，留空则不使用代理。
+
+该选项设置了自定义代理 URI 时，用户界面的 **绕过系统代理** 选项将总是显示为打开且不可修改。
+
+#### 关于 api_ca_mode {#config-api-ca-mode}
+
+| 模式        | 说明                                         |
+| ----------- | -------------------------------------------- |
+| `embedded`  | 使用内置的根证书，确保最佳连接性             |
+| `system`    | 使用系统根证书，以兼容需要流量审查的特殊环境 |
+| `no-verify` | 不验证 SSL 证书，可能造成严重安全问题        |
+
+#### 关于 api_dns_* 相关选项 {#config-api-dns}
+
+- 若指定了 `api_dns_override`，则总是会使用指定的 DNS 服务器列表进行解析。
+
+  该选项接受一个 URI 数组，支持的协议有：
+
+  | 协议           | 说明           |
+  | -------------- | -------------- |
+  | `udp`, `tcp`   | 普通 DNS 请求  |
+  | `tls`, `dot`   | DNS-over-TLS   |
+  | `https`, `doh` | DNS-over-HTTPS |
+
+  URL 示例：`udp://223.5.5.5:53`，无效的 URI 将被忽略。
+
+- 否则，若指定了 `api_dns_system_only`，则只使用系统 DNS 进行解析。
+
+- 若上述两个选项均未指定，则会使用内置的 DNS 服务器列表，并根据 `api_dns_encrypted_only` 决定是否启用未加密的 DNS 服务器。
+
+除 `api_dns_override` 外的两个选项会被传递给 frpc。
+
+在任何情况下，都会以系统 DNS 作为最后的备选解析服务器。
 
 ### 日志记录 {#config-logging}
 
