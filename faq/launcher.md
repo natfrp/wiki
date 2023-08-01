@@ -242,7 +242,9 @@ SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
   Restart=always
   RestartSec=5s
 
-  ExecStart=%h/.config/natfrp/natfrp-service --daemon
+  # 在这里填写启动器的绝对路径和 --daemon 选项，例如：
+  # ExecStart=/home/alice/.config/natfrp/natfrp-service --daemon
+  ExecStart=
 
   [Install]
   WantedBy=multi-user.target
