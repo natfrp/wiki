@@ -57,7 +57,8 @@
 @tab Linux 桌面环境 {#linux}
 
 ::: tip
-出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，我们也不推荐您使用 root 用户登录桌面环境
+出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，我们也不推荐您使用 root 用户登录桌面环境  
+如果您发现启动器会时不时自动退出，请查看 [这条 FAQ](/faq/launcher.md#linux-logout-disconnect)
 :::
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
