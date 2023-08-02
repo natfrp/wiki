@@ -57,8 +57,8 @@
 @tab Linux 桌面环境 {#linux}
 
 ::: tip
-出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，我们也不推荐您使用 root 用户登录桌面环境  
-如果您发现启动器会时不时自动退出，请查看 [这条 FAQ](/faq/launcher.md#linux-logout-disconnect)
+这篇指南安装的服务 **仅在登录桌面期间可用**。如果您需要服务在开机后总是可用，请查看 [Linux 服务器](#linux-server) 标签  
+出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，我们也不推荐您使用 root 用户登录桌面环境
 :::
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
@@ -83,7 +83,7 @@
 
    ![](./_images/linux-install-1.png)
 
-1. 运行 `./natfrp-service --init-webui` 初始化配置文件，此时浏览器应该会自动打开。
+1. 运行 `./natfrp-service webui --init` 初始化配置文件，此时浏览器应该会自动打开。
 
    如果没有看到浏览器请手动点击安装 URL，安装 URL 包含您的 **启动器连接密码**，请注意不要泄露：
 
@@ -133,6 +133,124 @@
    ![](./_images/webui.png)
 
    这样启动器就安装完成了，并且会在登录时自动启动。您随时可以打开 Web UI 进行管理。
+
+@tab Linux 服务器 {#linux-server}
+
+::: tip
+这篇指南假设您以 `root` 权限进行安装，若您使用其他用户请使用 `sudo` 执行特权指令
+:::
+
+1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
+
+1. 出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，创建一个新账户：
+
+   ```bash
+   useradd -r -m -s /sbin/nologin natfrp
+   ```
+
+1. 下载由我们分发的 `.tar.zst` 文件，将其安装到系统中：
+
+   ```bash
+   # 您可以将其安装到任意目录，这里直接装到 HOME 是为了简化操作
+   # 对路径出警的 Issue 或 PR 可能不会得到处理
+   cd /home/natfrp/
+
+   # 复制对应的下载链接并下载
+   # curl -LO https://....
+
+   # 解压
+   tar -I zstd -xvf natfrp-service_*.tar.zst
+   chmod +x frpc natfrp-service
+   rm natfrp-service_*.tar.zst
+
+   # 设置权限
+   chown natfrp:natfrp frpc natfrp-service
+   ```
+
+1. 参考发行版的相关教程配置您的初始化系统来启动 `natfrp-service --daemon`。
+
+   以 Systemd 为例，建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
+
+   这是一个简单的示例文件，你可以直接把它复制到 `/etc/systemd/system/natfrp.service`：
+
+   ```systemd
+   [Unit]
+   Description=SakuraFrp Launcher
+   After=network.target
+
+   [Service]
+   User=natfrp
+   Group=natfrp
+
+   Type=simple
+   TimeoutStopSec=20
+
+   Restart=always
+   RestartSec=5s
+
+   ExecStart=/home/natfrp/natfrp-service --daemon
+
+   [Install]
+   WantedBy=multi-user.target
+   ```
+
+1. 配置完成后，启动并停止一次 `natfrp-service` 来生成配置文件：
+
+   ```bash
+   systemctl start natfrp.service
+   sleep 3
+   systemctl stop natfrp.service
+
+   # 确认 config.json 已生成
+   ls -ls .config/natfrp-service/
+   ```
+
+1. 修改配置文件，填入访问密钥和远程管理 Key：
+
+   ```bash
+   # 生成 KDF 后的远程管理 E2E 密码，复制输出的 Base64 字符串备用
+   ./natfrp-service remote-kdf <您的远程管理 E2E 密码>
+
+   # 编辑配置文件, 以 vim 为例
+   vim .config/natfrp-service/config.json
+   ```
+
+   找到并修改 `token`、`remote_management`、`remote_management_key` 三项：
+
+   ```json
+   {
+      "token": "SakuraFrp 访问密钥，在管理面板找到",
+      "remote_management": true,
+      "remote_management_key": "刚才成的 Base64 字符串",
+
+      "log_stdout": true, // 推荐开启 log_stdout 让 Systemd 管理日志
+   }
+   ```
+
+1. 启用服务
+
+   ```bash
+   systemctl enable --now natfrp.service
+   systemctl status natfrp.service
+
+   # 查看日志，确认看到 "远程管理连接成功" 的输出
+   journalctl -u natfrp.service -f
+   ```
+
+1. 最后，打开 [远程管理](https://www.natfrp.com/remote/v2)，连接您的服务器并启用隧道。
+
+### 关于卸载方式 {#uninstall}
+
+如果您是按照教程安装的，把安装过程中进行的操作反过来进行一遍即可。
+
+```bash
+# 停用并删除 Unit 文件
+systemctl disable --now natfrp.service
+rm /etc/systemd/system/natfrp.service
+
+# 删除用户和 HOME 目录
+userdel -r natfrp
+```
 
 :::::
 
