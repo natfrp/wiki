@@ -12,7 +12,7 @@
         }
     }
 
-    h1:first-child + .gugu {
+    h1:first-child+.gugu {
         margin-top: 2rem;
     }
 
@@ -57,5 +57,29 @@
     .search-box {
         margin-left: 1rem;
         margin-right: 0;
+    }
+
+    @media (max-width: 959px) and (min-width: 420px) {
+        .tab-list {
+            margin-left: -1.9rem;
+            margin-right: -1.9rem;
+        }
+    }
+
+    @media(max-width: 419px) {
+        .tab-list {
+            margin-left: -1.5rem;
+            margin-right: -1.5rem;
+        }
+
+        .tab-item div[class*=language-] {
+            margin-left: -0.75rem;
+            margin-right: -0.75rem;
+        }
+
+        .tab-item ol div[class*=language-] {
+            margin-left: -1.95rem;
+            margin-right: -0.75rem;
+        }
     }
 }
