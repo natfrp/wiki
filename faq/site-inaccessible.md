@@ -34,7 +34,7 @@
    - Windows 用户可以使用这条命令查询 DNS 解析结果：
 
      ```batch
-     nslookup <你的域名>
+     nslookup <您的域名>
  
      # 例如
      nslookup www.example.com
@@ -43,7 +43,7 @@
    - *nix 用户可以使用这条命令查询 DNS 解析结果：
 
       ```bash
-      dig <你的域名>
+      dig <您的域名>
 
       # 例如
       dig www.example.com

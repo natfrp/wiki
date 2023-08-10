@@ -67,6 +67,6 @@ _注：显然，存储在本地的密钥泄露 + 您的 Session 或面板账户�
   | secret | 空 | Base32 种子，全大写 |
   | skew | `1` | 允许的时间偏移量，单位为周期，如 1 表示允许正负偏移一个周期（30 秒） |
   | algorithm | `sha1` | TOTP 算法，可选值为 `md5`、`sha1`、`sha256`、`sha512` |
-  | digits | `6` | TOTP 代码长度，通常你会选择 `6` 或者 `8` |
+  | digits | `6` | TOTP 代码长度，通常您会选择 `6` 或者 `8` |
 
   举个例子: `otpauth://totp/auto?secret=<种子>&digits=<数字>&skew=<周期>&algorithm=<算法>`

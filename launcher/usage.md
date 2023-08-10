@@ -93,7 +93,7 @@
 
    以 Systemd 为例，在用户文件夹建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
 
-   这是一个简单的示例文件，你可以直接把它复制到 `~/.config/systemd/user/natfrp.service`：
+   这是一个简单的示例文件，您可以直接把它复制到 `~/.config/systemd/user/natfrp.service`：
 
    ```systemd
    [Unit]
@@ -171,7 +171,7 @@
 
    以 Systemd 为例，建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
 
-   这是一个简单的示例文件，你可以直接把它复制到 `/etc/systemd/system/natfrp.service`：
+   这是一个简单的示例文件，您可以直接把它复制到 `/etc/systemd/system/natfrp.service`：
 
    ```systemd
    [Unit]
