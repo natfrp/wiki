@@ -1,6 +1,8 @@
 <!-- markdownlint-disable MD041 -->
 
-我们不推荐在 Windows 系统上直接使用 frpc，除非您有特殊需求，否则请 [使用启动器](/launcher/usage.md)。
+::: warning 注意
+我们不推荐在 Windows 系统上直接使用 frpc，除非您有特殊需求，否则请 [使用启动器](/launcher/usage.md#windows)
+:::
 
 ### 确认系统架构 {#windows-check-arch}
 
@@ -26,9 +28,9 @@
 
    ![](../../_images/download.png)
 
-2. 选择 Windows 系统，然后根据您的系统架构选择一个合适的版本下载
+1. 选择 **frpc**，然后选择正确的系统和架构，点击下载按钮：
 
-   ![](../_images/windows-0.png)
+   ![](../_images/download-frpc.png)
 
 ### 使用 frpc {#windows-usage}
 

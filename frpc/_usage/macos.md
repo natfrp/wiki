@@ -1,5 +1,9 @@
 <!-- markdownlint-disable MD041 -->
 
+::: warning 注意
+我们不推荐在 macOS 系统上直接使用 frpc，除非您有特殊需求，否则请 [使用启动器](/launcher/usage.md#macos)
+:::
+
 在 macOS 安装 frpc 需要在 **终端** (`Terminal.app`) 下执行一些命令。
 
 如果您对 macOS 的命令行操作不熟悉，请严格按照文档进行操作避免出现意外。
@@ -34,41 +38,45 @@
 
 ### 安装 frpc {#macos-install-frpc}
 
+1. 登录管理面板，转到 “软件下载”：
+
+   ![](../../_images/download.png)
+
+1. 选择 **frpc**，然后选择正确的系统和架构，复制下载链接：
+
+   ![](../_images/download-frpc.png)
+
+   ::: warning
+   我们建议您复制链接并使用命令下载 frpc，如果您用浏览器下载可能会出现无法运行的问题  
+   如果出现上述问题，您可以参考 [此 FAQ](/faq/frpc.md#macos-run-frpc-issue) 解决
+   :::
+
 1. 使用下面的命令进入 `/usr/local/bin` 文件夹：
 
    ```bash
    mkdir -p -m 755 /usr/local/bin && cd /usr/local/bin
    ```
 
-   ::: warning
-   我们建议您使用此处的命令下载 frpc，如果您使用浏览器下载可能会出现无法运行的问题  
-   如果出现上述问题，您可以参考 [此 FAQ](/faq/frpc.md#macos-run-frpc-issue) 解决
-   :::
-
    然后，使用下面的命令下载 frpc：
 
    ```bash
-   # 如果您使用的是 Apple Silicon 设备 (如 M1 CPU)，请使用下面的命令
-   curl -Lo frpc https://getfrp.sh/d/frpc_darwin_arm64
-
-   # 否则 (如 Intel CPU)，请使用下面的命令
-   curl -Lo frpc https://getfrp.sh/d/frpc_darwin_amd64
+   curl -Lo frpc <刚才复制的下载链接>
    ```
 
    ![](../_images/macos-4.png)
 
-2. 使用下面的命令设置权限并检查输出：
+1. 使用下面的命令设置权限并检查输出：
 
    ```bash
    chmod 755 frpc
    ls -ls frpc
    ```
 
-3. 如果您看到和图中红框标记匹配的输出，说明 frpc 已完成安装并准备就绪
+1. 如果您看到和图中红框标记匹配的输出，说明 frpc 已完成安装并准备就绪
 
    ![](../_images/macos-5.png)
 
-4. 您可以执行下面的命令再次确认以及查看 frpc 版本号
+1. 您可以执行下面的命令再次确认以及查看 frpc 版本号
 
    ```bash
    frpc -v

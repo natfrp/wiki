@@ -1,5 +1,9 @@
 <!-- markdownlint-disable MD041 -->
 
+::: tip
+SakuraFrp 核心服务已原生支持在 Linux 上运行，推荐您 [使用启动器](/launcher/usage.md#linux) 而非直接运行 frpc
+:::
+
 本文档中给出的命令大多需要 `root` 权限才能运行，请确保您现在已经处于有 `root` 权限的环境下。
 
 如果您现在没有切换到 `root` 账户下，那么请使用 `su` 或者 `sudo -s` 命令来进行切换。
@@ -47,11 +51,11 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 
    ![](../../_images/download.png)
 
-2. 选择 Linux 系统，然后选择正确的架构，点击按钮复制下载链接：
+1. 选择 **frpc**，然后选择正确的系统和架构，复制下载链接：
 
-   ![](../_images/linux-1.png)
+   ![](../_images/download-frpc.png)
 
-3. 使用下面的命令进入 `/usr/local/bin` 目录并下载文件：
+1. 使用下面的命令进入 `/usr/local/bin` 目录并下载文件：
 
    ```bash
    cd /usr/local/bin
@@ -67,7 +71,7 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 
    ![](../_images/linux-2.png)
 
-4. 然后设置权限并校验文件是否有损坏：
+1. 然后设置权限并校验文件是否有损坏：
 
    ```bash
    chmod 755 frpc
@@ -77,7 +81,7 @@ echo -n I | od -to2 | awk '{print substr($2,6,1); exit}'
 
    ![](../_images/linux-3.png)
 
-5. 此时 frpc 就安装完成并可以正常使用了。您可以用此命令查看 frpc 版本号：
+1. 此时 frpc 就安装完成并可以正常使用了。您可以用此命令查看 frpc 版本号：
 
    ```bash
    frpc -v
