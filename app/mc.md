@@ -44,6 +44,8 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
 上图中，我们获取到的端口号为 `61259`
 
+成功获取到端口号后，我们就可以开始 [创建隧道](/app/mc.html#%E5%88%9B%E5%BB%BA%E9%9A%A7%E9%81%93) 了。
+
 ### 安装辅助 Mod {#java-mod}
 
 ::: warning
@@ -89,7 +91,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
 :::: details 游戏版本: Forge: 1.12.X ~ 1.19.4, fabric: 1.16.1 ~ 1.19.4
 
-::: warning
+::: tip
 1.16.2 版由于 Forge 的原因可能会 **引发崩溃**，端口 **不能冲突**，否则也会崩溃
 :::
 
@@ -157,13 +159,17 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
    ::: tip
    `server.properties` 文件编辑完以后下一次使用 **这个存档** 联机就不用再次编辑了
-   :::
-
    如果 **换了个存档** 联机，就需要 **重新编辑** 或者复制之前的配置过来
    您也可以编辑 config 文件夹（与 save 文件夹同级）中的 serverGlobalConfig.properties 文件，里面的参数会影响 **以后新建的存档**
+   :::
+
 4. 现在请参考 [不装辅助 Mod](#java-no-mod) 一节开启局域网联机
 
 #### server.properties 配置文件翻译如下
+
+  ::: tip
+  [fandom Minecraft Wiki](https://minecraft.fandom.com/zh/wiki/Server.properties#Minecraft%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B1%9E%E6%80%A7) 中有对配置文件更详细的解释
+  :::
 
 ```properties
 player-idle-timeout=<Int>
@@ -183,16 +189,16 @@ max-view-distance=<Int>
 
 online-mode=<Boolean>
 # 是否开启正版验证
-# "true"(是)为开启, "false"(否)为关闭
+# "true"(真)为开启, "false"(假)为关闭
 # 如果要和非正版玩家，请关闭
 
 spawn-animals=<Boolean>
 # 是否生成生物
-# "true"(是)为开启, "false"(否)为关闭
+# "true"(真)为开启, "false"(假)为关闭
 
 pvp=<Boolean>
 # 玩家之间是否可以造成伤害
-# "true"(是)为开启, "false"(否)为关闭
+# "true"(真)为开启, "false"(假)为关闭
 
 max-players=<Int>
 # 最大玩家数
@@ -210,7 +216,7 @@ max-build-height=<Int>
 # 不能超过游戏限制 (低版本为256)
 
 resource-pack-sha1=
-# 资源包哈希算法 (没有请留空) 
+# 资源包哈希 (没有请留空) 
 
 motd=
 # Motd设置
@@ -221,13 +227,14 @@ motd=
 
 ### 创建隧道
 
-当您获取到了 **本地端口** 后，您即可开始 **创建隧道** 了，详细设置如下图
+当您获取到了 **本地端口** 后，您就可以开始 **创建隧道** 了
 
-::: warning
-如果您的服务器经常被 [DOS 攻击](https://zh.wikipedia.org/wiki/拒绝服务攻击)，请使用高防节点 (如枣庄)
-:::
-
-![](./_images/mc-5.png)
+隧道配置如下：
+隧道名称：填上您对此隧道的命名
+隧道类型：`TCP 隧道`
+本地 IP：`127.0.0.1`
+本地端口：您在以上章节获取的本地端口号
+如非必要，其他设置保持默认。
 
 ::: tip
 设置完后开启隧道，日志中会出现一行 “使用 \[frp-xxx.top:xxxxx\] 来连接到你的隧道” 的提示，客机使用这个连接 (frp-xxx.top:xxxxx) 来加入游戏。
@@ -236,7 +243,7 @@ motd=
 ## 设置 SRV 解析 {#srv}
 
 ::: tip
-设置 **SRV 解析** 只是为了美观，**并非必须**。设置后，在游戏中添加服务器时， **无需填写端口号**  
+设置 SRV 解析 只是为了美观，**并非必须**。设置后，在游戏中添加服务器时，无需填写端口号
 配置 SRV 记录后使用 `ping` 命令是 **无法测试** 连通性的，但是在游戏中填上就可以正常使用  
 需要留意的是，**只有 Minecraft Java 版支持解析 SRV 记录**，基岩版并不支持此特性
 :::
@@ -334,7 +341,3 @@ motd=
 - **假设** 您的域名为: example.com，您的 **名称** 设置为 `@`，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
 ::::
-
-## 无法进服解决方法 {#java-inaccessible}
-
-![](./_images/mc-javaia-1.png)
