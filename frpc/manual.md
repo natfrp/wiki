@@ -16,11 +16,11 @@
 | -w, --write_config | 拉取配置文件成功后将配置文件写入 `./frpc.ini` 中 |
 | -n, --no_check_update | 启动时不检查更新 |
 | -V, --version_full | 显示完整版本号并退出 frpc |
-| --remote_control `<密码>` | 配置远程管理 E2E 密码，请参阅 [frpc 远程管理](/frpc/remote.md) 获取更多信息 |
-| --update | 进行自动更新，如果不设置该选项默认只进行更新检查而不自动更新 |
+| --system_dns | 只使用系统 DNS 解析 API 请求 |
+| --encrypt_dns | 只使用加密 DNS 解析 API 请求 |
 | --natfrp_tls | 全程使用 TLS 加密流量，将有效增大 CPU 占用并显著提高延迟<br>_* 上面没写错，这是一个内部开关，我们不建议您使用它_ |
-| --report | 向启动器上报信息<br>_* 这是一个内部开关，我们不建议您使用它_ |
-| --watch `<PID>` | 监控指定 PID 并在进程退出时退出 frpc，同时禁用日志颜色输出<br>_* 这是一个内部开关，我们不建议您使用它_ |
+| ~~--update~~ | ~~进行自动更新，如果不设置该选项默认只进行更新检查而不自动更新~~<br>_* 于 0.45.0-sakura-7 移除_ |
+| ~~--remote_control `<密码>`~~ | ~~配置远程管理 E2E 密码，请参阅 [frpc 远程管理](/frpc/remote.md) 获取更多信息~~<br>_* 于 0.45.0-sakura-7 移除_ |
 
 ### 新增环境变量选项 {#advanced-env}
 
@@ -40,8 +40,8 @@
 | sakura_mode | Boolean | false | 启用 Sakura Frp 自有的各类 frpc 特性<br>下方提到的绝大多数选项均依赖于此项 |
 | use_recover | Boolean | false | 启用不断线重连功能 |
 | persist_runid | Boolean | true | 根据本机特征 & 隧道信息生成唯一 RunID 以便快速重连 |
-| remote_control | String | 空 | 配置远程管理 E2E 密码，留空则禁用远程管理<br>请参阅 [frpc 远程管理](/frpc/remote.md) 获取更多信息 |
 | dynamic_key | Boolean | true | 启用 DKC，即使用 SM2 和 AES-128-GCM / AES-128-CFB 加密数据连接（如果启用数据加密）和控制连接 |
+| ~~remote_control~~ | ~~String~~ | ~~空~~ | ~~配置远程管理 E2E 密码，留空则禁用远程管理<br>请参阅 [frpc 远程管理](/frpc/remote.md) 获取更多信息~~<br>_* 于 0.45.0-sakura-7 移除_ |
 
 #### TCP 隧道 {#tcp_proxy}
 

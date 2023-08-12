@@ -1,7 +1,8 @@
 # frpc 远程管理
 
-::: warning 注意：过时的文档
-frpc 远程管理功能已被废弃，请使用启动器或核心服务并配置 [远程管理 V2](/launcher/remote-v2.md) 管理隧道
+::: danger 该功能已被弃用
+由于稳定性、可维护性等原因，frpc 远程管理功能已被弃用，并在 **v0.45.0-sakura-7** 中被移除  
+请使用启动器或核心服务的 [远程管理 V2](/launcher/remote-v2.md) 获取更完整、更稳定的远程管理体验
 :::
 
 SakuraFrp frpc v0.34.2-sakura-2 及以上版本提供了远程管理功能，可以在 Sakura Frp 网站上对 frpc 进行管理
