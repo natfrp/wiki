@@ -11,6 +11,7 @@
 | `SakuraLauncher.exe`                                         | Windows (WPF 启动器，提供最新功能) |
 | `LegacyLauncher.exe`                                         | Windows (传统启动器，提供基础功能) |
 | `SakuraLauncher.app`                                         | macOS                              |
+| `SakuraLauncher.apk`                                         | Android                              |
 | 配置 Web UI 通过 [PWA](https://launcher.natfrp.com) 进行管理 | 所有平台                           |
 
 高级用户完全可以选择不安装用户界面、手动修改 `config.json` 启用远程管理 V2 在管理面板进行控制。不过这样做使用体验比较差。
@@ -22,6 +23,8 @@
 | `natfrp-service`       | Linux / FreeBSD |
 
 由于 Apple 的签名要求，核心服务在 macOS 平台下只能通过 `SakuraLauncer.app` 使用，故不适用于 **命令行开关** 与 **环境变量** 章节。虽然您可以将 `natfrp-service.app` 甚至里面的二进制文件单独提取出来使用，但我们不推荐这么做。
+
+Android 平台的启动器也不适用于这两节，并且您可能需要 ADB 或 Root 权限来编辑配置文件。
 
 用户界面本身不提供高级配置选项，下方的说明都是针对核心服务的。
 
@@ -60,11 +63,12 @@ natfrp-service remote-kdf <明文密码>
 
 目前仅在 Linux / FreeBSD 下会读取以下环境变量：
 
-| 变量                  | 说明                                                     |
-| --------------------- | -------------------------------------------------------- |
-| `NATFRP_SERVICE_WD`   | 指定 **工作目录**                                        |
-| `NATFRP_SERVICE_LOCK` | 指定互斥锁兼 PID 文件路径，默认为 `${工作目录}/lock.pid` |
-| `NATFRP_SERVICE_SOCK` | 指定控制连接的 Unix Socket 路径，默认禁用                |
+| 变量                  | 说明                                                             |
+| --------------------- | ---------------------------------------------------------------- |
+| `NATFRP_SERVICE_WD`   | 指定 **工作目录**                                                |
+| `NATFRP_SERVICE_LOCK` | 指定互斥锁兼 PID 文件路径，默认为 `${工作目录}/lock.pid`         |
+| `NATFRP_SERVICE_SOCK` | 指定控制连接的 Unix Socket 路径，默认禁用                        |
+| `NATFRP_FRPC_PATH`    | 指定 frpc 可执行文件路径，默认为 `核心服务可执行文件/frpc(.exe)` |
 
 ## 工作目录 {#working-dir}
 
@@ -75,6 +79,8 @@ natfrp-service remote-kdf <明文密码>
 - Linux / FreeBSD 下遵循 FreeDesktop 规范：
   - 优先使用 `$XDG_CONFIG_HOME/.config/natfrp-service`
   - 如果 `$XDG_CONFIG_HOME` 未设置，则使用 `~/.config/natfrp-service`
+- Android 启动器：`/data/data/com.natfrp.launcher/service/`
+- OpenWRT LuCI 插件：`/etc/natfrp`
 
 启动器将使用以下路径：
 
@@ -159,7 +165,7 @@ natfrp-service remote-kdf <明文密码>
 | 配置项          | 类型      | 默认值  | 说明                                       |
 | --------------- | --------- | ------- | ------------------------------------------ |
 | log_buffer_size | `Int`     | `4096`  | 日志 Ring 缓冲区大小（条数），请勿随意调节 |
-| log_stdout      | `Boolean` | `false` | 将日志输出到 stdout                        |
+| log_stdout      | `Boolean` | `false` | 将日志写到标准输出，Docker 中默认为 `true` |
 | log_file        | `String`  | `auto`  | 日志文件路径，`auto` 则写入默认路径        |
 
 ### 远程管理 {#config-remote}
@@ -200,6 +206,12 @@ natfrp-service remote-kdf <明文密码>
 - 例如 `this-breaks-webui-i-dont-care:192.168.1.100` 会使启动器在 `192.168.1.100` 监听 HTTP 协议
 - 但这会造成 Web UI 工作异常，最常见的表现为卡在 **连接中...**
 - 我们知道这是由于非安全上下文中无法使用部分 API 造成的，但我们不会修复这个问题
+
+同时满足下列三个条件时，启动器会自动生成并使用自签名证书 `webui.{key,crt}`：
+
+- `webui_host` 不为 `localhost`
+- 未使用绕过前缀
+- `webui_cert`、`webui_cert_key` 均为空
 
 #### 关于 webui_pass {#config-webui-pass}
 

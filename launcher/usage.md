@@ -73,12 +73,12 @@
    # 复制对应的下载链接并下载
    # curl -LO https://....
 
-   # 解压并设置权限
+   # 解压
    tar -I zstd -xvf natfrp-service_*.tar.zst
-   chmod +x frpc natfrp-service
-
-   # 删除压缩包
    rm natfrp-service_*.tar.zst
+
+   # 设置权限
+   chmod +x frpc natfrp-service
    ```
 
    ![](./_images/linux-install-1.png)
@@ -160,10 +160,10 @@
 
    # 解压
    tar -I zstd -xvf natfrp-service_*.tar.zst
-   chmod +x frpc natfrp-service
    rm natfrp-service_*.tar.zst
 
    # 设置权限
+   chmod +x frpc natfrp-service
    chown natfrp:natfrp frpc natfrp-service
    ```
 
