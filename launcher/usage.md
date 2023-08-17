@@ -237,7 +237,9 @@
    journalctl -u natfrp.service -f
    ```
 
-1. 最后，打开 [远程管理](https://www.natfrp.com/remote/v2)，连接您的服务器并启用隧道。
+1. 最后，打开 [远程管理](https://www.natfrp.com/remote/v2)，连接您的服务器并启用隧道：
+
+   ![](./_images/remote-v2-connect-2.png)
 
 ### 关于卸载方式 {#uninstall}
 
@@ -251,6 +253,54 @@ rm /etc/systemd/system/natfrp.service
 # 删除用户和 HOME 目录
 userdel -r natfrp
 ```
+
+@tab OpenWrt {#openwrt}
+
+::: tip 系统需求
+
+- 系统版本：`OpenWrt 18` 及以上
+- 依赖 `luci-compat` 包（**opkg** 应该会自动安装）
+- 占用 **10~30 MiB** 硬盘空间（不同架构各不相同）
+- 核心服务进程、每个 frpc 进程占用约 **30 MiB RAM**
+- 如果设备 RAM 小于 **256 MiB**，不推荐使用启动器，请考虑 [直接使用 frpc](/frpc/service/openwrt.md)
+
+如果您还在使用旧版本系统，最好先进行更新，或是参考 [此处](https://github.com/natfrp/luci-app-natfrp#%E7%B3%BB%E7%BB%9F%E9%9C%80%E6%B1%82) 进行操作
+:::
+
+1. 确认您的路由器架构，然后到 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/launcher-openwrt/) 下载对应的 IPK 文件
+
+1. 如果您的 OpenWrt 版本较新，可以前往 `系统 > 软件包` 页面点击 `上传软件包` 按钮直接进行安装：
+
+   ![](./_images/openwrt-install-1.png)
+
+1. 如果 LuCI 面板中没有上传软件包按钮，请将软件包通过 SSH 传输到路由器并手动执行命令安装：
+
+   ```bash
+   opkg install ./luci-app-natfrp_<架构>.ipk
+   ```
+
+   ![](./_images/openwrt-install-2.png)
+
+1. 安装完成后，**退出并重新登录 LuCI 面板**，转到 `服务 > SakuraFrp` 页面并按图示设置：
+
+   ![](./_images/openwrt-install-3.png)
+
+   ::: warning 注意
+   如果在 **启动服务** 选择框下方未正确显示服务版本，您下载的架构可能有误  
+   建议先检查下载的架构是否正确、确认 `natfrp-service -V` 能输出版本号再继续配置
+   :::
+
+1. 如果一切正常，`访问密钥` 与 `E2E 密码` 输入框的内容会被清空，状态会变成绿色的 `运行中`：
+
+   ![](./_images/openwrt-install-4.png)
+
+1. 转到 `状态 > 系统日志` 页面，拉到最下面确认服务登录成功并且连接上了远程管理：
+
+   ![](./_images/openwrt-install-5.png)
+
+1. 最后，打开 [远程管理](https://www.natfrp.com/remote/v2)，连接您的路由器并启用隧道：
+
+   ![](./_images/remote-v2-connect-2.png)
 
 :::::
 
