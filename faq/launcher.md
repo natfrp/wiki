@@ -131,14 +131,14 @@
 SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 ```
 
-### 下载附加文件时出错 {#error-on-download-extra-files}
+### 下载附加文件时出错 / .NET Framework 安装失败 {#error-on-download-extra-files}
 
-如果在 **正在下载附加文件...** 时报错 **Server Certificate Invalid or not present**，请按顺序操作:
+请按顺序进行以下操作:
 
-1. 检查系统时间是否正确，然后重试
-1. 点击 [这里](https://dotnet.microsoft.com/zh-cn/download/dotnet-framework/net48)，然后点击 **下载 .NET Framework 4.8 运行时** 下载框架安装程序
-1. 关闭启动器安装程序，运行刚才下载的框架安装程序，安装框架
-1. 重新运行启动器安装程序，正常进行安装
+1. 关闭启动器安装程序
+1. 点击 [这里](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer) 下载 .NET Framework 安装程序，运行并完成框架安装
+1. 重启电脑
+1. 再运行启动器安装程序即可正常进行安装
 
 ### 这个程序需要 Windows 服务包 1 或更高 {#requires-sp1}
 
@@ -173,7 +173,7 @@ SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 
 出现 `该软件需要安装 .NET Framework 4.0 及以上` 类似提示。
 
-- 安装 `.NET Framework 4.8` 即可 ([点击前往微软官方下载页面](https://dotnet.microsoft.com/download/dotnet-framework/net48))。
+- 安装 `.NET Framework 4.8` 即可 ([点击这里下载](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer))。
 
 ### 隧道启动失败: 拒绝访问 / 系统找不到指定的文件 / file does not exist
 
