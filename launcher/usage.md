@@ -302,6 +302,65 @@ userdel -r natfrp
 
    ![](./_images/remote-v2-connect-2.png)
 
+@tab Docker {#docker}
+
+::: tip
+这篇指南以命令行操作 Docker 为例，您应当可以很轻松地将这篇指南中提供的经验迁移到各种 GUI 中
+:::
+
+1. 迁移隧道配置
+
+   为了提高灵活度，在这篇指南中我们将以 主机网络 模式运行容器。
+   您此前为 Docker 设置的隧道需要将本地 IP 修改回 `127.0.0.1` 方可使用。
+
+   对于在其他部署方式中本就可以使用的隧道，您不需做出修改。
+
+2. 启动容器
+
+   执行下面的指令即可启动：
+
+   ```bash
+   docker run \
+      -d \
+      -p 4101:4101 \
+      --restart=on-failure:5 \
+      --pull=always \
+      --name=natfrp-service \
+      natfrp/launcher
+   ```
+
+   如果您卡在了 `Pulling from natfrp/launcher`，请尝试将最后一行 `natfrp/launcher` 替换为 `registry.cn-hongkong.aliyuncs.com/natfrp/launcher`。
+
+   如果您遇到了错误 `Bind for 0.0.0.0:4101 failed: port is already allocated`，请查找本机监听 4101 的程序关闭，或参考 [高级用户](#advance-docker) 替换监听端口。
+
+3. 获取连接信息
+
+   执行 `docker logs natfrp-service` 即可查看容器的日志，您将看到类似下面的回显内容：
+
+   ```text
+   ============= Service Running =============
+   WebUI 端口: <端口>
+   WebUI 密码: <密码>
+   请使用 https:// 进行连接
+   ============= Service Running =============
+
+   ...
+   ...
+   ...
+   2038-01-01 00.00.00 Info Service 守护进程初始化完成
+   ```
+
+   请记下其中的 `<端口>` 和 `<密码>` 处的内容，它们只会显示一次。
+
+   您只需本机打开 `https://127.0.0.1:<端口>` 即可访问 WebUI 管理界面。
+
+   默认情况下 WebUI 向您连入的所有网络开放，如果您需要访问，可以使用 `https://内网IP:<端口>`，
+   如果您需要修改监听 IP，请参考 [高级用户](#advance-docker)。
+
+4. 高级用户 {#advance-docker}
+
+   如果您需要自行配置，请先阅读 [配置文件详解](/launcher/manual.md#config)，然后将容器内的 `/run/config.json` 挂载编辑即可。
+
 :::::
 
 ## 登录启动器 {#login}
