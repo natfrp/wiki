@@ -107,6 +107,7 @@ const sections = {
 			'/offtopic/source.md',
 			'/offtopic/proxy-protocol.md',
 			'/offtopic/auth-guest.md',
+			'/offtopic/auth-widget.md',
 			'/offtopic/mail.md',
 		],
 	},
