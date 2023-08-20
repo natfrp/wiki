@@ -101,3 +101,5 @@ curl -k -X POST \
 ```
 
 我们 **更推荐** 您使用 [SakuraFrp 认证代理](/offtopic/auth-guest.md) 自动完成认证流程，配置后只需打开认证代理即可自动完成访问认证。
+
+如果您需要在安卓手机使用，您可以参考上面的请求使用 Tasker 或 [SakuraFrp 认证代理微件](/offtopic/auth-widget.md) 自动完成认证。
