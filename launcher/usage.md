@@ -197,6 +197,9 @@
 1. 配置完成后，启动并停止一次 `natfrp-service` 来生成配置文件：
 
    ```bash
+   # 请确保您的工作目录正确
+   cd /home/natfrp/
+
    systemctl start natfrp.service
    sleep 3
    systemctl stop natfrp.service
@@ -208,6 +211,9 @@
 1. 修改配置文件，填入访问密钥和远程管理 Key：
 
    ```bash
+   # 请确保您的工作目录正确
+   cd /home/natfrp/
+
    # 生成 KDF 后的远程管理 E2E 密码，复制输出的 Base64 字符串备用
    ./natfrp-service remote-kdf <您的远程管理 E2E 密码>
 
