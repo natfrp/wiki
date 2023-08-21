@@ -146,6 +146,12 @@ SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 
 我们推荐您更新到最新版 Windows 10 (或者 11) 来获取更好的使用体验，关于兼容性问题请参阅 [启动器系统需求](#system-requirement)。
 
+### 安装时出现错误代码 5100 {#error-net-5100}
+
+根据 [微软官方文档](https://learn.microsoft.com/en-us/dotnet/framework/deployment/guide-for-administrators)，此问题为 **用户计算机不符合系统需求**。
+
+请检查您的系统符合 [启动器系统需求](#system-requirement)。
+
 ### 启动器系统需求 {#system-requirement}
 
 | 硬件 | 最低需求 | 推荐配置 |
@@ -153,6 +159,8 @@ SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 | CPU | 1 GHz | 2.3 GHz, 4 线程或更高 |
 | RAM | 700 MiB | 4 GiB 或更高 |
 | 硬盘剩余空间 | 50 MiB | 2 GiB 或更高 |
+
+启动器依赖于微软的 .NET Framework 4.8 运行时，因此启动器的系统需求也与微软提供的 .NET Framework 4.8 运行时系统需求相同。
 
 | 操作系统 | 兼容性 |
 | --- | --- |
