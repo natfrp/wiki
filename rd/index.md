@@ -53,7 +53,17 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 
 @tab Android 客户端
 
-将下列信息填写到 `设置 > ID/中继服务器` 中：
+转到 `设置` 页面，点击右上角的扫码按钮扫描配置二维码：
+
+![](./_images/config-qr.png)
+
+这是一个简单的操作图示：
+
+![](./_images/configure-network-android.png)
+
+@tab 手动配置
+
+将下列信息填写到 `ID/中继服务器` 设置中：
 
 | 配置项 | 内容 |
 | --- | --- |
@@ -62,8 +72,6 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 | Key | `uUnb9eVVNZskn4xjkflCTKbO1CVCax4dg+nw9C26gkQ=` |
 
 请确保 **复制粘贴** 所有内容，避免因输入错误而无法连接。
-
-![](./_images/configure-network-android.png)
 
 :::
 
