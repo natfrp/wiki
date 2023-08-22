@@ -15,17 +15,18 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 - 目前普通用户可登录 5 个客户端，VIP 用户可登录 50 个客户端
 - 原则上我们不支持使用 TCP 隧道功能，滥用该功能可能会造成您的账户被封禁
 - 文件传输功能同理，滥用（频繁传输超大文件等）可能会造成您的账户被封禁
+- 不对红队用户开放，请自建中继服务器或者用市面上其他成熟的服务 😔
 
-目前我们只对部分用户开放此服务，请在 VIP 反馈群联系管理员或通过邮件开启工单申请权限。
+目前我们只对部分用户开放此服务，请 [联系我们](/about.md#contact-us) 申请使用权限。
 
 ## 下载软件
 
 您可以选用 [RustDesk 官方发布的版本](https://github.com/rustdesk/rustdesk/releases/latest) 或是 [SakuraFrp 分发的版本](https://github.com/natfrp/rustdesk/releases/latest)。
 
-- 官方版本需 [配置服务器](#configure) 才能正常连接 SakuraFrp 提供的 RustDesk 服务。  
-  该版本经过了数字签名，推荐不喜欢折腾的用户使用
 - 由 SakuraFrp 分发的客户端无需配置服务器，且针对我们的服务进行了优化。  
-  推荐 Geek 用户使用
+  适合大部分用户使用
+- 官方版本需 [配置服务器](#configure) 才能正常连接 SakuraFrp 提供的 RustDesk 服务。  
+  该版本经过了数字签名，如果您非常在意数字签名请使用此版本
 
 ::: warning 客户端兼容性说明
 ~~RustDesk 官方发布的 v1.1.9 版本已一年多未更新过，与我们的 HBBS 存在兼容问题，请下载 Nightly 版本使用~~  
@@ -34,7 +35,25 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 
 ## 配置指南 {#configure}
 
-官方客户端需配置 **ID/中继服务器** 以连接到 SakuraFrp。请确保 **复制粘贴** 所有内容，避免因输入错误而无法连接。
+官方客户端需配置 **ID/中继服务器** 以连接到 SakuraFrp。如果您使用的是 SakuraFrp 分发的客户端，请 [跳过](#login) 这一步。
+
+::: tabs
+
+@tab 桌面客户端
+
+1. 复制下方内容，请确保复制完整、没有多余字符：
+  
+   ```base64
+   9JSPRt2Z2IzQ5cnbrcGZ0gXYDZ1Qx8kYLR1QsZ2aqhHNut2ca5kVWVWOi5WV1JiOikXZrJCLiQmcv02bj5CcyZGdh5mLpBXYv8iOzBHd0hmI6ISawFmIsIiI6ISehxWZyJCLiQWdvx2YuAncmRXYu5SMtQmciojI0N3boJye
+   ```
+
+1. 转到 `RustDesk 设置 > 网络`，解锁网络设置后点击 `ID/中继服务器` 卡片右上角的导入按钮：
+
+   ![](./_images/configure-network-desktop.png)
+
+@tab Android 客户端
+
+将下列信息填写到 `设置 > ID/中继服务器` 中：
 
 | 配置项 | 内容 |
 | --- | --- |
@@ -42,21 +61,17 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 | API 服务器 | `https://api.natfrp.com/rd` |
 | Key | `uUnb9eVVNZskn4xjkflCTKbO1CVCax4dg+nw9C26gkQ=` |
 
-::: tabs
-
-@tab 桌面客户端
-
-![](./_images/configure-network-desktop.png)
-
-@tab Android 客户端
+请确保 **复制粘贴** 所有内容，避免因输入错误而无法连接。
 
 ![](./_images/configure-network-android.png)
 
 :::
 
-服务器配置完成后，请使用您的 SakuraFrp **用户名** 和 **访问密钥** 登录客户端。
+## 登录客户端 {#login}
 
-您也可以点击下面的 `使用 Nyatwork OpenID`（官方客户端显示为 `使用 GitHub`）按钮打开浏览器进行登录。
+推荐使用您的 SakuraFrp **用户名** 和 **访问密钥** 登录客户端，这样可以在面板显示设备信息。
+
+您也可以点击下面的 `使用 Nyatwork OpenID`（官方客户端 < 1.2.2 显示为 `使用 GitHub`）按钮打开浏览器进行登录。
 
 ![](./_images/login.png)
 
