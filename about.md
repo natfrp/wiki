@@ -15,13 +15,13 @@ contributors: false
 
 ## 联系我们 / Contact us {#contact-us}
 
-- 如果您需要举报滥用或违规内容，您可以前往 [举报滥用](https://www.natfrp.com/report.html) 页面提交信息或直接通过邮件联系我们  
+- 如果您需要举报滥用或违规内容，您可以前往 [举报滥用](https://www.natfrp.com/report.html) 页面提交信息或直接开启工单联系我们  
   To submit abuse report, please head to [THIS PAGE](https://www.natfrp.com/report_en.html) and fill out the form or mail us direcly
 
-- 如果您是 SakuraFrp VIP，您可以进入 **VIP 用户反馈群** 使用群聊获得来自管理员和其他用户的帮助  
-  **用户组为 VIP 时** 您可以在 [用户信息](https://www.natfrp.com/user/profile) 页面找到群号，如果没找到可以刷新一下再仔细找找
+- 您也可以进入 [官方 QQ 反馈群](/#community-official-qq)（不是水群）获得来自管理员和其他用户的帮助  
+  官方 QQ 反馈群的管理员是目前唯一的官方客服，可以处理一部分使用问题
 
-:::: details 如果您需要咨询其他问题，请发送电子邮件开启工单 (点击展开)
+:::: details 如果获取进阶技术支持，请发送电子邮件开启工单 (点击展开)
 
 ::: danger 注意：工单系统不受理使用相关问题
 查询账户注销状态、提交 Bug 报告 (**请先仔细确认是真的 Bug 还是使用方法错误**)、付款后服务未到帐、实名信息迁移等问题可以使用此处的联系方式。  
@@ -35,7 +35,7 @@ contributors: false
 - 截图时请 **包含整个窗口**，不要只截一两行字；请确保截图 **清晰**；请 **不要** 用相机拍屏幕
 - 描述问题时请 **说清楚** 您要做什么，如果只发两三个字我们可能无法正确解读您的意图
 
-有效、信息充足的工单会在 **7 天**（最快可达 **几小时**）内收到回复。如果您没有提供任何有效信息，可能只会在 7 天后收到一封询问 UID 的邮件
+有效、信息充足的工单会在 **7 天**（最快可达 **几小时**）内收到回复。如果您没有提供任何有效信息，可能只会在 7 天后收到一封无法受理的邮件
 :::
 
 我们的工单邮件地址是：`support@natfrp.cloud`
