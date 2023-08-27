@@ -57,8 +57,15 @@
 @tab Linux 桌面环境 {#linux}
 
 ::: tip
-这篇指南安装的服务 **仅在登录桌面期间可用**。如果您需要服务在开机后总是可用，请查看 [Linux 服务器](#linux-server) 标签  
-出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，我们也不推荐您使用 root 用户登录桌面环境
+这篇指南适合普通 Linux 桌面用户，希望在 **自己登录桌面后，桌面注销前** 使用映射服务的情况  
+如果您需要服务在开机后总是可用，或者使用 root 账户，请查看 [Linux 服务器](#linux-server) 标签  
+
+出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，我们也推荐您不要使用 root 用户登录桌面环境
+:::
+
+::: danger 请留意当前账户
+以下指南基于您正在使用 **非 root** 账户登录桌面环境，且 shell 中不是 root 账户  
+如果您正在使用 root 账户且决定一直使用 root 账户，您应该可以自己解决问题
 :::
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
@@ -137,7 +144,7 @@
 @tab Linux 服务器 {#linux-server}
 
 ::: tip
-这篇指南假设您以 `root` 权限进行安装，若您使用其他用户请使用 `sudo` 执行特权指令
+这篇指南假设您以 `root` 权限进行安装，若您使用其他用户请使用 `sudo -i` 或 `su -` 切换到 root 账户执行特权指令
 :::
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
