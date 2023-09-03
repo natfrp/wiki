@@ -76,7 +76,7 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 
 ::: warning 注意
 加入水群时请 **不要** 填写访问密钥，请仔细阅读入群问题并填写对应的回复  
-入群问题并不是主观题，如果您找不到答案请 STFW 。
+入群问题并不是主观题，如果您找不到答案请 [STFW](https://cn.bing.com/search?q=STFW) 。
 :::
 
 - 群号: 1036050697 , 766865191 , 1011690081 , 650510813
