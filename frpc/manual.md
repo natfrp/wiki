@@ -43,6 +43,13 @@
 | dynamic_key | Boolean | true | 启用 DKC，即使用 SM2 和 AES-128-GCM / AES-128-CFB 加密数据连接（如果启用数据加密）和控制连接 |
 | ~~remote_control~~ | ~~String~~ | ~~空~~ | ~~配置远程管理 E2E 密码，留空则禁用远程管理<br>请参阅 [frpc 远程管理](/frpc/remote.md) 获取更多信息~~<br>_* 于 0.45.0-sakura-7 移除_ |
 
+#### 隧道通用配置 {#all_proxy}
+
+| 选项 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| blacklist_ip | List&lt;String&gt; | 空 | 以 `,` 分隔的黑名单列表，比白名单优先级更高，格式可以为:<br>- `114.5.1.4`: 单个 IP<br>- `114.5.1.4/8(16,24,32)`: 可以被 8 整除的前缀表示 |
+| whitelist_ip | List&lt;String&gt; | 空 | 以 `,` 分隔的白名单列表，设置白名单后无法通过黑白名单的 IP 即无法访问，格式与黑名单相同 |
+
 #### TCP 隧道 {#tcp_proxy}
 
 | 选项 | 类型 | 默认值 | 说明 |
