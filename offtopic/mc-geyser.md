@@ -383,12 +383,12 @@ max-world-size = 29999984
 # 设置最大的世界边界半径，单位为方块。
 # 允许值: [1, 29999984]
 
-# max-chained-neighbor-updates = 0
+max-chained-neighbor-updates = 0
 # 设置连锁更新 NC 的数量，超过此限制的 NC 更新会被跳过。若为负数则无限制。
 # 仅在 1.19 及更高版本有效。
 # 允许值: [∞, ∞]
 
-# enforce-secure-profile = true
+enforce-secure-profile = true
 # 是否强制要求使用签名公钥
 # 启用后，玩家必须具有由 Mojang 签名的公钥，才能进入服务器。
 # 仅在 1.19 及更高版本有效，1.19 默认值为 false。
@@ -410,6 +410,13 @@ initial-disabled-packs =
 initial-enabled-packs = vanilla
 # 在创建世界过程中，需要启用并加载的数据包名称
 # 仅在 1.19.3 及更高版本有效。
+
+log-ips = true
+# 新玩家加入时，是否将其 IP 地址记录到日志文件中
+# 仅在 1.20.2 及更高版本有效。
+# 允许值:
+#   是: true
+#   否: false
 ```
 
 ### 编辑 Geyser 服务端配置文件
