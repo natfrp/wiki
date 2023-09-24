@@ -107,6 +107,13 @@ server-portv6 = 19132
 # 服务端应监听哪个IPv6端口。
 # 允许值: [1, 65535]
 
+enable-lan-visibility = true
+# 是否使服务器在局域网 (好友界面) 可见
+# 仅在 1.19.50 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
 view-distance = 32
 # 允许的最大视距 (以方块数为单位) 。
 # 允许值: [1, ∞]
@@ -152,6 +159,12 @@ content-log-file-enabled = false
 compression-threshold = 1
 # 要压缩的原始网络有效负载的最小大小
 # 允许值 : [0, 65535]
+
+compression-algorithm = zlib
+# 网络连接使用的压缩算法
+# 允许值:
+#   zlib 算法: zlib
+#   Snappy 算法: snappy
 
 server-authoritative-movement = true
 # 启用服务端权威性移动。
@@ -214,14 +227,7 @@ disable-custom-skins = false
 #   是: true
 #   否: false
 
-enable-lan-visibility = true
-# 是否使服务器在局域网 (好友界面) 可见
-# 仅在 1.19.50 及更高版本的服务端中生效。
-# 允许值:
-#   是: true
-#   否: false
-
-# block-network-ids-are-hashes = true
+block-network-ids-are-hashes = true
 # 是否使服务端发送散列的方块网络 ID，这些 ID 不会被随意更改
 # 设为 false 时，将发送从 0 开始递增的 ID。
 # 仅在 1.20.10.20 及更高版本的服务端中生效。
@@ -229,7 +235,7 @@ enable-lan-visibility = true
 #   是: true
 #   否: false
 
-# server-build-radius-ratio = Disabled
+server-build-radius-ratio = Disabled
 # 是否根据覆盖比率的多少来生成玩家的视距，不考虑客户端的硬件功能
 # 设为 false 时，将由服务器动态计算玩家的视距多少。
 # 仅在 client-side-chunk-generation-enabled 配置项启用时生效

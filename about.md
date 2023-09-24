@@ -73,7 +73,7 @@ contributors: false
   - _咕_
 - [一纸荒年Trace](https://wtrace3zh.com)
   - _Source 引擎游戏开服指南 帮助文档_
-- [红羽早苗](https://fro.moe)
+- [红羽早苗](https://www.natfrpbbs.com/members/1/)
   - _邮件服务穿透、Minecraft 穿透及开服指南 部分帮助文档_
   - _社区论坛站点_
   - _不咕_
