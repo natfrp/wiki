@@ -335,7 +335,7 @@ userdel -r natfrp
    ```bash
    docker run \
       -d \
-      -p 4101:4101 \
+      --network=host \
       --restart=on-failure:5 \
       --pull=always \
       --name=natfrp-service \
