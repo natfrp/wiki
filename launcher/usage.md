@@ -222,6 +222,7 @@
    cd /home/natfrp/
 
    # 生成 KDF 后的远程管理 E2E 密码，复制输出的 Base64 字符串备用
+   # 注意如果结尾有等号 (=) 出现，请一起复制，它们也是 Base64 的一部分
    ./natfrp-service remote-kdf <您的远程管理 E2E 密码>
 
    # 编辑配置文件, 以 vim 为例
