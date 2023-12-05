@@ -99,7 +99,8 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 ### 官方 QQ 反馈群 {#community-official-qq}
 
 ::: tip 提示
-官方 QQ 群需在验证问题处填写访问密钥，由机器人自动审核加群请求并绑定账户
+官方 QQ 群需在验证问题处填写访问密钥，由机器人自动审核加群请求并绑定账户  
+为了维护良好的交流环境，只有通过实名认证的用户才能加入官方反馈群
 :::
 
 - 公开用户群：  
