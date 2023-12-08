@@ -92,8 +92,7 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 
 ### 其他 IM 水群 {#community-other-im}
 
-- [Telegram](https://t.me/natfrp_unofficial)
-- [Matrix](https://matrix.to/#/!GFWDTqltQmjaSCDGij:atunemic.cn?via=atunemic.cn&via=t2bot.io)
+- [Telegram](https://t.me/natfrp_unofficial) (由于腾讯对QQ机器人的限制，暂无QQ<->Telegram桥接，恢复时间待定）
 - 非官方群, 群内没有网站管理员
 
 ### 官方 QQ 反馈群 {#community-official-qq}
