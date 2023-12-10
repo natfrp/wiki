@@ -43,6 +43,26 @@
 
 @tab Windows Defender
 
+1. 打开开始菜单或搜索框，搜索 `powershell`，右键选择 **以管理员身份运行**
+
+   ![](./_images/av-wd-ps-1.png)
+
+2. 确认标题栏中有 `管理员:` 字样，复制并运行下面的命令
+
+   ```powershell
+   Add-MpPreference -ExclusionPath "$env:ProgramFiles\SakuraFrpLauncher", "$env:ProgramData\SakuraFrpService\Update"
+   (Get-MpPreference).ExclusionPath | Select-String Sakura
+   ```
+
+3. 检查命令输出结果，确认和图中一致
+
+   ![](./_images/av-wd-ps-2.png)
+
+4. 如果之前碰到的报错是 `Access is denied`，现在启动器应该已经可以使用了  
+   否则，再使用安装包重装一次启动器即可正常使用
+
+@tab Windows Defender (GUI)
+
 1. 首先，[点击这里](ms-settings:windowsdefender) 打开 Windows 安全中心
 
    ![](./_images/av-wd-1.png)
