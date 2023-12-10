@@ -15,6 +15,7 @@
 
 - [Let's Encrypt](https://letsencrypt.org/) (免费)
 - [Zero SSL](https://zerossl.com/) (免费)
+- [Nya SSL](https://get.ssl.moe/) (单域名 ￥14.9/年, 泛域名 ￥149/年)
 - [腾讯云](https://cloud.tencent.com/product/ssl)
 - [阿里云](https://www.aliyun.com/product/cas)
 - [Comodo](https://www.comodo.com/)
