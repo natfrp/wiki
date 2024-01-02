@@ -100,7 +100,7 @@
 
    ![](./_images/dsm-launcher-install-4.png)
 
-### 启动隧道 {#docker-start-tunnel}
+### 启动隧道 {#start-tunnel}
 
 无论是通过 Web UI 还是远程管理连接，您应该都能看到刚才创建的隧道，双击或将其拖到上方启动：
 
