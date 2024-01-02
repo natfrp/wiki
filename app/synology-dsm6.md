@@ -1,4 +1,9 @@
-# 群晖 (Synology) NAS 穿透指南 (DSM 6)
+# 群晖 DSM 6 穿透指南 (frpc)
+
+::: danger 该文档已过时
+SakuraFrp 已提供启动器 SPK 软件包，推荐您参考 [此文档](/app/synology.md) 进行配置  
+当前文档仅供参考，不再更新
+:::
 
 ## 查看本地端口 {#local-port}
 
