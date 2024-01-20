@@ -70,6 +70,10 @@ Palworld 独立服务器内存配置要求较高，请确保在启动游戏后�
 
 ![](_images/palw-start-server.png)
 
+请务必确认，联机游玩时这个启动后弹出的黑框框始终存在，这表示您的服务器一直在开启：
+
+![](_images/palw-server-cmd.png)
+
 ### 启动隧道
 
 [安装并登录启动器](/launcher/usage.html)后，在 SakuraFrp 启动器中找到您先前创建的隧道，启用即可。  
