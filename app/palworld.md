@@ -92,3 +92,34 @@ Palworld 独立服务器内存配置要求较高，请确保在启动游戏后�
 ![](_images/palw-join.png)
 
 如果您启动了多条隧道，请根据需要和体验选择一条输入。
+
+## 修改服务器配置
+
+在 Steam 中找到 `Palworld Dedicated Server`，右键打开本地文件：
+
+![](_images/palw-steam-config.png)
+
+在此文件夹中，打开 `DefaultPalWorldSettings.ini` 作为配置样板。
+
+依次打开 `Pal/Saved/Config/WindowsServer/PalWorldSettings.ini` 即为当前世界配置，复制上面的样板粘贴进入后修改即可。
+
+配置项目由逗号分隔，即逗号后面为新的一项配置，配置名和配置内容之间用等号连接。
+
+具体配置项您可以参考 [官方文档](https://tech.palworldgame.com/optimize-game-balance)，这里提供一些常用项目：
+
+::: tip
+倍率类项目可以为小数，即 `1.000000` `0.500000` 此类。  
+是否类项目应为 `True`(是) 或 `False`(否)
+:::
+
+| 配置名 | 说明 |
+| -- | -- |
+| DeathPenalty | 死亡掉落：<br>`None`: 不掉落<br>`Item`: 只掉落物品<br>`ItemAndEquipment`: 掉落物品和装备<br>`All`: 掉落物品、装备和帕鲁 |
+| DayTimeSpeedRate | 白天时间流速倍率 |
+| NightTimeSpeedRate | 夜晚时间流速倍率 |
+| ExpRate | 经验获取倍率 |
+| PalStaminaDecreaceRate | 帕鲁耐力消耗速度倍率 |
+| CollectionDropRate | 收集物掉落倍率 |
+| WorkSpeedRate | 工作速度倍率 |
+| bEnableAimAssistKeyboard | 是否开启辅助瞄准 |
+| bEnableFastTravel | 是否开启传送 |
