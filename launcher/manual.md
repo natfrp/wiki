@@ -81,6 +81,7 @@ natfrp-service remote-kdf <明文密码>
   - 如果 `$XDG_CONFIG_HOME` 未设置，则使用 `~/.config/natfrp-service`
 - Android 启动器：`/data/data/com.natfrp.launcher/service/`
 - OpenWrt LuCI 插件：`/etc/natfrp`
+- 群晖 DSM 套件包：`/var/packages/natfrp/var`
 
 启动器将使用以下路径：
 

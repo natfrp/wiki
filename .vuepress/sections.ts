@@ -48,7 +48,6 @@ const sections = {
 				children: [
 					{ text: '安装、使用指南', link: '/launcher/usage.html' },
 					{ text: '远程管理', link: '/launcher/remote-v2.html' },
-					{ text: '配置系统服务', link: '/launcher/service.html' },
 					{ text: '配置杀软白名单', link: '/launcher/antivirus.html' },
 					{ text: '用户手册', link: '/launcher/manual.html' },
 				],
@@ -77,6 +76,7 @@ const sections = {
 					{ text: 'FTP 文件传输', link: '/app/ftp.html' },
 					{ text: '远程开机 (WOL 网络唤醒)', link: '/app/wol.html' },
 					{ text: '我的世界 (Minecraft) 联机', link: '/app/mc.html' },
+					{ text: '幻兽帕鲁 (Palworld) 联机', link: '/app/palworld.html' },
 				],
 			},
 			{
