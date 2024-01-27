@@ -76,12 +76,12 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 
 ::: warning 注意
 加入水群时请 **不要** 填写访问密钥，请仔细阅读入群问题并填写对应的回复  
-入群问题并不是主观题。如果您找不到答案请稍微思考互联网作为信息高速路的作用  
+入群问题并不是主观题。如果您找不到答案请[Bing搜索](https://www.bing.com/)  
 非官方群, **群内没有网站管理员**
 :::
 
 - 群号: 1036050697 (已满) , 766865191 , 1011690081 , 650510813
-- 管理员会在满员时清理最久不发言的成员
+- 管理员会在满员时不定时清理最久不发言的成员
 - 入群问题不是摆设, 你不好好填是不会让你进的
 - 添加一个群即可, 不要添加多个群聊加重管理人员负担以及人口压力
 
@@ -92,8 +92,8 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 
 ### 其他 IM 水群 {#community-other-im}
 
-- [Telegram](https://t.me/natfrp_unofficial) (由于腾讯对QQ机器人的限制，暂无QQ<->Telegram桥接，恢复时间待定）
-- 非官方群, 群内没有网站管理员
+- [Telegram](https://t.me/natfrp_unofficial) 恢复 QQ (1036050697) <-> Telegram 桥接
+- 非官方群, **群内没有网站管理员**
 
 ### 官方 QQ 反馈群 {#community-official-qq}
 
