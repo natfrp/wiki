@@ -18,6 +18,15 @@
 
 ## Windows 常见问题 {#windows}
 
+### 安装更新时卡在 "等待启动器退出" 或是启动器关闭后没有任何反应 {#update-hang}
+
+该问题是由于您使用 **管理员身份** 运行了 **启动器用户界面** 造成的。
+
+- 在 **守护进程** 模式下会表现为持续的 "等待启动器退出....."
+- 在 **系统服务** 模式下会表现为确认更新后启动器退出，但没有执行更新。再次打开启动器界面可能提示 "未连接到守护进程"
+
+请 **不要** 使用管理员身份运行启动器用户界面，如果您已经使用管理员权限运行了启动器用户界面，请在安装更新前右键托盘图标，选择 **退出启动器**，然后重新以 **普通用户权限** 运行启动器用户界面。
+
 ### 守护进程异常退出 {#daemon-fault}
 
 请在错误信息中寻找下列关键词，点击展开对应章节：
@@ -150,7 +159,7 @@ SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 
 根据 [微软官方文档](https://learn.microsoft.com/en-us/dotnet/framework/deployment/guide-for-administrators)，此问题为 **用户计算机不符合系统需求**。
 
-请检查您的系统符合 [启动器系统需求](#system-requirement)。
+请检查您的系统是否符合 [启动器系统需求](#system-requirement)，如果是 Windows 7 系统请升级到 SP1 再试。
 
 ### 启动器系统需求 {#system-requirement}
 
@@ -179,11 +188,21 @@ SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 
 ### 该软件需要安装 .NET Framework 4.0 及以上 {#dotnet-required}
 
-出现 `该软件需要安装 .NET Framework 4.0 及以上` 类似提示。
+启动器依赖于微软的 .NET Framework 4.8 运行时。
 
 - 安装 `.NET Framework 4.8` 即可 ([点击这里下载](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer))。
 
-### 隧道启动失败: 拒绝访问 / 系统找不到指定的文件 / file does not exist
+您也可以选择不安装 WPF / 传统用户界面并使用 Web UI。
+
+### 无法初始化 WebView2 运行环境 {#webview2-init-failed}
+
+启动器的创建、编辑隧道功能依赖于微软的 Microsoft Edge WebView2 运行时。
+
+- 安装 `Microsoft Edge WebView2 运行时` 然后重启启动器即可 ([点击这里下载](https://go.microsoft.com/fwlink/p/?LinkId=2124703))。
+
+您也可以打开高级选项里的 `传统创建隧道窗口` 选项来使用传统的创建隧道窗口（不推荐），但编辑隧道功能将无法正常工作。
+
+### 隧道启动失败: 拒绝访问 / 系统找不到指定的文件 / file does not exist / access is denied {#tunnel-start-failed}
 
 这种情况通常是杀毒软件误杀了 frpc 造成的，请：
 
@@ -199,7 +218,13 @@ SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 
 如果这个 MD5 值是匹配的，建议您参考 [这篇文档](/launcher/antivirus.md) 在杀软中添加白名单然后重新安装启动器。
 
-### 点击 创建隧道/加号 按钮后闪退
+### 打开创建隧道窗口、编辑隧道窗口后显示白屏 {#blank-create-window}
+
+您的网络环境可能无法正常连接到 SakuraFrp 管理面板，可以在创建隧道窗口按 F5 刷新页面试试。
+
+如果还是无法正常使用，请使用浏览器打开管理面板创建隧道，或是打开高级选项里的 `传统创建隧道窗口` 选项（不推荐）。
+
+### 点击 创建隧道/加号 按钮后闪退 {#crash-on-create-tunnel}
 
 该问题应该不会在 3.0 及以上版本的启动器中出现。
 
