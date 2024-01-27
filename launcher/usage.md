@@ -85,8 +85,9 @@
    mkdir -p ~/.config/natfrp/
    cd ~/.config/natfrp/
 
-   # 复制对应的下载链接并下载
-   # curl -LO https://....
+   # 打开 https://www.natfrp.com/tunnel/download
+   # 复制对应的架构的 Linux / FreeBSD 启动器链接并下载
+   # curl -LO https://nya.globalslb.net/natfrp/client/launcher-unix/....
 
    # 解压
    tar -I zstd -xvf natfrp-service_*.tar.zst
@@ -170,8 +171,9 @@
    # 对路径出警的 Issue 或 PR 可能不会得到处理
    cd /home/natfrp/
 
-   # 复制对应的下载链接并下载
-   # curl -LO https://....
+   # 打开 https://www.natfrp.com/tunnel/download
+   # 复制对应的架构的 Linux / FreeBSD 启动器链接并下载
+   # curl -LO https://nya.globalslb.net/natfrp/client/launcher-unix/....
 
    # 解压
    tar -I zstd -xvf natfrp-service_*.tar.zst
