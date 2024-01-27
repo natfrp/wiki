@@ -11,7 +11,7 @@
 | `SakuraLauncher.exe`                                         | Windows (WPF 启动器，提供最新功能) |
 | `LegacyLauncher.exe`                                         | Windows (传统启动器，提供基础功能) |
 | `SakuraLauncher.app`                                         | macOS                              |
-| `SakuraLauncher.apk`                                         | Android                              |
+| `SakuraLauncher.apk`                                         | Android                            |
 | 配置 Web UI 通过 [PWA](https://launcher.natfrp.com) 进行管理 | 所有平台                           |
 
 高级用户完全可以选择不安装用户界面、手动修改 `config.json` 启用远程管理 V2 在管理面板进行控制。不过这样做使用体验比较差。
@@ -229,3 +229,19 @@ PWA 会自动在 `localStorage` 保存连接信息，因此您无需记住它，
 | `strict` | 仅允许同源请求，即 WebSocket 请求的 `Origin` 头必须与 `Host` 头匹配 |
 | `natfrp` | 仅允许同源请求或来自 `https://launcher.natfrp.com` 的请求           |
 | `any`    | 不检查 `Origin` 头（可能造成严重安全隐患，不推荐使用）              |
+
+### 统计信息 {#config-stats}
+
+| 配置项          | 类型     | 默认值   |
+| --------------- | -------- | -------- |
+| installation_id | `String` | 随机生成 |
+
+#### 关于 installation_id {#config-installation-id}
+
+该选项适用于 `3.0.8` 及以上版本启动器。若该值为空则随机生成一个 UUID 并储存。
+
+该值会被附加在每个 API 请求的 `X-Installation-Id` 头中，您可以将其设置为 `opt-out` 来关闭此请求头的发送。
+
+我们将存储一对以 `UID-安装ID` 为键的值，用于统计启动器的使用情况。
+
+当对应的安装 ID 停止发送 API 请求 24 小时后，对应的键值将被删除。
