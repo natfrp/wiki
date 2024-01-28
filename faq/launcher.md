@@ -140,15 +140,6 @@
 SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 ```
 
-### 下载附加文件时出错 / .NET Framework 安装失败 {#error-on-download-extra-files}
-
-请按顺序进行以下操作:
-
-1. 关闭启动器安装程序
-1. 点击 [这里](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer) 下载 .NET Framework 安装程序，运行并完成框架安装
-1. 重启电脑
-1. 再运行启动器安装程序即可正常进行安装
-
 ### 这个程序需要 Windows 服务包 1 或更高 {#requires-sp1}
 
 出现此提示说明系统版本过旧，Windows 7 用户必须更新到 Service Pack 1 或以上才可以正常使用。
@@ -186,19 +177,42 @@ SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 | Windows Vista | 不兼容 |
 | Windows XP | 不兼容 |
 
+### 下载附加文件时出错 / .NET Framework 安装失败 {#error-on-download-extra-files}
+
+如果您在使用非常古早的操作系统，安装程序可能在 `正在下载附加文件...` 一步提示 `Server Certificate Invalid or not present` 等错误。
+
+请参考下一条 FAQ 手动安装相关运行时。
+
+### 如何在 Windows 7 (Windows Server 2008) 上安装启动器运行时 {#install-runtime-on-win7}
+
+::: warning
+Windows 7 和 Server 2008 早已停止支持，微软已不再提供安全更新  
+我们强烈建议您尽快升级到 Windows 10 (或者 11) / Windows Server 2022 或更新版本
+:::
+
+请先确保已将您的系统更新到 **Windows 7 SP1** / **Windows Server 2008 R2 SP1** 版本。
+
+然后，按照下面的两条 FAQ 手动下载并安装对应的运行时文件：
+
+- [该软件需要安装 .NET Framework 4.0 及以上](#dotnet-required)
+- [无法初始化 WebView2 运行环境 / WebView2 初始化失败](#webview2-init-failed)
+
+安装后可能需要重启电脑，根据提示重启后正常运行启动器安装程序进行安装即可。
+
 ### 该软件需要安装 .NET Framework 4.0 及以上 {#dotnet-required}
 
 启动器依赖于微软的 .NET Framework 4.8 运行时。
 
-- 安装 `.NET Framework 4.8` 即可 ([点击这里下载](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer))。
+- 安装 `.NET Framework 4.8` 即可 ([点击这里下载](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer))
 
-您也可以选择不安装 WPF / 传统用户界面并使用 Web UI。
+您也可以选择不安装 WPF / 传统用户界面并使用 Web UI（只推荐高级用户使用）。
 
-### 无法初始化 WebView2 运行环境 {#webview2-init-failed}
+### 无法初始化 WebView2 运行环境 / WebView2 初始化失败 {#webview2-init-failed}
 
 启动器的创建、编辑隧道功能依赖于微软的 Microsoft Edge WebView2 运行时。
 
-- 安装 `Microsoft Edge WebView2 运行时` 然后重启启动器即可 ([点击这里下载](https://go.microsoft.com/fwlink/p/?LinkId=2124703))。
+- 启动器 `3.1.0.0` 要求 WebView2 运行时版本 `>= 120.0.2210.55`
+- 安装（或更新） `Microsoft Edge WebView2 运行时` 然后重启启动器即可 ([点击这里下载](https://go.microsoft.com/fwlink/p/?LinkId=2124703))
 
 您也可以打开高级选项里的 `传统创建隧道窗口` 选项来使用传统的创建隧道窗口（不推荐），但编辑隧道功能将无法正常工作。
 
@@ -226,7 +240,9 @@ SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 
 ### 点击 创建隧道/加号 按钮后闪退 {#crash-on-create-tunnel}
 
-该问题应该不会在 3.0 及以上版本的启动器中出现。
+:::tip
+该问题应该不会在 3.0 及以上版本的启动器中出现
+:::
 
 出现此问题说明您的系统中存在一些有问题软件塞满了系统的临时文件夹后没有及时释放。
 
