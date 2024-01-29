@@ -212,7 +212,25 @@ Windows 7 和 Server 2008 早已停止支持，微软已不再提供安全更新
 启动器的创建、编辑隧道功能依赖于微软的 Microsoft Edge WebView2 运行时。
 
 - 启动器 `3.1.0.0` 要求 WebView2 运行时版本 `>= 120.0.2210.55`
+- 启动器 `3.1.0.1` 要求 WebView2 运行时版本 `>= 104.0.1293.70`，支持 Windows 7 / 8.1 系统
 - 安装（或更新） `Microsoft Edge WebView2 运行时` 然后重启启动器即可 ([点击这里下载](https://go.microsoft.com/fwlink/p/?LinkId=2124703))
+
+::: details 您也可以手动配置固定版本的 WebView2 运行时 (仅限高级用户)
+
+- 从 [Windows Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=webview2) 或 [此仓库 (由第三方提供, 请注意校验数字签名)](https://github.com/westinyang/WebView2RuntimeArchive/releases) 下载固定版本的运行时文件
+  - Windows 10 / 11 用户直接下载最新版即可，注意选择正确的架构
+  - Windows 7 / 8.1 用户请下载 [109.0.1518 版本](https://www.catalog.update.microsoft.com/Search.aspx?q=Microsoft%20Edge-WebView2%20Runtime%20Version%20109) \[[GitHub (由第三方提供, 请注意校验数字签名)](https://github.com/westinyang/WebView2RuntimeArchive/releases/tag/109.0.1518.78)\]
+- 将下载到的文件解压到 `工作目录\WebView2` 文件夹中并重启启动器，启动器会优先使用该文件夹中的版本
+  - 从 Windows Update Catalog 下载时，您可能会得到一个 exe 文件，请自己想办法提取对应文件
+  - 从第三方 GitHub 仓库下载时，请注意校验文件的数字签名
+- 如果您下载了 `v120` 及以上版本且运行 Windows 10 或更新系统，还需要执行 [此文档](https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution#details-about-the-fixed-version-runtime-distribution-mode) 中的 **步骤 6** 相关命令
+
+   ```cmd
+   icacls %ProgramData%\SakuraFrpService\WebView2 /grant *S-1-15-2-2:(OI)(CI)(RX)
+   icacls %ProgramData%\SakuraFrpService\WebView2 /grant *S-1-15-2-1:(OI)(CI)(RX)
+   ```
+
+:::
 
 您也可以打开高级选项里的 `传统创建隧道窗口` 选项来使用传统的创建隧道窗口（不推荐），但编辑隧道功能将无法正常工作。
 
