@@ -190,7 +190,17 @@ Windows 7 和 Server 2008 早已停止支持，微软已不再提供安全更新
 我们强烈建议您尽快升级到 Windows 10 (或者 11) / Windows Server 2022 或更新版本
 :::
 
-请先确保已将您的系统更新到 **Windows 7 SP1** / **Windows Server 2008 R2 SP1** 版本。
+请先确保您已将系统更新到 **Windows 7 SP1** / **Windows Server 2008 R2 SP1** 版本。
+
+然后，按顺序安装以下更新，安装过程中如果提示需要重启请务必重启：
+
+- [KB3020369](https://www.catalog.update.microsoft.com/Search.aspx?q=KB3020369)
+- [KB3125574](https://www.catalog.update.microsoft.com/Search.aspx?q=KB3125574)
+- [KB4474419](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4474419)
+- [KB4490628](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4490628)
+- （请注意顺序）[KB4536952](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4536952)
+- （请注意顺序）[KB4534310](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4534310)
+- 如果您购买了 ESU 订阅，也可以使用 Windows Update 自动安装相关更新
 
 然后，按照下面的两条 FAQ 手动下载并安装对应的运行时文件：
 
