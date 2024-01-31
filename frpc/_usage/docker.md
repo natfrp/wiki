@@ -63,6 +63,18 @@ docker run \
     -f <启动参数>
 ```
 
+或者有人习惯用docker-compose来启动，可以这样子
+保存以下内容为docker-compose.yml
+然后执行docker-compose up -d来启动
+```bash
+version: '2.2'
+services:
+  sakura1:
+    image: natfrp/frpc
+    restart: on-failure:5
+    command: -f <启动参数>
+```
+
 请注意每行（除了最后一行）末尾都有一个 `\`，并且 `\` 后面没有任何东西（包括空格）。
 
 下面是对各行参数的说明：
