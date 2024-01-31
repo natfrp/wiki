@@ -189,11 +189,13 @@ Palworld 对延迟并不敏感，
 
 ![](_images/palw-steam-config.png)
 
-在此文件夹中，打开 `DefaultPalWorldSettings.ini` 作为配置样板。
+在此文件夹中，打开 `DefaultPalWorldSettings.ini` ，其内容为配置样板。
 
-依次打开 `Pal/Saved/Config/WindowsServer/PalWorldSettings.ini` 即为当前世界配置，复制上面的样板粘贴进入后修改即可。
+依次打开 `Pal/Saved/Config/WindowsServer/PalWorldSettings.ini` 即为当前世界配置，复制上面的样板粘贴进入后修改此文件即可。
 
 配置项目由逗号分隔，即逗号后面为新的一项配置，配置名和配置内容之间用等号连接。
+
+我们非常建议您启用服务器密码功能，即找到 `ServerPassword=""`，在引号之间输入您设定的密码，玩家加入时将需要使用密码。
 
 具体配置项您可以参考 [官方文档](https://tech.palworldgame.com/optimize-game-balance)，这里提供一些常用项目：
 
@@ -204,7 +206,7 @@ Palworld 对延迟并不敏感，
 
 | 配置名 | 说明 |
 | -- | -- |
-| DeathPenalty | 死亡掉落：<br>`None`: 不掉落<br>`Item`: 只掉落物品<br>`ItemAndEquipment`: 掉落物品和装备<br>`All`: 掉落物品、装备和帕鲁 |
+| DeathPenalty | 死亡掉落：<br>`None`: 不掉落<br>`Item`: 只掉落物品<br>`ItemAndEquipment`: 掉落物品和装备<br>`All`: 掉落物品、装备和身上的帕鲁 |
 | DayTimeSpeedRate | 白天时间流速倍率 |
 | NightTimeSpeedRate | 夜晚时间流速倍率 |
 | ExpRate | 经验获取倍率 |
