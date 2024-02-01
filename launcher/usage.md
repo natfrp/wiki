@@ -225,15 +225,15 @@
    ls -ls .config/natfrp-service/
    ```
 
-1. 修改配置文件，填入访问密钥和远程管理 Key：
+1. 修改配置文件，填入访问密钥。同时另准备一个启动器远程管理密码：
 
    ```bash
    # 请确保您的工作目录正确
    cd /home/natfrp/
 
-   # 生成 KDF 后的远程管理 E2E 密码，复制输出的 Base64 字符串备用。注意命令中的 E2E 密码是您自己设定的。
+   # 生成处理后的远程管理密码，复制输出的 Base64 字符串备用
    # 注意如果结尾有等号 (=) 出现，请一起复制，它们也是 Base64 的一部分
-   ./natfrp-service remote-kdf <您的远程管理 E2E 密码>
+   ./natfrp-service remote-kdf <您的启动器远程管理密码>
 
    # 编辑配置文件, 以 vim 为例
    vim .config/natfrp-service/config.json
@@ -245,7 +245,7 @@
    {
       "token": "SakuraFrp 访问密钥，在管理面板找到",
       "remote_management": true,
-      "remote_management_key": "刚才成的 Base64 字符串",
+      "remote_management_key": "处理后的远程管理密码",
 
       "log_stdout": true, // 推荐开启 log_stdout 让 Systemd 管理日志
    }
