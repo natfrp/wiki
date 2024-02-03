@@ -5,6 +5,12 @@ SakuraFrp 不提供 Minecraft 服务器相关帮助，本文档主要由社区�
 如果您有相关问题建议到 [MCBBS 你问我答板块](https://www.mcbbs.net/forum-multiqanda-1.html) 提问
 :::
 
+::: tip
+您可能不知道 BMCLAPI 是什么，但是您可能用第三方启动器下载过 Minecraft。国内的第三方启动器下载源几乎完全依赖于 BMCLAPI，因为大概率无法直接链接官方源或速度很慢 (无论是以前的 Amazon S3 还是现在的 Microsoft CDN Global)。BMCLAPI 提供了 BMCLAPI 官方源和 BMCLAPI MCBBS 源，由于未知原因 MCBBS 源目前无法访问，因此 BMCLAPI 源目前负载较高。如您有意支持 BMCLAPI 提供最低限度的服务，可以考虑赞助他 (链接见下)。
+[BMCLAPI 官方捐助链接](https://afdian.net/a/bangbang93)
+[BMCLAPI 负载Dashboard](https://bd.bangbang93.com/pages/dashboard)
+:::
+
 ## 常见问题 {#faq}
 
 ::: details 我还是进不去服务器 / 用不了 / 进服时报 XXX 错误怎么办
