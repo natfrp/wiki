@@ -2,7 +2,6 @@
 
 ::: warning 非官方文档
 SakuraFrp 不提供 Minecraft 服务器相关帮助，本文档主要由社区用户维护  
-如果您有相关问题建议到 [MCBBS 你问我答板块](https://www.mcbbs.net/forum-multiqanda-1.html) 提问
 :::
 
 ::: tip
