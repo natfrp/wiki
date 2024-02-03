@@ -62,7 +62,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
 请根据您的游戏版本展开下面的选项查看，下面提到的 Mod 都必须在 **联网** 条件下安装:
 
-:::: details 游戏版本: Forge: 1.15.2 ~ 1.20.2, Fabric: 1.15.2 ~ 1.20.2, Quilt: 1.15.2 ~ 1.20.1
+:::: details 游戏版本: Forge: 1.15.2 ~ 1.20.4, Fabric: 1.15.2 ~ 1.20.4, Quilt: 1.15.2 ~ 1.20.4, NeoForge: 1.20.2 ~ 1.20.4
 
 - Mod 名称: LAN World Plug-n-Play (mcwifipnp)  
 - Mod 部分功能:
@@ -146,7 +146,6 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
   11. Motd设置
 - 下载链接 (1.7.X ~ 1.12.X): [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all) | [MC百科](https://www.mcmod.cn/download/1158.html)
 - 下载连接 (1.13 ~ 1.20.X): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/releases/latest)
-- 下载链接 (全版本，搬运有延迟，无法访问以上网站再考虑): [MeteorMC](https://meteormc.cn/threads/53/)
 
 #### 使用方法
 
