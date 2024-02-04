@@ -243,6 +243,117 @@ motd=
 设置完后开启隧道，日志中会出现一行 “使用 \[frp-xxx.top:xxxxx\] 来连接到你的隧道” 的提示，客机使用这个连接 (frp-xxx.top:xxxxx) 来加入游戏。
 :::
 
+## Java 版服务器 {#java_server}
+
+::: tip
+这里指的 Java 版服务器是指 Java 版我的世界的 Server 版本（例如 Bukkit Spigot 等），这里不是你能在启动器中下到的版本！
+
+如果服务器需要无人值守，可能需要设置一些开机自启项。
+:::
+
+### 使用方法
+
+#### 0x01: 安装好对应版本的 Java
+
+::: tip
+一般推荐 1.13 以下用 Java 8，1.13 及以上用 Java 18。
+:::
+
+首先我们先下载对应版本的 Java，推荐国内用户前往 [Java 官网](https://www.java.com/zh-CN/download/) 下载 Java8，前往 [微软构建的 Openjdk18](https://learn.microsoft.com/zh-cn/java/openjdk/download) 下载 Java 18。
+
+按照安装指引安装对应版本的 Java。
+
+::: tip
+如果你的服务器需要切换 Java 版本，尝试指定运行使用的 Java 可执行文件（即不使用环境变量，改用绝对路径指定）。
+:::
+
+#### 0x02: 初始化服务端
+
+请首先务必确认好你需要开的服务器类型（纯净服，插件服，Mod 服）。
+
+##### 0x02-1: 纯净服
+
+你可以前往 [MCVersions](https://mcversions.net/) 或者 MCBBS 找到官方的服务端。
+
+此类服务器无特殊初始化过程，可以直接跳转至下一步。
+
+##### 0x02-2: 插件服
+
+比较常用的插件服务端有 Spigot，Bukkit 等，具体区别请自行 Baidu，在此不做赘述。
+
+前往对应官网下载插件服的服务端。
+
+此类服务器无特殊初始化过程，可以直接跳转至下一步。
+
+##### 0x02-3: Forge Mod 服
+
+前往 [Forge 官网](https://files.minecraftforge.net/net/minecraftforge/forge/) 下载对应版本的 Forge 服务端。
+
+运行下载下来的 Forge 服务端，你会看到如下界面：
+
+![](./_images/mc-javaserver-1.png)
+
+选择第二项 `Install Server`，下方 `...` 点击后选择你开服的工作目录。
+
+等待安装完成。
+
+##### 0x02-4: Fabric Mod 服
+
+前往 [Fabric 官网](https://fabricmc.net/use/server/) 下载对应版本的 Fabric 服务端。
+
+在**开服的工作目录**下运行下载下来的 Fabric 服务端。
+
+不出意外的话，资源文件将会被自动下载好。
+
+#### 0x03: 编写批处理文件
+
+::: tip
+在 Windows 下文件扩展名为 .bat，Linux 下是 .sh
+:::
+
+内容可以参照如下：
+
+```bat
+java -Xms2G -Xmx8G -server -jar ./XXX.jar nogui
+```
+
+其中 `-Xmx -Xms` 分别代表最大分配内存和初始分配内存，请按需调整。
+
+注意：Mod 服务器的 `-Xmx` 项建议设置不小于 4G。
+
+#### 0x04: 同意 EULA 协议
+
+运行一次批处理文件，此时你会发现程序立即退出，工作目录下多了一些文件，这里我们找到 `eula.txt`，在仔细阅读我的世界的 EULA 文档（见 `eula.txt` 的最顶端）后，将其中的 `false` 字样改为 `true`。
+
+#### 0x05: 最后的收尾工作
+
+现在如果再次运行批处理文件，大概率会正常启动了，不过我们先不急着运行。
+
+按需调整服务器配置文件，例如 `server.properties` 中的 `server-port`（默认为 25565）。
+
+插件服和 Mod 服现在应该添加需要的插件及 Mod（见服务器工作目录下的 `./plugins` 和 `./mods`）。
+
+再次运行批处理文件，第一次启动需要生成世界，可能较慢。
+
+#### 0x06: 配置内网穿透
+
+创建隧道（参见 [创建隧道](/app/mc.html#%E5%88%9B%E5%BB%BA%E9%9A%A7%E9%81%93)）。
+
+一般来说这里的本地端口填写的就是你在 `server.properties` 中填写的 `server-port`。
+
+愉快的开始联机吧 :)
+
+### 注意事项
+
+如果开服时提示：
+
+```
+[14:40:12] [Server thread/WARN]: The exception was: java.net.BindException: Address already in use: bind
+[14:40:12] [Server thread/WARN]: Perhaps a server is already running on that port?
+```
+
+请检查 `server-port` 填写的端口是否被占用，建议更换此端口后再次尝试。
+
 ## 设置 SRV 解析 {#srv}
 
 ::: tip
