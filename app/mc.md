@@ -246,7 +246,7 @@ motd=
 ## Java 版服务器 {#java_server}
 
 ::: tip
-这里指的 Java 版服务器是指 Java 版我的世界的 Server 版本（例如 Bukkit Spigot 等），这里不是你能在启动器中下到的版本！
+这里指的 Java 版服务器是指 Java 版 Minecraft 的 Server 版本（例如 Bukkit Spigot 等），这里不是你能在启动器中下到的版本！
 
 如果服务器需要无人值守，可能需要设置一些开机自启项。
 :::
@@ -255,13 +255,14 @@ motd=
 
 #### 0x01: 安装好对应版本的 Java
 
-::: tip
-一般推荐 1.13 以下用 Java 8，1.13 及以上用 Java 18。
-:::
+推荐按照下述表格安装。
 
-首先我们先下载对应版本的 Java，推荐国内用户前往 [Java 官网](https://www.java.com/zh-CN/download/) 下载 Java8，前往 [微软构建的 Openjdk18](https://learn.microsoft.com/zh-cn/java/openjdk/download) 下载 Java 18。
+| 服务端 | 推荐的 Java 版本 | 建议的下载地址 |
+| :---: | :---: | :---: |
+| 1.17 前的 Forge 服务端</br>或 1.12 前的其他服务端  | Java 8 | [Java 官网](https://www.java.com/zh-CN/download/) |
+| 其他服务端 | Java 21 | [微软构建的 Openjdk21](https://learn.microsoft.com/zh-cn/java/openjdk/download) |
 
-按照安装指引安装对应版本的 Java。
+按照安装指引安装 Java。
 
 ::: tip
 如果你的服务器需要切换 Java 版本，尝试指定运行使用的 Java 可执行文件（即不使用环境变量，改用绝对路径指定）。
@@ -317,17 +318,25 @@ motd=
 java -Xms2G -Xmx8G -server -jar ./XXX.jar nogui
 ```
 
-其中 `-Xmx -Xms` 分别代表最大分配内存和初始分配内存，请按需调整。
+其中 `-Xmx -Xms` 分别代表最大分配内存和初始分配内存，请按需调整。`./XXX.jar` 这里是相对路径表示的，这就要求该批处理文件同服务端处在同一目录下。如果不了解相对目录表示的话，建议使用绝对目录表示（即从根目录开始表示路径，例如 `C:\\MC\\server.jar`）
 
 注意：Mod 服务器的 `-Xmx` 项建议设置不小于 4G。
 
 #### 0x04: 同意 EULA 协议
 
-运行一次批处理文件，此时你会发现程序立即退出，工作目录下多了一些文件，这里我们找到 `eula.txt`，在仔细阅读我的世界的 EULA 文档（见 `eula.txt` 的最顶端）后，将其中的 `false` 字样改为 `true`。
+运行一次批处理文件，此时你会发现程序立即退出，工作目录下多了一些文件，这里我们找到 `eula.txt`，在仔细阅读 Minecraft 的 EULA 文档（见 `eula.txt` 的最顶端）后，将其中的 `false` 字样改为 `true`。
+
+::: tip
+EULA 即 Minecraft 的用户许可协议，您在修改后即表示签署了该协议。
+此认同行为表示认可 Mojang 附条件地授权您使用 Minecraft 服务端，如：
+- 不得在服务器内容中包括违法、赌博、色情、暴力等。
+- 利用 Minecraft 来从事营利性活动。
+- 允许其他人以不公平或不合理的方式访问 Minecraft。
+
+（详见 [Mincraft EULA](https://www.minecraft.net/zh-hans/eula)）
+:::
 
 #### 0x05: 最后的收尾工作
-
-现在如果再次运行批处理文件，大概率会正常启动了，不过我们先不急着运行。
 
 按需调整服务器配置文件，例如 `server.properties` 中的 `server-port`（默认为 25565）。
 
@@ -342,17 +351,6 @@ java -Xms2G -Xmx8G -server -jar ./XXX.jar nogui
 一般来说这里的本地端口填写的就是你在 `server.properties` 中填写的 `server-port`。
 
 愉快的开始联机吧 :)
-
-### 注意事项
-
-如果开服时提示：
-
-```
-[14:40:12] [Server thread/WARN]: The exception was: java.net.BindException: Address already in use: bind
-[14:40:12] [Server thread/WARN]: Perhaps a server is already running on that port?
-```
-
-请检查 `server-port` 填写的端口是否被占用，建议更换此端口后再次尝试。
 
 ## 设置 SRV 解析 {#srv}
 
