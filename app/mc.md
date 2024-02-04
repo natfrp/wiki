@@ -328,10 +328,11 @@ java -Xms2G -Xmx8G -server -jar ./XXX.jar nogui
 
 ::: tip
 EULA 即 Minecraft 的用户许可协议，您在修改后即表示签署了该协议。
+
 此认同行为表示认可 Mojang 附条件地授权您使用 Minecraft 服务端，如：
 - 不得在服务器内容中包括违法、赌博、色情、暴力等。
-- 利用 Minecraft 来从事营利性活动。
-- 允许其他人以不公平或不合理的方式访问 Minecraft。
+- 不得利用 Minecraft 来从事营利性活动。
+- 不得允许其他人以不公平或不合理的方式访问 Minecraft。
 
 （详见 [Mincraft EULA](https://www.minecraft.net/zh-hans/eula)）
 :::
