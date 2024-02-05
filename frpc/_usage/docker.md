@@ -63,18 +63,6 @@ docker run \
     -f <启动参数>
 ```
 
-或者有人习惯用docker-compose来启动，可以这样子
-保存以下内容为docker-compose.yml
-然后执行docker-compose up -d来启动
-```bash
-version: '2.2'
-services:
-  sakura1:
-    image: natfrp/frpc
-    restart: on-failure:5
-    command: -f <启动参数>
-```
-
 请注意每行（除了最后一行）末尾都有一个 `\`，并且 `\` 后面没有任何东西（包括空格）。
 
 下面是对各行参数的说明：
@@ -88,6 +76,18 @@ services:
 | `natfrp/frpc` | 使用 DockerHub 源，也可以换成其他的。<br>- 阿里云香港镜像，适合内地用户：<br>&nbsp;&nbsp;`registry.cn-hongkong.aliyuncs.com/natfrp/frpc`<br>- GitHub Packages：<br>&nbsp;&nbsp;`ghcr.io/natfrp/frpc` |
 
 如果一切顺利，Docker 会为我们下载并启动镜像，您会看到一行 Hash 输出，这就是容器的 ID。
+
+如果您更倾向于使用 [Docker Compose](https://docs.docker.com/compose/)，此处也提供了一个 `compose.yaml` 的简单示例，通过 `docker compose up -d` 来启动。
+
+```bash
+version: "3"
+services:
+  # 在这里给容器起一个名字, 例如 sakura1
+  sakura1:
+    image: natfrp/frpc
+    restart: on-failure:5
+    command: -f <启动参数>
+```
 
 ### 获取连接信息 {#docker-how-to-connect}
 
