@@ -246,7 +246,7 @@ motd=
 ## Java 版服务器 {#java_server}
 
 ::: tip
-这里指的 Java 版服务器是指 Java 版 Minecraft 的 Server 版本（例如 Bukkit Spigot 等），这里不是你能在启动器中下到的版本！
+这里指的 Java 版服务器是指 Java 版 Minecraft 的 Server 版本（例如 Bukkit Spigot 等），这里不是您能在启动器中下到的版本！
 
 如果服务器需要无人值守，可能需要设置一些开机自启项。
 :::
@@ -265,16 +265,16 @@ motd=
 按照安装指引安装 Java。
 
 ::: tip
-如果你的服务器需要切换 Java 版本，尝试指定运行使用的 Java 可执行文件（即不使用环境变量，改用绝对路径指定）。
+如果您的服务器需要切换 Java 版本，尝试指定运行使用的 Java 可执行文件（即不使用环境变量，改用绝对路径指定）。
 :::
 
 #### 0x02: 初始化服务端
 
-请首先务必确认好你需要开的服务器类型（纯净服，插件服，Mod 服）。
+请首先务必确认好您需要开的服务器类型（纯净服，插件服，Mod 服）。
 
 ##### 0x02-1: 纯净服
 
-你可以前往 [MCVersions](https://mcversions.net/) 或者 MCBBS 找到官方的服务端。
+您可以前往 [MCVersions](https://mcversions.net/) 或者 MCBBS 找到官方的服务端。
 
 此类服务器无特殊初始化过程，可以直接跳转至下一步。
 
@@ -290,11 +290,11 @@ motd=
 
 前往 [Forge 官网](https://files.minecraftforge.net/net/minecraftforge/forge/) 下载对应版本的 Forge 服务端。
 
-运行下载下来的 Forge 服务端，你会看到如下界面：
+运行下载下来的 Forge 服务端，您会看到如下界面：
 
 ![](./_images/mc-javaserver-1.png)
 
-选择第二项 `Install Server`，下方 `...` 点击后选择你开服的工作目录。
+选择第二项 `Install Server`，下方 `...` 点击后选择您开服的工作目录。
 
 等待安装完成。
 
@@ -324,7 +324,7 @@ java -Xms2G -Xmx8G -server -jar ./XXX.jar nogui
 
 #### 0x04: 同意 EULA 协议
 
-运行一次批处理文件，此时你会发现程序立即退出，工作目录下多了一些文件，这里我们找到 `eula.txt`，在仔细阅读 Minecraft 的 EULA 文档（见 `eula.txt` 的最顶端）后，将其中的 `false` 字样改为 `true`。
+运行一次批处理文件，此时您会发现程序立即退出，工作目录下多了一些文件，这里我们找到 `eula.txt`，在仔细阅读 Minecraft 的 EULA 文档（见 `eula.txt` 的最顶端）后，将其中的 `false` 字样改为 `true`。
 
 ::: tip
 EULA 即 Minecraft 的用户许可协议，您在修改后即表示签署了该协议。
@@ -349,7 +349,7 @@ EULA 即 Minecraft 的用户许可协议，您在修改后即表示签署了该�
 
 创建隧道（参见 [创建隧道](/app/mc.html#%E5%88%9B%E5%BB%BA%E9%9A%A7%E9%81%93)）。
 
-一般来说这里的本地端口填写的就是你在 `server.properties` 中填写的 `server-port`。
+一般来说这里的本地端口填写的就是您在 `server.properties` 中填写的 `server-port`。
 
 愉快的开始联机吧 :)
 
