@@ -77,6 +77,18 @@ docker run \
 
 如果一切顺利，Docker 会为我们下载并启动镜像，您会看到一行 Hash 输出，这就是容器的 ID。
 
+如果您更倾向于使用 [Docker Compose](https://docs.docker.com/compose/)，此处也提供了一个 `compose.yaml` 的简单示例，通过 `docker compose up -d` 来启动。
+
+```bash
+version: "3"
+services:
+  # 在这里给容器起一个名字, 例如 sakura1
+  sakura1:
+    image: natfrp/frpc
+    restart: on-failure:5
+    command: -f <启动参数>
+```
+
 ### 获取连接信息 {#docker-how-to-connect}
 
 连接信息在容器的日志中会输出，执行 `docker logs <容器名字|容器ID>` 即可查看。
