@@ -371,7 +371,7 @@ userdel -r natfrp
 
    如果您遇到了错误 `Bind for 0.0.0.0:4101 failed: port is already allocated`，请查找本机监听 4101 的程序关闭，或参考 [高级用户](#advance-docker) 替换监听端口。
 
-4. 获取连接信息
+3. 获取连接信息
 
    执行 `docker logs natfrp-service` 即可查看容器的日志，您将看到类似下面的回显内容：
 
@@ -395,7 +395,7 @@ userdel -r natfrp
    默认情况下 WebUI 向您连入的所有网络开放，如果您需要访问，可以使用 `https://内网IP:<端口>`，
    如果您需要修改监听 IP，请参考 [高级用户](#advance-docker)。
 
-5. 高级用户 {#advance-docker}
+4. 高级用户 {#advance-docker}
 
    如果您需要自行配置，请先阅读 [配置文件详解](/launcher/manual.md#config)，然后将容器内的 `/run/config.json` 挂载编辑即可。
 
