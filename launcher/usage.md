@@ -49,6 +49,9 @@
 1. 如果需要卸载系统服务，点击 `卸载服务` 按钮即可
 
 @tab macOS {#macos}
+::: warning
+启动器仅适用于 macOS 11 Big Sur 及以上版本，如您还在使用更古老的版本请参考[Docker方式](/launcher/usage.html#docker)使用启动器或者[安装frpc](/frpc/usage.html#macos)
+:::
 
 打开下载的 `.dmg` 文件，然后按箭头指示将启动器拖到 `Applications` 文件夹中即可：
 
@@ -359,11 +362,16 @@ userdel -r natfrp
       natfrp/launcher
    ```
 
+   ::: warning
+   非Linux系统 (Windows,macOS) 不支持 `--network=host`
+   请将 `--network=host` 更改为 `-p 4101:4101`，这将会把4101端口映射到localhost (127.0.0.1)
+   :::
+
    如果您卡在了 `Pulling from natfrp/launcher`，请尝试将最后一行 `natfrp/launcher` 替换为 `registry.cn-hongkong.aliyuncs.com/natfrp/launcher`。
 
    如果您遇到了错误 `Bind for 0.0.0.0:4101 failed: port is already allocated`，请查找本机监听 4101 的程序关闭，或参考 [高级用户](#advance-docker) 替换监听端口。
 
-3. 获取连接信息
+4. 获取连接信息
 
    执行 `docker logs natfrp-service` 即可查看容器的日志，您将看到类似下面的回显内容：
 
@@ -387,7 +395,7 @@ userdel -r natfrp
    默认情况下 WebUI 向您连入的所有网络开放，如果您需要访问，可以使用 `https://内网IP:<端口>`，
    如果您需要修改监听 IP，请参考 [高级用户](#advance-docker)。
 
-4. 高级用户 {#advance-docker}
+5. 高级用户 {#advance-docker}
 
    如果您需要自行配置，请先阅读 [配置文件详解](/launcher/manual.md#config)，然后将容器内的 `/run/config.json` 挂载编辑即可。
 
