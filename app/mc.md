@@ -2,7 +2,6 @@
 
 ::: warning 非官方文档
 SakuraFrp 不提供 Minecraft 服务器相关帮助，本文档主要由社区用户维护  
-如果您有相关问题建议到 [MCBBS 你问我答板块](https://www.mcbbs.net/forum-multiqanda-1.html) 提问
 :::
 
 ## 常见问题 {#faq}
@@ -57,7 +56,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
 请根据您的游戏版本展开下面的选项查看，下面提到的 Mod 都必须在 **联网** 条件下安装:
 
-:::: details 游戏版本: Forge: 1.15.2 ~ 1.20.2, Fabric: 1.15.2 ~ 1.20.2, Quilt: 1.15.2 ~ 1.20.1
+:::: details 游戏版本: Forge: 1.15.2 ~ 1.20.4, Fabric: 1.15.2 ~ 1.20.4, Quilt: 1.15.2 ~ 1.20.4, NeoForge: 1.20.2 ~ 1.20.4
 
 - Mod 名称: LAN World Plug-n-Play (mcwifipnp)  
 - Mod 部分功能:
@@ -65,7 +64,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
   2. 开关正版验证
   3. 更多对其他人的自定义功能
   4. 通过uPnP功能进行联机
-- 下载链接: [mcmod](https://www.mcmod.cn/download/4498.html) | [modrinth](https://modrinth.com/mod/mcwifipnp/versions) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/mcwifipnp/files) 
+- 下载链接: [mcmod](https://www.mcmod.cn/download/4498.html) | [modrinth](https://modrinth.com/mod/mcwifipnp/versions) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/mcwifipnp/files)
 
 #### 使用方法
 
@@ -103,7 +102,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 - Mod 部分功能:
   1. 固定端口
   2. 开关正版验证
-- 下载链接: [mcmod](https://www.mcmod.cn/download/2754.html) | [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files) 
+- 下载链接: [mcmod](https://www.mcmod.cn/download/2754.html) | [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files)
 
 #### 使用方法
 
@@ -141,7 +140,6 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
   11. Motd设置
 - 下载链接 (1.7.X ~ 1.12.X): [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all) | [MC百科](https://www.mcmod.cn/download/1158.html)
 - 下载连接 (1.13 ~ 1.20.X): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/releases/latest)
-- 下载链接 (全版本，搬运有延迟，无法访问以上网站再考虑): [MeteorMC](https://meteormc.cn/threads/53/)
 
 #### 使用方法
 
@@ -227,15 +225,16 @@ motd=
 
 ::::
 
-### 创建隧道
+### 创建隧道 {#create-tunnel}
 
 当您获取到了 **本地端口** 后，您就可以开始 **创建隧道** 了
 
 隧道配置如下：
-  - 隧道名称：填上您对此隧道的命名
-  - 隧道类型：`TCP 隧道`
-  - 本地 IP：`127.0.0.1`
-  - 本地端口：您在以上章节获取的本地端口号
+
+- 隧道名称：填上您对此隧道的命名
+- 隧道类型：`TCP 隧道`
+- 本地 IP：`127.0.0.1`
+- 本地端口：您在以上章节获取的本地端口号
 
 如非必要，其他设置保持默认。
 
