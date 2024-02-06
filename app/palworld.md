@@ -215,3 +215,11 @@ Palworld 对延迟并不敏感，
 | WorkSpeedRate | 工作速度倍率 |
 | bEnableAimAssistKeyboard | 是否开启辅助瞄准 |
 | bEnableFastTravel | 是否开启传送 |
+
+## 存档文件 {#saved-files}
+
+在 Steam 中找到 `Palworld Dedicated Server`，右键打开本地文件：
+
+![](_images/palw-steam-config.png)
+
+在此文件夹中，打开 `Pal`，其中的 `Saved` 和 `World` 文件夹即为存档文件。
