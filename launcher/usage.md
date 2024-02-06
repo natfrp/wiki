@@ -49,6 +49,10 @@
 1. 如果需要卸载系统服务，点击 `卸载服务` 按钮即可
 
 @tab macOS {#macos}
+::: warning
+受限于苹果在 2020 年发布的程序框架中取消支持了自己在 2019 年底公开发布的系统，启动器仅适用于 macOS 11 Big Sur 及以上版本，  
+如您还在使用更古老的版本请 **终端直接使用启动器** 或者 [使用 frpc (不推荐)](/frpc/usage.html#macos)。
+:::
 
 打开下载的 `.dmg` 文件，然后按箭头指示将启动器拖到 `Applications` 文件夹中即可：
 
@@ -358,6 +362,14 @@ userdel -r natfrp
       --name=natfrp-service \
       natfrp/launcher
    ```
+
+   ::: warning
+   非 Linux 系统 (Windows, macOS) 不支持 `--network=host`，  
+   我们推荐您不要在此情况下使用启动器，这可能会造成很差的使用体验。
+
+   您如果执意要如此做，可能需要将 `--network=host` 更改为 `-p 4101:4101`，这将会把 4101 端口映射到 localhost (127.0.0.1)。
+   同时请将隧道本地 IP 修改为 docker 网关地址或者局域网访问地址。
+   :::
 
    如果您卡在了 `Pulling from natfrp/launcher`，请尝试将最后一行 `natfrp/launcher` 替换为 `registry.cn-hongkong.aliyuncs.com/natfrp/launcher`。
 
