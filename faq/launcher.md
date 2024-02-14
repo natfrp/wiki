@@ -303,6 +303,30 @@ Windows 7 和 Server 2008 早已停止支持，微软已不再提供安全更新
 
 修改完毕后重新打开启动器即可。
 
+### 登陆失败 {#tls-error}
+
+如果您在登陆启动器时遇到了如图所示的错误，这一般是有软件试图解密HTTPS流量导致的。
+
+![](./_images/tls-error.png)
+
+请关闭电脑中所有抓包软件、监听软件后再次尝试。
+
+如果仍未解决，请在浏览器中打开 [https://natfrp-api.globalslb.net/v4/user/info](https://natfrp-api.globalslb.net/v4/user/info)
+
+确认网页内容为 `访问密钥无效` ，再按照如下步骤查看网站证书，核对颁发者是否为 `Nya Labs CA` 。
+
+![](./_images/correct-cert.png)
+
+如果出现了诸如下图中的颁发者或其他非法根证书，您的电脑大概率遭遇了病毒入侵。
+
+![](./_images/fake-cert.png)
+
+请尝试使用杀毒软件进行全盘查杀，或使用 [火绒恶性木马专杀工具](https://bbs.huorong.cn/thread-18575-1-1.html) [360系统急救箱](https://bbs.360.cn/thread-14699478-1-1.html) 等工具进行查杀。
+
+如果仍未能清除病毒，请到 [火绒安全论坛](https://bbs.huorong.cn/forum-44-1.html) 发帖求助。
+
+清除病毒后，请参照 [教程](https://www.cnblogs.com/zhi-leaf/p/12014994.html) 删除对应的假证书。
+
 ## Linux 常见问题 {#linux}
 
 ### 登出后隧道断开、启动器退出 {#linux-logout-disconnect}
