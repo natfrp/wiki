@@ -303,6 +303,41 @@ Windows 7 和 Server 2008 早已停止支持，微软已不再提供安全更新
 
 修改完毕后重新打开启动器即可。
 
+### 打开启动器时登录失败，tls {#tls-login-error}
+
+``` log
+Get "~": tls: failed to verify certificate: x509: certificate signed by unknown authority
+```
+
+如果您在登录启动器时遇到了此错误，这一般是有第三方正在试图窃听我们和您之间的流量导致的。
+
+:::tip 如果您对系统安全、网络安全并不关心
+您可以无视下面的内容，下面的内容旨在揪出问题源头，  
+您只需参考 [启动器用户文档](/launcher/manual) 中 [api_ca_mode 配置项](/launcher/manual#config-api-ca-mode)，  
+通常来说将其配置为 `system` 即可达成掩耳盗铃的目的。
+
+如果仍然存在问题，您可以更进一步，将其配置为 `no-verify`。
+:::
+
+您可以关闭电脑中所有抓包软件、监听软件后再次尝试。
+
+如果仍未解决，请在浏览器中打开 [https://natfrp-api.globalslb.net/1](https://natfrp-api.globalslb.net/1)
+
+确认网页内容为 `API 连接性正常`，再按照如下步骤查看网站证书，核对颁发者是否为 `Nya Labs CA` 。
+
+![](./_images/launcher-correct-cert.png)
+
+如果出现了诸如下图中的颁发者或其他非法根证书，您的电脑大概率遭遇了病毒入侵。  
+（下表数据来自 [Rusted Anchors: A National Client-Side View of hidden Root CAs in the Web PKI Ecosystem](https://doi.org/10.1145/3460120.3484768)）
+
+![](./_images/launcher-fake-cert.png)
+
+请尝试使用杀毒软件进行全盘查杀，或使用 [卡巴斯基病毒清除工具](https://www.kaspersky.com.cn/downloads/free-virus-removal-tool)、[360系统急救箱](https://bbs.360.cn/thread-14699478-1-1.html) 或 [火绒恶性木马专杀工具](https://bbs.huorong.cn/thread-18575-1-1.html) 等工具进行查杀。
+
+如果仍未能清除病毒，您可以考虑到 [火绒安全论坛](https://bbs.huorong.cn/forum-44-1.html) 发帖求助。
+
+清除病毒后，您应当删除对应的假证书，尽管保留它们通常不会造成明显的问题。
+
 ## Linux 常见问题 {#linux}
 
 ### 登出后隧道断开、启动器退出 {#linux-logout-disconnect}
