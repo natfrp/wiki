@@ -81,6 +81,10 @@
 如果您正在使用 root 账户且决定一直使用 root 账户，您应该可以自己解决问题
 :::
 
+::: details 视频教程 (点击展开)
+![](@source/launcher/_videos/linux-install.mp4)
+:::
+
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
 
    下载由我们分发的 `.tar.zst` 文件后，在合适的地方建一个文件夹并解压 `natfrp-service` 与 `frpc`：
