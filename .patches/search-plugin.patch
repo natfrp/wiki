@@ -10,8 +10,8 @@ index f09c539..a34ef94 100644
  export default defineUserConfig({
  	base: '/',
 @@ -96,4 +97,12 @@ export default defineUserConfig({
- 				currentPath: (env) => env.filePath,
- 			},
+ 			imgMark: true,
+ 			flowchart: true,
  		}),
 +		nextSearchPlugin({
 +			fullText: true,
@@ -31,4 +31,4 @@ index 8d29a33..29852ce 100644
      "license": "SEE LICENSE IN LICENSE",
      "devDependencies": {
 +        "vuepress-plugin-next-search": "file:../vuepress-plugin-next-search-fix",
-         "@typescript-eslint/eslint-plugin": "5",
+         "@types/node": "^20.11.18",

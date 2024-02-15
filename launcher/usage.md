@@ -279,7 +279,7 @@
 
    ![](./_images/remote-v2-connect-2.png)
 
-### 关于卸载方式 {#uninstall}
+### 关于卸载方式 {#linux-uninstall}
 
 如果您是按照教程安装的，把安装过程中进行的操作反过来进行一遍即可。
 
