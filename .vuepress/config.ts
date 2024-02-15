@@ -105,7 +105,10 @@ export default defineUserConfig({
 		mdEnhancePlugin({
 			tabs: true,
 			attrs: true,
+			sup: true,
+			sub: true,
 			footnote: true,
+			include: true,
 			imgMark: true,
 			flowchart: true,
 		}),

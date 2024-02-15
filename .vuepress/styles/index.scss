@@ -24,13 +24,13 @@
     --content-width: 850px;
 
     // Reduce tab radius
-    .tab-list {
+    .vp-tabs {
         border-radius: 6px;
 
-        .tab-list-nav {
+        .vp-tabs-nav {
             border-radius: 4px 4px 0 0;
 
-            .tab-list-nav-item {
+            .vp-tab-nav {
                 border-radius: 4px 4px 0 0;
 
                 &::before,
@@ -40,7 +40,7 @@
             }
         }
 
-        .tab-item {
+        .vp-tab {
             padding: 0 0.75rem;
         }
     }
@@ -62,24 +62,24 @@
     }
 
     @media (max-width: 959px) and (min-width: 420px) {
-        .tab-list {
+        .vp-tabs {
             margin-left: -1.9rem;
             margin-right: -1.9rem;
         }
     }
 
     @media(max-width: 419px) {
-        .tab-list {
+        .vp-tabs {
             margin-left: -1.5rem;
             margin-right: -1.5rem;
         }
 
-        .tab-item div[class*=language-] {
+        .vp-tab div[class*=language-] {
             margin-left: -0.75rem;
             margin-right: -0.75rem;
         }
 
-        .tab-item ol div[class*=language-] {
+        .vp-tab ol div[class*=language-] {
             margin-left: -1.95rem;
             margin-right: -0.75rem;
         }
