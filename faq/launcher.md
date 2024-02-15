@@ -328,8 +328,10 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 
 ![](./_images/launcher-correct-cert.png)
 
-如果出现了诸如下图中的颁发者或其他非法根证书，您的电脑大概率遭遇了病毒入侵。  
-（下表数据来自 [Rusted Anchors: A National Client-Side View of hidden Root CAs in the Web PKI Ecosystem](https://doi.org/10.1145/3460120.3484768)）
+如果出现了诸如下图[^first][^second]中的颁发者或其他非法根证书，您的电脑大概率遭遇了病毒入侵。
+
+[^first]: Yiming Zhang, et al. 2021. Rusted Anchors: A National Client-Side View of Hidden Root CAs in the Web PKI Ecosystem. <https://doi.org/10.1145/3460120.3484768>
+[^second]: 张⼀铭, 刘保君. 2021. 谁在篡改我的可信根证书仓库？. <https://www.liubaojun.org/files/blog/21-11-29.pdf>
 
 ![](./_images/launcher-fake-cert.png)
 
