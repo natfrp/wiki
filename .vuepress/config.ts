@@ -1,7 +1,9 @@
-import { defaultTheme, defineUserConfig, viteBundler } from 'vuepress';
+import { defineUserConfig } from 'vuepress';
+import { viteBundler } from '@vuepress/bundler-vite';
+import { defaultTheme } from '@vuepress/theme-default';
 import { getDirname, path } from '@vuepress/utils';
 
-import { sitemapPlugin } from 'vuepress-plugin-sitemap2';
+import { sitemapPlugin } from '@vuepress/plugin-sitemap';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 
@@ -66,6 +68,10 @@ export default defineUserConfig({
 			'/frpc/': sections.client.children,
 			'/launcher/': sections.client.children,
 		},
+		themePlugins: {
+			activeHeaderLinks: false,
+			sitemap: false,
+		},
 
 		docsRepo: 'natfrp/wiki',
 		docsBranch: 'master',
@@ -102,13 +108,11 @@ export default defineUserConfig({
 			footnote: true,
 			imgMark: true,
 			flowchart: true,
-			include: {
-				currentPath: (env) => env.filePath,
-			},
 		}),
 		sitemapPlugin({
+			// The sitemap plugin from theme is somehow broken
 			hostname: 'doc.natfrp.com',
-			excludeUrls: [
+			excludePaths: [
 				'/404.html',
 				'/frpc/service/docker.html',
 				'/frpc/usage/docker.html',

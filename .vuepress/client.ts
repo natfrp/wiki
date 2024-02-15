@@ -1,7 +1,8 @@
-import { defineClientConfig } from '@vuepress/client';
+import { defineClientConfig } from 'vuepress/client';
+// import { defineClientConfig } from 'vuepress/dist/client';
 
 export default defineClientConfig({
-	enhance({ app, router, siteData }) {
+	enhance({ router }) {
 		router.beforeEach((to, _, next) => {
 			// Comtability redirect for docsify paths
 			if (to.fullPath.startsWith('/#/')) {
@@ -16,8 +17,4 @@ export default defineClientConfig({
 			}
 		});
 	},
-	setup() {
-		//
-	},
-	rootComponents: [],
 });
