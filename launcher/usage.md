@@ -82,7 +82,7 @@
 :::
 
 ::: details 视频教程 (点击展开)
-![](@source/launcher/_videos/linux-install.mp4)
+![](@source/_videos/launcher-linux-install.mp4)
 :::
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。

@@ -10,7 +10,7 @@
 
 如果您看完简介没有意识到如何使用的话，我们为您准备了一个 40 秒的视频展示此应用程序的主要功能：
 
-![](@source/offtopic/_videos/auth-widget-show.mp4)
+![](@source/_videos/auth-widget-show.mp4)
 
 ## 特定品牌使用补充说明
 

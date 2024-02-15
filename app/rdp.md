@@ -17,11 +17,11 @@
 
 @tab Windows 10
 
-![](@source/app/_videos/rdp-win10.mp4)
+![](@source/_videos/app-rdp-win10.mp4)
 
 @tab Windows 7
 
-![](@source/app/_videos/rdp-win7.mp4)
+![](@source/_videos/app-rdp-win7.mp4)
 
 :::
 

@@ -15,7 +15,7 @@
 
 ::: details 点击展开
 
-![](@source/bestpractice/_videos/security.mp4)
+![](@source/_videos/bestpractice-frpc-auth.mp4)
 
 :::
 

@@ -42,7 +42,7 @@ sidebar: false
 ## 文件结构 {#filesystem}
 
 - 将所有图片放置于和 Markdown 文件位于同一级的 `_images` 文件夹中
-- 将所有视频放置于和 Markdown 文件位于同一级的 `_videos` 文件夹中
+- 将所有视频放置于根目录 `_videos` 文件夹中，并使用 `![](@source/_videos/foo-bar.mp4)` 的引用形式
 
 ## 设计元素 {#design-elements}
 
