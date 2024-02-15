@@ -133,11 +133,6 @@ natfrp-service remote-kdf <明文密码>
 
 #### 关于 api_ca_mode {#config-api-ca-mode}
 
-:::tip
-可能有一些希望掩盖安全问题的 Windows 用户希望修改此项，  
-您可能需要我们特意为您准备的 [配置文件修改简易指南](#windows-config-edit-howto).
-:::
-
 | 模式        | 说明                                         |
 | ----------- | -------------------------------------------- |
 | `embedded`  | 使用内置的根证书，确保最佳连接性             |
@@ -250,24 +245,3 @@ PWA 会自动在 `localStorage` 保存连接信息，因此您无需记住它，
 我们将存储一对以 `UID-安装ID` 为键的值，用于统计启动器的使用情况。
 
 当对应的安装 ID 停止发送 API 请求 24 小时后，对应的键值将被删除。
-
-### 配置文件修改简易指南 {#windows-config-edit-howto}
-
-考虑到 Windows 平台用户可能有时需要修改配置文件，这里以 Windows 平台为例展示如何修改启动器配置文件。
-
-在启动器中找到工作目录按钮，点击进入：
-
-![](_images/windows-config-path.png)
-
-双击使用记事本打开此目录中的 `config.json` 文件：
-
-![](_images/windows-config-open.png)
-
-只需按上面的配置项说明修改您需要修改的配置项即可，  
-以 `api_ca_mode` 为例，您只需将图中高亮的被引号包裹的部分（不含引号）修改为您需要的内容。
-
-![](_images/windows-config-edit.png)
-
-请务必保存修改后的文件，使用 `Ctrl+S` 快捷键或者点击菜单中的 `文件`-`保存` 均可。
-
-修改后，**彻底退出** 启动器再次打开即可。
