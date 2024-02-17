@@ -285,7 +285,7 @@ motd=
 
 双击运行下载到的安装器 Jar 文件，您会看到如下界面：
 
-![](./_images/mc-javaserver-1.png)
+![](./_images/mc-javaserver-forge.png)
 
 选择第二项 `Install Server`，下方 `...` 点击后选择您希望存储服务器文件的目录。
 
