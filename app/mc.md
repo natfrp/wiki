@@ -168,6 +168,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 4. 现在请参考 [不装辅助 Mod](#java-no-mod) 一节开启局域网联机
 
 #### server.properties 配置文件部分选项翻译如下
+#### server.properties 配置文件部分选项翻译如下 {#server_properties}
 
   ::: tip
   [Minecraft Wiki](https://zh.minecraft.wiki/w/Server.properties#Java%E7%89%88_3) 中有对所有配置文件选项更详细的翻译
@@ -228,6 +229,7 @@ motd=
 ::::
 
 ### 创建隧道
+### 创建隧道 {#create_tunnel}
 
 当您获取到了 **本地端口** 后，您就可以开始 **创建隧道** 了
 
@@ -243,115 +245,127 @@ motd=
 设置完后开启隧道，日志中会出现一行 “使用 \[frp-xxx.top:xxxxx\] 来连接到你的隧道” 的提示，客机使用这个连接 (frp-xxx.top:xxxxx) 来加入游戏。
 :::
 
-## Java 版服务器 {#java_server}
+## Java 版服务器部署 {#java_server}
 
-::: tip
-这里指的 Java 版服务器是指 Java 版 Minecraft 的 Server 版本（例如 Bukkit Spigot 等），这里不是您能在启动器中下到的版本！
+此段落希望为在 Windows 下部署 Java 版 Minecraft 的服务端的用户提供一些信息。
 
-如果服务器需要无人值守，可能需要设置一些开机自启项。
-:::
+### 安装对应版本的 Java
 
-### 使用方法
+推荐按照下述表格安装：
 
-#### 0x01: 安装好对应版本的 Java
+如果存在问题，如果您已经在使用 Java 8，请尝试更高版本的 Java；  
+如果您在使用最新版 Java，请尝试更低版本的 Java。
 
-推荐按照下述表格安装。
-
-| 服务端 | 推荐的 Java 版本 | 建议的下载地址 |
+| 服务端 | 推荐的 Java 版本 | 下载地址 |
 | :---: | :---: | :---: |
-| 1.17 前的 Forge 服务端</br>或 1.12 前的其他服务端  | Java 8 | [Java 官网](https://www.java.com/zh-CN/download/) |
-| 其他服务端 | Java 21 | [微软构建的 Openjdk21](https://learn.microsoft.com/zh-cn/java/openjdk/download) |
+| 1.17 前的 Forge 服务端<br>1.12 前的其他服务端  | 最新版本 Java 8 | [Java 官网](https://www.java.com/zh-CN/download/) |
+| 其他服务端 | Java 21+ | [微软构建的 OpenJDK](https://learn.microsoft.com/zh-cn/java/openjdk/download) |
 
-按照安装指引安装 Java。
+### 准备服务端文件
 
-::: tip
-如果您的服务器需要切换 Java 版本，尝试指定运行使用的 Java 可执行文件（即不使用环境变量，改用绝对路径指定）。
-:::
+请首先确认需要的服务器类型：
 
-#### 0x02: 初始化服务端
+- 纯净服：基于原版游戏的服务器
+- 插件服：运行服务端插件的服务器，拥有基于原版的扩展体验
+- Mod 服：运行 Mod 的服务器，拥有超越原游戏内容的体验
 
-请首先务必确认好您需要开的服务器类型（纯净服，插件服，Mod 服）。
+#### 纯净服
 
-##### 0x02-1: 纯净服
+您可以在 [官网](https://www.minecraft.net/en-us/download/server) 下载到最新的服务端 jar 文件。
 
-您可以前往 [MCVersions](https://mcversions.net/) 或者 MCBBS 找到官方的服务端。
+您也可以在 [MCVersions](https://mcversions.net/) 或者 MCBBS 下载到服务端 jar 文件。
 
-此类服务器无特殊初始化过程，可以直接跳转至下一步。
+#### 插件服
 
-##### 0x02-2: 插件服
+比较常用的插件服务端有 [Paper](https://papermc.io/downloads/paper)，[Spigot](https://hub.spigotmc.org/jenkins/job/BuildTools/) 等。
 
-比较常用的插件服务端有 Spigot，Bukkit 等，具体区别请自行 Baidu，在此不做赘述。
+您可以前往对应官网下载插件服的服务端。
 
-前往对应官网下载插件服的服务端。
+#### Forge Mod 服
 
-此类服务器无特殊初始化过程，可以直接跳转至下一步。
+前往 [Forge 官网](https://files.minecraftforge.net/) 下载您需要的版本的 Forge 安装器（installer）。
 
-##### 0x02-3: Forge Mod 服
-
-前往 [Forge 官网](https://files.minecraftforge.net/net/minecraftforge/forge/) 下载对应版本的 Forge 服务端。
-
-运行下载下来的 Forge 服务端，您会看到如下界面：
+双击运行下载到的安装器 Jar 文件，您会看到如下界面：
 
 ![](./_images/mc-javaserver-1.png)
 
-选择第二项 `Install Server`，下方 `...` 点击后选择您开服的工作目录。
+选择第二项 `Install Server`，下方 `...` 点击后选择您希望存储服务器文件的目录。
 
-等待安装完成。
+安装器会为您从微软官网下载服务端文件，并将 Forge 安装到服务端文件中。
 
-##### 0x02-4: Fabric Mod 服
+#### Fabric Mod 服
 
-前往 [Fabric 官网](https://fabricmc.net/use/server/) 下载对应版本的 Fabric 服务端。
+前往 [Fabric 官网](https://fabricmc.net/use/server/) 下载对应版本的 Fabric 服务端安装器。
 
-在**开服的工作目录**下运行下载下来的 Fabric 服务端。
+将下载到的 jar 文件移动到您希望存储服务端文件的目录，双击运行。
 
-不出意外的话，资源文件将会被自动下载好。
+fabric 安装器将会开始下载文件，您可能看不到任何进度，但是能看到一个 `.fabric` 文件夹被创建出来。
 
-#### 0x03: 编写批处理文件
+#### 其他
 
-::: tip
-在 Windows 下文件扩展名为 .bat，Linux 下是 .sh
-:::
+此处仅为一些示例，各类服务端分支使用方式大同小异。
 
-内容可以参照如下：
+### 准备开始
+
+通常在 Windows 下，人们倾向于使用 bat（批处理）脚本运行 Minecraft 服务端。
+
+您可以在存储服务端文件的目录中创建一个 `启动.bat`，其中包含以下内容：
 
 ```bat
-java -Xms2G -Xmx8G -server -jar ./XXX.jar nogui
+java <Java 参数> -jar <服务端文件地址> <服务端参数>
 ```
 
-其中 `-Xmx -Xms` 分别代表最大分配内存和初始分配内存，请按需调整。`./XXX.jar` 这里是相对路径表示的，这就要求该批处理文件同服务端处在同一目录下。如果不了解相对目录表示的话，建议使用绝对目录表示（即从根目录开始表示路径，例如 `C:\\MC\\server.jar`）
-
-注意：Mod 服务器的 `-Xmx` 项建议设置不小于 4G。
-
-#### 0x04: 同意 EULA 协议
-
-运行一次批处理文件，此时您会发现程序立即退出，工作目录下多了一些文件，这里我们找到 `eula.txt`，在仔细阅读 Minecraft 的 EULA 文档（见 `eula.txt` 的最顶端）后，将其中的 `false` 字样改为 `true`。
-
-::: tip
-EULA 即 Minecraft 的用户许可协议，您在修改后即表示签署了该协议。
-
-此认同行为表示认可 Mojang 附条件地授权您使用 Minecraft 服务端，如：
-- 不得在服务器内容中包括违法、赌博、色情、暴力等。
-- 不得利用 Minecraft 来从事营利性活动。
-- 不得允许其他人以不公平或不合理的方式访问 Minecraft。
-
-（详见 [Mincraft EULA](https://www.minecraft.net/zh-hans/eula)）
+:::tip Forge 服务端除外
+通过 Forge 安装器安装的服务端通常已经自带启动文件，只需双击 run.bat 即可运行。  
+您可以在服务端目录中找到 `user_jvm_args.txt` 并在其中设置 Java 参数。
 :::
 
-#### 0x05: 最后的收尾工作
+#### Java 参数
 
-按需调整服务器配置文件，例如 `server.properties` 中的 `server-port`（默认为 25565）。
+最简单的 Java 参数模式为： `-Xmx4G -Xms4G`，即初始堆内存 4G，最大堆内存 4G，  
+我们推荐这两个值相等并且不高于您空闲内存的一半，从而最小化 GC 带来的延迟。
 
-插件服和 Mod 服现在应该添加需要的插件及 Mod（见服务器工作目录下的 `./plugins` 和 `./mods`）。
+对于 OpenJDK 9 以上的 Java， G1GC 已经被默认启用并且根据运行情况自动调整，我们建议不要盲目从网上抄参数加进去运行。
 
-再次运行批处理文件，第一次启动需要生成世界，可能较慢。
+如果您确实可能遇到了 GC 带来的瓶颈，请参考 [Oracle 的 G1GC 调优指南](https://docs.oracle.com/en/java/javase/21/gctuning/garbage-first-garbage-collector-tuning.html)。
 
-#### 0x06: 配置内网穿透
+#### 服务端文件地址
 
-创建隧道（参见 [创建隧道](/app/mc.html#%E5%88%9B%E5%BB%BA%E9%9A%A7%E9%81%93)）。
+通常为 `./服务端文件.jar`。
 
-一般来说这里的本地端口填写的就是您在 `server.properties` 中填写的 `server-port`。
+#### 服务端参数
 
-愉快的开始联机吧 :)
+您可以在这里写一个 `nogui`，启动后即可喜提黑框框后台。
+
+如果不写会显示一个白色的基础信息展示页面，同样可以运行后台指令。
+
+### 运行服务端
+
+#### 同意服务端协议
+
+运行一次您的启动文件（如 `启动.bat`），此时您会发现程序立即退出，工作目录下多了一些文件，  
+打开其中的 `eula.txt`，其内容为 Minecraft 的 EULA 文档，将其中的 `false` 字样改为 `true`。
+
+::: tip
+EULA 即 Minecraft 的用户许可协议，您的修改即表示签署了该协议。
+
+此行为表示您在法律意义上认可了 Mojang 附条件地授权您使用 Minecraft 服务端，
+使用服务端时必须遵守 [Minecraft 使用准则](https://www.minecraft.net/zh-hans/usage-guidelines)。
+:::
+
+#### 修改配置
+
+按需调整服务器配置文件，例如 [server.properties](#server_properties)。
+
+插件服和 Mod 服可以将从网上下载的插件及 Mod 放置到服务器工作目录下的 `plugins` 和 `mods` 目录中。
+
+再次运行启动文件即可正式启动服务端，这一次启动时服务端会生成世界，启动时间可能会稍长。
+
+#### 配置内网穿透
+
+[创建隧道](#create_tunnel) 并打开隧道。
+
+愉快地开始联机吧 :)
 
 ## 设置 SRV 解析 {#srv}
 
