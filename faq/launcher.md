@@ -337,7 +337,9 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 
 请尝试使用杀毒软件进行全盘查杀，或使用 [卡巴斯基病毒清除工具](https://www.kaspersky.com.cn/downloads/free-virus-removal-tool)、[360系统急救箱](https://bbs.360.cn/thread-14699478-1-1.html) 或 [火绒恶性木马专杀工具](https://bbs.huorong.cn/thread-18575-1-1.html) 等工具进行查杀。
 
-如果仍未能清除病毒，您可以考虑到 [火绒安全论坛](https://bbs.huorong.cn/forum-44-1.html) 发帖求助。
+如果仍未能清除病毒，您可以考虑安装一个完整的安全软件再次查杀后到对应的论坛发帖求助，  
+如 [火绒安全论坛](https://bbs.huorong.cn/forum-44-1.html)，[360 杀毒论坛](https://bbs.360.cn/forum.php?mod=forumdisplay&fid=175)。  
+请注意论坛求助可能对格式和内容有要求，请在发帖前阅读其中的置顶链接等信息。
 
 清除病毒后，您应当删除对应的假证书，尽管保留它们通常不会造成明显的问题。
 
