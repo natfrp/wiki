@@ -224,6 +224,7 @@ Windows 7 和 Server 2008 早已停止支持，微软已不再提供安全更新
 - 启动器 `3.1.0.0` 要求 WebView2 运行时版本 `>= 120.0.2210.55`
 - 启动器 `3.1.0.1` 要求 WebView2 运行时版本 `>= 104.0.1293.70`，支持 Windows 7 / 8.1 系统
 - 安装（或更新） `Microsoft Edge WebView2 运行时` 然后重启启动器即可 ([点击这里下载](https://go.microsoft.com/fwlink/p/?LinkId=2124703))
+  - 若在安装时提示 `安装失败。已为系统安装 Microsoft Edge WebView2 Runtime。` ，则当前 WebView2 运行时文件可能已损坏。请前往 [设置 > 应用与功能](ms-settings:appsfeatures) 页面，找到 `Microsoft Edge Webview2 Runtime`，点击并选择 **修改** 按钮进行修复
 
 ::: details 您也可以手动配置固定版本的 WebView2 运行时 (仅限高级用户)
 
