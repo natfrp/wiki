@@ -82,8 +82,8 @@ docker run \
 ```bash
 version: "3"
 services:
-  # 在这里给容器起一个名字, 例如 sakura1
-  sakura1:
+  sakura1: # 服务名称 默认即可
+    container_name: "sakura1" # 容器名称 需确保唯一性
     image: natfrp/frpc
     restart: on-failure:5
     command: -f <启动参数>
