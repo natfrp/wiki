@@ -318,7 +318,7 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 通常来说将其配置为 `system` 即可达成掩耳盗铃的目的，  
 如果修改后仍然存在问题，您可以更进一步，将其配置为 `no-verify`
 
-如果您对配置文件的修改不熟悉，可以参考下面的 [怎么修改启动器配置文件](/faq/launcher.md#edit-config)
+如果您对配置文件的修改不熟悉，可以参考下面的 [怎么修改启动器配置文件](/faq/launcher.md#windows-edit-config)
 :::
 
 您可以关闭电脑中所有抓包软件、监听软件后再次尝试。
