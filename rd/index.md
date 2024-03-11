@@ -87,23 +87,23 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 
 ## 常见问题 {#faq}
 
-### 开始连接后不到几秒就弹出 Timeout 错误
+### 开始连接后不到几秒就弹出 Timeout 错误 {#faq-timeout}
 
 您可能使用的是 2023.07.01 之前构建的 Nightly 版本，请更新客户端。
 
-### Android / iOS 客户端设置 API 服务器时提示 invalid port value
+### Android / iOS 客户端设置 API 服务器时提示 invalid port value {#faq-invalid-port-value}
 
 该问题已于 `1.2.0` 版本被修复，请更新客户端。
 
-### “正在连接” 一段时间后提示连接错误，点击中继连接可正常使用
+### “正在连接” 一段时间后提示连接错误，点击中继连接可正常使用 {#faq-relay-connection}
 
 这是由于官方版本无论 NAT 类型如何均会尝试进行直连。请在连接 ID 后加上 `/r` 强制走中继服务器连接。
 
-### 会话管理页面设备信息显示未知
+### 会话管理页面设备信息显示未知 {#faq-unknown-device}
 
 这是由于您使用了 Nyatwork OpenID 登录，使用用户名 + 访问密钥登录才会记录设备信息。
 
-### 设备 ID 或 UUID 被其他账户占用 {#device-id-conflict}
+### 设备 ID 或 UUID 被其他账户占用 {#faq-device-id-conflict}
 
 这种情况常见于一些配置不当的虚拟机模版在克隆时未重新生成机器码，导致您的会话与其他用户产生冲突。
 
@@ -146,3 +146,9 @@ uuidgen | sed 's/-//g' > /etc/machine-id
 ```
 
 :::
+
+### RustDesk 服务是否消耗流量 {#faq-traffic-billing}
+
+通过 SakuraFrp 提供的节点进行连接时会消耗流量，但是 RustDesk 的流量消耗极小，基本可以忽略。
+
+如果您的账户中有 **RD 流量包** 则优先扣除该流量包，否则会扣除账户中的其他流量包，扣除规则与普通的 frp 流量相同。
