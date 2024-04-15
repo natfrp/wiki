@@ -103,14 +103,16 @@ natfrp-service remote-kdf <明文密码>
 
 ### 核心功能 {#config-core}
 
-| 配置项             | 类型      | 默认值    | 说明                                                |
-| ------------------ | --------- | --------- | --------------------------------------------------- |
-| token              | `String`  | 空        | 用户访问密钥，用于自动登录                          |
-| auto_start_tunnels | `Int[]`   | 空        | 自动登录后启动的隧道 ID 列表                        |
-| update_interval    | `Int`     | `86400`   | 自动更新检查间隔，单位为秒，设置为 -1 禁用自动更新  |
-| update_channel     | `String`  | `current` | 更新通道，可选值为 `lts`，`current`，`beta`，`edge` |
-| frpc_force_tls     | `Boolean` | `false`   | 强制启用 frpc TLS 连接                              |
-| frpc_enable_stats  | `Boolean` | `true`    | 将 frpc 统计信息回报到启动器，用于 Web UI 展示      |
+| 配置项             | 类型      | 默认值    | 说明                                                                   |
+| ------------------ | --------- | --------- | ---------------------------------------------------------------------- |
+| token              | `String`  | 空        | 用户访问密钥，用于自动登录                                             |
+| auto_start_tunnels | `Int[]`   | 空        | 自动登录后启动的隧道 ID 列表                                           |
+| update_interval    | `Int`     | `86400`   | 自动更新检查间隔，单位为秒，设置为 -1 禁用自动更新                     |
+| update_channel     | `String`  | `current` | 更新通道，可选值为 `lts`，`current`，`beta`，`edge`                    |
+| frpc_log_level     | `String`  | `info`    | 配置 frpc 日志等级，可选值为 `trace`，`debug`，`info`，`warn`，`error` |
+| frpc_force_tls     | `Boolean` | `false`   | 强制启用 frpc TLS 连接                                                 |
+| frpc_standard_tls  | `Boolean` | `false`   | 强制启用 frpc 标准 TLS 连接                                            |
+| frpc_enable_stats  | `Boolean` | `true`    | 将 frpc 统计信息回报到启动器，用于 Web UI 展示                         |
 
 ### API 连接性保障 {#config-api}
 

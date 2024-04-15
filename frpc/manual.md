@@ -18,6 +18,7 @@
 | -V, --version_full | 显示完整版本号并退出 frpc |
 | --system_dns | 只使用系统 DNS 解析 API 请求 |
 | --encrypt_dns | 只使用加密 DNS 解析 API 请求 |
+| --log_level | 强制覆写 frpc 日志等级 |
 | --natfrp_tls | 全程使用 TLS 加密流量，将有效增大 CPU 占用并显著提高延迟<br>_* 上面没写错，这是一个内部开关，我们不建议您使用它_ |
 | ~~--update~~ | ~~进行自动更新，如果不设置该选项默认只进行更新检查而不自动更新~~<br>_* 于 0.45.0-sakura-7 移除_ |
 | ~~--remote_control `<密码>`~~ | ~~配置远程管理 E2E 密码，请参阅 [frpc 远程管理](/frpc/remote.md) 获取更多信息~~<br>_* 于 0.45.0-sakura-7 移除_ |

@@ -50,8 +50,8 @@
 
 @tab macOS {#macos}
 ::: warning
-受限于苹果在 2020 年发布的程序框架中取消支持了自己在 2019 年底公开发布的系统，启动器仅适用于 macOS 11 Big Sur 及以上版本，  
-如您还在使用更古老的版本请 **终端直接使用启动器** 或者 [使用 frpc (不推荐)](/frpc/usage.html#macos)。
+启动器自 3.1.0 起仅适用于 macOS 13 及以上版本，自 3.0.6 起仅适用于 macOS 11 及以上版本  
+如您还在使用更古老的版本的 macOS，请更新系统或 [使用 frpc (不推荐)](/frpc/usage.html#macos)
 :::
 
 打开下载的 `.dmg` 文件，然后按箭头指示将启动器拖到 `Applications` 文件夹中即可：
@@ -65,6 +65,8 @@
 如果只需要启动隧道、不显示用户界面，请打开下图所示的开关：
 
 ![](./_images/macos-autostart.png)
+
+如果您正在使用 macOS 13.0 或更新的系统，请更新至启动器 3.1.0 及以上版本以确保该开关正常工作。
 
 @tab Linux 桌面环境 {#linux}
 
@@ -421,11 +423,9 @@ userdel -r natfrp
 
 ## 创建隧道 {#create-tunnel}
 
-请到 [SakuraFrp 管理面板 > 隧道列表](https://www.natfrp.com/tunnel/) 创建隧道以取得最佳使用体验。
+您可以点击隧道列表的创建按钮或到 [SakuraFrp 管理面板 > 隧道列表](https://www.natfrp.com/tunnel/) 创建隧道。
 
 本文档提供了 HTTP、RDP、Minecraft 等常见应用的配置指南，如需帮助请查看右上角的 **配置指南** 列表。
-
-Windows / macOS 启动器的内置创建隧道功能相对简陋，只推荐临时有需求但又没登录面板时使用。
 
 ## 启动隧道 {#windows-start-tunnel}
 
