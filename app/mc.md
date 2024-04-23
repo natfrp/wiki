@@ -270,7 +270,7 @@ motd=
 
 您可以在 [官网](https://www.minecraft.net/en-us/download/server) 下载到最新的服务端 jar 文件。
 
-您也可以在 [MCVersions](https://mcversions.net/) 或者 MCBBS 下载到服务端 jar 文件。
+您也可以在 [MCVersions](https://mcversions.net/) 下载到服务端 jar 文件。
 
 #### 插件服
 
