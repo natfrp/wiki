@@ -103,7 +103,7 @@ listeners:
   proxy_protocol: true
 ```
 
-如果您想同时允许 frp 和直接连接，请使用 [这个插件](https://github.com/andylizi/bc-haproxy-detector)，配置指南见 [MCBBS 帖子](https://www.mcbbs.net/thread-1111852-1-1.html)。
+如果您想同时允许 frp 和直接连接，请使用 [HAProxyDetector](https://github.com/andylizi/haproxy-detector)。
 
 ### Paper {#paper}
 
@@ -152,6 +152,6 @@ proxies:
 
 ### 其他服务端 {#other}
 
-对于 Spigot，[这个插件](https://github.com/andylizi/bc-haproxy-detector) 已提供支持，配置指南可见 [MCBBS 帖子](https://www.mcbbs.net/thread-1111852-1-1.html)。
+对于 Spigot，[HAProxyDetector](https://github.com/andylizi/haproxy-detector) 已提供支持。
 
 STFW。
