@@ -56,12 +56,12 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 
 请根据您的游戏版本展开下面的选项查看，下面提到的 Mod 都必须在 **联网** 条件下安装:
 
-:::: details LAN World Plug-n-Play: Forge: 1.15.2 ~ 1.20.4, Fabric&Quilt: 1.15.2 ~ 1.20.4, NeoForge: 1.20.2 ~ 1.20.4
+:::: details LAN World Plug-n-Play: Forge: 1.15.2 ~ 1.20.6, Fabric&Quilt: 1.15.2 ~ 1.20.6, NeoForge: 1.20.2 ~ 1.20.6
 
 - Mod 名称: LAN World Plug-n-Play (mcwifipnp)  
 - Mod 部分功能:
   1. 固定端口
-  2. 开关正版验证
+  2. 开关在线模式 (Online-mode)
   3. 更多对其他人的自定义功能
   4. 通过uPnP功能进行联机
 - 下载链接: [mcmod](https://www.mcmod.cn/download/4498.html) | [modrinth](https://modrinth.com/mod/mcwifipnp/versions) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/mcwifipnp/files)
@@ -77,7 +77,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
      `允许的最大在线玩家数`
    - 服务器信息: A Minecraft LAN World
      `即为 MOTD 。对应其他人在多人游戏列表里看到的服务器介绍`
-   - **正版验证: 开/关**
+   - **在线模式: 开/关**
      `关闭可以让离线账号玩家或其他账号和您联机`
    此模组的其他功能请在游戏内将鼠标指针指向按钮获得详细提示。
 
@@ -101,7 +101,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 - Mod 部分功能:
   1. 固定端口
   2. 开关正版验证
-- 下载链接: [mcmod](https://www.mcmod.cn/download/2754.html) | [Github](https://github.com/rikka0w0/LanServerProperties) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files)
+- 下载链接: [mcmod](https://www.mcmod.cn/download/2754.html) | [Github](https://github.com/rikka0w0/LanServerProperties/releases) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files)
 
 #### 使用方法
 
@@ -117,17 +117,17 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
 ![](./_images/mc-2.png)
 
 ::: tip
-在部分版本可能需要客户端也添加此模组才能加入利用此模组进行联机的主机。
+在部分版本可能需要客户端也添加此模组才能加入主机。
 :::
 
 ::::
 
-:::: details Server.Properties for LAN: Forge: 1.7.X ~ 1.20.X
+:::: details Server.Properties for LAN: Forge: 1.7.X ~ 1.20.4
 
 - Mod 名称: Server.Properties for LAN
 - Mod 功能:
-  1. 玩家挂机多久后踢出
-  2. 服务器资源包
+  1. 玩家挂机一段时间后踢出
+  2. 服务器所需资源包
   3. 固定端口
   4. 最大视距
   5. 是否开启正版验证
@@ -138,7 +138,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，下面是装与�
   10. 最大建筑高度
   11. Motd设置
 - 下载链接 (1.7.X ~ 1.12.X): [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all) | [MC百科](https://www.mcmod.cn/download/1158.html)
-- 下载连接 (1.13 ~ 1.20.X): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/releases/latest)
+- 下载连接 (1.13 ~ 1.20.4): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/releases/latest)
 
 #### 使用方法
 
@@ -323,11 +323,15 @@ java <Java 参数> -jar <服务端文件地址> <服务端参数>
 
 对于 OpenJDK 9 以上的 Java， G1GC 已经被默认启用并且根据运行情况自动调整，我们建议不要盲目从网上抄参数加进去运行。
 
-如果您确实可能遇到了 GC 带来的瓶颈，请参考 [Oracle 的 G1GC 调优指南](https://docs.oracle.com/en/java/javase/21/gctuning/garbage-first-garbage-collector-tuning.html)。
+如果您确实可能遇到了 GC 带来的瓶颈，请参考 [Aikar 的启动参数](https://docs.papermc.io/paper/aikars-flags) 或 [Oracle 的 G1GC 调优指南](https://docs.oracle.com/en/java/javase/21/gctuning/garbage-first-garbage-collector-tuning.html)。
+
+:::tip 关于模组端的调优参数
+通常，模组端会有不同于其他服务器的参数，由于并没有通用解，且一般来说默认参数即可适合多数模组的使用情况，在不了解相关知识的情况下建议不要添加额外的调优参数。
+:::
 
 #### 服务端文件地址
 
-通常为 `./服务端文件.jar`。
+如果您的脚本与核心文件在同一文件夹，通常为 `.\服务端文件.jar`。
 
 #### 服务端参数
 
