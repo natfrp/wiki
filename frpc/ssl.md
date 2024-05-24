@@ -95,6 +95,30 @@ docker run (其他参数) \
     --mount type=bind,src=/root/my.key,dst=/run/frpc/example.com.key,ro
 ```
 
+@tab Docker 启动器
+
+使用 Docker 运行的启动器，工作目录默认为 `/run/FrpcWorkingDirectory`（而不是 `/run/frpc`）。
+
+您可以以 Docker 篇的形式挂载证书文件到该目录中，此处不再赘述，只需将 Docker 篇的 `/run/frpc` 替换为 `/run/FrpcWorkingDirectory`。
+
+但是为了方便同时使用多张证书，您也可以使用 `-v` 或 `--mount` 将工作目录挂载到本地目录。
+
+首先请创建一个 **空** 目录用于这个目的，以减少各种问题。
+
+下面的示例将 `/home/homo/新建文件夹` （请将此目录替换为您希望使用的本地目录） 的本地目录挂载为启动器的 `/run/FrpcWorkingDirectory`：
+
+```bash
+# 用 -v
+docker run (其他参数) \
+    -v /home/homo/新建文件夹:/run/FrpcWorkingDirectory
+
+# 用 -mount
+docker run (其他参数) \
+    --mount type=bind,src=/home/homo/新建文件夹,dst=/run/FrpcWorkingDirectory
+```
+
+然后您只需直接证书文件拷贝到被挂载的本地目录即可（实例中即 `/home/homo/新建文件夹`）。
+
 :::
 
 如果刚才已启动隧道测试，那么此时，在工作目录中就可以看到自签名证书了：
