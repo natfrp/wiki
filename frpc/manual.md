@@ -4,11 +4,11 @@
 这是面向高级用户的手册，如果您尚不熟悉 frpc，请移步 [frpc 简明使用教程](/frpc/usage.md#running-frpc)
 :::
 
-由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/docs/) 或 [frp/README.md](https://github.com/fatedier/frp/blob/dev/README.md)。
+由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，此处仅列出我们新增的功能。如果您在寻找上游 frp 的启动参数、配置文件选项等，请参阅 [上游文档](https://gofrp.org/zh-cn/docs/) 或 [frp/README.md](https://github.com/fatedier/frp/blob/dev/README.md)。
 
-我们总是推荐（并假设）您使用最新版客户端，因此文档中列出的特性不会专门标注可用的版本。如果您需要使用旧版并了解该版本对应的特性，建议您参考 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/) 中的文件修改时间并对照文档的 Commit History 作出判断，或者参考 [部分 frpc 新增特性](#advanced-feature) 一节。
+我们总是推荐（并假设）您使用最新版客户端，因此文档中列出的特性不会专门标注可用的版本。如果您需要使用旧版并了解该版本对应的特性，建议您参考 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/) 中的文件修改时间并对照 [文档提交记录](https://github.com/natfrp/wiki/commits) 进行判断。
 
-### 新增命令行开关 {#advanced-switches}
+### 专有命令行开关 {#advanced-switches}
 
 | 开关 | 说明 |
 | --- | --- |
@@ -23,7 +23,7 @@
 | ~~--update~~ | ~~进行自动更新，如果不设置该选项默认只进行更新检查而不自动更新~~<br>_* 于 0.45.0-sakura-7 移除_ |
 | ~~--remote_control `<密码>`~~ | ~~配置远程管理 E2E 密码，请参阅 [frpc 远程管理](/frpc/remote.md) 获取更多信息~~<br>_* 于 0.45.0-sakura-7 移除_ |
 
-### 新增环境变量选项 {#advanced-env}
+### 专有环境变量选项 {#advanced-env}
 
 自 `v0.39.1-sakura-1.1` 版本起，您可以用环境变量代替 `-f` 开关。
 
@@ -32,7 +32,7 @@
 | NATFRP_TOKEN | 访问密钥 | wdnmdtoken666666 |
 | NATFRP_TARGET | 启动目标列表，详见 `-f` 开关 | 1234,6666,7777,n233 |
 
-### 新增配置文件选项 {#advanced-config}
+### 专有配置文件选项 {#advanced-config}
 
 #### common 段 {#common}
 
@@ -59,10 +59,11 @@
 | auto_https | String | 空 | 配置自动 HTTPS 功能，留空则禁用自动 HTTPS 功能<br>请参阅 [配置 frpc 的自动 HTTPS 功能](/frpc/auto-https.md) 获取更多信息 |
 | auto_https_mode | String | 空 | 配置自动 HTTPS 的工作模式<br>请参阅 [配置 frpc 的自动 HTTPS 功能](/frpc/auto-https.md) 获取更多信息 |
 | auth_pass | String | 空 | 配置访问认证功能的密码，留空则禁用密码认证<br>请参阅 [配置访问认证功能](/bestpractice/frpc-auth.md) 获取更多信息 |
-| auth_totp | String | 空 | 配置访问认证的 TOTP 功能，留空则禁用 TOTP 认证<br>- 留空 **[默认值]**: 不启用 TOTP 验证<br>- Base32 种子: 使用默认配置启用 TOTP<br>- TOTP URI: 使用自定义配置启用 TOTP, 可选参数有 `digits`、`skew`、`algorithm`<br>&nbsp;&nbsp;_例: `otpauth://totp/auto?secret=<种子>&digits=<数字>&skew=<周期>&algorithm=<算法>`_<br>&nbsp;&nbsp;_* algorithm 参数取值为 `md5`、`sha1` (默认)、`sha256`、`sha512`_<br>_* frpc v0.42.0-sakura-3 及以上版本可用_ |
+| auth_totp | String | 空 | 配置访问认证的 TOTP 功能<br>- 留空: 不启用 TOTP 验证<br>- Base32 种子: 使用默认配置启用 TOTP<br>- TOTP URI: 使用自定义配置启用 TOTP, 可选参数有 `digits`、`skew`、`algorithm`<br>&nbsp;&nbsp;_例: `otpauth://totp/auto?secret=<种子>&digits=<数字>&skew=<周期>&algorithm=<算法>`_<br>&nbsp;&nbsp;_* algorithm 参数取值为 `md5`、`sha1` (默认)、`sha256`、`sha512`_<br>_* frpc v0.42.0-sakura-3 及以上版本可用_ |
 | auth_time | String | 2h | 配置访问认证功能在没有勾选「记住」时授权过期时间<br>接受的后缀为 `h`/`m`/`s`，请从大到小排列，如 `1h3m10s` |
 | auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 SakuraFrp 服务器下发的授权信息<br>- `server`: 不启用密码，只能通过 SakuraFrp 面板进行授权 |
 | auth_redirect | String | 空 | 配置 SakuraFrp 访问认证通过后自动跳转 (或打开) 到的页面<br>请参阅 [认证后打开的 URL](/offtopic/auth-widget.md#redirect_url) 获取更多用法 |
+| minecraft_detect | String | auto | 配置 Minecraft 局域网游戏监测功能<br>- `auto`: 在本地端口为 25565 时监测本地局域网游戏广播<br>- `enabled`: 监测本地局域网游戏广播<br>- `enabled_lan`: 监测整个 LAN 中的局域网游戏广播<br>- `disabled`: 禁用局域网游戏监测<br>_* frpc v0.51.0-sakura-5 及以上版本可用_ |
 
 ::: tip
 在强制访问认证的节点上未设置访问密码（即未启用访问认证）时，将强制打开访问认证，使用 `server` 模式，您将需要在用户面板进行授权。
@@ -93,31 +94,3 @@ bUDPv2 优化有助于降低延迟和流量消耗，但是当您的隧道同时�
 | password | String | 空 | 指定防止未授权 WOL 访问的密码，设置后请将计算机类型修改为 `WOL (密码保护)` |
 | from_ip | String | 空 | 指定 WOL 发送时使用的源 IP，默认使用所有 IP |
 | from_if | String | 空 | 指定 WOL 发送时使用的网卡名称，例如 `eth0`，默认使用所有网卡，该选项与 `from_ip` 冲突 |
-
-## frpc 重点更新日志 {#advanced-feature}
-
-此处只列出 frpc 的部分重要的特性变更。
-
-| 最早版本 | 特性 |
-| --- | --- |
-| 0.33.0-sakura-1 | 添加 `-f` 参数从 API 拉取配置文件 |
-| | 添加日志输出 Token 打码功能 |
-| 0.33.0-sakura-2 | 添加 `sakura_mode` 配置项，允许开关自有特性来改善对原版的兼容性 |
-| | `-w` 写入配置文件开关 |
-| 0.33.0-sakura-3 | 透明重连功能 |
-| | 添加 TUI 方便用户在无参数启动时进行配置 |
-| 0.33.0-sakura-4 | 添加输出信息本地化支持，在支持中文输出时优先以中文输出 |
-| | 添加本机生成 `RunID` |
-| 0.33.0-sakura-5 | 添加更新检查、自动更新 |
-| 0.33.0-sakura-6 | 自动 HTTPS 重定向功能 |
-| 0.34.1-sakura-1 | 封包合并功能（需要用户手动配置） |
-| 0.34.1-sakura-2 | 客户端限速下发功能 |
-| 0.34.2-sakura-1 | 自动 TLS 配置功能 |
-| 0.34.2-sakura-3 | WOL 隧道支持 |
-| | 访问认证功能 |
-| 0.39.1-sakura-1 | 添加 DKC 加密实现，使用 SM2 和 AES-128-GCM / AES-128-CFB 进行数据加密 |
-| 0.42.0-sakura-2 | 在自动 HTTPS 中增加 Proxy Protocol 支持 |
-| 0.42.0-sakura-2.1 | 增加切换自动 HTTPS 工作模式的配置项 |
-| 0.42.0-sakura-3 | 访问认证功能 TOTP 支持 |
-| 0.42.0-sakura-4 | UDP 隧道的 Proxy Protocol 支持 |
-| 0.42.0-sakura-6 | 添加多节点模式 |
