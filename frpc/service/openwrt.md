@@ -1,6 +1,7 @@
 # OpenWrt 配置 开机启动 服务
 
 ::: tip
+SakuraFrp 启动器已提供 Openwrt 插件，如果您的路由器配置足够，推荐您 [使用启动器](/launcher/usage.md#openwrt) 而不是 frpc  
 查看此教程前请确保您已阅读 [frpc 基本使用指南](/frpc/usage.md#linux) 中的 **Linux 安装** 部分
 :::
 
@@ -106,6 +107,7 @@ procd_set_param stderr 1
 procd_close_instance
 ...
 ```
+
 ::: warning
 所有隧道的相应字段都要删除或注释
 :::
