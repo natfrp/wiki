@@ -60,6 +60,7 @@ docker run \
     --pull=always \
     --name=sakura1 \
     natfrp/frpc \
+    --disable_log_color \
     -f <启动参数>
 ```
 
@@ -74,6 +75,8 @@ docker run \
 | `--pull=always` | 总是检查镜像更新 |
 | `--name=sakura1` | 为容器设定一个名字，这里以 `sakura1` 为例 |
 | `natfrp/frpc` | 使用 DockerHub 源，也可以换成其他的。<br>- 阿里云香港镜像，适合内地用户：<br>&nbsp;&nbsp;`registry.cn-hongkong.aliyuncs.com/natfrp/frpc`<br>- GitHub Packages：<br>&nbsp;&nbsp;`ghcr.io/natfrp/frpc` |
+| `--disable_log_color` | 禁用日志输出中的颜色 |
+| `-f <启动参数>` | 从面板直接复制的启动参数，用于指定要启动的隧道 |
 
 如果一切顺利，Docker 会为我们下载并启动镜像，您会看到一行 Hash 输出，这就是容器的 ID。
 
@@ -86,7 +89,7 @@ services:
   sakura1:
     image: natfrp/frpc
     restart: on-failure:5
-    command: -f <启动参数>
+    command: --disable_log_color -f <启动参数>
 ```
 
 ### 获取连接信息 {#docker-how-to-connect}
@@ -122,5 +125,6 @@ docker run \
     -v /root/my.crt:/run/frpc/example.com.crt:ro \
     -v /root/my.key:/run/frpc/example.com.key:ro \
     natfrp/frpc \
+    --disable_log_color \
     -f <启动参数>
 ```
