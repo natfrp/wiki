@@ -85,17 +85,16 @@ natfrp-service remote-kdf <明文密码>
 
 启动器将使用以下路径：
 
-| 路径                                                               | 说明                                   |
-| ------------------------------------------------------------------ | -------------------------------------- |
-| `config.json`                                                      | 核心配置文件                           |
-| `Logs/`                                                            | 日志路径                               |
-| `Logs/SakuraFrpService.log` 或 `Logs/natfrp-service.log`           | 本次运行日志                           |
-| `Logs/SakuraFrpService.last.log` 或 `Logs/natfrp-service.last.log` | 前次运行日志                           |
-| `Logs/Update.log`                                                  | 最后一次自动更新日志                   |
-| `FrpcWorkingDirectory/`                                            | frpc 工作目录                          |
-| `Update/`                                                          | 更新文件临时目录                       |
-| `Temp/`                                                            | WPF 启动器临时目录 (仅 Windows)        |
-| `lock.pid`                                                         | 互斥锁兼 PID 文件 (仅 Linux / FreeBSD) |
+| 路径                                                   | 说明                                   |
+| ------------------------------------------------------ | -------------------------------------- |
+| `config.json`                                          | 核心配置文件                           |
+| `Logs/`                                                | 日志路径                               |
+| `Logs/<SakuraFrpService\|natfrp-service>.<时间戳>.log` | 服务运行日志，时间戳对应启动时间       |
+| `Logs/Update.log`                                      | 最后一次自动更新日志                   |
+| `FrpcWorkingDirectory/`                                | frpc 工作目录                          |
+| `Update/`                                              | 更新文件临时目录                       |
+| `Temp/`                                                | WPF 启动器临时目录 (仅 Windows)        |
+| `lock.pid`                                             | 互斥锁兼 PID 文件 (仅 Linux / FreeBSD) |
 
 ## 配置文件 {#config}
 
@@ -165,11 +164,12 @@ natfrp-service remote-kdf <明文密码>
 
 ### 日志记录 {#config-logging}
 
-| 配置项          | 类型      | 默认值  | 说明                                       |
-| --------------- | --------- | ------- | ------------------------------------------ |
-| log_buffer_size | `Int`     | `4096`  | 日志 Ring 缓冲区大小（条数），请勿随意调节 |
-| log_stdout      | `Boolean` | `false` | 将日志写到标准输出，Docker 中默认为 `true` |
-| log_file        | `String`  | `auto`  | 日志文件路径，`auto` 则写入默认路径        |
+| 配置项              | 类型      | 默认值  | 说明                                                    |
+| ------------------- | --------- | ------- | ------------------------------------------------------- |
+| log_buffer_size     | `Int`     | `4096`  | 日志 Ring 缓冲区大小（条数），请勿随意调节              |
+| log_stdout          | `Boolean` | `false` | 将日志写到标准输出，Docker 中默认为 `true`              |
+| log_file            | `String`  | `auto`  | 日志文件路径，`auto` 则写入默认路径并自动删除旧日志文件 |
+| log_file_keep_count | `Int`     | `7`     | 当 `log_file = auto` 时，保留的日志文件数量             |
 
 ### 远程管理 {#config-remote}
 
