@@ -12,7 +12,7 @@
 
 | 开关 | 说明 |
 | --- | --- |
-| -f, --fetch_config `<Token>:<启动目标1>[,<启动目标2>...]` | 从 Sakura Frp 服务器自动拉取配置文件，启动目标格式如下：<br>- `<隧道 ID>` 指定单条隧道<br>- `n<节点 ID>` 指定某个节点下的所有隧道<br>_* 多节点启动需使用 frpc v0.42.0-sakura-6 及以上版本_ |
+| -f, --fetch_config `<Token>:<隧道ID 1>[,隧道ID 2[,隧道ID 3...]]` | 从 Sakura Frp 服务器自动拉取配置文件<br>_* 多节点启动需使用 frpc v0.42.0-sakura-6 及以上版本_ |
 | -w, --write_config | 拉取配置文件成功后将配置文件写入 `./frpc.ini` 中 |
 | -n, --no_check_update | 启动时不检查更新 |
 | -V, --version_full | 显示完整版本号并退出 frpc |
@@ -31,7 +31,7 @@
 | 变量名 | 说明 | 举例 |
 | --- | --- | --- |
 | NATFRP_TOKEN | 访问密钥 | wdnmdtoken666666 |
-| NATFRP_TARGET | 启动目标列表，详见 `-f` 开关 | 1234,6666,7777,n233 |
+| NATFRP_TARGET | 逗号分割的隧道 ID 列表，详见 `-f` 开关 | 1234,6666,7777 |
 
 ### 专有配置文件选项 {#advanced-config}
 
