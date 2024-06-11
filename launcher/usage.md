@@ -366,7 +366,7 @@ userdel -r natfrp
       --restart=on-failure:5 \
       --pull=always \
       --name=natfrp-service \
-      natfrp/launcher
+      natfrp.com/launcher
    ```
 
    ::: warning
@@ -377,7 +377,11 @@ userdel -r natfrp
    同时请将隧道本地 IP 修改为 docker 网关地址或者局域网访问地址。
    :::
 
-   如果您卡在了 `Pulling from natfrp/launcher`，请尝试将最后一行 `natfrp/launcher` 替换为 `registry.cn-hongkong.aliyuncs.com/natfrp/launcher`。
+   如果您卡在了 `Pulling from natfrp.com/launcher`，请尝试将最后一行 `natfrp.com/launcher` 替换为下面几个镜像之一：
+
+   - `natfrp/launcher`
+   - `ghcr.io/natfrp/launcher`
+   - `registry.cn-hongkong.aliyuncs.com/natfrp/launcher`
 
    如果您遇到了错误 `Bind for 0.0.0.0:4101 failed: port is already allocated`，请查找本机监听 4101 的程序关闭，或参考 [高级用户](#advance-docker) 替换监听端口。
 

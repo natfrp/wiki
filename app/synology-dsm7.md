@@ -54,14 +54,14 @@ Docker 套件和镜像只要安装一次即可，无需重复操作。如需更�
    要绕过此问题，您需要按照 [启用 SSH](#direct-enable-ssh) 中的方法连接到您的 NAS，然后执行下面的命令（期间需要输入密码，密码输入后没有回显）：
 
    ```bash
-   sudo docker pull registry.cn-hongkong.aliyuncs.com/natfrp/frpc
+   sudo docker pull natfrp.com/frpc
    ```
 
    直到您看到回显：
 
    ```text
-   Status: Downloaded newer image for registry.cn-hongkong.aliyuncs.com/natfrp/frpc:latest
-   registry.cn-hongkong.aliyuncs.com/natfrp/frpc:latest
+   Status: Downloaded newer image for natfrp.com/frpc:latest
+   natfrp.com/frpc:latest
    ```
 
    接下来您可以进行 [创建隧道](#docker-create-tunnel) 了。

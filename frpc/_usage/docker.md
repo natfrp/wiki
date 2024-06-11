@@ -3,8 +3,10 @@
 SakuraFrp 提供 frpc 镜像 ([Docker Hub](https://hub.docker.com/r/natfrp/frpc), [GitHub Packages](https://github.com/orgs/natfrp/packages/container/package/frpc)) 以便您借助 Docker 运行 frpc。
 
 :::tip 关于镜像源
-如果您的网络访问 Docker Hub 存在困难，对于所有使用 `natfrp/frpc` 镜像名处，您可以尝试替换为下面的内容之一：
+我们的镜像目前在官方仓库 `natfrp.com/frpc` 发布，您也可以使用下面的镜像源，  
+镜像源可能存在拉取较慢或无法拉取的问题，请尽量优先使用官方仓库拉取。
 
+- `natfrp/frpc`
 - `ghcr.io/natfrp/frpc`
 - `registry.cn-hongkong.aliyuncs.com/natfrp/frpc`
 
@@ -59,7 +61,7 @@ docker run \
     --restart=on-failure:5 \
     --pull=always \
     --name=sakura1 \
-    natfrp/frpc \
+    natfrp.com/frpc \
     --disable_log_color \
     -f <启动参数>
 ```
@@ -74,7 +76,7 @@ docker run \
 | `--restart=on-failure:5` | 系统重启或隧道崩溃时自动重启 frpc |
 | `--pull=always` | 总是检查镜像更新 |
 | `--name=sakura1` | 为容器设定一个名字，这里以 `sakura1` 为例 |
-| `natfrp/frpc` | 使用 DockerHub 源，也可以换成其他的。<br>- 阿里云香港镜像，适合内地用户：<br>&nbsp;&nbsp;`registry.cn-hongkong.aliyuncs.com/natfrp/frpc`<br>- GitHub Packages：<br>&nbsp;&nbsp;`ghcr.io/natfrp/frpc` |
+| `natfrp.com/frpc` | 从官方源拉取镜像 |
 | `--disable_log_color` | 禁用日志输出中的颜色 |
 | `-f <启动参数>` | 从面板直接复制的启动参数，用于指定要启动的隧道 |
 
@@ -87,7 +89,7 @@ version: "3"
 services:
   # 在这里给容器起一个名字, 例如 sakura1
   sakura1:
-    image: natfrp/frpc
+    image: natfrp.com/frpc
     restart: on-failure:5
     command: --disable_log_color -f <启动参数>
 ```
@@ -124,7 +126,7 @@ docker run \
     --name=sakura1 \
     -v /root/my.crt:/run/frpc/example.com.crt:ro \
     -v /root/my.key:/run/frpc/example.com.key:ro \
-    natfrp/frpc \
+    natfrp.com/frpc \
     --disable_log_color \
     -f <启动参数>
 ```
