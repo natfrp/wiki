@@ -28,7 +28,7 @@
 
    ![](./_images/wol-2.png)
 
-   ::: info
+   ::: tip
    不同网卡配置方式可能不一样，如果遇到配置困难请借助百度解决
    :::
 
@@ -81,18 +81,16 @@
 在同一内网下的 **其他设备** (如路由器) 上启动刚才创建的 WOL 隧道，正常情况下日志应该是这样的：
 
 ```log
-2023/01/13 00:41:06 [I] 检查更新中
-2023/01/13 00:41:06 [I] frpc version: 0.45.0-sakura-1 (built: 2022-11-30 17:32)
-2023/01/13 00:41:06 [I] 正在连接节点 [idea-leaper-1.natfrp.cloud, tcp]
-2023/01/13 00:41:13 [I] [233/10/qwqw] 连接节点成功, 获得 run ID [wdn**666-qwqw]
-2023/01/13 00:41:13 [I] [233/10/qwqw] 隧道连接中: [wdn**666.SampleTunnel]
-2023/01/13 00:41:13 [I] [233/10/qwqw] 限速已更新: 100 Mibit/s
-WOL 类型隧道启动成功
-使用 [SakuraFrp Web Panel] 来连接到你的隧道
-2023/01/13 00:41:14 [I] [233/10/qwqw] [wdn**666.SampleTunnel] start proxy success
+2024/02/31 11:11:11 [I] 正在连接节点 [idea-leaper-1.natfrp.cloud, tcp]
+2024/02/31 11:11:12 [I] [233/10/qwqw] 连接节点成功, 运行 ID [114514-19198100]
+2024/02/31 11:11:12 [I] [233/10/qwqw] 隧道启动中: [SampleTunnel, wol]
+2024/02/31 11:11:12 [I] [233/10/qwqw] 限速已更新: 10 Mibit/s
+WOL 隧道启动成功
+使用 >>SakuraFrp Web Panel<< 连接你的隧道
+2024/02/31 11:11:12 [I] [233/10/qwqw] [wdn**666.SampleTunnel] 隧道启动成功
 ```
 
-看到 **WOL 类型隧道启动成功** 或 **Your WOL proxy is available now.** 的提示就说明 WOL 隧道启动成功了。
+看到 **WOL 隧道启动成功** 或 **Your WOL proxy is available now.** 的提示就说明 WOL 隧道启动成功了。
 
 ## 测试唤醒
 
@@ -136,15 +134,15 @@ WOL 类型隧道启动成功
 点击 **开机** 后，frpc 应该会输出如下日志：
 
 ```log
-2023/01/13 00:44:12 [I] WOL sent from [一个 IP 地址]:0
-2023/01/13 00:44:12 [I] WOL sent from [另外一个 IP 地址]:0
-2023/01/13 00:44:12 [I] [233/10/qwqw] Wake On Lan succeed for <这里是配置的计算机 MAC>
+2024/02/31 00:44:12 [I] WOL 唤醒报文已从 [一个 IP 地址]:0 发出
+2024/02/31 00:44:12 [I] WOL 唤醒报文已从 [另外一个 IP 地址]:0 发出
+2024/02/31 00:44:12 [I] [233/10/qwqw] 成功发送 WOL 请求到 <这里是配置的计算机 MAC>
 ```
 
-有时也会出现这种日志，但是一般情况下都可以忽略，只要有 `Wake On Lan succeed` 的信息输出就好了：
+有时也会出现这种日志，但是一般情况下都可以忽略，只要有 `成功发送 WOL 请求到` 的信息输出就好了：
 
 ```log
-2023/01/13 00:44:12 [W] WOL error: dialUdp: dial udp [一个 IP 地址]:0->255.255.255.255:9: bind: The requested address is not valid in its context.
+2024/02/31 00:44:12 [W] WOL error: WOL 唤醒: 从 255.255.255.255:9 唤醒局域网失败: dialUdp: dial udp [一个 IP 地址]:0->255.255.255.255:9: bind: The requested address is not valid in its context.
 ```
 
 如果没有看到相关日志，请检查：
