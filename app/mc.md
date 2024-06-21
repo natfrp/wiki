@@ -105,7 +105,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 
 ::::
 
-:::: details LanServerProperties: Forge: 1.12.X ~ 1.20.4, fabric: 1.16.1 ~ 1.20.4
+:::: details LanServerProperties: Forge: 1.12.X ~ 1.20.4 1.21, fabric: 1.16.1 ~ 1.20.4 1.21, NeoForge: 1.21
 
 ::: tip
 此模组有部分版本可能会有不兼容问题，详情参考 [mcmod](https://www.mcmod.cn/class/2754.html) 模组页面下方的注意列表。  
@@ -137,7 +137,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 
 ::::
 
-:::: details Server.Properties for LAN: Forge: 1.7.X ~ 1.20.4
+:::: details Server.Properties for LAN: Forge: 1.7.2 ~ 1.20.6
 
 - Mod 名称: Server.Properties for LAN
 - Mod 功能:
@@ -152,8 +152,8 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
   9. 是否生成村民
   10. 最大建筑高度
   11. Motd设置
-- 下载链接 (1.7.X ~ 1.12.X): [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all) | [MC百科](https://www.mcmod.cn/download/1158.html)
-- 下载连接 (1.13 ~ 1.20.4): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/releases/latest)
+- 下载链接 (1.7.2 ~ 1.12.2): [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all) | [MC百科](https://www.mcmod.cn/download/1158.html)
+- 下载连接 (1.13 ~ 1.20.6): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/releases/latest)
 
 #### 使用方法
 
