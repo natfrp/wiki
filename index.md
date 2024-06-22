@@ -96,7 +96,7 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 
 ### 其他 IM 水群 {#community-other-im}
 
-- [Telegram](https://t.me/natfrp_unofficial) 恢复 QQ (1036050697) <-> Telegram 桥接
+- [Telegram](https://t.me/natfrp_unofficial) 桥接已失效
 - 非官方群, **群内没有网站管理员**
 
 ### 官方 QQ 反馈群 {#community-official-qq}
