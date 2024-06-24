@@ -64,7 +64,7 @@
 | auth_time | String | 2h | 配置访问认证功能在没有勾选「记住」时授权过期时间<br>接受的后缀为 `h`/`m`/`s`，请从大到小排列，如 `1h3m10s` |
 | auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 SakuraFrp 服务器下发的授权信息<br>- `server`: 不启用密码，只能通过 SakuraFrp 面板进行授权 |
 | auth_redirect | String | 空 | 配置 SakuraFrp 访问认证通过后自动跳转 (或打开) 到的页面<br>请参阅 [认证后打开的 URL](/offtopic/auth-widget.md#redirect_url) 获取更多用法 |
-| minecraft_detect | String | auto | 配置 Minecraft 局域网游戏监测功能<br>- `auto`: 在本地端口为 25565 时监测本地局域网游戏广播<br>- `enabled`: 监测本地局域网游戏广播<br>- `enabled_lan`: 监测整个 LAN 中的局域网游戏广播<br>- `disabled`: 禁用局域网游戏监测<br>_* frpc v0.51.0-sakura-5 及以上版本可用_ |
+| minecraft_detect | String | auto | 配置 Minecraft 局域网游戏监测功能<br>- 留空: 在本地端口为 25565 时监测来自本机的局域网游戏广播<br>- `enabled`: 监测来自本机的局域网游戏广播<br>- `enabled_lan`: 监测整个 LAN 中的局域网游戏广播<br>- `disabled`: 禁用局域网游戏监测<br>_* frpc v0.51.0-sakura-5 及以上版本可用_ |
 
 ::: tip
 在强制访问认证的节点上未设置访问密码（即未启用访问认证）时，将强制打开访问认证，使用 `server` 模式，您将需要在用户面板进行授权。

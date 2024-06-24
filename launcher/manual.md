@@ -175,12 +175,14 @@ natfrp-service remote-kdf <明文密码>
 
 关于配置项的详细信息，请参阅 [远程管理 V2 / 进阶配置](/launcher/remote-v2.md#geek)。
 
-| 配置项                      | 类型      | 默认值  | 说明                                  |
-| --------------------------- | --------- | ------- | ------------------------------------- |
-| remote_management           | `Boolean` | `false` | 启用远程管理                          |
-| remote_management_key       | `String`  | 空      | 远程管理密钥，KDF 后的 32 字节 Base64 |
-| remote_management_auth_mode | `String`  | `nonce` | 远程管理 Challenge-Response 认证模式  |
-| remote_management_auth_conf | `String`  | 空      | 远程管理 Challenge-Response 认证配置  |
+| 配置项                         | 类型      | 默认值  | 说明                                  |
+| ------------------------------ | --------- | ------- | ------------------------------------- |
+| remote_management              | `Boolean` | `false` | 启用远程管理                          |
+| remote_management_key          | `String`  | 空      | 远程管理密钥，KDF 后的 32 字节 Base64 |
+| remote_management_auth_mode    | `String`  | `nonce` | 远程管理 Challenge-Response 认证模式  |
+| remote_management_auth_conf    | `String`  | 空      | 远程管理 Challenge-Response 认证配置  |
+| remote_management_allow_config | `Boolean` | `true`  | 允许远程管理修改启动器配置            |
+| remote_management_allow_update | `String`  | `true`  | 允许远程管理执行更新操作              |
 
 ### Web UI {#config-webui}
 
