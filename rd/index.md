@@ -5,43 +5,40 @@ contributors: false
 
 # 由 SakuraFrp 提供的 RustDesk 服务
 
-RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我们最初计划将其用于远程技术支持，不过由于其功能强大，目前也对部分用户开放试用。
+RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我们最初计划将其用于远程技术支持，由于其功能强大，目前也对部分用户开放试用。
 
 ## 使用限制
 
 - **严禁** 将此服务用于非法控制他人设备、窃取信息、电信诈骗等非法用途
+- **为了避免服务突然去世，不对红队用户开放**。建议使用其他知名远程桌面方案 😔
 - 主控和被控都必须登录 **已完成实名认证** 且 **具有使用权限** 的 SakuraFrp 账户
 - 被控默认只接受登录了同一个账户的设备连接，如需授权其他人连接请在 [会话管理](https://www.natfrp.com/remote/rd_session) 界面为被控配置授权 UID
 - 目前普通用户可登录 5 个客户端，VIP 用户可登录 50 个客户端
-- 原则上我们不支持使用 TCP 隧道功能，滥用该功能可能会造成您的账户被封禁
-- 文件传输功能同理，滥用（频繁传输超大文件等）可能会造成您的账户被封禁
-- 不对红队用户开放，请自建中继服务器或者用市面上其他成熟的服务 😔
 
-完成实名认证且购买过 VIP 服务的用户（无论 VIP 是否已过期）均有使用权限，无需申请。
+完成实名认证且购买过 VIP 服务的用户（无论 VIP 是否已过期）均有使用权限。
 
 ## 下载软件
 
-您可以选用 [RustDesk 官方发布的版本](https://github.com/rustdesk/rustdesk/releases/latest) 或是 [SakuraFrp 分发的版本](https://github.com/natfrp/rustdesk/releases/latest)。
+您可以选用 [SakuraFrp 分发的版本](https://github.com/natfrp/rustdesk/releases/latest) 或是 [RustDesk 官方发布的上游版本](https://github.com/rustdesk/rustdesk/releases/latest)。
 
 - 由 SakuraFrp 分发的客户端无需配置服务器，且针对我们的服务进行了优化。  
-  适合大部分用户使用
-- 官方版本需 [配置服务器](#configure) 才能正常连接 SakuraFrp 提供的 RustDesk 服务。  
-  该版本经过了数字签名，如果您非常在意数字签名请使用此版本
+  适合大部分用户使用，如果无法最正常下载可以尝试从 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/rustdesk/) 下载
+- 官方版本需 [配置服务器](#configure) 才能正常连接 SakuraFrp 提供的 RustDesk 服务
 
-::: warning 客户端兼容性说明
-~~RustDesk 官方发布的 v1.1.9 版本已一年多未更新过，与我们的 HBBS 存在兼容问题，请下载 Nightly 版本使用~~  
-就在我们写这篇文档的时候，RustDesk 官方发布了 `1.2.0` 版本，使用该版本即可正常连接我们的中继服务器
+::: tip 客户端兼容性说明
+请使用 **1.2.0** 及以上版本的客户端进行连接，推荐您总是使用最新版客户端以获得最佳体验。
 :::
 
 ## 配置指南 {#configure}
 
-官方客户端需配置 **ID/中继服务器** 以连接到 SakuraFrp。如果您使用的是 SakuraFrp 分发的客户端，请 [跳过](#login) 这一步。
+RustDesk 官方发布的客户端需配置 **ID/中继服务器** 以连接到 SakuraFrp。  
+如果您使用的是由 SakuraFrp 分发的客户端 (底部显示 **正在使用由 SakuraFrp 提供的服务器**)，请 [跳过](#login) 这一步。
 
 ::: tabs
 
 @tab 桌面客户端
 
-1. 复制下方内容，请确保复制完整、没有多余字符：
+1. 复制下方内容，请确保复制完整、没有多余字符（最右边有复制按钮）：
   
    ```base64
    9JSPRt2Z2IzQ5cnbrcGZ0gXYDZ1Qx8kYLR1QsZ2aqhHNut2ca5kVWVWOi5WV1JiOikXZrJCLiQmcv02bj5CcyZGdh5mLpBXYv8iOzBHd0hmI6ISawFmIsIiI6ISehxWZyJCLiQWdvx2YuAncmRXYu5SMtQmciojI0N3boJye
@@ -77,7 +74,9 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 
 ## 登录客户端 {#login}
 
-推荐使用您的 SakuraFrp **用户名** 和 **访问密钥** 登录客户端，这样可以在面板显示设备信息。
+请使用您的 SakuraFrp **用户名** 和 **访问密钥** 登录客户端。
+
+重置访问密钥不会造成客户端退出登录，如需踢掉会话请前往 [会话管理](https://www.natfrp.com/remote/rd_session) 页面。
 
 您也可以点击下面的 `使用 Nyatwork OpenID`（官方客户端 < 1.2.2 显示为 `使用 GitHub`）按钮打开浏览器进行登录。
 
@@ -87,21 +86,15 @@ RustDesk 是一款开源的远程桌面软件，支持多个主流平台。我�
 
 ## 常见问题 {#faq}
 
-### 开始连接后不到几秒就弹出 Timeout 错误 {#faq-timeout}
-
-您可能使用的是 2023.07.01 之前构建的 Nightly 版本，请更新客户端。
-
-### Android / iOS 客户端设置 API 服务器时提示 invalid port value {#faq-invalid-port-value}
-
-该问题已于 `1.2.0` 版本被修复，请更新客户端。
-
 ### “正在连接” 一段时间后提示连接错误，点击中继连接可正常使用 {#faq-relay-connection}
 
-这是由于官方版本无论 NAT 类型如何均会尝试进行直连。请在连接 ID 后加上 `/r` 强制走中继服务器连接。
+这是由于官方版本无论 NAT 类型如何均会尝试进行直连，建议更换由 SakuraFrp 提供的客户端。
+
+您也可以在连接 ID 后加上 `/r` 强制走中继服务器连接。
 
 ### 会话管理页面设备信息显示未知 {#faq-unknown-device}
 
-这是由于您使用了 Nyatwork OpenID 登录，使用用户名 + 访问密钥登录才会记录设备信息。
+请确认您使用的是最新版客户端，您也可以尝试用用户名 + 访问密钥登录来立即更新设备信息。
 
 ### 设备 ID 或 UUID 被其他账户占用 {#faq-device-id-conflict}
 
@@ -152,3 +145,11 @@ uuidgen | sed 's/-//g' > /etc/machine-id
 通过 SakuraFrp 提供的节点进行连接时会消耗流量，但是 RustDesk 的流量消耗极小，基本可以忽略。
 
 如果您的账户中有 **RD 流量包** 则优先扣除该流量包，否则会扣除账户中的其他流量包，扣除规则与普通的 frp 流量相同。
+
+### 开始连接后不到几秒就弹出 Timeout 错误 {#faq-timeout}
+
+您可能使用的是 2023.07.01 之前构建的 Nightly 版本，请更新客户端。
+
+### Android / iOS 客户端设置 API 服务器时提示 invalid port value {#faq-invalid-port-value}
+
+该问题已于 `1.2.0` 版本被修复，请更新客户端。
