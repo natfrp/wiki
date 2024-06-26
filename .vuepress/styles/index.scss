@@ -12,6 +12,10 @@
         }
     }
 
+    .nowrap {
+        white-space: nowrap;
+    }
+
     h1:first-child+.gugu {
         margin-top: 2rem;
     }

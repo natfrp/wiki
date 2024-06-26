@@ -11,7 +11,7 @@ const sections = {
 			{
 				text: '出现错误',
 				children: [
-					{ text: '客户端错误', link: '/faq/client-error.html' },
+					{ text: '客户端报错', link: '/faq/client-error.html' },
 					{ text: '无法访问映射的网站', link: '/faq/site-inaccessible.html' },
 				],
 			},
