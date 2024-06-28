@@ -2,47 +2,49 @@
 sidebar: false
 ---
 
-# 高级用户相关说明
+# 极客用户相关说明
+
+如果您是极客用户，下方的内容可能会对您有所帮助。
 
 ## 数据安全 {#data-security}
 
 我们严格按照 [隐私策略](https://www.natfrp.com/policy/privacy) 执行，并使用最新版本服务端软件。
 
-在架构设计适宜、法律法规许可的情况下总是使用 E2E 设计，以保证我们也无法解密您的数据。
+在架构设计适宜、法律法规许可的情况下我们会优先采用 E2E 设计，以保证我们也无法解密您的数据。
 
 ## 软件安全 {#software-security}
 
-目前我们只提供启动器源码，frpc/frps 均不开源，但对外分发的二进制文件未经过加密或混淆，您可以直接拖进 IDA 进行审计。
-
-但是，由我们分发的启动器安装包中 frpc 带有混淆，这是为了缓解 cli 版本被滥用造成启动器被杀软误杀的问题。
-
-如果您不信任经过混淆的 frpc 二进制文件，可以考虑自行编译启动器、去掉签名校验并使用我们另外分发的无混淆版本，二者是兼容的。
+我们的客户端软件并不开源，但对外分发的二进制文件均未经过加密或混淆，您可以直接拖进 IDA 等工具中进行审计。
 
 ## 自定义性 {#customization}
 
-关于我们的修改版客户端，我们提供配置文件项和参数可供自定义，详情请查看 [frpc 用户手册](/frpc/manual.md) 。
+对于我们的修改版 frpc，绝大部分功能都可以通过配置文件进行控制，详情请查看 [frpc 用户手册](/frpc/manual.md) 。
 
-要加入任何隧道参数，建议在隧道的「自定义设置」文本框中填入，从而在使用 `-f` 启动 frpc 时自动同步。
+要加入任何隧道参数，建议在管理面板的「自定义设置」文本框中填入，从而在使用 `-f` 启动 frpc 时自动同步。
 
-也可使用直接编辑 `frpc.ini` 的方式自定义，请从隧道列表的「配置文件」项目中复制并修改，只要不修改关键连接参数（`host`, `port`, `token`, `user`, ...），均可正常运行。
-
-## 启动器移植 {#porting-launcher}
-
-如果您想要自己实现启动器的话，可以参考 [SakuraFrp API 文档](https://api.natfrp.com/docs/) 接入我们的服务。
-
-目前存在的第三方启动器实现：
-
-- [yuhencloud/SakuraFrpLauncher in Qt](https://github.com/yuhencloud/SakuraFrpLauncher)
+也可使用直接编辑 `frpc.ini` 的方式自定义，只要不修改关键连接参数（`host`, `port`, `user`, 隧道名, 类型, 远程端口, 绑定域名），均可正常连接到我们的服务。
 
 ## 兼容性 {#compatibility}
 
-我们的服务兼容 [上游开源版本](https://github.com/fatedier/frp) 的客户端 `0.18.0+` 。
+::: tip 提示
+上游版本缺少很多专有优化，建议您尽可能使用由我们分发的客户端以获得最佳性能  
+由 SakuraFrp 分发的客户端已与上游相差 1000+ 次提交，比较二者的版本号意义不大  
+如果您认为上游的某个功能很有用，欢迎在 [社区论坛](https://github.com/natfrp/wiki/discussions) 中提出建议，我们会考虑实现相关功能
+:::
 
-也就是说您可以使用几乎任何现有的 frp 客户端来使用我们的服务，只需根据隧道的「配置文件」手动填写关键连接参数，或直接复制配置文件启动即可
+### 服务端
+
+我们的节点兼容 [上游开源版本](https://github.com/fatedier/frp) 的客户端 `0.18.0+` 。
+
+也就是说您可以使用几乎任何现有的 frp 客户端来使用我们的服务，只需根据隧道的「配置文件」手动填写关键连接参数，或直接复制配置文件启动即可。
 
 如果您是使用 Windows XP 或 Windows Vista 的极客用户，请使用上游的 [0.28.2 版本](https://github.com/fatedier/frp/releases/tag/v0.28.2) 。
 
-使用任何非本网站分发的最新版客户端，均视为放弃相关支持，由此带来的任何问题请您发扬极客精神自行解决。
+### 客户端
+
+我们的客户端尽可能维持了对上游 frps 的兼容性，关闭 `sakura_mode` 开关后即可正常连接上游 frps。
+
+部分完全由客户端实现的功能（如访问认证、自动 HTTPS 等）在这种情况下也可以正常工作。
 
 ## 高级用户模式 {#advanced-mode}
 
@@ -55,3 +57,11 @@ sidebar: false
 如果您具有 **专业计算机知识** 且 **熟悉 frpc 的配置与使用**，可以在 [用户信息](https://www.natfrp.com/user/profile) 页面打开 **高级用户模式** 来显示这些配置，并隐藏一部分安全提示。
 
 ![](./_images/advanced-mode.png)
+
+## 启动器移植 {#porting-launcher}
+
+如果您想要自己实现启动器的话，可以参考 [SakuraFrp API 文档](https://api.natfrp.com/docs/) 接入我们的服务。
+
+目前存在的第三方启动器实现：
+
+- [yuhencloud/SakuraFrpLauncher in Qt](https://github.com/yuhencloud/SakuraFrpLauncher)
