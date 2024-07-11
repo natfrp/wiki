@@ -37,9 +37,11 @@
 1. 如果您不知道自己在干什么，或者不知道自己的服务需不需要 TLS，就 **不要开** 这个功能
 :::
 
-如果穿透的 **已经是** HTTPS 协议了，再打开这个功能会把流量变成 **TLS 套 TLS**，并且 frpc 在请求本地服务时会使用 **明文 HTTP** 协议。
+如果穿透的 **已经是** HTTPS 协议了，再打开这个功能会把流量变成 **TLS 套 TLS**。
 
-但是此时本地服务需要的显然是 **HTTPS 协议**，用明文 HTTP 去连接就 **不能用**，而且会 **报错**：
+如果您使用的是 0.51.0-sakura-7 及以上版本，frpc 会自动检测这种情况并切换到 HTTPS 反代模式。
+
+否则，frpc 在请求本地服务时会使用 **明文 HTTP** 协议，此时本地服务需要的显然是 **HTTPS 协议**，用明文 HTTP 去连接就 **不能用**，而且会 **报错**：
 
 - Nginx 会报 **400 Bad Request**，错误信息为 `The plain HTTP request was sent to HTTPS port`
 - Apache 会报 **Bad Request**，错误信息为 `Your browser sent a request that this server could not understand`  
@@ -51,7 +53,7 @@
 
 打开这个功能很简单，只要开一个开关就可以了，剩下的 frpc 都会自动处理：
 
-1. 编辑隧道并在 **自动 HTTPS** 处选择 `自动`
+1. 编辑隧道并在 **自动 HTTPS** 处选择 `自动` (或者 `启用`, 或者输入需要加载证书的域名)
 
    ![](./_images/auto-https-toggle.png)
 
@@ -66,21 +68,30 @@
 | auto_https | 说明 |
 | :---: | --- |
 | 留空<br>**[默认值]** | 禁用自动 HTTPS 功能 |
-| auto | frpc 将使用 `server_name` 作为证书 Common Name (CN) 生成自签证书 |
-| 其他值 | frpc 将尝试加载 工作目录 下的 `<auto_https>.crt` 和 `<auto_https>.key` 两个证书文件<br>- 若加载成功，`<auto_https>` 就作为一个单纯的文件名进行处理，不会对证书产生影响<br>- 若文件不存在或解析失败则使用 `<auto_https>` 作为 CN 生成一份自签名证书并保存到上述文件中 |
+| auto | frpc 将使用节点域名作为证书 CN 生成自签证书 |
+| 逗号分隔的域名列表 | frpc 将尝试逐个加载 **工作目录** 下的 `<域名>.crt` 和 `<域名>.key` 两个证书文件<br>- 若加载成功，则使用这些证书进行处理<br>- 若文件不存在或解析失败则生成一份自签名证书并保存到上述文件中<br>对于泛域名证书，请参考 [泛域名证书加载说明](#wildcard-cert-loading) |
 
-考虑到部分用户穿透的可能不是 Web 应用，frpc 默认会在启动时发送 `HEAD /\r\n\r\n` 并检查回包的头 4 个字节来决定工作模式。如果是 `HTTP` 就采用 `http` 模式，否则采用 `passthrough` 模式。
+frpc 默认会在启动时自动探测本地服务是否为 HTTP(S) 服务器，并选择恰当的工作模式。
 
-当然，自动检测并非完美，因此自 **v0.42.0-sakura-2.1** 起您可以通过 `auto_https_mode` 开关强制覆写工作模式：
+自 `0.42.0-sakura-2.1` 起，您也可以通过`auto_https_mode` 开关强制覆写工作模式：
 
 | auto_https_mode | 说明 |
 | :---: | --- |
 | 留空<br>**[默认值]** | 自动探测是否为 HTTP 服务并选择恰当的工作模式 |
 | http | 使用 HTTP 服务器进行反代并在发给本地服务的请求中追加 `X-Forwarded-For` 请求头 |
 | passthrough | 直通模式，单纯的在 TCP 流外面套上一层 TLS，不对数据包进行其他修改操作 |
+| https | HTTPS 反代模式, 自 `0.51.0-sakura-7` 起可用, 与 HTTP 反代模式类似 |
+
+此外，自 `0.51.0-sakura-7` 起，可以通过 `auto_https_policy` 指定接收到对未通过 `auto_https` 开关预加载证书的域名的 HTTPS 请求时，证书的加载策略：
+
+| auto_https_policy | 说明 |
+| :---: | --- |
+| loose<br>**[默认值]** | 自动加载存在于工作目录的本地证书, 若加载失败则使用 `auto_https` 中第一个域名对应的证书作为 fallback |
+| exist | 自动加载存在于工作目录的本地证书, 若加载失败则拒绝 TLS 握手 |
+| strict | 不允许自动加载证书, 没有预加载证书的域名均拒绝 TLS 握手 |
 
 ::: tip
-下面的请求修改功能仅当工作在 http 模式时可用，如果您在使用 直通模式，配置下面的参数将没有任何效果。
+下面的请求修改功能仅当工作在 `http` / `https` 模式时可用，如果您在使用 直通模式，配置下面的参数将没有任何效果。
 :::
 
 对于特定应用需要修改请求中的 Host 的情况，您可以在高级设置中使用下面的配置来修改请求：
@@ -99,3 +110,18 @@ plugin_header_cookie = "logged_in=yes;"
 ; 或者为所有用户都返回移动端页面
 plugin_header_user-agent = "Mozilla/5.0 (Linux; Android 13; Pixel 6 Pro) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36"
 ```
+
+### 泛域名证书加载说明 {#wildcard-cert-loading}
+
+自 `0.51.0-sakura-7` 起，自动 HTTPS 功能支持泛域名证书的加载。
+
+泛域名证书加载后，frpc 会在处理请求时按照 `SAN 完全匹配 -> SAN 中的泛域名可匹配请求` 的规则查找预加载的证书，查找失败则按照 `auto_https_policy` 设定的策略进行自动加载、Fallback 或拒绝握手。
+
+以域名 `nya-labs.natfrp.com` 为例，frpc 将按顺序尝试加载以下几个证书文件，其中 `_wildcard` 是固定关键词：
+
+- 本级完全匹配: `nya-labs.natfrp.com.crt`、`nya-labs.natfrp.com.key`
+- 上级泛域名证书: `_wildcard.natfrp.com.crt`、`_wildcard.natfrp.com.key`
+- 本级泛域名证书: `_wildcard.nya-labs.natfrp.com.crt`、`_wildcard.nya-labs.natfrp.com.key`
+- 上级完全匹配: `natfrp.com.crt`、`natfrp.com.key`
+
+若所有证书均加载失败，frpc 会在预加载时生成一份自签名证书并保存到 `nya-labs.natfrp.com.crt/key` 中。
