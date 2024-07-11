@@ -357,6 +357,11 @@ userdel -r natfrp
 
 2. 启动容器
 
+   ::: tip
+   自 `3.1.3` 起, 启动器的 WebUI 默认端口已从 `4101` 更改为 `7102`  
+   如果您曾使用旧版启动器初始化过配置文件, 可能需要将下方的 `7102` 替换为 `4101`
+   :::
+
    执行下面的指令即可启动：
 
    ```bash
@@ -371,10 +376,10 @@ userdel -r natfrp
 
    ::: warning
    非 Linux 系统 (Windows, macOS) 不支持 `--network=host`，  
-   我们推荐您不要在此情况下使用启动器，这可能会造成很差的使用体验。
+   我们推荐您不要在此情况下使用 Docker，而是使用相应的客户端安装程序
 
-   您如果执意要如此做，可能需要将 `--network=host` 更改为 `-p 4101:4101`，这将会把 4101 端口映射到 localhost (127.0.0.1)。
-   同时请将隧道本地 IP 修改为 docker 网关地址或者局域网访问地址。
+   您如果执意要如此做，可能需要将 `--network=host` 更改为 `-p 7102:7102`，这将会把 `7102` 端口映射到 localhost (127.0.0.1)。
+   同时请将隧道本地 IP 修改为 Docker 网关地址或者局域网访问地址。
    :::
 
    如果您卡在了 `Pulling from natfrp.com/launcher`，请尝试将最后一行 `natfrp.com/launcher` 替换为下面几个镜像之一：
@@ -383,7 +388,7 @@ userdel -r natfrp
    - `ghcr.io/natfrp/launcher`
    - `registry.cn-hongkong.aliyuncs.com/natfrp/launcher`
 
-   如果您遇到了错误 `Bind for 0.0.0.0:4101 failed: port is already allocated`，请查找本机监听 4101 的程序关闭，或参考 [高级用户](#advance-docker) 替换监听端口。
+   如果您遇到了错误 `Bind for 0.0.0.0:7102 failed: port is already allocated`，请查找本机监听 `7102` 的程序关闭，或参考 [高级用户](#advance-docker) 替换监听端口。
 
 3. 获取连接信息
 

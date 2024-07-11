@@ -393,6 +393,10 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 
 ### 安装启动器后登录桌面卡在黑屏 {#linux-stuck-login}
 
+::: tip
+自 `3.1.3` 起, 启动器的 WebUI 默认端口已从 `4101` 更改为 `7102`, 新安装的用户应该不会再碰到此问题
+:::
+
 如果您的 Linux 桌面环境在启动器运行时（如配置了开机启动后）登录后卡在黑屏、可以看到鼠标光标但无法进入桌面，可能是由于启动器的 Web UI 端口 `4101` 与 BrlAPI 的默认端口发生了冲突。
 
 采用 BrlAPI 的程序如 `xbrlapi`、`BRLTTY`、屏幕阅读器等会尝试连接到 4101 端口，但启动器无法作出正确的响应导致这些程序卡住。对于 xbrlapi，卡住会导致登录后黑屏。

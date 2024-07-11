@@ -198,7 +198,7 @@ natfrp-service remote-kdf <明文密码>
 | 配置项            | 类型     | 默认值      | 说明                                                  |
 | ----------------- | -------- | ----------- | ----------------------------------------------------- |
 | webui_host        | `String` | `localhost` | Web UI 监听地址，不为 `localhost` 时必须配置 TLS 证书 |
-| webui_port        | `Int`    | `-1`        | Web UI 监听端口，-1 禁用<br>在 Unix 平台默认为 `4101` |
+| webui_port        | `Int`    | `-1`        | Web UI 监听端口，-1 禁用<br>- Unix 平台, `3.1.3` 及以上版本默认为 `7102`<br>- Unix 平台, 旧版默认为 `4101` |
 | webui_pass        | `String` | 空          | Web UI 访问密码                                       |
 | webui_cert        | `String` | 空          | Web UI TLS 证书路径                                   |
 | webui_cert_key    | `String` | 空          | Web UI TLS 证书密钥路径                               |
