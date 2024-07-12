@@ -7,20 +7,17 @@
 
 此页将介绍如何为 **frpc** 配置 SSL 证书来避免 **自动 HTTPS** 和 **访问认证** 功能的证书错误提示。如果您没有使用这些功能，此页的内容不适用于您碰到的问题。
 
-::: warning 更好的解决方案
-如果您在为 **自动 HTTPS** 配置证书，更好的解决方案可能是为您的后端应用配置 TLS，并 **关闭** 自动 HTTPS。  
-这通常来说更容易配置，性能更好，且更不容易出问题。
-:::
-
 ## 获取 SSL 证书 {#get-cert}
 
-您需要拥有一个属于自己的域名才能申请、部署 SSL 证书。如果您还没有域名，请先到任意注册商购买一个。
+::: tip 提示
+您需要拥有一个属于自己的域名才能申请、部署 SSL 证书。如果您还没有域名，可以考虑使用 [子域绑定](/bestpractice/domain-bind.md) 功能
+:::
 
 有了域名后，选择一个 SSL 服务商，按照他们的流程进行申请即可。下面是一些常见的 SSL 服务商：
 
 - [Let's Encrypt](https://letsencrypt.org/) (免费)
 - [Zero SSL](https://zerossl.com/) (免费)
-- [Nya SSL](https://get.ssl.moe/) (单域名 ￥14.9/年, 泛域名 ￥149/年)
+- [Nya SSL](https://get.ssl.moe/) (单域名 ￥19.9/年, 泛域名 ￥199/年，部分用户可在管理面板领取优惠券获取更低的价格)
 - [腾讯云](https://cloud.tencent.com/product/ssl)
 - [阿里云](https://www.aliyun.com/product/cas)
 - [Comodo](https://www.comodo.com/)
