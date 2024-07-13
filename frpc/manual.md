@@ -57,7 +57,6 @@
 
 | 选项 | 类型 | 默认值 | 说明 |
 | --- | --- | --- | --- |
-| concat_packet | Int | -1 | 配置合并封包功能的最小字节数，有助于减少小包并降低网卡 PPS<br>设置为 `-1` 禁用合并封包功能 |
 | auto_https | String | 空 | 配置自动 HTTPS 功能，留空则禁用自动 HTTPS 功能<br>请参阅 [配置 frpc 的自动 HTTPS 功能](/frpc/auto-https.md) 获取更多信息 |
 | auto_https_mode | String | 空 | 配置自动 HTTPS 的工作模式<br>- 留空: 由 frpc 自动探测本地服务并选择<br>- `http`: 通过 HTTP 反代连接本地服务<br>- `passthrough`: 直通模式, 只在流量外层套上 TLS, 内部数据原样转发<br>- `https`: 通过 HTTPS 反代连接本地服务<br>_* https 模式在 0.51.0-sakura-7 及以上版本可用_ |
 | auto_https_policy | String | `loose` | 配置自动 HTTPS 的证书加载策略<br>- `loose`: 自动加载存在的本地证书, 失败则使用第一个域名对应的证书<br>- `exist`: 自动加载存在的本地证书, 失败则拒绝握手<br>- `strict`: 不允许自动加载证书, 没有预加载证书的域名均拒绝握手 <br>_* 0.51.0-sakura-7 及以上版本可用_ |
@@ -67,6 +66,7 @@
 | auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 SakuraFrp 服务器下发的授权信息<br>- `server`: 不启用密码，只能通过 SakuraFrp 面板进行授权 |
 | auth_redirect | String | 空 | 配置 SakuraFrp 访问认证通过后自动跳转 (或打开) 到的页面<br>请参阅 [认证后打开的 URL](/offtopic/auth-widget.md#redirect_url) 获取更多用法 |
 | minecraft_detect | String | auto | 配置 Minecraft 局域网游戏监测功能<br>- 留空: 在本地端口为 25565 时监测来自本机的局域网游戏广播<br>- `enabled`: 监测来自本机的局域网游戏广播<br>- `enabled_lan`: 监测整个 LAN 中的局域网游戏广播<br>- `disabled`: 禁用局域网游戏监测<br>_* 0.51.0-sakura-5 及以上版本可用_ |
+| ~~concat_packet~~ | ~~Int~~ | ~~-1~~ | ~~配置合并封包功能的最小字节数，有助于减少小包并降低网卡 PPS<br>设置为 `-1` 禁用合并封包功能~~<br>_* 于 0.51.0-sakura-7.2 移除_  |
 
 ::: tip
 在强制访问认证的节点上未设置访问密码（即未启用访问认证）时，将强制打开访问认证，使用 `server` 模式，您将需要在用户面板进行授权。
