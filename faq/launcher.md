@@ -16,6 +16,22 @@
 
 直接关闭 **设置** 标签中的 **自动更新** 开关即可，关闭后启动器不会进行任何更新检查或下载。
 
+### 忘记启动器 WebUI 密码 {#forgot-webui-password}
+
+您可以在启动器的 `config.json` 中找到 WebUI 端口和密码，关于该文件的位置请参考 [启动器用户手册 > 工作目录](/launcher/manual.md#working-dir)。
+
+- 启动器 Docker 镜像会在每次启动时输出 WebUI 的连接信息，请检查容器日志。
+
+- 对于 Linux 用户，如果您是按照文档安装的启动器，可以尝试执行下列命令：
+
+  ```sh
+  grep webui_ ~/.config/natfrp-service/config.json /home/natfrp/.config/natfrp-service/config.json
+  ```
+
+  输出内容中 `"webui_pass":` 后面引号内的内容即为 WebUI 密码。
+
+- 对于 Windows 用户，请用记事本打开 `%ProgramData%\SakuraFrpService\config.json` 查找 `webui_pass` 关键字。
+
 ## Windows 常见问题 {#windows}
 
 ### 安装更新时卡在 "等待启动器退出" 或是启动器关闭后没有任何反应 {#update-hang}
