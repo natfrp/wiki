@@ -18,6 +18,28 @@ SakuraFrp 不提供 Minecraft 服务器相关帮助，本文档主要由社区�
 
 :::
 
+::: details 联机成功后游戏看起来卡顿或延迟极高
+
+#### 可能原因:  
+
+1.服务器/主机性能不佳导致处理缓慢  
+检查 [调试屏幕](https://zh.minecraft.wiki/w/%E8%B0%83%E8%AF%95%E5%B1%8F%E5%B9%95) 页面的 `ms ticks` 项目是否有超过50ms，如果有即为主机性能不足或模组过多等原因。  
+注：当您不是主机时可能无法看到这一项，请使用其他方法查看 tps 或 mspt 等服务器性能指标。
+
+2.节点超载或节点到主机的网络的连接质量不佳  
+尝试检查 [节点状态](https://www.natfrp.com/tunnel/nodes) 页面并更换节点，如果全部节点都卡顿基本可以排除此问题。
+
+3.你的整合包对联机的兼容性不佳  
+尝试使用 [服务端](#java-server) 替代局域网联机。
+
+4.宽带上传速度不足  
+请自行使用各类测速网站检查你的带宽上传极限值为多高，一般情况下原版的正常游戏需要每人至少 1Mbps 平均带宽，2Mbps 峰值带宽。并且在添加有模组或数据包的情况下这个需求可能会成倍增长。
+
+#### 如果你需要他人帮助： 
+可以到 [sakura交流群、论坛](/index.md#community) 提问，提问时请尽量提供穿透节点、网络环境、游戏是否为整合包等信息，并注意隐私。
+
+:::
+
 ## 基岩版或 Geyser 联机和开服 {#bedrock}
 
 请参阅 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server.md) | [Geyser 互通开服指南](/offtopic/mc-geyser.md) 以开启服务器。
@@ -138,7 +160,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 
 ::::
 
-:::: details Server.Properties for LAN 适用游戏版本: Forge: 1.7.2 ~ 1.20.6
+:::: details Server.Properties for LAN 适用游戏版本: Forge: 1.7.2 ~ 1.21
 
 - Mod 名称: Server.Properties for LAN
 - Mod 功能:
