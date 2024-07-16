@@ -14,7 +14,7 @@
 | `SakuraLauncher.apk`                                         | Android                            |
 | 配置 Web UI 通过 [PWA](https://launcher.natfrp.com) 进行管理 | 所有平台                           |
 
-高级用户完全可以选择不安装用户界面、手动修改 `config.json` 启用远程管理 V2 在管理面板进行控制。不过这样做使用体验比较差。
+高级用户完全可以选择不安装用户界面、手动修改 `config.json` 并启用远程管理 V2 通过管理面板管理启动器。
 
 | 核心服务               | 平台            |
 | ---------------------- | --------------- |
@@ -99,20 +99,21 @@ natfrp-service remote-kdf <明文密码>
 
 ## 配置文件 {#config}
 
-配置文件 `config.json` 默认以 660 权限创建。在 Unix 平台您可以建立单独的用户以确保配置文件不被泄露。
+配置文件 `config.json` 及启动器自动生成的 WebUI 证书文件默认以 `600` 权限创建。在 Unix 平台您可以建立单独的用户以确保配置文件不被泄露。
 
 ### 核心功能 {#config-core}
 
-| 配置项             | 类型      | 默认值    | 说明                                                                   |
-| ------------------ | --------- | --------- | ---------------------------------------------------------------------- |
-| token              | `String`  | 空        | 用户访问密钥，用于自动登录                                             |
-| auto_start_tunnels | `Int[]`   | 空        | 自动登录后启动的隧道 ID 列表                                           |
-| update_interval    | `Int`     | `86400`   | 自动更新检查间隔，单位为秒，设置为 -1 禁用自动更新                     |
-| update_channel     | `String`  | `current` | 更新通道，可选值为 `lts`，`current`，`beta`，`edge`                    |
-| frpc_log_level     | `String`  | `info`    | 配置 frpc 日志等级，可选值为 `trace`，`debug`，`info`，`warn`，`error` |
-| frpc_force_tls     | `Boolean` | `false`   | 强制启用 frpc TLS 连接                                                 |
-| frpc_standard_tls  | `Boolean` | `false`   | 强制启用 frpc 标准 TLS 连接                                            |
-| frpc_enable_stats  | `Boolean` | `true`    | 将 frpc 统计信息回报到启动器，用于 Web UI 展示                         |
+| 配置项               | 类型      | 默认值    | 说明                                                                   |
+| -------------------- | --------- | --------- | ---------------------------------------------------------------------- |
+| token                | `String`  | 空        | 用户访问密钥，用于自动登录                                             |
+| auto_start_tunnels   | `Int[]`   | 空        | 自动登录后启动的隧道 ID 列表                                           |
+| update_interval      | `Int`     | `86400`   | 自动更新检查间隔，单位为秒，设置为 -1 禁用自动更新                     |
+| update_channel       | `String`  | `current` | 更新通道，可选值为 `lts`，`current`，`beta`，`edge`                    |
+| frpc_log_level       | `String`  | `info`    | 配置 frpc 日志等级，可选值为 `trace`，`debug`，`info`，`warn`，`error` |
+| frpc_force_tls       | `Boolean` | `false`   | 强制启用 frpc TLS 连接                                                 |
+| frpc_standard_tls    | `Boolean` | `false`   | 强制启用 frpc 标准 TLS 连接                                            |
+| frpc_enable_stats    | `Boolean` | `true`    | 将 frpc 统计信息回报到启动器，用于 Web UI 展示                         |
+| frpc_version_timeout | `Int`     | `3`       | 配置 frpc 版本检查超时时间                                             |
 
 ### API 连接性保障 {#config-api}
 
@@ -196,14 +197,14 @@ natfrp-service remote-kdf <明文密码>
 
 您也可以直接访问启动器的 Web UI 监听地址使用内置的 Web UI，但您将无法使用 PWA 以及最新功能。
 
-| 配置项            | 类型     | 默认值      | 说明                                                  |
-| ----------------- | -------- | ----------- | ----------------------------------------------------- |
-| webui_host        | `String` | `localhost` | Web UI 监听地址，不为 `localhost` 时必须配置 TLS 证书 |
+| 配置项            | 类型     | 默认值      | 说明                                                                                                       |
+| ----------------- | -------- | ----------- | ---------------------------------------------------------------------------------------------------------- |
+| webui_host        | `String` | `localhost` | Web UI 监听地址，不为 `localhost` 时必须配置 TLS 证书                                                      |
 | webui_port        | `Int`    | `-1`        | Web UI 监听端口，-1 禁用<br>- Unix 平台, `3.1.3` 及以上版本默认为 `7102`<br>- Unix 平台, 旧版默认为 `4101` |
-| webui_pass        | `String` | 空          | Web UI 访问密码                                       |
-| webui_cert        | `String` | 空          | Web UI TLS 证书路径                                   |
-| webui_cert_key    | `String` | 空          | Web UI TLS 证书密钥路径                               |
-| webui_origin_mode | `String` | `natfrp`    | Web UI Origin 检查模式                                |
+| webui_pass        | `String` | 空          | Web UI 访问密码                                                                                            |
+| webui_cert        | `String` | 空          | Web UI TLS 证书路径                                                                                        |
+| webui_cert_key    | `String` | 空          | Web UI TLS 证书密钥路径                                                                                    |
+| webui_origin_mode | `String` | `natfrp`    | Web UI Origin 检查模式                                                                                     |
 
 #### 关于 webui_host {#config-webui-host}
 
