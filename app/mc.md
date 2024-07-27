@@ -315,25 +315,65 @@ motd=
 
 ### 安装对应版本的 Java {#install-java}
 
+对于不同的系统，安装 Java 环境的方法不尽相同。  
+对于 Windows 系统，您可以直接使用双击安装包的方式安装。
+
 不同版本的游戏对 Java 的版本需求也不同，见下：
--对于 Minecraft 1.7.x 更低版本，您可能需要已经停止支持的 Java7 或更低版本才能运行，此处无法提供支持。
--对于 1.8-1.16.5，大部分情况下您需要 Java8 作为运行环境。
--对于 1.17-1.20.4，大部分情况下您需要 Java17 作为运行环境。
--对于 1.20.5+，大部分情况下您需要 Java21 作为运行环境。
 
-对于不同的系统，安装 Java 环境的方法不尽相同。
-Windows 系统下，您有以下不同选择可选：
+框图中的 Java 版本可点击，将带您下载我们比较推荐的 Adoptium 版本 Java 环境，**点击其中的 `.msi` 按钮 即可下载安装包**。
 
-::: tip
-下载时如需要选择安装包格式，一般选择 `.msi` 格式的安装包进行安装  
-由于不同的 Java 运行环境众多，此处仅列出部分笔者所知的常见 Java 环境
-:::
+```flow
+st=>start: 选定客户端版本
+cond1=>condition: 小于 1.8？|approved
+cond2=>condition: 小于 1.17？|approved
+cond3=>condition: 小于 1.20.5？|approved
+unknown=>operation: 未知版本|invalid
+Java 8=>operation: Java 8|future:>https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=8
+Java 17=>operation: Java 17|rejected:>https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=17
+Java 21=>operation: Java 21|current:>https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=21
 
-| Java版本 | Adoptium | zulu | Microsoft Build of OpenJDK | Dragonwell |
-|---------|-----------|------|----------------------------|------------|
-| Java8 | [jre](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=8) | [jre](https://www.azul.com/downloads/?version=java-8-lts&os=windows&architecture=x86-64-bit&package=jre#zulu) | N/A | [jre](https://github.com/dragonwell-project/dragonwell8/releases) |
-| Java17 | [jre](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=17) | [jre](https://www.azul.com/downloads/?version=java-17-lts&os=windows&architecture=x86-64-bit&package=jre#zulu) | [jdk](https://learn.microsoft.com/zh-cn/java/openjdk/download#openjdk-17) | [jre](https://github.com/dragonwell-project/dragonwell17/releases) |
-| Java21 | [jre](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=21) | [jre](https://www.azul.com/downloads/?version=java-21-lts&os=windows&architecture=x86-64-bit&package=jre#zulu) | [jdk](https://learn.microsoft.com/zh-cn/java/openjdk/download#openjdk-21) | [jre](https://github.com/dragonwell-project/dragonwell21/releases) |
+st->cond1
+cond1(yes@小于, bottom)->unknown
+cond1(no@大于, right)->cond2
+cond2(yes@小于, bottom)->Java 8
+cond2(no@大于, right)->cond3
+cond3(yes@小于, bottom)->Java 17
+cond3(no@大于, right)->Java 21
+```
+
+下面为您另提供一些常用版本的 Windows 安装包下载链接，这些版本的主要区别是出品公司，请根据你的信任选择：
+
+#### Adoptium
+
+由 Eclipse 开源基金会创建、阿里巴巴、华为、IBM 等参与的 Java 环境项目。
+
+| Java 8 | Java 17 | Java 21 |
+| --- | --- | --- |
+| [下载链接](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=8)<br>点击 `.msi` 下载 | [下载链接](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=17)<br>点击 `.msi` 下载 | [下载链接](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=21)<br>点击 `.msi` 下载 |
+
+#### Zulu
+
+由知名 Java 开发企业 Azul 制作的 Java 环境安装包。
+
+| Java 8 | Java 17 | Java 21 |
+| --- | --- | --- |
+| [下载链接](https://www.azul.com/downloads/?version=java-8-lts&os=windows&architecture=x86-64-bit&package=jre#zulu)<br>点击 `Download` - `.msi` 下载 | [下载链接](https://www.azul.com/downloads/?version=java-17-lts&os=windows&architecture=x86-64-bit&package=jre#zulu)<br>点击 `Download` - `.msi` 下载 | [下载链接](https://www.azul.com/downloads/?version=java-21-lts&os=windows&architecture=x86-64-bit&package=jre#zulu)<br>点击 `Download` - `.msi` 下载 |
+
+#### Microsoft Build of OpenJDK
+
+由微软制作的 Java 环境安装包。
+
+| Java 8 | Java 17 | Java 21 |
+| --- | --- | --- |
+| 不提供 | [下载链接](https://learn.microsoft.com/zh-cn/java/openjdk/download#openjdk-17)<br>选择 `Windows X64 msi` 下载 | [下载链接](https://learn.microsoft.com/zh-cn/java/openjdk/download#openjdk-21)<br>选择 `Windows X64 msi` 下载 |
+
+#### Dragonwell
+
+由阿里巴巴维护的 Java 环境。不提供一键安装包，有意尝试请下载解压后配置 Java 路径。
+
+| Java 8 | Java 17 | Java 21 |
+| --- | --- | --- |
+| [官网](https://dragonwell-jdk.io/)<br>不提供安装包 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 |
 
 ### 准备服务端文件
 
