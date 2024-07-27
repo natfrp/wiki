@@ -88,4 +88,15 @@
             margin-right: -0.75rem;
         }
     }
+
+    // Fix flowchart readability
+    div.flowchart-wrapper.vue {
+        text:not([class]) {
+            fill: var(--c-text);
+        }
+        path {
+            stroke: var(--c-text);
+            fill: var(--c-text);
+        }
+    }
 }
