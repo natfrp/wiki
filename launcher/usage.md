@@ -163,6 +163,11 @@
 
 @tab Linux 服务器 {#linux-server}
 
+::: warning
+这篇指南内容比较复杂且容易操作错误，如非特殊情况，请务必使用 [Docker](#docker) 安装启动器  
+如果您正在远程连接到服务器，请使用 [Docker](#docker) 中 `同时启用远程管理` 的方式安装启动器
+:::
+
 ::: tip
 这篇指南假设您以 `root` 权限进行安装，若您使用其他用户请使用 `sudo -i` 或 `su -` 切换到 root 账户执行特权指令
 :::
@@ -373,6 +378,24 @@ userdel -r natfrp
       --name=natfrp-service \
       natfrp.com/launcher
    ```
+
+   如需同时启用远程管理（如在远程配置服务器时，不方便打开浏览器），可以在启动容器时添加环境变量：
+
+   其中的远程管理密码为您自行拟定，在远程连接时需要输入，用于执行端到端的加密和认证。  
+   替换时请务必删除 `<` 和 `>` 及其中间的内容，不要保留括号。
+
+   ```bash
+   docker run \
+      -d \
+      --network=host \
+      --restart=on-failure:5 \
+      --pull=always \
+      --name=natfrp-service \
+      -e NATFRP_TOKEN=<访问密钥> -e NATFRP_REMOTE=<设定一个远程管理密码，最少8个字符> \
+      natfrp.com/launcher
+   ```
+
+   启动后即可按照 [连接远程设备](/launcher/remote-v2.md#connect) 远程管理您的内网穿透。
 
    ::: warning
    非 Linux 系统 (Windows, macOS) 不支持 `--network=host`，  
