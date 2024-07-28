@@ -375,49 +375,123 @@ cond3(no@大于, right)->Java 21
 | --- | --- | --- |
 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 |
 
-### 准备服务端文件
+### 准备服务端核心 {prepar_core}
 
-请首先确认需要的服务器类型：
+::: tip
+由于服务端核心数量和分支极多，此处仅列出部分核心
+:::
 
-- 纯净服：基于原版游戏的服务器
-- 插件服：运行服务端插件的服务器，拥有基于原版的扩展体验
-- Mod 服：运行 Mod 的服务器，拥有超越原游戏内容的体验
+请先确认您需要的服务器核心类型：
 
-#### 纯净服
+#### 原生 (Vanilla) 核心
 
-您可以在 [官网](https://www.minecraft.net/en-us/download/server) 下载到最新的服务端 jar 文件。
+由 Mojang 提供的官方服务器核心
 
-您也可以在 [MCVersions](https://mcversions.net/) 下载到服务端 jar 文件。
+具有以下特性：
 
-#### 插件服
+- 支持所有的原版特性，包括 `0tick` 等特殊的游戏特性
+- 支持以数据包扩展游戏内容
+- 不支持任意类型的第三方插件或模组
 
-比较常用的插件服务端有 [Paper](https://papermc.io/downloads/paper)，[Spigot](https://hub.spigotmc.org/jenkins/job/BuildTools/) 等。
+下载方式：
 
-您可以前往对应官网下载插件服的服务端。
+您可以在 [Minecraft 官网](https://www.minecraft.net/en-us/download/server) 点击 `minecraft_server.xx.xx.jar` 下载到最新 [正式版](https://zh.minecraft.wiki/w/Java%E7%89%88%E7%89%88%E6%9C%AC%E8%AE%B0%E5%BD%95#%E6%AD%A3%E5%BC%8F%E7%89%88) 服务端 jar 文件。
 
-#### Forge Mod 服
+您可以在 [MCVersions](https://mcversions.net/)、[FastMirror](https://www.fastmirror.net/#/download/Vanilla?coreVersion=release) 等镜像站下载到其他版本的服务端 jar 文件。
 
-前往 [Forge 官网](https://files.minecraftforge.net/) 下载您需要的版本的 Forge 安装器（installer）。
+#### 插件 (Plugin) 类核心
 
-双击运行下载到的安装器 Jar 文件，您会看到如下界面：
+具有以下特性：
 
-![](./_images/mc-javaserver-forge.png)
+- 支持以数据包和服务端插件的形式扩展游戏内容
+- 不支持任意类型的模组
 
-选择第二项 `Install Server`，下方 `...` 点击后选择您希望存储服务器文件的目录。
+其中，插件类核心还具体分为：
 
-安装器会为您从微软官网下载服务端文件，并将 Forge 安装到服务端文件中。
+[CraftBukkit](https://bukkit.org/)
 
-#### Fabric Mod 服
+- 支持通过 BukkitAPI 运行的插件
+- 性能无任何改进
 
-前往 [Fabric 官网](https://fabricmc.net/use/server/) 下载对应版本的 Fabric 服务端安装器。
+[Spigot](https://www.spigotmc.org/)
 
-将下载到的 jar 文件移动到您希望存储服务端文件的目录，双击运行。
+- 支持通过 BukkitAPI 或 SpigotAPI 运行的插件
+- 包含一些优化，性能较佳
 
-fabric 安装器将会开始下载文件，您可能看不到任何进度，但是能看到一个 `.fabric` 文件夹被创建出来。
+::: tip
+由于 CraftBukkit 和 Spigot 安装（构建）方法较为复杂，此处仅做介绍，不教学使用方法
+:::
 
-#### 其他
+[Paper](https://papermc.io/)
 
-此处仅为一些示例，各类服务端分支使用方式大同小异。
+- 支持大部分通过 BukkitAPI、SpigotAPI、PaperAPI 运行的插件
+- 包含更多优化，性能更佳
+- 修复了一些原版特性，包括 `0tick` 和部分刷物品刷方块的修复
+
+您可以在 Paper 官网的 [Build Explorer](https://papermc.io/downloads/all) 下载 Paper 核心
+
+您也可以在 [Fastmirror](https://www.fastmirror.net/#/download/Paper) 镜像站下载 Paper 核心
+
+#### 模组 (Mod) 类核心
+
+具有以下特性：
+
+- 支持以数据包和模组的形式扩展游戏内容
+- 不支持任意类型的插件
+
+其中，模组类核心还具体分为：
+
+[MinecraftForge](https://minecraftforge.net/)
+
+- 历史悠久的模组框架，也被称作 `forge`
+- 支持通过 MinecraftForgeAPI 运行的模组
+
+您可以通过 [MinecraftForge 官网](https://files.minecraftforge.net/net/minecraftforge/forge/) 点击 `installer` 再点击右上角 `skip` 下载安装器
+
+::: tip
+MinecraftForge 官网的下载链接可能需要通过 adfoc 广告页面，请注意辨别页面真假，且有可能无法加载
+:::
+
+您也可以通过 [Fastmirror](https://www.fastmirror.net/#/download/Forge) 镜像站下载安装器
+
+[NeoForge](https://neoforged.net/)
+
+- 新兴模组框架
+- 支持通过 NeoForgeAPI 运行的模组
+
+您可以通过 [NeoForged Project Listing](https://projects.neoforged.net/neoforged/neoforge) 页面下载对应安装器
+
+[Fabric](https://fabricmc.net/)
+
+- 新兴模组框架
+- 支持通过 Fabric Loader、FabricAPI 方式加载的模组
+
+您可以通过 [Fabric 官网](https://fabricmc.net/use/installer/) 下载安装器
+
+#### 混合类核心
+
+::: tip
+由于混合核心的复杂性，此处仅做介绍，不做下载安装教学
+:::
+
+具有以下特性：
+
+- 支持以数据包、插件和模组的形式扩展游戏内容
+- 由于其复杂性，对模组和插件的兼容都会有一定损失
+
+其中，混合类核心还具体分为：
+
+[Arclight](https://github.com/IzzelAliz/Arclight)
+
+- 支持 MinecraftForge/NeoForge/Fabric (其一) + spigotAPI 的兼容方式
+
+[Mohist](https://mohistmc.com/)
+
+- 支持 MinecraftForge/Fabric (其一) + spigotAPI 的兼容方式
+
+[CatServer](https://catmc.org/)
+
+- 支持 MinecraftForge + spigotAPI 的兼容方式
 
 ### 准备开始
 
