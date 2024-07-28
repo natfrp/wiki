@@ -196,7 +196,7 @@
 
    # 设置权限
    chmod +x frpc natfrp-service
-   chown natfrp:natfrp frpc natfrp-service
+   chown natfrp:natfrp frpc natfrp-service .
    ```
 
 1. 参考发行版的相关教程配置您的初始化系统来启动 `natfrp-service --daemon`。
