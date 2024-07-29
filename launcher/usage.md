@@ -163,6 +163,11 @@
 
 @tab Linux 服务器 {#linux-server}
 
+::: warning
+这篇指南内容比较复杂且容易操作错误，如非特殊情况，请务必使用 [Docker](#docker) 安装启动器  
+如果您正在远程连接到服务器，请使用 [Docker](#docker) 中 `同时启用远程管理` 的方式安装启动器
+:::
+
 ::: tip
 这篇指南假设您以 `root` 权限进行安装，若您使用其他用户请使用 `sudo -i` 或 `su -` 切换到 root 账户执行特权指令
 :::
@@ -350,12 +355,12 @@ userdel -r natfrp
 
 1. 迁移隧道配置
 
-   为了提高灵活度，在这篇指南中我们将以 主机网络 模式运行容器。
+   为了提高灵活度，在这篇指南中我们将以 主机网络 模式运行容器。  
    您此前为 Docker 设置的隧道需要将本地 IP 修改回 `127.0.0.1` 方可使用。
 
    对于在其他部署方式中本就可以使用的隧道，您不需做出修改。
 
-2. 启动容器
+1. 启动容器
 
    ::: tip
    自 `3.1.3` 起, 启动器的 WebUI 默认端口已从 `4101` 更改为 `7102`  
@@ -374,6 +379,32 @@ userdel -r natfrp
       natfrp.com/launcher
    ```
 
+   如需同时启用远程管理（如在远程配置服务器时，不方便打开浏览器），可以在启动容器时添加环境变量：
+
+   其中的远程管理密码为您自行拟定，在远程连接时需要输入，用于执行端到端的加密和认证。  
+   替换时请务必删除 `<` 和 `>` 及其中间的内容，不要保留括号。
+
+   ```bash
+   docker run \
+      -d \
+      --network=host \
+      --restart=on-failure:5 \
+      --pull=always \
+      --name=natfrp-service \
+      -e NATFRP_TOKEN=<访问密钥> -e NATFRP_REMOTE=<设定一个远程管理密码，最少8个字符> \
+      natfrp.com/launcher
+   ```
+
+   启动后即可按照 [连接远程设备](/launcher/remote-v2.md#connect) 远程管理您的内网穿透。
+
+   ::: tip 重建容器保留配置
+   因为启动器内建自更新，通常情况下您不需要重建容器进行更新。
+
+   如果您因为某种原因需要重建容器但没有保留数据的工具，  
+   只需在启动命令中间的部分加入 `-v natfrp-vol:/run \`，即可将您的配置文件保存到一个 Docker 卷中。  
+   如果您希望在容器外部编辑、查看这些运行文件，可以使用 `-v /path/to/config:/run`。
+   :::
+
    ::: warning
    非 Linux 系统 (Windows, macOS) 不支持 `--network=host`，  
    我们推荐您不要在此情况下使用 Docker，而是使用相应的客户端安装程序
@@ -390,7 +421,7 @@ userdel -r natfrp
 
    如果您遇到了错误 `Bind for 0.0.0.0:7102 failed: port is already allocated`，请查找本机监听 `7102` 的程序关闭，或参考 [高级用户](#advance-docker) 替换监听端口。
 
-3. 获取连接信息
+1. 获取连接信息
 
    执行 `docker logs natfrp-service` 即可查看容器的日志，您将看到类似下面的回显内容：
 
@@ -414,7 +445,7 @@ userdel -r natfrp
    默认情况下 WebUI 向您连入的所有网络开放，如果您需要访问，可以使用 `https://内网IP:<端口>`，
    如果您需要修改监听 IP，请参考 [高级用户](#advance-docker)。
 
-4. 高级用户 {#advance-docker}
+1. 高级用户 {#advance-docker}
 
    如果您需要自行配置，请先阅读 [配置文件详解](/launcher/manual.md#config)，然后将容器内的 `/run/config.json` 挂载编辑即可。
 

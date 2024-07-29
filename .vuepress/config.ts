@@ -110,6 +110,8 @@ export default defineUserConfig({
 			footnote: true,
 			include: true,
 			imgMark: true,
+			imgSize: true,
+			figure: true,
 			flowchart: true,
 		}),
 		sitemapPlugin({
