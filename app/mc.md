@@ -286,7 +286,7 @@ motd=
 2. 在 [绑定到隧道](/bestpractice/domain-bind.html#srv-for-apps) 时，选择您刚刚创建的 MC 隧道。
 3. 启动时的日志框中即可看到 `隧道已绑定 SRV 域名, 可通过 [mc.example.nyat.app] 进行连接` 的字样。
 
-### 启用并连接
+### 启用并连接 {#start-tunnel}
 
 在您开游戏房间的同一台电脑上启动隧道即可，打开日志页面即可看到连接信息说明。
 
@@ -306,6 +306,10 @@ motd=
 :::
 
 ## Java 版服务器部署 {#java-server}
+
+::: warning
+按照教程进行以下下载、安装、运行服务器操作代表您已经同意 [Minecraft 最终用户许可协议 (“EULA”)](https://www.minecraft.net/zh-hans/eula) 以及 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)
+:::
 
 此段落希望为在 Windows 下部署 Java 版 Minecraft 的服务端的用户提供一些信息。
 
@@ -380,7 +384,11 @@ cond3(no@大于, right)->Java 21
 | --- | --- | --- |
 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 |
 
-### 准备服务端核心 {prepar_core}
+### 准备服务端核心 {#prepar-core}
+
+::: warning
+按照教程进行以下下载、安装、运行服务器操作代表您已经同意 [Minecraft 最终用户许可协议 (“EULA”)](https://www.minecraft.net/zh-hans/eula) 以及 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)
+:::
 
 ::: tip
 由于服务端核心数量和分支极多，此处仅列出部分核心
@@ -498,7 +506,7 @@ MinecraftForge 官网的下载链接可能需要通过 adfoc 广告页面，请�
 
 - 支持 MinecraftForge + spigotAPI 的兼容方式
 
-### 安装核心
+### 安装核心 {#install-core}
 
 不同核心有不同的安装方法。此处仅介绍部分核心的安装方式
 
@@ -506,15 +514,16 @@ MinecraftForge 官网的下载链接可能需要通过 adfoc 广告页面，请�
 在开始之前，推荐您新建一个独立文件夹（并在安装的时候选择您新建的文件夹）供服务器使用。服务器运行过程中会生成大量文件，如果您在自己的工作或桌面文件夹启动服务器可能会造成一定混乱
 :::
 
-#### 官方原生服务器核心
+:::: tabs
+@tab 官方服务器核心
 
 原生核心无需安装，**请勿双击打开**，下载好后请查看文档下一节
 
-#### Paper 插件核心
+@tab Paper
 
 Paper 核心可以在启动过程中完成安装，**请勿双击打开**，直接参考以下文档完成启动过程
 
-#### MinecraftForge/NeoForge 模组核心
+@tab MinecraftForge/NeoForge
 
 MinecraftForge 和 NeoForge 的安装方法和安装界面较为相似，当您正确安装 java 环境后，双击启动安装器，可选择的选项如下：
 
@@ -542,7 +551,7 @@ MinecraftForge 和 NeoForge 的安装方法和安装界面较为相似，当您�
 如果显示 `build failed` 或者其他失败图标，请尝试多试几次，或在 [sakura交流群](/index.md#community) 中的水群提问，官方群不受理此类问题
 :::
 
-#### Fabric 模组核心
+@tab Fabric
 
 当您正确安装 java 环境后，双击启动安装器，可选选项如下：
 
@@ -550,30 +559,7 @@ MinecraftForge 和 NeoForge 的安装方法和安装界面较为相似，当您�
 
 ![](./_images/mc-server-fabricloader-installcomplete.png)
 
-<!-- 等待移动至启动片段
-
-最简单的 Java 参数模式为： `-Xmx4G -Xms4G`，即初始堆内存 4G，最大堆内存 4G，  
-我们推荐这两个值相等并且不高于您空闲内存的一半，从而最小化 GC 带来的延迟。
-
-对于 OpenJDK 9 以上的 Java， G1GC 已经被默认启用并且根据运行情况自动调整，我们建议不要盲目从网上抄参数加进去运行。
-
-如果您确实可能遇到了 GC 带来的瓶颈，请参考 [Aikar 的启动参数](https://docs.papermc.io/paper/aikars-flags) 或 [Oracle 的 G1GC 调优指南](https://docs.oracle.com/en/java/javase/21/gctuning/garbage-first-garbage-collector-tuning.html)。
-
-:::tip 关于模组端的调优参数
-通常，模组端会有不同于其他服务器的参数，由于并没有通用解，且一般来说默认参数即可适合多数模组的使用情况，在不了解相关知识的情况下建议不要添加额外的调优参数。
-:::
-
-#### 服务端文件地址
-
-如果您的脚本与核心文件在同一文件夹，通常为 `.\服务端文件.jar`。
-
-#### 服务端参数
-
-您可以在这里写一个 `nogui`，启动后即可喜提黑框框后台。
-
-如果不写会显示一个白色的基础信息展示页面，同样可以运行后台指令。
-
--->
+::::
 
 ### 运行服务端 {#run_server}
 
@@ -635,13 +621,13 @@ OpenJDK 64-Bit Server VM Zulu17.52+17-CA (build 17.0.12+7-LTS, mixed mode, shari
 
 `Xmx` 和 `Xms` 。其中，`Xmx` 指定了服务器能占用您电脑上的最大内存数量，而 `Xms` 则指定了服务器占用内存的最小量。由于 Java GC 的复杂性和各种原因，在此您只需要理解一件事：将 `Xmx` 和 `Xms` 设为相同可以提高性能。
 
-如何设置这个参数取决于您启动游戏后还有多少内存。一般情况下，如果您有 16G 的运行内存，启动游戏后还剩 8G ，那么可以将服务器占用内存设为 6G 。此时，您的启动变量看起来像这样：
+如何设置这个参数取决于您启动游戏后还有多少内存。一般情况下，如果您有 16G 的运行内存，启动游戏后还剩 6G ，那么可以将服务器占用内存设为 4G 。此时，您的启动变量看起来像这样：
 
-`-Xmx6G -Xms6G`
+`-Xmx4G -Xms4G`
 
 另外，我们需要一个额外的 `jar` 参数告诉 Java 我们想要启动的文件为 jar 打包的文件。加上这个参数之后您的启动变量看起来像这样：
 
-`-Xmx6G -Xms6G -jar`
+`-Xmx4G -Xms4G -jar`
 
 ::: warning
 请注意，此处的内存参数 **并不是** 越大越好！如果您设置的参数超出了您可用的剩余内存，则服务器会在请求更多内存时 **立刻崩溃** ！
@@ -661,13 +647,15 @@ OpenJDK 64-Bit Server VM Zulu17.52+17-CA (build 17.0.12+7-LTS, mixed mode, shari
 
 打开您新建的文本文件，在其中写入以下内容
 
-java `您在上一节获得的启动变量` `服务器核心文件名称`  
+``` bat
+java "您在上一节获得的启动变量" "服务器核心文件名称"  
 @pause
+```
 
-例如，您在上一节编写了 `-Xmx6G -Xms6G -jar` 的启动变量，且您没有更改下载的服务器核心名称，则文件中应该写入以下内容：
+例如，您在上一节编写了 `-Xmx4G -Xms4G -jar` 的启动变量，且您没有更改下载的服务器核心名称，则文件中应该写入以下内容：
 
 ``` bat
-java -Xmx6G -Xms6G -jar server.jar
+java -Xmx4G -Xms4G -jar server.jar
 @pause
 ```
 
@@ -691,7 +679,7 @@ java -Xmx6G -Xms6G -jar server.jar
 
 # A good default for a modded server is 4GB. Do not allocate excessive amounts of RAM as too much may cause lag or crashes.
 # Uncomment the next line to set it. To uncomment, remove the # at the beginning of the line.
--Xmx6G -Xms6G
+-Xmx4G -Xms4G
 ```
 
 保存之后，文件夹内的 `run.bat` 文件即为您的启动脚本。
@@ -711,42 +699,126 @@ java -Xmx6G -Xms6G -jar server.jar
 
 # A good default for a modded server is 4GB.
 # Uncomment the next line to set it.
--Xmx6G -Xms6G
+-Xmx4G -Xms4G
 ```
 
 保存之后，文件夹内的 `run.bat` 文件即为您的启动脚本。
 
 @tab Fabric
 
+FabricLoader 安装器会在文件夹内生成一个启动用 jar 文件 `fabric-server-launch.jar` ，如果您按照我们的教程在退出安装器前点击了下载服务器文件，那么您应该同时看到 `server.jar` 在同一个文件夹内。  
+如果您看到的是 `server.jar.tmp` ，则说明您在安装器还没下载完成时就退出了安装器，请重新回到安装器再次安装。
+
+在您安装的文件夹内新建一个文本文件，文件夹内应该看起来像这样：
+
+![](./_images/mc-server-fabricloader-files.png)
+
+打开您新建的文本文件，在其中写入以下内容
+
+``` bat
+java "您在上一节获得的启动变量" "服务器核心文件名称"  
+@pause
+```
+
+例如，您在上一节编写了 `-Xmx4G -Xms4G -jar` 的启动变量，且您没有更改下载的服务器核心名称，则文件中应该写入以下内容：
+
+``` bat
+java -Xmx4G -Xms4G -jar fabric-server-launch.jar
+@pause
+```
+
+保存文件，将文件名 `新建 文本文档.txt` 改为 `启动服务器.bat` ，观察文件类型是否更改为批处理文件。
+
 @tab Paper
+
+Paper 的核心下载好后默认以 `paper-游戏版本号-Paper版本号` 的形式命名，如 `paper-1.21-119.jar` 代表您下载的是适用于 Minecraft 1.21 的 Paper 核心，版本号 119 。
+
+在您打算运行服务器的文件夹内新建一个文本文件，文件夹内应该看起来像这样：
+
+![](./_images/mc-server-paper-files.png)
+
+打开您新建的文本文件，在其中写入以下内容
+
+``` bat
+java "您在上一节获得的启动变量" "服务器核心文件名称"  
+@pause
+```
+
+例如，您在上一节编写了 `-Xmx4G -Xms4G -jar` 的启动变量，且 Paper 服务器核心名称为 `paper-1.21-119.jar` ，则文件中应该写入以下内容：
+
+``` bat
+java -Xmx4G -Xms4G -jar paper-1.21-119.jar
+@pause
+```
+
+保存文件，将文件名 `新建 文本文档.txt` 改为 `启动服务器.bat` ，观察文件类型是否更改为批处理文件。
 
 ::::
 
 #### 最终用户许可协议
 
-运行一次您的启动脚本（如 `启动.bat`），此时您会发现程序立即退出，工作目录下多了一些文件，  
-打开其中的 `eula.txt`，其内容为 Minecraft 的 EULA 文档，将其中的 `false` 字样改为 `true`。
-
 ::: warning
-EULA 即 Minecraft 的用户许可协议，您的修改即表示签署了该协议。
-
-此行为表示您在法律意义上认可了 Mojang 附条件地授权您使用 Minecraft 服务端，
-使用服务端时必须遵守 [Minecraft 使用准则](https://www.minecraft.net/zh-hans/usage-guidelines) 和最终用户许可协议 [eula](https://www.minecraft.net/en-us/eula)。
+按照教程进行以下修改文件操作代表您已经同意 [Minecraft 最终用户许可协议 (“EULA”)](https://www.minecraft.net/zh-hans/eula) 以及 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)
 :::
+
+运行一次您的启动脚本 `启动服务器.bat` 或者 `run.bat` ，在一段时间后窗口最后一行即会显示
+
+``` log
+[**:**:** INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.
+请按任意键继续. . .
+```
+
+此时，您需要通过修改 eula 文件的形式来表示您同意 [Minecraft 最终用户许可协议 (“EULA”)](https://www.minecraft.net/zh-hans/eula) 以继续运行服务器。
+
+按下任意按键即可关闭服务器窗口。查看服务器文件夹，您会发现目录下多了一个 `eula.txt` 文件，打开它，将其最后一行的 `eula=false` 改为 `eula=true` ，保存。
 
 #### 修改配置
 
 按需调整服务器配置文件，例如 [server.properties](https://zh.minecraft.wiki/w/Server.properties)。
 
-插件服和 Mod 服可以将从网上下载的插件及 Mod 放置到服务器工作目录下的 `plugins` 和 `mods` 目录中。
+将您下载或所需要的模组、插件放到服务器对应目录中。一般来说， `plugins` 文件夹存放插件， `mods` 文件夹存放模组。
 
-再次运行启动文件即可正式启动服务端，这一次启动时服务端会生成世界，启动时间可能会稍长。
+如果您打算重置这个服务器的存档和玩家数据，但是不打算更改服务器配置，您可以选择删除文件夹内的 `world` 文件夹以及所有 `world` 开头的文件夹。
+
+此时再次打开启动脚本，服务器即开始启动。当您看到窗口输出最后一行出现 `>` 标记时，说明服务器已经 **部分** 载入完毕，您可以直接对窗口输入命令。
+
+![](./_images/mc-server-startcompletecmd.png)
+
+启动完成后，服务器会输出 `Done (**.***s)! For help, type "help"` 的一行日志，看到这行日志说明您的服务器已经全部载入完毕，可以进入游玩了。
+
+启动完成后，您可能会看到两个窗口，一个黑色 `命令提示符` 窗口，一个白色 `Minecraft server` 窗口。需要注意的是：两个窗口都是服务器，关闭 **任意一个** 都会停止服务器的运行。
+
+![](./_images/mc-server-startcompletewindow.png)
+
+没有这个窗口也是正常的，部分服务器核心为了防止混乱去除了此窗口。
+
+如果您想关闭服务器，请在任意窗口中输入 `stop` 命令并回车发送，服务器就会开始关闭并保存存档数据。当您看到 `请按任意键继续. . .` 的提示，按任意键即可关闭服务器窗口。
 
 #### 配置内网穿透
 
-[创建隧道](#create-tunnel) 并打开隧道。
+请参考 [创建隧道](#create-tunnel) 一节。
 
-愉快地开始联机吧 :)
+### 注意事项 {#server-tips}
+
+如果您无意间在服务器运行的黑色窗口 `命令提示符` 上点击了，命令提示符窗口将会进入选中状态。在此状态下，服务器将会冻结且无法运行。命令提示符的标题将会增加一个 `选择` 在最前方。
+
+![](./_images/mc-server-tip-cmdclick.png)
+
+如果您不小心选中了文本，右键即可取消此状态。
+
+::: tip
+右键同时还会将您剪切板的内容黏贴到服务器命令行中，请注意确认相关操作不会影响您服务器的安全。
+:::
+
+您可以通过以下设置防止此事件的发生：
+
+点击命令提示符窗口左上角的图标，选择属性
+
+![](./_images/mc-server-tip-cmdsetting.png)
+
+取消掉 `快速编辑模式` 的勾选
+
+![](./_images/mc-server-tip-cmdfastedit.png)
 
 ## 设置 SRV 解析 {#srv}
 
