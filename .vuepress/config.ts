@@ -109,6 +109,8 @@ export default defineUserConfig({
 			sub: true,
 			footnote: true,
 			include: true,
+			imgSize: true,
+			figure: true,
 			imgMark: true,
 			imgSize: true,
 			figure: true,
