@@ -106,9 +106,9 @@ const sections = {
 			{
 				text: 'Minecraft 相关教程',
 				children: [
-					{ text: 'Java 版开服指南', link: '/offtopic/mc-java-server.md' },
-					{ text: '基岩版开服指南', link: '/offtopic/mc-bedrock-server.md' },
-					{ text: 'Geyser 互通服开服指南', link: '/offtopic/mc-geyser.md' },
+					{ text: 'Java 版开服指南', link: '/offtopic/mc-java-server.html' },
+					{ text: '基岩版开服指南', link: '/offtopic/mc-bedrock-server.html' },
+					{ text: 'Geyser 互通服开服指南', link: '/offtopic/mc-geyser.html' },
 				],
 			},
 			{
