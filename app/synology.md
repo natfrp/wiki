@@ -1,9 +1,6 @@
 # 群晖 (Synology) NAS 穿透指南
 
-本文档将指导您安装 SPK 软件包并通过启动器管理隧道。如果您想直接使用 frpc，请参考下述文档 (不推荐)：
-
-- ~~[群晖 DSM 6 穿透指南 (frpc)](/app/synology-dsm6.md)~~
-- ~~[群晖 DSM 7 穿透指南 (frpc)](/app/synology-dsm7.md)~~
+本文档将指导您安装 SPK 软件包并通过启动器在 NAS 上启动隧道。
 
 ## 确认 DSM 版本与架构 {#check-dsm-version}
 
@@ -116,3 +113,12 @@
 - `https://idea-leaper-1.natfrp.cloud:23333/`
 
 都可以访问 **本次教程中用作示例的** 这条隧道，请以实际日志输出为准，上面列出的网址 **只是示例**。
+
+### 直接使用 frpc {#use-frpc}
+
+我们推荐在任何情况下都优先使用启动器，直接使用 frpc 会增加配置、管理难度并可能造成不必要的故障和资源浪费。
+
+如果您出于某种原因想直接使用 frpc 启动隧道，请参考下述文档：
+
+- [群晖 DSM 6 穿透指南 (frpc)](/app/synology-dsm6.md)
+- [群晖 DSM 7 穿透指南 (frpc)](/app/synology-dsm7.md)
