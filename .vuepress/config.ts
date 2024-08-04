@@ -112,8 +112,6 @@ export default defineUserConfig({
 			imgSize: true,
 			figure: true,
 			imgMark: true,
-			imgSize: true,
-			figure: true,
 			flowchart: true,
 		}),
 		sitemapPlugin({
