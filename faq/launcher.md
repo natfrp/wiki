@@ -320,7 +320,7 @@ Windows 7 和 Server 2008 早已停止支持，微软已不再提供安全更新
 
 修改完毕后重新打开启动器即可。
 
-### 打开启动器时登录失败，tls {#tls-login-error}
+### 打开启动器时登录失败，TLS 证书验证失败 {#tls-login-error}
 
 ``` log
 Get "~": tls: failed to verify certificate: x509: certificate signed by unknown authority
@@ -359,6 +359,76 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 请注意论坛求助可能对格式和内容有要求，请在发帖前阅读其中的置顶链接等信息。
 
 清除病毒后，您应当删除对应的假证书，尽管保留它们通常不会造成明显的问题。
+
+### 双击启动器图标后没有反应 {#wpf-crash-on-startup}
+
+该故障可能是由于您的系统中 WPF 组件损坏导致的，请按下方的指南获取崩溃日志：
+
+1. 右键点击 Windows 图标，然后选择 `事件查看器` 打开。
+
+   ![](../_images/common/windows-eventvwr.png)
+
+1. 在左边栏展开 `Windows 日志 > 应用程序`，然后找到两条连续的错误日志（右边显示的 ID 为 `1000` 和 `1026`）。  
+   点击 ID 为 `1026` 那条，然后确认下面的应用程序是否为 `SakuraLauncher.exe`，把整个框的内容复制出来：
+
+   ![](./_images/launcher-wpf-crash-log.png)
+
+检查崩溃日志，如果看到下方内容则说明系统中 WPF 组件有损坏：
+
+```log
+异常信息: System.TypeLoadException
+   在 System.Windows.Automation.Peers.AutomationPeer.Initialize()
+   在 System.Windows.Automation.Peers.AutomationPeer..cctor()
+```
+
+再往下看几行，如果看到下方内容，请展开问题 A 查看修复方案：
+
+```log
+异常信息: System.TypeInitializationException
+   在 System.Windows.Controls.ComboBox.OnSelectionChanged(System.Windows.Controls.SelectionChangedEventArgs)
+```
+
+::: details 问题 A：精简版 Windows 更新后 WPF 损坏
+
+精简版、Ghost 版等 Windows 10 21H2、22H2 或 Windows 11 21H2 在安装 `KB5011048` 后、无法正常安装后续更新时就会碰到此错误：
+
+```log
+System.TypeLoadException:
+  Method 'GetSelection' in type 'MS.Internal.Automation.SelectionProviderWrapper' does not have an implementation
+  类型“MS.Internal.Automation.SelectionProviderWrapper”的方法“GetSelection”没有实现
+```
+
+在有条件的情况下，请尝试将系统更新到最新版，确保 Windows 更新中所有更新都正常安装并且没有提示失败。如果还是无法解决，建议使用 **微软官方镜像** 重新安装最新版 Windows，并且 **不要** 使用各种 ”系统优化工具“ 对系统进行修改。
+
+如果没有重装的条件，请 [点击这里](ms-settings:windowsupdate) 打开 Windows 更新。滚动到最底部，点击 `更新历史记录`：
+
+![](../_images/common/windows-11-update-history.png)
+
+再滚动到最底部，点击 `卸载更新`：
+
+![](../_images/common/windows-11-uninstall-update.png)
+
+找到 `KB5011048`，双击卸载此更新，然后重启电脑：
+
+![](../_images/common/windows-uninstall-kb5011048.png)
+
+重启后再次尝试打开启动器，如果可以正常打开，请继续下面的操作。否则，请加入公开用户反馈群联系管理员远程检查。
+
+然后，[点击这里](https://download.microsoft.com/download/f/2/2/f22d5fdb-59cd-4275-8c95-1be17bf70b21/wushowhide.diagcab) 下载 `wushowhide.diagcab` (或 [从 Nyatwork CDN 下载](https://nya.globalslb.net/wushowhide.diagcab))，打开并点击 `下一页` 直到出现下图中的选项，点击 `Hide updates`：
+
+![](../_images/common/windows-wuhide.png)
+
+在列表中找到并勾选 `KB5011048`，然后点击 `下一页`：
+
+![](../_images/common/windows-wuhide-kb5011048.png)
+
+看到如图所示的 `已修复` 提示后，关闭工具即可：
+
+![](../_images/common/windows-wuhide-kb5011048-complete.png)
+
+:::
+
+如果您的崩溃日志不符合上方的情况，请加入公开用户反馈群联系管理员远程检查。
 
 ### 如何修改启动器的配置文件 {#windows-edit-config}
 
