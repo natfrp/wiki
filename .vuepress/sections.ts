@@ -100,17 +100,27 @@ const sections = {
 			'/bestpractice/realip.md',
 		],
 	},
-	offtopic:
-	{
+	offtopic: {
 		text: '杂项教程',
 		children: [
-			'/offtopic/mc-bedrock-server.md',
-			'/offtopic/mc-geyser.md',
-			'/offtopic/source.md',
-			'/offtopic/proxy-protocol.md',
-			'/offtopic/auth-guest.md',
-			'/offtopic/auth-widget.md',
-			'/offtopic/mail.md',
+			{
+				text: 'Minecraft 相关教程',
+				children: [
+					{ text: 'Java 版开服指南', link: '/offtopic/mc-java-server.md' },
+					{ text: '基岩版开服指南', link: '/offtopic/mc-bedrock-server.md' },
+					{ text: 'Geyser 互通服开服指南', link: '/offtopic/mc-geyser.md' },
+				],
+			},
+			{
+				text: '其他教程',
+				children: [
+					'/offtopic/source.md',
+					'/offtopic/proxy-protocol.md',
+					'/offtopic/auth-guest.md',
+					'/offtopic/auth-widget.md',
+					'/offtopic/mail.md',
+				],
+			},
 		],
 	},
 	misc: {
