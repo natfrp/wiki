@@ -8,11 +8,11 @@ fi
 # 安装必要的工具
 echo -e "\e[32m正在安装必要的工具\033[0m"
 if command -v apt-get &> /dev/null; then
-    apt-get update && apt-get install -y wget jq zstd
+    apt-get update && apt-get install -y sudo wget jq zstd
 elif command -v yum &> /dev/null; then
-    yum install -y wget jq zstd
+    yum install -y sudo wget jq zstd
 else
-    echo -e "\e[31m无法自动安装必要的工具 wget jq zstd , 请自行手动安装。\033[0m"
+    echo -e "\e[31m无法自动安装必要的工具 sudo wget jq zstd , 请自行手动安装。\033[0m"
     exit 1
 fi
 
