@@ -1,4 +1,4 @@
-# Java 版服务器部署
+# Minecraft Java 版开服指南
 
 ::: warning
 按照教程进行以下下载、安装、运行服务器操作代表您已经同意 [Minecraft 最终用户许可协议 (“EULA”)](https://www.minecraft.net/zh-hans/eula) 以及 [Microsoft 隐私声明](https://go.microsoft.com/fwlink/?LinkId=521839)
@@ -45,7 +45,9 @@ cond3(no@大于, right)->Java 21
 
 下面为您另提供一些常用版本的 Windows 安装包下载链接，这些版本的主要区别是出品公司，请根据你的信任选择：
 
-### Adoptium
+:::: tabs
+
+@tab Adoptium
 
 由 Eclipse 开源基金会创建、阿里巴巴、华为、IBM 等参与的 Java 环境项目。
 
@@ -53,7 +55,7 @@ cond3(no@大于, right)->Java 21
 | --- | --- | --- |
 | [下载链接](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=8)<br>点击 `.msi` 下载 | [下载链接](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=17)<br>点击 `.msi` 下载 | [下载链接](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=21)<br>点击 `.msi` 下载 |
 
-### Zulu
+@tab Zulu
 
 由知名 Java 开发企业 Azul 制作的 Java 环境安装包。
 
@@ -61,7 +63,7 @@ cond3(no@大于, right)->Java 21
 | --- | --- | --- |
 | [下载链接](https://www.azul.com/downloads/?version=java-8-lts&os=windows&architecture=x86-64-bit&package=jre#zulu)<br>点击 `Download` - `.msi` 下载 | [下载链接](https://www.azul.com/downloads/?version=java-17-lts&os=windows&architecture=x86-64-bit&package=jre#zulu)<br>点击 `Download` - `.msi` 下载 | [下载链接](https://www.azul.com/downloads/?version=java-21-lts&os=windows&architecture=x86-64-bit&package=jre#zulu)<br>点击 `Download` - `.msi` 下载 |
 
-### Microsoft Build of OpenJDK
+@tab Microsoft Build of OpenJDK
 
 由微软制作的 Java 环境安装包。
 
@@ -69,13 +71,15 @@ cond3(no@大于, right)->Java 21
 | --- | --- | --- |
 | 不提供 | [下载链接](https://learn.microsoft.com/zh-cn/java/openjdk/download#openjdk-17)<br>选择 `Windows X64 msi` 下载 | [下载链接](https://learn.microsoft.com/zh-cn/java/openjdk/download#openjdk-21)<br>选择 `Windows X64 msi` 下载 |
 
-### Dragonwell
+@tab Dragonwell
 
 由阿里巴巴维护的 Java 环境。不提供一键安装包，有意尝试请下载解压后配置 Java 路径。
 
 | Java 8 | Java 17 | Java 21 |
 | --- | --- | --- |
 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 | [官网](https://dragonwell-jdk.io/)<br>不提供安装包 |
+
+::::
 
 ## 准备服务端核心 {#prepar-core}
 
@@ -89,7 +93,9 @@ cond3(no@大于, right)->Java 21
 
 请先确认您需要的服务器核心类型：
 
-### 原生 (Vanilla) 核心
+:::: tabs
+
+@tab 原生 (Vanilla) 核心
 
 由 Mojang 提供的官方服务器核心
 
@@ -105,7 +111,7 @@ cond3(no@大于, right)->Java 21
 
 您可以在 [MCVersions](https://mcversions.net/)、[FastMirror](https://www.fastmirror.net/#/download/Vanilla?coreVersion=release) 等镜像站下载到其他版本的服务端 jar 文件。
 
-### 插件 (Plugin) 类核心
+@tab 插件 (Plugin) 类核心
 
 具有以下特性：
 
@@ -138,7 +144,7 @@ cond3(no@大于, right)->Java 21
 
 您也可以在 [Fastmirror](https://www.fastmirror.net/#/download/Paper) 镜像站下载 Paper 核心
 
-### 模组 (Mod) 类核心
+@tab 模组 (Mod) 类核心
 
 具有以下特性：
 
@@ -174,7 +180,7 @@ MinecraftForge 官网的下载链接可能需要通过 adfoc 广告页面，请�
 
 您可以通过 [Fabric 官网](https://fabricmc.net/use/installer/) 点击 `Download For Windows` 下载安装器
 
-### 混合类核心
+@tab 混合类核心
 
 ::: tip
 由于混合核心的复杂性，此处仅做介绍，不做下载安装教学
@@ -198,6 +204,8 @@ MinecraftForge 官网的下载链接可能需要通过 adfoc 广告页面，请�
 [CatServer](https://catmc.org/)
 
 - 支持 MinecraftForge + spigotAPI 的兼容方式
+
+::::
 
 ## 安装核心 {#install-core}
 
@@ -489,7 +497,7 @@ java -Xmx4G -Xms4G -jar paper-1.21-119.jar
 
 ### 配置内网穿透
 
-请参考 [创建隧道](/app/mc.md#create-tunnel) 一节。
+请参考 [创建隧道](/app/mc.md#create-tunnel) 一节，在运行服务端的机器上创建并启动指向本机 `25565` 端口的 TCP 隧道。
 
 ## 注意事项 {#server-tips}
 
