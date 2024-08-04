@@ -176,6 +176,13 @@
 如果您安装的机器中装有桌面环境，请留意 [安装启动器后登录桌面卡在黑屏](/faq/launcher.md#linux-stuck-login) 的问题
 :::
 
+1. 如果您的操作系统为 Debian/Ubuntu/CentOS/RedHat , 可以考虑使用一键安装脚本来进行快速安装:
+
+   ```bash
+   # 脚本已在 Debian/Ubuntu 上进行了测试, 但是不支持 Alpine 
+   curl -sSL https://static.mmeiblog.cn/files/bash/sakurafrp.sh -o sakura_quick_start.sh && bash sakura_quick_start.sh
+   ```
+
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
 
 1. 出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，创建一个新账户：
