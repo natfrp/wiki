@@ -190,13 +190,13 @@
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
 
-3. 出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，创建一个新账户：
+1. 出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，创建一个新账户：
 
    ```bash
    useradd -r -m -s /sbin/nologin natfrp
    ```
 
-4. 下载由我们分发的 `.tar.zst` 文件，将其安装到系统中：
+1. 下载由我们分发的 `.tar.zst` 文件，将其安装到系统中：
 
    ```bash
    # 您可以将其安装到任意目录，这里直接装到 HOME 是为了简化操作
@@ -216,7 +216,7 @@
    chown natfrp:natfrp frpc natfrp-service .
    ```
 
-5. 参考发行版的相关教程配置您的初始化系统来启动 `natfrp-service --daemon`。
+1. 参考发行版的相关教程配置您的初始化系统来启动 `natfrp-service --daemon`。
 
    以 Systemd 为例，建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
 
@@ -243,7 +243,7 @@
    WantedBy=multi-user.target
    ```
 
-6. 配置完成后，启动并停止一次 `natfrp-service` 来生成配置文件：
+1. 配置完成后，启动并停止一次 `natfrp-service` 来生成配置文件：
 
    ```bash
    # 请确保您的工作目录正确
@@ -257,7 +257,7 @@
    ls -ls .config/natfrp-service/
    ```
 
-7. 修改配置文件，填入访问密钥。同时另准备一个启动器远程管理密码：
+1. 修改配置文件，填入访问密钥。同时另准备一个启动器远程管理密码：
 
    ```bash
    # 请确保您的工作目录正确
@@ -284,7 +284,7 @@
    }
    ```
 
-8. 启用服务
+1. 启用服务
 
    ```bash
    systemctl enable --now natfrp.service
@@ -294,7 +294,7 @@
    journalctl -u natfrp.service -f
    ```
 
-9. 最后，打开 [远程管理](https://www.natfrp.com/remote/v2)，连接您的服务器并启用隧道：
+1. 最后，打开 [远程管理](https://www.natfrp.com/remote/v2)，连接您的服务器并启用隧道：
 
    ![](./_images/remote-v2-connect-2.png)
 
