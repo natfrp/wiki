@@ -176,14 +176,19 @@
 如果您安装的机器中装有桌面环境，请留意 [安装启动器后登录桌面卡在黑屏](/faq/launcher.md#linux-stuck-login) 的问题
 :::
 
-1. 如果您的操作系统为 Debian/Ubuntu/CentOS/RedHat , 可以考虑使用一键安装脚本来快速安装:
+1. 对于 systemd 用户，可使用一键安装脚本快速安装:
 
    ```bash
-   # 脚本已在 Debian/Ubuntu 上进行了测试, 但是不支持 Alpine 
-   curl -sSL https://raw.githubusercontent.com/natfrp/wiki/master/launcher/quick_start.sh -o sakura_quick_start.sh && bash sakura_quick_start.sh
-   # 如果您的服务器位于国内, 可以使用下面的镜像脚本:
-   curl -sSL https://gitee.com/ssdomei/mirrors/raw/master/sakurafrp.sh -o sakura_quick_start.sh && bash sakura_quick_start.sh
+   curl -sSL https://doc.natfrp.com/launcher.sh -o sakura_quick_start.sh
+   # 或者使用 wget
+   wget https://doc.natfrp.com/launcher.sh -O sakura_quick_start.sh
+
+   # 此处检查脚本内容
+
+   bash sakura_quick_start.sh
    ```
+
+   此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改，您也可以查看他的 [更激进小白化版本](https://gitee.com/ssdomei/mirrors/raw/master/sakurafrp.sh)。
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
 
