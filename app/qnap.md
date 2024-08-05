@@ -1,61 +1,77 @@
 # 威联通 (QNAP) NAS 穿透指南
 
-这篇指南只提供 Docker 部署方案。如果您有其他想法，欢迎点击页面底部的编辑按钮帮助我们完善这篇文档。
+本文档将指导您安装 Container Station 并通过 Docker 配置启动器，最后将 NAS 面板穿透到外网。
 
-## 使用准备 {#preparation}
+本文档使用 QTS 5.1.8 系统进行演示，部分按钮位置在其他版本中可能有所不同，请在相关界面附近查找。
 
-1. 打开控制台，勾选 `使用安全连接(HTTPS)`，并记下下面的 **端口号** 作为 **本地端口**：
+## 安装 Container Station {#install-container-station}
 
-   ![](./_images/qnap-settings.png)
+在桌面点击 **App Center** 图标，搜索 `Container` 并安装 **Container Station**：
 
-1. 在 `App Center` 中安装 `Container Station` 以使用 Docker：
+![](./_images/qts5-cs-install.png)
 
-   ![](./_images/qnap-install-docker.png)
+## 创建启动器容器 {#create-launcher-container}
 
-1. 在 `Container Station` 如下图读出 **IP地址 / 网络** 的内容作为 **本地 IP**：
+启动器容器只需配置一次即可，一个容器可以开启多条隧道，无需重复配置。
 
-   ![](./_images/qnap-gateway-ip.png)
+1. 启动 **Container Station**，转到 `容器` 页面，点击 `创建`：
+
+   ![](./_images/qts5-container-create-1.png)
+
+1. 在 `映像` 处输入 `natfrp.com/launcher`，勾选下方的强制拉取复选框，然后点击 `下一步`：
+
+   ![](./_images/qts5-container-create-2.png)
+
+1. 点击 **网络配置** 旁边的齿轮，选择自定义网络模式，然后切换至 `Host` 模式：
+
+   ::: tip
+   Web UI 默认运行在 7102 端口，如果发生冲突，请在创建完成后参考 [用户手册](/launcher/manual.md#config-webui) 修改端口或关闭 Web UI
+   :::
+
+   ![](./_images/qts5-container-create-3.png)
+
+1. 切换到 **环境** 标签页，在 `NATFRP_REMOTE` 处设置一个远程管理密码（8 字符以上），在 `NATFRP_TOKEN` 处粘贴您的访问密钥（在 SakuraFrp 管理面板获取）：
+
+   ![](./_images/qts5-container-create-4.png)
+
+1. 为了避免配置文件丢失，切换到 **存储** 标签页，点击 `添加卷`，在 `卷` 处输入 `natfrp-config`，在 `容器` 处输入 `/run`：
+
+   ![](./_images/qts5-container-create-5.png)
+
+1. 配置完成后点击 `应用` 和 `下一步` 完成创建，然后稍等几秒钟检查容器日志输出，确认看到登录成功和远程管理连接成功的提示：
+
+   ![](./_images/qts5-container-created.png)
 
 ## 创建隧道 {#create-tunnel}
 
-1. 前往 Sakura Frp 管理面板，使用上一步中记下的信息创建隧道：
+1. 启动 **控制台** 应用，在 `系统 > 常规设置 > 系统管理` 中勾选 `启用安全连接 (HTTPS)`，然后记下下面的 `端口号` 备用：
 
-   ![](./_images/qnap-new-tunnel.png)
+   ![](./_images/qts5-console-port.png)
 
-1. 在隧道列表中点击刚才创建的隧道右边三个点，选择 **配置文件** 并在弹出的对话框中复制隧道的 **启动参数**：
-
-   ![](./_images/dsm-launch-args.png)
+1. 前往 SakuraFrp 管理面板，创建一条本地 IP 为 `localhost`，本地端口为刚才记下的端口号的 **TCP 隧道**。
 
 ## 启动隧道 {#start-tunnel}
 
-1. 在 `Container Station` 中找到并下载 `natfrp/frpc` 的 `latest` 标签：
+1. 打开 [远程管理](https://www.natfrp.com/remote/v2)，连接到刚才创建的容器：
 
-   ![](./_images/qnap-docker-pull.png)
+   ![](../_images/common/remote-mgmt-connect.png)
 
-   ![](./_images/qnap-docker-tag-latest.png)
+1. 点击右边的刷新按钮，然后双击刚才创建的隧道，或将其拖到上方启动：
 
-1. 然后在 **命令** 栏中粘贴刚才复制的启动参数，如果有需要可以在后面加上其他自定义选项：
+   ![](./_images/qnap-start-tunnel.png)
 
-   ![](./_images/qnap-docker-setup.png)
+1. 启动成功后右上角会弹出连接方式，您也可以前往 `日志` 页面查看连接方式：
 
-   最后点创建就可以了。
+   ![](./_images/dsm-launcher-started.png)
 
-## 获取连接信息 {#connection-method}
+1. 使用 `https://` 加上日志中显示的连接方式即可远程访问您的 QNAP NAS：
 
-1. 打开 Docker Container 的详情信息就能看到连接信息了，报错也可以在这里看到：
+   ![](./_images/qts5-login-remote.png)
 
-   ![](./_images/qnap-docker-info.png)
+## 更新启动器 {#update-launcher-container}
 
-1. 在访问地址前面加上 `https://`，到浏览器试一下：
+虽然更新时发生意外的可能性很小，但我们仍然 **强烈建议** 您在有备用连接手段的情况下再进行更新，以免 NAS 失联。
 
-   ![](./_images/qnap-docker-try.png)
+更新启动器时，只需点击容器右侧的齿轮图标，选择 `直接重新创建`，勾选强制拉取复选框并点击 `是` 即可：
 
-## 更新 frpc {#update}
-
-::: danger
-请务必在有备用连接手段时升级，否则可能造成失联
-:::
-
-QNAP 的 Container Station 并不像它在 DSM 的兄弟那样升级便捷。
-
-您需要删除掉正在运行的 Container（容器），然后在 `镜像文件` 菜单中删除已有的 `natfrp/frpc`，最后跟随 [启动隧道](#start-tunnel) 重来一遍。
+![](./_images/qts5-container-recreate.png)
