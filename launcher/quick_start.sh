@@ -1,7 +1,42 @@
 #!/bin/bash
 
+# check docker and promote docker
+if command -v docker &> /dev/null; then
+    echo -e "\e[32mDocker 已安装, 我们将使用 Docker 安装 SakuraFrp 启动器\033[0m"
+
+    read -e -p "请输入 SakuraFrp 的 访问密钥: " api_key
+    read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass 
+
+    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -e NATFRP_TOKEN=$api_key -e NATFRP_REMOTE=$remote_pass natfrp.com/launcher && (
+        echo -e "\e[32mDocker 模式安装成功, 您可使用下面的命令管理服务: \033[0m"
+        echo -e "\e[32m查看运行日志\033[0m\tdocker logs natfrp-service"
+        echo -e "\e[32m停止服务\033[0m\tdocker stop natfrp-service"
+        echo -e "\e[32m启动服务\033[0m\tdocker start natfrp-service"
+    ) || (
+        echo -e "\e[31mDocker 模式安装失败, 请检查 Docker 是否正常运行或 SakuraFrp 是否已安装\033[0m"
+        exit 1
+    )
+    exit $?
+else
+    # check systemd
+    if ! command -v systemctl &> /dev/null; then
+        echo -e "\e[31m您的系统不支持 systemd, 请使用 Docker 安装\033[0m"
+        exit 1
+    fi
+
+    rand=$((RANDOM * 1000 + RANDOM))
+    echo -e "\e[31mDocker 未安装, 将使用常规安装, 我们 **推荐不** 要使用脚本常规安装\033[0m"
+    echo -e "\e[31m请注意, 本脚本常规安装将会在您的系统上创建一个名为 natfrp 的用户, 并以该用户运行 SakuraFrp 启动器\033[0m"
+    echo -e "\e[31m如果您不希望创建该用户, 请按 Ctrl + C 退出脚本, 并使用 Docker 安装\033[0m"
+    read -e -p "输入 ${rand} 以确认继续, 或按 Ctrl + C 退出: " confirm
+    if [ "$confirm" != "$rand" ]; then
+        echo -e "\e[31m确认输入错误, 脚本退出\033[0m"
+        exit 1
+    fi
+fi
+
 if command -v apk &> /dev/null; then
-    echo -e "\e[31m检测到您使用Alpine,请自行手动安装,本脚本暂时不支持Alphine\033[0m"
+    echo -e "\e[31m检测到您使用 Alpine, 请自行手动安装, 本脚本暂时不支持 Alpine\033[0m"
     exit 1
 fi
 
@@ -12,7 +47,7 @@ if command -v apt-get &> /dev/null; then
 elif command -v yum &> /dev/null; then
     yum install -y sudo wget jq zstd
 else
-    echo -e "\e[31m无法自动安装必要的工具 sudo wget jq zstd , 请自行手动安装。\033[0m"
+    echo -e "\e[31m无法自动安装必要的工具 sudo wget jq zstd, 请自行手动安装\033[0m"
     exit 1
 fi
 
@@ -20,16 +55,16 @@ fi
 json_data=$(curl -s 'https://api.natfrp.com/v4/system/clients')
 client_version=$(echo "$json_data" | jq -r '.unix.ver')
 if [ ! -z "$client_version" ]; then
-    echo "最新的Linux启动器版本为: $client_version"
+    echo "最新的 Linux 启动器版本为: $client_version"
 else
-    echo -e "\e[33m未能成功获取版本号，将使用内置版本号来安装\033[0m"
+    echo -e "\e[33m未能成功获取版本号, 将使用内置版本号来安装\033[0m"
     client_version = "3.1.4"
-    echo -e "内置的版本号为： $client_version"
+    echo -e "内置的版本号为: $client_version"
 fi
 
 # 获取API密钥和远程管理密码
-read -p "请输入SakuraFrp的API密钥: " api_key
-read -p "请输入您希望使用的远程管理密码: " remote_pass 
+read -e -p "请输入 SakuraFrp 的 访问密钥: " api_key
+read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass 
 
 # 获取系统架构
 arch=$(uname -m)
@@ -49,13 +84,18 @@ case $arch in
 esac
 
 # 创建natfrp用户
-echo -e "\e[32m正在创建natfrp用户\033[0m"
 if ! id -u natfrp &> /dev/null; then
+    echo -e "\e[32mnatfrp 用户不存在, 正在创建 natfrp 用户\033[0m"
     sudo useradd -r -m -s /sbin/nologin natfrp
+else
+    echo -e "\e[32mnatfrp 用户已存在\033[0m"
 fi
 
 # 下载并解压启动器
-cd /home/natfrp || exit
+cd /home/natfrp || (
+    echo -e "\e[31m无法切换到 natfrp 用户的 home 目录, 可能是配置有误, 请使用 Docker 安装\033[0m"
+    exit 1
+)
 
 echo -e "\e[32m正在下载启动器\033[0m"
 
@@ -71,7 +111,7 @@ sudo chmod +x frpc natfrp-service
 sudo chown natfrp:natfrp frpc natfrp-service
 
 # 创建Systemd Unit文件
-echo -e "\e[32m创建service\033[0m"
+echo -e "\e[32m正在创建 service \033[0m"
 unit_file="/etc/systemd/system/natfrp.service"
 
 cat << EOF | sudo tee $unit_file
@@ -109,9 +149,11 @@ sed -i 's/"remote_management_key": null/"remote_management_key": "'"$remote_key"
 
 # 启动并启用服务
 sudo systemctl daemon-reload
-sudo systemctl start natfrp.service
-sudo systemctl enable natfrp.service
+sudo systemctl enable --now natfrp.service
 sudo systemctl status natfrp.service
 
-echo -e "\e[32mSakuraFrp启动器安装完成。您可执行"systemctl status natfrp.service"查看服务状态\033[0m"
-echo -e "\e[32m如果启动正常,请登录远程管理界面进行进一步配置。\033[0m"
+echo -e "\e[32mSakuraFrp 启动器安装完成, 您可使用下面的命令管理服务: \033[0m"
+echo -e "\e[32m查看运行状态\033[0m\tsystemctl status natfrp.service"
+echo -e "\e[32m停止服务\033[0m\tsystemctl stop natfrp.service"
+echo -e "\e[32m启动服务\033[0m\tsystemctl start natfrp.service"
+echo -e "\e[32m如果启动正常, 请登录远程管理界面进行进一步配置\033[0m"
