@@ -1,128 +1,125 @@
 # 以 unRAID 为中心的家庭服务穿透指南
 
-unRAID 在很多社区的热度较高，而其配置较为简单，只需使用 **CA (Community Applications)** 搜索 **Dockerhub** 的镜像然后简单地配置即可。
+unRAID 在很多社区的热度较高，且配置较为简单，只需使用 **Community Applications** 插件搜索 **Dockerhub** 的镜像然后简单地配置即可。
 
-本文旨在提供易于理解的教程，考虑到 unRAID 服务器通常本身并不提供主要服务，而是为其他内网服务做支撑，本文中的 Docker 网络模型选择了 `host` 而非 `bridge`。
+本文旨在提供易于理解的教程，考虑到 unRAID 服务器通常本身并不提供主要服务，而是为其他内网服务做支撑，您应该参考本文档为其他服务创建隧道，而不是直接穿透 unRAID 控制面板。
 
-## 安全警告 {#warning}
-
-根据 [unRAID 官方配置指南](https://wiki.unraid.net/index.php/Configuration_Tutorial#Security)，unRAID 在任何情况下都不应直接暴露在互联网中：
-
-> unRAID is by no means a secure operating system and should NOT be connected directly to the Internet under any circumstances
-
-为了表达我们最大程度的不建议，我们将映射 unRAID 自身的教程单独放在了这篇文章的最后，并进行了折叠。
-
-此外，您应该在穿透任何服务前阅读我们的 [安全指南](/bestpractice/security.md)。
+本文档使用 unRAID 6.12.11 系统进行演示，部分按钮位置在其他版本中可能有所不同，请在相关界面附近查找。
 
 ## 添加 Templates {#install-templates}
-
-unRAID 在 **6.10.0-rc1** 之后的版本中弃用了自定义 **Templates Repository** 的功能，我们需要将仓库文件下载到 unRAID U盘的特定路径。
-
-对于旧版系统，我们提供了一个官方的 [模板仓库](https://github.com/natfrp/unraid-docker-templates) 来简化部署，但是您应该更新系统而不是坚持使用旧版。
 
 :::: tabs
 
 @tab 在线部署 (推荐)
 
-点击 unRAID WebUI 右上角的 Terminal 按钮，在打开的页面中复制粘贴下面的命令执行：
+点击 unRAID 管理面板右上角的 Terminal 按钮，在打开的页面中复制粘贴下面的命令执行：
 
 ```bash
-curl -sSLo /boot/config/plugins/dockerMan/templates-user/natfrpc.xml \
-   https://nya.globalslb.net/natfrp/misc/natfrpc.xml
+curl -sSLo /boot/config/plugins/dockerMan/templates-user/natfrp.xml https://nya.globalslb.net/natfrp/misc/launcher-unraid.xml
+ls -ls /boot/config/plugins/dockerMan/templates-user/natfrp.xml
 ```
 
-![](./_images/unraid-terminal-btn.png)
+检查输出信息，确保没有任何报错，并且可以看到 `ls` 列出了相关文件：
 
-此时模板文件已经被下载到指定位置，可以使用了。
+![](./_images/unraid-download-template.png)
 
-如果在后面发现不可用，请检查 `/boot/config/plugins/dockerMan/templates-user/natfrpc.xml` 文件的内容。
+此时模板已经被下载到指定位置，可以使用了。
 
 @tab 离线部署
 
-::: tip
-通常情况下离线部署并无必要，如果您发现自己对 Linux 命令行操作过敏，请考虑离线部署
+::: tip 注意
+除非您的 unRAID 服务器无法连接互联网，否则不建议使用此方法，请尽量使用在线部署
 :::
 
-要离线部署，请先将 unRAID 服务器关机，将启动盘拔出插到 PC 上。
+要离线部署，请先将 unRAID 服务器关机，然后将启动 U 盘拔出插到 PC 上。
 
-手动下载 [模板文件](https://nya.globalslb.net/natfrp/misc/natfrpc.xml)，将此文件放置到 `X:\config\plugins\dockerMan\templates-user` （X 为 unRAID 启动盘盘符）。
+手动下载 [模板文件](https://nya.globalslb.net/natfrp/misc/launcher-unraid.xml)，将此文件改名为 `natfrp.xml` 并放到 `X:\config\plugins\dockerMan\templates-user` 文件夹中（X 为 unRAID 启动盘盘符）：
 
 ![](./_images/unraid-usbstick-tpl.png)
 
 ::::
 
-## 穿透内网服务 {#expose-lan-services}
+## 创建启动器容器 {#create-launcher-container}
 
-### 创建隧道 {#lan-create-tunnel}
+启动器容器只需配置一次即可，一个容器可以开启多条隧道，无需重复配置。
 
-前往 Sakura Frp 管理面板，使用内网访问时的端口和 IP 在 [隧道列表](https://www.natfrp.com/tunnel/) 创建隧道即可。
+1. 点击 `DOCKER` 打开容器管理页面，点击 `ADD CONTAINER` 按钮：
 
-因为我们使用 `host` 网络，此处限制较少，但对于 HTTP 服务，请在创建隧道时注意相关访问限制。
+   ![](./_images/unraid-add-container-1.png)
 
-### 创建容器 {#lan-start-container}
+1. 在 `Template` 处选中 `[ User templates ] > natfrp`，按图示配置并点击 `APPLY` 按钮：
 
-1. 在 Docker 页中点击 `Add Container` ，并选择 `natfrpc` 模板配置即可，**隧道 ID** 可以在 [隧道列表](https://www.natfrp.com/tunnel/) 页面获得。
-
-   共有高达两个需配置的输入框，请在确保均已被配置后点击 Apply 按钮创建容器实例并启动。
-
-   ![](./_images/unraid-add-container.png)
-
-1. 添加完成的界面如下图所示，如果您的英语水平无法阅读，请注意关键词 `finished successfully`，即为成功。
-
-   ::: warning
-   此界面存在明文显示的访问密钥，即红框处的内容，截图分享时请注意打码
+   ::: tip
+   Web UI 默认运行在 7102 端口，如果发生冲突，请在创建完成后参考 [用户手册](/launcher/manual.md#config-webui) 修改端口或关闭 Web UI  
+   容器的工作目录即为此处的 “配置文件目录”
    :::
 
-   ![](./_images/unraid-add-done.png)
+   ![](./_images/unraid-add-container-2.png)
 
-1. 点击 Done 后页面将跳转回 Docker 页的首页，此时即可看到新创建的实例：
+1. 检查容器创建过程中输出的日志，确认有 `The command finished successfully!` 的提示：
 
-   ![](./_images/unraid-running-container.png)
+   ![](./_images/unraid-add-container-3.png)
 
-### 查看日志 {#lan-view-log}
+1. 如图所示打开右边的 `AUTOSTART` 开关，然后点击左侧图标，点击 `Logs` 查看日志：
 
-此时点击已经完成创建的容器图标（图中为问号）即可进行管理，点击此菜单中的 Logs 项即可在弹出的新窗口中查看运行日志。在向他人提问时请务必截图并提供此窗口内容。
+   ![](./_images/unraid-check-log-1.png)
 
-<div class="natfrp-side-by-side"><div>
+1. 确认日志中有登录成功和远程管理连接成功的提示，如需使用 Web UI 可在上面找到连接信息：
 
-![](./_images/unraid-log-dropdown.png)
-
-</div><div>
-
-![](./_images/unraid-log-window.png)
-
-</div></div>
+   ![](./_images/unraid-check-log-2.png)
 
 ## 穿透 unRAID 控制台 {#expose-unraid-console}
 
 ::: danger 安全警告
-根据 [unRAID 官方配置指南](https://wiki.unraid.net/index.php/Configuration_Tutorial#Security)，unRAID 在任何情况下都 **不应** 直接暴露在互联网中  
-请在阅读下方内容前完全理解自己正在做的行为，并了解其中的安全风险再进行下面的操作
+通过 frp 穿透 unRAID 时将直接绕过登录验证，您 **必须在隧道配置中设置访问密码**，以免暴露在公网后一瞬被黑  
+我们 **极不推荐** 将 unRAID 控制台直接暴露在公网中，本节 **仅供学习隧道创建、启动方式之用**  
+除此之外，您应该在穿透任何内网服务前阅读我们的 [安全指南](/bestpractice/security.md)
 :::
-
-:::: details 在点击展开前，请确认您完全理解自己正在做的行为，并了解其中的安全风险
 
 ### 创建隧道 {#console-create-tunnel}
 
-前往 Sakura Frp 管理面板，创建一条隧道：
+前往 [隧道列表](https://www.natfrp.com/tunnel/)，创建一条 `TCP` 隧道：
 
-- 将 **本地 IP** 设置为 `127.0.0.1`，**本地端口** 设置为 `80`
-- unRAID 不提供 HTTPS 控制台，请将 **自动 HTTPS** 配置项设为 `自动` 或您使用的域名
-- 为了给 unRAID 提供保护，**必须** 在 **访问密码** 处填写一个足够强的密码
+- 将 **本地 IP** 设置为 `localhost`，**本地端口** 设置为 `80`
+- 将 **自动 HTTPS** 配置项设为 `自动`
+- 由于通过 frp 穿透时会绕过登录验证，您 **必须** 在 **访问密码** 处填写一个足够强的密码
 
-### 创建容器 {#console-start-container}
+::: danger 安全警告
+您 **必须** 在隧道配置中设置一个足够强的访问密码，以免暴露在公网后一瞬被黑  
+:::
 
-参考上面的 [创建容器](#lan-start-container) 即可，操作方法是一样的。
+### 启动隧道 {#start-tunnel}
 
-### 访问隧道 {#console-access}
+1. 打开 [远程管理](https://www.natfrp.com/remote/v2)，连接到刚才创建的容器：
 
-在运行隧道后，我们就可以在日志中得到访问地址了，此处以 `114.5.1.4:1919` 为例。
+   ![](../_images/common/remote-mgmt-connect.png)
 
-1. 首先，您需要打开 `https://114.5.1.4:1919` 并在此页面完成访问认证
-1. 完成访问认证后，使用 `https://114.5.1.4:1919/Main` 即可访问您的控制台
+1. 点击右边的刷新按钮，然后双击刚才创建的隧道，或将其拖到上方启动：
 
-   ::: tip
-   因为 unRAID 控制台的自动跳转功能缺陷，使用 `https://114.5.1.4:1919/` 会被跳转到 `http://114.5.1.4:1919/Main` (没有 s) 从而无法访问，所以请务必访问 `https://114.5.1.4:1919/Main`
+   ![](../_images/common/remote-mgmt-nas-start.png)
+
+1. 启动成功后右上角会弹出连接方式，您也可以前往 `日志` 页面查看连接方式：
+
+   ![](../_images/common/remote-mgmt-nas-started.png)
+
+1. 使用 `https://` 加上日志中显示的连接方式即可远程访问您的 unRAID 控制面板。  
+   正常情况下，您应该会先看到访问认证界面，输入访问密码后再刷新一次即可进入控制台。
+
+   ::: danger 安全警告
+   如果没有看到访问认证界面，**请立即关闭隧道** 并检查您的访问密码是否设置正确
    :::
 
-::::
+   ::: tip
+   在旧版 unRAID 中，控制台可能会将您跳转到 `http://<连接方式>/Main` (没有 s) 从而导致无法访问  
+   如果您碰到这种情况，请更新系统或在认证完成后手动修改 URL 为 `https://<连接方式>/Main` 进行访问
+   :::
+
+1. 如果您需要进一步增强安全性，请考虑在不使用隧道时通过远程管理关闭 frpc
+
+## 更新启动器 {#update-launcher-container}
+
+虽然更新时发生意外的可能性很小，但我们仍然 **强烈建议** 您在有备用连接手段的情况下再进行更新，以免 NAS 失联。
+
+更新启动器时，请先打开 `ADVANCED VIEW` 开关，然后点击 `force update` 链接，在弹出的对话框中确认操作即可：
+
+![](./_images/unraid-update-container.png)
