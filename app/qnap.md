@@ -62,7 +62,7 @@
 
 1. 启动成功后右上角会弹出连接方式，您也可以前往 `日志` 页面查看连接方式：
 
-   ![](./_images/dsm-launcher-started.png)
+   ![](../_images/common/remote-mgmt-nas-started.png)
 
 1. 使用 `https://` 加上日志中显示的连接方式即可远程访问您的 QNAP NAS：
 

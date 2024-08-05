@@ -398,7 +398,7 @@ System.TypeLoadException:
   类型“MS.Internal.Automation.SelectionProviderWrapper”的方法“GetSelection”没有实现
 ```
 
-在有条件的情况下，请尝试将系统更新到最新版，确保 Windows 更新中所有更新都正常安装并且没有提示失败。如果还是无法解决，建议使用 **微软官方镜像** 重新安装最新版 Windows，并且 **不要** 使用各种 ”系统优化工具“ 对系统进行修改。
+在有条件的情况下，请尝试将系统更新到最新版，确保 Windows 更新中所有更新都正常安装并且没有提示失败。如果还是无法解决，建议使用 **微软官方镜像** 重新安装最新版 Windows，并且 **不要** 使用各种 “系统优化工具” 对系统进行修改。
 
 如果没有重装的条件，请 [点击这里](ms-settings:windowsupdate) 打开 Windows 更新。滚动到最底部，点击 `更新历史记录`：
 

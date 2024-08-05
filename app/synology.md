@@ -101,11 +101,11 @@
 
 无论是通过 Web UI 还是远程管理连接，您应该都能看到刚才创建的隧道，双击或将其拖到上方启动：
 
-![](./_images/dsm-launcher-start-tunnel.png)
+![](../_images/common/remote-mgmt-nas-start.png)
 
 然后，前往 `日志` 页面查看日志。如果一切正常，您就可以在日志中找到连接方式了（当然，也可以在 Sakura Frp 管理面板查看）：
 
-![](./_images/dsm-launcher-started.png)
+![](../_images/common/remote-mgmt-nas-started.png)
 
 在连接方式前面加上 `https://`，然后您就可以使用此 URL 访问 DSM 管理面板了，例如：
 
