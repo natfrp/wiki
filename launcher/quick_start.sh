@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# ensure root
+if [ "$EUID" -ne 0 ]; then
+    echo -e "\e[31m请使用 root 用户运行此脚本\033[0m"
+    exit 1
+fi
+
 # check docker and promote docker
 if command -v docker &> /dev/null; then
     echo -e "\e[32mDocker 已安装, 我们将使用 Docker 安装 SakuraFrp 启动器\033[0m"
