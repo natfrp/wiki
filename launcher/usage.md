@@ -176,6 +176,18 @@
 如果您安装的机器中装有桌面环境，请留意 [安装启动器后登录桌面卡在黑屏](/faq/launcher.md#linux-stuck-login) 的问题
 :::
 
+1. 对于 systemd 用户，可使用一键安装脚本快速安装:
+
+   如果希望检查脚本内容，请下载对应链接检查后再执行。
+
+   ```bash
+   curl -sSL https://doc.natfrp.com/launcher.sh | bash
+   # 或者使用 wget
+   wget -O- https://doc.natfrp.com/launcher.sh | bash
+   ```
+
+   此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改，您也可以查看他的 [更激进小白化版本](https://gitee.com/ssdomei/mirrors/raw/master/sakurafrp.sh)。
+
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
 
 1. 出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，创建一个新账户：
