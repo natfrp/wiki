@@ -49,11 +49,11 @@ fi
 # 安装必要的工具
 echo -e "\e[32m正在安装必要的工具\033[0m"
 if command -v apt-get &> /dev/null; then
-    apt-get update && apt-get install -y sudo wget jq zstd
+    apt-get update && apt-get install -y wget jq zstd
 elif command -v yum &> /dev/null; then
-    yum install -y sudo wget jq zstd
+    yum install -y wget jq zstd
 else
-    echo -e "\e[31m无法自动安装必要的工具 sudo wget jq zstd, 请自行手动安装\033[0m"
+    echo -e "\e[31m无法自动安装必要的工具 wget jq zstd, 请自行手动安装\033[0m"
     exit 1
 fi
 
@@ -92,7 +92,7 @@ esac
 # 创建natfrp用户
 if ! id -u natfrp &> /dev/null; then
     echo -e "\e[32mnatfrp 用户不存在, 正在创建 natfrp 用户\033[0m"
-    sudo useradd -r -m -s /sbin/nologin natfrp
+    useradd -r -m -s /sbin/nologin natfrp
 else
     echo -e "\e[32mnatfrp 用户已存在\033[0m"
 fi
@@ -105,22 +105,22 @@ cd /home/natfrp || (
 
 echo -e "\e[32m正在下载启动器\033[0m"
 
-sudo curl -L -O "$arch_link"
+curl -L -O "$arch_link"
 
 echo -e "\e[32m正在解压启动器\033[0m"
-sudo zstd -d *.tar.zst
-sudo tar -xvf *.tar
+zstd -d *.tar.zst
+tar -xvf *.tar
 rm *.tar.zst
 
 # 设置执行权限和所有者
-sudo chmod +x frpc natfrp-service
-sudo chown natfrp:natfrp frpc natfrp-service
+chmod +x frpc natfrp-service
+chown natfrp:natfrp frpc natfrp-service
 
 # 创建Systemd Unit文件
 echo -e "\e[32m正在创建 service \033[0m"
 unit_file="/etc/systemd/system/natfrp.service"
 
-cat << EOF | sudo tee $unit_file
+cat << EOF | tee $unit_file
 [Unit]
 Description=SakuraFrp Launcher
 After=network.target
@@ -154,9 +154,9 @@ sed -i '/"remote_management":/ s/false/true/' /home/natfrp/.config/natfrp-servic
 sed -i 's/"remote_management_key": null/"remote_management_key": "'"$remote_key"'"/' /home/natfrp/.config/natfrp-service/config.json
 
 # 启动并启用服务
-sudo systemctl daemon-reload
-sudo systemctl enable --now natfrp.service
-sudo systemctl status natfrp.service
+systemctl daemon-reload
+systemctl enable --now natfrp.service
+systemctl status natfrp.service
 
 echo -e "\e[32mSakuraFrp 启动器安装完成, 您可使用下面的命令管理服务: \033[0m"
 echo -e "\e[32m查看运行状态\033[0m\tsystemctl status natfrp.service"
