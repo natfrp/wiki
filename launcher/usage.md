@@ -164,7 +164,7 @@
 @tab Linux 服务器 {#linux-server}
 
 ::: warning
-这篇指南内容比较复杂且容易操作错误，如非特殊情况，请务必使用 [Docker](#docker) 安装启动器  
+这篇指南操作**极为复杂、容易操作错误、且在一般情况下不应被使用**，如非特殊情况，**请务必使用 [Docker](#docker) 安装启动器**  
 如果您正在远程连接到服务器，请使用 [Docker](#docker) 中 `同时启用远程管理` 的方式安装启动器
 :::
 
@@ -176,7 +176,7 @@
 如果您安装的机器中装有桌面环境，请留意 [安装启动器后登录桌面卡在黑屏](/faq/launcher.md#linux-stuck-login) 的问题
 :::
 
-1. 对于 systemd 用户，可使用一键安装脚本快速安装:
+1. 对于 systemd 用户，可使用一键安装脚本快速安装：
 
    如果希望检查脚本内容，请下载对应链接检查后再执行。
 
@@ -362,7 +362,17 @@ userdel -r natfrp
 @tab Docker {#docker}
 
 ::: tip
-这篇指南以命令行操作 Docker 为例，您应当可以很轻松地将这篇指南中提供的经验迁移到各种 GUI 中
+这篇指南以命令行操作 Docker 为例，您应当可以很轻松地将这篇指南中提供的经验迁移到各种 GUI 中。  
+
+可使用一键安装脚本快速安装：
+
+```bash
+curl -sSL https://doc.natfrp.com/launcher.sh | bash
+# 或者使用 wget
+wget -O- https://doc.natfrp.com/launcher.sh | bash
+```
+
+此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改，您也可以查看他的 [更激进小白化版本](https://gitee.com/ssdomei/mirrors/raw/master/sakurafrp.sh)。
 :::
 
 1. 迁移隧道配置
