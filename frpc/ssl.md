@@ -73,25 +73,11 @@ SSL 服务商 **不必** 是当前域名的注册商，按需选择适合您的�
 
 使用 Docker 运行的启动器，工作目录默认为 `/run/FrpcWorkingDirectory`（而不是 `/run/frpc`）。
 
-您可以以 Docker 篇的形式挂载证书文件到该目录中，此处不再赘述，只需将 Docker 篇的 `/run/frpc` 替换为 `/run/FrpcWorkingDirectory`。
+您可以以 [Docker frpc](#docker) 的形式挂载证书文件到该目录中，此处不再赘述，只需将 Docker 篇的 `/run/frpc` 替换为 `/run/FrpcWorkingDirectory`。
 
-但是为了方便同时使用多张证书，您也可以使用 `-v` 或 `--mount` 将工作目录挂载到本地目录。
+但是为了方便同时使用多张证书，您也可以在启动容器时指定一个外置存储，如 [启动器 Docker 使用指南](/launcher/usage.md#docker) 所示。
 
-首先请创建一个 **空** 目录用于这个目的，以减少各种问题。
-
-下面的示例将 `/home/homo/新建文件夹` （请将此目录替换为您希望使用的本地目录） 的本地目录挂载为启动器的 `/run/FrpcWorkingDirectory`：
-
-```bash
-# 用 -v
-docker run (其他参数) \
-    -v /home/homo/新建文件夹:/run/FrpcWorkingDirectory
-
-# 用 -mount
-docker run (其他参数) \
-    --mount type=bind,src=/home/homo/新建文件夹,dst=/run/FrpcWorkingDirectory
-```
-
-然后您只需直接证书文件拷贝到被挂载的本地目录即可（实例中即 `/home/homo/新建文件夹`）。
+然后您只需直接证书文件拷贝到被挂载的本地目录下的 `FrpcWorkingDirectory` 中即可（如果您参考使用指南配置，即为 `/etc/natfrp/FrpcWorkingDirectory`）。
 
 @tab Systemd
 
@@ -108,7 +94,7 @@ WorkingDirectory=/etc/frpc
 
 如果上面的指令不显示任何内容，请编辑 `/etc/systemd/system/frpc@.service` 加入 `WorkingDirectory=一个目录`。
 
-@tab Docker
+@tab Docker {#docker}
 
 Docker 工作目录默认为 `/run/frpc`，但是该目录中的文件会在容器销毁时丢失。
 

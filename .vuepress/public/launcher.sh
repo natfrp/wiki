@@ -9,11 +9,19 @@ fi
 # check docker and promote docker
 if command -v docker &> /dev/null; then
     echo -e "\e[32mDocker 已安装, 我们将使用 Docker 安装 SakuraFrp 启动器\033[0m"
+    echo -e "本脚本将会在您的系统上创建一个名为 natfrp-service 的容器, 并使该容器运行 SakuraFrp 启动器"
+    echo -e "本脚本将为您创建一个 /etc/natfrp 文件夹用于存储 SakuraFrp 的配置文件"
+    echo -e "如果您不希望外置存储文件, 请参考使用文档自行安装"
 
     read -e -p "请输入 SakuraFrp 的 访问密钥: " api_key
-    read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass 
+    read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass
 
-    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -e NATFRP_TOKEN=$api_key -e NATFRP_REMOTE=$remote_pass natfrp.com/launcher && (
+    mkdir /etc/natfrp || (
+        echo -e "\e[31m无法创建 /etc/natfrp 文件夹, 请检查权限\033[0m"
+        exit 1
+    )
+
+    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v /etc/natfrp:/run -e NATFRP_TOKEN=$api_key -e NATFRP_REMOTE=$remote_pass natfrp.com/launcher && (
         echo -e "\e[32mDocker 模式安装成功, 您可使用下面的命令管理服务: \033[0m"
         echo -e "\e[32m查看运行日志\033[0m\tdocker logs natfrp-service"
         echo -e "\e[32m停止服务\033[0m\tdocker stop natfrp-service"
@@ -32,8 +40,8 @@ else
 
     rand=$((RANDOM * 1000 + RANDOM))
     echo -e "\e[31mDocker 未安装, 将使用常规安装, 我们 **推荐不** 要使用脚本常规安装\033[0m"
-    echo -e "\e[31m请注意, 本脚本常规安装将会在您的系统上创建一个名为 natfrp 的用户, 并以该用户运行 SakuraFrp 启动器\033[0m"
-    echo -e "\e[31m如果您不希望创建该用户, 请按 Ctrl + C 退出脚本, 并使用 Docker 安装\033[0m"
+    echo -e "请注意, 本脚本常规安装将会在您的系统上创建一个名为 natfrp 的用户, 并以该用户运行 SakuraFrp 启动器"
+    echo -e "如果您不希望创建该用户, 请按 Ctrl + C 退出脚本, 并使用 Docker 安装"
     read -e -p "输入 ${rand} 以确认继续, 或按 Ctrl + C 退出: " confirm
     if [ "$confirm" != "$rand" ]; then
         echo -e "\e[31m确认输入错误, 脚本退出\033[0m"
