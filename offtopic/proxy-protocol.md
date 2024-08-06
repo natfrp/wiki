@@ -10,6 +10,11 @@
 
 ### Nginx {#nginx}
 
+::: tip
+在某个 `listen` 端口启用 Proxy Protocol 后，该端口（包括其他配置文件中的相同端口）的所有连接都会按 Proxy Protocol 协议处理  
+因此，所有连接到该端口的客户端（frpc）都必须启用 Proxy Protocol 支持，否则会导致连接失败。此外，浏览器将无法直接访问该端口
+:::
+
 在需要启用 Proxy Protocol 的 `server` 块找到 `listen` 字段，并在尾部（分号前面）添加用空格分开的 `proxy_protocol` 即可。举个例子：
 
 <div class="natfrp-side-by-side"><div>
