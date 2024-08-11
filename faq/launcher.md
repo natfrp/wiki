@@ -373,6 +373,10 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 
    ![](./_images/launcher-wpf-crash-log.png)
 
+::: warning 注意
+请 **对照日志内容** 选择 **对应的** 修复方案，日志不匹配时请勿随意尝试下方的修复方案
+:::
+
 检查崩溃日志，如果看到下方内容则说明系统中 WPF 组件有损坏：
 
 ```log
@@ -428,7 +432,64 @@ System.TypeLoadException:
 
 :::
 
-如果您的崩溃日志不符合上方的情况，请加入公开用户反馈群联系管理员远程检查。
+否则，如果日志以下述内容开头，请展开问题 B 查看修复方案：
+
+```log
+异常信息: System.BadImageFormatException
+```
+
+:::: details 问题 B：系统 .NET Framework 组件损坏或缺失
+
+这种情况通常是由于电脑断电、强制关机等造成系统文件损坏导致的，也可能是部分 “精简”、“优化” 软件所致。如果您使用过这些 “系统优化” 软件或是安装了精简版系统，请不要使用下方的步骤，而是直接使用 **微软官方镜像** 重新安装最新版 Windows。
+
+::: tip 关于 Windows 7 的额外说明
+下方的步骤适用于 Windows 10 / 11 用户。如果您正在使用 Windows 7，请直接到控制面板卸载系统中的 .NET Framework 4.8 运行时，然后 [点击这里](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer) 下载安装包重新安装即可  
+:::
+
+右键点击 Windows 图标，然后选择 `终端管理员` 或 `命令提示符 (管理员)` 或 `Windows PowerShell (管理员)`：
+
+![](../_images/common/windows-terminal-admin.png)
+
+粘贴下方的命令并检查输出内容：
+
+```cmd
+Dism /Online /Cleanup-Image /CheckHealth
+```
+
+![](../_images/common/windows-dism-check.png)
+
+如果需要进行 DISM 修复，再粘贴下方的命令，否则跳过这个步骤：
+
+::: tip 请确保 Windows 更新能正常工作
+进行 DISM 修复前，请先确保 **Windows 更新** 可以正常工作，否则修复可能会失败  
+如果您曾禁用或删除过自动更新，请先使用 [Windows 更新修复工具](https://support.microsoft.com/en-us/windows/windows-update-troubleshooter-19bc41ca-ad72-ae67-af3c-89ce169755dd) 进行修复
+:::
+
+```cmd
+Dism /Online /Cleanup-Image /RestoreHealth
+```
+
+DISM 修复通常需要十几分钟，并且可能需要从 Windows 更新下载损坏的文件，请确保网络连接正常。修复完成后确认最终的输出和下方截图中一致：
+
+![](../_images/common/windows-dism-repair-success.png)
+
+如果看到错误提示，请尝试重新运行上述命令，如果多次尝试后仍然无法修复，请加入公开用户反馈群联系管理员远程检查。
+
+粘贴下方的命令并检查输出内容（如果前面的步骤中提示需要重启，请先重启电脑）：
+
+```cmd
+sfc /scannow
+```
+
+请确认输出中有 `Windows 资源保护找到了损坏文件并成功修复了它们。` 字样，没有任何 `无法修复` 或其他提示：
+
+![](../_images/common/windows-sfc-repair-success.png)
+
+如提示需要重启电脑，请重启电脑。否则，再次双击启动器图标查看是否能正常打开。如果仍然存在问题，请加入公开用户反馈群联系管理员远程检查。
+
+::::
+
+如果您的崩溃日志不符合上方的情况，请加入公开用户反馈群联系管理员远程检查，不要随意尝试上方的修复方案。
 
 ### 如何修改启动器的配置文件 {#windows-edit-config}
 
