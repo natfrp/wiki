@@ -453,7 +453,7 @@ System.TypeLoadException:
 粘贴下方的命令并检查输出内容：
 
 ```cmd
-Dism /Online /Cleanup-Image /CheckHealth
+Dism /Online /Cleanup-Image /ScanHealth
 ```
 
 ![](../_images/common/windows-dism-check.png)
