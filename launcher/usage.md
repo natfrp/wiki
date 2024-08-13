@@ -181,9 +181,9 @@
    如果希望检查脚本内容，请下载对应链接检查后再执行。
 
    ```bash
-   curl -sSL https://doc.natfrp.com/launcher.sh | bash
+   bash <(curl -sSL https://doc.natfrp.com/launcher.sh)
    # 或者使用 wget
-   wget -O- https://doc.natfrp.com/launcher.sh | bash
+   bash <(wget -O- https://doc.natfrp.com/launcher.sh)
    ```
 
    此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改，您也可以查看他的 [更激进小白化版本](https://gitee.com/ssdomei/mirrors/raw/master/sakurafrp.sh)。
@@ -367,9 +367,9 @@ userdel -r natfrp
 可使用一键安装脚本快速安装：
 
 ```bash
-curl -sSL https://doc.natfrp.com/launcher.sh | bash
+bash <(curl -sSL https://doc.natfrp.com/launcher.sh)
 # 或者使用 wget
-wget -O- https://doc.natfrp.com/launcher.sh | bash
+bash <(wget -O- https://doc.natfrp.com/launcher.sh)
 ```
 
 此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改，您也可以查看他的 [更激进小白化版本](https://gitee.com/ssdomei/mirrors/raw/master/sakurafrp.sh)。
