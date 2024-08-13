@@ -16,12 +16,10 @@ if command -v docker &> /dev/null; then
     read -e -p "请输入 SakuraFrp 的 访问密钥: " api_key
     read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass
 
-    mkdir /etc/natfrp || (
-        echo -e "\e[31m无法创建 /etc/natfrp 文件夹, 请检查权限\033[0m"
-        exit 1
-    )
+    mkdir -p /etc/natfrp || echo -e "\e[31m无法创建 /etc/natfrp 文件夹, 配置可能无法外置保存\033[0m"
+    
 
-    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v /etc/natfrp:/run -e NATFRP_TOKEN=$api_key -e NATFRP_REMOTE=$remote_pass natfrp.com/launcher && (
+    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v /etc/natfrp:/run -e "NATFRP_TOKEN=$api_key" -e "NATFRP_REMOTE=$remote_pass" natfrp.com/launcher && (
         echo -e "\e[32mDocker 模式安装成功, 您可使用下面的命令管理服务: \033[0m"
         echo -e "\e[32m查看运行日志\033[0m\tdocker logs natfrp-service"
         echo -e "\e[32m停止服务\033[0m\tdocker stop natfrp-service"
