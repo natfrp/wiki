@@ -75,9 +75,15 @@ const sections = {
 					{ text: 'SFTP 文件传输', link: '/app/sftp.html' },
 					{ text: 'FTP 文件传输', link: '/app/ftp.html' },
 					{ text: '远程开机 (WOL 网络唤醒)', link: '/app/wol.html' },
-					{ text: '我的世界 (Minecraft) 联机', link: '/app/mc.html' },
-					{ text: '幻兽帕鲁 (Palworld) 联机', link: '/app/palworld.html' },
 					{ text: '其他应用', link: '/app/misc.html' },
+				],
+			},
+			{
+				text: '游戏联机',
+				children: [
+					{ text: '我的世界 (Minecraft)', link: '/app/mc.html' },
+					{ text: '幻兽帕鲁 (Palworld)', link: '/app/palworld.html' },
+					{ text: '星露谷物语 (Stardew Valley)', link: '/app/stardew-valley.html' },
 				],
 			},
 			{
