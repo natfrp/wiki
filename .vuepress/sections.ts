@@ -121,7 +121,6 @@ const sections = {
 				text: '其他教程',
 				children: [
 					'/offtopic/source.md',
-					'/offtopic/proxy-protocol.md',
 					'/offtopic/auth-guest.md',
 					'/offtopic/auth-widget.md',
 					'/offtopic/mail.md',

@@ -11,5 +11,6 @@
     "no-duplicate-heading": false,
     "link-image-reference-definitions": false,
     "strong-style": false,
+    "no-emphasis-as-heading": false,
     "emphasis-style": false
 }
