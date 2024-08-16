@@ -166,10 +166,13 @@
 对于使用 systemd 的用户，可使用一键安装脚本快速安装：
 
 ```bash
-sudo bash <(curl -sSL https://doc.natfrp.com/launcher.sh)
+sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh)"
 
 # 或者使用 wget, 脚本会自动通过包管理器安装 curl
-sudo bash <(wget -O- https://doc.natfrp.com/launcher.sh)
+sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
+
+# 如果需要绕过 Docker 检测强制安装到系统中
+sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
 ```
 
 此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改。
@@ -360,10 +363,10 @@ userdel -r natfrp
 如果您的系统中已有 Docker 环境，可使用一键安装脚本快速安装：
 
 ```bash
-sudo bash <(curl -sSL https://doc.natfrp.com/launcher.sh)
+sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh)"
 
 # 或者使用 wget
-sudo bash <(wget -O- https://doc.natfrp.com/launcher.sh)
+sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 ```
 
 此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改。
