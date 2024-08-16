@@ -163,30 +163,26 @@
 
 @tab Linux 服务器 {#linux-server}
 
+对于使用 systemd 的用户，可使用一键安装脚本快速安装：
+
+```bash
+sudo bash <(curl -sSL https://doc.natfrp.com/launcher.sh)
+
+# 或者使用 wget, 脚本会自动通过包管理器安装 curl
+sudo bash <(wget -O- https://doc.natfrp.com/launcher.sh)
+```
+
+此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改。
+
+### 手动安装步骤 {#linux-server-manual}
+
 ::: warning
-这篇指南操作**极为复杂、容易操作错误、且在一般情况下不应被使用**，如非特殊情况，**请务必使用 [Docker](#docker) 安装启动器**  
-如果您正在远程连接到服务器，请使用 [Docker](#docker) 中 `同时启用远程管理` 的方式安装启动器
+手动安装流程 **操作复杂，不适合新手使用**，如非特殊情况，请务必 **使用自动安装脚本** 或 [Docker](#docker) 进行安装
 :::
 
 ::: tip
-这篇指南假设您以 `root` 权限进行安装，若您使用其他用户请使用 `sudo -i` 或 `su -` 切换到 root 账户执行特权指令
+这篇指南假设您以 `root` 用户进行安装，请先使用 `sudo -i` 或 `su -` 切换到 root 账户
 :::
-
-::: tip
-如果您安装的机器中装有桌面环境，请留意 [安装启动器后登录桌面卡在黑屏](/faq/launcher.md#linux-stuck-login) 的问题
-:::
-
-1. 对于 systemd 用户，可使用一键安装脚本快速安装：
-
-   如果希望检查脚本内容，请下载对应链接检查后再执行。
-
-   ```bash
-   bash <(curl -sSL https://doc.natfrp.com/launcher.sh)
-   # 或者使用 wget
-   bash <(wget -O- https://doc.natfrp.com/launcher.sh)
-   ```
-
-   此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改，您也可以查看他的 [更激进小白化版本](https://gitee.com/ssdomei/mirrors/raw/master/sakurafrp.sh)。
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
 
@@ -361,26 +357,18 @@ userdel -r natfrp
 
 @tab Docker {#docker}
 
-::: tip
-这篇指南以命令行操作 Docker 为例，您应当可以很轻松地将这篇指南中提供的经验迁移到各种 GUI 中。  
-
-可使用一键安装脚本快速安装：
+如果您的系统中已有 Docker 环境，可使用一键安装脚本快速安装：
 
 ```bash
-bash <(curl -sSL https://doc.natfrp.com/launcher.sh)
+sudo bash <(curl -sSL https://doc.natfrp.com/launcher.sh)
+
 # 或者使用 wget
-bash <(wget -O- https://doc.natfrp.com/launcher.sh)
+sudo bash <(wget -O- https://doc.natfrp.com/launcher.sh)
 ```
 
-此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改，您也可以查看他的 [更激进小白化版本](https://gitee.com/ssdomei/mirrors/raw/master/sakurafrp.sh)。
-:::
+此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改。
 
-1. 迁移隧道配置
-
-   为了提高灵活度，在这篇指南中我们将以 主机网络 模式运行容器。  
-   您此前为 Docker 设置的隧道需要将本地 IP 修改回 `127.0.0.1` 方可使用。
-
-   对于在其他部署方式中本就可以使用的隧道，您不需做出修改。
+### 手动安装步骤 {#docker-manual}
 
 1. 启动容器
 
@@ -389,7 +377,7 @@ bash <(wget -O- https://doc.natfrp.com/launcher.sh)
    如果您曾使用旧版启动器初始化过配置文件, 可能需要将下方的 `7102` 替换为 `4101`
    :::
 
-   ::: tip
+   ::: tip 避免配置文件丢失
    如果您有可能需要保留或修改配置文件（如配置 自动 HTTPS 的证书），请先创建一个文件夹：
 
    ```bash
@@ -423,7 +411,8 @@ bash <(wget -O- https://doc.natfrp.com/launcher.sh)
       --restart=on-failure:5 \
       --pull=always \
       --name=natfrp-service \
-      -e NATFRP_TOKEN=<访问密钥> -e NATFRP_REMOTE=<设定一个远程管理密码，最少8个字符> \
+      -e "NATFRP_TOKEN=<访问密钥>" \
+      -e "NATFRP_REMOTE=<设定一个远程管理密码，最少8个字符>" \
       natfrp.com/launcher
    ```
 

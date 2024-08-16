@@ -1,132 +1,180 @@
 #!/bin/bash
 
-# ensure root
-if [ "$EUID" -ne 0 ]; then
-    echo -e "\e[31m请使用 root 用户运行此脚本\033[0m"
-    exit 1
-fi
+function log_I {
+    echo -e "\e[32m[+] $1\e[0m"
+}
 
-# check docker and promote docker
-if command -v docker &> /dev/null; then
-    echo -e "\e[32mDocker 已安装, 我们将使用 Docker 安装 SakuraFrp 启动器\033[0m"
-    echo -e "本脚本将会在您的系统上创建一个名为 natfrp-service 的容器, 并使该容器运行 SakuraFrp 启动器"
-    echo -e "本脚本将为您创建一个 /etc/natfrp 文件夹用于存储 SakuraFrp 的配置文件"
-    echo -e "如果您不希望外置存储文件, 请参考使用文档自行安装"
+function log_W {
+    echo -e "\e[33m[!] $1\e[0m"
+}
 
+function log_E {
+    echo -e "\e[31m[-] $1\e[0m"
+}
+
+function ask_for_creds {
     read -e -p "请输入 SakuraFrp 的 访问密钥: " api_key
     read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass
 
-    mkdir -p /etc/natfrp || echo -e "\e[31m无法创建 /etc/natfrp 文件夹, 配置可能无法外置保存\033[0m"
-    
-
-    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v /etc/natfrp:/run -e "NATFRP_TOKEN=$api_key" -e "NATFRP_REMOTE=$remote_pass" natfrp.com/launcher && (
-        echo -e "\e[32mDocker 模式安装成功, 您可使用下面的命令管理服务: \033[0m"
-        echo -e "\e[32m查看运行日志\033[0m\tdocker logs natfrp-service"
-        echo -e "\e[32m停止服务\033[0m\tdocker stop natfrp-service"
-        echo -e "\e[32m启动服务\033[0m\tdocker start natfrp-service"
-    ) || (
-        echo -e "\e[31mDocker 模式安装失败, 请检查 Docker 是否正常运行或 SakuraFrp 是否已安装\033[0m"
-        exit 1
-    )
-    exit $?
-else
-    # check systemd
-    if ! command -v systemctl &> /dev/null; then
-        echo -e "\e[31m您的系统不支持 systemd, 请使用 Docker 安装\033[0m"
+    if [[ ${#api_key} -lt 16 ]]; then
+        log_E "访问密钥至少需要 16 字符, 请从管理面板直接复制粘贴"
         exit 1
     fi
-
-    rand=$((RANDOM * 1000 + RANDOM))
-    echo -e "\e[31mDocker 未安装, 将使用常规安装, 我们 **推荐不** 要使用脚本常规安装\033[0m"
-    echo -e "请注意, 本脚本常规安装将会在您的系统上创建一个名为 natfrp 的用户, 并以该用户运行 SakuraFrp 启动器"
-    echo -e "如果您不希望创建该用户, 请按 Ctrl + C 退出脚本, 并使用 Docker 安装"
-    read -e -p "输入 ${rand} 以确认继续, 或按 Ctrl + C 退出: " confirm
-    if [ "$confirm" != "$rand" ]; then
-        echo -e "\e[31m确认输入错误, 脚本退出\033[0m"
+    if [[ ${#remote_pass} -lt 8 ]]; then
+        log_E "远程管理密码至少需要 8 字符"
         exit 1
     fi
-fi
+}
 
-if command -v apk &> /dev/null; then
-    echo -e "\e[31m检测到您使用 Alpine, 请自行手动安装, 本脚本暂时不支持 Alpine\033[0m"
+function check_executable {
+    version=$(sudo -u natfrp $1 -v)
+    if [[ $? -ne 0 ]]; then
+        log_E "无法正常执行二进制文件 $1"
+        exit 1
+    fi
+    log_I "$1 版本: $version"
+}
+
+set -e
+
+# Check root permission
+if [ "$EUID" -ne 0 ]; then
+    log_E "请使用 root 用户运行此脚本"
     exit 1
 fi
 
-# 安装必要的工具
-echo -e "\e[32m正在安装必要的工具\033[0m"
-if command -v apt-get &> /dev/null; then
-    apt-get update && apt-get install -y wget jq zstd
-elif command -v yum &> /dev/null; then
-    yum install -y wget jq zstd
-else
-    echo -e "\e[31m无法自动安装必要的工具 wget jq zstd, 请自行手动安装\033[0m"
+if command -v docker &>/dev/null && [[ $1 != "direct" ]]; then
+    echo -e "\e[96m[*] Docker 已安装, 将使用 Docker 安装模式\e[0m\n  - 将在您的系统上创建名为 natfrp-service 的容器\n  - 将为您创建 /etc/natfrp 文件夹用于存储启动器配置文件\n"
+    ask_for_creds
+
+    mkdir -p /etc/natfrp || log_W "无法创建 /etc/natfrp 文件夹, 配置可能无法在容器重启后正常保存"
+
+    if docker ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
+        log_W "已存在名为 natfrp-service 的容器"
+        read -p " - 是否移除已存在的容器? [y/N] " -r choice
+        if [[ $choice =~ ^[Yy]$ ]]; then
+            docker kill natfrp-service
+            docker rm natfrp-service
+        else
+            log_E "请手动移除已存在的容器后重新运行脚本"
+            exit 1
+        fi
+    fi
+
+    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v /etc/natfrp:/run -e "NATFRP_TOKEN=$api_key" -e "NATFRP_REMOTE=$remote_pass" natfrp.com/launcher
+    if [[ $? -ne 0 ]]; then
+        log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问 natfrp.com 拉取镜像"
+        exit 1
+    fi
+
+    echo -e "\n\e[96mDocker 模式安装成功, 您可使用下面的命令管理服务:\e[0m\n  - 查看日志\tdocker logs natfrp-service\n  - 停止服务\tdocker stop natfrp-service\n  - 启动服务\tdocker start natfrp-service\n\n请登录远程管理界面启动隧道: https://www.natfrp.com/remote/v2\n"
+
+    log_I "下方将输出启动器日志, 如需退出请按 Ctrl+C"
+    docker logs -f natfrp-service
+
+    exit 0
+fi
+
+# Check systemd
+if ! command -v systemctl &>/dev/null; then
+    log_E "您的系统没有安装 systemd, 请安装 Docker 后重新运行脚本"
+    exit 1
+fi
+if [[ ! -d /run/systemd/system/ ]]; then
+    log_E "您的系统并未由 systemd 管理, 请安装 Docker 后重新运行脚本"
     exit 1
 fi
 
-# 获取版本号
-json_data=$(curl -s 'https://api.natfrp.com/v4/system/clients')
-client_version=$(echo "$json_data" | jq -r '.unix.ver')
-if [ ! -z "$client_version" ]; then
-    echo "最新的 Linux 启动器版本为: $client_version"
-else
-    echo -e "\e[33m未能成功获取版本号, 将使用内置版本号来安装\033[0m"
-    client_version = "3.1.4"
-    echo -e "内置的版本号为: $client_version"
+# Check SELinux
+if command -v getenforce &>/dev/null; then
+    if [[ $(getenforce) == "Enforcing" ]]; then
+        log_E "SELinux 处于启用状态, 请安装 Docker 后重新运行脚本"
+        exit 1
+    fi
 fi
 
-# 获取API密钥和远程管理密码
-read -e -p "请输入 SakuraFrp 的 访问密钥: " api_key
-read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass 
+echo -e "\e[96m[*] Docker 未安装, 将使用常规安装模式\e[0m\n  - 将在您的系统上创建名为 natfrp 的用户\n  - 将在 /home/natfrp 目录下安装 SakuraFrp 启动器\n  - 将创建 systemd 服务并启动 SakuraFrp 启动器\n"
+ask_for_creds
 
-# 获取系统架构
-arch=$(uname -m)
+if ! command -v curl &>/dev/null || ! command -v jq &>/dev/null || ! command -v zstd &>/dev/null; then
+    log_I "正在安装脚本运行所需的工具 curl jq zstd"
 
-case $arch in
-    "x86_64") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_amd64.tar.zst";;
-    "i386") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_386.tar.zst";;
-    "aarch64") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_arm64.tar.zst";;
-    "armv7l") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_armv7.tar.zst";;
-    "mips") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_mips.tar.zst";;
-    "mipsel") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_mipsle.tar.zst";;
-    "mips64") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_mips64.tar.zst";;
-    "mips64le") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_mips64le.tar.zst";;
-    "riscv64") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_riscv64.tar.zst";;
-    "loongarch64") arch_link="https://nya.globalslb.net/natfrp/client/launcher-unix/$client_version/natfrp-service_linux_loong64.tar.zst";;
-    *) echo "不支持当前系统架构: $arch"; exit 1;;
+    if command -v apt-get &>/dev/null; then
+        apt-get update && apt-get install -y curl jq zstd
+    elif command -v yum &>/dev/null; then
+        yum install -y curl jq zstd
+    elif command -v zypper &>/dev/null; then
+        zypper install -y curl jq zstd
+    elif command -v opkg &>/dev/null; then
+        opkg update && opkg install curl jq zstd
+    elif command -v apk &>/dev/null; then
+        apk --update add curl jq zstd
+    else
+        log_E "当前系统的包管理器暂时不受支持, 请手动安装 curl jq zstd 后重新运行脚本"
+        exit 1
+    fi
+fi
+
+# Determine filename
+case $(uname -m) in
+"x86_64") arch="amd64" ;;
+"i386") arch="386" ;;
+"aarch64") arch="arm64" ;;
+"armv7l") arch="armv7" ;;
+"mips") arch="mips" ;;
+"mipsel") arch="mipsle" ;;
+"mips64") arch="mips64" ;;
+"mips64le") arch="mips64le" ;;
+"riscv64") arch="riscv64" ;;
+"loongarch64") arch="loong64" ;;
+*)
+    log_E "不支持当前系统架构: $arch"
+    exit 1
+    ;;
 esac
 
-# 创建natfrp用户
-if ! id -u natfrp &> /dev/null; then
-    echo -e "\e[32mnatfrp 用户不存在, 正在创建 natfrp 用户\033[0m"
+# Create user
+if ! id -u natfrp &>/dev/null; then
+    log_I "正在创建 natfrp 用户"
     useradd -r -m -s /sbin/nologin natfrp
 else
-    echo -e "\e[32mnatfrp 用户已存在\033[0m"
+    echo -e "\e[32m[*] natfrp 用户已存在\e[0m"
 fi
 
-# 下载并解压启动器
-cd /home/natfrp || (
-    echo -e "\e[31m无法切换到 natfrp 用户的 home 目录, 可能是配置有误, 请使用 Docker 安装\033[0m"
+# Download binaries
+cd /home/natfrp
+if [[ $? -ne 0 ]]; then
+    log_E "无法切换到 /home/natfrp 目录"
     exit 1
-)
+fi
 
-echo -e "\e[32m正在下载启动器\033[0m"
+do_download=1
+if [[ -f frpc && -f natfrp-service ]]; then
+    log_W "已存在 SakuraFrp 启动器文件"
+    read -p " - 是否删除已有的文件重新下载? [y/N] " -r choice
 
-curl -L -O "$arch_link"
+    if [[ $choice =~ ^[Yy]$ ]]; then
+        rm -f frpc natfrp-service
+    else
+        do_download=0
+    fi
+fi
 
-echo -e "\e[32m正在解压启动器\033[0m"
-zstd -d *.tar.zst
-tar -xvf *.tar
-rm *.tar.zst
+if [[ $do_download == 1 ]]; then
+    log_I "正在下载启动器..."
+    curl -Lo - "https://nya.globalslb.net/natfrp/client/launcher-unix/latest/natfrp-service_linux_$arch.tar.zst" |
+        tar -xI zstd --overwrite
+    chmod +x frpc natfrp-service
+    chown natfrp: frpc natfrp-service
+fi
 
-# 设置执行权限和所有者
-chmod +x frpc natfrp-service
-chown natfrp:natfrp frpc natfrp-service
+# Make sure binaries can be executed
+check_executable "./frpc"
+check_executable "./natfrp-service"
 
-# 创建Systemd Unit文件
-echo -e "\e[32m正在创建 service \033[0m"
-unit_file="/etc/systemd/system/natfrp.service"
-
-cat << EOF | tee $unit_file
+# Install systemd unit
+log_I "正在安装 systemd Unit"
+cat >"/etc/systemd/system/natfrp.service" <<EOF
 [Unit]
 Description=SakuraFrp Launcher
 After=network.target
@@ -146,26 +194,29 @@ ExecStart=/home/natfrp/natfrp-service --daemon
 [Install]
 WantedBy=multi-user.target
 EOF
-
-# 启动服务来生成配置文件
-systemctl start natfrp.service
-sleep 3
-systemctl stop natfrp.service
-
-# 生成并设置远程管理密码
-remote_key=$(/home/natfrp/natfrp-service remote-kdf "$remote_pass")
-remote_key=$(printf '%s\n' "$remote_key" | sed 's/[\/&]/\\&/g')
-sed -i 's/"token": ".*"/"token": "'"$api_key"'"/' /home/natfrp/.config/natfrp-service/config.json
-sed -i '/"remote_management":/ s/false/true/' /home/natfrp/.config/natfrp-service/config.json
-sed -i 's/"remote_management_key": null/"remote_management_key": "'"$remote_key"'"/' /home/natfrp/.config/natfrp-service/config.json
-
-# 启动并启用服务
 systemctl daemon-reload
-systemctl enable --now natfrp.service
+
+# Update config file
+config_file=/home/natfrp/.config/natfrp-service/config.json
+if [[ ! -f $config_file ]]; then
+    mkdir -p /home/natfrp/.config/natfrp-service
+    touch $config_file
+fi
+
+jq ". + {
+    "token": $(echo $api_key | jq -R),
+    "remote_management": true,
+    "remote_management_key": $(/home/natfrp/natfrp-service remote-kdf "$remote_pass" | jq -R),
+    "log_stdout": true
+}" $config_file >$config_file.tmp
+mv $config_file.tmp $config_file
+
+# Start service
+systemctl enable natfrp.service
+systemctl restart natfrp.service
 systemctl status natfrp.service
 
-echo -e "\e[32mSakuraFrp 启动器安装完成, 您可使用下面的命令管理服务: \033[0m"
-echo -e "\e[32m查看运行状态\033[0m\tsystemctl status natfrp.service"
-echo -e "\e[32m停止服务\033[0m\tsystemctl stop natfrp.service"
-echo -e "\e[32m启动服务\033[0m\tsystemctl start natfrp.service"
-echo -e "\e[32m如果启动正常, 请登录远程管理界面进行进一步配置\033[0m"
+echo -e "\n\e[96mSakuraFrp 启动器安装完成, 您可使用下面的命令管理服务: \e[0m\n  - 查看状态\tsystemctl status natfrp.service\n  - 停止服务\tsystemctl stop natfrp.service\n  - 启动服务\tsystemctl start natfrp.service\n  - 查看日志\tjournalctl -u natfrp.service\n\n请登录远程管理界面启动隧道: https://www.natfrp.com/remote/v2\n"
+
+log_I "下方将输出启动器日志, 如需退出请按 Ctrl+C"
+journalctl -u natfrp.service -f
