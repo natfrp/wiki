@@ -501,12 +501,12 @@ sfc /scannow
 
 ### 登出后隧道断开、启动器退出 {#linux-logout-disconnect}
 
-如果您使用 Systemd 配置了用户服务，这通常是由于用户服务在会话结束后被关闭造成的。
+如果您使用 systemd 配置了用户服务，这通常是由于用户服务在会话结束后被关闭造成的。
 
 您可以考虑下列方案之一：
 
 - 使用 `loginctl enable-linger` 命令来启用 lingering
-- 将启动器配置为 Systemd 系统服务。
+- 将启动器配置为 systemd 系统服务。
 
   如果您之前配置了用户服务，记得删除相关文件（文档示例为 `~/.config/systemd/user/natfrp.service`）。
   

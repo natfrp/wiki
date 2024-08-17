@@ -113,7 +113,7 @@ frpc -f wdnmdtoken666666:12345 &
 
 本文档提供下列初始化系统的自启配置指南：
 
-- [Systemd](/frpc/service/systemd.md)
+- [systemd](/frpc/service/systemd.md)
 - ~Upstart~
 - ~SysV~
 
@@ -124,7 +124,7 @@ frpc -f wdnmdtoken666666:12345 &
 如果您不清楚您的 Linux 系统使用的 **初始化系统** 是什么，请执行下面的命令然后查看输出：
 
 ```bash
-if [[ `/sbin/init --version` =~ upstart ]]; then echo Upstart; elif [[ `systemctl` =~ -\.mount ]]; then echo Systemd; elif [[ -f /etc/init.d/cron && ! -h /etc/init.d/cron ]]; then echo SysV-Init; else echo Unknown; fi
+if [[ `/sbin/init --version` =~ upstart ]]; then echo Upstart; elif [[ `systemctl` =~ -\.mount ]]; then echo systemd; elif [[ -f /etc/init.d/cron && ! -h /etc/init.d/cron ]]; then echo SysVinit; else echo Unknown; fi
 ```
 
 ![](../_images/linux-4.png)

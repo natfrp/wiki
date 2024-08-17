@@ -118,7 +118,7 @@
 
 1. 然后先把浏览器放到一边，参考发行版的相关教程配置您的初始化系统来启动 `natfrp-service --daemon`。
 
-   以 Systemd 为例，在用户文件夹建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
+   以 systemd 为例，在用户文件夹建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
 
    这是一个简单的示例文件，您可以直接把它复制到 `~/.config/systemd/user/natfrp.service`：
 
@@ -140,7 +140,7 @@
    WantedBy=default.target
    ```
 
-1. 让初始化系统拉起启动器进程并确认启动器在运行，这里还是以 Systemd 为例：
+1. 让初始化系统拉起启动器进程并确认启动器在运行，这里还是以 systemd 为例：
 
    ```bash
    systemctl --user enable --now natfrp.service
@@ -217,7 +217,7 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
 
 1. 参考发行版的相关教程配置您的初始化系统来启动 `natfrp-service --daemon`。
 
-   以 Systemd 为例，建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
+   以 systemd 为例，建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
 
    这是一个简单的示例文件，您可以直接把它复制到 `/etc/systemd/system/natfrp.service`：
 
@@ -279,7 +279,7 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
       "remote_management": true,
       "remote_management_key": "处理后的远程管理密码",
 
-      "log_stdout": true, // 推荐开启 log_stdout 让 Systemd 管理日志
+      "log_stdout": true, // 推荐开启 log_stdout 让 systemd 管理日志
    }
    ```
 
@@ -437,7 +437,7 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 
    如果您遇到了错误 `Bind for 0.0.0.0:7102 failed: port is already allocated`，请查找本机监听 `7102` 的程序关闭，或参考 [高级用户](#advance-docker) 替换监听端口。
 
-2. 获取连接信息
+1. 获取连接信息
 
    执行 `docker logs natfrp-service` 即可查看容器的日志，您将看到类似下面的回显内容：
 
@@ -461,7 +461,7 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
    默认情况下 WebUI 向您连入的所有网络开放，如果您需要访问，可以使用 `https://内网IP:<端口>`，
    如果您需要修改监听 IP，请参考 [高级用户](#advance-docker)。
 
-3. 高级用户 {#advance-docker}
+1. 高级用户 {#advance-docker}
 
    如果您需要自行配置，请先阅读 [配置文件详解](/launcher/manual.md#config)，然后将容器内的 `/run/config.json` 挂载编辑即可。
 

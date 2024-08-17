@@ -176,11 +176,11 @@ Docker 套件和镜像只要安装一次即可，无需重复操作。如需更�
 
 ### 安装 frpc 并启动隧道 {#direct-start-tunnel}
 
-DSM 7 已提供 Systemd 支持，因此直接安装流程会比之前的版本简单一些。
+DSM 7 已提供 systemd 支持，因此直接安装流程会比之前的版本简单一些。
 
 请先参考 [Linux 使用教程/安装 frpc](/frpc/usage.md#linux-install-frpc) 一节安装 frpc。
 
-然后，参考 [这篇指南](/frpc/service/systemd.md) 配置 Systemd 服务、启动 frpc 即可，**Unit名称** 请使用之前创建的那条隧道的启动参数。
+然后，参考 [这篇指南](/frpc/service/systemd.md) 配置 systemd 服务、启动 frpc 即可，**Unit名称** 请使用之前创建的那条隧道的启动参数。
 
 请注意，连接 DSM 隧道时需要在连接方式前面加上 `https://`，例如 `https://idea-leaper-1.natfrp.cloud:23333/`。
 

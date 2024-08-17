@@ -1,4 +1,8 @@
-# Systemd 配置 frpc 服务
+# systemd 配置 frpc 服务
+
+::: tip
+SakuraFrp 核心服务已原生支持在 Linux 上运行，推荐您 [使用启动器](/launcher/usage.md#linux) 而非直接运行 frpc
+:::
 
 ::: tip
 查看此教程前请确保您已阅读 [frpc 基本使用指南](/frpc/usage.md#linux) 中的 **Linux 安装** 部分
@@ -6,11 +10,11 @@
 
 ### 前置知识 {#systemd-note}
 
-Systemd 是 Linux 系统的一种初始化系统实现，它管理的各种服务叫做 **Unit**，每个服务对应一个 **Unit 配置文件**
+systemd 是 Linux 系统的一种初始化系统实现，它管理的各种服务叫做 **Unit**，每个服务对应一个 **Unit 配置文件**
 
-在本教程中，frpc 会被注册为一个服务，我们让 **Systemd** 来自动管理 frpc，借此实现开机自启和后台运行
+在本教程中，frpc 会被注册为一个服务，我们让 **systemd** 来自动管理 frpc，借此实现开机自启和后台运行
 
-Systemd 的服务有两种状态:
+systemd 的服务有两种状态:
 
 - `运行中`/`已停止`/`错误`
 - `启用`/`禁用`
@@ -19,7 +23,7 @@ Systemd 的服务有两种状态:
 
 ### 编写配置文件 {#systemd-unit}
 
-Systemd 的 **Unit 配置文件** 通常位于这些目录中:
+systemd 的 **Unit 配置文件** 通常位于这些目录中:
 
 - /lib/systemd/system （供软件包使用）
 - /etc/systemd/system （供管理员使用）
@@ -72,7 +76,7 @@ WantedBy=multi-user.target
 
 ![](./_images/systemd-2.png)
 
-执行下面的命令重载 Systemd，这样服务就配置完成了
+执行下面的命令重载 systemd，这样服务就配置完成了
 
 ```bash
 systemctl daemon-reload
@@ -82,7 +86,7 @@ systemctl daemon-reload
 请记住后续操作中用到的 `Unit 名称` 是 `frpc@<启动参数>`，例如 `frpc@wdnmdtoken666666:12345`
 :::
 
-下面本教程将介绍一些 Systemd 的基本操作
+下面本教程将介绍一些 systemd 的基本操作
 
 ### 启动/停止隧道 {#systemd-start-stop}
 
@@ -119,7 +123,7 @@ systemctl status frpc@wdnmdtoken666666:12345
 ::: warning
 **绝对不要** 开启重复的隧道，这会造成出现各种不可预计的 Bug  
 执行多次 `systemctl start` 是 **安全** 的  
-配置好 Systemd 后，**不要** 再用 `frpc -f <启动参数>` 的形式开启隧道
+配置好 systemd 后，**不要** 再用 `frpc -f <启动参数>` 的形式开启隧道
 :::
 
 如果您忘记了之前开启过哪些隧道，使用下面的命令可以列出当前运行中的隧道

@@ -79,7 +79,7 @@ SSL 服务商 **不必** 是当前域名的注册商，按需选择适合您的�
 
 然后您只需直接证书文件拷贝到被挂载的本地目录下的 `FrpcWorkingDirectory` 中即可（如果您参考使用指南配置，即为 `/etc/natfrp/FrpcWorkingDirectory`）。
 
-@tab Systemd
+@tab systemd
 
 如果您直接复制了 frpc 文档中的 Unit 示例，您的工作目录为 `/usr/local/etc/natfrp`。
 
