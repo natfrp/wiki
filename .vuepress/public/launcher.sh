@@ -172,6 +172,9 @@ fi
 check_executable "./frpc"
 check_executable "./natfrp-service"
 
+# Stop existing service to avoid conflicts
+systemctl stop natfrp.service &>/dev/null ||:
+
 # Install systemd unit
 log_I "正在安装 systemd Unit"
 cat >"/etc/systemd/system/natfrp.service" <<EOF
