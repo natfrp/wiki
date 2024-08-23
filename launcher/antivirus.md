@@ -83,7 +83,7 @@
 2. 确认标题栏中有 `管理员:` 字样，复制并运行下面的命令
 
    ```powershell
-   Add-MpPreference -ExclusionPath "$env:ProgramFiles\SakuraFrpLauncher", "$env:ProgramData\SakuraFrpService\Update"
+   Add-MpPreference -ExclusionPath "$env:ProgramFiles\SakuraFrpLauncher", "$env:ProgramData\SakuraFrpService"
    (Get-MpPreference).ExclusionPath | Select-String Sakura
    ```
 
@@ -116,7 +116,7 @@
 
    ![](./_images/av-wd-5.png)
 
-1. 确认排除已添加完成，再用相同的方法添加 `C:\ProgramData\SakuraFrpService\Update`
+1. 确认排除已添加完成，再用相同的方法添加 `C:\ProgramData\SakuraFrpService`
 
    ![](./_images/av-wd-6.png)
 
@@ -136,7 +136,7 @@
 
    ![](./_images/av-huorong-2.png)
 
-1. 确认排除已添加完成，再用相同的方法添加 `C:\ProgramData\SakuraFrpService\Update`
+1. 确认排除已添加完成，再用相同的方法添加 `C:\ProgramData\SakuraFrpService`
 
    ![](./_images/av-huorong-3.png)
 
