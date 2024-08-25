@@ -9,6 +9,13 @@ const sections = {
 		text: '常见问题',
 		children: [
 			{
+				text: '客户端',
+				children: [
+					{ text: '启动器使用问题', link: '/faq/launcher.html' },
+					{ text: 'frpc 使用问题', link: '/faq/frpc.html' },
+				],
+			},
+			{
 				text: '出现错误',
 				children: [
 					{ text: '客户端报错', link: '/faq/client-error.html' },
@@ -22,13 +29,6 @@ const sections = {
 					{ text: '备案相关问题', link: '/faq/beian.html' },
 					{ text: '付款、订单问题', link: '/faq/payment.html' },
 					{ text: '账户相关问题', link: '/faq/account.html' },
-				],
-			},
-			{
-				text: '客户端',
-				children: [
-					{ text: '启动器使用问题', link: '/faq/launcher.html' },
-					{ text: 'frpc 使用问题', link: '/faq/frpc.html' },
 				],
 			},
 			{

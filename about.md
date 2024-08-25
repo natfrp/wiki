@@ -43,22 +43,13 @@ contributors: false
 您应该会在发送邮件后 1~2 分钟内收到系统的自动回复（标题为 `新工单已创建`）。如果没有收到，您的来信可能被 Outlook 的反垃圾系统误伤了。我们只会偶尔检查工单系统的垃圾箱，因此您可能无法在短时间内收到回复。建议您采用主流邮箱（如 Gmail、Outlook、QQ、163 等）重新发送邮件。
 ::::
 
-## Staffs {#staffs}
-
-- [羽川早苗](https://moe.do)
-  - _站长_
-- [boboliu](https://note.bobo.moe/)
-  - _frp 主要开发 & 技术顾问_
-  - _管理员_
-- [蚊子](https://mozz.ie/)
-  - _用户界面设计 (客户端 & 面板)_
-- And 4 more...
-
 <!-- END 此部分不接受 Pull Request 修改 -->
 
-## Community Contributors {#community-contributors}
+## 社区贡献者 {#community-contributors}
 
-大部分页面底部会自动列出页面贡献者，您也可以将自己添加到下面的列表中。
+感谢下方的 GitHub 用户和社区成员为本文档的编写和维护做出的贡献。
+
+大部分页面底部会自动列出页面贡献者，您也可以在提交 PR 时将自己添加到下面的列表中。
 
 - [宝硕](https://baoshuo.ren)
   - _frp 一键安装脚本、前文档站点、部分帮助文档_
