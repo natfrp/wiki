@@ -6,6 +6,46 @@
 
 @tab Windows {#windows}
 
+在首页点击 **管理面板** 按钮进入管理面板，登录您的账户：
+
+![](../_images/panel/index-to-user.png)
+
+在顶栏找到 `服务 > 软件下载` 并点击前往下载页面：
+
+![](../_images/panel/nav-download.png)
+
+请根据您的实际情况点击展开下面的内容，查看下载步骤：
+
+::: details 系统中有第三方杀毒软件（卡巴斯基、ESET、火绒、360 等）
+
+第三方杀毒软件一般不会阻止启动器的下载，直接点击 **下载** 按钮下载启动器，然后双击打开即可：
+
+![](../_images/panel/download-windows-download.png)
+
+:::
+
+::: details 系统中没有第三方杀毒软件
+
+您很有可能正在使用 Windows Defender（系统自带安全中心），由于 WD 会拦截启动器的下载，请按照下面的步骤操作：
+
+1. 在开始菜单搜索框中输入 `powershell`，然后以管理员身份运行 `Windows PowerShell`：
+
+   ![](../_images/common/windows-powershell-admin.png)
+
+1. 点击网页中的 `复制命令` 按钮复制下载命令：
+
+   ![](../_images/panel/download-windows-powershell.png)
+
+1. 安装过程中请勿关闭 PowerShell 窗口，看到 `[-] 已删除 WD 临时排除项` 的提示后才能关闭，否则排除项可能会残留并产生安全隐患。
+
+   在 PowerShell 空白处右键点击粘贴，然后按回车开始安装即可：
+
+   ![](./_images/windows-powershell-install.png)
+
+:::
+
+### 安装启动器 {#windows-install}
+
 ::: tip
 如果在安装过程中碰到问题，请参阅 [启动器常见安装问题](/faq/launcher.md#install)  
 常见问题大多与 .NET Framework 有关，可以尝试先装好 `.NET Framework 4.8` 再安装启动器  
