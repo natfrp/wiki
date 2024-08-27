@@ -2,6 +2,10 @@
 
 SakuraFrp 提供 frpc 镜像 ([Docker Hub](https://hub.docker.com/r/natfrp/frpc), [GitHub Packages](https://github.com/orgs/natfrp/packages/container/package/frpc)) 以便您借助 Docker 运行 frpc。
 
+:::danger 此页内容很可能不适合您
+如果您不是资深用户，我们建议您总是使用 [Docker 部署启动器](/launcher/usage.md#docker)，易用性更高。
+:::
+
 :::tip 关于镜像源
 我们的镜像目前在官方仓库 `natfrp.com/frpc` 发布，您也可以使用下面的镜像源，  
 镜像源可能存在拉取较慢或无法拉取的问题，请尽量优先使用官方仓库拉取。
@@ -24,25 +28,11 @@ SakuraFrp 提供 frpc 镜像 ([Docker Hub](https://hub.docker.com/r/natfrp/frpc)
 
 ### 设置隧道的本地 IP {#docker-create-tunnel}
 
-因为 Docker 的网络模型不同，把隧道的 **本地IP** 设置为 `127.0.0.1` 已经不再奏效，必须修改 **本地IP**。
+因为默认的 `bridge` 网桥模式对不了解 docker 但是坚持使用 docker 的用户造成了许多困惑，下面的教程使用 host 网络，**此方案可能有安全疑虑，请了解的用户自行考虑**。
 
-因为默认的 `bridge` 网桥模式兼容性和安全性更高，**下面的教程默认采用此方案**。
+和其他运行方式设置本地 IP 方式一致，如对于本机服务 （部署在 NAS 上时为 本 NAS 服务，**不是你在用的电脑**）设置为 `127.0.0.1`。
 
-首先运行下面的命令检查 Docker 默认网桥的 **网关IP**：
-
-```bash
-ip addr show docker0 |grep inet
-
-# 输出大概长这样：
-#     inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
-#     inet6 fe80::xx:xxxx:xxxx:xxxx/64 scope link
-```
-
-其中 `172.17.0.1` 我们后面要用到的 **网关IP**，在创建隧道时请将其设置为 **本地IP**：
-
-![](../_images/docker-tunnel-new.png)
-
-或者在 [隧道列表](https://www.natfrp.com/tunnel/) 中编辑要启动的隧道，将 **本地IP** 修改为正确的内容：
+初始设置有误的，您可以在 [隧道列表](https://www.natfrp.com/tunnel/) 中编辑要启动的隧道，将 **本地IP** 修改为正确的内容：
 
 ![](../_images/docker-tunnel-mod.png)
 
@@ -59,6 +49,7 @@ ip addr show docker0 |grep inet
 docker run \
     -d \
     --restart=on-failure:5 \
+    --network=host \
     --pull=always \
     --name=sakura1 \
     natfrp.com/frpc \
@@ -74,6 +65,7 @@ docker run \
 | --- | --- |
 | `-d` | 在后台运行 |
 | `--restart=on-failure:5` | 系统重启或隧道崩溃时自动重启 frpc |
+| `--network=host` | 使用主机网络模式，这样 frpc 就可以直接访问本机的服务 |
 | `--pull=always` | 总是检查镜像更新 |
 | `--name=sakura1` | 为容器设定一个名字，这里以 `sakura1` 为例 |
 | `natfrp.com/frpc` | 从官方源拉取镜像 |
@@ -91,6 +83,7 @@ services:
   sakura1:
     image: natfrp.com/frpc
     restart: on-failure:5
+    network_mode: host
     command: --disable_log_color -f <启动参数>
 ```
 
@@ -124,6 +117,7 @@ docker run \
     --restart=on-failure:5 \
     --pull=always \
     --name=sakura1 \
+    --network=host \
     -v /root/my.crt:/run/frpc/example.com.crt:ro \
     -v /root/my.key:/run/frpc/example.com.key:ro \
     natfrp.com/frpc \
