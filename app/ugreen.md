@@ -4,6 +4,10 @@
 此文档由社区贡献者 [@Aewait](https://github.com/natfrp/wiki/pull/223) 提供，SakuraFrp 不参与此文档的维护
 :::
 
+::: danger 该文档可能已过时
+绿联已经大幅度更新了系统，本文档可能不再适用于最新版本的绿联 NAS
+:::
+
 截至 `2022-11-27`，绿联 NAS 客户端穿透方式未被此文档作者发现。
 
 本教程只适用于使用 SakuraFrp 穿透 docker 容器端口，如 qBittorrent 或 Jellyfin，本教程以 qBitorrent 为例。
