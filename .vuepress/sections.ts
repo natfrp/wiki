@@ -70,7 +70,7 @@ const sections = {
 			{
 				text: '常见应用',
 				children: [
-					{ text: '发布网站 (HTTP/HTTPS)', link: '/app/http.html' },
+					{ text: 'Web 应用 (HTTP/HTTPS)', link: '/app/http.html' },
 					{ text: '远程桌面 (RDP)', link: '/app/rdp.html' },
 					{ text: 'SFTP 文件传输', link: '/app/sftp.html' },
 					{ text: 'FTP 文件传输', link: '/app/ftp.html' },
