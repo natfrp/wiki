@@ -193,5 +193,5 @@ Sakura Frp 提供三种 **隧道类型** 供您穿透 Web 应用：
 在本教程的示例中，我们可以访问的是：
 
 - `http://www.example.com` (HTTP 隧道, 示例中的 HTTPSample)
-- `http://cn-hk-nf-1:51906` (TCP 隧道, 示例中的 TCPSample)
+- `http://cn-hk-nf-1.natfrp.cloud:51906` (TCP 隧道, 示例中的 TCPSample)
 - `http://www.example.com:51906` (TCP 隧道, 示例中的 TCPSample, 通过自己的域名进行解析)
