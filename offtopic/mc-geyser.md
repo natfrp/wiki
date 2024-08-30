@@ -862,5 +862,5 @@ java -Xmx<最大内存>M -Xms<启动内存>M -Dfile.encoding=UTF-8 -Duser.langua
 | 终端输入编码 | `UTF-8`          |
 | 终端输出编码 | `UTF-8`          |
 | 文件管理编码 | `UTF-8`          |
-| 关闭实例命令 | `^C`             |
+| 关闭实例命令 | `stop`           |
 | 更新程序命令 | `geyser version` |
