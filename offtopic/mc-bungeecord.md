@@ -1,0 +1,472 @@
+# Minecraft BungeeCord 代理服开服指南
+
+>本文章适合开服较长时间的老小白。
+
+长期以来，**Minecraft** 服务器所有者一直有一个梦想，其中包括一种免费、简单且可靠的方式将多个 **Minecraft** 服务器连接在一起。
+**BungeeCord** 就是这个梦想的答案。无论您是希望将多种游戏模式串联在一起的小型服务器，还是大型网络的所有者， **BungeeCord** 都是您的理想解决方案。
+在 **BungeeCord** 的帮助下，您将能够释放社区的全部潜力。
+
+## 它是什么
+
+1. **BungeeCord** 是由 SpigotMC 团队内部编写的有用软件。它充当玩家客户端和连接的 Minecraft 服务器之间的代理。 **BungeeCord** 的最终用户认为它与普通的 **Minecraft** 服务器之间没有区别。
+
+1. 个人解释: 如果你使用该服务端，在你切换 **BungeeCord** 提供的服务器时你不用断线连接。
+
+## 准备工作
+
+### 硬件
+
+1. **处理器** 不少于 **2G**
+1. **内存** 不少于 **4G**
+
+#### 推荐配置
+
+1. 处理器 | 单核跑分超过300 | 核心数不少于2 
+1. 内存 不少于4G
+
+### 软件
+
+1. 下载 **[SakuraFrp Launcher](https://www.natfrp.com/user/)**
+1. 下载 **[BungeeCord](https://ci.md-5.net/job/BungeeCord/)** 
+1. 下载 **[Geyser-BungeeCord](https://geysermc.org/download)**
+
+### Java
+
+1. [Zulu Java](https://www.azul.com/downloads/?os=windows&architecture=x86-64-bit&package=jdk#zulu)
+1. [DragonWell Java](https://dragonwell-jdk.io/#/index)
+1. [OpenJdk-OpenJ9](https://developer.ibm.com/languages/java/semeru-runtimes/downloads/)
+
+## 创建 **BungeeCord** 服务器并安装 **Geyser**
+
+>创建 **BungeeCord** 服务器 以 离线版服务器，并获取[访问者的真实IP](https://doc.natfrp.com/bestpractice/realip.html#proxy-protocol-minecraft)为主。
+
+### 注释
+
+#### 启动文件注释
+
+```ini
+java -Xms128M -Xmx256M -jar BungeeCord.jar
+# 即最大内存为 256MB，启动内存为 128MB
+```
+
+#### **BungeeCord** 配置文件注释
+
+```ini
+forge_support: false
+# forgeMOD支持，如果你的服务器中有MOD服务器，请打开这个选项。
+player_limit: -1
+# 玩家人数限制，它将限制整个服务器的玩家人数，-1为不限。
+permissions:
+  default:
+  - bungeecord.command.server
+  - bungeecord.command.list
+  admin:
+  - bungeecord.command.alert
+  - bungeecord.command.end
+  - bungeecord.command.ip
+  - bungeecord.command.reload
+# 这些是您可以在代理中使用的命令或操作的权限。
+# 请注意，这些权限与 Bukkit/Spigot 权限不同。
+# 这些权限是基于组的，用于稍后在配置中附加玩家。
+# 默认情况下，所有玩家都可以使用这些命令，那些在 groups 部分被赋予 admin 组的玩家可以使用 BungeeCord 的额外命令，如下所述。
+# 请注意，每个组仅继承 default，因此如果添加更多节点，则可能需要将同一节点放在不同的组中。
+timeout: 30000
+# 当玩家在服务器中无响应多长时间，服务器才会将他踢出去，在这里一秒等于1000,30000=30秒
+log_commands: false
+# 当玩家编写 BungeeCord 命令时，该命令也会包含在 BungeeCord 控制台中。
+online_mode: true
+# 正版验证，如果是离线服请关闭，否则会调用API进行验证。
+disabled_commands:
+- disabledcommandhere
+# 这里是服务器禁止的指令，例如我填- help服务器就会禁用/help指令。
+servers:
+  lobby:
+    motd: '&1Just another BungeeCord - Forced Host'
+    # 服务器Motd。
+    address: localhost:25565
+    # 服务器地址。
+    restricted: false
+# 这是子服务器的列表。
+listeners:
+- query_port: 25577
+  # 监听查询端口。
+  motd: '&1Another Bungee server'
+  # BC的标语，支持彩色。
+  tab_list: GLOBAL_PING
+  # 新版BungeeCord无法使用此选项。
+  query_enabled: false
+  # 是否开启监听查询。
+  proxy_protocol: false
+  # 这允许服务器支持 HAProxy PROXY 协议。大多数用户不需要启用此选项。
+  forced_hosts:
+    pvp.md-5.net: pvp
+  #大多数用户不需要启用此选项。也不建议启用此选项。
+  ping_passthrough: false
+  # 当我们可以可靠地获取目标服务器（强制优先服务器）时，是否传递 ping。
+  # 如果为 true，则 BungeeCord 在查询强制主机时显示后端服务器的玩家计数和 MOTD。
+  priorities:
+  - lobby
+  # 优先服务器列表。
+  bind_local_address: true
+  # 是否绑定本地服务器IP。
+  host: 0.0.0.0:25577
+  # BC的IP地址，开启后访问它就能进入BC服务器。
+  max_players: 1
+  # 服务器显示的最大人数，如要设置真实的人数请找到player_limit选项填写。
+  tab_size: 60
+  force_default_server: false
+  # 是否强制进入优先服务器。
+ip_forward: false
+# 是否启用 IP（将玩家的真实IP转发给服务器，而不是代理服务器）和 UUID 转发（它将玩家的真实在线模式 UUID 转发到其他服务器，而不是离线模式的用户名哈希值！
+# 如果您运行的是正版服务器，强烈建议您使用此选项！
+# 必须打开否则整个服务器将无法正常运行。
+network_compression_threshold: 256
+groups:
+  md_5:
+  - admin
+# 在这里，您可以将玩家分配到您之前在配置中创建的权限组。
+# 格式是分组，后跟每个玩家，然后是他们所在的每个组。
+# 默认情况下，md_5 被授予 admin 组，该组授予 permissions 部分定义的权限。每个玩家都有 default权限。
+# 仅添加需要超过默认权限的玩家。
+connection_throttle: 4000
+# 连接间隔，当玩家退出后多就能加入，在这里一秒等于1000,4000=4秒。
+stats: c86020bc-ddf6-467e-84d9-90974afcf90e
+# 机器码，请不要修改，修改之后整个电脑将再也无法使用BungeeCord服务器。
+prevent_proxy_connections: false
+# 这使得服务器将连接玩家的 IP 发送给 Mojang，以检查他们是否使用代理连接到 BungeeCord。
+# 不建议开启此选项，Mojang服务器是很不稳定的。
+```
+
+#### **Geyser** 配置文件注释
+
+```ini
+# --------------------------------
+# Geyser 配置文件
+#
+# Minecraft: 基岩版 与 Minecraft: Java版 之间的桥梁。
+#
+# GitHub: https://github.com/GeyserMC/Geyser
+# Discord: https://discord.gg/geysermc
+# --------------------------------
+
+bedrock:
+  # 将监听连接的 IP 地址。
+  # 通常情况下，只有在想限制哪些 IP 可以连接到服务器时才需要取消注释和更改此项。
+  #address: 0.0.0.0
+  # 将监听连接的端口
+  port: 19132
+  # 一些托管服务在每次启动服务器时更改您的 Java 端口，并要求基岩版使用相同的端口。
+  # 此选项使得每次启动服务器时基岩版端口都与 Java 端口相同。
+  # 仅适用于插件版本。
+  clone-remote-port: true
+  # 将被广播给 Minecraft: 基岩版 客户端的 MOTD。如果 "passthrough-motd" 设置为 true，则此项无关紧要
+  # 如果其中任一项为空，相应的字符串将默认为 "Geyser"
+  motd1: "Geyser Server"
+  motd2: "Another Geyser Server."
+  # 将发送到 Minecraft: 基岩版 客户端的服务器名称。在暂停菜单和设置菜单中都可见。
+  server-name: "Geyser Server"
+  # 压缩网络流量到基岩版客户端的程度。数值越高，使用的 CPU 越多，但
+  # 使用的带宽越小。在 -1 到 9 之间生效。设置为 -1 禁用。
+  compression-level: 6
+  # 是否为客户端启用 PROXY 协议。除非在 Geyser 实例前运行了 UDP 反向代理，否则不应启用此功能。
+  enable-proxy-protocol: false
+  # 允许 PROXY 协议的代理 IP 地址/子网列表。仅在启用 "enable-proxy-protocol" 时生效，
+  # 通常只有在无法使用适当的防火墙时才使用（通常在共享托管提供者等情况下）。
+  # 将此列表保留为空意味着没有 IP 地址白名单。
+  # 支持 IP 地址和子网。
+  #proxy-protocol-whitelisted-ips: [ "127.0.0.1", "172.18.0.0/16" ]
+remote:
+  # 远程 (Java 版) 服务器的 IP 地址
+  # 如果为 "auto"，独立版本的远程地址将设置为 127.0.0.1，
+  # 对于插件版本，建议将其保留为 "auto"，以便 Geyser 将自动配置地址、端口和 auth-type。
+  # 如果安装了 floodgate，则保留为 "auto"。
+  address: auto
+  # 远程 (Java 版) 服务器的端口
+  # 对于插件版本，如果地址设置为 "auto"，则端口也将跟随服务器的监听端口。
+  port: 25565
+  # 认证类型。可以是 offline、online 或 floodgate（详见 https://github.com/GeyserMC/Geyser/wiki/Floodgate）。
+  # 对于插件版本，建议将 `address` 字段保留为 "auto"，以便自动配置 Floodgate 支持。
+  # 如果安装了 Floodgate 并且 `address:` 设置为 "auto"，那么 "auth-type: floodgate" 将会自动使用。
+  auth-type: floodgate
+  # 允许通过 Geyser 进行基于密码的认证方法。仅在在线模式下有用。
+  # 如果设置为 false，则用户必须在桌面上使用 Geyser 提供的代码来进行 Microsoft 认证。
+  allow-password-authentication: true
+  # 在连接到服务器时是否启用 PROXY 协议。
+  # 仅在以下情况下有用：
+  # 1) 您的服务器支持 PROXY 协议（可能不支持）
+  # 2) 您在代理的主配置中启用了此选项，运行 Velocity 或 BungeeCord。
+  # 如果您不知道这是什么，请不要触碰它！
+  use-proxy-protocol: false
+  # 将基岩客户端用于连接的主机名转发到 Java 服务器
+  # 这是用于强制代理的强制主机的
+  forward-hostname: false
+
+# Floodgate 使用加密来确保来自授权源的使用。
+# 这应该指向 Floodgate 生成的公钥（BungeeCord、Spigot 或 Velocity）
+# 如果不使用 Floodgate，则可以忽略此项。
+# 如果在同一服务器上使用了 Floodgate 的插件版本，则密钥将自动从 Floodgate 中获取。
+floodgate-key-file: key.pem
+
+# 仅适用于在线模式认证类型。
+# 存储应在登录后保存其 Java 版帐户的基岩版玩家列表。
+# 这会保存一个可在稍后重新验证玩家的令牌。这不会保存电子邮件或密码，
+# 但在添加到此列表并授予其他人访问此 Geyser 实例文件时仍应谨慎。
+# 从列表中移除名称将在下次 Geyser 启动时删除其缓存的登录信息。
+# 保存令牌的文件位于与此配置文件相同的文件夹中，名为 "saved-refresh-tokens.json"。
+saved-user-logins:
+  - ThisExampleUsernameShouldBeLongEnoughToNeverBeAnXboxUsername
+  - ThisOtherExampleUsernameShouldAlsoBeLongEnough
+
+# 指定用户在 Geyser 被授权访问其 Microsoft 帐户时等待的秒数。
+# 用户允许在此期间断开服务器连接。
+pending-authentication-timeout: 120
+
+# 如果你的服务器指令提示太多，基岩版客户端在玩家首次打开聊天框并输入指令时会出现卡顿或者崩溃。
+# 禁用此功能将阻止发送命令建议，解决基岩版客户端的冻结问题。
+command-suggestions: true
+
+# 以下三个选项启用 "ping passthrough" - MOTD、玩家计数和/或协议名称从 Java 服务器检索。
+# 将远程服务器的 MOTD 转发到基岩版玩家。
+passthrough-motd: false
+# 转发协议名称（例如 BungeeCord [X.X]，Paper 1.X）- 仅在使用自定义协议名称时真正有用！
+# 这也将显示在诸如 MCSrvStatus <mcsrvstat.us> 等网站上。
+passthrough-protocol-name: false
+# 将远程服务器的玩家计数和最大玩家数转发到基岩版玩家。
+passthrough-player-counts: false
+# 启用 LEGACY ping passthrough。除非您的 MOTD 或玩家计数未正确显示，否则不需要启用此选项。
+# 此选项在独立版本上无效。
+legacy-ping-passthrough: false
+# 每隔多少秒向远程服务器发出 ping。仅适用于独立版本或旧式 ping passthrough。
+# 如果出现 BrokenPipe 错误，请增加此值。
+ping-passthrough-interval: 3
+
+# 是否将玩家 ping 转发到服务器。虽然启用此选项可以让基岩版玩家有更准确的
+# ping，但也可能导致玩家更容易超时。
+forward-player-ping: true
+
+# 可连接的最大玩家数量。目前仅是视觉效果，实际上不会限制玩家数量。
+max-players: 100
+
+# 是否通过控制台发送调试消息
+debug-mode: false
+
+# 允许第三方披风可见。当前允许的有：
+# OptiFine 披风，LabyMod 披风，5Zig 披风 和 MinecraftCapes
+allow-third-party-capes: true
+
+# 允许第三方 deadmau5 耳朵可见。当前允许的有：
+# MinecraftCapes
+allow-third-party-ears: true
+
+# 允许发送虚假的冷却指示器。否则，基岩版玩家在使用 1.8 战斗时看不到冷却。
+# 请注意：如果启用冷却，一些用户在冷却过程中可能会看到黑框，如下所示：
+# https://cdn.discordapp.com/attachments/613170125696270357/957075682230419466/Screenshot_from_2022-03-25_20-35-08.png
+# 可以通过在基岩设置中的辅助选项卡下将 "文本背景不透明度" 设置为 0 来禁用此功能
+# 此选项可以设置为 "title"、"actionbar" 或 "false"
+show-cooldown: title
+
+# 控制是否向玩家显示坐标。
+show-coordinates: true
+
+# 是否阻止基岩版玩家执行基岩版的脚手架式桥接。
+disable-bedrock-scaffolding: false
+
+# 如果设置，当基岩版玩家执行任何表情时，它将交换副手和主手物品，就像 Java 版按键绑定一样。
+# 有三个选项可以设置：
+# disabled - 默认/回退，不应用此解决方法
+# no-emotes - 不会将表情发送到其他基岩版客户端，并会交换副手。这实际上禁用了所有表情。
+# emotes-and-offhand - 表情将发送到基岩版客户端，并会交换副手
+emote-offhand-workaround: "disabled"
+
+# 如果我们没有客户端请求的默认区域。取消注释以不使用默认系统语言。
+default-locale: zh_cn
+
+# 指定多少秒内将图像缓存在磁盘中，以避免从互联网下载。
+# 值为 0 表示禁用。（默认值：0）
+cache-images: 0
+
+# 允许显示自定义头颅。保持启用可能会导致在旧/弱设备上性能降低。
+allow-custom-skulls: true
+
+# 每个玩家允许显示的最大自定义头颅数量。增加此值可能会降低弱设备的性能。
+# 将此设置为 -1 将导致显示所有自定义头颅，无论距离或数量如何。
+max-visible-custom-skulls: 128
+
+# 玩家周围多少方块内显示自定义头颅。
+custom-skull-render-distance: 32
+
+# 是否添加（此时仅）熔炉矿车作为游戏中的单独物品，而基岩版实际上没有此物品。
+# 除非使用不使用服务器切换的 "transfer packet" 样式的代理，否则只有在禁用此项时才需要禁用。
+# 如果禁用此项，熔炉矿车物品将映射到漏斗矿车物品。
+# 此选项需要重新启动 Geyser 以更改设置。
+add-non-bedrock-items: true
+
+# 基岩版在地狱上方的 Y127 会阻止建造和显示方块。
+# 此配置选项通过将地狱维度 ID 更改为末地 ID 来解决该问题。
+# 其主要缺点是整个地狱将具有相同的红雾，而不是每个生物群系都有不同的雾气。
+above-bedrock-nether-building: true
+
+# 强制客户端加载所有资源包（如果有）。
+# 如果设置为 false，则允许用户连接到服务器，即使他们不想下载资源包。
+force-resource-packs: true
+
+# 允许解锁 Xbox 成就。
+# 这会禁用所有 Bedrock 内游戏命令成功运行，否则 Bedrock 会认为您在作弊。
+xbox-achievements-enabled: false
+
+# 是否记录玩家 IP 地址。
+log-player-ip-addresses: true
+
+# 是否向控制台和操作员提示新的 Geyser 版本可用，该版本支持此 Geyser 版本不支持的 Bedrock 版本。
+# 建议保持此选项启用，因为许多 Bedrock 平台都会自动更新。
+notify-on-new-bedrock-update: true
+
+# 用于标记基岩版玩家库存中不可用槽位的物品。例如，创造模式下的 2x2 制作栏，
+# 或尺寸与通常的 3x9 不同的自定义库存菜单。默认为障碍方块。
+unusable-space-block: minecraft:barrier
+
+# bStats 是一个完全匿名的统计跟踪器，仅跟踪有关 Geyser 的基本信息，
+# 例如在线人数、使用 Geyser 的服务器数量、正在使用的操作系统等。
+# 您可以在此了解有关 bStats 的更多信息：https://bstats.org/。
+# https://bstats.org/plugin/server-implementation/GeyserMC
+metrics:
+  # 是否启用统计信息
+  enabled: true
+  # 服务器的 UUID，不要更改！
+  uuid: 7fa97945-dfef-4ee2-8d3b-d1b91c7a09e0
+
+# 高级选项 - 除非您知道自己在做什么，否则不要触碰！
+
+# Geyser 在每个 Scoreboard 包后更新计分板，但在 Geyser 尝试处理
+# 大量计分板包每秒可能会导致严重的延迟。
+# 此选项允许您指定在每秒多少个 Scoreboard 包后，计分板更新将被限制为每秒四次更新。
+scoreboard-packet-threshold: 20
+
+# 允许来自 ProxyPass 和 Waterdog 的连接。
+# 有关帮助，请参阅 https://www.spigotmc.org/wiki/firewall-guide/ - 使用 UDP 而不是 TCP。
+enable-proxy-connections: false
+
+# 互联网支持的最大 MTU 为 1492，但可能会导致数据包分段问题。
+# 1400 是默认值。
+mtu: 1400
+
+# 是否在创建 TCP 连接时直接连接到 Java 服务器，而不创建 TCP 连接。
+# 除非插件与数据包或网络接口不正常工作，否则只有在此时禁用它。
+# 如果在插件版本上启用，将忽略远程地址和端口部分
+# 如果在插件版本上禁用，预期会降低性能并增加延迟
+use-direct-connection: true
+
+# 是否应尝试为基岩版玩家禁用压缩。这应该是有益的，因为在未处理 Java 数据包的情况下没有必要压缩数据
+# 这要求 use-direct-connection 为 true。
+disable-compression: true
+
+# 配置文件的版本，不知道的别动。
+config-version: 4
+```
+
+**请看完上方注释以便更好的完成接下来的操作**
+
+### 开启 **BungeeCord** 服务器，并配置 **Geyser**
+
+1. 开服步骤与开原版服务器一致，在此不过多废话。
+1. 启动一次后关闭服务器，关闭指令 ***end***
+1. 当开好服务器后找到配置文件 **config.yml**
+1. 修改里面的选项
+
+```ini
+player_limit: -1
+# 人数限制-1无限
+log_commands: false
+# 关闭记录指令
+online_mode: false
+# 关闭正版验证
+query_enabled: true
+# 启用监听
+proxy_protocol: true
+# 启用访问者的真实IP的选项
+ping_passthrough: true
+# 让PING到的值为下游服务器，让BC有一定的防DDOS能力
+bind_local_address: true
+# 启用绑定下游服务器的IP
+max_players: -1
+# 显示人数，-1 为 -1
+force_default_server: true
+# 启用优先服务器
+ip_forward: true
+# 必须开启否则无法进入服务器
+network_compression_threshold: -1
+# 如果你的cpu够好可以开启，不好的话最好跟我一样
+groups:
+  你自己的游戏名:
+  - admin
+# BC端的权限组，本教程不讲述。
+```
+
+1. 修改完成后将配置文件保存然后把 **Geyser-BungeeCord.jar** 文件放入 **plugins** 文件夹中
+1. 然后再次启动
+1. 然后找到 **plugins** 文件夹中的 **Geyser-BungeeCord** 文件夹中的 **config.yml**
+1. 修改里面的选项
+
+```ini
+bedrock:
+  port: 25577
+# 基岩版连接的端口。
+  clone-remote-port: false
+# 同步Java服务器端口，关闭。
+  enable-proxy-protocol: true
+# 开启访问者的真实IP选项。
+remote:
+  address: auto
+# Java版服务器的IP，最好不动除非你有两个或以上的服务器。
+  port: 25577
+# Java版服务器的端口，要跟BC的端口一致。
+  auth-type: offline
+# 正版验证选项，关闭。
+  allow-password-authentication: false
+# 在离线服务器上此选项无效，所以关闭。
+  use-proxy-protocol: true
+# 启用访问者的真实IP选项。
+  forward-hostname: false
+# 默认HOST地址，没啥用关闭。
+passthrough-motd: true
+# 可以显示Java版服务器的MOTD，开启。
+passthrough-player-counts: true
+# 可以显示Java服务器人数，开启。
+legacy-ping-passthrough: true
+# 如果开启了passthrough-motd的选项无效的话，开去此选项。
+# 不知什么原因啊，你必须开启此选项不然基岩版不显示MOTD。
+ping-passthrough-interval: 3
+# 这个选项本人暂时无法理解。
+forward-player-ping: true
+# 强制使用Java版服务器的ping值，开启。
+max-players: 32
+# 基岩版连接人数限制，32人。
+```
+
+1. 这样你就可以使用 **基岩版** 或 **Java版** 使用 **25577** 端口进入服务器了。
+1. 如果你需要更多的 **Geyser** 功能请查看 **[Floodgate](https://geysermc.org/wiki/floodgate/)**
+1. 本教程暂未提供 **Floodgate** 教程。
+
+### 使用 **樱花FRP**
+
+#### 下载 **樱花FRP**
+
+在 **樱花FRP** 官网下载软件 [链接](https://www.natfrp.com/)
+
+#### 配置 **樱花FRP**
+
+打开软件并登陆在创建隧道界面中在最下面的中填写
+
+```ini
+proxy_protocol_version = v2
+# 获取访问者真实IP必须使用。
+```
+
+这样就可以使用 **樱花FRP** 并获取 **访问者的真实IP** 了。
+
+## 结束话语(个人)
+
+1. 动态公网IPV4是真的难申请。
+1. IPV6之前跟流畅现在很卡了已经不推荐了。
+1. so才想到FRP然后再把域名套到FRP上这样的话就不会有其他问题了。
+1. 基本跟公网IP没什么区别，而且更稳定。
