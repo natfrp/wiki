@@ -12,19 +12,19 @@ Minecraft 的国际版存在多种互通方案。
    这是用于扩展服务端对 Geyser 进行管理的插件
 
 因此，本教程所适用的环境是 **使基岩版玩家加入 Java 版服务端**，而 **不能** 用于使 Java 版玩家加入基岩版服务端。
-若它不适用于您的使用环境，请移步 [Java 版局域网联机](/app/mc.md#java) 页面或 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server.md) 页面。
+若它不适用于您的使用环境，请移步 [Java 版开服指南](/offtopic/mc-java-server.md) 页面或 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server.md) 页面。
 
 ## 准备事项
 
 ### 软硬件
 
 1. SakuraFrp Launcher 或 frpc
-1. 最新版本的 [Java 版服务端](https://www.minecraft.net/zh-hans/download/server)
+1. Java 版服务端：[官方服务端](https://www.minecraft.net/zh-hans/download/server)
    | 第三方服务端：
    [Spigot](https://www.spigotmc.org/) | [Spigot](https://papermc.io/) | [Fabric](https://fabricmc.net/) | [CatServer](https://catmc.org/) | [MohistMC](https://mohistmc.com/)
 1. 最新版本的 [Geyser 服务端](https://ci.opencollab.dev//job/GeyserMC/job/Geyser/job/master/)
-1. JDK 17 运行环境 [下载](https://www.oracle.com/java/technologies/downloads/#jdk17-windows)
-   | 较低版本的 Java 版服务端可能需要 JDK16 等历史版本，请参阅相应的服务端文档
+1. JDK 运行环境 [下载](https://www.oracle.com/java/technologies/downloads)
+   | 较低版本的 Java 版服务端可能需要 JDK16、JDK8 等历史版本，请参阅 [Java 版服务端文档](/offtopic/mc-java-server.md)
 1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议)
 1. 电脑： CPU 核心数至少 2 核，RAM 至少 4GB
 
