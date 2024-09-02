@@ -1,6 +1,6 @@
 # Minecraft 基岩版开服指南
 
-> 此教程仅仅是一个简单的入门教程，遇到任何问题，请自行去 [MCBBS](https://www.mcbbs.net/) 或 [MineBBS](https://www.minebbs.com/) 中寻找答案或者提问。  
+> 此教程仅仅是一个简单的入门教程。更多补充信息可在 [Minecraft Wiki](https://zh.minecraft.net/) 或 [MineBBS](https://www.minebbs.com/) 中寻找答案或者提问。  
 > 此文不建议毫无经验的小白用户阅读。  
 > 此指南针对的是 **基岩版** 用户，如果您是 **Java 版** 用户，请查看 [Java 版局域网联机](/app/mc.md#java) 页面。
 
@@ -166,33 +166,54 @@ compression-algorithm = zlib
 #   zlib 算法: zlib
 #   Snappy 算法: snappy
 
-server-authoritative-movement = true
-# 启用服务端权威性移动。
-# 如果值为 true ，则服务端将在以下位置重设本地用户输入。
-#   1. 客户端的位置与服务端的位置不匹配时，发送服务端更正位置并向下发送至客户端更正。
-#   2. 仅当正确的玩家移动设置为 true 时，才会进行更正。
+server-authoritative-movement = server-auth
+# 设置服务端对于玩家移动行为的验证方式
+# 允许值:
+#   不验证: client-auth
+#   验证但不处理冲突: server-auth
+#   验证且冲突时以服务端为准: server-auth-with-rewind
 
-player-movement-score-threshold = 20
+player-position-acceptance-threshold = 0.5
+# 玩家移动出现差异时允许的差异值上限。高于 1.0 将增加作弊概率。
+# 仅在 server-authoritative-movement 选项的值为 server-auth-with-rewind 时生效
+# 允许值: [0, ∞]
+
+player-movement-action-direction-threshold = 0.85
+# 玩家视角角度值和攻击方向角度值之间允许的差异值
+# 设为 1 时不允许出现差异，设为 0 时差异可以高至 90 度。
+# 允许值: [0.0, 1.0]
+
+# player-movement-score-threshold = 20
 # 报告异常行为之前所需的数据不一致的数量。
+# 低版本服务端配置项
 # 仅在 server-authoritative-movement 选项开启时生效
 
-player-movement-distance-threshold = 0.3
+# player-movement-distance-threshold = 0.3
 # 在检测到异常行为之前，服务端与客户端数值之差。
+# 低版本服务端配置项
 # 仅在 server-authoritative-movement 选项开启时生效
 
-player-movement-duration-threshold-in-ms = 500
+# player-movement-duration-threshold-in-ms = 500
 # 服务端和客户端位置的时间长度可能不同步 (在 server-authoritative-movement 选项为"false"时失效)
 # 在异常移动计数增加之前。 此值以毫秒为单位定义。
+# 低版本服务端配置项
 # 仅在 server-authoritative-movement 选项开启时生效
 
-correct-player-movement = false
+# correct-player-movement = false
 # 是否在移动值超过阈值时，将客户端的玩家位置校正为服务端玩家的位置。
+# 低版本服务端配置项
 # 允许值:
 #   是: true
 #   否: false
 
-server-authoritative-block-breaking = false
+server-authoritative-block-breaking-pick-range-scalar = 1.5
+# 启用服务端权威性挖掘的选取范围
+# 服务端与客户端同步计算挖掘，并且更正与服务端计算不符的非法挖掘时的计算范围。
+# 允许值: [0, ∞]
+
+# server-authoritative-block-breaking = false
 # 启用服务端权威性挖掘
+# 低版本服务端配置项
 # 如果值为 true ，则服务端将与客户端同步计算挖掘，并且更正与服务端计算不符的非法挖掘
 # 允许值:
 #   是: true
@@ -220,17 +241,25 @@ client-side-chunk-generation-enabled = true
 #   是: true
 #   否: false
 
-disable-custom-skins = false
-# 是否在服务器范围内禁用指定指定皮肤
-# 仅在 1.19.30 及更高版本的服务端中生效。
-# 允许值:
-#   是: true
-#   否: false
-
 block-network-ids-are-hashes = true
 # 是否使服务端发送散列的方块网络 ID，这些 ID 不会被随意更改
 # 设为 false 时，将发送从 0 开始递增的 ID。
 # 仅在 1.20.10.20 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
+disable-persona = false
+# 是否禁用角色
+# 原版 server.properties 文件中提到此项配置 "仅供内部使用"，且没有更多注释，禁用与否可能对实际游戏没有影响。
+# 仅在 1.20.10.20 及更高版本的服务端中生效。
+# 允许值:
+#   是: true
+#   否: false
+
+disable-custom-skins = false
+# 是否在服务器范围内禁用指定指定皮肤
+# 仅在 1.19.30 及更高版本的服务端中生效。
 # 允许值:
 #   是: true
 #   否: false
@@ -243,6 +272,29 @@ server-build-radius-ratio = Disabled
 # 允许值:
 #   启用: [0.0, 1.0]
 #   禁用: Disabled
+
+allow-outbound-script-debugging = false
+# 是否启用用于 Script 相关功能的 connect 命令
+# 只有设为 true 时，script-debugger-auto-attach 配置项的 connect 值才能生效。
+# 允许值:
+#   是: true
+#   否: false
+
+allow-inbound-script-debugging = false
+# Allows script debugger 'listen' command and script-debugger-auto-attach=listen mode.
+# 是否启用用于 Script 相关功能的 listen 命令
+# 只有设为 true 时，script-debugger-auto-attach 配置项的 listen 值才能生效。
+# 允许值:
+#   是: true
+#   否: false
+
+script-debugger-auto-attach = disabled
+# 是否尝试启用并适配加载世界时的 Script 调试器
+# Attempt to attach script debugger at level load, requires that either inbound port or connect address is set and that inbound or outbound connections are enabled.
+# 允许值
+#   禁用: disabled
+#   启用连接模式: connect
+#   启用监听模式: listen
 ```
 
 ::: warning
@@ -271,14 +323,6 @@ emit-server-telemetry = true
 # 是否启用服务器遥测功能
 # 启用后，将把服务端部分数据发送至 Mojang，以帮助其改善游戏。效果与各平台常见的 "用户体验改进计划" 相似。
 # 仅在 1.19.1.01 及更高版本的服务端中生效。
-# 允许值:
-#   是: true
-#   否: false
-
-disable-persona = false
-# 是否禁用角色
-# 原版 server.properties 文件中提到此项配置 "仅供内部使用"，且没有更多注释，禁用与否可能对实际游戏没有影响。
-# 仅在 1.20.10.20 的服务端中出现。
 # 允许值:
 #   是: true
 #   否: false
@@ -400,7 +444,7 @@ sudo yum install java -y
     {
         "ignoresPlayerLimit": false,
         "name": "AnotherPlayer",
-        "xuid": "123456789"          // 其中xuid和昵称有一个就可以，该玩家第一次登入的时候会自动补全
+        "xuid": "123456789"          // 其中 xuid 和昵称有一个就可以，该玩家第一次登入的时候会自动补全
     }
 ]
 ```
@@ -495,7 +539,8 @@ sudo yum install java -y
 其中部分是通过反编译以达成修改的目的, 并不符合 EULA, 请慎用。
 :::
 
-- [LiteLoader](https://github.com/LiteLDev/LiteLoaderBDS) 第三方 BDS 插件加器，支持 C++、GoLang、JavaScript、Lua
+- [LeviLamina](https://github.com/LiteLDev/LeviLamina) 第三方 BDS 插件加载器，轻量易用，前身为 LiteLoader
+- [LiteLoader](https://github.com/LiteLDev/LiteLoaderBDS) 第三方 BDS 插件加器，已停更
 - [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方 BDS 插件加载器，已停更
 - [BedrockX](https://github.com/Sysca11/BedrockX-bin) 第三方 BDS 插件加载器，已停更
 - [ElementZero](https://github.com/Element-0/ElementZero) 第三方服务端，支持实验玩法和教育版
