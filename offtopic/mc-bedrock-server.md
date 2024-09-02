@@ -1,6 +1,6 @@
 # Minecraft 基岩版开服指南
 
-> 此教程仅仅是一个简单的入门教程。更多补充信息可在 [Minecraft Wiki](https://zh.minecraft.net/) 或 [MineBBS](https://www.minebbs.com/) 中寻找答案或者提问。  
+> 此教程仅仅是一个简单的入门教程。更多补充信息可在 [Minecraft Wiki](https://zh.minecraft.wiki/) 或 [MineBBS](https://www.minebbs.com/) 中寻找答案或者提问。  
 > 此文不建议毫无经验的小白用户阅读。  
 > 此指南针对的是 **基岩版** 用户，如果您是 **Java 版** 用户，请查看 [Java 版局域网联机](/app/mc.md#java) 页面。
 
