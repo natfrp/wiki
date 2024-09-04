@@ -1,0 +1,1369 @@
+# Minecraft BungeeCord 代理服开服指南
+
+长期以来，**Minecraft** 服务器所有者一直有一个梦想，其中包括一种免费、简单且可靠的方式将多个 **Minecraft** 服务器连接在一起。
+**BungeeCord** 就是这个梦想的答案。无论您是希望将多种游戏模式串联在一起的小型服务器，还是大型网络的所有者， **BungeeCord** 都是您的理想解决方案。
+在 **BungeeCord** 的帮助下，您将能够释放社区的全部潜力。
+
+## 它是什么
+
+1. **BungeeCord** 是由 SpigotMC 团队内部编写的有用软件。它充当玩家客户端和连接的 Minecraft 服务器之间的代理。 **BungeeCord** 的最终用户认为它与普通的 **Minecraft** 服务器之间没有区别。
+
+1. 个人解释: 如果你使用该服务端，在你切换 **BungeeCord** 提供的服务器时你不用断线连接。
+
+## 准备工作
+
+### 硬件
+
+1. **处理器** 不少于 **2G**
+1. **内存** 不少于 **4G**
+
+#### 推荐配置
+
+1. 处理器 | 单核跑分超过300 | 核心数不少于2 
+1. 内存 不少于4G
+
+### 软件
+
+1. 下载 **[SakuraFrp Launcher](https://www.natfrp.com/user/)**
+1. 下载 **[BungeeCord](https://ci.md-5.net/job/BungeeCord/)** 
+1. 下载 **[Geyser-BungeeCord](https://geysermc.org/download)**
+1. 下载 **[Java](https://www.java.com/zh-CN/)**
+
+#### 更多的优化过的Java
+
+1. **[Zulu Java](https://www.azul.com/downloads/?os=windows&architecture=x86-64-bit&package=jdk#zulu)**
+1. **[DragonWell Java](https://dragonwell-jdk.io/#/index)**
+1. **[OpenJdk-OpenJ9](https://developer.ibm.com/languages/java/semeru-runtimes/downloads/)**
+
+## 注释
+
+### 启动文件注释
+
+```ini
+java -Xms128M -Xmx256M -jar BungeeCord.jar
+# 即最大内存为 256MB，启动内存为 128MB
+```
+
+### **BungeeCord** 配置文件注释
+
+```ini
+forge_support: false
+# forgeMOD支持，如果你的服务器中有MOD服务器，请打开这个选项。
+player_limit: -1
+# 玩家人数限制，它将限制整个服务器的玩家人数，-1为不限。
+permissions:
+  default:
+  - bungeecord.command.server
+  - bungeecord.command.list
+  admin:
+  - bungeecord.command.alert
+  - bungeecord.command.end
+  - bungeecord.command.ip
+  - bungeecord.command.reload
+# 这些是您可以在代理中使用的命令或操作的权限。
+# 请注意，这些权限与 Bukkit/Spigot 权限不同。
+# 这些权限是基于组的，用于稍后在配置中附加玩家。
+# 默认情况下，所有玩家都可以使用这些命令，那些在 groups 部分被赋予 admin 组的玩家可以使用 BungeeCord 的额外命令，如下所述。
+# 请注意，每个组仅继承 default，因此如果添加更多节点，则可能需要将同一节点放在不同的组中。
+timeout: 30000
+# 当玩家在服务器中无响应多长时间，服务器才会将他踢出去，在这里一秒等于1000,30000=30秒
+log_commands: false
+# 当玩家编写 BungeeCord 命令时，该命令也会包含在 BungeeCord 控制台中。
+online_mode: true
+# 正版验证，如果是离线服请关闭，否则会调用API进行验证。
+disabled_commands:
+- disabledcommandhere
+# 这里是服务器禁止的指令，例如我填- help服务器就会禁用/help指令。
+servers:
+  lobby:
+    motd: '&1Just another BungeeCord - Forced Host'
+    # 服务器Motd。
+    address: localhost:25565
+    # 服务器地址。
+    restricted: false
+# 这是子服务器的列表。
+listeners:
+- query_port: 25577
+  # 监听查询端口。
+  motd: '&1Another Bungee server'
+  # BC的标语，支持彩色。
+  tab_list: GLOBAL_PING
+  # 新版BungeeCord无法使用此选项。
+  query_enabled: false
+  # 是否开启监听查询。
+  proxy_protocol: false
+  # 这允许服务器支持 HAProxy PROXY 协议。大多数用户不需要启用此选项。
+  forced_hosts:
+    pvp.md-5.net: pvp
+  #大多数用户不需要启用此选项。也不建议启用此选项。
+  ping_passthrough: false
+  # 当我们可以可靠地获取目标服务器（强制优先服务器）时，是否传递 ping。
+  # 如果为 true，则 BungeeCord 在查询强制主机时显示后端服务器的玩家计数和 MOTD。
+  priorities:
+  - lobby
+  # 优先服务器列表。
+  bind_local_address: true
+  # 是否绑定本地服务器IP。
+  host: 0.0.0.0:25577
+  # BC的IP地址，开启后访问它就能进入BC服务器。
+  max_players: 1
+  # 服务器显示的最大人数，如要设置真实的人数请找到player_limit选项填写。
+  tab_size: 60
+  force_default_server: false
+  # 是否强制进入优先服务器。
+ip_forward: false
+# 是否启用 IP（将玩家的真实IP转发给服务器，而不是代理服务器）和 UUID 转发（它将玩家的真实在线模式 UUID 转发到其他服务器，而不是离线模式的用户名哈希值！
+# 如果您运行的是正版服务器，强烈建议您使用此选项！
+# 必须打开否则整个服务器将无法正常运行。
+network_compression_threshold: 256
+groups:
+  md_5:
+  - admin
+# 在这里，您可以将玩家分配到您之前在配置中创建的权限组。
+# 格式是分组，后跟每个玩家，然后是他们所在的每个组。
+# 默认情况下，md_5 被授予 admin 组，该组授予 permissions 部分定义的权限。每个玩家都有 default权限。
+# 仅添加需要超过默认权限的玩家。
+connection_throttle: 4000
+# 连接间隔，当玩家退出后多就能加入，在这里一秒等于1000,4000=4秒。
+stats: c86020bc-ddf6-467e-84d9-90974afcf90e
+# 机器码，请不要修改，修改之后整个电脑将再也无法使用BungeeCord服务器。
+prevent_proxy_connections: false
+# 这使得服务器将连接玩家的 IP 发送给 Mojang，以检查他们是否使用代理连接到 BungeeCord。
+# 不建议开启此选项，Mojang服务器是很不稳定的。
+```
+
+### **Geyser** 配置文件注释
+
+```ini
+# --------------------------------
+# Geyser 配置文件
+#
+# Minecraft: 基岩版 与 Minecraft: Java版 之间的桥梁。
+#
+# GitHub: https://github.com/GeyserMC/Geyser
+# Discord: https://discord.gg/geysermc
+# --------------------------------
+
+bedrock:
+  # 将监听连接的 IP 地址。
+  # 通常情况下，只有在想限制哪些 IP 可以连接到服务器时才需要取消注释和更改此项。
+  #address: 0.0.0.0
+  # 将监听连接的端口
+  port: 19132
+  # 一些托管服务在每次启动服务器时更改您的 Java 端口，并要求基岩版使用相同的端口。
+  # 此选项使得每次启动服务器时基岩版端口都与 Java 端口相同。
+  # 仅适用于插件版本。
+  clone-remote-port: true
+  # 将被广播给 Minecraft: 基岩版 客户端的 MOTD。如果 "passthrough-motd" 设置为 true，则此项无关紧要
+  # 如果其中任一项为空，相应的字符串将默认为 "Geyser"
+  motd1: "Geyser Server"
+  motd2: "Another Geyser Server."
+  # 将发送到 Minecraft: 基岩版 客户端的服务器名称。在暂停菜单和设置菜单中都可见。
+  server-name: "Geyser Server"
+  # 压缩网络流量到基岩版客户端的程度。数值越高，使用的 CPU 越多，但
+  # 使用的带宽越小。在 -1 到 9 之间生效。设置为 -1 禁用。
+  compression-level: 6
+  # 是否为客户端启用 PROXY 协议。除非在 Geyser 实例前运行了 UDP 反向代理，否则不应启用此功能。
+  enable-proxy-protocol: false
+  # 允许 PROXY 协议的代理 IP 地址/子网列表。仅在启用 "enable-proxy-protocol" 时生效，
+  # 通常只有在无法使用适当的防火墙时才使用（通常在共享托管提供者等情况下）。
+  # 将此列表保留为空意味着没有 IP 地址白名单。
+  # 支持 IP 地址和子网。
+  #proxy-protocol-whitelisted-ips: [ "127.0.0.1", "172.18.0.0/16" ]
+remote:
+  # 远程 (Java 版) 服务器的 IP 地址
+  # 如果为 "auto"，独立版本的远程地址将设置为 127.0.0.1，
+  # 对于插件版本，建议将其保留为 "auto"，以便 Geyser 将自动配置地址、端口和 auth-type。
+  # 如果安装了 floodgate，则保留为 "auto"。
+  address: auto
+  # 远程 (Java 版) 服务器的端口
+  # 对于插件版本，如果地址设置为 "auto"，则端口也将跟随服务器的监听端口。
+  port: 25565
+  # 认证类型。可以是 offline、online 或 floodgate（详见 https://github.com/GeyserMC/Geyser/wiki/Floodgate）。
+  # 对于插件版本，建议将 `address` 字段保留为 "auto"，以便自动配置 Floodgate 支持。
+  # 如果安装了 Floodgate 并且 `address:` 设置为 "auto"，那么 "auth-type: floodgate" 将会自动使用。
+  auth-type: floodgate
+  # 允许通过 Geyser 进行基于密码的认证方法。仅在在线模式下有用。
+  # 如果设置为 false，则用户必须在桌面上使用 Geyser 提供的代码来进行 Microsoft 认证。
+  allow-password-authentication: true
+  # 在连接到服务器时是否启用 PROXY 协议。
+  # 仅在以下情况下有用：
+  # 1) 您的服务器支持 PROXY 协议（可能不支持）
+  # 2) 您在代理的主配置中启用了此选项，运行 Velocity 或 BungeeCord。
+  # 如果您不知道这是什么，请不要触碰它！
+  use-proxy-protocol: false
+  # 将基岩客户端用于连接的主机名转发到 Java 服务器
+  # 这是用于强制代理的强制主机的
+  forward-hostname: false
+
+# Floodgate 使用加密来确保来自授权源的使用。
+# 这应该指向 Floodgate 生成的公钥（BungeeCord、Spigot 或 Velocity）
+# 如果不使用 Floodgate，则可以忽略此项。
+# 如果在同一服务器上使用了 Floodgate 的插件版本，则密钥将自动从 Floodgate 中获取。
+floodgate-key-file: key.pem
+
+# 仅适用于在线模式认证类型。
+# 存储应在登录后保存其 Java 版帐户的基岩版玩家列表。
+# 这会保存一个可在稍后重新验证玩家的令牌。这不会保存电子邮件或密码，
+# 但在添加到此列表并授予其他人访问此 Geyser 实例文件时仍应谨慎。
+# 从列表中移除名称将在下次 Geyser 启动时删除其缓存的登录信息。
+# 保存令牌的文件位于与此配置文件相同的文件夹中，名为 "saved-refresh-tokens.json"。
+saved-user-logins:
+  - ThisExampleUsernameShouldBeLongEnoughToNeverBeAnXboxUsername
+  - ThisOtherExampleUsernameShouldAlsoBeLongEnough
+
+# 指定用户在 Geyser 被授权访问其 Microsoft 帐户时等待的秒数。
+# 用户允许在此期间断开服务器连接。
+pending-authentication-timeout: 120
+
+# 如果你的服务器指令提示太多，基岩版客户端在玩家首次打开聊天框并输入指令时会出现卡顿或者崩溃。
+# 禁用此功能将阻止发送命令建议，解决基岩版客户端的冻结问题。
+command-suggestions: true
+
+# 以下三个选项启用 "ping passthrough" - MOTD、玩家计数和/或协议名称从 Java 服务器检索。
+# 将远程服务器的 MOTD 转发到基岩版玩家。
+passthrough-motd: false
+# 转发协议名称（例如 BungeeCord [X.X]，Paper 1.X）- 仅在使用自定义协议名称时真正有用！
+# 这也将显示在诸如 MCSrvStatus <mcsrvstat.us> 等网站上。
+passthrough-protocol-name: false
+# 将远程服务器的玩家计数和最大玩家数转发到基岩版玩家。
+passthrough-player-counts: false
+# 启用 LEGACY ping passthrough。除非您的 MOTD 或玩家计数未正确显示，否则不需要启用此选项。
+# 此选项在独立版本上无效。
+legacy-ping-passthrough: false
+# 每隔多少秒向远程服务器发出 ping。仅适用于独立版本或旧式 ping passthrough。
+# 如果出现 BrokenPipe 错误，请增加此值。
+ping-passthrough-interval: 3
+
+# 是否将玩家 ping 转发到服务器。虽然启用此选项可以让基岩版玩家有更准确的
+# ping，但也可能导致玩家更容易超时。
+forward-player-ping: true
+
+# 可连接的最大玩家数量。目前仅是视觉效果，实际上不会限制玩家数量。
+max-players: 100
+
+# 是否通过控制台发送调试消息
+debug-mode: false
+
+# 允许第三方披风可见。当前允许的有：
+# OptiFine 披风，LabyMod 披风，5Zig 披风 和 MinecraftCapes
+allow-third-party-capes: true
+
+# 允许第三方 deadmau5 耳朵可见。当前允许的有：
+# MinecraftCapes
+allow-third-party-ears: true
+
+# 允许发送虚假的冷却指示器。否则，基岩版玩家在使用 1.8 战斗时看不到冷却。
+# 请注意：如果启用冷却，一些用户在冷却过程中可能会看到黑框，如下所示：
+# https://cdn.discordapp.com/attachments/613170125696270357/957075682230419466/Screenshot_from_2022-03-25_20-35-08.png
+# 可以通过在基岩设置中的辅助选项卡下将 "文本背景不透明度" 设置为 0 来禁用此功能
+# 此选项可以设置为 "title"、"actionbar" 或 "false"
+show-cooldown: title
+
+# 控制是否向玩家显示坐标。
+show-coordinates: true
+
+# 是否阻止基岩版玩家执行基岩版的脚手架式桥接。
+disable-bedrock-scaffolding: false
+
+# 如果设置，当基岩版玩家执行任何表情时，它将交换副手和主手物品，就像 Java 版按键绑定一样。
+# 有三个选项可以设置：
+# disabled - 默认/回退，不应用此解决方法
+# no-emotes - 不会将表情发送到其他基岩版客户端，并会交换副手。这实际上禁用了所有表情。
+# emotes-and-offhand - 表情将发送到基岩版客户端，并会交换副手
+emote-offhand-workaround: "disabled"
+
+# 如果我们没有客户端请求的默认区域。取消注释以不使用默认系统语言。
+default-locale: zh_cn
+
+# 指定多少秒内将图像缓存在磁盘中，以避免从互联网下载。
+# 值为 0 表示禁用。（默认值：0）
+cache-images: 0
+
+# 允许显示自定义头颅。保持启用可能会导致在旧/弱设备上性能降低。
+allow-custom-skulls: true
+
+# 每个玩家允许显示的最大自定义头颅数量。增加此值可能会降低弱设备的性能。
+# 将此设置为 -1 将导致显示所有自定义头颅，无论距离或数量如何。
+max-visible-custom-skulls: 128
+
+# 玩家周围多少方块内显示自定义头颅。
+custom-skull-render-distance: 32
+
+# 是否添加（此时仅）熔炉矿车作为游戏中的单独物品，而基岩版实际上没有此物品。
+# 除非使用不使用服务器切换的 "transfer packet" 样式的代理，否则只有在禁用此项时才需要禁用。
+# 如果禁用此项，熔炉矿车物品将映射到漏斗矿车物品。
+# 此选项需要重新启动 Geyser 以更改设置。
+add-non-bedrock-items: true
+
+# 基岩版在地狱上方的 Y127 会阻止建造和显示方块。
+# 此配置选项通过将地狱维度 ID 更改为末地 ID 来解决该问题。
+# 其主要缺点是整个地狱将具有相同的红雾，而不是每个生物群系都有不同的雾气。
+above-bedrock-nether-building: true
+
+# 强制客户端加载所有资源包（如果有）。
+# 如果设置为 false，则允许用户连接到服务器，即使他们不想下载资源包。
+force-resource-packs: true
+
+# 允许解锁 Xbox 成就。
+# 这会禁用所有 Bedrock 内游戏命令成功运行，否则 Bedrock 会认为您在作弊。
+xbox-achievements-enabled: false
+
+# 是否记录玩家 IP 地址。
+log-player-ip-addresses: true
+
+# 是否向控制台和操作员提示新的 Geyser 版本可用，该版本支持此 Geyser 版本不支持的 Bedrock 版本。
+# 建议保持此选项启用，因为许多 Bedrock 平台都会自动更新。
+notify-on-new-bedrock-update: true
+
+# 用于标记基岩版玩家库存中不可用槽位的物品。例如，创造模式下的 2x2 制作栏，
+# 或尺寸与通常的 3x9 不同的自定义库存菜单。默认为障碍方块。
+unusable-space-block: minecraft:barrier
+
+# bStats 是一个完全匿名的统计跟踪器，仅跟踪有关 Geyser 的基本信息，
+# 例如在线人数、使用 Geyser 的服务器数量、正在使用的操作系统等。
+# 您可以在此了解有关 bStats 的更多信息：https://bstats.org/。
+# https://bstats.org/plugin/server-implementation/GeyserMC
+metrics:
+  # 是否启用统计信息
+  enabled: true
+  # 服务器的 UUID，不要更改！
+  uuid: 7fa97945-dfef-4ee2-8d3b-d1b91c7a09e0
+
+# 高级选项 - 除非您知道自己在做什么，否则不要触碰！
+
+# Geyser 在每个 Scoreboard 包后更新计分板，但在 Geyser 尝试处理
+# 大量计分板包每秒可能会导致严重的延迟。
+# 此选项允许您指定在每秒多少个 Scoreboard 包后，计分板更新将被限制为每秒四次更新。
+scoreboard-packet-threshold: 20
+
+# 允许来自 ProxyPass 和 Waterdog 的连接。
+# 有关帮助，请参阅 https://www.spigotmc.org/wiki/firewall-guide/ - 使用 UDP 而不是 TCP。
+enable-proxy-connections: false
+
+# 互联网支持的最大 MTU 为 1492，但可能会导致数据包分段问题。
+# 1400 是默认值。
+mtu: 1400
+
+# 是否在创建 TCP 连接时直接连接到 Java 服务器，而不创建 TCP 连接。
+# 除非插件与数据包或网络接口不正常工作，否则只有在此时禁用它。
+# 如果在插件版本上启用，将忽略远程地址和端口部分
+# 如果在插件版本上禁用，预期会降低性能并增加延迟
+use-direct-connection: true
+
+# 是否应尝试为基岩版玩家禁用压缩。这应该是有益的，因为在未处理 Java 数据包的情况下没有必要压缩数据
+# 这要求 use-direct-connection 为 true。
+disable-compression: true
+
+# 配置文件的版本，不知道的别动。
+config-version: 4
+```
+
+**请看完上方注释以便更好的完成接下来的操作**
+
+## 创建 **BungeeCord** 服务器并安装 **Geyser**
+
+### 开启 **BungeeCord** 服务器，并配置 **Geyser**
+
+#### 开启 **BungeeCord** 服务器
+
+1. 如果你已经会开设原版服务器请跳过开设阶段。
+1. 首先你需要下载一个 **[BungeeCord](https://ci.md-5.net/job/BungeeCord/)**
+1. 其次在准备一个文件夹最好不在C盘或者桌面防止其他未知错误发生。
+1. 将你下载好的 **BungeeCord** 放入该文件夹。
+1. 然后创建一个文本文档，并打开它。
+1. 在文档中输入。
+
+```ini
+java -Xms128M -Xmx256M -jar BungeeCord.jar
+# 即最大内存为 256MB，启动内存为 128MB
+```
+
+1. 输入完后关闭并保存。
+1. 重命名该文档(新建文本文档.txt)为 Start.bat。
+1. 如果你看不到.txt后缀请打开文件管理器中的文件的扩展名选项。
+1. 双击Start.bat。
+1. 当看到 **Listening on /0.0.0.0:25577** 时表示已开好了 **BungeeCord** 服务器。
+1. 随后在出现的CMD窗口中输入end关闭服务器。
+1. 接下来看到文件夹中的 **config.yml** 文件。
+1. 打开该文件，并看着下列注释。
+
+```ini
+forge_support: false
+# 如果你有开启模组服服务器的意向请开启该选项
+player_limit: -1
+# 玩家人数限制，它将限制整个服务器的玩家人数，-1为无限。
+permissions:
+  default:
+  - bungeecord.command.server
+  - bungeecord.command.list
+  admin:
+  - bungeecord.command.alert
+  - bungeecord.command.end
+  - bungeecord.command.ip
+  - bungeecord.command.reload
+# 这些是您可以在代理中使用的命令或操作的权限。
+# 请注意，这些权限与 Bukkit/Spigot 权限不同。
+# 这些权限是基于组的，用于稍后在配置中附加玩家。
+# 默认情况下，所有玩家都可以使用这些命令，那些在 groups 部分被赋予 admin 组的玩家可以使用 BungeeCord 的额外命令，如下所述。
+# 请注意，每个组仅继承 default，因此如果添加更多节点，则可能需要将同一节点放在不同的组中。
+timeout: 30000
+# 当玩家在服务器中无响应多长时间，服务器才会将他踢出去，在这里一秒等于1000,30000=30秒
+log_commands: false
+# 当玩家编写 BungeeCord 命令时，该命令也会包含在 BungeeCord 控制台中。
+online_mode: true
+# 正版验证，如果是离线服请关闭，否则会调用API进行验证。
+disabled_commands:
+- disabledcommandhere
+# 这里是服务器禁止的指令，例如我填- help服务器就会禁用/help指令。
+servers:
+  lobby:
+    motd: '&1Just another BungeeCord - Forced Host'
+    # 服务器Motd。
+    address: localhost:25565
+    # 服务器地址。
+    restricted: false
+# 这是子服务器的列表。
+listeners:
+- query_port: 25577
+  # 监听查询端口。
+  motd: '&1Another Bungee server'
+  # BC的标语，支持彩色。
+  tab_list: GLOBAL_PING
+  # 新版BungeeCord无法使用此选项。
+  query_enabled: false
+  # 是否开启监听查询。
+  proxy_protocol: false
+  # 这允许服务器支持 HAProxy PROXY 协议。大多数用户不需要启用此选项。
+  forced_hosts:
+    pvp.md-5.net: pvp
+  #大多数用户不需要启用此选项。也不建议启用此选项。
+  ping_passthrough: false
+  # 当我们可以可靠地获取目标服务器（强制优先服务器）时，是否传递 ping。
+  # 如果为 true，则 BungeeCord 在查询强制主机时显示后端服务器的玩家计数和 MOTD。
+  priorities:
+  - lobby
+  # 优先服务器列表。
+  bind_local_address: true
+  # 是否绑定本地服务器IP。
+  host: 0.0.0.0:25577
+  # BC的IP地址，开启后访问它就能进入BC服务器。
+  max_players: 1
+  # 服务器显示的最大人数，如要设置真实的人数请找到player_limit选项填写。
+  tab_size: 60
+  force_default_server: false
+  # 是否强制进入优先服务器。
+ip_forward: false
+# 是否启用 IP（将玩家的真实IP转发给服务器，而不是代理服务器）和 UUID 转发（它将玩家的真实在线模式 UUID 转发到其他服务器，而不是离线模式的用户名哈希值！
+# 如果您运行的是正版服务器，强烈建议您使用此选项！
+# 必须打开否则整个服务器将无法正常运行。
+network_compression_threshold: 256
+groups:
+  md_5:
+  - admin
+# 在这里，您可以将玩家分配到您之前在配置中创建的权限组。
+# 格式是分组，后跟每个玩家，然后是他们所在的每个组。
+# 默认情况下，md_5 被授予 admin 组，该组授予 permissions 部分定义的权限。每个玩家都有 default权限。
+# 仅添加需要超过默认权限的玩家。
+connection_throttle: 4000
+# 连接间隔，当玩家退出后多就能加入，在这里一秒等于1000,4000=4秒。
+stats: c86020bc-ddf6-467e-84d9-90974afcf90e
+# 机器码，请不要修改，修改之后整个电脑将再也无法使用BungeeCord服务器。
+prevent_proxy_connections: false
+# 这使得服务器将连接玩家的 IP 发送给 Mojang，以检查他们是否使用代理连接到 BungeeCord。
+# 不建议开启此选项，Mojang服务器是很不稳定的。
+```
+
+1. 看完该注释后根据你的需要修改其中的选项，例如
+
+```ini
+我要开离线服务器则需要修改
+online_mode: true为online_mode: false
+我要开启优先进入优先服务器则需要修改
+force_default_server: false为 force_default_server: true
+```
+
+1. 修改完以后继续双击Start.bat
+1. 还是看到 **Listening on /0.0.0.0:25577** 后，连接服务器。
+1. 连接地址为 **127.0.0.1:25577**
+1. 显示Could not connect to a default or fallback server,Incorrectly configured,address/port/firewall?AnnotatedConnectException:Connection refused:getsockopt:localhost/1270.0.1:25565
+1. 证明服务器已经开启成功。
+
+##### 接下来开始配置你需要连接的服务器
+
+1. 在你的服务器文件夹中找到 **spigot.yml** 文件。
+1. 修改其中的 **bungeecord: false** 为 **bungeecord: true**
+1. 然后找到你的 **BungeeCord** 文件夹中的 **config.yml** 文件。
+1. 修改其中的
+
+```ini
+listeners:
+  priorities:
+  - lobby
+  servers: 
+    lobby: 
+      motd: '&1Just another BungeeCord - Forced Host' 
+      address: localhost:25565 
+      restricted: false
+```
+
+1. 改为
+
+```ini
+  priorities:
+  - 名字可以随便改
+  server:
+   名字可以随便改:
+     motd: 'MOTD可以随便改'
+     address: localhost:改为你的服务器的端口 
+     restricted: false
+```
+
+1. 然后重启 **BungeeCord** 服务器。
+1. 并连接如果你以连接到了服务器并进入了，就说明你已经配置好了 **BungeeCord** 服务器。
+
+#### 安装 **Geyser-BungeeCord**
+
+1. 首先你要下载 **[Geyser-bungeeCord](https://geysermc.org/download)**
+1. 然后把你下载好的文件放入 **BungeeCord** 文件夹中的 **plugins** 文件夹。
+1. 然后启动你的 **BungeeCord** 
+1. 看到窗口显示
+
+```ini
+[Geyser-BungeeCord] 已在 UDP 端口 19132 上启动 Geyser
+[Geyser-BungeeCord] 完成 (4.837秒)！ 运行 /geyser help 以获取帮助！
+```
+
+1. 就表示你的 **Geyser-BungeeCord** 已经安装好了。
+1. 然后关闭 **BungeeCord** 服务器。
+
+##### 开始配置 **Geyser-BungeeCord**
+
+1. 找到~\BungeeCord\plugins\Geyser-BungeeCord文件夹中的 **config.yml** 文件
+1. 查看注释后按照你的想法去修改
+
+```ini
+# --------------------------------
+# Geyser 配置文件
+#
+# Minecraft: 基岩版 与 Minecraft: Java版 之间的桥梁。
+#
+# GitHub: https://github.com/GeyserMC/Geyser
+# Discord: https://discord.gg/geysermc
+# --------------------------------
+
+bedrock:
+  # 将监听连接的 IP 地址。
+  # 通常情况下，只有在想限制哪些 IP 可以连接到服务器时才需要取消注释和更改此项。
+  #address: 0.0.0.0
+  # 将监听连接的端口
+  port: 19132
+  # 一些托管服务在每次启动服务器时更改您的 Java 端口，并要求基岩版使用相同的端口。
+  # 此选项使得每次启动服务器时基岩版端口都与 Java 端口相同。
+  # 仅适用于插件版本。
+  clone-remote-port: true
+  # 将被广播给 Minecraft: 基岩版 客户端的 MOTD。如果 "passthrough-motd" 设置为 true，则此项无关紧要
+  # 如果其中任一项为空，相应的字符串将默认为 "Geyser"
+  motd1: "Geyser Server"
+  motd2: "Another Geyser Server."
+  # 将发送到 Minecraft: 基岩版 客户端的服务器名称。在暂停菜单和设置菜单中都可见。
+  server-name: "Geyser Server"
+  # 压缩网络流量到基岩版客户端的程度。数值越高，使用的 CPU 越多，但
+  # 使用的带宽越小。在 -1 到 9 之间生效。设置为 -1 禁用。
+  compression-level: 6
+  # 是否为客户端启用 PROXY 协议。除非在 Geyser 实例前运行了 UDP 反向代理，否则不应启用此功能。
+  enable-proxy-protocol: false
+  # 允许 PROXY 协议的代理 IP 地址/子网列表。仅在启用 "enable-proxy-protocol" 时生效，
+  # 通常只有在无法使用适当的防火墙时才使用（通常在共享托管提供者等情况下）。
+  # 将此列表保留为空意味着没有 IP 地址白名单。
+  # 支持 IP 地址和子网。
+  #proxy-protocol-whitelisted-ips: [ "127.0.0.1", "172.18.0.0/16" ]
+remote:
+  # 远程 (Java 版) 服务器的 IP 地址
+  # 如果为 "auto"，独立版本的远程地址将设置为 127.0.0.1，
+  # 对于插件版本，建议将其保留为 "auto"，以便 Geyser 将自动配置地址、端口和 auth-type。
+  # 如果安装了 floodgate，则保留为 "auto"。
+  address: auto
+  # 远程 (Java 版) 服务器的端口
+  # 对于插件版本，如果地址设置为 "auto"，则端口也将跟随服务器的监听端口。
+  port: 25565
+  # 认证类型。可以是 offline、online 或 floodgate（详见 https://github.com/GeyserMC/Geyser/wiki/Floodgate）。
+  # 对于插件版本，建议将 `address` 字段保留为 "auto"，以便自动配置 Floodgate 支持。
+  # 如果安装了 Floodgate 并且 `address:` 设置为 "auto"，那么 "auth-type: floodgate" 将会自动使用。
+  auth-type: floodgate
+  # 允许通过 Geyser 进行基于密码的认证方法。仅在在线模式下有用。
+  # 如果设置为 false，则用户必须在桌面上使用 Geyser 提供的代码来进行 Microsoft 认证。
+  allow-password-authentication: true
+  # 在连接到服务器时是否启用 PROXY 协议。
+  # 仅在以下情况下有用：
+  # 1) 您的服务器支持 PROXY 协议（可能不支持）
+  # 2) 您在代理的主配置中启用了此选项，运行 Velocity 或 BungeeCord。
+  # 如果您不知道这是什么，请不要触碰它！
+  use-proxy-protocol: false
+  # 将基岩客户端用于连接的主机名转发到 Java 服务器
+  # 这是用于强制代理的强制主机的
+  forward-hostname: false
+
+# Floodgate 使用加密来确保来自授权源的使用。
+# 这应该指向 Floodgate 生成的公钥（BungeeCord、Spigot 或 Velocity）
+# 如果不使用 Floodgate，则可以忽略此项。
+# 如果在同一服务器上使用了 Floodgate 的插件版本，则密钥将自动从 Floodgate 中获取。
+floodgate-key-file: key.pem
+
+# 仅适用于在线模式认证类型。
+# 存储应在登录后保存其 Java 版帐户的基岩版玩家列表。
+# 这会保存一个可在稍后重新验证玩家的令牌。这不会保存电子邮件或密码，
+# 但在添加到此列表并授予其他人访问此 Geyser 实例文件时仍应谨慎。
+# 从列表中移除名称将在下次 Geyser 启动时删除其缓存的登录信息。
+# 保存令牌的文件位于与此配置文件相同的文件夹中，名为 "saved-refresh-tokens.json"。
+saved-user-logins:
+  - ThisExampleUsernameShouldBeLongEnoughToNeverBeAnXboxUsername
+  - ThisOtherExampleUsernameShouldAlsoBeLongEnough
+
+# 指定用户在 Geyser 被授权访问其 Microsoft 帐户时等待的秒数。
+# 用户允许在此期间断开服务器连接。
+pending-authentication-timeout: 120
+
+# 如果你的服务器指令提示太多，基岩版客户端在玩家首次打开聊天框并输入指令时会出现卡顿或者崩溃。
+# 禁用此功能将阻止发送命令建议，解决基岩版客户端的冻结问题。
+command-suggestions: true
+
+# 以下三个选项启用 "ping passthrough" - MOTD、玩家计数和/或协议名称从 Java 服务器检索。
+# 将远程服务器的 MOTD 转发到基岩版玩家。
+passthrough-motd: false
+# 转发协议名称（例如 BungeeCord [X.X]，Paper 1.X）- 仅在使用自定义协议名称时真正有用！
+# 这也将显示在诸如 MCSrvStatus <mcsrvstat.us> 等网站上。
+passthrough-protocol-name: false
+# 将远程服务器的玩家计数和最大玩家数转发到基岩版玩家。
+passthrough-player-counts: false
+# 启用 LEGACY ping passthrough。除非您的 MOTD 或玩家计数未正确显示，否则不需要启用此选项。
+# 此选项在独立版本上无效。
+legacy-ping-passthrough: false
+# 每隔多少秒向远程服务器发出 ping。仅适用于独立版本或旧式 ping passthrough。
+# 如果出现 BrokenPipe 错误，请增加此值。
+ping-passthrough-interval: 3
+
+# 是否将玩家 ping 转发到服务器。虽然启用此选项可以让基岩版玩家有更准确的
+# ping，但也可能导致玩家更容易超时。
+forward-player-ping: true
+
+# 可连接的最大玩家数量。目前仅是视觉效果，实际上不会限制玩家数量。
+max-players: 100
+
+# 是否通过控制台发送调试消息
+debug-mode: false
+
+# 允许第三方披风可见。当前允许的有：
+# OptiFine 披风，LabyMod 披风，5Zig 披风 和 MinecraftCapes
+allow-third-party-capes: true
+
+# 允许第三方 deadmau5 耳朵可见。当前允许的有：
+# MinecraftCapes
+allow-third-party-ears: true
+
+# 允许发送虚假的冷却指示器。否则，基岩版玩家在使用 1.8 战斗时看不到冷却。
+# 请注意：如果启用冷却，一些用户在冷却过程中可能会看到黑框，如下所示：
+# https://cdn.discordapp.com/attachments/613170125696270357/957075682230419466/Screenshot_from_2022-03-25_20-35-08.png
+# 可以通过在基岩设置中的辅助选项卡下将 "文本背景不透明度" 设置为 0 来禁用此功能
+# 此选项可以设置为 "title"、"actionbar" 或 "false"
+show-cooldown: title
+
+# 控制是否向玩家显示坐标。
+show-coordinates: true
+
+# 是否阻止基岩版玩家执行基岩版的脚手架式桥接。
+disable-bedrock-scaffolding: false
+
+# 如果设置，当基岩版玩家执行任何表情时，它将交换副手和主手物品，就像 Java 版按键绑定一样。
+# 有三个选项可以设置：
+# disabled - 默认/回退，不应用此解决方法
+# no-emotes - 不会将表情发送到其他基岩版客户端，并会交换副手。这实际上禁用了所有表情。
+# emotes-and-offhand - 表情将发送到基岩版客户端，并会交换副手
+emote-offhand-workaround: "disabled"
+
+# 如果我们没有客户端请求的默认区域。取消注释以不使用默认系统语言。
+default-locale: zh_cn
+
+# 指定多少秒内将图像缓存在磁盘中，以避免从互联网下载。
+# 值为 0 表示禁用。（默认值：0）
+cache-images: 0
+
+# 允许显示自定义头颅。保持启用可能会导致在旧/弱设备上性能降低。
+allow-custom-skulls: true
+
+# 每个玩家允许显示的最大自定义头颅数量。增加此值可能会降低弱设备的性能。
+# 将此设置为 -1 将导致显示所有自定义头颅，无论距离或数量如何。
+max-visible-custom-skulls: 128
+
+# 玩家周围多少方块内显示自定义头颅。
+custom-skull-render-distance: 32
+
+# 是否添加（此时仅）熔炉矿车作为游戏中的单独物品，而基岩版实际上没有此物品。
+# 除非使用不使用服务器切换的 "transfer packet" 样式的代理，否则只有在禁用此项时才需要禁用。
+# 如果禁用此项，熔炉矿车物品将映射到漏斗矿车物品。
+# 此选项需要重新启动 Geyser 以更改设置。
+add-non-bedrock-items: true
+
+# 基岩版在地狱上方的 Y127 会阻止建造和显示方块。
+# 此配置选项通过将地狱维度 ID 更改为末地 ID 来解决该问题。
+# 其主要缺点是整个地狱将具有相同的红雾，而不是每个生物群系都有不同的雾气。
+above-bedrock-nether-building: true
+
+# 强制客户端加载所有资源包（如果有）。
+# 如果设置为 false，则允许用户连接到服务器，即使他们不想下载资源包。
+force-resource-packs: true
+
+# 允许解锁 Xbox 成就。
+# 这会禁用所有 Bedrock 内游戏命令成功运行，否则 Bedrock 会认为您在作弊。
+xbox-achievements-enabled: false
+
+# 是否记录玩家 IP 地址。
+log-player-ip-addresses: true
+
+# 是否向控制台和操作员提示新的 Geyser 版本可用，该版本支持此 Geyser 版本不支持的 Bedrock 版本。
+# 建议保持此选项启用，因为许多 Bedrock 平台都会自动更新。
+notify-on-new-bedrock-update: true
+
+# 用于标记基岩版玩家库存中不可用槽位的物品。例如，创造模式下的 2x2 制作栏，
+# 或尺寸与通常的 3x9 不同的自定义库存菜单。默认为障碍方块。
+unusable-space-block: minecraft:barrier
+
+# bStats 是一个完全匿名的统计跟踪器，仅跟踪有关 Geyser 的基本信息，
+# 例如在线人数、使用 Geyser 的服务器数量、正在使用的操作系统等。
+# 您可以在此了解有关 bStats 的更多信息：https://bstats.org/。
+# https://bstats.org/plugin/server-implementation/GeyserMC
+metrics:
+  # 是否启用统计信息
+  enabled: true
+  # 服务器的 UUID，不要更改！
+  uuid: 7fa97945-dfef-4ee2-8d3b-d1b91c7a09e0
+
+# 高级选项 - 除非您知道自己在做什么，否则不要触碰！
+
+# Geyser 在每个 Scoreboard 包后更新计分板，但在 Geyser 尝试处理
+# 大量计分板包每秒可能会导致严重的延迟。
+# 此选项允许您指定在每秒多少个 Scoreboard 包后，计分板更新将被限制为每秒四次更新。
+scoreboard-packet-threshold: 20
+
+# 允许来自 ProxyPass 和 Waterdog 的连接。
+# 有关帮助，请参阅 https://www.spigotmc.org/wiki/firewall-guide/ - 使用 UDP 而不是 TCP。
+enable-proxy-connections: false
+
+# 互联网支持的最大 MTU 为 1492，但可能会导致数据包分段问题。
+# 1400 是默认值。
+mtu: 1400
+
+# 是否在创建 TCP 连接时直接连接到 Java 服务器，而不创建 TCP 连接。
+# 除非插件与数据包或网络接口不正常工作，否则只有在此时禁用它。
+# 如果在插件版本上启用，将忽略远程地址和端口部分
+# 如果在插件版本上禁用，预期会降低性能并增加延迟
+use-direct-connection: true
+
+# 是否应尝试为基岩版玩家禁用压缩。这应该是有益的，因为在未处理 Java 数据包的情况下没有必要压缩数据
+# 这要求 use-direct-connection 为 true。
+disable-compression: true
+
+# 配置文件的版本，不知道的别动。
+config-version: 4
+```
+
+1. 修改完了以后再次启动。
+1. 在控制台输入 **geyser version** 查看基岩版所支持的版本
+1. 然后在 **[苦力怕BBS下载界面](https://mcapks.net/)** 下载该版本。
+1. 然后输入你电脑的IP并加上你所设置的基岩版端口连接
+1. 如果连接成功就配置完了。
+
+### 示例(离线版)
+
+#### **BungeeCord**配置文件
+
+```ini
+server_connect_timeout: 8000
+enforce_secure_profile: false
+remote_ping_cache: -1
+forge_support: false
+player_limit: -1
+permissions:
+  default:
+  - bungeecord.command.list
+  - bungeecord.command.server
+  admin:
+  - bungeecord.command.alert
+  - bungeecord.command.end
+  - bungeecord.command.ip
+  - bungeecord.command.reload
+  - bungeecord.command.kick
+  - bungeecord.command.send
+  - bungeecord.command.find
+timeout: 30000
+log_commands: false
+network_compression_threshold: -1
+online_mode: false
+servers:
+  survival:
+    motd: '123'
+    address: localhost:25565
+    restricted: false
+listeners:
+- query_port: 25577
+  motd: '123'
+  tab_list: GLOBAL_PING
+  query_enabled: true
+  proxy_protocol: false
+  forced_hosts:
+    pvp.md-5.net: pvp
+  ping_passthrough: true
+  priorities:
+  - survival
+  bind_local_address: true
+  host: 0.0.0.0:25577
+  max_players: -1
+  tab_size: 64
+  force_default_server: true
+prevent_proxy_connections: false
+ip_forward: true
+remote_ping_timeout: 8000
+reject_transfers: false
+disabled_commands:
+- disabledcommandhere
+connection_throttle: 1000
+stats: 38083061-b88a-431a-a3a3-7b88f1e15e79
+connection_throttle_limit: 2
+groups:
+  1234567890:
+  - admin
+log_pings: false
+```
+#### **Geyser-BungeeCord** 配置文件
+
+```ini
+# --------------------------------
+# Geyser Configuration File
+#
+# A bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition.
+#
+# GitHub: https://github.com/GeyserMC/Geyser
+# Discord: https://discord.gg/geysermc
+# Wiki: https://wiki.geysermc.org/
+#
+# NOTICE: See https://wiki.geysermc.org/geyser/setup/ for the setup guide. Many video tutorials are outdated.
+# In most cases, especially with server hosting providers, further hosting-specific configuration is required.
+# --------------------------------
+
+bedrock:
+  # The IP address that will listen for connections.
+  # Generally, you should only uncomment and change this if you want to limit what IPs can connect to your server.
+  #address: 0.0.0.0
+  # The port that will listen for connections
+  port: 25577
+  # Some hosting services change your Java port everytime you start the server and require the same port to be used for Bedrock.
+  # This option makes the Bedrock port the same as the Java port every time you start the server.
+  # This option is for the plugin version only.
+  clone-remote-port: false
+  # The MOTD that will be broadcasted to Minecraft: Bedrock Edition clients. This is irrelevant if "passthrough-motd" is set to true
+  # If either of these are empty, the respective string will default to "Geyser"
+  motd1: "Geyser"
+  motd2: "Another Geyser server."
+  # The Server Name that will be sent to Minecraft: Bedrock Edition clients. This is visible in both the pause menu and the settings menu.
+  server-name: "Geyser server"
+  # How much to compress network traffic to the Bedrock client. The higher the number, the more CPU usage used, but
+  # the smaller the bandwidth used. Does not have any effect below -1 or above 9. Set to -1 to disable.
+  compression-level: 6
+  # The port to broadcast to Bedrock clients with the MOTD that they should use to connect to the server.
+  # DO NOT uncomment and change this unless Geyser runs on a different internal port than the one that is used to connect.
+  # broadcast-port: 30000
+  # Whether to enable PROXY protocol or not for clients. You DO NOT WANT this feature unless you run UDP reverse proxy
+  # in front of your Geyser instance.
+  enable-proxy-protocol: false
+  # A list of allowed PROXY protocol speaking proxy IP addresses/subnets. Only effective when "enable-proxy-protocol" is enabled, and
+  # should really only be used when you are not able to use a proper firewall (usually true with shared hosting providers etc.).
+  # Keeping this list empty means there is no IP address whitelist.
+  # IP addresses, subnets, and links to plain text files are supported.
+  #proxy-protocol-whitelisted-ips: [ "127.0.0.1", "172.18.0.0/16", "https://example.com/whitelist.txt" ]
+remote:
+  # The IP address of the remote (Java Edition) server
+  # If it is "auto", for standalone version the remote address will be set to 127.0.0.1,
+  # for plugin versions, it is recommended to keep this as "auto" so Geyser will automatically configure address, port, and auth-type.
+  # Leave as "auto" if floodgate is installed.
+  address: auto
+  # The port of the remote (Java Edition) server
+  # For plugin versions, if address has been set to "auto", the port will also follow the server's listening port.
+  port: 25577
+  # Authentication type. Can be offline, online, or floodgate (see https://github.com/GeyserMC/Geyser/wiki/Floodgate).
+  # For plugin versions, it's recommended to keep the `address` field to "auto" so Floodgate support is automatically configured.
+  # If Floodgate is installed and `address:` is set to "auto", then "auth-type: floodgate" will automatically be used.
+  auth-type: offline
+  # Allow for password-based authentication methods through Geyser. Only useful in online mode.
+  # If this is false, users must authenticate to Microsoft using a code provided by Geyser on their desktop.
+  allow-password-authentication: false
+  # Whether to enable PROXY protocol or not while connecting to the server.
+  # This is useful only when:
+  # 1) Your server supports PROXY protocol (it probably doesn't)
+  # 2) You run Velocity or BungeeCord with the option enabled in the proxy's main config.
+  # IF YOU DON'T KNOW WHAT THIS IS, DON'T TOUCH IT!
+  use-proxy-protocol: false
+  # Forward the hostname that the Bedrock client used to connect over to the Java server
+  # This is designed to be used for forced hosts on proxies
+  forward-hostname: false
+
+# Floodgate uses encryption to ensure use from authorised sources.
+# This should point to the public key generated by Floodgate (BungeeCord, Spigot or Velocity)
+# You can ignore this when not using Floodgate.
+# If you're using a plugin version of Floodgate on the same server, the key will automatically be picked up from Floodgate.
+floodgate-key-file: key.pem
+
+# For online mode authentication type only.
+# Stores a list of Bedrock players that should have their Java Edition account saved after login.
+# This saves a token that can be reused to authenticate the player later. This does not save emails or passwords,
+# but you should still be cautious when adding to this list and giving others access to this Geyser instance's files.
+# Removing a name from this list will delete its cached login information on the next Geyser startup.
+# The file that tokens will be saved in is in the same folder as this config, named "saved-refresh-tokens.json".
+saved-user-logins:
+  - ThisExampleUsernameShouldBeLongEnoughToNeverBeAnXboxUsername
+  - ThisOtherExampleUsernameShouldAlsoBeLongEnough
+
+# Specify how many seconds to wait while user authorizes Geyser to access their Microsoft account.
+# User is allowed to disconnect from the server during this period.
+pending-authentication-timeout: 120
+
+# Bedrock clients can freeze when opening up the command prompt for the first time if given a lot of commands.
+# Disabling this will prevent command suggestions from being sent and solve freezing for Bedrock clients.
+command-suggestions: true
+
+# The following three options enable "ping passthrough" - the MOTD, player count and/or protocol name gets retrieved from the Java server.
+# Relay the MOTD from the remote server to Bedrock players.
+passthrough-motd: true
+# Relay the player count and max players from the remote server to Bedrock players.
+passthrough-player-counts: true
+# Enable LEGACY ping passthrough. There is no need to enable this unless your MOTD or player count does not appear properly.
+# This option does nothing on standalone.
+legacy-ping-passthrough: true
+# How often to ping the remote server, in seconds. Only relevant for standalone or legacy ping passthrough.
+# Increase if you are getting BrokenPipe errors.
+ping-passthrough-interval: 3
+
+# Whether to forward player ping to the server. While enabling this will allow Bedrock players to have more accurate
+# ping, it may also cause players to time out more easily.
+forward-player-ping: true
+
+# Maximum amount of players that can connect. This is only visual at this time and does not actually limit player count.
+max-players: 32
+
+# If debug messages should be sent through console
+debug-mode: false
+
+# Allow a fake cooldown indicator to be sent. Bedrock players otherwise do not see a cooldown as they still use 1.8 combat.
+# Please note: if the cooldown is enabled, some users may see a black box during the cooldown sequence, like below:
+# https://cdn.discordapp.com/attachments/613170125696270357/957075682230419466/Screenshot_from_2022-03-25_20-35-08.png
+# This can be disabled by going into Bedrock settings under the accessibility tab and setting "Text Background Opacity" to 0
+# This setting can be set to "title", "actionbar" or "false"
+show-cooldown: title
+
+# Controls if coordinates are shown to players.
+show-coordinates: true
+
+# Whether Bedrock players are blocked from performing their scaffolding-style bridging.
+disable-bedrock-scaffolding: false
+
+# If set, when a Bedrock player performs any emote, it will swap the offhand and mainhand items, just like the Java Edition keybind
+# There are three options this can be set to:
+# disabled - the default/fallback, which doesn't apply this workaround
+# no-emotes - emotes will NOT be sent to other Bedrock clients and offhand will be swapped. This effectively disables all emotes from being seen.
+# emotes-and-offhand - emotes will be sent to Bedrock clients and offhand will be swapped
+emote-offhand-workaround: "emotes-and-offhand"
+
+# The default locale if we dont have the one the client requested. Uncomment to not use the default system language.
+# default-locale: zh_cn
+
+# Specify how many days images will be cached to disk to save downloading them from the internet.
+# A value of 0 is disabled. (Default: 0)
+cache-images: 0
+
+# Allows custom skulls to be displayed. Keeping them enabled may cause a performance decrease on older/weaker devices.
+allow-custom-skulls: true
+
+# The maximum number of custom skulls to be displayed per player. Increasing this may decrease performance on weaker devices.
+# Setting this to -1 will cause all custom skulls to be displayed regardless of distance or number.
+max-visible-custom-skulls: 128
+
+# The radius in blocks around the player in which custom skulls are displayed.
+custom-skull-render-distance: 32
+
+# Whether to add any items and blocks which normally does not exist in Bedrock Edition.
+# This should only need to be disabled if using a proxy that does not use the "transfer packet" style of server switching.
+# If this is disabled, furnace minecart items will be mapped to hopper minecart items.
+# Geyser's block, item, and skull mappings systems will also be disabled.
+# This option requires a restart of Geyser in order to change its setting.
+add-non-bedrock-items: true
+
+# Bedrock prevents building and displaying blocks above Y127 in the Nether.
+# This config option works around that by changing the Nether dimension ID to the End ID. 
+# The main downside to this is that the entire Nether will have the same red fog rather than having different fog for each biome.
+above-bedrock-nether-building: true
+
+# Force clients to load all resource packs if there are any.
+# If set to false, it allows the user to connect to the server even if they don't
+# want to download the resource packs.
+force-resource-packs: true
+
+# Allows Xbox achievements to be unlocked.
+xbox-achievements-enabled: false
+
+# Whether player IP addresses will be logged by the server.
+log-player-ip-addresses: true
+
+# Whether to alert the console and operators that a new Geyser version is available that supports a Bedrock version
+# that this Geyser version does not support. It's recommended to keep this option enabled, as many Bedrock platforms
+# auto-update.
+notify-on-new-bedrock-update: true
+
+# Which item to use to mark unavailable slots in a Bedrock player inventory. Examples of this are the 2x2 crafting grid while in creative,
+# or custom inventory menus with sizes different from the usual 3x9. A barrier block is the default item.
+unusable-space-block: minecraft:barrier
+
+# bStats is a stat tracker that is entirely anonymous and tracks only basic information
+# about Geyser, such as how many people are online, how many servers are using Geyser,
+# what OS is being used, etc. You can learn more about bStats here: https://bstats.org/.
+# https://bstats.org/plugin/server-implementation/GeyserMC
+metrics:
+  # If metrics should be enabled
+  enabled: true
+  # UUID of server, don't change!
+  uuid: d096b28d-fa6f-479f-971b-c6ae3b5b1489
+
+# ADVANCED OPTIONS - DO NOT TOUCH UNLESS YOU KNOW WHAT YOU ARE DOING!
+
+# Geyser updates the Scoreboard after every Scoreboard packet, but when Geyser tries to handle
+# a lot of scoreboard packets per second can cause serious lag.
+# This option allows you to specify after how many Scoreboard packets per seconds
+# the Scoreboard updates will be limited to four updates per second.
+scoreboard-packet-threshold: 20
+
+# Allow connections from ProxyPass and Waterdog.
+# See https://www.spigotmc.org/wiki/firewall-guide/ for assistance - use UDP instead of TCP.
+enable-proxy-connections: false
+
+# The internet supports a maximum MTU of 1492 but could cause issues with packet fragmentation.
+# 1400 is the default.
+mtu: 1492
+
+# Whether to connect directly into the Java server without creating a TCP connection.
+# This should only be disabled if a plugin that interfaces with packets or the network does not work correctly with Geyser.
+# If enabled on plugin versions, the remote address and port sections are ignored
+# If disabled on plugin versions, expect performance decrease and latency increase
+use-direct-connection: true
+
+# Whether Geyser should attempt to disable compression for Bedrock players. This should be a benefit as there is no need to compress data
+# when Java packets aren't being handled over the network.
+# This requires use-direct-connection to be true.
+disable-compression: true
+
+config-version: 4
+
+```
+
+### 配置樱花FRP
+
+请参考 [创建隧道](/app/mc.md#create-tunnel) 一节，在运行服务端的机器上创建并启动指向本机 `25577` 端口的 TCP 隧道和指向本机 `25577` 端口的 UDP 隧道。
+
+## 如何获取访问者的真实IP(示例)
+
+### **BungeeCord** 配置文件
+
+```ini
+server_connect_timeout: 8000
+enforce_secure_profile: false
+remote_ping_cache: -1
+forge_support: false
+player_limit: -1
+permissions:
+  default:
+  - bungeecord.command.list
+  - bungeecord.command.server
+  admin:
+  - bungeecord.command.alert
+  - bungeecord.command.end
+  - bungeecord.command.ip
+  - bungeecord.command.reload
+  - bungeecord.command.kick
+  - bungeecord.command.send
+  - bungeecord.command.find
+timeout: 30000
+log_commands: false
+network_compression_threshold: -1
+online_mode: false
+servers:
+  survival:
+    motd: '123'
+    address: localhost:25565
+    restricted: false
+listeners:
+- query_port: 25577
+  motd: '123'
+  tab_list: GLOBAL_PING
+  query_enabled: true
+  proxy_protocol: true
+  forced_hosts:
+    pvp.md-5.net: pvp
+  ping_passthrough: true
+  priorities:
+  - survival
+  bind_local_address: true
+  host: 0.0.0.0:25577
+  max_players: -1
+  tab_size: 64
+  force_default_server: true
+prevent_proxy_connections: false
+ip_forward: true
+remote_ping_timeout: 8000
+reject_transfers: false
+disabled_commands:
+- disabledcommandhere
+connection_throttle: 1000
+stats: 38083061-b88a-431a-a3a3-7b88f1e15e79
+connection_throttle_limit: 2
+groups:
+  1234567890:
+  - admin
+log_pings: false
+
+```
+
+### **Geyser-BungeeCord** 配置文件
+
+```ini
+# --------------------------------
+# Geyser Configuration File
+#
+# A bridge between Minecraft: Bedrock Edition and Minecraft: Java Edition.
+#
+# GitHub: https://github.com/GeyserMC/Geyser
+# Discord: https://discord.gg/geysermc
+# Wiki: https://wiki.geysermc.org/
+#
+# NOTICE: See https://wiki.geysermc.org/geyser/setup/ for the setup guide. Many video tutorials are outdated.
+# In most cases, especially with server hosting providers, further hosting-specific configuration is required.
+# --------------------------------
+
+bedrock:
+  # The IP address that will listen for connections.
+  # Generally, you should only uncomment and change this if you want to limit what IPs can connect to your server.
+  #address: 0.0.0.0
+  # The port that will listen for connections
+  port: 25577
+  # Some hosting services change your Java port everytime you start the server and require the same port to be used for Bedrock.
+  # This option makes the Bedrock port the same as the Java port every time you start the server.
+  # This option is for the plugin version only.
+  clone-remote-port: false
+  # The MOTD that will be broadcasted to Minecraft: Bedrock Edition clients. This is irrelevant if "passthrough-motd" is set to true
+  # If either of these are empty, the respective string will default to "Geyser"
+  motd1: "Geyser"
+  motd2: "Another Geyser server."
+  # The Server Name that will be sent to Minecraft: Bedrock Edition clients. This is visible in both the pause menu and the settings menu.
+  server-name: "Geyser server"
+  # How much to compress network traffic to the Bedrock client. The higher the number, the more CPU usage used, but
+  # the smaller the bandwidth used. Does not have any effect below -1 or above 9. Set to -1 to disable.
+  compression-level: 6
+  # The port to broadcast to Bedrock clients with the MOTD that they should use to connect to the server.
+  # DO NOT uncomment and change this unless Geyser runs on a different internal port than the one that is used to connect.
+  # broadcast-port: 30000
+  # Whether to enable PROXY protocol or not for clients. You DO NOT WANT this feature unless you run UDP reverse proxy
+  # in front of your Geyser instance.
+  enable-proxy-protocol: true
+  # A list of allowed PROXY protocol speaking proxy IP addresses/subnets. Only effective when "enable-proxy-protocol" is enabled, and
+  # should really only be used when you are not able to use a proper firewall (usually true with shared hosting providers etc.).
+  # Keeping this list empty means there is no IP address whitelist.
+  # IP addresses, subnets, and links to plain text files are supported.
+  #proxy-protocol-whitelisted-ips: [ "127.0.0.1", "172.18.0.0/16", "https://example.com/whitelist.txt" ]
+remote:
+  # The IP address of the remote (Java Edition) server
+  # If it is "auto", for standalone version the remote address will be set to 127.0.0.1,
+  # for plugin versions, it is recommended to keep this as "auto" so Geyser will automatically configure address, port, and auth-type.
+  # Leave as "auto" if floodgate is installed.
+  address: auto
+  # The port of the remote (Java Edition) server
+  # For plugin versions, if address has been set to "auto", the port will also follow the server's listening port.
+  port: 25577
+  # Authentication type. Can be offline, online, or floodgate (see https://github.com/GeyserMC/Geyser/wiki/Floodgate).
+  # For plugin versions, it's recommended to keep the `address` field to "auto" so Floodgate support is automatically configured.
+  # If Floodgate is installed and `address:` is set to "auto", then "auth-type: floodgate" will automatically be used.
+  auth-type: offline
+  # Allow for password-based authentication methods through Geyser. Only useful in online mode.
+  # If this is false, users must authenticate to Microsoft using a code provided by Geyser on their desktop.
+  allow-password-authentication: false
+  # Whether to enable PROXY protocol or not while connecting to the server.
+  # This is useful only when:
+  # 1) Your server supports PROXY protocol (it probably doesn't)
+  # 2) You run Velocity or BungeeCord with the option enabled in the proxy's main config.
+  # IF YOU DON'T KNOW WHAT THIS IS, DON'T TOUCH IT!
+  use-proxy-protocol: true
+  # Forward the hostname that the Bedrock client used to connect over to the Java server
+  # This is designed to be used for forced hosts on proxies
+  forward-hostname: false
+
+# Floodgate uses encryption to ensure use from authorised sources.
+# This should point to the public key generated by Floodgate (BungeeCord, Spigot or Velocity)
+# You can ignore this when not using Floodgate.
+# If you're using a plugin version of Floodgate on the same server, the key will automatically be picked up from Floodgate.
+floodgate-key-file: key.pem
+
+# For online mode authentication type only.
+# Stores a list of Bedrock players that should have their Java Edition account saved after login.
+# This saves a token that can be reused to authenticate the player later. This does not save emails or passwords,
+# but you should still be cautious when adding to this list and giving others access to this Geyser instance's files.
+# Removing a name from this list will delete its cached login information on the next Geyser startup.
+# The file that tokens will be saved in is in the same folder as this config, named "saved-refresh-tokens.json".
+saved-user-logins:
+  - ThisExampleUsernameShouldBeLongEnoughToNeverBeAnXboxUsername
+  - ThisOtherExampleUsernameShouldAlsoBeLongEnough
+
+# Specify how many seconds to wait while user authorizes Geyser to access their Microsoft account.
+# User is allowed to disconnect from the server during this period.
+pending-authentication-timeout: 120
+
+# Bedrock clients can freeze when opening up the command prompt for the first time if given a lot of commands.
+# Disabling this will prevent command suggestions from being sent and solve freezing for Bedrock clients.
+command-suggestions: true
+
+# The following three options enable "ping passthrough" - the MOTD, player count and/or protocol name gets retrieved from the Java server.
+# Relay the MOTD from the remote server to Bedrock players.
+passthrough-motd: true
+# Relay the player count and max players from the remote server to Bedrock players.
+passthrough-player-counts: true
+# Enable LEGACY ping passthrough. There is no need to enable this unless your MOTD or player count does not appear properly.
+# This option does nothing on standalone.
+legacy-ping-passthrough: true
+# How often to ping the remote server, in seconds. Only relevant for standalone or legacy ping passthrough.
+# Increase if you are getting BrokenPipe errors.
+ping-passthrough-interval: 3
+
+# Whether to forward player ping to the server. While enabling this will allow Bedrock players to have more accurate
+# ping, it may also cause players to time out more easily.
+forward-player-ping: true
+
+# Maximum amount of players that can connect. This is only visual at this time and does not actually limit player count.
+max-players: 32
+
+# If debug messages should be sent through console
+debug-mode: false
+
+# Allow a fake cooldown indicator to be sent. Bedrock players otherwise do not see a cooldown as they still use 1.8 combat.
+# Please note: if the cooldown is enabled, some users may see a black box during the cooldown sequence, like below:
+# https://cdn.discordapp.com/attachments/613170125696270357/957075682230419466/Screenshot_from_2022-03-25_20-35-08.png
+# This can be disabled by going into Bedrock settings under the accessibility tab and setting "Text Background Opacity" to 0
+# This setting can be set to "title", "actionbar" or "false"
+show-cooldown: title
+
+# Controls if coordinates are shown to players.
+show-coordinates: true
+
+# Whether Bedrock players are blocked from performing their scaffolding-style bridging.
+disable-bedrock-scaffolding: false
+
+# If set, when a Bedrock player performs any emote, it will swap the offhand and mainhand items, just like the Java Edition keybind
+# There are three options this can be set to:
+# disabled - the default/fallback, which doesn't apply this workaround
+# no-emotes - emotes will NOT be sent to other Bedrock clients and offhand will be swapped. This effectively disables all emotes from being seen.
+# emotes-and-offhand - emotes will be sent to Bedrock clients and offhand will be swapped
+emote-offhand-workaround: "emotes-and-offhand"
+
+# The default locale if we dont have the one the client requested. Uncomment to not use the default system language.
+# default-locale: zh_cn
+
+# Specify how many days images will be cached to disk to save downloading them from the internet.
+# A value of 0 is disabled. (Default: 0)
+cache-images: 0
+
+# Allows custom skulls to be displayed. Keeping them enabled may cause a performance decrease on older/weaker devices.
+allow-custom-skulls: true
+
+# The maximum number of custom skulls to be displayed per player. Increasing this may decrease performance on weaker devices.
+# Setting this to -1 will cause all custom skulls to be displayed regardless of distance or number.
+max-visible-custom-skulls: 128
+
+# The radius in blocks around the player in which custom skulls are displayed.
+custom-skull-render-distance: 32
+
+# Whether to add any items and blocks which normally does not exist in Bedrock Edition.
+# This should only need to be disabled if using a proxy that does not use the "transfer packet" style of server switching.
+# If this is disabled, furnace minecart items will be mapped to hopper minecart items.
+# Geyser's block, item, and skull mappings systems will also be disabled.
+# This option requires a restart of Geyser in order to change its setting.
+add-non-bedrock-items: true
+
+# Bedrock prevents building and displaying blocks above Y127 in the Nether.
+# This config option works around that by changing the Nether dimension ID to the End ID. 
+# The main downside to this is that the entire Nether will have the same red fog rather than having different fog for each biome.
+above-bedrock-nether-building: true
+
+# Force clients to load all resource packs if there are any.
+# If set to false, it allows the user to connect to the server even if they don't
+# want to download the resource packs.
+force-resource-packs: true
+
+# Allows Xbox achievements to be unlocked.
+xbox-achievements-enabled: false
+
+# Whether player IP addresses will be logged by the server.
+log-player-ip-addresses: true
+
+# Whether to alert the console and operators that a new Geyser version is available that supports a Bedrock version
+# that this Geyser version does not support. It's recommended to keep this option enabled, as many Bedrock platforms
+# auto-update.
+notify-on-new-bedrock-update: true
+
+# Which item to use to mark unavailable slots in a Bedrock player inventory. Examples of this are the 2x2 crafting grid while in creative,
+# or custom inventory menus with sizes different from the usual 3x9. A barrier block is the default item.
+unusable-space-block: minecraft:barrier
+
+# bStats is a stat tracker that is entirely anonymous and tracks only basic information
+# about Geyser, such as how many people are online, how many servers are using Geyser,
+# what OS is being used, etc. You can learn more about bStats here: https://bstats.org/.
+# https://bstats.org/plugin/server-implementation/GeyserMC
+metrics:
+  # If metrics should be enabled
+  enabled: true
+  # UUID of server, don't change!
+  uuid: d096b28d-fa6f-479f-971b-c6ae3b5b1489
+
+# ADVANCED OPTIONS - DO NOT TOUCH UNLESS YOU KNOW WHAT YOU ARE DOING!
+
+# Geyser updates the Scoreboard after every Scoreboard packet, but when Geyser tries to handle
+# a lot of scoreboard packets per second can cause serious lag.
+# This option allows you to specify after how many Scoreboard packets per seconds
+# the Scoreboard updates will be limited to four updates per second.
+scoreboard-packet-threshold: 20
+
+# Allow connections from ProxyPass and Waterdog.
+# See https://www.spigotmc.org/wiki/firewall-guide/ for assistance - use UDP instead of TCP.
+enable-proxy-connections: false
+
+# The internet supports a maximum MTU of 1492 but could cause issues with packet fragmentation.
+# 1400 is the default.
+mtu: 1492
+
+# Whether to connect directly into the Java server without creating a TCP connection.
+# This should only be disabled if a plugin that interfaces with packets or the network does not work correctly with Geyser.
+# If enabled on plugin versions, the remote address and port sections are ignored
+# If disabled on plugin versions, expect performance decrease and latency increase
+use-direct-connection: true
+
+# Whether Geyser should attempt to disable compression for Bedrock players. This should be a benefit as there is no need to compress data
+# when Java packets aren't being handled over the network.
+# This requires use-direct-connection to be true.
+disable-compression: true
+
+config-version: 4
+
+```
+
+### 配置樱花FRP
+
+请参考 [获取访问者的真实IP](/bestpractice/realip.md#proxy-protocol) 一节，在运行服务端的机器上创建并启动指向本机 `25577` 端口的 TCP 隧道和指向本机 `25577` 端口的 UDP 隧道。
+
+## 结束话语(个人)
+
+1. 动态公网IPV4是真的难申请。
+1. IPV6之前跟流畅现在很卡了已经不推荐了。
+1. so才想到FRP然后再把域名套到FRP上这样的话就不会有其他问题了。
+1. 基本跟公网IP没什么区别，而且更稳定。
