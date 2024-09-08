@@ -30,6 +30,11 @@
 
 ## 查看本地端口并创建隧道 {#create-tunnel}
 
+::: tip 关于 Synology Drive Server 的提示
+此教程中查看的是 DSM 管理面板的端口，指向该端口的隧道只能通过浏览器和 **DS File** 应用访问  
+如您需要通过 **Synology Drive Client** 进行数据同步，请创建指向 `6690` 端口的隧道并连接至该隧道地址
+:::
+
 :::: tabs
 
 @tab DSM 7
