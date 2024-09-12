@@ -84,6 +84,7 @@ const sections = {
 					{ text: '我的世界 (Minecraft)', link: '/app/mc.html' },
 					{ text: '幻兽帕鲁 (Palworld)', link: '/app/palworld.html' },
 					{ text: '星露谷物语 (Stardew Valley)', link: '/app/stardew-valley.html' },
+					{ text: '戴森球计划', link: '/app/dysonsphere.html' },
 				],
 			},
 			{
