@@ -377,17 +377,13 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 请 **对照日志内容** 选择 **对应的** 修复方案，日志不匹配时请勿随意尝试下方的修复方案
 :::
 
-检查崩溃日志，如果看到下方内容则说明系统中 WPF 组件有损坏：
+检查崩溃日志，如果开头是如下内容，请展开问题 A 查看修复方案：
 
 ```log
 异常信息: System.TypeLoadException
    在 System.Windows.Automation.Peers.AutomationPeer.Initialize()
    在 System.Windows.Automation.Peers.AutomationPeer..cctor()
-```
 
-再往下看几行，如果看到下方内容，请展开问题 A 查看修复方案：
-
-```log
 异常信息: System.TypeInitializationException
    在 System.Windows.Controls.ComboBox.OnSelectionChanged(System.Windows.Controls.SelectionChangedEventArgs)
 ```
@@ -432,10 +428,16 @@ System.TypeLoadException:
 
 :::
 
-否则，如果日志以下述内容开头，请展开问题 B 查看修复方案：
+否则，如果日志以下述任一内容开头，请展开问题 B 查看修复方案：
 
 ```log
 异常信息: System.BadImageFormatException
+```
+
+```log
+异常信息: System.IO.FileNotFoundException
+   在 System.Windows.UIElement.RegisterEvents(System.Type)
+   在 System.Windows.UIElement..cctor()
 ```
 
 :::: details 问题 B：系统 .NET Framework 组件损坏或缺失
@@ -458,7 +460,12 @@ Dism /Online /Cleanup-Image /ScanHealth
 
 ![](../_images/common/windows-dism-check.png)
 
-如果需要进行 DISM 修复，再粘贴下方的命令，否则跳过这个步骤：
+修复 .NET Framework 组件通常需要一步或两步：
+
+- 如果需要 DISM 修复就按顺序进行 `1. DISM 修复` 和 `2. SFC 修复` 两个步骤
+- 否则，直接进行下面的 `2. SFC 修复` 步骤即可，这样可以节省一些时间
+
+**1. DISM 修复**
 
 ::: tip 请确保 Windows 更新能正常工作
 进行 DISM 修复前，请先确保 **Windows 更新** 可以正常工作，否则修复可能会失败  
@@ -474,6 +481,8 @@ DISM 修复通常需要十几分钟，并且可能需要从 Windows 更新下载
 ![](../_images/common/windows-dism-repair-success.png)
 
 如果看到错误提示，请尝试重新运行上述命令，如果多次尝试后仍然无法修复，请加入公开用户反馈群联系管理员远程检查。
+
+**2. SFC 修复**
 
 粘贴下方的命令并检查输出内容（如果前面的步骤中提示需要重启，请先重启电脑）：
 
