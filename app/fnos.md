@@ -84,7 +84,7 @@
 
    ![](../_images/common/remote-mgmt-nas-started.png)
 
-1. 使用 `https://` 加上日志中显示的连接方式即可远程访问您的 QNAP NAS：
+1. 使用 `https://` 加上日志中显示的连接方式即可远程访问您的飞牛系统：
 
    ![](./_images/fnos-login-remote.png)
 
