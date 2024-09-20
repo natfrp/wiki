@@ -14,14 +14,20 @@ function log_E {
 
 function ask_for_creds {
     read -e -p "请输入 SakuraFrp 的 访问密钥: " api_key
-    read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass
-
     if [[ ${#api_key} -lt 16 ]]; then
         log_E "访问密钥至少需要 16 字符, 请从管理面板直接复制粘贴"
         exit 1
     fi
+
+    read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass
     if [[ ${#remote_pass} -lt 8 ]]; then
         log_E "远程管理密码至少需要 8 字符"
+        exit 1
+    fi
+
+    read -e -p "请再次输入远程管理密码: " remote_pass_confirm
+    if [[ $remote_pass != $remote_pass_confirm ]]; then
+        log_E "两次输入的远程管理密码不一致, 请确认知晓自己正在输入的内容"
         exit 1
     fi
 }
