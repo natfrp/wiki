@@ -99,7 +99,7 @@ TOTP 和 访问密码可以同时配置以实现 2FA，也可以单独配置一�
 - [SakuraFrp 认证代理](/offtopic/auth-guest.md): 适用于 Windows/Linux/macOS ，配置后只需打开生成的程序即可自动完成访问认证
 - [SakuraFrp 认证代理微件](/offtopic/auth-widget.md): 适用于 Android，配置后只需点击小部件即可自动完成访问认证并打开后续应用
 
-除此之外，您可以参考下面的示例请求配置 Tasker(安卓) 或 Shortcuts(iOS/macOS) 或 其他自定义脚本方案 自动完成认证。
+除此之外，您可以参考下面的示例请求配置 Tasker(安卓) 或 快捷指令/捷径(iOS/macOS) 或 其他自定义脚本方案 自动完成认证。
 
 ```bash
 curl -k -X POST \
@@ -108,3 +108,8 @@ curl -k -X POST \
    -d "totp=<TOTP 代码，如果需要>" \
    "https://<隧道地址>"
 ```
+
+如果您希望配置 iOS 的快捷指令却发现无从下手，可以参考下面的图片尝试一下：  
+基于我们对部分苹果用户的了解，我们为这张截图添加了详尽的说明，希望能够帮助您理解配置操作。
+
+![](./_images/auth-shortcut-example.png)
