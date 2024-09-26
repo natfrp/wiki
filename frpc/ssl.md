@@ -5,7 +5,8 @@
 1. 隧道启用了 [自动 HTTPS](/frpc/auto-https.md)，但服务访问者不支持（或不愿）忽略 **证书错误提示**
 1. 隧道启用了 [访问认证](/bestpractice/frpc-auth.md)，但需要避免认证页面的 **证书错误提示** 以增强安全性
 
-此页将介绍如何为 **frpc** 配置 SSL 证书来避免 **自动 HTTPS** 和 **访问认证** 功能的证书错误提示。如果您没有使用这些功能，此页的内容不适用于您碰到的问题。
+此页将介绍如何为 **frpc** 配置 SSL 证书来避免 **自动 HTTPS** 和 **访问认证** 功能的证书错误提示。  
+如果您没有使用这些功能，则 **此页的内容不适用于您**。
 
 ## 获取 SSL 证书 {#get-cert}
 
@@ -78,6 +79,10 @@ SSL 服务商 **不必** 是当前域名的注册商，按需选择适合您的�
 但是为了方便同时使用多张证书，您也可以在启动容器时指定一个外置存储，如 [启动器 Docker 使用指南](/launcher/usage.md#docker) 所示。
 
 然后您只需直接证书文件拷贝到被挂载的本地目录下的 `FrpcWorkingDirectory` 中即可（如果您参考使用指南配置，即为 `/etc/natfrp/FrpcWorkingDirectory`）。
+
+@tab 群晖套件
+
+工作目录为 `/var/packages/natfrp/var`。
 
 @tab systemd
 
