@@ -498,6 +498,33 @@ sfc /scannow
 
 ::::
 
+否则，如果日志以下述内容开头，请展开问题 C 查看修复方案：
+
+```log
+异常信息: System.Configuration.ConfigurationErrorsException
+   在 System.Configuration.ConfigurationSchemaErrors.ThrowIfErrors(Boolean)
+   在 System.Configuration.BaseConfigurationRecord.ThrowIfParseErrors(System.Configuration.ConfigurationSchemaErrors)
+   在 System.Configuration.ClientConfigurationSystem.EnsureInit(System.String)
+```
+
+:::: details 问题 C：系统级 .NET Framework 配置文件损坏或缺失
+
+这种情况通常是由于电脑断电、强制关机等造成系统 `machine.config` 损坏或缺失导致的。
+
+分别前往下述两个文件夹：
+
+- `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config`
+- `C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config`
+
+在每个文件夹中都进行一次下面的检查：
+
+1. 检查 `machine.config` 文件是否存在，如果存在，将其改名为 `machine.config.bak`，否则直接跳到下一步
+1. 将同一个文件夹中的 `machine.config.default` 文件 **复制一份** 并重命名为 `machine.config`
+
+操作完成后再次尝试双击启动器图标查看是否能正常打开。如果仍然存在问题，请加入公开用户反馈群联系管理员远程检查。
+
+::::
+
 如果您的崩溃日志不符合上方的情况，请加入公开用户反馈群联系管理员远程检查，不要随意尝试上方的修复方案。
 
 ### 如何修改启动器的配置文件 {#windows-edit-config}
