@@ -94,7 +94,7 @@ fi
 # Check SELinux
 if command -v getenforce &>/dev/null; then
     if [[ $(getenforce) == "Enforcing" ]]; then
-        log_E "SELinux 处于启用状态, 请安装 Docker 后重新运行脚本"
+        log_E "SELinux 处于启用状态, 为避免出现问题, 请安装 Docker 后重新运行脚本"
         exit 1
     fi
 fi
@@ -207,6 +207,15 @@ systemctl daemon-reload
 
 # Update config file
 config_file=/home/natfrp/.config/natfrp-service/config.json
+if [[ -f $config_file ]]; then
+    log_W "已存在 SakuraFrp 启动器配置文件"
+    read -p " - 是否清空设置? 这可能有助于修复问题: [y/N] " -r choice
+
+    if [[ $choice =~ ^[Yy]$ ]]; then
+        rm -f $config_file
+    fi
+fi
+
 if [[ ! -f $config_file ]]; then
     mkdir -p /home/natfrp/.config/natfrp-service
     touch $config_file
