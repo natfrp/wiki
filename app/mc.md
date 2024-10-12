@@ -19,7 +19,7 @@
 
 ## Java 版局域网联机 {#java-lan}
 
-::: tips
+::: tip
 如果您需要长期托管一个服务器，那么使用 [独立服务端](/offtopic/mc-java-server.md) 可以为您提供更多的功能和更好的性能。
 :::
 
