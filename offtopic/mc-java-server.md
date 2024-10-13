@@ -518,3 +518,25 @@ java -Xmx4G -Xms4G -jar paper-1.21-119.jar
 取消掉 `快速编辑模式` 的勾选
 
 ![](./_images/mc-server-tip-cmdfastedit.png)
+
+## 补充内容 {#other-content}
+
+### Simple Voice Chat 简单语音聊天
+
+如果您使用 Simple Voice Chat 模组/插件来进行语音聊天，您需要为它单独开一条隧道并进行配置。
+
+1. 创建一个新的 **UDP** 隧道，设置本地端口选择 `和远程一致`，远程端口留空即可  
+   *请确认协议选择了 `UDP` 而不是 `TCP`，这与您的 MC 主隧道不同，如果选择不正确将无法正常使用*
+1. 创建后会随机生成一个远程端口及本地端口，请记下这个端口备用  
+   *这是一个五位数的数字，您可以在启动器界面中一个隧道的左下角找到这个端口号，或者在网页后台该条隧道 `UDP` 字样的后面找到。*
+1. 打开 Simple Voice Chat 的配置文件，找到 `port=` 项，将后面的数字修改为您刚刚看到的端口，修改完成后请不要关闭，还有下一步操作  
+   *对于 mod 版本 (Fabric/NeoForge/Forge/Quilt)，配置文件在 `config/voicechat/voicechat-server.properties`  
+   对于插件版本 (Paper/Spigot/Bukkit)，配置文件在 `plugins/voicechat/voicechat-server.properties`*
+1. 开启隧道，类比前面的方法启动隧道并复制 **新隧道的** 连接信息  
+   *请注意不要复制到 MC 主隧道或者其他隧道的连接信息*
+1. 找到配置文件 `voice_host=` 项，将后面的内容修改为您刚刚复制的连接信息  
+   *请注意不要有空格或其他不对劲的特殊字符*  
+   *结果应该形如 `voice_host=frp-xxx.top:12345`*
+1. **保存配置文件**，重启服务器
+   *请一定要确定保存了，不保存是不会生效的*
+1. 联机时请确保 **您新创建的隧道是开启状态**，否则您将无法正常使用语音聊天
