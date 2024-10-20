@@ -521,7 +521,7 @@ java -Xmx4G -Xms4G -jar paper-1.21-119.jar
 
 ## 补充内容 {#other-content}
 
-### Simple Voice Chat 简单语音聊天
+### Simple Voice Chat 简单语音聊天 {#simple-voice-chat}
 
 如果您使用 Simple Voice Chat 模组/插件来进行语音聊天，您需要为它单独开一条隧道并进行配置。
 
