@@ -218,7 +218,7 @@ fi
 
 if [[ ! -f $config_file ]]; then
     mkdir -p /home/natfrp/.config/natfrp-service
-    touch $config_file
+    echo '{}' > $config_file
 fi
 
 jq ". + {
