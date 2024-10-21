@@ -63,7 +63,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 
 请根据您游玩的版本和模组加载器选择对应的联机模组：
 - mcwifipnp 适用游戏版本: Forge: 1.15.2 ~ 1.21.1, Fabric&Quilt: 1.15.2 ~ 1.21.1, NeoForge: 1.20.2 ~ 1.21.1
-- LanServerProperties 适用游戏版本: Forge: 1.12.X ~ 1.20.4 1.21, fabric: 1.16.1 ~ 1.20.4 1.21, NeoForge: 1.21
+- LanServerProperties 适用游戏版本: Forge: 1.12.X ~ 1.21.1, Fabric: 1.16.1 ~ 1.21.1, NeoForge: 1.20.5 ~ 1.21.1
 - Server.Properties for LAN 适用游戏版本: Forge: 1.7.2 ~ 1.21
 
 :::: tabs
@@ -244,16 +244,6 @@ motd=
 
 如果并非受到了可靠的指导，其他设置请务必保持默认。
 
-### (可选) 启用子域绑定 {#subdomain-srv}
-
-::: tip
-启用子域绑定可以让您的连接方式从 `frp-xxx.top:xxxxx` 变成 `mc.u12345.nyat.app`。
-:::
-
-1. 根据 [子域绑定获取方法](/bestpractice/domain-bind.md#acquire) 获取一个属于您的子域名。
-2. 在 [绑定到隧道](/bestpractice/domain-bind.html#srv-for-apps) 时，选择您刚刚创建的 MC 隧道。
-3. 启动时的日志框中即可看到 `隧道已绑定 SRV 域名, 可通过 [mc.example.nyat.app] 进行连接` 的字样。
-
 ### 启用隧道并连接 {#start-tunnel}
 
 在您开游戏房间的同一台电脑上启动隧道即可，打开日志页面即可看到连接信息说明。
@@ -268,7 +258,7 @@ motd=
 :::
 
 ::: tip
-设置完后开启隧道，日志中会出现一行 “使用 \[frp-xxx.top:xxxxx\] 来连接到你的隧道” 的提示，客机使用这个连接: "frp-xxx.top:xxxxx" 来加入游戏。
+设置完后开启隧道，日志中会出现一行 `使用 \[frp-xxx.top:xxxxx\] 来连接到你的隧道` 的提示，客机使用这个连接: `frp-xxx.top:xxxxx` 来加入游戏。
 
 如果您可以看到 `隧道已绑定 SRV 域名, 可通过 [mc.example.nyat.app] 进行连接`，则您也可以通过输入 `mc.example.nyat.app` 加入游戏。
 :::

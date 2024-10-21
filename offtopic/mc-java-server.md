@@ -13,15 +13,15 @@
 对于不同的系统，安装 Java 环境的方法不尽相同。  
 对于 Windows 系统，您可以直接使用双击安装包的方式安装。
 
-不同版本的游戏对 Java 的版本需求也不同，见下：
+不同版本的 Minecraft 服务器对 Java 的版本需求也不同，见下：
 
 框图中的 Java 版本可点击，将带您下载 Adoptium 版本 Java 环境，**点击其中的 `.msi` 按钮 即可下载安装包**。
 
 ```flow
-st=>start: 选定客户端版本
-cond1=>condition: 小于 1.8？|approved
-cond2=>condition: 小于 1.17？|approved
-cond3=>condition: 小于 1.20.5？|approved
+st=>start: 选定服务端版本
+cond1=>condition: 相比于 1.8|approved
+cond2=>condition: 相比于 1.17|approved
+cond3=>condition: 相比于 1.20.5|approved
 unknown=>operation: 未知版本|invalid
 Java 8=>operation: Java 8|future:>https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=8
 Java 17=>operation: Java 17|rejected:>https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=17
@@ -29,11 +29,11 @@ Java 21=>operation: Java 21|current:>https://adoptium.net/zh-CN/temurin/releases
 
 st->cond1
 cond1(yes@小于, bottom)->unknown
-cond1(no@大于, right)->cond2
+cond1(no@大于或等于, right)->cond2
 cond2(yes@小于, bottom)->Java 8
-cond2(no@大于, right)->cond3
+cond2(no@大于或等于, right)->cond3
 cond3(yes@小于, bottom)->Java 17
-cond3(no@大于, right)->Java 21
+cond3(no@大于或等于, right)->Java 21
 ```
 
 ::: tip
@@ -41,7 +41,7 @@ cond3(no@大于, right)->Java 21
 ![](./_images/mc-server-install-adoptium.png)![](./_images/mc-server-install-zulu.png)
 :::
 
-下面为您另提供一些常用版本的 Windows 安装包下载链接，这些版本的主要区别是出品公司，请根据你的信任选择：
+下面为您另提供一些常用版本的 Windows 安装包下载链接，这些版本的主要区别是出品公司，请根据您的信任选择：
 
 :::: tabs
 
@@ -521,7 +521,7 @@ java -Xmx4G -Xms4G -jar paper-1.21-119.jar
 
 ## 补充内容 {#other-content}
 
-### Simple Voice Chat 简单语音聊天
+### Simple Voice Chat 简单语音聊天 {#simple-voice-chat}
 
 如果您使用 Simple Voice Chat 模组/插件来进行语音聊天，您需要为它单独开一条隧道并进行配置。
 
