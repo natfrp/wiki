@@ -28,7 +28,7 @@
 自 `v0.39.1-sakura-1.1` 版本起，可通过下述环境变量代替 `-f` 开关：
 
 | 变量名 | 说明 | 举例 |
-| --- | --- | --- |
+| :---: | --- | --- |
 | NATFRP_TOKEN | 访问密钥 | wdnmdtoken666666 |
 | NATFRP_TARGET | 逗号分割的隧道 ID 列表，详见 `-f` 开关 | 1234,6666,7777 |
 
@@ -40,8 +40,8 @@
 
 ::: details 上游兼容配置项
 
-| 选项 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
+| 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
+| :---: | :---: | :---: | --- |
 | server_addr | String | 0.0.0.0 | 服务器地址 |
 | server_port | Int | 7000 | 服务器端口 |
 | user | String | 空 | frpc 认证用户名<br>_* 连接 Sakura Frp 节点时应填写访问密钥_ |
@@ -63,31 +63,31 @@
 
 :::
 
-| 选项 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
+| 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
+| :---: | :---: | :---: | --- |
 | sakura_mode | Boolean | false | 启用 Sakura Frp 连接协议 |
-| persist_runid | Boolean | true | 根据本机特征 & 隧道信息生成唯一 RunID 以便快速重连 |
-| dynamic_key | Boolean | true | 启用 DKC，即使用 SM2 和 AES-128-GCM / AES-128-CFB 加密数据连接（如果启用数据加密）和控制连接<br>**关闭该选项会造成控制连接流量通过近乎明文的方式传输, 可能暴露您的访问密钥和服务端下发的 SSL 证书等敏感信息**<br>_* 由于服务端协议变更, 目前仅在 0.51.0-sakura-4.3 及以上版本生效, 旧版客户端会自动关闭, 请尽快更新_ |
+| persist_runid | Boolean | true | 根据本机特征 & 隧道信息生成唯一 RunID |
+| dynamic_key | Boolean | true | 启用 DKC (SM2 & AES-128-GCM/CFB DKC) 加密模式<br>**关闭会造成连接流量通过近乎明文的方式传输, 可能泄露您的访问密钥和 SSL 证书等敏感信息**<br>_* 由于服务端协议变更, 目前仅在 0.51.0-sakura-4.3 及以上版本生效, 旧版客户端会自动关闭, 请尽快更新_ |
 | ~~use_recover~~ | ~~Boolean~~ | ~~false~~ | ~~启用不断线重连功能~~<br>_* 于 0.51.0-sakura-6 移除_ |
 | ~~remote_control~~ | ~~String~~ | ~~空~~ | ~~配置远程管理 E2E 密码，留空则禁用远程管理<br>请参阅 [frpc 远程管理](/frpc/remote.md) 获取更多信息~~<br>_* 于 0.45.0-sakura-7 移除_ |
 
 ### TCP 隧道 {#proxy-tcp}
 
-| 选项 | 类型 | 默认值 | 说明 |
-| :---: | --- | --- | --- |
-| [IP 访问控制](#feature-ip-acl) | | | 点击左侧链接查看配置详情 |
-| [自动 HTTPS](#feature-auto-https) | | | 点击左侧链接查看配置详情 |
-| [访问认证](#feature-auth) | | | 点击左侧链接查看配置详情 |
-| [本地访问](#feature-local-access) | | | 点击左侧链接查看配置详情 |
+| 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
+| :---: | :---: | :---: | --- |
+| [IP 访问控制](#feature-ip-acl) | 点击左侧链接查看配置详情 |||
+| [自动 HTTPS](#feature-auto-https) | ^^ |||
+| [访问认证](#feature-auth) | ^^ |||
+| [本地访问](#feature-local-access) | ^^ |||
 | minecraft_detect | String | auto | 配置 Minecraft 局域网游戏监测功能<br>- 留空: 在本地端口为 25565 时监测来自本机的局域网游戏广播<br>- `enabled`: 监测来自本机的局域网游戏广播<br>- `enabled_lan`: 监测整个 LAN 中的局域网游戏广播<br>- `disabled`: 禁用局域网游戏监测<br>_* 0.51.0-sakura-5 及以上版本可用_ |
 | ~~concat_packet~~ | ~~Int~~ | ~~-1~~ | ~~配置合并封包功能的最小字节数，有助于减少小包并降低网卡 PPS<br>设置为 `-1` 禁用合并封包功能~~<br>_* 于 0.51.0-sakura-7.2 移除_  |
 
 ### UDP 隧道 {#proxy-udp}
 
-| 选项 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| [IP 访问控制](#feature-ip-acl) | | | 点击左侧链接查看配置详情 |
-| [本地访问](#feature-local-access) | | | 点击左侧链接查看配置详情 |
+| 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
+| :---: | :---: | :---: | --- |
+| [IP 访问控制](#feature-ip-acl) | 点击左侧链接查看配置详情 |||
+| [本地访问](#feature-local-access) | ^^ |||
 | no_budp2 | Boolean | false | 停用 bUDPv2 优化<br>_* bUDPv2 优化在 0.51.0-sakura-3 及以上版本可用_ |
 | auth_mode | String | 空 | 设置为 `server` 可启用服务端访问认证 |
 
@@ -95,19 +95,19 @@ bUDPv2 优化有助于降低延迟和流量消耗，但是当您的隧道同时�
 
 ### HTTPS 隧道 {#proxy-https}
 
-| 选项 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
-| [IP 访问控制](#feature-ip-acl) | | | 点击左侧链接查看配置详情 |
-| [自动 HTTPS 功能](#feature-auto-https) | | | 点击左侧链接查看配置详情 |
-| [访问认证](#feature-auth) | | | 点击左侧链接查看配置详情 |
+| 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
+| :---: | :---: | :---: | --- |
+| [IP 访问控制](#feature-ip-acl) | 点击左侧链接查看配置详情 |||
+| [自动 HTTPS 功能](#feature-auto-https) | ^^ |||
+| [访问认证](#feature-auth) | ^^ |||
 | force_https | Int | 0 | 配置 frps 自动重定向 HTTP 请求到 HTTPS 的功能，有助于减少隧道占用。<br>- `0`: 禁用自动重定向功能<br>- 其他数字: 启用重定向功能并在重定向时返回该数字作为状态码，推荐使用 `301` 或 `302` |
 | auto_https_mode | String | 空 | 与 [TCP 隧道](#tcp_proxy) 中同名选项相同 |
 | auto_https_policy | String | `loose` | 与 [TCP 隧道](#tcp_proxy) 中同名选项相同 |
 
 ### WOL 隧道 {#proxy-wol}
 
-| 选项 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
+| 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
+| :---: | :---: | :---: | --- |
 | password | String | 空 | 指定防止未授权 WOL 访问的密码，设置后请将计算机类型修改为 `WOL (密码保护)` |
 | from_ip | String | 空 | 指定 WOL 发送时使用的源 IP，默认使用所有 IP |
 | from_if | String | 空 | 指定 WOL 发送时使用的网卡名称，例如 `eth0`，默认使用所有网卡，该选项与 `from_ip` 冲突 |
@@ -117,8 +117,8 @@ bUDPv2 优化有助于降低延迟和流量消耗，但是当您的隧道同时�
 - 该功能适用于 `TCP`、`UDP`、`HTTP`、`HTTPS` 隧道
 - 启用端口导出时，该功能只会对中继模式的端口生效
 
-| 选项 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
+| 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
+| :---: | :---: | :---: | --- |
 | blacklist_ip | List&lt;String&gt; | 空 | 以 `,` 分隔的黑名单列表，比白名单优先级更高，格式可以为:<br>- `114.5.1.4`: 单个 IP<br>- `114.5.1.4/8(16,24,32)`: 可以被 8 整除的前缀表示 |
 | whitelist_ip | List&lt;String&gt; | 空 | 以 `,` 分隔的白名单列表，设置白名单后无法通过黑白名单的 IP 即无法访问，格式与黑名单相同 |
 
@@ -128,8 +128,8 @@ bUDPv2 优化有助于降低延迟和流量消耗，但是当您的隧道同时�
 - 启用端口导出时，该功能只会对中继模式的端口生效
 - 在 [此处](/bestpractice/frpc-auth.md) 可查看简单的配置指南
 
-| 选项 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
+| 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
+| :---: | :---: | :---: | --- |
 | auth_pass | String | 空 | 配置访问认证功能的密码，留空则禁用密码认证 |
 | auth_totp | String | 空 | 配置访问认证的 TOTP 功能<br>- 留空: 不启用 TOTP 验证<br>- Base32 种子: 使用默认配置启用 TOTP<br>- TOTP URI: 使用自定义配置启用 TOTP, 可选参数有 `digits`、`skew`、`algorithm`<br>&nbsp;&nbsp;_例: `otpauth://totp/auto?secret=<种子>&digits=<数字>&skew=<周期>&algorithm=<算法>`_<br>&nbsp;&nbsp;_* algorithm 参数取值为 `md5`、`sha1` (默认)、`sha256`、`sha512`_<br>_* 0.42.0-sakura-3 及以上版本可用_ |
 | auth_time | String | 2h | 配置访问认证功能在没有勾选「记住」时授权过期时间<br>接受的后缀为 `h`/`m`/`s`，请从大到小排列，如 `1h3m10s` |
@@ -171,7 +171,7 @@ frpc 会在处理请求时按照 `SAN 完全匹配 -> SAN 中的泛域名可匹�
 
 | 取值 | 说明 |
 | :---: | --- |
-| loose<br>**[默认值]** | 自动加载存在于工作目录的本地证书, 若加载失败则使用 `auto_https` 中第一个域名对应的证书作为 fallback |
+| <span class="nowrap">loose<br>**[默认值]**</span> | 自动加载存在于工作目录的本地证书, 若加载失败则使用 `auto_https` 中第一个域名对应的证书作为 fallback |
 | exist | 自动加载存在于工作目录的本地证书, 若加载失败则拒绝 TLS 握手 |
 | strict | 不允许自动加载证书, 没有预加载证书的域名均拒绝 TLS 握手 |
 
@@ -268,7 +268,7 @@ plugin_header_Referer = ""
 
 典型的应用场景是启用子域绑定（或将自己的域名解析到节点）后，内网通过 DNS 将域名覆写到 frpc 所在设备 IP，从而实现本地设备通过内网访问、外网设备通过穿透节点访问，且两种方式都能正常使用客户端侧功能。
 
-| 选项 | 类型 | 默认值 | 说明 |
-| --- | --- | --- | --- |
+| 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
+| :---: | :---: | :---: | --- |
 | local_access | Boolean | false | 是否启用本地访问功能 |
 | local_access_addr | String | 0.0.0.0 | 本地访问功能的监听地址 |

@@ -7,6 +7,7 @@ import { sitemapPlugin } from '@vuepress/plugin-sitemap';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
 
+import mdItMultiMdTable from 'markdown-it-multimd-table';
 import { html5Media as mdItHtml5Media } from 'markdown-it-html5-media';
 
 import sections from './sections';
@@ -96,6 +97,13 @@ export default defineUserConfig({
 
 	extendsMarkdown: (md => {
 		md.use(mdItHtml5Media);
+		mdItMultiMdTable(md, {
+			multiline: false,
+			rowspan: true,
+			headerless: false,
+			multibody: false,
+			autolabel: false,
+		});
 	}),
 
 	plugins: [
