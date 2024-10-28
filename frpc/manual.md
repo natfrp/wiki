@@ -78,7 +78,7 @@
 | [IP 访问控制](#feature-ip-acl) | 点击左侧链接查看配置详情 |||
 | [自动 HTTPS](#feature-auto-https) | ^^ |||
 | [访问认证](#feature-auth) | ^^ |||
-| [本地访问](#feature-local-access) | ^^ |||
+| [内网访问](#feature-local-access) | ^^ |||
 | minecraft_detect | String | auto | 配置 Minecraft 局域网游戏监测功能<br>- 留空: 在本地端口为 25565 时监测来自本机的局域网游戏广播<br>- `enabled`: 监测来自本机的局域网游戏广播<br>- `enabled_lan`: 监测整个 LAN 中的局域网游戏广播<br>- `disabled`: 禁用局域网游戏监测<br>_* 0.51.0-sakura-5 及以上版本可用_ |
 | ~~concat_packet~~ | ~~Int~~ | ~~-1~~ | ~~配置合并封包功能的最小字节数，有助于减少小包并降低网卡 PPS<br>设置为 `-1` 禁用合并封包功能~~<br>_* 于 0.51.0-sakura-7.2 移除_  |
 
@@ -87,7 +87,7 @@
 | 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
 | :---: | :---: | :---: | --- |
 | [IP 访问控制](#feature-ip-acl) | 点击左侧链接查看配置详情 |||
-| [本地访问](#feature-local-access) | ^^ |||
+| [内网访问](#feature-local-access) | ^^ |||
 | no_budp2 | Boolean | false | 停用 bUDPv2 优化<br>_* bUDPv2 优化在 0.51.0-sakura-3 及以上版本可用_ |
 | auth_mode | String | 空 | 设置为 `server` 可启用服务端访问认证 |
 
@@ -258,17 +258,17 @@ plugin_header_Referer = ""
 | 自定义文本 | 使用该文本作为错误页模版。注：由于配置文件加载时会被渲染一次，<br>请使用 `{{"{{"}}` 和 `{{"}}"}}` 转义渲染标签的开头和结尾 |
 | `file://<文件路径>` | 从指定文件中读取模版 |
 
-## 本地访问功能 {#feature-local-access}
+## 内网访问功能 {#feature-local-access}
 
-自 `0.51.0-sakura-9.3` 起，您可以启用本地访问功能并向与 frpc 处于相同内网的设备提供内网访问端口。
+自 `0.51.0-sakura-9.3` 起，您可以启用内网访问功能并向与 frpc 处于相同内网的设备提供内网访问端口。
 
 - 该功能适用于 `TCP`、`UDP` 隧道
-- 启用后，frpc 将在本地监听 **远程端口**，您可以通过 `frpc 所在设备IP:远程端口` 访问隧道
+- 启用后，frpc 将在内网监听 **远程端口**，您可以通过 `frpc 所在设备IP:远程端口` 访问隧道
 - 通过该端口访问时，[IP 访问控制](#feature-ip-acl)、[访问认证](#feature-auth)、[自动 HTTPS](#feature-auto-https) 等客户端侧功能均正常生效
 
-典型的应用场景是启用子域绑定（或将自己的域名解析到节点）后，内网通过 DNS 将域名覆写到 frpc 所在设备 IP，从而实现本地设备通过内网访问、外网设备通过穿透节点访问，且两种方式都能正常使用客户端侧功能。
+典型的应用场景是启用子域绑定（或将自己的域名解析到节点）后，内网通过 DNS 将域名覆写到 frpc 所在设备 IP，从而实现本地设备通过内网直连、外网设备通过穿透节点访问，且两种方式都能正常使用客户端侧功能。
 
 | 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
 | :---: | :---: | :---: | --- |
-| local_access | Boolean | false | 是否启用本地访问功能 |
-| local_access_addr | String | 0.0.0.0 | 本地访问功能的监听地址 |
+| local_access | Boolean | false | 是否启用内网访问功能 |
+| local_access_addr | String | 0.0.0.0 | 内网访问功能的监听地址 |
