@@ -7,22 +7,24 @@
 目前基岩版服务器有多种核心可用:
 
 1. Bedrock Dedicated Server (BDS)
-   由微软官方开发，与所有平台的 Minecraft 基岩版有几乎相同的核心，目前可以全平台联机，适合原版生存<br>
-   [历史版本下载(非官方)](https://meteormc.cn/threads/49/) | [最新版本下载(官方)](https://www.minecraft.net/zh-hans/download/server/bedrock/)
+   由微软官方开发，与所有平台的 Minecraft 基岩版有几乎相同的核心，目前可以全平台联机，适合原版生存  
+   [官方下载](https://www.minecraft.net/zh-hans/download/server/bedrock/)
 
 1. Nukkit (NK)
-   由第三方独立开发的开源核心，生态优于 BDS 但由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)
+   由第三方独立开发的开源核心，插件生态优于 BDS。  
+   由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器 (如小游戏服务器)，性能通常优于 PMMP。
 
-   因为 Nukkit 的主要维护者已经弃坑， Nukkit 有较多分支项目，通常您只需选用最顺眼的那个：
+   因为 Nukkit 初始项目已经弃坑， Nukkit 有较多分支项目，通常您只需选用最顺眼的那个：
 
    - Nukkit/Nukkit (2016-1018)，项目创建社区，已弃坑。[源码存档](https://github.com/Nukkit/Nukkit)
-   - CloudburstMC/Nukkit (2018-至今), 由 CubeCraft(即 GeyserMC 开发商) 接手产生的 Nukkit/Nukkit 分支，仍在维护支持新版本。[源码](https://github.com/CloudburstMC/Nukkit)，[下载](https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/)
-   - PowerNukkit (2020-2022)，CloudburstMC/Nukkit 的分支，更加活跃开发以提供新功能，2022 年后不再活跃。[源码](https://github.com/PowerNukkit/PowerNukkit)
-   - PowerNukkitX (2022-至今)，PowerNukkit 的分支，目前活跃开发中。[项目说明](https://github.com/PowerNukkitX/PowerNukkitX/blob/master/blob/zh-hans/README.md)
+   - CloudburstMC/Nukkit (2018-至今), 由 CubeCraft(即 GeyserMC 开发商) 接手产生的 Nukkit/Nukkit 分支，仍在维护支持新版本。[项目地址](https://github.com/CloudburstMC/Nukkit)，[下载](https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/)
+   - PowerNukkitX (2022-至今)，PowerNukkit(CloudburstMC/Nukkit 的一个已死分支) 的分支，目前活跃开发中。[项目地址](https://github.com/PowerNukkitX/PowerNukkitX)
 
 1. PocketMine-MP (PMMP)
-   由第三方独立开发的核心，用于创建高度自定义的服务器，不适合原版生存，主要依赖于插件<br>
-   [下载(官方)](https://doc.pmmp.io/en/rtfd/installation/downloads.html)
+   由第三方独立开发的老牌开源核心，用于创建高度自定义的服务器。  
+   由于功能不完整不适合原版生存，适合搭建各类安装插件的服务器，使用 PHP 实现。
+
+   [官方文档](https://doc.pmmp.io/)
 
 ## BDS on Windows
 
