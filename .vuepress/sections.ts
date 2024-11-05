@@ -88,6 +88,7 @@ const sections = {
 					{ text: '幻兽帕鲁 (Palworld)', link: '/app/palworld.html' },
 					{ text: '星露谷物语 (Stardew Valley)', link: '/app/stardew-valley.html' },
 					{ text: '戴森球计划', link: '/app/dysonsphere.html' },
+					{ text: '泰拉瑞亚 (Terraria)', link: '/app/terraria.html' },
 					{ text: '其他游戏', link: '/app/other-games.html' },
 				],
 			},
