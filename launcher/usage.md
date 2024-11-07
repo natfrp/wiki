@@ -108,100 +108,12 @@
 
 如果您正在使用 macOS 13.0 或更新的系统，请更新至启动器 3.1.0 及以上版本以确保该开关正常工作。
 
-@tab Linux 桌面环境 {#linux}
+@tab Linux {#linux-server}
 
 ::: tip
-这篇指南适合普通 Linux 桌面用户，希望在 **自己登录桌面后，桌面注销前** 使用映射服务的情况  
-如果您需要服务在开机后总是可用，或者使用 root 账户，请查看 [Linux 服务器](#linux-server) 标签  
-如果您使用 Debian 系发行版，请留意 [安装启动器后登录桌面卡在黑屏](/faq/launcher.md#linux-stuck-login) 的问题
-
-出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，我们也推荐您不要使用 root 用户登录桌面
+这篇指南假设您以 `root` 用户进行安装，请先使用 `sudo -i` 或 `su -` 切换到 root 账户  
+如果您不需要安装到系统级，请参考 [Linux (无 Root 桌面)](#linux) 标签
 :::
-
-::: danger 请留意当前账户
-以下指南基于您正在使用 **非 root** 账户登录桌面环境，且 shell 中不是 root 账户  
-如果您正在使用 root 账户且决定一直使用 root 账户，您应该可以自己解决问题
-:::
-
-::: details 视频教程 (点击展开)
-![](@source/_videos/launcher-linux-install.mp4)
-:::
-
-1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
-
-   下载由我们分发的 `.tar.zst` 文件后，在合适的地方建一个文件夹并解压 `natfrp-service` 与 `frpc`：
-
-   ```bash
-   # 创建文件夹，例如 ~/.config/natfrp/ (只是举个例子)
-   mkdir -p ~/.config/natfrp/
-   cd ~/.config/natfrp/
-
-   # 打开 https://www.natfrp.com/tunnel/download
-   # 复制对应的架构的 Linux / FreeBSD 启动器链接并下载
-   # curl -LO https://nya.globalslb.net/natfrp/client/launcher-unix/....
-
-   # 解压
-   tar -I zstd -xvf natfrp-service_*.tar.zst
-   rm natfrp-service_*.tar.zst
-
-   # 设置权限
-   chmod +x frpc natfrp-service
-   ```
-
-   ![](./_images/linux-install-1.png)
-
-1. 运行 `./natfrp-service webui --init` 初始化配置文件，此时浏览器应该会自动打开。
-
-   如果没有看到浏览器请手动点击安装 URL，安装 URL 包含您的 **启动器连接密码**，请注意不要泄露：
-
-   ![](./_images/linux-install-2.png)
-
-1. 然后先把浏览器放到一边，参考发行版的相关教程配置您的初始化系统来启动 `natfrp-service --daemon`。
-
-   以 systemd 为例，在用户文件夹建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
-
-   这是一个简单的示例文件，您可以直接把它复制到 `~/.config/systemd/user/natfrp.service`：
-
-   ```systemd
-   [Unit]
-   Description=SakuraFrp Launcher
-   After=network.target
-
-   [Service]
-   Type=simple
-   TimeoutStopSec=20
-
-   Restart=always
-   RestartSec=5s
-
-   ExecStart=%h/.config/natfrp/natfrp-service --daemon
-
-   [Install]
-   WantedBy=default.target
-   ```
-
-1. 让初始化系统拉起启动器进程并确认启动器在运行，这里还是以 systemd 为例：
-
-   ```bash
-   systemctl --user enable --now natfrp.service
-   systemctl --user status natfrp.service
-   ```
-
-   ![](./_images/linux-install-3.png)
-
-1. 现在回到浏览器，安装 PWA 并点击下面的继续按钮。
-
-   如果您使用的是 Chromium，可以参考下图操作：
-
-   ![](./_images/pwa-install.png)
-
-   由于 Firefox 不支持 PWA，直接刷新一下就行了，什么都不需要点，然后就能看到启动器的 Web UI：
-
-   ![](./_images/webui.png)
-
-   这样启动器就安装完成了，并且会在登录时自动启动。您随时可以打开 Web UI 进行管理。
-
-@tab Linux 服务器 {#linux-server}
 
 对于使用 systemd 的用户，可使用一键安装脚本快速安装：
 
@@ -221,10 +133,6 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
 
 ::: warning
 手动安装流程 **操作复杂，不适合新手使用**，如非特殊情况，请务必 **使用自动安装脚本** 或 [Docker](#docker) 进行安装
-:::
-
-::: tip
-这篇指南假设您以 `root` 用户进行安装，请先使用 `sudo -i` 或 `su -` 切换到 root 账户
 :::
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
@@ -504,6 +412,98 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 1. 高级用户 {#advance-docker}
 
    如果您需要自行配置，请先阅读 [配置文件详解](/launcher/manual.md#config)，然后将容器内的 `/run/config.json` 挂载编辑即可。
+
+@tab Linux (无 Root 桌面) {#linux}
+
+::: tip
+这篇指南适合无 root 权限的 Linux 桌面用户，配置后您将可以在 **自己的桌面登录后，注销前** 使用映射服务  
+如果您需要服务在开机后总是可用，或者可以使用 root 账户，请查看 [Linux](#linux-server) 标签
+
+出于安全考虑，`natfrp-service` 默认不允许以 root 权限运行，我们也推荐您不要使用 root 用户登录桌面环境
+:::
+
+::: danger 请留意当前账户
+以下指南基于您正在使用 **非 root** 账户登录桌面环境，且 shell 中不是 root 账户  
+如果您正在使用 root 账户且决定一直使用 root 账户，您应该可以自己解决问题
+:::
+
+::: details 视频教程 (点击展开)
+![](@source/_videos/launcher-linux-install.mp4)
+:::
+
+ 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
+
+   下载由我们分发的 `.tar.zst` 文件后，在合适的地方建一个文件夹并解压 `natfrp-service` 与 `frpc`：
+
+   ```bash
+   # 创建文件夹，例如 ~/.config/natfrp/ (只是举个例子)
+   mkdir -p ~/.config/natfrp/
+   cd ~/.config/natfrp/
+
+   # 打开 https://www.natfrp.com/tunnel/download
+   # 复制对应的架构的 Linux / FreeBSD 启动器链接并下载
+   # curl -LO https://nya.globalslb.net/natfrp/client/launcher-unix/....
+
+   # 解压
+   tar -I zstd -xvf natfrp-service_*.tar.zst
+   rm natfrp-service_*.tar.zst
+
+   # 设置权限
+   chmod +x frpc natfrp-service
+   ```
+
+   ![](./_images/linux-install-1.png)
+
+ 1. 运行 `./natfrp-service webui --init` 初始化配置文件，此时浏览器应该会自动打开。
+
+   如果没有看到浏览器请手动点击安装 URL，安装 URL 包含您的 **启动器连接密码**，请注意不要泄露：
+
+   ![](./_images/linux-install-2.png)
+
+ 1. 然后先把浏览器放到一边，参考发行版的相关教程配置您的初始化系统来启动 `natfrp-service --daemon`。
+
+   以 systemd 为例，在用户文件夹建立一个 Unit 文件即可。如果需要进行高级配置请参考 [启动器用户手册](/launcher/manual.md)。
+
+   这是一个简单的示例文件，您可以直接把它复制到 `~/.config/systemd/user/natfrp.service`：
+
+   ```systemd
+   [Unit]
+   Description=SakuraFrp Launcher
+   After=network.target
+
+   [Service]
+   Type=simple
+   TimeoutStopSec=20
+
+   Restart=always
+   RestartSec=5s
+
+   ExecStart=%h/.config/natfrp/natfrp-service --daemon
+
+   [Install]
+   WantedBy=default.target
+   ```
+
+ 1. 让初始化系统拉起启动器进程并确认启动器在运行，这里还是以 systemd 为例：
+
+   ```bash
+   systemctl --user enable --now natfrp.service
+   systemctl --user status natfrp.service
+   ```
+
+   ![](./_images/linux-install-3.png)
+
+ 1. 现在回到浏览器，安装 PWA 并点击下面的继续按钮。
+
+   如果您使用的是 Chromium，可以参考下图操作：
+
+   ![](./_images/pwa-install.png)
+
+   由于 Firefox 不支持 PWA，直接刷新一下就行了，什么都不需要点，然后就能看到启动器的 Web UI：
+
+   ![](./_images/webui.png)
+
+   这样启动器就安装完成了，并且会在登录时自动启动。您随时可以打开 Web UI 进行管理。
 
 :::::
 
