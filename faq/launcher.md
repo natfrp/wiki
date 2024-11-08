@@ -428,3 +428,23 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 - 编辑 `<工作目录>/config.json`，更改启动器的 Web UI 监听端口
 - 如果您不使用这些辅助功能，请参考发行版的相关说明卸载 `xbrlapi` 软件包  
   该问题常见于 Debian 系发行版，可通过 `apt remove xbrlapi` 卸载
+
+## macOS 常见问题 {#macos}
+
+### 设置本地地址为局域网时报错 {#macos-local-perm}
+
+如果您：
+
+- 遇到了形如 `connect: no route to host` 但是您很确认其他方式访问同一地址连接正常
+- 设置了局域网的地址作为本地地址（如 `192.168.x.x`、`10.x.x.x`、`172.16.x.x`~`172.31.x.x`）
+- macOS 版本 >= 15
+
+这可能是拒绝了您启动器的 [网络权限](https://developer.apple.com/documentation/technotes/tn3179-understanding-local-network-privacy) 导致的，即在下面的弹窗中选择了 **拒绝**：
+
+![](./_images/launcher-macos-perm-dialog.png)
+
+只需在 **系统偏好设置** -> **隐私与安全性** -> **本地网络** 中找到 `natfrp-service` 并打开它即可正确赋予权限：
+
+![](./_images/launcher-macos-perm-setting-1.png)
+
+![](./_images/launcher-macos-perm-setting-2.png)
