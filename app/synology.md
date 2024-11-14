@@ -35,6 +35,11 @@
 如您需要通过 **Synology Drive Client** 进行数据同步，请创建指向 `6690` 端口的隧道并连接至该隧道地址
 :::
 
+::: tip 关于 Synology Drive Android/iOS 的提示
+Synology Drive Android/iOS 应用访问的是 DSM 管理面板的端口  
+在安装 Synology Drive Server 并确认面板可以访问后，您可以直接通过访问 DSM 管理面板的地址访问您的 Synology Drive Server
+:::
+
 :::: tabs
 
 @tab DSM 7
