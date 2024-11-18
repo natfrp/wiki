@@ -95,16 +95,16 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 ### QQ 水群 {#community-qq}
 
 ::: danger 警告
-加入非官方水群时请 **不要** 填写访问密钥！
+加入非官方水群时请 **不要** 填写访问密钥！  
+**群内没有网站管理员!**
 :::
 
 ::: warning 注意
 请仔细阅读入群问题并填写对应的回复。  
-入群问题并不是主观题。如果您找不到答案请[Bing搜索](https://www.bing.com/)  
-非官方群, **群内没有网站管理员**
+入群问题并不是主观题。如果您找不到答案请[Bing搜索](https://www.bing.com/)
 :::
 
-- 群号: 1011690081 , 650510813 , 1036050697 , 766865191
+- 群号: 766865191 , 1011690081 , 1036050697 , 650510813
 - 管理员会在满员时不定时清理最久不发言的成员
 - **入群问题不是摆设, 你不好好填是不会让你进的**
 - 添加一个群即可, 添加多个群会被管理拒绝加入
@@ -116,7 +116,7 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 
 ### 其他 IM 水群 {#community-other-im}
 
-- [Telegram](https://t.me/natfrp_unofficial) 桥接已失效
+- [Telegram](https://t.me/natfrp_unofficial) 桥接至 QQ 一群
 - 非官方群, **群内没有网站管理员**
 
 ### 官方 QQ 反馈群 {#community-official-qq}
