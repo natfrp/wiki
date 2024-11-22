@@ -438,23 +438,9 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 
 - macOS 15.0: 您可能遇到权限列表中没有 `natfrp-service` 的 bug，苹果在 15.1 中修复了这个问题，疯狂反复重启有一定几率缓解这个问题
 - macOS 15.1: 您可能遇到赋予权限后仍然出现 `no route to host` 的问题，这是 macOS 15.1 的一个新 bug，通常您只需要重新开关一下对应的权限开关即可恢复正常
-- macOS 15.0-15.1: 您可能遇到赋予权限后仍然出现 `no route to host` 的问题，目前我们还没有找到解决方案，苹果可能还需要一些时间来搞清楚自己搞坏了什么
-
-如果您最后没有找到解决方案，请不要感到挫败，管理员进行了数个小时的各种玄学方案测试最终也没有找到一个稳定可用的解决方法，大概我们可以放心地 blame 苹果了
 :::
 
-如果您：
+在更新到 macOS 15 之后，苹果引入了通过 Network Extension 系统实现的本地网络权限（LNP）功能，  
+这使得我们可能无法访问局域网地址，报错 `no route to host`。
 
-- 遇到了形如 `connect: no route to host` 但是您很确认其他方式访问同一地址连接正常
-- 设置了局域网的地址作为隧道的本地地址（如 `192.168.x.x`、`10.x.x.x`、`172.16.x.x`~`172.31.x.x`）
-- macOS 版本 >= 15
-
-这可能是拒绝了您启动器的 [网络权限](https://developer.apple.com/documentation/technotes/tn3179-understanding-local-network-privacy) 导致的，即在下面的弹窗中选择了 **拒绝**：
-
-![](./_images/launcher-macos-perm-dialog.png)
-
-只需在 **系统偏好设置** -> **隐私与安全性** -> **本地网络** 中找到 `natfrp-service` 并打开它即可正确赋予权限：
-
-![](./_images/launcher-macos-perm-setting-1.png)
-
-![](./_images/launcher-macos-perm-setting-2.png)
+与该版系统的兼容已经在 SakuraFrp 启动器 for macOS 3.1.5 版本中得到了改进，您只需更新即可。
