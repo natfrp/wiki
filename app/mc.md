@@ -64,17 +64,20 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 请根据您游玩的版本和模组加载器选择对应的联机模组:
 
 - mcwifipnp 适用游戏版本:  
-    Forge: 1.15.2 ~ 1.21.1  
-    Fabric&Quilt: 1.15.2 ~ 1.21.1  
-    NeoForge: 1.20.2 ~ 1.21.1
+    Forge: 1.15.2 ~ 1.21.3  
+    Fabric&Quilt: 1.15.2 ~ 1.21.3  
+    NeoForge: 1.20.2 ~ 1.21.3
 
 - LanServerProperties 适用游戏版本:  
-    Forge: 1.12.X ~ 1.21.1  
-    Fabric: 1.16.1 ~ 1.21.1  
-    NeoForge: 1.20.5 ~ 1.21.1
+    Forge: 1.12.X ~ 1.21.3  
+    Fabric: 1.16.1 ~ 1.21.3  
+    NeoForge: 1.20.5 ~ 1.21.3
 
 - Server.Properties for LAN 适用游戏版本:  
     Forge: 1.7.2 ~ 1.21
+
+- EasyLAN 适用游戏版本:  
+    Forge: 1.7.2 ~ 1.21.1
 
 :::: tabs
 
@@ -91,7 +94,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
   2. 开关在线模式 (Online-mode)
   3. 更多对其他人的自定义功能
   4. 通过uPnP功能进行联机
-- 下载链接: [mcmod](https://www.mcmod.cn/download/4498.html) | [modrinth](https://modrinth.com/mod/mcwifipnp/versions) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/mcwifipnp/files)
+- 发布页面: [mcmod](https://www.mcmod.cn/class/4498.html) | [modrinth](https://modrinth.com/mod/mcwifipnp/) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/mcwifipnp/)
 
 #### 使用方法
 
@@ -120,7 +123,7 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 - Mod 部分功能:
   1. 固定端口
   2. 开关正版验证
-- 下载链接: [mcmod](https://www.mcmod.cn/download/2754.html) | [Github](https://github.com/rikka0w0/LanServerProperties/releases) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/files)
+- 发布页面: [mcmod](https://www.mcmod.cn/class/2754.html) | [modrinth](https://modrinth.com/mod/lan-server-properties) |  [Github](https://github.com/rikka0w0/LanServerProperties/) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/lan-server-properties/)
 
 #### 使用方法
 
@@ -154,8 +157,8 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
   9. 是否生成村民
   10. 最大建筑高度
   11. Motd设置
-- 下载链接 (1.7.2 ~ 1.12.2): [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/files/all) | [MC百科](https://www.mcmod.cn/download/1158.html)
-- 下载连接 (1.13 ~ 1.21): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/releases/latest)
+- 发布页面 (1.7.2 ~ 1.12.2):  [mcmod](https://www.mcmod.cn/class/1158.html) | [CurseForge](https://www.curseforge.com/minecraft/mc-mods/server-properties-for-lan/)
+- 发布页面 (1.13 ~ 1.21): [Github](https://github.com/shuen4/MinecraftForge-Mods-ServerPropertiesLAN/)
 
 #### 使用方法
 
@@ -238,6 +241,30 @@ motd=
 # Motd设置
 # 默认会生成一个，可以自己设置
 ```
+
+@tab EasyLAN
+
+- Mod 名称: EasyLAN
+- Mod 功能:
+  1. 自定义端口
+  2. 自定义玩家上限
+  3. 自定义 Motd
+  4. PVP 设置
+  5. 飞行设置
+  6. **在线模式**
+其他功能请参见 mcmod 模组发布页面。
+- 发布页面: [mcmod](https://www.mcmod.cn/class/11373.html) | [modrinth](https://modrinth.com/mod/easylan) | [Github](https://github.com/XiaoXianHW/EasyLAN) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/easylan)
+
+#### 使用方法
+
+1. 安装 Mod 并进入游戏，**确保您已经拥有一个存档**，打开单人游戏界面
+2. 打开存档页面左上角的 `EasyLAN 主设置` 按钮
+![](./_images/mc-4.png)
+3. 更改模组设置，白框为打开，灰框为关闭。如果和您联机的用户不是正版登录，请关闭正版验证选项。设置完后记得点击保存设置。
+![](./_images/mc-5.png)
+4. 进入您想要联机的存档，打开暂停页面，点击 `对局域网开放`，并设置端口号和最大玩家数，点击 `创建局域网世界`。
+![](./_images/mc-6.png)
+5. 您在上面设置的局域网端口即为本地端口。
 
 ::::
 
