@@ -30,7 +30,7 @@
 
 如果您没有 `1026` 错误日志，请点击 [其他系统问题](#other-problems) 查看修复方案。
 
-## Net 问题 {#net-problems}
+## .NET 相关问题 {#net-problems}
 
 请检查复制出来的崩溃日志，如果开头是如下内容，请点击 [问题 A](#net-a) 查看修复方案：
 
@@ -167,7 +167,7 @@ sfc /scannow
 - `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config`
 - `C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config`
 
-在每个文件夹中都进行一次下面的检查：
+在每个文件夹中都进行一次下面的检查（两个步骤都要做）：
 
 1. 检查 `machine.config` 文件是否存在，如果存在，将其改名为 `machine.config.bak`，否则直接跳到下一步
 2. 将同一个文件夹中的 `machine.config.default` 文件 **复制一份** 并重命名为 `machine.config`
@@ -176,13 +176,13 @@ sfc /scannow
 
 ## 其他系统问题 {#other-problems}
 
-请检查复制出来的崩溃日志，如果其中包含有下面的内容，请点击 [问题 A](#other-a) 查看修复方案：
+请检查复制出来的崩溃日志，如果其中包含有下面的内容，请点击 [问题 M-1](#other-m-1) 查看修复方案：
 
 ```log
 EmbeddedBrowserWebview.dll
 ```
 
-### 问题 A：系统 WebView2 组件损坏 {#other-a}
+### 问题 M-1：系统 WebView2 组件损坏 {#other-m-1}
 
 WebView2 是微软提供的 Windows 组件，我们暂不清楚这种问题的来源，可能是使用“优化软件”导致的。请尝试使用下面的方法让 WebView2 自修复：
 
