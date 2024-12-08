@@ -360,9 +360,9 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 
 清除病毒后，您应当删除对应的假证书，尽管保留它们通常不会造成明显的问题。
 
-### 双击启动器图标后没有反应 {#wpf-crash-on-startup}
+### 双击启动器图标后没有反应或崩溃 {#wpf-crash-on-startup}
 
-此问题已经被移动到独立页面：[常见问题: 双击启动器图标没有反应](/faq/launcher-crash.md)
+此问题已经被移动到独立页面：[常见问题: 双击启动器图标没有反应或崩溃](/faq/launcher-crash.md)
 
 ### 如何修改启动器的配置文件 {#windows-edit-config}
 

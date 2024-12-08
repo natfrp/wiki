@@ -12,7 +12,7 @@ const sections = {
 				text: '客户端',
 				children: [
 					{ text: '启动器使用问题', link: '/faq/launcher.html' },
-					{ text: '双击启动器无反应', link: '/faq/launcher-crash.html' },
+					{ text: '双击启动器无反应或崩溃', link: '/faq/launcher-crash.html' },
 					{ text: 'frpc 使用问题', link: '/faq/frpc.html' },
 				],
 			},
