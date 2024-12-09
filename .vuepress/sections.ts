@@ -139,6 +139,7 @@ const sections = {
 		text: '其他',
 		children: [
 			'/geek.md',
+			{ text: '内网穿透是什么？', link: '/basics.html' },
 			'/style.md',
 			'/devcontainer.md',
 			'/about.md',
