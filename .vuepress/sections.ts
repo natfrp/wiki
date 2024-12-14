@@ -51,6 +51,7 @@ const sections = {
 					{ text: '常见问题 (FAQ)', link: '/faq/launcher.html' },
 					{ text: '远程管理', link: '/launcher/remote-v2.html' },
 					{ text: '配置杀软白名单', link: '/launcher/antivirus.html' },
+					{ text: '配置安卓后台运行', link: '/launcher/android-bgtask.html' },
 					{ text: '用户手册', link: '/launcher/manual.html' },
 				],
 			},
