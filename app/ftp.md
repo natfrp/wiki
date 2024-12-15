@@ -1,7 +1,8 @@
 # FTP(S) 协议穿透指南
 
-::: warning
-我们推荐不使用 frp 穿透 FTP(S) 协议，此教程仅供参考，碰到问题请自己查找解决方法。如果没有特殊需求，请使用 [SFTP](/app/sftp.md) 而不是 FTP。
+::: danger 不要使用 FTP
+我们认为您不应使用 frp 穿透 FTP(S) 协议，此教程仅作为历史遗留保存。  
+请总是使用 [SFTP](/app/sftp.md) 而不是 FTP。
 :::
 
 ::: tip
