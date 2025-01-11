@@ -15,10 +15,14 @@ SakuraFrp 为所有用户提供免费的 `nyat.app` 子域名和 SSL 证书，�
 申请到的子域名通常有以下用途：
 
 - \[[点击查看](#cname-for-connect)\] 创建 CNAME 记录作为隧道的连接地址，这样在迁移隧道时无需修改连接客户端的配置
-- \[[点击查看](#cname-for-site)\] 创建 CNAME 记录进行建站，并通过自动 HTTPS 功能获取免费的 SSL 证书来消除证书错误
+- \[[点击查看](#cname-for-site)\] 创建 CNAME 记录进行作为 Web 应用的连接地址，并通过自动 HTTPS 功能获取免费的 SSL 证书来消除证书错误
 - \[[点击查看](#srv-for-apps)\] 创建 SRV 记录以供部分支持 SRV 记录的服务使用，如 Minecraft Java、Factorio、MongoDB、XMPP 等
 
 ### 创建 CNAME 记录作为隧道连接地址 {#cname-for-connect}
+
+::: warning
+此处的说明仅限用作非 Web 应用的用途，如果您用于 Web 应用（如 网站/API 等），请参考 [创建 CNAME 记录并获取 SSL 证书](#cname-for-site)。
+:::
 
 如果您穿透了远程桌面、SSH、游戏服务器等服务，您可以将子域名绑定到隧道作为连接地址。
 
@@ -53,6 +57,10 @@ SakuraFrp 为所有用户提供免费的 `nyat.app` 子域名和 SSL 证书，�
    ```
 
 ### 创建 CNAME 记录并获取 SSL 证书进行建站 {#cname-for-site}
+
+::: warning
+子域绑定为您提供的域名已经打开了 HSTS Preloading，如果您不开启 HTTPS，您的网站可能无法被访问。
+:::
 
 将子域名绑定到启用了自动 HTTPS 功能的隧道后，frpc 会从服务端自动加载对应的 SSL 证书。
 
