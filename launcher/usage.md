@@ -90,8 +90,14 @@
 
 @tab macOS {#macos}
 ::: warning
-启动器自 3.1.0 起仅适用于 macOS 13 及以上版本，自 3.0.6 起仅适用于 macOS 11 及以上版本  
-如您还在使用更古老的版本的 macOS，请更新系统或 [使用 frpc (不推荐)](/frpc/usage.html#macos)
+因为苹果的维护策略，原生图形化启动器目前仅适用于 **macOS 13** 及以上版本
+
+如您还在使用更古老的版本的 macOS，请考虑：
+
+- 更新系统
+- [使用 Docker 部署](#docker) 的 WebUI 启动器
+- 下载安装包后解压，参考 [Linux 方法](#linux-server) 手动启用 WebUI 启动器
+- 或 [使用 frpc (不推荐)](/frpc/usage.html#macos)
 :::
 
 打开下载的 `.dmg` 文件，然后按箭头指示将启动器拖到 `Applications` 文件夹中即可：
