@@ -73,7 +73,7 @@
    ping <节点域名>
 
    # 例如
-   ping idea-leaper-1.natfrp.cloud
+   ping frp-xxx.com
    ```
 
 1. 请查看 [节点状态](https://www.natfrp.com/tunnel/nodes) 页面对应节点是否在线

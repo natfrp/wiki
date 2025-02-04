@@ -83,7 +83,7 @@ Sakura Frp 提供三种 **隧道类型** 供您穿透 Web 应用：
 
 | 隧道类型 | 支持的协议 | 带端口访问 | 用自己的域名 | 访问形式 |
 | :---: | :---: | :---: | :---: | --- |
-| `TCP` | HTTP / HTTPS | **必须** | 可选<br>也可以用 [子域绑定](/bestpractice/domain-bind.md) | `http://xxx.natfrp.cloud:12345`<br>`https://xxx.natfrp.cloud:12345` |
+| `TCP` | HTTP / HTTPS | **必须** | 可选<br>也可以用 [子域绑定](/bestpractice/domain-bind.md) | `http://frp-xxx.com:12345`<br>`https://frp-xxx.com:12345` |
 | `HTTP` | HTTP | 不需要 | **必须** | `http://my.example.com` |
 | `HTTPS` | HTTPS | 不需要 | **必须** |`https://my.example.com` |
 

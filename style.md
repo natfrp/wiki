@@ -23,7 +23,7 @@ sidebar: false
 | 计算机知识丰富的 Geek / 专业用户 | `高级用户` |
 | HTTP 或 HTTPS 隧道 | `HTTP(S) 隧道` |
 | 提供内网穿透的服务器 | `节点` |
-| 用于演示的节点域名 | `idea-leaper-1.natfrp.cloud`、`idea-leaper-2.natfrp.cloud` 等 |
+| 用于演示的节点域名 | `frp-xxx.com`、`idea-leaper-1.natfrp.io` 等 |
 | 用于演示的隧道名称 | `ExampleTunnel1`、`ExampleTunnel2`、`SampleTunnel1`、`SampleTunnel2` 等 |
 | 用于演示的节点 ID 和名称 | `#233 一个神奇的节点`、`#5 Demo Node` |
 | 用于演示的 TLD | `example.com`、`example.net` 或其他 [RFC2606](https://tools.ietf.org/html/rfc2606) 中规定的 TLD |

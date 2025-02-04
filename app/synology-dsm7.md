@@ -182,6 +182,6 @@ DSM 7 已提供 systemd 支持，因此直接安装流程会比之前的版本�
 
 然后，参考 [这篇指南](/frpc/service/systemd.md) 配置 systemd 服务、启动 frpc 即可，**Unit名称** 请使用之前创建的那条隧道的启动参数。
 
-请注意，连接 DSM 隧道时需要在连接方式前面加上 `https://`，例如 `https://idea-leaper-1.natfrp.cloud:23333/`。
+请注意，连接 DSM 隧道时需要在连接方式前面加上 `https://`，例如 `https://frp-xxx.com:23333/`。
 
 ::::

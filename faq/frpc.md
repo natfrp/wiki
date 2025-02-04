@@ -43,7 +43,7 @@ frpc -f <访问密钥>:<隧道ID 1>[,隧道ID 2[,隧道ID 3...]]
 ```ini
 # 隧道 ALICE 的配置文件
 [common]
-server_addr = idea-leaper-1.natfrp.cloud
+server_addr = frp-xxx.com
 server_port = 7000
 // 其余部分省略
 
@@ -60,7 +60,7 @@ local_port = 2333
 ```ini
 # 隧道 BOB 的配置文件
 [common]
-server_addr = idea-leaper-1.natfrp.cloud
+server_addr = frp-xxx.com
 server_port = 7000
 // 其余部分省略
 
@@ -78,7 +78,7 @@ local_port = 179
 
 ```ini
 [common]
-server_addr = idea-leaper-1.natfrp.cloud
+server_addr = frp-xxx.com
 server_port = 7000
 // 其余部分省略
 
@@ -116,7 +116,7 @@ local_port = 179
 # 隧道 ALICE 的配置文件
 [common]
 # 假设此节点的 ID 是 233
-server_addr = idea-leaper-1.natfrp.cloud
+server_addr = frp-xxx.com
 server_port = 7000
 token = SakuraFrpClientToken
 // 其余部分省略
@@ -134,7 +134,7 @@ local_port = 2333
 # 隧道 BOB 的配置文件
 [common]
 # 假设此节点的 ID 是 234
-server_addr = idea-leaper-2.natfrp.cloud
+server_addr = idea-leaper-1.natfrp.io
 server_port = 7000
 token = SakuraFrpClientToken
 // 其余部分省略
@@ -159,10 +159,10 @@ token = SakuraFrpClientToken
 
 # 在两个覆写段中写上不同的部分
 [common.233]
-server_addr = idea-leaper-1.natfrp.cloud
+server_addr = frp-xxx.com
 
 [common.234]
-server_addr = idea-leaper-2.natfrp.cloud
+server_addr = idea-leaper-1.natfrp.io
 
 [TUNNEL_FOR_ALICE]
 # 在此处增加了节点 ID
