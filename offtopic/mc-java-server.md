@@ -54,7 +54,7 @@ cond3(no@大于或等于, right)->Java 21
 | [下载链接](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=8)<br>点击 `.msi` 下载 | [下载链接](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=17)<br>点击 `.msi` 下载 | [下载链接](https://adoptium.net/zh-CN/temurin/releases/?os=windows&arch=x64&package=jre&version=21)<br>点击 `.msi` 下载 |
 
 ::: tip
-由于其下载地址位于境外，下载速度可能较慢或无法下载，此时可以使用下列[清华大学镜像站](https://mirrors.tuna.tsinghua.edu.cn/)镜像链接下载
+由于其下载地址位于境外，下载速度可能较慢或无法下载，此时可以使用下列 [清华大学镜像站](https://mirrors.tuna.tsinghua.edu.cn/) 镜像链接下载
 :::
 
 | Java 8 | Java 17 | Java 21 |
