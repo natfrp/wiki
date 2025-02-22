@@ -68,5 +68,7 @@ contributors: false
   - _邮件服务穿透、Minecraft 穿透及开服指南 部分帮助文档_
   - _社区论坛站点_
   - _不咕_
+- 熊猫virtual
+  - Cloudflare 代理相关文档
 - [我们的其他社区贡献者](https://github.com/natfrp/wiki/graphs/contributors)
 - 或许你是下一个？[PR on GitHub](https://github.com/natfrp/wiki)

@@ -180,7 +180,7 @@ Sakura Frp 提供三种 **隧道类型** 供您穿透 Web 应用：
 
    ![](./_images/http/dns-porkbun-1.png)
 
-1. 接下来就可以设置解析了，参考图中填写。虽然各个注册商的界面不同，设置解析要填的东西基本就是这几样：
+2. 接下来就可以设置解析了，参考图中填写。虽然各个注册商的界面不同，设置解析要填的东西基本就是这几样：
 
    ![](./_images/http/dns-porkbun-2.png)
 
@@ -195,3 +195,55 @@ Sakura Frp 提供三种 **隧道类型** 供您穿透 Web 应用：
 - `http://www.example.com` (HTTP 隧道, 示例中的 HTTPSample)
 - `http://cn-hk-nf-1.natfrp.cloud:51906` (TCP 隧道, 示例中的 TCPSample)
 - `http://www.example.com:51906` (TCP 隧道, 示例中的 TCPSample, 通过自己的域名进行解析)
+
+## Cloudflare 代理 (小黄云) 注意事项 {#cloudflare-proxy-configs}
+
+**不使用 Cloudflare 代理，或不知道 Cloudflare 代理是什么的用户请忽略本节。**
+
+Cloudflare 代理会为您的网站自动配置 SSL/TLS ，SSL/TLS设置可在 Cloudflare Dashboard 中更改。
+
+在 `关闭（不安全）`、`灵活` 工作模式下，Cloudflare 服务器通过 HTTP 协议访问源服务器，而在 `完全`、`完全（严格）`、`严格（仅 SSL 源服务器拉取）` 工作模式下，Cloudflare 服务器通过 HTTPS 协议访问源服务器。
+
+如果您的隧道是 HTTPS 隧道，且您使用 `关闭（不安全）`、`灵活` 工作模式，流量将无法到达您的隧道，用户访问您的网站时会出现 `503 Service Unavailable` 错误。
+
+同理，如果您的隧道是 HTTP 隧道，且您使用 `完全`、`完全（严格）`、`严格（仅 SSL 源服务器拉取）` 工作模式，流量将无法到达您的隧道，用户访问您的网站时会出现 `503 Service Unavailable` 错误。
+
+请参照下面的指引进行配置。
+
+:::: tabs
+
+@tab HTTP 隧道
+
+准备工作：在 Cloudflare 账户主页找到并进入你域名的配置页面
+
+1. 点击侧边栏的 `SSL/TLS`。
+
+2. 在左边的页面里点击 `配置`。
+
+3. 将 `自定义 SSL/TLS` 设为 `灵活`。
+
+4. 点击 `保存`。
+
+![](./_images/http/set-cloudflare-ssl-mode-for-http-1.png)
+
+![](./_images/http/set-cloudflare-ssl-mode-for-http-2.png)
+
+如果您不想使用 SSL，请选择 `关闭（不安全）` 。
+
+@tab HTTPS 隧道
+
+操作之前：确保您的网站已开启 SSL，且配置了受信任的 SSL 证书或 [Cloudflare 的源站证书](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/)。
+
+1. 在首页找到并进入你域名的配置页面。
+
+2. 点击侧边栏的 `SSL/TLS`。
+
+3. 在左边的页面里点击 `配置`。
+
+4. 将 `自定义 SSL/TLS` 设为 `完全`、`完全（严格）`、`严格（仅 SSL 源服务器拉取）` 中的任意一项。
+
+![](./_images/http/set-cloudflare-ssl-mode-for-https-1.png)
+
+![](./_images/http/set-cloudflare-ssl-mode-for-https-2.png)
+
+::::
