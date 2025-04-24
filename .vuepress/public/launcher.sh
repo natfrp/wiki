@@ -59,7 +59,7 @@ if command -v docker &>/dev/null && [[ $1 != "direct" ]]; then
         log_W "已存在名为 natfrp-service 的容器"
         read -p " - 是否移除已存在的容器? [y/N] " -r choice
         if [[ $choice =~ ^[Yy]$ ]]; then
-            docker kill natfrp-service
+            docker kill natfrp-service || log_W "无法停止 natfrp-service 容器, 将尝试直接移除"
             docker rm natfrp-service
         else
             log_E "请手动移除已存在的容器后重新运行脚本"
@@ -67,11 +67,11 @@ if command -v docker &>/dev/null && [[ $1 != "direct" ]]; then
         fi
     fi
 
-    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v /etc/natfrp:/run -e "NATFRP_TOKEN=$api_key" -e "NATFRP_REMOTE=$remote_pass" natfrp.com/launcher
-    if [[ $? -ne 0 ]]; then
+    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v /etc/natfrp:/run -e "NATFRP_TOKEN=$api_key" -e "NATFRP_REMOTE=$remote_pass" natfrp.com/launcher || \
+    (
         log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问 natfrp.com 拉取镜像"
         exit 1
-    fi
+    )
 
     echo -e "\n\e[96mDocker 模式安装成功, 您可使用下面的命令管理服务:\e[0m\n  - 查看日志\tdocker logs natfrp-service\n  - 停止服务\tdocker stop natfrp-service\n  - 启动服务\tdocker start natfrp-service\n\n请登录远程管理界面启动隧道: https://www.natfrp.com/remote/v2\n"
 
