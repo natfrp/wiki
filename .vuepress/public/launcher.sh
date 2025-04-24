@@ -33,7 +33,7 @@ function ask_for_creds {
 }
 
 function check_executable {
-    version=$(sudo -u natfrp $1 -v)
+    version=$(sudo -H -u natfrp $1 -v)
     if [[ $? -ne 0 ]]; then
         log_E "无法正常执行二进制文件 $1"
         exit 1
@@ -222,9 +222,9 @@ if [[ ! -f $config_file ]]; then
 fi
 
 jq ". + {
-    "token": $(echo $api_key | jq -R),
+    "token": $(echo $api_key | jq -R .),
     "remote_management": true,
-    "remote_management_key": $(/home/natfrp/natfrp-service remote-kdf "$remote_pass" | jq -R),
+    "remote_management_key": $(/home/natfrp/natfrp-service remote-kdf "$remote_pass" | jq -R .),
     "log_stdout": true
 }" $config_file >$config_file.tmp
 mv $config_file.tmp $config_file
