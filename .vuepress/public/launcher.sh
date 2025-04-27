@@ -18,23 +18,28 @@ log_W() { echo -e "\e[33m[!] $1\e[0m"; }
 log_E() { echo -e "\e[31m[-] $1\e[0m"; }
 
 ask_for_creds() {
-    read -e -p "请输入 SakuraFrp 的 访问密钥: " api_key
-    if [[ ${#api_key} -lt 16 ]]; then
-        log_E "访问密钥至少需要 16 字符, 请从管理面板直接复制粘贴"
-        exit 1
-    fi
+    while true; do
+        read -e -s -p "请输入 SakuraFrp 的访问密钥, 请到 https://www.natfrp.com/user/ 获取" api_key
+        echo
+        api_key_respond=$(curl -LI -X 'GET' "https://api.natfrp.com/v4/user/info?token=${api_key}" -o /dev/null -w '%{http_code}\n' -s)
+        echo ${api_key_respond}
+        if  [[ ${api_key_respond} -eq 200 ]]; then break; fi
+        log_E "访问密钥错误, 请到 https://www.natfrp.com/user/ 获取"
+    done
 
-    read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass
-    if [[ ${#remote_pass} -lt 8 ]]; then
-        log_E "远程管理密码至少需要 8 字符"
-        exit 1
-    fi
+    while true; do
+        while true; do
+            read -e -s -p "请输入远程管理密码（至少八个字符）: " remote_pass
+            echo
+            if [[ ${#remote_pass} -ge 8 ]]; then break; fi
+            log_E "远程管理密码至少需要 8 字符"
+        done
 
-    read -e -p "请再次输入远程管理密码: " remote_pass_confirm
-    if [[ $remote_pass != $remote_pass_confirm ]]; then
+        read -e -s -p "请再次输入远程管理密码: " remote_pass_confirm
+        echo
+        if [[ "$remote_pass" == "$remote_pass_confirm" ]]; then break; fi
         log_E "两次输入的远程管理密码不一致, 请确认知晓自己正在输入的内容"
-        exit 1
-    fi
+    done
 }
 
 check_executable() {
