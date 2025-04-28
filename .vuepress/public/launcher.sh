@@ -276,7 +276,7 @@ if docker info &>/dev/null && [[ $1 != "direct" ]]; then
 fi
 
 log_W "您正在使用非 Docker 安装模式"
-echo "我们建议您总是使用 Docker 安装模式, 以便于管理和减少兼容性问题"
+log_I "我们建议您总是使用 Docker 安装模式, 以便于管理和减少兼容性问题"
 
 # Check SELinux
 if command -v getenforce &>/dev/null; then
