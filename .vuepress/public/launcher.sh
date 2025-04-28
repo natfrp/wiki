@@ -75,9 +75,28 @@ docker_install() {
         fi
     fi
 
-    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v ${CONFIG_BASE}:/run -e "NATFRP_TOKEN=$api_key" -e "NATFRP_REMOTE=$remote_pass" natfrp.com/launcher || \
+    log_I "Docker 安装模式选择"
+    echo "请选择镜像来源："
+    echo "1. 官方 (natfrp.com/launcher)"
+    echo "2. GitHub (ghcr.io/natfrp/launcher)"
+    echo "3. Docker Hub (natfrp/launcher)"
+    read -p "请输入选项 [1-3] (默认1): " source
+    case $source in
+        2) image="ghcr.io/natfrp/launcher" ;;
+        3) image="natfrp/launcher" ;;
+        *) image="natfrp.com/launcher" ;;
+    esac
+
+    docker run -d --network=host \
+    --restart=on-failure:5 \
+    --pull=always \
+    --name=natfrp-service \
+    -v ${CONFIG_BASE}:/run \
+    -e "NATFRP_TOKEN=$api_key" \
+    -e "NATFRP_REMOTE=$remote_pass" \
+    $image || \
     (
-        log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问 natfrp.com 拉取镜像"
+        log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问镜像"
         exit 1
     )
 
