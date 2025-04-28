@@ -67,7 +67,7 @@ docker_install() {
         log_W "已存在名为 natfrp-service 的容器"
         read -p " - 是否移除已存在的容器? [y/N] " -r choice
         if [[ $choice =~ ^[Yy]$ ]]; then
-            docker kill natfrp-service || log_W "无法停止 natfrp-service 容器, 将尝试直接移除"
+            docker stop natfrp-service &>/dev/null || docker kill natfrp-service &>/dev/null
             docker rm natfrp-service
         else
             log_E "请手动移除已存在的容器后重新运行脚本"
@@ -203,7 +203,7 @@ EOF
   - 查看日志\tjournalctl -u natfrp.service
 \n请登录远程管理界面启动隧道: https://www.natfrp.com/remote/v2\n"
 
-    log_I "下方将输出启动器日志, 如需退出请按 Ctrl+C"
+    log_I "下方将输出启动器日志, 如需退出请按 Ctrl+C" 
     journalctl -u natfrp.service -f
 }
 
@@ -228,6 +228,9 @@ uninstall() {
         if docker ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
             docker stop natfrp-service &>/dev/null || docker kill natfrp-service &>/dev/null
             docker rm natfrp-service &>/dev/null && log_I "已删除 Docker 容器"
+        else
+            log_E "无法删除 Docker 容器, 脚本已退出"
+            exit 1
         fi
 
         if [[ -f /etc/systemd/system/natfrp.service ]]; then
