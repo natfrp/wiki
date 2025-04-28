@@ -226,7 +226,7 @@ uninstall() {
     read -p " - 确认要卸载 SakuraFrp 启动器吗? [y/N] " -r choice
     if [[ $choice =~ ^[Yy]$ ]]; then
         if docker ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
-            docker kill natfrp-service &>/dev/null || log_W "无法停止 natfrp-service 容器, 将尝试直接删除"
+            docker stop natfrp-service &>/dev/null || docker kill natfrp-service &>/dev/null
             docker rm natfrp-service &>/dev/null && log_I "已删除 Docker 容器"
         fi
 
