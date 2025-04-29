@@ -252,8 +252,11 @@ uninstall() {
         fi
 
         if [[ -f /etc/systemd/system/natfrp.service ]]; then
-            systemctl stop natfrp.service &>/dev/null
-            systemctl disable natfrp.service &>/dev/null
+            if systemctl -q is-enabled; then
+                systemctl disable --now natfrp.service &>/dev/null
+            elif systemctl -q is-active; then
+                systemctl stop natfrp.service &>/dev/null
+            fi
             rm -f /etc/systemd/system/natfrp.service &>/dev/null && log_I "已删除 systemd 服务"
             systemctl reload-daemon &>/dev/null
         fi
