@@ -27,7 +27,7 @@ ask_for_creds() {
 
     while true; do
         while true; do
-            read -e -s -p "请输入远程管理密码（至少八个字符）: " remote_pass
+            read -e -s -p "请输入远程管理密码 (至少八个字符): " remote_pass
             echo
             if [[ ${#remote_pass} -ge 8 ]]; then break; fi
             log_E "远程管理密码至少需要 8 字符"
@@ -85,14 +85,15 @@ docker_install() {
         *) image="natfrp.com/launcher" ;;
     esac
 
-    docker run -d --network=host \
-    --restart=on-failure:5 \
-    --pull=always \
-    --name=natfrp-service \
-    -v ${CONFIG_BASE}:/run \
-    -e "NATFRP_TOKEN=$api_key" \
-    -e "NATFRP_REMOTE=$remote_pass" \
-    $image || \
+    docker run -d \
+        --network=host \
+        --restart=on-failure:5 \
+        --pull=always \
+        --name=natfrp-service \
+        -v ${CONFIG_BASE}:/run \
+        -e "NATFRP_TOKEN=$api_key" \
+        -e "NATFRP_REMOTE=$remote_pass" \
+        $image || \
     (
         log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问镜像"
         exit 1
@@ -220,7 +221,7 @@ EOF
   - 查看日志\tjournalctl -u natfrp.service
 \n请登录远程管理界面启动隧道: https://www.natfrp.com/remote/v2\n"
 
-    log_I "下方将输出启动器日志, 如需退出请按 Ctrl+C" 
+    log_I "下方将输出启动器日志, 如需退出请按 Ctrl+C"
     journalctl -u natfrp.service -f
 }
 
