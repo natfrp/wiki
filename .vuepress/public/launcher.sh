@@ -246,9 +246,6 @@ uninstall() {
         if docker ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
             docker stop --timeout 5 &>/dev/null
             docker rm natfrp-service &>/dev/null && log_I "已删除 Docker 容器"
-        else
-            log_E "无法删除 Docker 容器, 脚本已退出"
-            exit 1
         fi
 
         if [[ -f /etc/systemd/system/natfrp.service ]]; then
