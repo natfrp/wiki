@@ -65,7 +65,7 @@ docker_install() {
         log_W "已存在名为 natfrp-service 的容器"
         read -p " - 是否移除已存在的容器? [y/N] " -r choice
         if [[ $choice =~ ^[Yy]$ ]]; then
-            docker stop natfrp-service &>/dev/null || docker kill natfrp-service &>/dev/null
+            docker stop --timeout 5 &>/dev/null
             docker rm natfrp-service
         else
             log_E "请手动移除已存在的容器后重新运行脚本"
@@ -244,7 +244,7 @@ uninstall() {
     read -p " - 确认要卸载 SakuraFrp 启动器吗? [y/N] " -r choice
     if [[ $choice =~ ^[Yy]$ ]]; then
         if docker ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
-            docker stop natfrp-service &>/dev/null || docker kill natfrp-service &>/dev/null
+            docker stop --timeout 5 &>/dev/null
             docker rm natfrp-service &>/dev/null && log_I "已删除 Docker 容器"
         else
             log_E "无法删除 Docker 容器, 脚本已退出"
