@@ -21,9 +21,7 @@ ask_for_creds() {
     while true; do
         read -e -s -p "请输入 SakuraFrp 的访问密钥, 请到 https://www.natfrp.com/user/ 获取" api_key
         echo
-        api_key_respond=$(curl -LI -X 'GET' "https://api.natfrp.com/v4/user/info?token=${api_key}" -o /dev/null -w '%{http_code}\n' -s)
-        echo ${api_key_respond}
-        if  [[ ${api_key_respond} -eq 200 ]]; then break; fi
+        if [[ ${#api_key} -eq 16 ]]; then
         log_E "访问密钥错误, 请到 https://www.natfrp.com/user/ 获取"
     done
 
