@@ -19,7 +19,7 @@ log_E() { echo -e "\e[31m[-] $1\e[0m"; }
 
 ask_for_creds() {
     while true; do
-        read -e -s -p "请输入 SakuraFrp 的访问密钥, 请到 https://www.natfrp.com/user/ 获取" api_key
+        read -e -p "请输入 SakuraFrp 的访问密钥, 请到 https://www.natfrp.com/user/ 获取" api_key
         echo
         if [[ ${#api_key} -ne 16 ]]; then
         log_E "访问密钥错误, 请到 https://www.natfrp.com/user/ 获取"
@@ -27,17 +27,18 @@ ask_for_creds() {
 
     while true; do
         while true; do
-            read -e -s -p "请输入远程管理密码 (至少八个字符): " remote_pass
+            read -e -p "请输入远程管理密码 (至少八个字符): " remote_pass
             echo
             if [[ ${#remote_pass} -ge 8 ]]; then break; fi
             log_E "远程管理密码至少需要 8 字符"
         done
 
-        read -e -s -p "请再次输入远程管理密码: " remote_pass_confirm
+        read -e -p "请再次输入远程管理密码: " remote_pass_confirm
         echo
         if [[ "$remote_pass" == "$remote_pass_confirm" ]]; then break; fi
         log_E "两次输入的远程管理密码不一致, 请确认知晓自己正在输入的内容"
     done
+    clear
 }
 
 check_executable() {
