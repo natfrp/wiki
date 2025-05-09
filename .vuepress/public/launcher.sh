@@ -245,8 +245,8 @@ uninstall() {
             if [[ -d /home/${LOW_USER} ]]; then
                 rm -rf /home/${LOW_USER} &>/dev/null && log_I "已删除 /home/${LOW_USER} 中的启动器数据"
             fi
-            if [[ -d /etc/natfrp ]]; then
-                rm -rf /etc/natfrp &>/dev/null && log_I "已删除 /etc/natfrp 中的启动器数据"
+            if [[ -d ${CONFIG_BASE} ]]; then
+                rm -rf ${CONFIG_BASE} &>/dev/null && log_I "已删除 ${CONFIG_BASE} 中的启动器数据"
             fi
         else
             log_I "启动器数据未删除, 您可再次执行卸载脚本以删除"
@@ -314,7 +314,7 @@ if [[ -f "/home/natfrp/.config/natfrp-service/config.json" && ${CONFIG_BASE} != 
     if [[ $choice =~ ^[Yy]$ ]]; then
         systemctl stop natfrp.service &>/dev/null || log_W "无法停止旧服务, 将尝试直接迁移"
         mkdir -p ${CONFIG_BASE} || log_W "无法创建 ${CONFIG_BASE} 文件夹, 配置文件夹可能已存在, 我们将尝试迁移"
-        mv -f /home/natfrp/.config/natfrp-service/ ${CONFIG_BASE}/ || log_W "无法迁移旧配置文件, 请手动迁移"
+        mv -f /home/natfrp/.config/natfrp-service/ ${CONFIG_BASE}/ || log_W "无法完整迁移旧配置文件, 数据迁移可能不完整"
         chown -R ${LOW_USER}: ${CONFIG_BASE}
         log_I "已迁移旧配置文件到 ${CONFIG_BASE} 目录"
     fi
@@ -347,7 +347,7 @@ if $is_systemd; then
     echo -e "\e[96m[*] 将使用 systemd 安装模式\e[0m
   - 将在您的系统上创建名为 ${LOW_USER} 的用户
   - 将在 /home/${LOW_USER} 目录下保存 SakuraFrp 启动器文件
-  - 将为您创建 /etc/natfrp 文件夹用于存储启动器配置文件
+  - 将为您创建 ${CONFIG_BASE} 文件夹用于存储启动器配置文件
   - 将创建 systemd 服务并启动 SakuraFrp 启动器\n"
     press_enter
     bareinstall_systemd
@@ -355,7 +355,7 @@ else
     echo -e "\e[96m[*] 未发现 systemd, 将只安装启动器文件\e[0m
   - 将在您的系统上创建名为 ${LOW_USER} 的用户
   - 将在 /home/${LOW_USER} 目录下保存 SakuraFrp 启动器文件
-  - 将为您创建 /etc/natfrp 文件夹用于存储启动器配置文件
+  - 将为您创建 ${CONFIG_BASE} 文件夹用于存储启动器配置文件
   - 将在 /home/${LOW_USER}/start.sh 创建一个脚本用于运行 SakuraFrp 启动器
   \e[31m- 需手动启动, 不会开机自启
   - 关闭后不会自动重启\e[0m\n"
