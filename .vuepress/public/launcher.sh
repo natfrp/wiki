@@ -21,7 +21,7 @@ ask_for_creds() {
     while true; do
         read -e -p "请输入 SakuraFrp 的访问密钥, 请到 https://www.natfrp.com/user/ 获取" api_key
         echo
-        if [[ ${#api_key} -ne 16 ]]; then
+        if [[ ${#api_key} -ge 16 ]]; then break; fi
         log_E "访问密钥错误, 请到 https://www.natfrp.com/user/ 获取"
     done
 
@@ -250,9 +250,9 @@ uninstall() {
         fi
 
         if [[ -f /etc/systemd/system/natfrp.service ]]; then
-            if systemctl -q is-enabled; then
+            if systemctl -q is-enabled natfrp.service; then
                 systemctl disable --now natfrp.service &>/dev/null
-            elif systemctl -q is-active; then
+            elif systemctl -q is-active natfrp.service; then
                 systemctl stop natfrp.service &>/dev/null
             fi
             rm -f /etc/systemd/system/natfrp.service &>/dev/null && log_I "已删除 systemd 服务"
