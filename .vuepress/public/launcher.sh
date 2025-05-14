@@ -70,7 +70,7 @@ docker_install() {
         fi
     fi
 
-    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v ${CONFIG_BASE}:/run -e "NATFRP_TOKEN=$api_key" -e "NATFRP_REMOTE=$remote_pass" natfrp.com/launcher || \
+    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v ${CONFIG_BASE}:/run -e "NATFRP_TOKEN=$api_key" -e "NATFRP_REMOTE=$remote_pass" -e "TZ=${TZ:-Asia/Shanghai}" natfrp.com/launcher || \
     (
         log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问 natfrp.com 拉取镜像"
         exit 1
@@ -341,9 +341,9 @@ esac
 ask_for_creds
 
 # Check init
-is_systemd=$(ls -l /proc/1/exe | grep -q systemd)
+ls -l /proc/1/exe | grep -q systemd && is_systemd=1 || is_systemd=0
 
-if $is_systemd; then
+if [ $is_systemd -eq 1 ]; then
     echo -e "\e[96m[*] 将使用 systemd 安装模式\e[0m
   - 将在您的系统上创建名为 ${LOW_USER} 的用户
   - 将在 /home/${LOW_USER} 目录下保存 SakuraFrp 启动器文件

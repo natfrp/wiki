@@ -370,6 +370,7 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
       --name=natfrp-service \
       -e "NATFRP_TOKEN=<访问密钥>" \
       -e "NATFRP_REMOTE=<设定一个远程管理密码，最少8个字符>" \
+      -e "TZ=Asia/Shanghai" \
       natfrp.com/launcher
    ```
 
