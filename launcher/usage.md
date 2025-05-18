@@ -323,7 +323,7 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh)"
 sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 ```
 
-此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改。
+此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户贡献并经我们修改。
 
 ### 手动安装步骤 {#docker-manual}
 
