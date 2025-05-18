@@ -325,6 +325,13 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 
 此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户贡献并经我们修改。
 
+如果您使用成品 NAS 系统的 Docker GUI 配置，您可以参考对应系统的教程，如：
+
+- [Synology](/app/synology.md)
+- [QNAP](/app/qnap.md)
+- [unRAID](/app/unraid.md)
+- [fnOS](/app/fnos.md)
+
 ### 手动安装步骤 {#docker-manual}
 
 1. 启动容器
