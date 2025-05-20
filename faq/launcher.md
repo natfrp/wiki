@@ -25,7 +25,7 @@
 - 对于 Linux 用户，如果您是按照文档安装的启动器，可以尝试执行下列命令：
 
   ```sh
-  grep webui_ ~/.config/natfrp-service/config.json /home/natfrp/.config/natfrp-service/config.json
+  grep webui_ ~/.config/natfrp-service/config.json /home/natfrp/.config/natfrp-service/config.json /etc/natfrp/config.json
   ```
 
   输出内容中 `"webui_pass":` 后面引号内的内容即为 WebUI 密码。
