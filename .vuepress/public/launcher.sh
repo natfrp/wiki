@@ -18,23 +18,27 @@ log_W() { echo -e "\e[33m[!] $1\e[0m"; }
 log_E() { echo -e "\e[31m[-] $1\e[0m"; }
 
 ask_for_creds() {
-    read -e -p "请输入 SakuraFrp 的 访问密钥: " api_key
-    if [[ ${#api_key} -lt 16 ]]; then
-        log_E "访问密钥至少需要 16 字符, 请从管理面板直接复制粘贴"
-        exit 1
-    fi
+    while true; do
+        read -e -p "请输入 SakuraFrp 的访问密钥, 请到 https://www.natfrp.com/user/ 获取" api_key
+        echo
+        if [[ ${#api_key} -ge 16 ]]; then break; fi
+        log_E "访问密钥错误, 请到 https://www.natfrp.com/user/ 获取"
+    done
 
-    read -e -p "请输入您希望使用的远程管理密码 (至少八个字符): " remote_pass
-    if [[ ${#remote_pass} -lt 8 ]]; then
-        log_E "远程管理密码至少需要 8 字符"
-        exit 1
-    fi
+    while true; do
+        while true; do
+            read -e -p "请输入远程管理密码 (至少八个字符): " remote_pass
+            echo
+            if [[ ${#remote_pass} -ge 8 ]]; then break; fi
+            log_E "远程管理密码至少需要 8 字符"
+        done
 
-    read -e -p "请再次输入远程管理密码: " remote_pass_confirm
-    if [[ $remote_pass != $remote_pass_confirm ]]; then
+        read -e -p "请再次输入远程管理密码: " remote_pass_confirm
+        echo
+        if [[ "$remote_pass" == "$remote_pass_confirm" ]]; then break; fi
         log_E "两次输入的远程管理密码不一致, 请确认知晓自己正在输入的内容"
-        exit 1
-    fi
+    done
+    clear
 }
 
 check_executable() {
@@ -62,7 +66,7 @@ docker_install() {
         log_W "已存在名为 natfrp-service 的容器"
         read -p " - 是否移除已存在的容器? [y/N] " -r choice
         if [[ $choice =~ ^[Yy]$ ]]; then
-            docker kill natfrp-service || log_W "无法停止 natfrp-service 容器, 将尝试直接移除"
+            docker stop --timeout 5 &>/dev/null
             docker rm natfrp-service
         else
             log_E "请手动移除已存在的容器后重新运行脚本"
@@ -70,9 +74,30 @@ docker_install() {
         fi
     fi
 
-    docker run -d --network=host --restart=on-failure:5 --pull=always --name=natfrp-service -v ${CONFIG_BASE}:/run -e "NATFRP_TOKEN=$api_key" -e "NATFRP_REMOTE=$remote_pass" -e "TZ=${TZ:-Asia/Shanghai}" natfrp.com/launcher || \
+    log_I "Docker 安装模式选择"
+    echo "请选择镜像来源："
+    echo "1. 官方 (natfrp.com/launcher)"
+    echo "2. GitHub (ghcr.io/natfrp/launcher)"
+    echo "3. Docker Hub (natfrp/launcher)"
+    read -p "请输入选项 [1-3] (默认1): " source
+    case $source in
+        2) image="ghcr.io/natfrp/launcher" ;;
+        3) image="natfrp/launcher" ;;
+        *) image="natfrp.com/launcher" ;;
+    esac
+
+    docker run -d \
+        --network=host \
+        --restart=on-failure:5 \
+        --pull=always \
+        --name=natfrp-service \
+        -v ${CONFIG_BASE}:/run \
+        -e "NATFRP_TOKEN=$api_key" \
+        -e "NATFRP_REMOTE=$remote_pass" \
+        -e "TZ=${TZ:-Asia/Shanghai}" \
+        $image || \
     (
-        log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问 natfrp.com 拉取镜像"
+        log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问镜像"
         exit 1
     )
 
@@ -221,13 +246,16 @@ uninstall() {
     read -p " - 确认要卸载 SakuraFrp 启动器吗? [y/N] " -r choice
     if [[ $choice =~ ^[Yy]$ ]]; then
         if docker ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
-            docker kill natfrp-service &>/dev/null || log_W "无法停止 natfrp-service 容器, 将尝试直接删除"
+            docker stop --timeout 5 &>/dev/null
             docker rm natfrp-service &>/dev/null && log_I "已删除 Docker 容器"
         fi
 
         if [[ -f /etc/systemd/system/natfrp.service ]]; then
-            systemctl stop natfrp.service &>/dev/null
-            systemctl disable natfrp.service &>/dev/null
+            if systemctl -q is-enabled natfrp.service; then
+                systemctl disable --now natfrp.service &>/dev/null
+            elif systemctl -q is-active natfrp.service; then
+                systemctl stop natfrp.service &>/dev/null
+            fi
             rm -f /etc/systemd/system/natfrp.service &>/dev/null && log_I "已删除 systemd 服务"
             systemctl reload-daemon &>/dev/null
         fi
@@ -271,7 +299,7 @@ if docker info &>/dev/null && [[ $1 != "direct" ]]; then
 fi
 
 log_W "您正在使用非 Docker 安装模式"
-echo "我们建议您总是使用 Docker 安装模式, 以便于管理和减少兼容性问题"
+log_I "我们建议您总是使用 Docker 安装模式, 以便于管理和减少兼容性问题"
 
 # Check SELinux
 if command -v getenforce &>/dev/null; then
