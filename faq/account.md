@@ -8,6 +8,10 @@ SakuraFrp 通过 Gravatar 获取头像，您可以 [前往 Gravatar](https://www
 
 用户名不支持修改，我们也没有添加这个功能的计划。
 
+作为替代，可以在 [用户信息](https://www.natfrp.com/user/profile) 页面设置昵称，部分受支持的页面将显示昵称而不是用户名。
+
+![](./_images/edit-nickname.png)
+
 ## 忘记用户名怎么办 {#forgot-username}
 
 您可以使用账户的绑定邮箱作为用户名直接登录，如果您的账户绑定了手机也可以用手机号直接登录。
