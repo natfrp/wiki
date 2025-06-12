@@ -19,7 +19,7 @@ log_E() { echo -e "\e[31m[-] $1\e[0m"; }
 
 ask_for_creds() {
     while true; do
-        read -e -p "请输入 SakuraFrp 的访问密钥, 请到 https://www.natfrp.com/user/ 获取" api_key
+        read -e -p "请输入 SakuraFrp 的访问密钥 (可在 https://www.natfrp.com/user/ 获取): " api_key
         echo
         if [[ ${#api_key} -ge 16 ]]; then break; fi
         log_E "访问密钥错误, 请到 https://www.natfrp.com/user/ 获取"
@@ -66,7 +66,7 @@ docker_install() {
         log_W "已存在名为 natfrp-service 的容器"
         read -p " - 是否移除已存在的容器? [y/N] " -r choice
         if [[ $choice =~ ^[Yy]$ ]]; then
-            docker stop --timeout 5 &>/dev/null
+            docker stop natfrp-service --timeout 5 &>/dev/null
             docker rm natfrp-service
         else
             log_E "请手动移除已存在的容器后重新运行脚本"
