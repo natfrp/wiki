@@ -84,15 +84,13 @@ RustDesk 官方发布的客户端需配置 **ID/中继服务器** 以连接到 S
 
 ## 登录客户端 {#login}
 
-请使用您的 SakuraFrp **用户名** 和 **访问密钥** 登录客户端。
-
-重置访问密钥不会造成客户端退出登录，如需踢掉会话请前往 [会话管理](https://www.natfrp.com/remote/rd_session) 页面。
-
-您也可以点击下面的 `使用 Nyatwork OpenID`（官方客户端 < 1.2.2 显示为 `使用 GitHub`）按钮打开浏览器进行登录。
+点击下面的 `使用 Nyatwork OpenID`（官方客户端 < 1.2.2 显示为 `使用 GitHub`）按钮打开浏览器进行登录。
 
 ![](./_images/login.png)
 
 登录完成后，就可以正常使用 RustDesk 远程连接您的设备了。您只能连接登录了同一个账户或被授权访问的设备。
+
+修改密码不会踢掉 RustDesk 会话，如有相关需求请前往 [会话管理](https://www.natfrp.com/remote/rd_session) 页面进行操作。
 
 ## 常见问题 {#faq}
 
