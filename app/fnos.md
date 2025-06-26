@@ -102,3 +102,23 @@ fnOS v0.8.22 后修改了默认端口，下面步骤中的端口号已经做出�
 配置时只要选择之前创建的存储路径，访问密钥、远程管理密码会被保留，无需配置 `环境变量` 部分；自动启动的隧道列表和证书 (如果有) 也会被保留，无需重复配置。
 
 ![](./_images/fnos-docker-delete-container.png)
+
+## 使用compose {#docker-compose}
+
+![](./_images/fnos-docker-compose-1.png)
+
+```yaml
+services:
+  my-frp:
+    image: natfrp.com/launcher:latest
+    container_name: natfrp
+    network_mode: host
+    restart: always
+    environment:
+      LANG: zh_CN.UTF-8
+      TZ: Asia/Shanghai
+      NATFRP_TOKEN: your_token
+      NATFRP_REMOTE: your_secret
+    volumes:
+      - ./data:/run
+```
