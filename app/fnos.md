@@ -103,9 +103,21 @@ fnOS v0.8.22 后修改了默认端口，下面步骤中的端口号已经做出�
 
 ![](./_images/fnos-docker-delete-container.png)
 
-## 使用compose {#docker-compose}
+## 使用 compose（快速启动） {#docker-compose}
 
-![](./_images/fnos-docker-compose-1.png)
+使用 compose 快速编排 natfrp （白话：将上面普通容器启动过程的配置写进文件中一键启动）
+
+下面演示，外网访问 NAS 的 PostgreSQL 数据库（其他服务可以类比）
+
+1. NatFrp 创建隧道
+
+[创建隧道](https://www.natfrp.com/tunnel/)
+
+![](./_images/fnos-docker-compose-5.png)
+
+2. 修改配置
+
+修改下面配置，方便后面步骤使用
 
 ```yaml
 services:
@@ -117,8 +129,54 @@ services:
     environment:
       LANG: zh_CN.UTF-8
       TZ: Asia/Shanghai
-      NATFRP_TOKEN: your_token
-      NATFRP_REMOTE: your_secret
+      NATFRP_TOKEN: 你的访问密钥
+      NATFRP_REMOTE: 设置远程管理密码（8位以上）
     volumes:
       - ./data:/run
 ```
+
+配置说明
+
+container_name: 容器名字，可以自定义  
+network_mode: 主机网络模式（直接使用 NAS 的网络）  
+NATFRP_TOKEN: 修改为你的 token  
+NATFRP_REMOTE: 设置你的远程管理密码  
+volumes: 挂载目录（相对目录，会自动创建，无需手动创建）
+
+3. 创建 compose 项目
+
+![](./_images/fnos-docker-compose-1.gif)
+
+根据个人习惯选择存储位置
+
+我习惯将 docker 相关的都放到 docker 文件夹（自己创建的），然后建立一个 natfrp 的项目文件夹。
+
+将第一步修改后的内容贴进去
+
+4. 启动项目
+
+第一次运行需要点击构建，如果本地没有镜像会自动从网上下载镜像
+
+![](./_images/fnos-docker-compose-2.png)
+
+5. 查看日志
+
+![](./_images/fnos-docker-compose-3.png)
+
+6. 联通隧道
+
+登录[NatFrp 远程管理](https://www.natfrp.com/remote/v2)
+
+![](./_images/fnos-docker-compose-4.png)
+
+成功会提示
+
+![](./_images/fnos-docker-compose-6.png)
+
+7. 连接数据测试
+
+如果透穿的是 http 类型服务，可以浏览器访问
+
+我这里是数据库，我直接用连接工具测试连通性
+
+![alt text](./_images/fnos-docker-compose-7.png)
