@@ -126,8 +126,4 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 为了维护良好的交流环境，只有通过实名认证的用户才能加入官方反馈群
 :::
 
-- 公开用户群：  
-  请前往 [管理面板](https://www.natfrp.com/user/) 点击 `帮助 > QQ 反馈群`，阅读加群须知后点击 `确认加群` 按钮。
-
-- VIP 反馈群：  
-  用户组为 VIP 时您可以在 [用户信息](https://www.natfrp.com/user/profile) 页面找到群号，如果没找到可以刷新一下再仔细找找。
+请前往 [管理面板](https://www.natfrp.com/user/) 点击 `帮助 > QQ 反馈群`，阅读加群须知后点击 `确认加群` 按钮。
