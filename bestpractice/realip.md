@@ -54,7 +54,7 @@ Proxy Protocol v1 并未为 UDP 设计，在 UDP 隧道中您总是应该使用 
 
 ::: tip
 在某个 `listen` 端口启用 Proxy Protocol 后，该端口（包括其他配置文件中的相同端口）的所有连接都会按 Proxy Protocol 协议处理  
-因此，所有连接到该端口的客户端（frpc）都必须启用 Proxy Protocol 支持，否则会导致连接失败。此外，浏览器将无法直接访问该端口
+因此，所有连接到该端口的客户端（frpc）都必须启用 Proxy Protocol 支持，否则会导致连接失败；使用浏览器也将无法直接访问该端口，可以使用 [内网访问功能](/frpc/manual#feature-local-access)
 :::
 
 在需要启用 Proxy Protocol 的 `server` 块找到 `listen` 字段，并在尾部（分号前面）添加用空格分开的 `proxy_protocol` 即可。举个例子：
@@ -89,34 +89,24 @@ http {
 
 </div></div>
 
-配置完成后，您可以通过 `$proxy_protocol_addr` 变量获取到真实 IP。一个常见的做法是将该变量设置为一个 HTTP 头以便后续应用使用：
+配置完成后，您可以通过 `$proxy_protocol_addr` 变量获取到真实 IP，可以将其设置为一个头部传递到后端应用等。
+
+一个常见的做法是使用 realip 模块直接将结果覆盖到 `$remote_addr`：
 
 ```nginx
 server {
     listen 80 proxy_protocol;
     listen 443 ssl proxy_protocol;
 
-    # 反向代理
-    location ... {
-        proxy_set_header X-Real-IP $proxy_protocol_addr;
-        proxy_set_header X-Forwarded-For $proxy_protocol_addr;
+    # set_real_ip_from 需要设置为您运行 frpc 机器的内网 IP 或段，或设置为 127.0.0.0/8 表示来自本机
+    set_real_ip_from 127.0.0.0/8;
+    real_ip_header proxy_protocol;
 
-        # 原有内容
-        proxy_pass ...;
-    }
-
-    # FastCGI
-    location ... {
-        fastcgi_param HTTP_X_REAL_IP $proxy_protocol_addr;
-        fastcgi_param HTTP_X_FORWARDED_FOR $proxy_protocol_addr;
-
-        # 原有内容
-        fastcgi_pass ...;
-    }
+    # 原有内容...
 }
 ```
 
-现在，您可以通过 `X-Forwarded-For` 和 `X-Real-IP` 两个请求头获取真实 IP 了。
+现在，您不需要任何其他操作，应用即可获取到真实 IP 了。
 
 @tab Apache {#apache}
 
