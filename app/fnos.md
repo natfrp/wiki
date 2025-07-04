@@ -103,80 +103,58 @@ fnOS v0.8.22 后修改了默认端口，下面步骤中的端口号已经做出�
 
 ![](./_images/fnos-docker-delete-container.png)
 
-## 使用 compose（快速启动） {#docker-compose}
+## 使用 compose 编排启动器 {#docker-compose}
 
-使用 compose 快速编排 natfrp （白话：将上面普通容器启动过程的配置写进文件中一键启动）
+您可以使用 docker compose 来编排启动器容器，以符合您的另一种使用习惯。
 
-下面演示，外网访问 NAS 的 PostgreSQL 数据库（其他服务可以类比）
+1. 创建隧道
 
-1. NatFrp 创建隧道
+   按需创建隧道即可。
 
-[创建隧道](https://www.natfrp.com/tunnel/)
+1. 修改配置
 
-![](./_images/fnos-docker-compose-5.png)
+   请复制下面的配置并按说明做对应修改，留待后面步骤使用：
 
-2. 修改配置
+   ```yaml
+   services:
+     sakurafrp: # 服务名，可以自定义，在同一个 compose 项目中唯一
+       image: natfrp.com/launcher:latest
+       # container_name: natfrp  # 如果需要自定义容器名，可以取消注释并修改
+       network_mode: host
+       restart: always
+       environment:
+         LANG: zh_CN.UTF-8
+         TZ: Asia/Shanghai
+         NATFRP_TOKEN: <你的访问密钥>
+         NATFRP_REMOTE: <设置远程管理密码（8位以上）>
+       volumes:
+         - ./data:/run # 挂载运行目录（此处使用相对目录以方便管理）
+   ```
 
-修改下面配置，方便后面步骤使用
+1. 准备 compose 项目
 
-```yaml
-services:
-  my-frp:
-    image: natfrp.com/launcher:latest
-    container_name: natfrp
-    network_mode: host
-    restart: always
-    environment:
-      LANG: zh_CN.UTF-8
-      TZ: Asia/Shanghai
-      NATFRP_TOKEN: 你的访问密钥
-      NATFRP_REMOTE: 设置远程管理密码（8位以上）
-    volumes:
-      - ./data:/run
-```
+   如您希望将启动器加入其他编排中，将上面的内容混入到您的 `docker-compose.yml` 文件中即可。
 
-配置说明
+   如您不知为何需要一个单服务的 docker compose 项目，请参考此 GIF 创建一个：
 
-container_name: 容器名字，可以自定义  
-network_mode: 主机网络模式（直接使用 NAS 的网络）  
-NATFRP_TOKEN: 修改为你的 token  
-NATFRP_REMOTE: 设置你的远程管理密码  
-volumes: 挂载目录（相对目录，会自动创建，无需手动创建）
+   ![](./_images/fnos-docker-compose-1.gif)
 
-3. 创建 compose 项目
+   请根据个人习惯选择、创建并管理存储位置，图中使用了 `docker` 目录下的 `natfrp` 目录，均需用户手动创建。
 
-![](./_images/fnos-docker-compose-1.gif)
+   粘贴上一步修改后的配置到对应步骤的文本框中即可。
 
-根据个人习惯选择存储位置
+1. 启动项目并查看日志
 
-我习惯将 docker 相关的都放到 docker 文件夹（自己创建的），然后建立一个 natfrp 的项目文件夹。
+   第一次运行可以点击构建，如果本地没有镜像会自动从网上下载镜像：
 
-将第一步修改后的内容贴进去
+   ![](./_images/fnos-docker-compose-2.png)
 
-4. 启动项目
+   然后点击启动键，待其启动后即可查看日志：
 
-第一次运行需要点击构建，如果本地没有镜像会自动从网上下载镜像
+   ![](./_images/fnos-docker-compose-3.png)
 
-![](./_images/fnos-docker-compose-2.png)
+1. 连接启动器管理
 
-5. 查看日志
+   到 [远程管理](https://www.natfrp.com/remote/v2) 登录即可，您可以通过双击待启动隧道（下面灰色部分）或将其拖曳到上半部的方式启动隧道：
 
-![](./_images/fnos-docker-compose-3.png)
-
-6. 联通隧道
-
-登录[NatFrp 远程管理](https://www.natfrp.com/remote/v2)
-
-![](./_images/fnos-docker-compose-4.png)
-
-成功会提示
-
-![](./_images/fnos-docker-compose-6.png)
-
-7. 连接数据测试
-
-如果透穿的是 http 类型服务，可以浏览器访问
-
-我这里是数据库，我直接用连接工具测试连通性
-
-![alt text](./_images/fnos-docker-compose-7.png)
+   ![](./_images/fnos-docker-compose-4.png)
