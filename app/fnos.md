@@ -102,3 +102,59 @@ fnOS v0.8.22 后修改了默认端口，下面步骤中的端口号已经做出�
 配置时只要选择之前创建的存储路径，访问密钥、远程管理密码会被保留，无需配置 `环境变量` 部分；自动启动的隧道列表和证书 (如果有) 也会被保留，无需重复配置。
 
 ![](./_images/fnos-docker-delete-container.png)
+
+## 使用 compose 编排启动器 {#docker-compose}
+
+您可以使用 docker compose 来编排启动器容器，以符合您的另一种使用习惯。
+
+1. 创建隧道
+
+   按需创建隧道即可。
+
+1. 修改配置
+
+   请复制下面的配置并按说明做对应修改，留待后面步骤使用：
+
+   ```yaml
+   services:
+     sakurafrp: # 服务名，可以自定义，在同一个 compose 项目中唯一
+       image: natfrp.com/launcher:latest
+       # container_name: natfrp  # 如果需要自定义容器名，可以取消注释并修改
+       network_mode: host
+       restart: always
+       environment:
+         LANG: zh_CN.UTF-8
+         TZ: Asia/Shanghai
+         NATFRP_TOKEN: <你的访问密钥>
+         NATFRP_REMOTE: <设置远程管理密码（8位以上）>
+       volumes:
+         - ./data:/run # 挂载运行目录（此处使用相对目录以方便管理）
+   ```
+
+1. 准备 compose 项目
+
+   如您希望将启动器加入其他编排中，将上面的内容混入到您的 `docker-compose.yml` 文件中即可。
+
+   如您不知为何需要一个单服务的 docker compose 项目，请参考此 GIF 创建一个：
+
+   ![](./_images/fnos-docker-compose-1.gif)
+
+   请根据个人习惯选择、创建并管理存储位置，图中使用了 `docker` 目录下的 `natfrp` 目录，均需用户手动创建。
+
+   粘贴上一步修改后的配置到对应步骤的文本框中即可。
+
+1. 启动项目并查看日志
+
+   第一次运行可以点击构建，如果本地没有镜像会自动从网上下载镜像：
+
+   ![](./_images/fnos-docker-compose-2.png)
+
+   然后点击启动键，待其启动后即可查看日志：
+
+   ![](./_images/fnos-docker-compose-3.png)
+
+1. 连接启动器管理
+
+   到 [远程管理](https://www.natfrp.com/remote/v2) 登录即可，您可以通过双击待启动隧道（下面灰色部分）或将其拖曳到上半部的方式启动隧道：
+
+   ![](./_images/fnos-docker-compose-4.png)
