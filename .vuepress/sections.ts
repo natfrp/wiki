@@ -101,6 +101,7 @@ const sections = {
 					{ text: 'unRAID', link: '/app/unraid.html' },
 					// { text: '绿联 / UGREEN', link: '/app/ugreen.html' },
 					{ text: '飞牛 / fnOS', link: '/app/fnos.html' },
+					{ text: '绿联 / UGREEN', link: '/app/ugos-pro.html' },
 				],
 			},
 		],
