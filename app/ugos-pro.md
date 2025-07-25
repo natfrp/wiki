@@ -1,4 +1,4 @@
-# 绿联 (UGREEEN) NAS UGOS Pro 系统穿透指南
+# 绿联 (UGREEN) NAS UGOS Pro 系统穿透指南
 
 本文档将指导您通过 Docker 配置启动器，并将 UGOS Pro 的绿联私有云网页管理穿透到外网；对于其他应用，对应修改本地端口即可。
 
