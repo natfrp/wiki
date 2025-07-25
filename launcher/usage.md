@@ -331,6 +331,7 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 - [QNAP](/app/qnap.md)
 - [unRAID](/app/unraid.md)
 - [fnOS](/app/fnos.md)
+- [UGOS Pro](/app/ugos-pro.md)
 
 ### 手动安装步骤 {#docker-manual}
 
