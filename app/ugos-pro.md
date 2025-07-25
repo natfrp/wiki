@@ -1,12 +1,14 @@
 # 绿联 (UGREEEN) NAS UGOS Pro 系统穿透指南
 
-本教程适用于使用 SakuraFrp 穿透绿联私有云端口，本教程以 RAGFlow 为例。
+本文档将指导您通过 Docker 配置启动器，并将 UGOS Pro 的绿联私有云网页管理穿透到外网；对于其他应用，对应修改本地端口即可。
 
-本文档使用 绿联 UGOS Pro 1.6.0.2905 系统进行演示。
+本文档使用 UGOS Pro 1.6.0.2905 系统进行演示，如您的系统版本不同，操作可能会有差异。
 
 ## 配置 Docker 环境 {#install-container-station}
 
-第一次使用绿联 UGOS Pro 系统时需要在应用中心搜索安装 Docker，安装完成后在桌面点击 **Docker** 图标即可，首次使用时需要配置存储空间用于存放数据。
+UGOS Pro 系统默认没有开启 Docker 功能，首次使用时需要在应用中心搜索安装 Docker，安装完成后就能在桌面找到 **Docker** 图标。
+
+点击 Docker 图标打开对应界面以进行后续的安装。
 
 ## 创建启动器容器 {#create-launcher-container}
 
@@ -41,7 +43,7 @@
 1. 在 `网络` 配置处如图所示选中 `host` 网络，然后点击 `确定` 创建容器：
 
    ::: tip
-   Web UI 默认运行在 7102 端口，如果发生冲突，请在创建完成后参考 [用户手册](/launcher/manual.md#config-webui) 修改端口或关闭 Web UI
+   Web UI（本地穿透管理服务）默认运行在 7102 端口，如果发生冲突，请在创建完成后参考 [用户手册](/launcher/manual.md#config-webui) 修改端口或关闭 Web UI
    :::
 
    ![](./_images/ugos-pro-docker-container-4.png)
@@ -50,14 +52,9 @@
 
    ![](./_images/ugos-pro-docker-container-5.png)
 
-   如果需要使用 Web UI 在本地连接，日志上方会输出对应的连接信息和密码。
+   如果需要使用 Web UI 在内网管理穿透的话，日志上方会输出对应的连接信息和密码，使用此信息在内网即可访问。
 
 ## 创建隧道 {#create-tunnel}
-
-::: tip 版本说明
-ugos-pro v0.8.22 后修改了默认端口，下面步骤中的端口号已经做出响应调整。  
-您可以前往 `系统设置` → `安全性` 处查看具体的端口。
-:::
 
 前往 SakuraFrp 管理面板，创建一条本地 IP 为 `localhost` 的 **TCP 隧道**：
 
