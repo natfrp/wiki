@@ -58,7 +58,7 @@
 
 ![](./_images/windows-install-components.png)
 
-## 关于开机启动 {#windows-autostart}
+### 关于开机启动 {#windows-autostart}
 
 打开启动器设置里的开关，就能实现登入桌面后自动启动隧道：
 
@@ -66,7 +66,7 @@
 
 如果需要不登录 Windows 就启动隧道（例如穿透远程桌面服务），请参考下面的说明安装系统服务。
 
-## 安装系统服务 {#windows-service}
+### 安装系统服务 {#windows-service}
 
 如果您正在安装启动器，直接勾选 `安装为系统服务` 并完成安装即可。否则，请按下面的步骤操作：
 
@@ -104,7 +104,7 @@
 
 ![](./_images/macos-install.png)
 
-## 关于开机启动 {#macos-autostart}
+### 关于开机启动 {#macos-autostart}
 
 如果需要在启动时自动打开用户界面，请参考 Apple 帮助文档：[Mac 启动时自动打开应用](https://support.apple.com/zh-cn/guide/mac-help/mh15189/mac)
 
@@ -121,6 +121,8 @@
 如果您不需要安装到系统级，请参考 [Linux (无 Root 桌面)](#linux) 标签
 :::
 
+### 脚本安装 {#linux-script-install}
+
 对于使用 systemd 的用户，可使用一键安装脚本快速安装：
 
 ```bash
@@ -134,6 +136,14 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
 ```
 
 此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改。
+
+### 脚本卸载 {#linux-script-uninstall}
+
+对于使用 [一键脚本](#linux-script-install) 安装的用户，可以使用脚本的卸载功能来快速卸载：
+
+```bash
+sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) uninstall"
+```
 
 ### 手动安装步骤 {#linux-server-manual}
 
@@ -251,7 +261,7 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
 
    ![](./_images/remote-v2-connect-2.png)
 
-### 关于卸载方式 {#linux-uninstall}
+### 手动卸载步骤 {#linux-manual-uninstall}
 
 如果您是按照教程安装的，把安装过程中进行的操作反过来进行一遍即可。
 
@@ -313,6 +323,8 @@ userdel -r natfrp
    ![](./_images/remote-v2-connect-2.png)
 
 @tab Docker {#docker}
+
+### Docker安装步骤 {#docker-install}
 
 如果您的系统中已有 Docker 环境，可使用一键安装脚本快速安装：
 
