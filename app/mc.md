@@ -54,8 +54,8 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 ### 安装辅助 Mod 联机 {#java-mod}
 
 ::: warning
-通过辅助 Mod 关闭正版验证 **可能** 会改变玩家的 UUID 导致 **背包内物品和玩家数据丢失**，请在操作前 **备份存档**  
-辅助 Mod 互相 **不兼容**，请勿 **重复** 添加联机模组
+通过辅助 Mod 关闭正版验证可能会改变玩家的 UUID 导致 **背包内物品和玩家数据丢失**，请在操作前 **备份存档**  
+辅助 Mod 互相不兼容，请勿重复添加联机模组
 :::
 
 如果您游玩的是整合包，那么其内可能已经有联机 Mod，您可以通过在游戏内打开 `对局域网开放` 功能时是否有 `在线模式` / `正版验证` 的配置来判断。  
@@ -81,10 +81,10 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 
 :::: tabs
 
-@tab LAN World Plug-n-Play
+@tab LAN World Plug-n-Play (推荐)
 
 ::: tip
-这个模组会显示 *端口映射失败，请使用内网映射软件* *获取IP成功: 内网IPv4* 等模组其他功能的运行状态，**请忽略这些提示**。  
+这个模组会在聊天栏显示 *端口映射失败，请使用内网映射软件* *获取IP成功: 内网IPv4* 等模组其他功能的运行状态，**请忽略这些提示**。  
 您的客机需要连接的 IP 在启动器或 frpc 的日志中。
 :::
 
@@ -94,15 +94,16 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
   2. 开关在线模式 (Online-mode)
   3. 更多对其他人的自定义功能
   4. 通过uPnP功能进行联机
-- 发布页面: [mcmod](https://www.mcmod.cn/class/4498.html) | [modrinth](https://modrinth.com/mod/mcwifipnp/) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/mcwifipnp/)
+- 发布页面: [mcmod](https://www.mcmod.cn/class/4498.html) | [modrinth](https://modrinth.com/mod/mcwifipnp/) | [Curseforge](https://www.curseforge.com/minecraft/mc-mods/mcwifipnp/) | [Github](https://github.com/Satxm/mcwifipnp)
 
 #### 使用方法
 
-1. 安装 Mod 并进入游戏，打开您要联机的世界
-2. 按下键盘上的 **ESC** 键，在出现的界面里找到 `对局域网开放` 之类的按钮并且点击进入
-3. 安装此 Mod 后 **设置局域网世界** 界面会增加下列选项，请按需配置:
+1. 安装 Mod 并进入游戏，进入您要和朋友联机的世界
+2. 按下 **ESC** 键，进入暂停菜单 (Pause Menu)，找到 `对局域网开放` 按钮并点击进入
+3. 安装此 Mod 后 **局域网世界** 界面会增加下列选项，请按需配置:
+  （注：您所看到的界面可能会因为版本不同而与教程有所差别，请尝试切换标签页寻找对应开关）
   ![](./_images/mc-mcwifipnp-setting.png)
-4. 点击 `创建局域网世界`，在聊天栏中会提示 `本地游戏已在端口 xxxxx 上开启`，表示游戏内置服务端已经启动，这个五位数的端口号会固定为您在上面输入框中设置的端口号。对应您在创建隧道时的本地端口选项。
+4. 点击 `创建局域网世界`，在聊天栏中会提示 `本地游戏已在端口 xxxxx 上开启`，表示游戏内置服务端已经启动，这个五位数的端口号会固定为您在上面输入框中设置的端口号。
 
 @tab LanServerProperties
 
