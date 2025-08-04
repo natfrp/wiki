@@ -48,7 +48,7 @@ SakuraFrp 提供 frpc 镜像 ([Docker Hub](https://hub.docker.com/r/natfrp/frpc)
 ```bash
 docker run \
     -d \
-    --restart=on-failure:5 \
+    --restart=always \
     --network=host \
     --pull=always \
     --name=sakura1 \
@@ -64,7 +64,7 @@ docker run \
 | 参数 | 说明 |
 | --- | --- |
 | `-d` | 在后台运行 |
-| `--restart=on-failure:5` | 系统重启或隧道崩溃时自动重启 frpc |
+| `--restart=always` | 系统重启或隧道崩溃时自动重启 frpc |
 | `--network=host` | 使用主机网络模式，这样 frpc 就可以直接访问本机的服务 |
 | `--pull=always` | 总是检查镜像更新 |
 | `--name=sakura1` | 为容器设定一个名字，这里以 `sakura1` 为例 |
@@ -82,7 +82,7 @@ services:
   # 在这里给容器起一个名字, 例如 sakura1
   sakura1:
     image: natfrp.com/frpc
-    restart: on-failure:5
+    restart: always
     network_mode: host
     command: --disable_log_color -f <启动参数>
 ```
@@ -114,7 +114,7 @@ Docker 镜像的工作目录默认为 `/run/frpc/`
 ```bash
 docker run \
     -d \
-    --restart=on-failure:5 \
+    --restart=always \
     --pull=always \
     --name=sakura1 \
     --network=host \

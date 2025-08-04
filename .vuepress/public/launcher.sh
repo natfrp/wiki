@@ -88,7 +88,7 @@ docker_install() {
 
     docker run -d \
         --network=host \
-        --restart=on-failure:5 \
+        --restart=always \
         --pull=always \
         --name=natfrp-service \
         -v ${CONFIG_BASE}:/run \

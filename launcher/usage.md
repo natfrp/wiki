@@ -370,7 +370,7 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
    docker run \
       -d \
       --network=host \
-      --restart=on-failure:5 \
+      --restart=always \
       --pull=always \
       --name=natfrp-service \
       natfrp.com/launcher
@@ -385,7 +385,7 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
    docker run \
       -d \
       --network=host \
-      --restart=on-failure:5 \
+      --restart=always \
       --pull=always \
       --name=natfrp-service \
       -e "NATFRP_TOKEN=<访问密钥>" \
