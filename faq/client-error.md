@@ -30,7 +30,7 @@
 ## 无法连接到本地服务 {#connect-to-local-service-error}
 
 ::: tip
-如果您正在映射 `Minecraft Java` 游戏服务，建议您查看更有针对性的 [MC穿透常见问题](app/mc.html#connect-to-local-service-error) 页面
+如果您正在映射 `Minecraft Java` 游戏服务，建议您查看更有针对性的 [MC穿透常见问题](/app/mc.md#connect-to-local-service-error) 页面
 :::
 
 此日志说明 **frpc 工作正常**，但是 frpc 无法连接到您的本地服务。
