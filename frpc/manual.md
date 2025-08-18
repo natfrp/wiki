@@ -80,6 +80,7 @@
 | [访问认证](#feature-auth) | ^^ |||
 | [内网访问](#feature-local-access) | ^^ |||
 | minecraft_detect | String | auto | 配置 Minecraft 局域网游戏监测功能<br>- 留空: 在本地端口为 25565 时监测来自本机的局域网游戏广播<br>- `enabled`: 监测来自本机的局域网游戏广播<br>- `enabled_lan`: 监测整个 LAN 中的局域网游戏广播<br>- `disabled`: 禁用局域网游戏监测<br>_* 0.51.0-sakura-5 及以上版本可用_ |
+| bandwidth_limit | String | 空 | 配置带宽限制，单位为兼容上游的 MB/KB（实际为 MiB/KiB）<br>_* 0.51.0-sakura-9 及以上版本可用_ |
 | ~~concat_packet~~ | ~~Int~~ | ~~-1~~ | ~~配置合并封包功能的最小字节数，有助于减少小包并降低网卡 PPS<br>设置为 `-1` 禁用合并封包功能~~<br>_* 于 0.51.0-sakura-7.2 移除_  |
 
 ### UDP 隧道 {#proxy-udp}
@@ -90,6 +91,7 @@
 | [内网访问](#feature-local-access) | ^^ |||
 | no_budp2 | Boolean | false | 停用 bUDPv2 优化<br>_* bUDPv2 优化在 0.51.0-sakura-3 及以上版本可用_ |
 | auth_mode | String | 空 | 设置为 `server` 可启用服务端访问认证 |
+| bandwidth_limit | String | 空 | 配置带宽限制，单位为兼容上游的 MB/KB（实际为 MiB/KiB）<br>_* 0.51.0-sakura-9 及以上版本可用_ |
 
 bUDPv2 优化有助于降低延迟和流量消耗，但是当您的隧道同时被超过 4096 个客户端访问且高强度发报时，可能出现极少量数据报被发送到错误的目标。
 
@@ -98,11 +100,10 @@ bUDPv2 优化有助于降低延迟和流量消耗，但是当您的隧道同时�
 | 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
 | :---: | :---: | :---: | --- |
 | [IP 访问控制](#feature-ip-acl) | 点击左侧链接查看配置详情 |||
-| [自动 HTTPS 功能](#feature-auto-https) | ^^ |||
+| [自动 HTTPS](#feature-auto-https) | ^^ |||
 | [访问认证](#feature-auth) | ^^ |||
 | force_https | Int | 0 | 配置 frps 自动重定向 HTTP 请求到 HTTPS 的功能，有助于减少隧道占用。<br>- `0`: 禁用自动重定向功能<br>- 其他数字: 启用重定向功能并在重定向时返回该数字作为状态码，推荐使用 `301` 或 `302` |
-| auto_https_mode | String | 空 | 与 [TCP 隧道](#tcp_proxy) 中同名选项相同 |
-| auto_https_policy | String | `loose` | 与 [TCP 隧道](#tcp_proxy) 中同名选项相同 |
+| bandwidth_limit | String | 空 | 配置带宽限制，单位为兼容上游的 MB/KB（实际为 MiB/KiB）<br>_* 0.51.0-sakura-9 及以上版本可用_ |
 
 ### WOL 隧道 {#proxy-wol}
 
@@ -119,7 +120,7 @@ bUDPv2 优化有助于降低延迟和流量消耗，但是当您的隧道同时�
 
 | 选项 | 类型 | <span class="nowrap">默认值</span> | 说明 |
 | :---: | :---: | :---: | --- |
-| blacklist_ip | List&lt;String&gt; | 空 | 以 `,` 分隔的黑名单列表，比白名单优先级更高，格式可以为:<br>- `114.5.1.4`: 单个 IP<br>- `114.5.1.4/8(16,24,32)`: 可以被 8 整除的前缀表示 |
+| blacklist_ip | List&lt;String&gt; | 空 | 以 `,` 分隔的黑名单列表，比白名单优先级更高，格式可以为:<br>- `114.5.1.4`: 单个 IP<br>- `114.5.1.4/8(16,24,32)`: 可以被 8 整除的前缀表示，_* 0.51.0-sakura-12 及以上版本可用_ |
 | whitelist_ip | List&lt;String&gt; | 空 | 以 `,` 分隔的白名单列表，设置白名单后无法通过黑白名单的 IP 即无法访问，格式与黑名单相同 |
 
 ## 访问认证功能 {#feature-auth}
@@ -135,6 +136,7 @@ bUDPv2 优化有助于降低延迟和流量消耗，但是当您的隧道同时�
 | auth_time | String | 2h | 配置访问认证功能在没有勾选「记住」时授权过期时间<br>接受的后缀为 `h`/`m`/`s`，请从大到小排列，如 `1h3m10s` |
 | auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 SakuraFrp 服务器下发的授权信息<br>- `server`: 不启用密码，只能通过 SakuraFrp 面板进行授权 |
 | auth_redirect | String | 空 | 配置 SakuraFrp 访问认证通过后自动跳转 (或打开) 到的页面<br>请参阅 [认证后打开的 URL](/offtopic/auth-widget.md#redirect_url) 获取更多用法 |
+| auth_bypass_intranet | Boolean | false | 配置允许内网 IP 绕过访问认证, 用于增强[内网访问](#feature-local-access)<br>_* 0.51.0-sakura-12 及以上版本可用_ |
 
 ## 自动 HTTPS 功能 {#feature-auto-https}
 
@@ -265,6 +267,7 @@ plugin_header_Referer = ""
 - 该功能适用于 `TCP`、`UDP` 隧道
 - 启用后，frpc 将在内网监听 **远程端口**，您可以通过 `frpc 所在设备IP:远程端口` 访问隧道
 - 通过该端口访问时，[IP 访问控制](#feature-ip-acl)、[访问认证](#feature-auth)、[自动 HTTPS](#feature-auto-https) 等客户端侧功能均正常生效
+- 如您需要使从内网 IP 段访问的设备绕过访问认证，请设置 `auth_bypass_intranet` 为 `true`，该选项在 [访问认证功能](#feature-auth) 中有说明
 
 典型的应用场景是启用子域绑定（或将自己的域名解析到节点）后，内网通过 DNS 将域名覆写到 frpc 所在设备 IP，从而实现本地设备通过内网直连、外网设备通过穿透节点访问，且两种方式都能正常使用客户端侧功能。
 
