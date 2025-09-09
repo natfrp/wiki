@@ -201,6 +201,10 @@ frpc 会在处理请求时按照 `SAN 完全匹配 -> SAN 中的泛域名可匹�
 
 ```log
 X-Forwarded-Proto: https
+
+# 0.51.0-sakura-12.3 及更旧版本还会添加下面三个请求头
+# 为增强兼容性，最新版 frpc 仅保留 X-Forwarded-Proto，不再添加下述请求头
+# 如有特殊需要，可通过 plugin_header_* 选项按需添加
 X-Forwarded-Protocol: https
 X-Forwarded-Ssl: on
 X-Url-Scheme: https
