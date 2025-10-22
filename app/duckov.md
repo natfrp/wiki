@@ -1,4 +1,4 @@
-# 逃离鸭科夫 联机
+# 逃离鸭科夫 (Escape From Duckov) 联机指南
 
 ## 安装 MOD
 
@@ -10,19 +10,19 @@
 
 在 Steam创意工坊中搜索 `联机` 即可找到该 MOD。
 
-![image-20251022120602338](H:\project\wiki\app\_images\duckov\steam.png)
+![](./_images/duckov/steam.png)
 
 订阅时，请务必点击订阅  `所有按钮`  ，以确保所有依赖均已包含。
 
-![image-20251022121118526](H:\project\wiki\app\_images\duckov\mod-subscribe.png)
+![](./_images/duckov/mod-subscribe.png)
 
-## 启动游戏（房主）
+## 启动游戏（房主） #{start-host}
 
 在安装所有您需要的 MOD 后，启动游戏。
 
 打开游戏后点击 `Mods` ，如下图所示，调整 MOD 顺序并依次勾选。
 
-![image-20251022122249792](H:\project\wiki\app\_images\duckov\mods.png)
+![](./_images/duckov/mods.png)
 
 然后您会看到一个  `联机Mod控制面板` ，默认为客户端模式。
 
@@ -32,15 +32,15 @@
 
 进入存档后，请确保您位于地堡中，再让同伴连接。
 
-## 设置隧道 {#setup-tunnel}
+## 设置隧道 {#create-tunnel}
 
 该 MOD 的联机端口为 `9050/udp`，因此您需要创建一个 **本地端口** 为 `9050` 的 **UDP** 隧道
 
-![image-20251022123240119](H:\project\wiki\app\_images\duckov\tunnel-info.png)
+![](./_images/duckov/tunnel-info.png)
 
 设置后打开此隧道，打开启动器的 `日志` 标签页，您将看到形似下面的日志，框中 `>> <<` 中间的内容即为连接方式。
 
-![image-20251022123928891](H:\project\wiki\app\_images\duckov\conn-info.png)
+![](./_images/duckov/conn-info.png)
 
 ## 加入游戏（其他玩家） {#join-game}
 
@@ -54,11 +54,11 @@
 
 打开游戏后点击 `Mods` ，如下图所示，调整 MOD 顺序并依次勾选。
 
-![image-20251022122249792](H:\project\wiki\app\_images\duckov\mods.png)
+![](./_images/duckov/mods.png)
 
 然后您会看到一个  `联机Mod控制面板` ，默认为客户端模式。请进入一个存档中，再继续下面的操作。
 
-![image-20251022124312323](H:\project\wiki\app\_images\duckov\client.png)
+![](./_images/duckov/client.png)
 
 在 `IP输入框` 中填入 连接方式 中冒号前的部分，在 `端口输入框` 中填入 连接方式 中冒号后的部分。
 
