@@ -54,7 +54,7 @@ Proxy Protocol v1 并未为 UDP 设计，在 UDP 隧道中您总是应该使用 
 
 ::: tip
 在某个 `listen` 端口启用 Proxy Protocol 后，该端口（包括其他配置文件中的相同端口）的所有连接都会按 Proxy Protocol 协议处理  
-因此，所有连接到该端口的客户端（frpc）都必须启用 Proxy Protocol 支持，否则会导致连接失败；使用浏览器也将无法直接访问该端口，可以使用 [内网访问功能](/frpc/manual#feature-local-access)
+因此，所有连接到该端口的客户端（frpc）都必须启用 Proxy Protocol 支持，否则会导致连接失败；使用浏览器也将无法直接访问该端口，可以使用 [内网访问功能](/frpc/manual.md#feature-local-access)
 :::
 
 在需要启用 Proxy Protocol 的 `server` 块找到 `listen` 字段，并在尾部（分号前面）添加用空格分开的 `proxy_protocol` 即可。举个例子：
