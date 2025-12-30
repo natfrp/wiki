@@ -116,11 +116,6 @@
 
 @tab Linux {#linux-server}
 
-::: tip
-这篇指南假设您以 `root` 用户进行安装，请先使用 `sudo -i` 或 `su -` 切换到 root 账户  
-如果您不需要安装到系统级，请参考 [Linux (无 Root 桌面)](#linux) 标签
-:::
-
 ### 脚本安装 {#linux-script-install}
 
 对于使用 systemd 的用户，可使用一键安装脚本快速安装：
@@ -149,6 +144,11 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) uninstall"
 
 ::: warning
 手动安装流程 **操作复杂，不适合新手使用**，如非特殊情况，请务必 **使用自动安装脚本** 或 [Docker](#docker) 进行安装
+:::
+
+::: tip
+这篇指南假设您以 `root` 用户进行安装，请先使用 `sudo -i` 或 `su -` 切换到 root 账户  
+如果您不需要安装到系统级，请参考 [Linux (无 Root 桌面)](#linux) 标签
 :::
 
 1. 由我们分发的压缩包采用 [zstd](https://github.com/facebook/zstd) 进行压缩，如果您还没有 `zstd`，请先在系统上安装。
