@@ -6,16 +6,23 @@ set -e # We strict the whole script
 CONFIG_BASE="/etc/natfrp"
 LOW_USER="natfrp"
 
+# Utility functions
+log_I() { echo -e "\e[32m[+] $1\e[0m"; }
+log_W() { echo -e "\e[33m[!] $1\e[0m"; }
+log_E() { echo -e "\e[31m[-] $1\e[0m"; }
+
 # Check root permission
 if [ "$EUID" -ne 0 ]; then
     log_E "请使用 root 用户运行此脚本"
     exit 1
 fi
 
-# Utility functions
-log_I() { echo -e "\e[32m[+] $1\e[0m"; }
-log_W() { echo -e "\e[33m[!] $1\e[0m"; }
-log_E() { echo -e "\e[31m[-] $1\e[0m"; }
+# Check if selinux is enabled
+if command -v getenforce &>/dev/null; then
+    if [[ $(getenforce) == "Enforcing" ]]; then
+        log_E "SELinux 处于启用状态, 您可以继续运行脚本，但我们建议禁用 SELinux 以避免潜在问题"
+    fi
+fi
 
 ask_for_creds() {
     while true; do
@@ -91,7 +98,7 @@ docker_install() {
         --restart=always \
         --pull=always \
         --name=natfrp-service \
-        -v ${CONFIG_BASE}:/run \
+        -v ${CONFIG_BASE}:/run:z \
         -e "NATFRP_TOKEN=$api_key" \
         -e "NATFRP_REMOTE=$remote_pass" \
         -e "TZ=${TZ:-Asia/Shanghai}" \
