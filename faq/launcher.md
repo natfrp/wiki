@@ -432,3 +432,9 @@ Get "~": tls: failed to verify certificate: x509: certificate signed by unknown 
 这使得我们可能无法访问局域网地址，报错 `no route to host`。
 
 与该版系统的兼容已经在 SakuraFrp 启动器 for macOS 3.1.5 版本中得到了改进，您只需更新即可。
+
+## Android 常见问题 {#android}
+
+### 网络波动导致数据连接断开: software caused connection abort {#android-bgtask}
+
+报错中包含有 `software caused connection abort` 通常只会因安卓系统冻结/杀后台造成，请 [转到这里](/launcher/android-bgtask.md)。
