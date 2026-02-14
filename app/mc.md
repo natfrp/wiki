@@ -145,6 +145,10 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 
 @tab Server.Properties for LAN
 
+::: tip
+经测试，此模组 `v2.1` 及以上版本不兼容 `Minecraft 1.8.9` 。如您有对应需求，请选择使用该模组的 `v2` 版本。
+:::
+
 - Mod 名称: Server.Properties for LAN
 - Mod 功能:
   1. 玩家挂机一段时间后踢出
