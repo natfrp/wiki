@@ -93,11 +93,17 @@ docker_install() {
         *) image="natfrp.com/launcher" ;;
     esac
 
+    platform_flag=""
+    if [[ $use_32bit -eq 1 ]]; then
+        platform_flag="--platform linux/386"
+    fi
+
     docker run -d \
         --network=host \
         --restart=always \
         --pull=always \
         --name=natfrp-service \
+        $platform_flag \
         -v ${CONFIG_BASE}:/run:z \
         -e "NATFRP_TOKEN=$api_key" \
         -e "NATFRP_REMOTE=$remote_pass" \
@@ -294,6 +300,22 @@ uninstall() {
 
 ######### Main script start #########
 
+# Detect ancient CPU on x86_64 systems
+use_32bit=0
+if [[ $(uname -m) == "x86_64" ]]; then
+    v2_flags=(popcnt sse4_2 ssse3)
+    cpu_flags=$(grep -m1 '^flags' /proc/cpuinfo | cut -d: -f2)
+    for f in "${v2_flags[@]}"; do
+        if ! echo "$cpu_flags" | grep -qw "$f"; then
+            use_32bit=1
+            break
+        fi
+    done
+    if [[ $use_32bit -eq 1 ]]; then
+        log_W "当前 CPU 不支持 x86-64-v2 指令集, 将使用 32 位 (x86) 版本"
+    fi
+fi
+
 if [[ $1 == "uninstall" ]]; then
     uninstall
     exit 0
@@ -357,7 +379,13 @@ fi
 
 # Determine filename
 case $(uname -m) in
-"x86_64") arch="amd64" ;;
+"x86_64")
+    if [[ $use_32bit -eq 1 ]]; then
+        arch="386"
+    else
+        arch="amd64"
+    fi
+    ;;
 "i386") arch="386" ;;
 "aarch64") arch="arm64" ;;
 "armv7l") arch="armv7" ;;
