@@ -210,7 +210,6 @@ After=network.target
 
 [Service]
 User=${LOW_USER}
-Group=${LOW_USER}
 
 Type=simple
 TimeoutStopSec=20

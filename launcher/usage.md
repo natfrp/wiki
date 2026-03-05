@@ -192,7 +192,6 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) uninstall"
 
    [Service]
    User=natfrp
-   Group=natfrp
 
    Type=simple
    TimeoutStopSec=20
