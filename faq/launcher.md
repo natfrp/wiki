@@ -144,44 +144,24 @@
 SakuraLauncher.exe /DIR="D:\MyFolder\SakuraFrpLauncher"
 ```
 
-### 这个程序需要 Windows 服务包 1 或更高 {#requires-sp1}
-
-出现此提示说明系统版本过旧，Windows 7 用户必须更新到 Service Pack 1 或以上才可以正常使用。
-
-我们推荐您更新到最新版 Windows 10 (或者 11) 来获取更好的使用体验，关于兼容性问题请参阅 [启动器系统需求](#system-requirement)。
-
-### 安装时出现错误代码 5100 {#error-net-5100}
-
-根据 [微软官方文档](https://learn.microsoft.com/en-us/dotnet/framework/deployment/guide-for-administrators)，此问题为 **用户计算机不符合系统需求**。
-
-请检查您的系统是否符合 [启动器系统需求](#system-requirement)，如果是 Windows 7 系统请升级到 SP1 再试。
-
 ### 启动器系统需求 {#system-requirement}
 
 | 硬件 | 最低需求 | 推荐配置 |
 | --- | --- | --- |
 | CPU | 1 GHz | 2.3 GHz, 4 线程或更高 |
 | RAM | 700 MiB | 4 GiB 或更高 |
-| 硬盘剩余空间 | 50 MiB | 2 GiB 或更高 |
-
-启动器依赖于微软的 .NET Framework 4.8 运行时，因此启动器的系统需求也与微软提供的 .NET Framework 4.8 运行时系统需求相同。
+| 硬盘剩余空间 | 200 MiB | 2 GiB 或更高 |
 
 | 操作系统 | 兼容性 |
 | --- | --- |
-| Windows 11 | 直接安装启动器即可使用 |
-| Windows 10, 1903 及以上 | 直接安装启动器即可使用 |
-| Windows 10, 1607~1809 | 需额外安装 .NET Framework 4.8 |
-| Windows 10, 1511 及以下 | 不兼容 |
-| Windows 8.1 | 需额外安装 .NET Framework 4.8 |
-| Windows 8 | 不兼容 |
-| Windows 7 SP1 | 需额外安装 .NET Framework 4.8 |
-| Windows 7 | 不兼容 |
-| Windows Vista SP2 | 不兼容 |
-| Windows Vista SP1 | 不兼容 |
+| Windows 11 | 需关闭 "智能应用控制" 功能 |
+| Windows 10 | 直接安装启动器即可使用 |
+| Windows 7 SP1 | 直接安装启动器即可使用 |
+| Windows 7 | 可能无法使用创建、编辑隧道功能，需到管理面板操作 |
 | Windows Vista | 不兼容 |
 | Windows XP | 不兼容 |
 
-### 下载附加文件时出错 / .NET Framework 安装失败 {#error-on-download-extra-files}
+### 下载附加文件时出错 {#error-on-download-extra-files}
 
 如果您在使用非常古早的操作系统，安装程序可能在 `正在下载附加文件...` 一步提示 `Server Certificate Invalid or not present` 等错误。
 
@@ -206,20 +186,7 @@ Windows 7 和 Server 2008 早已停止支持，微软已不再提供安全更新
 - （请注意顺序）[KB4534310](https://www.catalog.update.microsoft.com/Search.aspx?q=KB4534310)
 - 如果您购买了 ESU 订阅，也可以使用 Windows Update 自动安装相关更新
 
-然后，按照下面的两条 FAQ 手动下载并安装对应的运行时文件：
-
-- [该软件需要安装 .NET Framework 4.0 及以上](#dotnet-required)
-- [无法初始化 WebView2 运行环境 / WebView2 初始化失败](#webview2-init-failed)
-
-安装后可能需要重启电脑，根据提示重启后正常运行启动器安装程序进行安装即可。
-
-### 该软件需要安装 .NET Framework 4.0 及以上 {#dotnet-required}
-
-启动器依赖于微软的 .NET Framework 4.8 运行时。
-
-- 安装 `.NET Framework 4.8` 即可 ([点击这里下载](https://dotnet.microsoft.com/download/dotnet-framework/thank-you/net48-web-installer))
-
-您也可以选择不安装 WPF / 传统用户界面并使用 Web UI（只推荐高级用户使用）。
+然后，请参考下一条 FAQ 手动安装 WebView2 运行时。
 
 ### 无法初始化 WebView2 运行环境 / WebView2 初始化失败 {#webview2-init-failed}
 

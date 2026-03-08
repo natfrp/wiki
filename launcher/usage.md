@@ -48,7 +48,6 @@
 
 ::: tip
 如果在安装过程中碰到问题，请参阅 [启动器常见安装问题](/faq/launcher.md#install)  
-常见问题大多与 .NET Framework 有关，可以尝试先装好 `.NET Framework 4.8` 再安装启动器  
 **高级用户** 也可以选择不装用户界面，使用 Web UI（配置复杂，仅限高级用户）
 :::
 
