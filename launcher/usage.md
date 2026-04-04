@@ -277,7 +277,7 @@ userdel -r natfrp
 ::: tip 系统需求
 
 - 系统版本：`OpenWrt 18` 及以上
-- 依赖 `luci-compat` 包（**opkg** 应该会自动安装）
+- 依赖 `luci-compat` 包（您的包管理程序应该会自动安装）
 - 占用 **10~30 MiB** 硬盘空间（不同架构各不相同）
 - 核心服务进程、每个 frpc 进程占用约 **30 MiB RAM**
 - 如果设备 RAM 小于 **256 MiB**，不推荐使用启动器，请考虑 [直接使用 frpc](/frpc/service/openwrt.md)
@@ -285,16 +285,21 @@ userdel -r natfrp
 如果您还在使用旧版本系统，最好先进行更新，或是参考 [此处](https://github.com/natfrp/luci-app-natfrp#%E7%B3%BB%E7%BB%9F%E9%9C%80%E6%B1%82) 进行操作
 :::
 
-1. 确认您的路由器架构，然后到 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/launcher-openwrt/) 下载对应的 IPK 文件
+1. 确认您的路由器架构，然后到 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/launcher-openwrt/) 下载对应的 IPK / APK 文件  
+  \*: 对于 `25.12` **后**的系统，请下载 APK 文件；对于此版本前的系统，请下载 IPK 文件
 
-1. 如果您的 OpenWrt 版本较新，可以前往 `系统 > 软件包` 页面点击 `上传软件包` 按钮直接进行安装：
+1. 如果您的 OpenWrt 版本低于 `25.12`（此版本前第三方包无需由系统官方认证即可在网页安装），可以前往 `系统 > 软件包` 页面点击 `上传软件包` 按钮直接进行安装：
 
    ![](./_images/openwrt-install-1.png)
 
-1. 如果 LuCI 面板中没有上传软件包按钮，请将软件包通过 SSH 传输到路由器并手动执行命令安装：
+1. 如果 LuCI 面板中没有上传软件包按钮，或系统版本高于 `25.12`，请将软件包通过 SSH 传输到路由器或在路由器上下载并手动执行命令安装：
 
    ```bash
+   # 对于 25.12 前的版本，使用 opkg 安装 ipk 文件
    opkg install ./luci-app-natfrp_<架构>.ipk
+
+   # 对于 25.12 及以上的版本，使用 apk 安装 apk 文件
+   apk add --allow-untrusted ./luci-app-natfrp-版本-<架构>.apk
    ```
 
    ![](./_images/openwrt-install-2.png)
