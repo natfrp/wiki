@@ -67,9 +67,9 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 请根据您游玩的版本和模组加载器选择对应的联机模组:
 
 - LAN World Plug-n-Play 适用游戏版本:  
-    Forge: 1.15.2 ~ 1.21.x  
-    Fabric&Quilt: 1.15.2 ~ 1.21.x  
-    NeoForge: 1.20.2 ~ 1.21.x
+    Forge: 1.15.2 ~ 1.21.10  
+    Fabric&Quilt: 1.15.2 ~ 1.21.11, 26.1  
+    NeoForge: 1.20.2 ~ 1.21.11, 26.1
 
 - LanServerProperties 适用游戏版本:  
     Forge: 1.12.X ~ 1.21.4  
