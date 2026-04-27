@@ -16,7 +16,7 @@
 
    因为 Nukkit 初始项目已经弃坑， Nukkit 有较多分支项目，通常您只需选用最顺眼的那个：
 
-   - Nukkit/Nukkit (2016-1018)，项目创建社区，已弃坑。[源码存档](https://github.com/Nukkit/Nukkit)
+   - Nukkit/Nukkit (2016-2018)，项目创建社区，已弃坑。[源码存档](https://github.com/Nukkit/Nukkit)
    - CloudburstMC/Nukkit (2018-至今), 由 CubeCraft(即 GeyserMC 开发商) 接手产生的 Nukkit/Nukkit 分支，仍在维护支持新版本。[项目地址](https://github.com/CloudburstMC/Nukkit)，[下载](https://ci.opencollab.dev/job/NukkitX/job/Nukkit/job/master/)
    - PowerNukkitX (2022-至今)，PowerNukkit(CloudburstMC/Nukkit 的一个已死分支) 的分支，目前活跃开发中。[项目地址](https://github.com/PowerNukkitX/PowerNukkitX)
 
