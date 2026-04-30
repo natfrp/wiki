@@ -21,7 +21,7 @@ Minecraft 的国际版存在多种互通方案。
 1. SakuraFrp Launcher 或 frpc
 1. Java 版服务端：[官方服务端](https://www.minecraft.net/zh-hans/download/server)
    | 第三方服务端：
-   [Spigot](https://www.spigotmc.org/) | [Spigot](https://papermc.io/) | [Fabric](https://fabricmc.net/) | [CatServer](https://catmc.org/) | [MohistMC](https://mohistmc.com/)
+   [Spigot](https://www.spigotmc.org/) | [Paper](https://papermc.io/) | [Fabric](https://fabricmc.net/) | [CatServer](https://catmc.org/) | [MohistMC](https://mohistmc.com/)
 1. 最新版本的 [Geyser 服务端](https://ci.opencollab.dev//job/GeyserMC/job/Geyser/job/master/)
 1. JDK 运行环境 [下载](https://www.oracle.com/java/technologies/downloads)
    | 较低版本的 Java 版服务端可能需要 JDK16、JDK8 等历史版本，请参阅 [Java 版服务端文档](/offtopic/mc-java-server.md)
@@ -646,7 +646,7 @@ always-quick-change-armor: false
 
 emote-offhand-workaround: "disabled"
 # 是否启用表情副手解决方案
-# 启用后，当基岩版玩家发送表情时，其主、副手中的物品将如 Java 版一样呼唤。
+# 启用后，当基岩版玩家发送表情时，其主、副手中的物品将如 Java 版一样互换。
 # 允许值:
 #   已禁用: disabled
 #   无表情: no-emotes
@@ -677,7 +677,7 @@ add-non-bedrock-items: true
 #   否: false
 
 above-bedrock-nether-building: false
-# 是否禁用基岩版在下界 Y127 以上位置禁止建造方块的功能
+# 是否允许基岩版玩家在下界 Y127 以上建造方块
 # 启用后，Geyser 将通过把下界的维度 ID 改为末地的维度 ID 以实现此功能。
 # 相应的，此时的下界将只能使用红色的迷雾，而不能在每个生物群系中有不同迷雾。
 # 允许值:
