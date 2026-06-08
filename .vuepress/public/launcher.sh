@@ -49,7 +49,7 @@ ask_for_creds() {
 }
 
 check_executable() {
-    version=$(sudo -H -u ${LOW_USER} $1 -v) || {
+    version=$(sudo -H -u "${LOW_USER}" "$1" -v) || {
         log_E "无法获取 $1 版本信息, 文件可能已损坏, 请尝试再次执行脚本重新下载"
         exit 1
     }
