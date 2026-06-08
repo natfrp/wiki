@@ -183,12 +183,14 @@ bareinstall_base() {
         echo '{}' > $config_file
     fi
 
-    jq ". + {
-        \"token\": $(echo $api_key | jq -R .),
-        \"remote_management\": true,
-        \"remote_management_key\": $(./natfrp-service remote-kdf \"$remote_pass\" | jq -R .),
-        \"log_stdout\": true
-    }" $config_file >$config_file.tmp
+    jq --arg token "$api_key" \
+       --arg remote_key "$(./natfrp-service remote-kdf "$remote_pass")" \
+       '. + {
+         token: $token,
+         remote_management: true,
+         remote_management_key: $remote_key,
+         log_stdout: true
+       }' "$config_file" > "$config_file.tmp"
     mv $config_file.tmp $config_file
 
     chown -R ${LOW_USER}: ${CONFIG_BASE}
