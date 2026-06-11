@@ -79,6 +79,7 @@ natfrp-service remote-kdf <明文密码>
 - Linux / FreeBSD 下遵循 FreeDesktop 规范：
   - 优先使用 `$XDG_CONFIG_HOME/.config/natfrp-service`
   - 如果 `$XDG_CONFIG_HOME` 未设置，则使用 `~/.config/natfrp-service`
+  - 如果使用一键脚本安装，则应当查看 `/etc/natfrp`
 - Android 启动器：`/data/data/com.natfrp.launcher/service/`
 - OpenWrt LuCI 插件：`/etc/natfrp`
 - 群晖 DSM 套件包：`/var/packages/natfrp/var`
