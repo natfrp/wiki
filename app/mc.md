@@ -45,8 +45,8 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 **皮肤站** 是一种提供自定义皮肤托管和第三方身份验证的服务，如 [LittleSkin](https://littleskin.cn)。使用皮肤站账号联机时，请注意以下要求：
 
 - 所有参与联机的玩家（包括开启局域网的主机）必须使用 **同一个** 皮肤站的账号登录游戏
-- 需要使用支持第三方登录 (authlib-injector) 的启动器，如 [HMCL](https://hmcl.huangyuhui.net/)、[PCL2](https://afdian.net/a/LTCat) 等
-- 在启动器中按皮肤站提供的 **快速配置启动器** 教程添加第三方账号后登录，启动器内您的账号类型通常会显示为皮肤站名称（例如「LittleSkin」），而非「正版」或「离线」
+- 需要使用支持第三方登录 (authlib-injector) 的启动器，如 [HMCL](https://hmcl.huangyuhui.net/)、[PCL2](https://afdian.com/a/LTCat) 等
+- 在启动器中按皮肤站提供的 **Yggdrasil 外置登录** 教程添加第三方账号后登录，启动器内您的账号类型通常会显示为皮肤站名称（例如「LittleSkin」），而非「正版」或「离线」
 :::
 
 进入要联机的世界，按下键盘上的 **ESC** 键，在出现的界面里找到 `对局域网开放` 之类的按钮并且点击进入，对 **其他玩家** 进行设置，然后点击 `创造一个局域网世界`。
