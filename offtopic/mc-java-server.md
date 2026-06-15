@@ -530,42 +530,6 @@ java -Xmx4G -Xms4G -jar paper-1.21-119.jar
 
 ## 补充内容 {#other-content}
 
-### 使用皮肤站验证 {#yggdrasil-auth}
-
-如果您希望让登录了皮肤站账号的玩家通过正版验证 (`online-mode=true`) 加入服务器，需要使用 [authlib-injector](https://github.com/yushijinhun/authlib-injector) 工具，将服务端的身份验证请求重定向到皮肤站的 Yggdrasil API。
-
-::: warning
-使用此功能要求所有联机玩家都已在启动器中配置了 **同一个** 皮肤站的账号登录 (账号需自行注册)。
-:::
-
-1. 从 [authlib-injector 发布页面](https://github.com/yushijinhun/authlib-injector/releases) 下载最新版本的 `authlib-injector-*.jar` 文件，将其放置到服务器目录下
-2. 在皮肤站找到 **Yggdrasil API** 地址，通常在皮肤站的「Yggdrasil 外置登录」或帮助页面中可以找到，形如 `https://skin.example.com/api/yggdrasil`
-3. 修改您的启动脚本，在 `java` 命令后紧接着加入 `-javaagent` 参数：
-
-   ```bat
-   java -javaagent:authlib-injector-*.jar=皮肤站API地址 -Xmx4G -Xms4G -jar 服务器核心文件名.jar
-   @pause
-   ```
-
-   例如，使用 [LittleSkin](https://littleskin.cn) 且服务端核心为 `paper-1.21-119.jar`：
-
-   ```bat
-   java -javaagent:authlib-injector-1.2.5.jar=https://littleskin.cn/api/yggdrasil -Xmx4G -Xms4G -jar paper-1.21-119.jar
-   @pause
-   ```
-
-   ::: tip
-   对于 MinecraftForge / NeoForge 核心，请将 authlib-injector 参数加入 `user_jvm_args.txt` 文件中：
-
-   ```
-   -javaagent:authlib-injector-*.jar=皮肤站API地址
-   -Xmx4G -Xms4G
-   ```
-   :::
-
-4. 确认 `server.properties` 中 `online-mode=true`（服务器初次启动时默认即为 `true`，如果之前已修改请改回来）
-5. 重新启动服务器，此后只有成功通过皮肤站验证的玩家才能加入服务器
-
 ### Simple Voice Chat 简单语音聊天 {#simple-voice-chat}
 
 如果您使用 Simple Voice Chat 模组/插件来进行语音聊天，您需要为它单独开一条隧道并进行配置。
