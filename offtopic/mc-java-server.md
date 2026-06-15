@@ -535,11 +535,11 @@ java -Xmx4G -Xms4G -jar paper-1.21-119.jar
 如果您希望让登录了皮肤站账号的玩家通过正版验证 (`online-mode=true`) 加入服务器，需要使用 [authlib-injector](https://github.com/yushijinhun/authlib-injector) 工具，将服务端的身份验证请求重定向到皮肤站的 Yggdrasil API。
 
 ::: warning
-使用此功能要求所有联机玩家都已在启动器中配置了 **同一个** 皮肤站账号登录。
+使用此功能要求所有联机玩家都已在启动器中配置了 **同一个** 皮肤站的账号登录 (账号需自行注册)。
 :::
 
 1. 从 [authlib-injector 发布页面](https://github.com/yushijinhun/authlib-injector/releases) 下载最新版本的 `authlib-injector-*.jar` 文件，将其放置到服务器目录下
-2. 在皮肤站找到 **Yggdrasil API** 地址，通常在皮肤站的「Yggdrasil 外置登录」或帮助页面中可以找到，形如 `https://skinsite.example.com/api/yggdrasil`
+2. 在皮肤站找到 **Yggdrasil API** 地址，通常在皮肤站的「Yggdrasil 外置登录」或帮助页面中可以找到，形如 `https://skin.example.com/api/yggdrasil`
 3. 修改您的启动脚本，在 `java` 命令后紧接着加入 `-javaagent` 参数：
 
    ```bat
