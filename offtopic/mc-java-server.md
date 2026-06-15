@@ -539,7 +539,7 @@ java -Xmx4G -Xms4G -jar paper-1.21-119.jar
 :::
 
 1. 从 [authlib-injector 发布页面](https://github.com/yushijinhun/authlib-injector/releases) 下载最新版本的 `authlib-injector-*.jar` 文件，将其放置到服务器目录下
-2. 在皮肤站找到 **Yggdrasil API** 地址，通常在皮肤站的「快速配置启动器」或帮助页面中可以找到，形如 `https://your-skin-site.com/api/yggdrasil`
+2. 在皮肤站找到 **Yggdrasil API** 地址，通常在皮肤站的「Yggdrasil 外置登录」或帮助页面中可以找到，形如 `https://skinsite.example.com/api/yggdrasil`
 3. 修改您的启动脚本，在 `java` 命令后紧接着加入 `-javaagent` 参数：
 
    ```bat
