@@ -20,7 +20,7 @@ fi
 # Check if selinux is enabled
 if command -v getenforce &>/dev/null; then
     if [[ $(getenforce) == "Enforcing" ]]; then
-        log_E "SELinux 处于启用状态, 您可以继续运行脚本，但我们建议禁用 SELinux 以避免潜在问题"
+        log_W "SELinux 处于启用状态, 您可以继续运行脚本，但我们建议禁用 SELinux 以避免潜在问题"
     fi
 fi
 
@@ -49,10 +49,10 @@ ask_for_creds() {
 }
 
 check_executable() {
-    version=$(sudo -H -u ${LOW_USER} $1 -v) || (
+    version=$(sudo -H -u "${LOW_USER}" "$1" -v) || {
         log_E "无法获取 $1 版本信息, 文件可能已损坏, 请尝试再次执行脚本重新下载"
         exit 1
-    )
+    }
     log_I "$1 版本: $version"
 }
 
@@ -109,10 +109,10 @@ docker_install() {
         -e "NATFRP_REMOTE=$remote_pass" \
         -e "TZ=${TZ:-Asia/Shanghai}" \
         $image || \
-    (
+    {
         log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问镜像"
         exit 1
-    )
+    }
 
     echo -e "\n\e[96mDocker 模式安装成功, 您可使用下面的命令管理服务:\e[0m
   - 查看日志\tdocker logs natfrp-service
@@ -137,11 +137,10 @@ bareinstall_base() {
     fi
 
     # Download binaries
-    cd /home/${LOW_USER}
-    if [[ $? -ne 0 ]]; then
+    cd "/home/${LOW_USER}" || {
         log_E "无法切换到 /home/${LOW_USER} 目录"
         exit 1
-    fi
+    }
 
     do_download=1
     if [[ -f frpc && -f natfrp-service ]]; then
@@ -184,12 +183,14 @@ bareinstall_base() {
         echo '{}' > $config_file
     fi
 
-    jq ". + {
-        "token": $(echo $api_key | jq -R .),
-        "remote_management": true,
-        "remote_management_key": $(./natfrp-service remote-kdf "$remote_pass" | jq -R .),
-        "log_stdout": true
-    }" $config_file >$config_file.tmp
+    jq --arg token "$api_key" \
+       --arg remote_key "$(./natfrp-service remote-kdf "$remote_pass")" \
+       '. + {
+         token: $token,
+         remote_management: true,
+         remote_management_key: $remote_key,
+         log_stdout: true
+       }' "$config_file" > "$config_file.tmp"
     mv $config_file.tmp $config_file
 
     chown -R ${LOW_USER}: ${CONFIG_BASE}
@@ -246,7 +247,7 @@ bareinstall_other() {
     cat >/home/${LOW_USER}/start.sh <<EOF
 #!/bin/bash
 cd /home/${LOW_USER}
-sudo -H -u ${LOW_USER} "NATFRP_SERVICE_WD=${CONFIG_BASE}" ./natfrp-service --daemon
+sudo -H -u "${LOW_USER}" env NATFRP_SERVICE_WD="${CONFIG_BASE}" ./natfrp-service --daemon
 EOF
     chmod +x /home/${LOW_USER}/start.sh
 
@@ -258,7 +259,7 @@ uninstall() {
     read -p " - 确认要卸载 SakuraFrp 启动器吗? [y/N] " -r choice
     if [[ $choice =~ ^[Yy]$ ]]; then
         if docker ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
-            docker stop --timeout 5 &>/dev/null
+            docker stop natfrp-service --timeout 5 &>/dev/null
             docker rm natfrp-service &>/dev/null && log_I "已删除 Docker 容器"
         fi
 
@@ -269,10 +270,10 @@ uninstall() {
                 systemctl stop natfrp.service &>/dev/null
             fi
             rm -f /etc/systemd/system/natfrp.service &>/dev/null && log_I "已删除 systemd 服务"
-            systemctl reload-daemon &>/dev/null
+            systemctl daemon-reload &>/dev/null
         fi
 
-        if [[ -d /home/${LOW_USER}/natfrp-service ]]; then
+        if [[ -f /home/${LOW_USER}/natfrp-service ]]; then
             rm -rf /home/${LOW_USER}/frpc /home/${LOW_USER}/natfrp-service &>/dev/null && log_I "已删除 /home/${LOW_USER} 中的程序文件"
         fi
 
@@ -377,7 +378,9 @@ if [[ -f "/home/natfrp/.config/natfrp-service/config.json" && ${CONFIG_BASE} != 
 fi
 
 # Determine filename
-case $(uname -m) in
+machine="$(uname -m)"
+
+case "$machine" in
 "x86_64")
     if [[ $use_32bit -eq 1 ]]; then
         arch="386"
@@ -395,7 +398,7 @@ case $(uname -m) in
 "riscv64") arch="riscv64" ;;
 "loongarch64") arch="loong64" ;;
 *)
-    log_E "不支持当前系统架构: $arch"
+    log_E "不支持当前系统架构: $machine"
     exit 1
     ;;
 esac
