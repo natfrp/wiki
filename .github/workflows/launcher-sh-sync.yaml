@@ -1,0 +1,33 @@
+name: Dispatch getfrp.sh sync
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - .vuepress/public/launcher.sh
+  workflow_dispatch:
+
+jobs:
+  dispatch:
+    name: Dispatch sync workflow
+    runs-on: ubuntu-latest
+    environment: getfrp.sh sync
+    steps:
+      - name: Trigger natfrp/getfrp.sh sync workflow
+        env:
+          GH_TOKEN: ${{ secrets.GETFRPSH_DISPATCH_TOKEN }}
+          TARGET_REPO: natfrp/getfrp.sh
+          TARGET_WORKFLOW: sync.yaml
+          TARGET_REF: master
+        run: |
+          set -euo pipefail
+
+          if [[ -z "${GH_TOKEN}" ]]; then
+            echo "Missing secret: GETFRPSH_DISPATCH_TOKEN" >&2
+            exit 1
+          fi
+
+          gh workflow run "${TARGET_WORKFLOW}" \
+            --repo "${TARGET_REPO}" \
+            --ref "${TARGET_REF}"
