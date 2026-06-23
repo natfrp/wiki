@@ -6,6 +6,7 @@ import { getDirname, path } from '@vuepress/utils';
 import { sitemapPlugin } from '@vuepress/plugin-sitemap';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
+import { redirectPlugin } from '@vuepress/plugin-redirect';
 
 import mdItMultiMdTable from 'markdown-it-multimd-table';
 import { html5Media as mdItHtml5Media } from 'markdown-it-html5-media';
@@ -111,6 +112,18 @@ export default defineUserConfig({
 	}),
 
 	plugins: [
+		redirectPlugin({
+			config: {
+				'/app/mc.html': '/game/mc/',
+				'/app/palworld.html': '/game/palworld.html',
+				'/app/stardew-valley.html': '/game/stardew-valley.html',
+				'/app/dysonsphere.html': '/game/dysonsphere.html',
+				'/app/terraria.html': '/game/terraria.html',
+				'/app/dst.html': '/game/dst.html',
+				'/app/duckov.html': '/game/duckov.html',
+				'/app/other-games.html': '/game/other-games.html',
+			},
+		}),
 		registerComponentsPlugin({
 			componentsDir: path.resolve(__dirname, './components'),
 		}),
