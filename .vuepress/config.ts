@@ -11,6 +11,7 @@ import mdItMultiMdTable from 'markdown-it-multimd-table';
 import { html5Media as mdItHtml5Media } from 'markdown-it-html5-media';
 
 import sections from './sections';
+import { imageSizeAttributesPlugin } from './plugins/image-size-attributes';
 
 const __dirname = getDirname(import.meta.url);
 
@@ -122,6 +123,7 @@ export default defineUserConfig({
 			imgMark: true,
 			flowchart: true,
 		}),
+		imageSizeAttributesPlugin,
 		sitemapPlugin({
 			// The sitemap plugin from theme is somehow broken
 			hostname: 'doc.natfrp.com',

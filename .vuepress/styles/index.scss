@@ -55,6 +55,10 @@
     }
 
     // Fix video max width
+    .theme-default-content img {
+        height: auto;
+    }
+
     .html5-video-player {
         max-width: 100%;
     }
