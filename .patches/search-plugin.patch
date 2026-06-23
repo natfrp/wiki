@@ -2,14 +2,14 @@ diff --git a/.vuepress/config.ts b/.vuepress/config.ts
 index f09c539..a34ef94 100644
 --- a/.vuepress/config.ts
 +++ b/.vuepress/config.ts
-@@ -11,5 +11,6 @@ import sections from './sections';
+@@ -15,5 +15,6 @@ import sections from './sections';
 
  const __dirname = getDirname(import.meta.url);
 
 +import { nextSearchPlugin } from 'vuepress-plugin-next-search';
  export default defineUserConfig({
  	base: '/',
-@@ -96,4 +97,12 @@ export default defineUserConfig({
+@@ -123,5 +124,13 @@ export default defineUserConfig({
  			imgMark: true,
  			flowchart: true,
  		}),
@@ -21,6 +21,7 @@ index f09c539..a34ef94 100644
 +				category: '分类',
 +			},
 +		}),
+ 		imageSizeAttributesPlugin,
  		sitemapPlugin({
 diff --git a/package.json b/package.json
 index 8d29a33..29852ce 100644
