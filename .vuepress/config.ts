@@ -11,7 +11,7 @@ import { redirectPlugin } from '@vuepress/plugin-redirect';
 import mdItMultiMdTable from 'markdown-it-multimd-table';
 import { html5Media as mdItHtml5Media } from 'markdown-it-html5-media';
 
-import sections from './sections';
+import sections, { sidebars } from './sections';
 import { imageSizeAttributesPlugin } from './plugins/image-size-attributes';
 
 const __dirname = getDirname(import.meta.url);
@@ -60,14 +60,16 @@ export default defineUserConfig({
 			sections.misc,
 		],
 		sidebar: {
-			'/': Object.values(sections),
+			'/': Object.values(sidebars.all),
 
 			'/faq': sections.faq.children,
 
 			'/app': [sections.app, sections.bestpractice],
-			'/game': sections.game.children.slice(1),
-			'/game/mc': sections.game.children[0].children,
 			'/bestpractice': [sections.app, sections.bestpractice],
+
+			'/game/other-games.html': sidebars.game.other,
+			'/game': sidebars.game.index,
+			'/game/mc': sidebars.game.mc,
 
 			'/offtopic': sections.offtopic.children,
 

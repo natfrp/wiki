@@ -1,15 +1,15 @@
 diff --git a/.vuepress/config.ts b/.vuepress/config.ts
-index f09c539..a34ef94 100644
+index 9f3a828..821a729 100644
 --- a/.vuepress/config.ts
 +++ b/.vuepress/config.ts
-@@ -15,5 +15,6 @@ import sections from './sections';
-
- const __dirname = getDirname(import.meta.url);
-
+@@ -13,5 +13,6 @@ import { html5Media as mdItHtml5Media } from 'markdown-it-html5-media';
+ 
+ import sections, { sidebars } from './sections';
+ import { imageSizeAttributesPlugin } from './plugins/image-size-attributes';
 +import { nextSearchPlugin } from 'vuepress-plugin-next-search';
- export default defineUserConfig({
- 	base: '/',
-@@ -123,5 +124,13 @@ export default defineUserConfig({
+ 
+ const __dirname = getDirname(import.meta.url);
+@@ -144,6 +145,14 @@ export default defineUserConfig({
  			imgMark: true,
  			flowchart: true,
  		}),
@@ -23,6 +23,7 @@ index f09c539..a34ef94 100644
 +		}),
  		imageSizeAttributesPlugin,
  		sitemapPlugin({
+ 			// The sitemap plugin from theme is somehow broken
 diff --git a/package.json b/package.json
 index 8d29a33..29852ce 100644
 --- a/package.json

@@ -1,3 +1,5 @@
+import { createSidebarVariants } from './plugins/sidebar';
+
 const sections = {
 	root: {
 		text: '快速上手',
@@ -98,9 +100,10 @@ const sections = {
 		text: '游戏联机',
 		children: [
 			{
-				text: '我的世界 (Minecraft)',
+				text: '我的世界 (Minecraft)', // also change minecraftKey below if you change this
 				children: [
-					{ text: '我的世界', link: '/game/mc/' },
+					{ text: '我的世界 Java 版局域网联机', link: '/game/mc/#java-lan' },
+					{ text: '我的世界服务器说明', link: '/game/mc/#server' },
 				],
 			},
 			{
@@ -115,9 +118,19 @@ const sections = {
 				],
 			},
 			{
-				text: '简要说明',
+				text: '其他游戏',
+				sidebarPageText: '其他游戏联机说明',
 				children: [
-					{ text: '其他游戏', link: '/game/other-games.html' },
+					{ text: '幸福工厂 (Satisfactory)', link: '/game/other-games.html#satisfactory' },
+					{ text: '夜族崛起 (V Rising)', link: '/game/other-games.html#v-rising' },
+					{ text: '僵尸毁灭工程 (Project Zomboid)', link: '/game/other-games.html#projz' },
+					{ text: '七日杀 (7 Days to Die)', link: '/game/other-games.html#7dtd' },
+					{ text: '灵魂面甲 (Soulmask)', link: '/game/other-games.html#soulmask' },
+					{ text: '人渣 (SCUM)', link: '/game/other-games.html#scum' },
+					{ text: '异星旅人 (ASTRONEER)', link: '/game/other-games.html#astroneer' },
+					{ text: '像素工厂 (Mindustry)', link: '/game/other-games.html#mindustry' },
+					{ text: '罗马拓荒录 (Romestead)', link: '/game/other-games.html#romestead' },
+					{ text: '通用说明', link: '/game/other-games.html#general' },
 				],
 			},
 		],
@@ -165,4 +178,22 @@ const sections = {
 		],
 	},
 };
+
+const minecraftKey = '我的世界 (Minecraft)';
+
+const gameSidebars = createSidebarVariants(sections.game);
+
+const sidebars = {
+	all: {
+		...sections,
+		game: gameSidebars.full.root,
+	},
+	game: {
+		index: gameSidebars.full.after(minecraftKey),
+		mc: 'heading' as const,
+		other: gameSidebars.page.after(minecraftKey),
+	},
+};
+
+export { sidebars };
 export default sections;
