@@ -30,7 +30,7 @@
 
 与您平时游玩通常使用单人模式不同，联机需要您使用 `多人模式` - `开服并开始游戏` 来开始游玩：
 
-![](_images/terraria-start-multi.png)
+![](_images/terraria/start-multi.png)
 
 ::: tip
 为了您可以随时在需要时打开隧道即可联机，而不是需要每次都退出单人模式后进入多人模式，我们建议您平时就习惯使用多人模式游玩。
@@ -48,19 +48,19 @@
 如果您找到的 `TerrariaServer` 的端口不是 `7777`，您可能需要 **在每次联机前编辑隧道重新选择本地端口**。
 :::
 
-![](_images/terraria-choose-port.png)
+![](_images/terraria/choose-port.png)
 
 **不要设置其他内容**，点击创建隧道：
 
-![](_images/terraria-create-tunnel.png)
+![](_images/terraria/create-tunnel.png)
 
 创建完成后，点击隧道右上角的开关，使其切换到 `开启` 状态即可启动隧道：
 
-![](_images/terraria-start-tunnel.png)
+![](_images/terraria/start-tunnel.png)
 
 请在 SakuraFrp 启动器的 `日志` 页面中复制出隧道的连接信息，这个信息将会在您需要联机时使用（红框中的部分）：
 
-![](_images/terraria-tunnel-info.png)
+![](_images/terraria/tunnel-info.png)
 
 ## 连接游戏 {#connect-game}
 
@@ -69,7 +69,7 @@
 此时应当已经收到您提供的连接信息，形如：`frp-xxx.top:11451`。  
 连接信息以 `:` 分隔，前半部分当游戏提示 `输入服务器IP地址` 时输入，后半部分当 `输入服务器端口` 时输入：
 
-![](_images/terraria-join.png)
+![](_images/terraria/join.png)
 
 ## 再次使用
 

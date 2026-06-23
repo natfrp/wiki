@@ -52,6 +52,7 @@ export default defineUserConfig({
 					sections.bestpractice,
 				],
 			},
+			sections.game,
 			sections.faq,
 			sections.client,
 			sections.offtopic,
@@ -63,6 +64,8 @@ export default defineUserConfig({
 			'/faq': sections.faq.children,
 
 			'/app': [sections.app, sections.bestpractice],
+			'/game': sections.game.children.slice(1),
+			'/game/mc': sections.game.children[0].children,
 			'/bestpractice': [sections.app, sections.bestpractice],
 
 			'/offtopic': sections.offtopic.children,

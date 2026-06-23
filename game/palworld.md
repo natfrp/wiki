@@ -30,9 +30,9 @@ Palworld 服务器目前 **不会主动卸载区块**，内存占用只会一路
 
 根据我们的经验，一个 8 人的服务器在没有跑图、正常游玩的情况下可以在 4 小时内吃满 32 GB 的内存：
 
-![](./_images/palw-faq-memory-1.jpg)
+![](./_images/palworld/faq-memory-1.jpg)
 
-![](./_images/palw-faq-memory-2.jpg)
+![](./_images/palworld/faq-memory-2.jpg)
 
 更糟糕的是，Palworld 服务器在性能不足时 **不会像 Minecraft 那样输出警告信息**，只会默默的丢包，并且在客户端会体现为走路走不动、被拉回等情况。
 
@@ -108,7 +108,7 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 
 在 [隧道列表](https://www.natfrp.com/tunnel/) 中点击右上角创建隧道按钮，然后选择您此前选定的服务器：
 
-![](_images/palw-node-udp.png)
+![](_images/palworld/node-udp.png)
 
 请确保对应服务器上没有 `不可 UDP` 标识（即图中红框部分）。
 
@@ -116,7 +116,7 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 本地 IP 中输入 **您连接本地服务器时使用的 IP**（如果您的服务器与穿透客户端运行在同一台电脑上，输入 `127.0.0.1`），  
 本地端口处选择幻兽帕鲁，创建即可：
 
-![](_images/palw-create-tunnel.png)
+![](_images/palworld/create-tunnel.png)
 
 ### (可选) 启动多个隧道
 
@@ -133,11 +133,11 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 
 在 Steam 的 “库” 中，选中展示 `工具` 类：
 
-![](_images/palw-steam-tool.png)
+![](_images/palworld/steam-tool.png)
 
 找到 `Palworld Dedicated Server`，右键选择属性：
 
-![](_images/palw-steam-search.png)
+![](_images/palworld/steam-search.png)
 
 在下图所示红框的文本框中输入下面的参数（此参数可以优化服务器多核性能，来自 [官方文档](https://tech.palworldgame.com/dedicated-server-guide#settings)）：
 
@@ -145,7 +145,7 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS
 ```
 
-![](_images/palw-server-args.png)
+![](_images/palworld/server-args.png)
 
 ### 启动服务器
 
@@ -153,11 +153,11 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 
 请注意在启动时选择 `Dedicated Server` 项，而不是 `Community Server`：
 
-![](_images/palw-start-server.png)
+![](_images/palworld/start-server.png)
 
 请务必确认，联机游玩时这个启动后弹出的黑框框始终存在，这表示您的服务器一直在开启：
 
-![](_images/palw-server-cmd.png)
+![](_images/palworld/server-cmd.png)
 
 ### 启动隧道
 
@@ -166,7 +166,7 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 
 您将在 “日志” 页中看到用于连接的信息，复制图中选中（不含两侧的`[]`）的部分即为连接信息：
 
-![](_images/palw-copy-url.png)
+![](_images/palworld/copy-url.png)
 
 如果您启动了多条隧道，则需要在此处复制多个连接信息。
 
@@ -174,11 +174,11 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 
 打开游戏后，选择 `加入多人游戏 （专用服务器）` 项目：
 
-![](_images/palw-join-intro.png)
+![](_images/palworld/join-intro.png)
 
 在屏幕下方的文本框中，**删除其中原有的内容**，粘贴上面复制的连接信息，点击 “联系” 即可连接：
 
-![](_images/palw-join.png)
+![](_images/palworld/join.png)
 
 如果您启动了多条隧道，请根据需要和体验选择一条输入。
 
@@ -186,7 +186,7 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 
 在 Steam 中找到 `Palworld Dedicated Server`，右键打开本地文件：
 
-![](_images/palw-steam-config.png)
+![](_images/palworld/steam-config.png)
 
 在此文件夹中，打开 `DefaultPalWorldSettings.ini` ，其内容为配置样板。
 
@@ -219,6 +219,6 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 
 在 Steam 中找到 `Palworld Dedicated Server`，右键打开本地文件：
 
-![](_images/palw-steam-config.png)
+![](_images/palworld/steam-config.png)
 
 在此文件夹中，打开 `Pal`，其中的 `Saved` 和 `World` 文件夹即为存档文件。

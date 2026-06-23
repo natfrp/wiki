@@ -82,19 +82,6 @@ const sections = {
 				],
 			},
 			{
-				text: '游戏联机',
-				children: [
-					{ text: '我的世界 (Minecraft)', link: '/app/mc.html' },
-					{ text: '幻兽帕鲁 (Palworld)', link: '/app/palworld.html' },
-					{ text: '星露谷物语 (Stardew Valley)', link: '/app/stardew-valley.html' },
-					{ text: '戴森球计划', link: '/app/dysonsphere.html' },
-					{ text: '泰拉瑞亚 (Terraria)', link: '/app/terraria.html' },
-					{ text: '饥荒联机版 (DST)', link: '/app/dst.html' },
-					{ text: '逃离鸭科夫 (Escape From Duckov)', link: '/app/duckov.html' },
-					{ text: '其他游戏', link: '/app/other-games.html' },
-				],
-			},
-			{
 				text: 'NAS 配置',
 				children: [
 					{ text: '群晖 / Synology', link: '/app/synology.html' },
@@ -103,6 +90,34 @@ const sections = {
 					// { text: '绿联 / UGREEN', link: '/app/ugreen.html' },
 					{ text: '飞牛 / fnOS', link: '/app/fnos.html' },
 					{ text: '绿联 / UGREEN', link: '/app/ugos-pro.html' },
+				],
+			},
+		],
+	},
+	game: {
+		text: '游戏联机',
+		children: [
+			{
+				text: '我的世界 (Minecraft)',
+				children: [
+					{ text: '我的世界', link: '/game/mc/' },
+				],
+			},
+			{
+				text: '常见游戏',
+				children: [
+					{ text: '幻兽帕鲁 (Palworld)', link: '/game/palworld.html' },
+					{ text: '星露谷物语 (Stardew Valley)', link: '/game/stardew-valley.html' },
+					{ text: '戴森球计划', link: '/game/dysonsphere.html' },
+					{ text: '泰拉瑞亚 (Terraria)', link: '/game/terraria.html' },
+					{ text: '饥荒联机版 (DST)', link: '/game/dst.html' },
+					{ text: '逃离鸭科夫 (Escape From Duckov)', link: '/game/duckov.html' },
+				],
+			},
+			{
+				text: '简要说明',
+				children: [
+					{ text: '其他游戏', link: '/game/other-games.html' },
 				],
 			},
 		],
