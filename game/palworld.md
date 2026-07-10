@@ -139,11 +139,14 @@ Palworld 对延迟并不敏感，游戏内显示延迟在 180ms 以内都可以 
 
 ![](_images/palworld/steam-search.png)
 
-在下图所示红框的文本框中输入下面的参数（此参数可以优化服务器多核性能，来自 [官方文档](https://tech.palworldgame.com/dedicated-server-guide#settings)）：
+如果您在游玩 1.0 前版本，在下图所示红框的文本框中输入下面的多核性能优化参数（此参数来自 [官方文档](https://docs.palworldgame.com/settings-and-operation/arguments/)）：
 
 ```
 -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS
 ```
+
+如果您在游玩 1.0 及之后的版本，帕鲁官方文档用词为：不设置这些参数 **可能** 可以提升性能；  
+也就是说设置后可能提升性能也可能降低性能，在什么情况下有什么影响帕鲁官方可能并不知道，您可能需要自行决定要不要设置。
 
 ![](_images/palworld/server-args.png)
 
