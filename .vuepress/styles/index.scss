@@ -103,4 +103,12 @@
             fill: var(--c-text);
         }
     }
+
+    // Fix VuePress bold text weight
+    strong,
+    .custom-container .custom-container-title,
+    h1, h2, h3, h4, h5, h6,
+    .vp-tab-nav {
+        font-weight: bold;
+    }
 }
