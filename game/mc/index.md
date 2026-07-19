@@ -250,6 +250,12 @@ motd=
 
 @tab EasyLAN
 
+::: tip
+在笔者撰写此文时，该模组 modrinth 版本标签依旧处在 `Alpha` 阶段。  
+其 `v1.6a Fabric 1.21.11` 版本中，关闭正版验证选项无法正常工作。  
+请谨慎选用该联机模组。
+:::
+
 - Mod 名称: EasyLAN
 - Mod 功能:
   1. 自定义端口
