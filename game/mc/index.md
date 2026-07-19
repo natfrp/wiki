@@ -68,8 +68,8 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 
 - LAN World Plug-n-Play 适用游戏版本:  
     Forge: 1.15.2 ~ 1.21.10  
-    Fabric&Quilt: 1.15.2 ~ 1.21.11, 26.1  
-    NeoForge: 1.20.2 ~ 1.21.11, 26.1
+    Fabric: 1.15.2 ~ 1.21.11, 26.x  
+    NeoForge: 1.20.2 ~ 1.21.11, 26.x
 
 - LanServerProperties 适用游戏版本:  
     Forge: 1.12.X ~ 1.21.4  
@@ -79,8 +79,10 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 - Server.Properties for LAN 适用游戏版本:  
     Forge: 1.7.2 ~ 1.21
 
-- EasyLAN 适用游戏版本:  
-    Forge: 1.7.2 ~ 1.21.1
+- EasyLAN 适用游戏版本 (非全部版本可用) :  
+    Forge: 1.7.2 ~ 1.21.11  
+    Fabric: 1.14.4 ~ 1.21.11  
+    NeoForge: 1.20.1 ~ 1.21.11
 
 :::: tabs
 
