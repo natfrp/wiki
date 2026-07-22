@@ -300,6 +300,11 @@ userdel -r natfrp
 
    # 对于 25.12 及以上的版本，使用 apk 安装 apk 文件
    apk add --allow-untrusted ./luci-app-natfrp-版本-<架构>.apk
+
+   ## 对于使用 apk 安装的 arm64 用户，因为 OpenWrt 将一个 arm64 分为四个架构，您的预设支持架构可能没有专用包，且您的包维护者可能未将通用包加入系统支持列表，请使用下面命令添加通用架构支持后再安装
+   echo aarch64_generic >> /etc/apk/arch
+   ## 或者使用 --arch 参数临时指定架构
+   apk add --allow-untrusted --arch aarch64_generic ./luci-app-natfrp-版本-aarch64_generic.apk
    ```
 
    ![](./_images/openwrt-install-2.png)
