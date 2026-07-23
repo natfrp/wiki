@@ -148,7 +148,7 @@ listeners:
 
 @tab Paper {#paper}
 
-Paper 1.18.2 服务端支持 v2 版本的 Proxy Protocol。
+Paper 1.18.2+ 服务端支持 v2 版本的 Proxy Protocol。
 
 首先，需要确认服务端自带的 **防止代理连接** 功能已经关闭。打开 `server.properties` 文件，按下方示例作修改：
 
@@ -181,6 +181,15 @@ proxies:
 
 对于 Spigot，[HAProxyDetector](https://github.com/andylizi/haproxy-detector) 已提供支持。
 
-对于此处没有提及的服务端，请查阅其官方文档或在网上搜索相关的插件。
+对于 Fabric / Quilt Mod 服务器，您可考虑使用此 Mod：[Proxy Protocol Support](https://modrinth.com/mod/proxy-protocol-support)。
+
+对于 Forge / NeoForge Mod 服务器，有若干 Mod 可供使用： [ProperProxyProtocol](https://modrinth.com/mod/properproxyprotocol)、[NG HaProxy Support](https://modrinth.com/mod/ng-haproxy-support) （这些 Mod 有明显的 vibe coding 痕迹，因此请额外注意其代码与反馈，并自行决定是否使用）。
+
+对于以上所有的项目提及，均不构成我们的推荐，请您自行判断其安全性、适用性与稳定性。  
+我们的检索结果可能不全，且很多方案可能包含未获人类审核的代码，使用前请务必研究其风评、实现与可信度，并探索更多可用选项。  
+如遇到连接问题，请优先尝试卸载 Proxy Protocol 工具并重设隧道相关配置再试。
+
+对于此处没有提及的服务端，请查阅其官方文档或在网上搜索相关的插件。  
+通过 `Proxy Protocol <你使用的方案名称>` 进行搜索，通常可以找到相关最新的配置方法。
 
 :::::
