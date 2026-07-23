@@ -145,6 +145,7 @@ listeners:
 ```
 
 如果您想同时允许 frp 和直接连接，请使用 [HAProxyDetector](https://github.com/andylizi/haproxy-detector)。
+高版本(1.21.X)可以使用[ProxyProtocolDetector](https://github.com/melodytik/ProxyProtocolDetector)。
 
 @tab Paper {#paper}
 
@@ -180,6 +181,7 @@ proxies:
 @tab 其他服务端 {#other}
 
 对于 Spigot，[HAProxyDetector](https://github.com/andylizi/haproxy-detector) 已提供支持。
+高版本(1.21.X)可以使用[ProxyProtocolDetector](https://github.com/melodytik/ProxyProtocolDetector)参考了HAProxyDetector的代码进行了优化。
 
 对于此处没有提及的服务端，请查阅其官方文档或在网上搜索相关的插件。
 
