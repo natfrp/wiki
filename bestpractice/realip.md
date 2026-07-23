@@ -46,6 +46,11 @@ proxy_protocol_version = <v1|v2|simple>
 
 Proxy Protocol v1 并未为 UDP 设计，在 UDP 隧道中您总是应该使用 **v2**。simple 对应由 Cloudflare 提出的 [Simple Proxy Protocol](https://developers.cloudflare.com/spectrum/reference/simple-proxy-protocol-header/)，由于目前几乎没有应用支持，设置为该选项时务必谨慎操作。
 
+大部分应用的 Proxy Protocol 支持开启都是不可选的，即您无法在启用 Proxy Protocol 的同时允许不启用的客户端连接，  
+因此请确保您在隧道配置和应用配置中均启用 Proxy Protocol，并可能将无法通过本地/内网直连，只能通过隧道访问。
+
+如希望本地和内网的直接连接不通过隧道，您可以使用 [内网访问](/frpc/manual.md#feature-local-access) 功能来实现。
+
 ### Web 服务器启用 Proxy Protocol 支持 {#proxy-protocol-web}
 
 ::::: tabs
@@ -131,9 +136,11 @@ server {
 
 ::::: tabs
 
-@tab BungeeCord / Waterfall {#bungeecord-waterfall}
+@tab BungeeCord / Velocity {#bungeecord-velocity}
 
-请参考 [官方文档](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/) 进行配置，您可以搜索 `proxy_protocol` 找到对应内容（在页面底部）。
+#### BungeeCord
+
+请参考 [BC 官方文档](https://www.spigotmc.org/wiki/bungeecord-configuration-guide/) 进行配置，您可以搜索 `proxy_protocol` 找到对应内容（在页面底部）。
 
 ```yaml
 listeners:
@@ -144,7 +151,25 @@ listeners:
   proxy_protocol: true
 ```
 
-如果您想同时允许 frp 和直接连接，请使用 [HAProxyDetector](https://github.com/andylizi/haproxy-detector)。
+#### Velocity
+
+请参考 [Velocity 官方文档](https://docs.papermc.io/velocity/configuration/) 进行配置。示例修改如下：
+
+```toml
+prevent-client-proxy-connections = false
+
+[advanced]
+haproxy-protocol = true
+```
+
+如果您想同时允许 frp 和直接连接，请使用 [HAProxyDetector](https://github.com/andylizi/haproxy-detector) 或选择一个积极维护的 [Fork 分支](https://github.com/andylizi/haproxy-detector/forks) 或精神续作，如
+[[1]](https://github.com/MrWeez/haproxy-detector-reloaded)
+[[2]](https://github.com/Wuchang325/HAProxyReduce)
+[[3]](https://github.com/YBRC114514/haproxy-detector-BungeeCord)
+[[4]](https://github.com/melodytik/ProxyProtocolDetector)
+并注意审核和测试其中的 AI 成分代码。
+
+如希望本地和内网的直接连接不通过隧道，您可以使用 [内网访问](/frpc/manual.md#feature-local-access) 功能来实现。
 
 @tab Paper {#paper}
 
@@ -167,6 +192,8 @@ proxies:
   proxy-protocol: true
 ```
 
+如希望本地和内网的直接连接不通过隧道，您可以使用 [内网访问](/frpc/manual.md#feature-local-access) 功能来实现。
+
 @tab Geyser {#geyser}
 
 **入 Geyser 流量**
@@ -179,7 +206,12 @@ proxies:
 
 @tab 其他服务端 {#other}
 
-对于 Spigot，[HAProxyDetector](https://github.com/andylizi/haproxy-detector) 已提供支持。
+对于 Spigot，[HAProxyDetector](https://github.com/andylizi/haproxy-detector) 已提供支持，
+对于新版本服务器，您也可选择一个积极维护的 [Fork 分支](https://github.com/andylizi/haproxy-detector/forks) 或精神续作，如
+[[1]](https://github.com/MrWeez/haproxy-detector-reloaded)
+[[2]](https://github.com/Wuchang325/HAProxyReduce)
+[[3]](https://github.com/YBRC114514/haproxy-detector-BungeeCord)
+[[4]](https://github.com/melodytik/ProxyProtocolDetector)。
 
 对于 Fabric / Quilt Mod 服务器，您可考虑使用此 Mod：[Proxy Protocol Support](https://modrinth.com/mod/proxy-protocol-support)。
 
@@ -191,5 +223,7 @@ proxies:
 
 对于此处没有提及的服务端，请查阅其官方文档或在网上搜索相关的插件。  
 通过 `Proxy Protocol <你使用的方案名称>` 进行搜索，通常可以找到相关最新的配置方法。
+
+如希望本地和内网的直接连接不通过隧道，您可以使用 [内网访问](/frpc/manual.md#feature-local-access) 功能来实现。
 
 :::::
