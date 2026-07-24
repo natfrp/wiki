@@ -46,7 +46,7 @@ proxy_protocol_version = <v1|v2|simple>
 
 Proxy Protocol v1 并未为 UDP 设计，在 UDP 隧道中您总是应该使用 **v2**。simple 对应由 Cloudflare 提出的 [Simple Proxy Protocol](https://developers.cloudflare.com/spectrum/reference/simple-proxy-protocol-header/)，由于目前几乎没有应用支持，设置为该选项时务必谨慎操作。
 
-大部分应用的 Proxy Protocol 支持开启都是不可选的，即您无法在启用 Proxy Protocol 的同时允许不启用的客户端连接，  
+大部分应用的 Proxy Protocol 支持开启后都将强制握手，即您无法在启用 Proxy Protocol 的同时允许不启用的客户端连接，  
 因此请确保您在隧道配置和应用配置中均启用 Proxy Protocol，并可能将无法通过本地/内网直连，只能通过隧道访问。
 
 如希望本地和内网的直接连接不通过隧道，您可以使用 [内网访问](/frpc/manual.md#feature-local-access) 功能来实现。
@@ -162,14 +162,13 @@ prevent-client-proxy-connections = false
 haproxy-protocol = true
 ```
 
-如果您想同时允许 frp 和直接连接，请使用 [HAProxyDetector](https://github.com/andylizi/haproxy-detector) 或选择一个积极维护的 [Fork 分支](https://github.com/andylizi/haproxy-detector/forks) 或精神续作，如
-[[1]](https://github.com/MrWeez/haproxy-detector-reloaded)
-[[2]](https://github.com/Wuchang325/HAProxyReduce)
-[[3]](https://github.com/YBRC114514/haproxy-detector-BungeeCord)
-[[4]](https://github.com/melodytik/ProxyProtocolDetector)
-并注意审核和测试其中的 AI 成分代码。
+-----
 
-如希望本地和内网的直接连接不通过隧道，您可以使用 [内网访问](/frpc/manual.md#feature-local-access) 功能来实现。
+如果您希望允许本地或内网直接连接，请使用 [内网访问](/frpc/manual.md#feature-local-access) 功能来实现。  
+如果您希望通过游戏自身同时支持通过隧道和直连，请使用 [HAProxyDetector](https://github.com/andylizi/haproxy-detector) 或选择一个积极维护的 [Fork 分支](https://github.com/andylizi/haproxy-detector/forks) 或精神续作，如：  
+[Wuchang325/HAProxyReduce（仅支持 Velocity / Paper / Folia）](https://github.com/Wuchang325/HAProxyReduce)  
+[YBRC114514/haproxy-detector-BungeeCord（仅维护 BungeeCord）](https://github.com/YBRC114514/haproxy-detector-BungeeCord)  
+并在安装前阅读项目 README 理解使用方法，注意审核和测试其中的 AI 成分代码。
 
 @tab Paper {#paper}
 
@@ -192,7 +191,13 @@ proxies:
   proxy-protocol: true
 ```
 
-如希望本地和内网的直接连接不通过隧道，您可以使用 [内网访问](/frpc/manual.md#feature-local-access) 功能来实现。
+-----
+
+如果您希望允许本地或内网直接连接，请使用 [内网访问](/frpc/manual.md#feature-local-access) 功能来实现。  
+如果您希望通过游戏自身同时支持通过隧道和直连，请使用 [HAProxyDetector](https://github.com/andylizi/haproxy-detector) 或选择一个积极维护的 [Fork 分支](https://github.com/andylizi/haproxy-detector/forks) 或精神续作，如  
+[Wuchang325/HAProxyReduce（支持 Velocity / Paper / Folia）](https://github.com/Wuchang325/HAProxyReduce)  
+[melodytik/ProxyProtocolDetector（仅支持 Paper）](https://github.com/melodytik/ProxyProtocolDetector)  
+并在安装前阅读项目 README 理解使用方法，注意审核和测试其中的 AI 成分代码。
 
 @tab Geyser {#geyser}
 
@@ -207,11 +212,7 @@ proxies:
 @tab 其他服务端 {#other}
 
 对于 Spigot，[HAProxyDetector](https://github.com/andylizi/haproxy-detector) 已提供支持，
-对于新版本服务器，您也可选择一个积极维护的 [Fork 分支](https://github.com/andylizi/haproxy-detector/forks) 或精神续作，如
-[[1]](https://github.com/MrWeez/haproxy-detector-reloaded)
-[[2]](https://github.com/Wuchang325/HAProxyReduce)
-[[3]](https://github.com/YBRC114514/haproxy-detector-BungeeCord)
-[[4]](https://github.com/melodytik/ProxyProtocolDetector)。
+对于新版本服务器，您也可选择一个积极维护的 [Fork 分支](https://github.com/andylizi/haproxy-detector/forks) 或精神续作。
 
 对于 Fabric / Quilt Mod 服务器，您可考虑使用此 Mod：[Proxy Protocol Support](https://modrinth.com/mod/proxy-protocol-support)。
 

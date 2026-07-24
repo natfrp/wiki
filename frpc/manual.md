@@ -284,7 +284,7 @@ plugin_header_Referer = ""
 
 - 该功能适用于 `TCP`、`UDP` 隧道
 - 启用后，frpc 将在内网监听 **远程端口**，您可以通过 `frpc 所在设备IP:远程端口` 访问隧道
-- 通过该端口访问时，[IP 访问控制](#feature-ip-acl)、[访问认证](#feature-auth)、[自动 HTTPS](#feature-auto-https) 等客户端侧功能均正常生效
+- 通过该端口访问时，[IP 访问控制](#feature-ip-acl)、[访问认证](#feature-auth)、[自动 HTTPS](#feature-auto-https)、[Proxy Protocol](/bestpractice/realip.md#proxy-protocol) 等客户端侧功能均正常生效
 - 如您需要使从内网 IP 段访问的设备绕过访问认证，请设置 `auth_bypass_intranet` 为 `true`，该选项在 [访问认证功能](#feature-auth) 中有说明
 
 典型的应用场景是启用子域绑定（或将自己的域名解析到节点）后，内网通过 DNS 将域名覆写到 frpc 所在设备 IP，从而实现本地设备通过内网直连、外网设备通过穿透节点访问，且两种方式都能正常使用客户端侧功能。
