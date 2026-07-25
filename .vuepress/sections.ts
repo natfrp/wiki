@@ -130,6 +130,7 @@ const sections = {
 					{ text: '异星旅人 (ASTRONEER)', link: '/game/other-games.html#astroneer' },
 					{ text: '像素工厂 (Mindustry)', link: '/game/other-games.html#mindustry' },
 					{ text: '罗马拓荒录 (Romestead)', link: '/game/other-games.html#romestead' },
+					{ text: 'DayZ', link: '/game/other-games.html#dayz' },
 					{ text: '通用说明', link: '/game/other-games.html#general' },
 				],
 			},
