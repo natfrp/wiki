@@ -1,7 +1,7 @@
 import { defineUserConfig } from 'vuepress';
 import { viteBundler } from '@vuepress/bundler-vite';
 import { defaultTheme } from '@vuepress/theme-default';
-import { getDirname, path } from '@vuepress/utils';
+import { fs, getDirname, path } from '@vuepress/utils';
 
 import { sitemapPlugin } from '@vuepress/plugin-sitemap';
 import { mdEnhancePlugin } from 'vuepress-plugin-md-enhance';
@@ -126,6 +126,25 @@ export default defineUserConfig({
 				'/app/other-games.html': '/game/other-games.html',
 			},
 		}),
+		{
+			name: 'fix-redirect-anchors',
+			onGenerated: ({ dir }) => {
+				// correct the redirect for /app/mc.html to /game/mc/ instead of /game/mc/index.html (and losing fragment)
+				const mcFile = dir.dest('app/mc.html');
+				const mcHtml = fs.readFileSync(mcFile, 'utf8');
+				fs.writeFileSync(mcFile, mcHtml.replaceAll('/game/mc/index.html', '/game/mc/'));
+
+				// wrap all refresh meta tags with <noscript> to avoid them when JS available
+				const appDir = dir.dest('app');
+				for (const name of fs.readdirSync(appDir)) {
+					const file = path.join(appDir, name);
+					if (!fs.statSync(file).isFile()) continue;
+					const html = fs.readFileSync(file, 'utf8');
+					const fixedHtml = html.replace(/(<meta http-equiv="refresh"[^>]*>)/, '<noscript>$1</noscript>');
+					if (fixedHtml !== html) fs.writeFileSync(file, fixedHtml);
+				}
+			},
+		},
 		registerComponentsPlugin({
 			componentsDir: path.resolve(__dirname, './components'),
 		}),
