@@ -103,6 +103,16 @@
 
 ![](./_images/macos-install.png)
 
+您也可以使用包管理器 Homebrew 安装并管理后续更新：
+
+```bash
+# 安装
+brew install --cask sakura
+
+# 更新
+brew upgrade --cask sakura
+```
+
 ### 关于开机启动 {#macos-autostart}
 
 如果需要在启动时自动打开用户界面，请参考 Apple 帮助文档：[Mac 启动时自动打开应用](https://support.apple.com/zh-cn/guide/mac-help/mh15189/mac)
@@ -354,6 +364,12 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 - [UGOS Pro](/app/ugos-pro.md)
 
 ### 手动安装步骤 {#docker-manual}
+
+::: warning 不建议使用手动 Docker 安装
+为保障 Docker 部署的原子性和可靠性，我们不为 Docker 部署程序提供应用内更新，您将需要手动重建镜像来进行更新。
+
+为了保证您可以稳定简便更新，我们建议您使用一键安装脚本或 Docker 管理器 (如 Docker Composer / Portainer) 部署启动器，而不是手动 Docker 安装。
+:::
 
 1. 启动容器
 
