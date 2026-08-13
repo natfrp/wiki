@@ -22,6 +22,13 @@
 
 1. 在 `镜像` 处输入 `natfrp.com/launcher`，然后点击 `确定`：
 
+   ::: tip 拉取失败的解决提醒
+      如拉取失败，请尝试使用 `natfrp/launcher` （去掉 `.com`，从 Docker Hub 拉取）
+
+      我们注意到部分用户的飞牛 Docker GUI 程序可能存在 Bug，导致无法拉取第三方源的镜像，  
+      通过使用 Docker Hub 源的镜像名称应当可以解决此问题。
+   :::
+
    ![](./_images/fnos-docker-image-2.png)
 
 1. 点击镜像右侧的启动按钮，输入镜像名并勾选开机自启复选框，然后点击 `下一步`：
