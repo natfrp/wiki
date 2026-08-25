@@ -79,6 +79,7 @@ const sections = {
 					{ text: 'Web 应用 (HTTP/HTTPS)', link: '/app/http.html' },
 					{ text: '远程桌面 (RDP)', link: '/app/rdp.html' },
 					{ text: 'SFTP 文件传输', link: '/app/sftp.html' },
+					{ text: 'Syncthing 文件同步', link: '/app/syncthing.html' },
 					{ text: 'FTP 文件传输', link: '/app/ftp.html' },
 					{ text: '远程开机 (WOL 网络唤醒)', link: '/app/wol.html' },
 					{ text: '其他应用', link: '/app/misc.html' },
