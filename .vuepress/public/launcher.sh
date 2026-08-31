@@ -118,9 +118,14 @@ docker_install() {
   - 查看日志\tdocker logs natfrp-service
   - 停止服务\tdocker stop natfrp-service
   - 启动服务\tdocker start natfrp-service
-\n请登录远程管理界面启动隧道: https://www.natfrp.com/remote/v2\n"
+\n请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
+请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
+请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
+请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
+请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2\n"
 
-    log_I "下方将输出启动器日志, 如需退出请按 Ctrl+C"
+    log_I "输入回车键将开始输出启动器日志供您查看初步运行状态, 如需退出请按 Ctrl+C"
+    read -p ""
     docker logs -f natfrp-service
 
     exit 0
@@ -234,9 +239,14 @@ EOF
   - 停止服务\tsystemctl stop natfrp.service
   - 启动服务\tsystemctl start natfrp.service
   - 查看日志\tjournalctl -u natfrp.service
-\n请登录远程管理界面启动隧道: https://www.natfrp.com/remote/v2\n"
+\n请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
+请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
+请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
+请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
+请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2\n"
 
-    log_I "下方将输出启动器日志, 如需退出请按 Ctrl+C"
+    log_I "输入回车键将开始输出启动器日志供您查看初步运行状态, 如需退出请按 Ctrl+C"
+    read -p ""
     journalctl -u natfrp.service -f
 }
 
