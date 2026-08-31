@@ -500,7 +500,7 @@ java -Xmx4G -Xms4G -jar paper-1.21-119.jar
 
 ### 配置内网穿透
 
-请参考 [创建隧道](/app/mc.md#create-tunnel) 一节，在运行服务端的机器上创建并启动指向本机 `25565` 端口的 TCP 隧道。
+请参考 [创建隧道](/game/mc/#create-tunnel) 一节，在运行服务端的机器上创建并启动指向本机 `25565` 端口的 TCP 隧道。
 
 ## 注意事项 {#server-tips}
 
