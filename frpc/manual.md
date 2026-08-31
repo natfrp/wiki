@@ -293,3 +293,5 @@ plugin_header_Referer = ""
 | :---: | :---: | :---: | --- |
 | local_access | Boolean | false | 是否启用内网访问功能 |
 | local_access_addr | String | 0.0.0.0 | 内网访问功能的监听地址 |
+
+<!-- @include: ./_usage/ai_warn.md -->
