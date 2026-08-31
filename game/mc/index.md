@@ -30,6 +30,11 @@ Minecraft 局域网联机穿透通常需要安装 Mod 辅助，
 - 所有人都是正版账号，不需辅助 Mod
 - 所有人都登录 **同一** 皮肤站的账号，不需辅助 Mod
 
+::: tip
+如果您需要皮肤站/外置登录的特性或因为某种原因无法使用模组，您可以参考 `littleskin` 皮肤站的 wiki: [新手指引](https://manual.littlesk.in/newbee/) [Yggdrasil 外置登录](https://manual.littlesk.in/yggdrasil/)  
+此说明仅作为一种指引，并不代表我们向您推荐该皮肤站，也不向您保证皮肤站的安全性。
+:::
+
 在需要辅助 Mod 时不使用，会出现 `登录失败: 无效会话 (请尝试重启游戏及启动器)` 问题。
 
 ### 不装辅助 Mod 联机 {#java-no-mod}
