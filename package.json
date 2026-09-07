@@ -35,8 +35,5 @@
     "peerDependencies": {
         "vue": "^3.2.45",
         "vue-router": "^4.1.6"
-    },
-    "resolutions": {
-        "@mdit/plugin-tab": "file:.patches/mdit-plugin-tab-0.8.0.tgz"
     }
 }

@@ -1,3 +1,6 @@
+overrides:
+  '@mdit/plugin-tab': file:.patches/mdit-plugin-tab-0.8.0.tgz
+
 allowBuilds:
   esbuild: true
   vue-demi: true
