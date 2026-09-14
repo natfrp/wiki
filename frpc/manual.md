@@ -135,7 +135,7 @@ bUDPv2 优化有助于降低延迟和流量消耗，但是当您的隧道同时�
 | auth_totp | String | 空 | 配置访问认证的 TOTP 功能<br>- 留空: 不启用 TOTP 验证<br>- Base32 种子: 使用默认配置启用 TOTP<br>- TOTP URI: 使用自定义配置启用 TOTP, 可选参数有 `digits`、`skew`、`algorithm`<br>&nbsp;&nbsp;_例: `otpauth://totp/auto?secret=<种子>&digits=<数字>&skew=<周期>&algorithm=<算法>`_<br>&nbsp;&nbsp;_* algorithm 参数取值为 `md5`、`sha1` (默认)、`sha256`、`sha512`_<br>_* 0.42.0-sakura-3 及以上版本可用_ |
 | auth_time | String | 2h | 配置访问认证功能在没有勾选「记住」时授权过期时间<br>接受的后缀为 `h`/`m`/`s`，请从大到小排列，如 `1h3m10s` |
 | auth_mode | String | online | 配置 SakuraFrp 访问认证功能的认证模式<br>- `online`: 允许通过密码认证或通过 SakuraFrp 面板进行授权<br>- `standalone`: 仅允许通过密码认证, 忽略 SakuraFrp 服务器下发的授权信息<br>- `server`: 不启用密码，只能通过 SakuraFrp 面板进行授权 |
-| auth_redirect | String | 空 | 配置 SakuraFrp 访问认证通过后自动跳转到 (或打开) 的页面<br>请参阅 [认证后打开的 URL](/offtopic/auth-widget.md#redirect_url) 获取更多用法<br>&nbsp;&nbsp;额外占位符（0.51.0-sakura-14 及以上可用）：<br>&nbsp;&nbsp;使用 `%FROM_URL%` 跳转到原始请求的 URL<br>&nbsp;&nbsp;使用 `%FROM_URL_ENCODED%` 作为编码后参数形式占位符<br>如果自动 HTTPS 被接入，默认行为将变更为 `%FROM_URL%`（自动跳转回原访问链接） |
+| auth_redirect | String | 空 | 配置 SakuraFrp 访问认证通过后自动跳转到 (或打开) 的页面<br>请参阅 [认证后打开的 URL](/offtopic/auth-widget.md#redirect_url) 获取更多用法<br>&nbsp;&nbsp;额外占位符（0.51.0-sakura-14 及以上可用）：<br>&nbsp;&nbsp;使用 `%FROM_URI%` 跳转到原始请求的 URL<br>&nbsp;&nbsp;使用 `%FROM_URI_ENCODED%` 作为编码后参数形式占位符<br>如果自动 HTTPS 被接入，默认行为将变更为 `%FROM_URI%`（自动跳转回原访问链接） |
 | auth_bypass_intranet | Boolean | false | 配置允许内网 IP 绕过访问认证, 用于增强[内网访问](#feature-local-access)<br>_* 0.51.0-sakura-12 及以上版本可用_ |
 
 ## 自动 HTTPS 功能 {#feature-auto-https}
