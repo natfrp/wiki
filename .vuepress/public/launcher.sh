@@ -373,6 +373,16 @@ if [[ ${#missing_tools[@]} -ne 0 ]]; then
         exit 1
     fi
 fi
+missing_tools=()
+for tool in "${required_tools[@]}"; do
+    if ! command -v "$tool" &>/dev/null; then
+        missing_tools+=("$tool")
+    fi
+done
+if [[ ${#missing_tools[@]} -ne 0 ]]; then
+    log_E "以下必要的工具程序未成功安装, 请手动安装后重新运行脚本: ${missing_tools[*]}"
+    exit 1
+fi
 
 # Migrate config files from old script
 if [[ -f "/home/natfrp/.config/natfrp-service/config.json" && ${CONFIG_BASE} != "/home/natfrp/.config/natfrp-service" ]]; then
