@@ -96,6 +96,13 @@ const sections = {
 					{ text: '绿联 / UGREEN', link: '/app/ugos-pro.html' },
 				],
 			},
+			{
+				text: '多端口应用',
+				link: '/mux/',
+				children: [
+					{ text: 'Moonlight / Sunshine 游戏串流', link: '/mux/moonlight.html' },
+				],
+			},
 		],
 	},
 	game: {
