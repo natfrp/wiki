@@ -1,5 +1,9 @@
 # Minecraft Geyser 互通服开服指南
 
+::: warning 文档已过期
+本文保留 MCBE 旧版 Geyser 的 RakNet 配置示例，可能不适用于 NetherNet 的新版环境
+:::
+
 > **互通** 即使 Java 版 与 基岩版 间的玩家和服务器可建立连接，而不只局限于 Java 版玩家加入 Java 版服务器、基岩版玩家加入基岩版服务器。
 
 Minecraft 的国际版存在多种互通方案。
@@ -12,7 +16,7 @@ Minecraft 的国际版存在多种互通方案。
    这是用于扩展服务端对 Geyser 进行管理的插件
 
 因此，本教程所适用的环境是 **使基岩版玩家加入 Java 版服务端**，而 **不能** 用于使 Java 版玩家加入基岩版服务端。
-若它不适用于您的使用环境，请移步 [Java 版开服指南](/offtopic/mc-java-server.md) 页面或 [Minecraft 基岩版开服指南](/offtopic/mc-bedrock-server.md) 页面。
+若它不适用于您的使用环境，请移步 [Java 版开服指南](/offtopic/mc-java-server.md) 页面或 [Minecraft 基岩版联机指南](/game/mc/bedrock.md) 页面。
 
 ## 准备事项
 
@@ -22,7 +26,7 @@ Minecraft 的国际版存在多种互通方案。
 1. Java 版服务端：[官方服务端](https://www.minecraft.net/zh-hans/download/server)
    | 第三方服务端：
    [Spigot](https://www.spigotmc.org/) | [Paper](https://papermc.io/) | [Fabric](https://fabricmc.net/) | [CatServer](https://catmc.org/) | [MohistMC](https://mohistmc.com/)
-1. 最新版本的 [Geyser 服务端](https://ci.opencollab.dev//job/GeyserMC/job/Geyser/job/master/)
+1. 与客户端、Java 服务端及本教程旧配置相匹配的 Geyser 版本；[官方当前版本](https://geysermc.org/download) 请参照上方的新版配置说明
 1. JDK 运行环境 [下载](https://www.oracle.com/java/technologies/downloads)
    | 较低版本的 Java 版服务端可能需要 JDK16、JDK8 等历史版本，请参阅 [Java 版服务端文档](/offtopic/mc-java-server.md)
 1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议)
@@ -753,17 +757,17 @@ config-version: 4
 
 Java 版玩家使用 TCP 隧道进入服务器。
 
-| 节点 | 协议 | 本地端口(默认) | 远程端口 |           本地 IP         | 其他配置项 |
-| ---- | ---- | :----------:  | :-----: | :-------------------------: | :--------: |
-| 任意 | TCP  | 25565         | 任意    | Java 版服务端运行的 IP 地址 | 保留默认值或留空 |
+| 节点 | 协议 | 本地端口(默认) | 远程端口 | 本地 IP | 其他配置项 |
+| --- | --- | :---: | :---: | :---: | :---: |
+| 任意 | TCP | 25565 | 任意 | Java 版服务端运行的 IP 地址 | 保留默认值或留空 |
 
 #### 基岩版玩家隧道
 
 基岩版玩家使用 UDP 隧道进入服务器。
 
-|        节点       | 协议 | 本地端口(默认) | 远程端口 |           本地 IP         |
-| :---------------: | ---- | :----------:  | :-----: | :-------------------------: |
-| 未屏蔽 UDP 的节点 | UDP  | 19132         | 任意    | Geyser 服务端运行的 IP 地址 |
+| 节点 | 协议 | 本地端口(默认) | 远程端口 | 本地 IP |
+| :---: | --- | :---: | :---: | :---: |
+| 未屏蔽 UDP 的节点 | UDP | 19132 | 任意 | Geyser 服务端运行的 IP 地址 |
 
 ::: warning
 使用 frpc 时 MOTD 信息无法正常显示

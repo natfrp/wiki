@@ -1,10 +1,16 @@
-# Minecraft 基岩版开服指南
+# Minecraft 基岩版开服指南 (RakNet)
+
+::: warning 文档已过期
+本文保留使用 **RakNet 传输** 的旧版服务端配置和单 UDP 隧道方法，不适用于新版 NetherNet 服务端
+
+新版游戏请阅读 [Minecraft 基岩版联机指南](/game/mc/bedrock.md)，其中包括原版 BDS 和社区服务端的选择与隧道配置
+:::
 
 > 此教程仅仅是一个简单的入门教程。更多补充信息可在 [Minecraft Wiki](https://zh.minecraft.wiki/) 或 [MineBBS](https://www.minebbs.com/) 中寻找答案或者提问。  
 > 此文不建议毫无经验的小白用户阅读。  
-> 此指南针对的是 **基岩版** 用户，如果您是 **Java 版** 用户，请查看 [Java 版局域网联机](/game/mc/#java) 页面。
+> 此指南针对的是 **基岩版** 用户，如果您是 **Java 版** 用户，请查看 [Java 版局域网联机](/game/mc/index.md#java-lan) 页面。
 
-目前基岩版服务器有多种核心可用:
+旧版教程涉及以下服务端项目；当前版本的传输支持和选择建议请参阅 [新版指南](/game/mc/bedrock.md):
 
 1. Bedrock Dedicated Server (BDS)
    由微软官方开发，与所有平台的 Minecraft 基岩版有几乎相同的核心，目前可以全平台联机，适合原版生存  
@@ -31,7 +37,7 @@
 ### 开服之前
 
 1. 准备一个可用的 Sakura Launcher 或者 frpc
-1. 下载最新版本的 [BDS-Windows 核心](https://www.minecraft.net/zh-hans/download/server/bedrock/)
+1. 准备与客户端匹配且仍支持 RakNet 的 BDS Windows 版本；[官方当前版本](https://www.minecraft.net/zh-hans/download/server/bedrock/) 请使用 [新版教程](/game/mc/bedrock.md)
 1. 一台装载着 **Windows 10 1703** 或 **Windows Server 2016** 或更高版本的操作系统的电脑 (官方文档建议)
 1. 准备一台 CPU 核心数不低于 2 核，并配有不低于 1GB RAM 的电脑
 
@@ -332,9 +338,11 @@ emit-server-telemetry = true
 
 #### 隧道配置
 
+此处的单 UDP 配置仅用于 RakNet；NetherNet 请使用 [新版联机指南](/game/mc/bedrock.md)。
+
 | 协议 | 本地端口(默认) | 远程端口 |
-| ---- | :----------:  | :-----: |
-| UDP  | 19132         | 任意    |
+| --- | :---: | :---: |
+| UDP | 19132 | 任意 |
 
 请根据 `server.properties` 内 `server-port` 项的值设置本地端口。
 
@@ -361,7 +369,7 @@ CheckNetIsolation.exe LoopbackExempt –a –p=S-1-15-2-1958404141-86561845-1752
 ### 开服之前
 
 1. 一个可用的 frpc
-2. 最新版本的 [BDS-Linux 核心](https://www.minecraft.net/zh-hans/download/server/bedrock/)
+2. 与客户端匹配且仍支持 RakNet 的 BDS Linux 版本；[官方当前版本](https://www.minecraft.net/zh-hans/download/server/bedrock/) 请使用 [新版教程](/game/mc/bedrock.md)
 3. 一台装载着 **Ubuntu 18.04** 或更高版本的操作系统的电脑
 4. CPU 核心数大于等于 2 核，1GB RAM
 
@@ -421,19 +429,19 @@ sudo yum install java -y
 
 在 1.18.10 及更高版本，使用：
 
-| 指令                              | 作用                         |  说明                         |
-| --------------------------------- | ---------------------------- | --------------------------  |
-| `allowlist add "Example Name"`    | 根据昵称添加白名单           | 无法使用实体选择器的 '@a' 选项  |
-| `allowlist remove "Example Name"` | 根据昵称移除白名单           | 无法使用实体选择器的 '@a' 选项  |
-| `allowlist list`                  | 输出 `allowlist.json` 的内容 |                              |
+| 指令 | 作用 | 说明 |
+| --- | --- | --- |
+| `allowlist add "Example Name"` | 根据昵称添加白名单 | 无法使用实体选择器的 '@a' 选项 |
+| `allowlist remove "Example Name"` | 根据昵称移除白名单 | 无法使用实体选择器的 '@a' 选项 |
+| `allowlist list` | 输出 `allowlist.json` 的内容 | |
 
 在 1.18.2 及更低版本，使用：
 
-| 指令                              | 作用                         |  说明                        |
-| --------------------------------- | ---------------------------- | --------------------------  |
-| `whitelist add "Example Name"`    | 根据昵称添加白名单           | 无法使用实体选择器的 '@a' 选项  |
-| `whitelist remove "Example Name"` | 根据昵称移除白名单           | 无法使用实体选择器的 '@a' 选项  |
-| `whitelist list`                  | 输出 `whitelist.json` 的内容 |                              |
+| 指令 | 作用 | 说明 |
+| --- | --- | --- |
+| `whitelist add "Example Name"` | 根据昵称添加白名单 | 无法使用实体选择器的 '@a' 选项 |
+| `whitelist remove "Example Name"` | 根据昵称移除白名单 | 无法使用实体选择器的 '@a' 选项 |
+| `whitelist list` | 输出 `whitelist.json` 的内容 | |
 
 您可以直接在 `allowlist.json` 或 `whitelist.json` 里编辑白名单：
 
@@ -483,32 +491,32 @@ sudo yum install java -y
 
 可以通过以下指令编辑权限：
 
-| 指令                     | 作用     |  说明                        |
-| ------------------------ | ------- | --------------------------  |
-| `op "example players"`   | 添加权限 | 无法使用实体选择器的 '@a' 选项  |
-| `deop "example players"` | 剥夺权限 | 无法使用实体选择器的 '@a' 选项  |
-| `permission list`        | 打印 `permission.json` 内容 |            |
-| `permission reload`      | 将 `permission.json` 内容重新加载到内存  |
+| 指令 | 作用 | 说明 |
+| --- | --- | --- |
+| `op "example players"` | 添加权限 | 无法使用实体选择器的 '@a' 选项 |
+| `deop "example players"` | 剥夺权限 | 无法使用实体选择器的 '@a' 选项 |
+| `permission list` | 打印 `permission.json` 内容 | |
+| `permission reload` | 将 `permission.json` 内容重新加载到内存 | |
 
 ### 踢出用户
 
-| 指令                     | 作用     |  说明                        |
-| ------------------------ | ------- | --------------------------  |
-| `kick "example players"` | 踢出用户 | 无法使用实体选择器的 '@a' 选项  |
+| 指令 | 作用 | 说明 |
+| --- | --- | --- |
+| `kick "example players"` | 踢出用户 | 无法使用实体选择器的 '@a' 选项 |
 
 ### 关闭服务器
 
-| 指令   | 作用         |  说明                        |
-| ------ | ----------- | --------------------------  |
-| `stop` | 软关闭服务器 |  如果服务器存档较大，可能需要几分钟 |
+| 指令 | 作用 | 说明 |
+| --- | --- | --- |
+| `stop` | 软关闭服务器 | 如果服务器存档较大，可能需要几分钟 |
 
 ### 备份服务器
 
-| 指令         | 作用             | 说明                                                        |
-| ------------ | --------------- | ------------------------------------------------------------ |
-| `save hold`  | 服务器做备份准备 | 它是异步的，并将立即返回。                                   |
-| `save query` | 查询备份准备进度 | 返回准备进度，它将返回需要复制的文件的文件列表。              |
-| `save resume`| 删除旧文件       | 当您完成文件的复制时，您可调用这个函数来告诉服务器删除旧文件。|
+| 指令 | 作用 | 说明 |
+| --- | --- | --- |
+| `save hold` | 服务器做备份准备 | 它是异步的，并将立即返回。 |
+| `save query` | 查询备份准备进度 | 返回准备进度，它将返回需要复制的文件的文件列表。 |
+| `save resume` | 删除旧文件 | 当您完成文件的复制时，您可调用这个函数来告诉服务器删除旧文件。 |
 
 ### 游戏参数修改
 
@@ -538,16 +546,18 @@ sudo yum install java -y
 ### BDS 系基岩版服务端/拓展工具
 
 ::: warning
-其中部分是通过反编译以达成修改的目的, 并不符合 EULA, 请慎用。
+以下保留旧教程涉及的项目名单，未确认它们对当前 BDS 的兼容性；当前方案请参阅 [新版指南](/game/mc/bedrock.md)
+
+安装前请查看各项目的版本要求、许可和官方安装说明
 :::
 
-- [LeviLamina](https://github.com/LiteLDev/LeviLamina) 第三方 BDS 插件加载器，轻量易用，前身为 LiteLoader
+- [LeviLamina](https://github.com/LiteLDev/LeviLamina) 第三方 BDS 模组加载器，前身为 LiteLoaderBDS
 - [LiteLoader](https://github.com/LiteLDev/LiteLoaderBDS) 第三方 BDS 插件加器，已停更
 - [BDLauncher](https://github.com/BDLDev/bdlauncher) 第三方 BDS 插件加载器，已停更
 - [BedrockX](https://github.com/Sysca11/BedrockX-bin) 第三方 BDS 插件加载器，已停更
 - [ElementZero](https://github.com/Element-0/ElementZero) 第三方服务端，支持实验玩法和教育版
-- [BDXCore](https://github.com/Sysca11/BDXCore) 第三方 BDS 插件加载器，有封装 HOOK API ，适配性强
-- [BDSJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSRunner-Release) 符合工业标准规范的 BDS 跨版本插件开发解决方案
+- [BDXCore](https://github.com/Sysca11/BDXCore) 第三方 BDS 插件加载器，提供 Hook API
+- [BDSJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSRunner-Release) BDS 脚本插件运行工具
 - [NetJSRunner](https://github.com/zhkj-liuxiaohua/BDSJSR2) .NET 版 JS 加载平台，依赖于 BDSNetRunner
 - [PFJSR](https://github.com/littlegao233/PFJSR) NetJSRunner 衍生版
 - [BDSPyRunner](https://github.com/twoone-3/BDSpyrunner) python 脚本插件运行平台

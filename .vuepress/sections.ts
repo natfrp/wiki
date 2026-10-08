@@ -112,6 +112,7 @@ const sections = {
 				text: '我的世界 (Minecraft)', // also change minecraftKey below if you change this
 				children: [
 					{ text: '我的世界 Java 版局域网联机', link: '/game/mc/#java-lan' },
+					{ text: '我的世界基岩版联机 (NetherNet)', link: '/game/mc/bedrock.html' },
 					{ text: '我的世界服务器说明', link: '/game/mc/#server' },
 				],
 			},
@@ -161,7 +162,7 @@ const sections = {
 				text: 'Minecraft 相关教程',
 				children: [
 					{ text: 'Java 版开服指南', link: '/offtopic/mc-java-server.html' },
-					{ text: '基岩版开服指南', link: '/offtopic/mc-bedrock-server.html' },
+					{ text: '基岩版开服指南 (RakNet)', link: '/offtopic/mc-bedrock-server.html' },
 					{ text: 'Geyser 互通服开服指南', link: '/offtopic/mc-geyser.html' },
 				],
 			},
