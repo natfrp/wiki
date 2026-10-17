@@ -74,7 +74,10 @@ Sakura Mux 已内置 Challenge-Response 鉴权机制，其安全性优于访问�
 
 ## 连接客户端 {#connect-client}
 
-访客（运行 Moonlight 的一方）需在 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/mux-windows/) 下载 Sakura Mux 客户端。
+在访客（运行 Moonlight 的一方）设备上下载 Sakura Mux 客户端：
+
+- [Windows 版本](https://nya.globalslb.net/natfrp/client/mux-windows/)
+- [Android 版本](https://nya.globalslb.net/natfrp/client/mux-android/)
 
 按照下图说明下操作，输入 **访问码** 添加配置文件：
 

@@ -6,7 +6,10 @@
 
 通过 Sakura Mux，您可以穿透占用多个端口、对端口 Offset 有严格要求的各类应用。
 
-可在 [Nyatwork CDN](https://nya.globalslb.net/natfrp/client/mux-windows/) 下载 Sakura Mux 客户端。
+可在 Nyatwork CDN 下载连接客户端：
+
+- [Windows 版本](https://nya.globalslb.net/natfrp/client/mux-windows/)
+- [Android 版本](https://nya.globalslb.net/natfrp/client/mux-android/)
 
 ## 应用教程索引 {#app-index}
 
