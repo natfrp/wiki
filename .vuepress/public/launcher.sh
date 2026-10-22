@@ -17,6 +17,14 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+case "${1:-}" in
+    ""|docker|podman|direct|uninstall) ;;
+    *)
+        log_E "未知参数: $1, 支持的参数为 docker、podman、direct 或 uninstall"
+        exit 1
+        ;;
+esac
+
 # Check if selinux is enabled
 if command -v getenforce &>/dev/null; then
     if [[ $(getenforce) == "Enforcing" ]]; then
@@ -60,36 +68,36 @@ press_enter() {
     read -p "按 Enter 键以继续, 或 Ctrl-C 取消..."
 }
 
-# docker install should be the default
-docker_install() {
-    echo -e "\e[96m[*] Docker 已安装, 将使用 Docker 安装模式\e[0m
+# docker install should be the default, use podman only if necessary
+container_install() {
+    echo -e "\e[96m[*] 检测到 ${CONTAINER_RT}, 将使用容器安装模式\e[0m
   - 将在您的系统上创建名为 natfrp-service 的容器
   - 将为您创建 ${CONFIG_BASE} 文件夹用于存储启动器配置文件\n"
     ask_for_creds
 
     mkdir -p ${CONFIG_BASE} || log_W "无法创建 ${CONFIG_BASE} 文件夹, 配置可能无法在容器重启后正常保存"
 
-    if docker ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
+    if ${CONTAINER_RT} ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
         log_W "已存在名为 natfrp-service 的容器"
         read -p " - 是否移除已存在的容器? [y/N] " -r choice
         if [[ $choice =~ ^[Yy]$ ]]; then
-            docker stop natfrp-service --timeout 5 &>/dev/null
-            docker rm natfrp-service
+            ${CONTAINER_RT} stop natfrp-service -t 5 &>/dev/null
+            ${CONTAINER_RT} rm natfrp-service
         else
             log_E "请手动移除已存在的容器后重新运行脚本"
             exit 1
         fi
     fi
 
-    log_I "Docker 安装模式选择"
+    log_I "容器安装模式选择"
     echo "请选择镜像来源："
     echo "1. 官方 (natfrp.com/launcher)"
     echo "2. GitHub (ghcr.io/natfrp/launcher)"
-    echo "3. Docker Hub (natfrp/launcher)"
+    echo "3. Docker Hub (docker.io/natfrp/launcher)"
     read -p "请输入选项 [1-3] (默认1): " source
     case $source in
         2) image="ghcr.io/natfrp/launcher" ;;
-        3) image="natfrp/launcher" ;;
+        3) image="docker.io/natfrp/launcher" ;;
         *) image="natfrp.com/launcher" ;;
     esac
 
@@ -98,7 +106,7 @@ docker_install() {
         platform_flag="--platform linux/386"
     fi
 
-    docker run -d \
+    ${CONTAINER_RT} run -d \
         --network=host \
         --restart=always \
         --pull=always \
@@ -110,14 +118,32 @@ docker_install() {
         -e "TZ=${TZ:-Asia/Shanghai}" \
         $image || \
     {
-        log_E "Docker 模式安装失败, 请检查 Docker 在是否正常运行以及是否能正常访问镜像"
+        log_E "容器模式安装失败, 请检查 ${CONTAINER_RT} 是否正常运行以及是否能正常访问镜像"
         exit 1
     }
 
-    echo -e "\n\e[96mDocker 模式安装成功, 您可使用下面的命令管理服务:\e[0m
-  - 查看日志\tdocker logs natfrp-service
-  - 停止服务\tdocker stop natfrp-service
-  - 启动服务\tdocker start natfrp-service
+    if [[ $CONTAINER_RT == "podman" ]]; then
+        if ! command -v systemctl &>/dev/null || [[ ! -d /run/systemd/system ]]; then
+            log_W "未检测到 systemd, 请手动配置 Podman 容器开机自启"
+        elif ! systemctl is-enabled --quiet podman-restart.service; then
+            log_W "podman-restart.service 未启用, 容器可能无法在系统重启后自动启动"
+            read -p " - 是否启用 podman-restart.service 开机自启? [y/N] " -r choice
+            if [[ $choice =~ ^[Yy]$ ]]; then
+                if systemctl enable podman-restart.service; then
+                    log_I "已启用 podman-restart.service 开机自启"
+                else
+                    log_W "无法启用 podman-restart.service, 请手动检查服务配置"
+                fi
+            else
+                log_W "未启用开机自启, 系统重启后可能需要手动启动容器"
+            fi
+        fi
+    fi
+
+    echo -e "\n\e[96m容器模式安装成功, 您可使用下面的命令管理服务:\e[0m
+  - 查看日志\t${CONTAINER_RT} logs natfrp-service
+  - 停止服务\t${CONTAINER_RT} stop natfrp-service
+  - 启动服务\t${CONTAINER_RT} start natfrp-service
 \n请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
 请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
 请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
@@ -126,7 +152,7 @@ docker_install() {
 
     log_I "输入回车键将开始输出启动器日志供您查看初步运行状态, 如需退出请按 Ctrl+C"
     read -p ""
-    docker logs -f natfrp-service
+    ${CONTAINER_RT} logs -f natfrp-service
 
     exit 0
 }
@@ -268,10 +294,12 @@ uninstall() {
     set +e
     read -p " - 确认要卸载 SakuraFrp 启动器吗? [y/N] " -r choice
     if [[ $choice =~ ^[Yy]$ ]]; then
-        if docker ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
-            docker stop natfrp-service --timeout 5 &>/dev/null
-            docker rm natfrp-service &>/dev/null && log_I "已删除 Docker 容器"
-        fi
+        for rt in docker podman; do
+            if command -v "$rt" &>/dev/null && "$rt" ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^natfrp-service$'; then
+                "$rt" stop natfrp-service -t 5 &>/dev/null
+                "$rt" rm natfrp-service &>/dev/null && log_I "已删除 $rt 容器"
+            fi
+        done
 
         if [[ -f /etc/systemd/system/natfrp.service ]]; then
             if systemctl -q is-enabled natfrp.service; then
@@ -331,19 +359,61 @@ if [[ $1 == "uninstall" ]]; then
     exit 0
 fi
 
-# Use docker if available
-if docker info &>/dev/null && [[ $1 != "direct" ]]; then
-    docker_install
+# Reuse the runtime of an existing installation before selecting a new one.
+known_install=""
+for rt in docker podman; do
+    if command -v "$rt" &>/dev/null && "$rt" ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^natfrp-service$'; then
+        known_install="$rt"
+        break
+    fi
+done
+
+if [[ -z "$known_install" && ( -f /etc/systemd/system/natfrp.service || -f /home/${LOW_USER}/natfrp-service ) ]]; then
+    known_install="direct"
+fi
+
+if [[ -n "$known_install" ]]; then
+    if [[ -n "$1" && "$1" != "$known_install" ]]; then
+        log_E "检测到已有 $known_install 安装, 请先卸载后再切换为 $1"
+        exit 1
+    fi
+    log_I "检测到已有 $known_install 安装, 将更新 $known_install 部署"
+fi
+
+CONTAINER_RT=""
+case "${1:-$known_install}" in
+    docker|podman)
+        rt="${1:-$known_install}"
+        if "$rt" info &>/dev/null; then
+            CONTAINER_RT="$rt"
+        else
+            log_E "$rt 不可用, 请检查它是否已安装并正常运行"
+            exit 1
+        fi
+        ;;
+    direct) ;;
+    *)
+        if docker info &>/dev/null; then
+            CONTAINER_RT="docker"
+        elif podman info &>/dev/null; then
+            CONTAINER_RT="podman"
+        fi
+        ;;
+esac
+
+# Use a container runtime (docker/podman) if available
+if [[ -n "$CONTAINER_RT" ]]; then
+    container_install
     exit 0
 fi
 
-log_W "您正在使用非 Docker 安装模式"
-log_I "我们建议您总是使用 Docker 安装模式, 以便于管理和减少兼容性问题"
+log_W "您正在使用非容器安装模式"
+log_I "我们建议您总是使用 Docker 容器安装模式, 以便于管理和减少兼容性问题"
 
 # Check SELinux
 if command -v getenforce &>/dev/null; then
     if [[ $(getenforce) == "Enforcing" ]]; then
-        log_E "SELinux 处于启用状态, 为避免出现问题, 请安装 Docker 后重新运行脚本以使用 Docker 部署"
+        log_E "SELinux 处于启用状态, 为避免出现问题, 请安装 Docker 后重新运行脚本以使用容器部署"
         exit 1
     fi
 fi
