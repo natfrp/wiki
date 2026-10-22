@@ -70,19 +70,19 @@ press_enter() {
 
 # docker install should be the default, use podman only if necessary
 container_install() {
-    echo -e "\e[96m[*] 检测到 ${CONTAINER_RT}, 将使用容器安装模式\e[0m
+    echo -e "\e[96m[*] 检测到 $1, 将使用容器安装模式\e[0m
   - 将在您的系统上创建名为 natfrp-service 的容器
   - 将为您创建 ${CONFIG_BASE} 文件夹用于存储启动器配置文件\n"
     ask_for_creds
 
     mkdir -p ${CONFIG_BASE} || log_W "无法创建 ${CONFIG_BASE} 文件夹, 配置可能无法在容器重启后正常保存"
 
-    if ${CONTAINER_RT} ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
+    if "$1" ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
         log_W "已存在名为 natfrp-service 的容器"
         read -p " - 是否移除已存在的容器? [y/N] " -r choice
         if [[ $choice =~ ^[Yy]$ ]]; then
-            ${CONTAINER_RT} stop natfrp-service -t 5 &>/dev/null
-            ${CONTAINER_RT} rm natfrp-service
+            "$1" stop natfrp-service -t 5 &>/dev/null
+            "$1" rm natfrp-service
         else
             log_E "请手动移除已存在的容器后重新运行脚本"
             exit 1
@@ -106,7 +106,7 @@ container_install() {
         platform_flag="--platform linux/386"
     fi
 
-    ${CONTAINER_RT} run -d \
+    "$1" run -d \
         --network=host \
         --restart=always \
         --pull=always \
@@ -118,32 +118,14 @@ container_install() {
         -e "TZ=${TZ:-Asia/Shanghai}" \
         $image || \
     {
-        log_E "容器模式安装失败, 请检查 ${CONTAINER_RT} 是否正常运行以及是否能正常访问镜像"
+        log_E "容器模式安装失败, 请检查 $1 是否正常运行以及是否能正常访问镜像"
         exit 1
     }
 
-    if [[ $CONTAINER_RT == "podman" ]]; then
-        if ! command -v systemctl &>/dev/null || [[ ! -d /run/systemd/system ]]; then
-            log_W "未检测到 systemd, 请手动配置 Podman 容器开机自启"
-        elif ! systemctl is-enabled --quiet podman-restart.service; then
-            log_W "podman-restart.service 未启用, 容器可能无法在系统重启后自动启动"
-            read -p " - 是否启用 podman-restart.service 开机自启? [y/N] " -r choice
-            if [[ $choice =~ ^[Yy]$ ]]; then
-                if systemctl enable podman-restart.service; then
-                    log_I "已启用 podman-restart.service 开机自启"
-                else
-                    log_W "无法启用 podman-restart.service, 请手动检查服务配置"
-                fi
-            else
-                log_W "未启用开机自启, 系统重启后可能需要手动启动容器"
-            fi
-        fi
-    fi
-
     echo -e "\n\e[96m容器模式安装成功, 您可使用下面的命令管理服务:\e[0m
-  - 查看日志\t${CONTAINER_RT} logs natfrp-service
-  - 停止服务\t${CONTAINER_RT} stop natfrp-service
-  - 启动服务\t${CONTAINER_RT} start natfrp-service
+  - 查看日志\t$1 logs natfrp-service
+  - 停止服务\t$1 stop natfrp-service
+  - 启动服务\t$1 start natfrp-service
 \n请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
 请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
 请登录远程管理界面启动和管理隧道: https://www.natfrp.com/remote/v2
@@ -152,7 +134,7 @@ container_install() {
 
     log_I "输入回车键将开始输出启动器日志供您查看初步运行状态, 如需退出请按 Ctrl+C"
     read -p ""
-    ${CONTAINER_RT} logs -f natfrp-service
+    "$1" logs -f natfrp-service
 
     exit 0
 }
@@ -215,7 +197,7 @@ bareinstall_base() {
     fi
 
     jq --arg token "$api_key" \
-       --arg remote_key "$(./natfrp-service remote-kdf "$remote_pass")" \
+       --arg remote_key "$(sudo -H -u "$LOW_USER" ./natfrp-service remote-kdf "$remote_pass")" \
        '. + {
          token: $token,
          remote_management: true,
@@ -331,8 +313,10 @@ uninstall() {
             log_I "启动器数据未删除, 您可再次执行卸载脚本以删除"
         fi
         log_I "SakuraFrp 启动器已成功卸载"
+        return 0
     else
         log_I "SakuraFrp 启动器未被卸载"
+        return 1
     fi
 }
 
@@ -359,33 +343,32 @@ if [[ $1 == "uninstall" ]]; then
     exit 0
 fi
 
-# Reuse the runtime of an existing installation before selecting a new one.
+# Find any existing installation before selecting a runtime.
 known_install=""
-for rt in docker podman; do
-    if command -v "$rt" &>/dev/null && "$rt" ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^natfrp-service$'; then
-        known_install="$rt"
-        break
+check_installation() {
+    for rt in docker podman; do
+        if command -v "$rt" &>/dev/null && "$rt" ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^natfrp-service$'; then
+            known_install="$rt"
+            return 0
+        fi
+    done
+
+    if [[ -f "/etc/systemd/system/natfrp.service" || -f "/home/${LOW_USER}/natfrp-service" ]]; then
+        known_install="direct"
+        return 0
     fi
-done
 
-if [[ -z "$known_install" && ( -f /etc/systemd/system/natfrp.service || -f /home/${LOW_USER}/natfrp-service ) ]]; then
-    known_install="direct"
-fi
+    return 1
+}
+check_installation || :
 
-if [[ -n "$known_install" ]]; then
-    if [[ -n "$1" && "$1" != "$known_install" ]]; then
-        log_E "检测到已有 $known_install 安装, 请先卸载后再切换为 $1"
-        exit 1
-    fi
-    log_I "检测到已有 $known_install 安装, 将更新 $known_install 部署"
-fi
-
-CONTAINER_RT=""
+# Check the selected runtime before offering to remove an existing installation.
+crt=""
 case "${1:-$known_install}" in
     docker|podman)
         rt="${1:-$known_install}"
         if "$rt" info &>/dev/null; then
-            CONTAINER_RT="$rt"
+            crt="$rt"
         else
             log_E "$rt 不可用, 请检查它是否已安装并正常运行"
             exit 1
@@ -394,16 +377,53 @@ case "${1:-$known_install}" in
     direct) ;;
     *)
         if docker info &>/dev/null; then
-            CONTAINER_RT="docker"
+            crt="docker"
         elif podman info &>/dev/null; then
-            CONTAINER_RT="podman"
+            crt="podman"
         fi
         ;;
 esac
 
+if [[ -n "$known_install" ]]; then
+    if [[ -n "$1" && "$1" != "$known_install" ]]; then
+        log_W "检测到已有 $known_install 安装, 与指定的安装方式 $1 不符"
+        read -p " - 是否卸载已有安装并继续使用 $1 安装? [y/N] " -r choice
+        if [[ $choice =~ ^[Yy]$ ]]; then
+            if uninstall; then
+                set -e
+                known_install=""
+            else
+                exit 1
+            fi
+        else
+            exit 1
+        fi
+    else
+        log_I "检测到已有 $known_install 安装, 将更新 $known_install 部署"
+    fi
+fi
+
 # Use a container runtime (docker/podman) if available
-if [[ -n "$CONTAINER_RT" ]]; then
-    container_install
+if [[ -n "$crt" ]]; then
+    if [[ "$crt" == "podman" ]]; then
+        if ! command -v systemctl &>/dev/null || [[ ! -d /run/systemd/system ]]; then
+            log_W "未检测到 systemd, 请手动配置 Podman 开机自启"
+        elif ! systemctl is-enabled --quiet podman-restart.service; then
+            log_W "podman-restart.service 未启用, 容器可能无法在系统重启后自动启动"
+            read -p " - 是否启用 podman-restart.service 开机自启? [y/N] " -r choice
+            if [[ $choice =~ ^[Yy]$ ]]; then
+                if systemctl enable podman-restart.service; then
+                    log_I "已启用 podman-restart.service 开机自启"
+                else
+                    log_W "无法启用 podman-restart.service, 请手动检查服务配置"
+                fi
+            else
+                log_W "未启用开机自启, 系统重启后可能需要手动启动容器"
+            fi
+        fi
+    fi
+
+    container_install "$crt"
     exit 0
 fi
 
