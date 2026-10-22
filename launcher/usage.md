@@ -135,7 +135,7 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh)"
 # 或者使用 wget, 脚本会自动通过包管理器安装 curl
 sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 
-# 直接安装到系统中（切换安装方式前需先卸载）
+# 不使用容器，直接部署到系统中
 sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
 ```
 
