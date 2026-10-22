@@ -68,6 +68,16 @@ press_enter() {
     read -p "按 Enter 键以继续, 或 Ctrl-C 取消..."
 }
 
+# The container runs as root; direct installs run as LOW_USER.
+prepare_config_dir() {
+    mkdir -p "$CONFIG_BASE"
+    chown -R "$1" "$CONFIG_BASE"
+    chmod 700 "$CONFIG_BASE"
+    if [[ -f "$CONFIG_BASE/config.json" ]]; then
+        chmod 600 "$CONFIG_BASE/config.json"
+    fi
+}
+
 # docker install should be the default, use podman only if necessary
 container_install() {
     echo -e "\e[96m[*] 检测到 $1, 将使用容器安装模式\e[0m
@@ -75,7 +85,7 @@ container_install() {
   - 将为您创建 ${CONFIG_BASE} 文件夹用于存储启动器配置文件\n"
     ask_for_creds
 
-    mkdir -p ${CONFIG_BASE} || log_W "无法创建 ${CONFIG_BASE} 文件夹, 配置可能无法在容器重启后正常保存"
+    prepare_config_dir 0:0
 
     if "$1" ps -a --format '{{.Names}}' | grep -q '^natfrp-service$'; then
         log_W "已存在名为 natfrp-service 的容器"
@@ -180,7 +190,7 @@ bareinstall_base() {
     check_executable "./natfrp-service"
 
     # Update config file
-    mkdir -p ${CONFIG_BASE} || log_W "无法创建 ${CONFIG_BASE} 文件夹, 配置文件夹可能已存在, 我们将尝试迁移"
+    prepare_config_dir "${LOW_USER}:"
 
     config_file="${CONFIG_BASE}/config.json"
     if [[ -f $config_file ]]; then
@@ -192,21 +202,25 @@ bareinstall_base() {
         fi
     fi
 
-    if [[ ! -f $config_file ]]; then
-        echo '{}' > $config_file
-    fi
-
-    jq --arg token "$api_key" \
-       --arg remote_key "$(sudo -H -u "$LOW_USER" ./natfrp-service remote-kdf "$remote_pass")" \
-       '. + {
-         token: $token,
-         remote_management: true,
-         remote_management_key: $remote_key,
-         log_stdout: true
-       }' "$config_file" > "$config_file.tmp"
-    mv $config_file.tmp $config_file
-
-    chown -R ${LOW_USER}: ${CONFIG_BASE}
+    (
+        umask 077
+        if [[ ! -f "$config_file" ]]; then
+            echo '{}' > "$config_file"
+        fi
+        chown "${LOW_USER}:" "$config_file"
+        : > "$config_file.tmp"
+        chmod 600 "$config_file.tmp"
+        jq --arg token "$api_key" \
+           --arg remote_key "$(sudo -H -u "$LOW_USER" ./natfrp-service remote-kdf "$remote_pass")" \
+           '. + {
+             token: $token,
+             remote_management: true,
+             remote_management_key: $remote_key,
+             log_stdout: true
+           }' "$config_file" > "$config_file.tmp"
+        chown "${LOW_USER}:" "$config_file.tmp"
+        mv "$config_file.tmp" "$config_file"
+    )
 }
 
 bareinstall_systemd() {
@@ -480,10 +494,17 @@ if [[ -f "/home/natfrp/.config/natfrp-service/config.json" && ${CONFIG_BASE} != 
     read -p " - 是否迁移配置文件? [y/N] " -r choice
     if [[ $choice =~ ^[Yy]$ ]]; then
         systemctl stop natfrp.service &>/dev/null || log_W "无法停止旧服务, 将尝试直接迁移"
-        mkdir -p ${CONFIG_BASE} || log_W "无法创建 ${CONFIG_BASE} 文件夹, 配置文件夹可能已存在, 我们将尝试迁移"
-        mv -f /home/natfrp/.config/natfrp-service/ ${CONFIG_BASE}/ || log_W "无法完整迁移旧配置文件, 数据迁移可能不完整"
-        chown -R ${LOW_USER}: ${CONFIG_BASE}
-        log_I "已迁移旧配置文件到 ${CONFIG_BASE} 目录"
+        prepare_config_dir 0:0
+        if (
+            shopt -s dotglob nullglob
+            mv -f /home/natfrp/.config/natfrp-service/* "$CONFIG_BASE/"
+        ); then
+            rmdir /home/natfrp/.config/natfrp-service 2>/dev/null || :
+            log_I "已迁移旧配置文件到 ${CONFIG_BASE} 目录"
+        else
+            log_W "无法完整迁移旧配置文件, 数据迁移可能不完整"
+        fi
+        prepare_config_dir 0:0
     fi
 fi
 
