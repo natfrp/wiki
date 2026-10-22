@@ -286,6 +286,35 @@ EOF
     echo -e "\n\e[96mSakuraFrp 启动器文件安装完成, 您可以运行 bash /home/${LOW_USER}/start.sh 临时启动服务, 或配置到您喜爱的服务管理器中\e[0m"
 }
 
+is_direct_process() {
+    local executable
+    executable=$(readlink "/proc/$1/exe" 2>/dev/null) || return 1
+    executable="${executable% (deleted)}"
+    [[ "$executable" == "/home/${LOW_USER}/natfrp-service" || "$executable" == "/home/${LOW_USER}/frpc" ]]
+}
+
+stop_direct_processes() {
+    local entry pid
+    local pids=()
+    for entry in /proc/[0-9]*/exe; do
+        pid="${entry#/proc/}"
+        pid="${pid%/exe}"
+        if is_direct_process "$pid"; then
+            pids+=("$pid")
+            kill -TERM "$pid" 2>/dev/null
+        fi
+    done
+    if [[ ${#pids[@]} -gt 0 ]]; then
+        log_I "正在结束直接安装的启动器及 frpc 进程: ${pids[*]}"
+        sleep 5
+        for pid in "${pids[@]}"; do
+            if is_direct_process "$pid"; then
+                kill -KILL "$pid" 2>/dev/null
+            fi
+        done
+    fi
+}
+
 uninstall() {
     set +e
     read -p " - 确认要卸载 SakuraFrp 启动器吗? [y/N] " -r choice
@@ -306,6 +335,8 @@ uninstall() {
             rm -f /etc/systemd/system/natfrp.service &>/dev/null && log_I "已删除 systemd 服务"
             systemctl daemon-reload &>/dev/null
         fi
+
+        stop_direct_processes
 
         if [[ -f /home/${LOW_USER}/natfrp-service ]]; then
             rm -rf /home/${LOW_USER}/frpc /home/${LOW_USER}/natfrp-service &>/dev/null && log_I "已删除 /home/${LOW_USER} 中的程序文件"
@@ -360,15 +391,31 @@ fi
 # Find any existing installation before selecting a runtime.
 known_install=""
 check_installation() {
+    local rt names
+    local installs=()
     for rt in docker podman; do
-        if command -v "$rt" &>/dev/null && "$rt" ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^natfrp-service$'; then
-            known_install="$rt"
-            return 0
+        if ! command -v "$rt" &>/dev/null; then
+            continue
+        fi
+        if ! names=$("$rt" ps -a --format '{{.Names}}' 2>/dev/null); then
+            log_W "无法查询 $rt 中的已有安装, 请检查该运行时是否正常运行"
+            continue
+        fi
+        if grep -q '^natfrp-service$' <<< "$names"; then
+            installs+=("$rt")
         fi
     done
 
     if [[ -f "/etc/systemd/system/natfrp.service" || -f "/home/${LOW_USER}/natfrp-service" ]]; then
-        known_install="direct"
+        installs+=("direct")
+    fi
+
+    if [[ ${#installs[@]} -gt 0 ]]; then
+        log_I "检测到已有安装: ${installs[*]}"
+        if [[ ${#installs[@]} -gt 1 ]]; then
+            log_W "存在多种安装方式, 卸载操作会尝试移除全部已有安装"
+        fi
+        known_install="${installs[0]}"
         return 0
     fi
 
@@ -403,6 +450,7 @@ if [[ -n "$known_install" ]]; then
         log_W "检测到已有 $known_install 安装, 与指定的安装方式 $1 不符"
         read -p " - 是否卸载已有安装并继续使用 $1 安装? [y/N] " -r choice
         if [[ $choice =~ ^[Yy]$ ]]; then
+            log_W "卸载会中断所有隧道; 如果当前 SSH 通过隧道连接, 连接将断开, 后续安装可能无法继续"
             if uninstall; then
                 set -e
                 known_install=""
