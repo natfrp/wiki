@@ -34,21 +34,21 @@ fi
 
 ask_for_creds() {
     while true; do
-        read -e -p "请输入 SakuraFrp 的访问密钥 (可在 https://www.natfrp.com/user/ 获取): " api_key
+        read -r -e -p "请输入 SakuraFrp 的访问密钥 (可在 https://www.natfrp.com/user/ 获取): " api_key
         echo
-        if [[ ${#api_key} -ge 16 ]]; then break; fi
+        if [[ "$api_key" =~ ^[a-z0-9]{16,}$ ]]; then break; fi
         log_E "访问密钥错误, 请到 https://www.natfrp.com/user/ 获取"
     done
 
     while true; do
         while true; do
-            read -e -p "请输入远程管理密码 (至少八个字符): " remote_pass
+            IFS= read -r -e -p "请输入远程管理密码 (至少八个字符): " remote_pass
             echo
-            if [[ ${#remote_pass} -ge 8 ]]; then break; fi
-            log_E "远程管理密码至少需要 8 字符"
+            if [[ ${#remote_pass} -ge 8 && "$remote_pass" != *[![:graph:]]* ]]; then break; fi
+            log_E "远程管理密码至少需要 8 个字符"
         done
 
-        read -e -p "请再次输入远程管理密码: " remote_pass_confirm
+        IFS= read -r -e -p "请再次输入远程管理密码: " remote_pass_confirm
         echo
         if [[ "$remote_pass" == "$remote_pass_confirm" ]]; then break; fi
         log_E "两次输入的远程管理密码不一致, 请确认知晓自己正在输入的内容"
