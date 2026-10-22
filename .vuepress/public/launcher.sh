@@ -114,6 +114,24 @@ container_install() {
         exit 1
     }
 
+    if [[ $CONTAINER_RT == "podman" ]]; then
+        if ! command -v systemctl &>/dev/null || [[ ! -d /run/systemd/system ]]; then
+            log_W "未检测到 systemd, 请手动配置 Podman 容器开机自启"
+        elif ! systemctl is-enabled --quiet podman-restart.service; then
+            log_W "podman-restart.service 未启用, 容器可能无法在系统重启后自动启动"
+            read -p " - 是否启用 podman-restart.service 开机自启? [y/N] " -r choice
+            if [[ $choice =~ ^[Yy]$ ]]; then
+                if systemctl enable podman-restart.service; then
+                    log_I "已启用 podman-restart.service 开机自启"
+                else
+                    log_W "无法启用 podman-restart.service, 请手动检查服务配置"
+                fi
+            else
+                log_W "未启用开机自启, 系统重启后可能需要手动启动容器"
+            fi
+        fi
+    fi
+
     echo -e "\n\e[96m容器模式安装成功, 您可使用下面的命令管理服务:\e[0m
   - 查看日志\t${CONTAINER_RT} logs natfrp-service
   - 停止服务\t${CONTAINER_RT} stop natfrp-service
@@ -328,30 +346,41 @@ if [[ $(uname -m) == "x86_64" ]]; then
     fi
 fi
 
-# Detect container runtime (docker preferred, podman supported)
-# Pass "docker" or "podman" as the first argument to force a specific runtime
-CONTAINER_RT=""
-case "$1" in
-    docker|podman)
-        if "$1" info &>/dev/null; then
-            CONTAINER_RT="$1"
-        else
-            log_E "$1 不可用, 请检查它是否已安装并正常运行"
-            exit 1
-        fi
-        ;;
-esac
-if [[ -z "$CONTAINER_RT" ]]; then
-    if docker info &>/dev/null; then
-        CONTAINER_RT="docker"
-    elif podman info &>/dev/null; then
-        CONTAINER_RT="podman"
-    fi
-fi
-
 if [[ $1 == "uninstall" ]]; then
     uninstall
     exit 0
+fi
+
+# Reuse the runtime of an existing installation before selecting a new one.
+CONTAINER_RT=""
+if [[ $1 != "direct" ]]; then
+    for rt in docker podman; do
+        if command -v "$rt" &>/dev/null && "$rt" ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^natfrp-service$'; then
+            CONTAINER_RT="$rt"
+            log_I "检测到已有 $rt 安装, 将继续使用 $rt"
+            break
+        fi
+    done
+
+    if [[ -z "$CONTAINER_RT" ]]; then
+        case "$1" in
+            docker|podman)
+                if "$1" info &>/dev/null; then
+                    CONTAINER_RT="$1"
+                else
+                    log_E "$1 不可用, 请检查它是否已安装并正常运行"
+                    exit 1
+                fi
+                ;;
+            *)
+                if docker info &>/dev/null; then
+                    CONTAINER_RT="docker"
+                elif podman info &>/dev/null; then
+                    CONTAINER_RT="podman"
+                fi
+                ;;
+        esac
+    fi
 fi
 
 # Use a container runtime (docker/podman) if available
