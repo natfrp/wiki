@@ -17,6 +17,14 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+case "${1:-}" in
+    ""|docker|podman|direct|uninstall) ;;
+    *)
+        log_E "未知参数: $1, 支持的参数为 docker、podman、direct 或 uninstall"
+        exit 1
+        ;;
+esac
+
 # Check if selinux is enabled
 if command -v getenforce &>/dev/null; then
     if [[ $(getenforce) == "Enforcing" ]]; then
@@ -60,7 +68,7 @@ press_enter() {
     read -p "按 Enter 键以继续, 或 Ctrl-C 取消..."
 }
 
-# container install (docker or podman) should be the default
+# docker install should be the default, use podman only if necessary
 container_install() {
     echo -e "\e[96m[*] 检测到 ${CONTAINER_RT}, 将使用容器安装模式\e[0m
   - 将在您的系统上创建名为 natfrp-service 的容器
@@ -352,50 +360,60 @@ if [[ $1 == "uninstall" ]]; then
 fi
 
 # Reuse the runtime of an existing installation before selecting a new one.
-CONTAINER_RT=""
-if [[ $1 != "direct" ]]; then
-    for rt in docker podman; do
-        if command -v "$rt" &>/dev/null && "$rt" ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^natfrp-service$'; then
-            CONTAINER_RT="$rt"
-            log_I "检测到已有 $rt 安装, 将继续使用 $rt"
-            break
-        fi
-    done
-
-    if [[ -z "$CONTAINER_RT" ]]; then
-        case "$1" in
-            docker|podman)
-                if "$1" info &>/dev/null; then
-                    CONTAINER_RT="$1"
-                else
-                    log_E "$1 不可用, 请检查它是否已安装并正常运行"
-                    exit 1
-                fi
-                ;;
-            *)
-                if docker info &>/dev/null; then
-                    CONTAINER_RT="docker"
-                elif podman info &>/dev/null; then
-                    CONTAINER_RT="podman"
-                fi
-                ;;
-        esac
+known_install=""
+for rt in docker podman; do
+    if command -v "$rt" &>/dev/null && "$rt" ps -a --format '{{.Names}}' 2>/dev/null | grep -q '^natfrp-service$'; then
+        known_install="$rt"
+        break
     fi
+done
+
+if [[ -z "$known_install" && ( -f /etc/systemd/system/natfrp.service || -f /home/${LOW_USER}/natfrp-service ) ]]; then
+    known_install="direct"
 fi
 
+if [[ -n "$known_install" ]]; then
+    if [[ -n "$1" && "$1" != "$known_install" ]]; then
+        log_E "检测到已有 $known_install 安装, 请先卸载后再切换为 $1"
+        exit 1
+    fi
+    log_I "检测到已有 $known_install 安装, 将更新 $known_install 部署"
+fi
+
+CONTAINER_RT=""
+case "${1:-$known_install}" in
+    docker|podman)
+        rt="${1:-$known_install}"
+        if "$rt" info &>/dev/null; then
+            CONTAINER_RT="$rt"
+        else
+            log_E "$rt 不可用, 请检查它是否已安装并正常运行"
+            exit 1
+        fi
+        ;;
+    direct) ;;
+    *)
+        if docker info &>/dev/null; then
+            CONTAINER_RT="docker"
+        elif podman info &>/dev/null; then
+            CONTAINER_RT="podman"
+        fi
+        ;;
+esac
+
 # Use a container runtime (docker/podman) if available
-if [[ -n "$CONTAINER_RT" && $1 != "direct" ]]; then
+if [[ -n "$CONTAINER_RT" ]]; then
     container_install
     exit 0
 fi
 
 log_W "您正在使用非容器安装模式"
-log_I "我们建议您总是使用 Docker 或 Podman 容器安装模式, 以便于管理和减少兼容性问题"
+log_I "我们建议您总是使用 Docker 容器安装模式, 以便于管理和减少兼容性问题"
 
 # Check SELinux
 if command -v getenforce &>/dev/null; then
     if [[ $(getenforce) == "Enforcing" ]]; then
-        log_E "SELinux 处于启用状态, 为避免出现问题, 请安装 Docker 或 Podman 后重新运行脚本以使用容器部署"
+        log_E "SELinux 处于启用状态, 为避免出现问题, 请安装 Docker 后重新运行脚本以使用容器部署"
         exit 1
     fi
 fi
