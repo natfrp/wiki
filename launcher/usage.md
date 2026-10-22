@@ -127,7 +127,7 @@ brew upgrade --cask sakura
 
 ### 脚本安装 {#linux-script-install}
 
-对于使用 systemd 的用户，可使用一键安装脚本快速安装：
+对于使用 systemd 的用户，可使用一键安装脚本快速安装。脚本会自动检测容器运行时（Docker 优先，未安装 Docker 时自动使用 Podman）：
 
 ```bash
 sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh)"
@@ -135,7 +135,10 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh)"
 # 或者使用 wget, 脚本会自动通过包管理器安装 curl
 sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 
-# 如果需要绕过 Docker 检测强制安装到系统中
+# 同时安装了 Docker 和 Podman 时, 可强制使用 Podman
+sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) podman"
+
+# 如果需要绕过容器检测强制安装到系统中
 sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
 ```
 
@@ -344,7 +347,7 @@ userdel -r natfrp
 
 ### Docker安装步骤 {#docker-install}
 
-如果您的系统中已有 Docker 环境，可使用一键安装脚本快速安装：
+如果您的系统中已有 Docker 或 Podman 环境，可使用一键安装脚本快速安装（两者同时存在时脚本会优先使用 Docker）：
 
 ```bash
 sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh)"
