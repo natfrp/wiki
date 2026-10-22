@@ -139,7 +139,7 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
 ```
 
-此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户 [ssdomei232](https://github.com/ssdomei232) 贡献并经我们修改。
+此脚本的贡献者与更改记录可于 [此处](https://github.com/natfrp/wiki/commits/master/.vuepress/public/launcher.sh) 查看。
 
 ### 脚本卸载 {#linux-script-uninstall}
 
@@ -355,7 +355,7 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh)"
 sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 ```
 
-此脚本于 [PR#526](https://github.com/natfrp/wiki/pull/526) 中由用户贡献并经我们修改。
+此脚本的贡献者与更改记录可于 [此处](https://github.com/natfrp/wiki/commits/master/.vuepress/public/launcher.sh) 查看。
 
 如果您使用成品 NAS 系统的 Docker GUI 配置，您可以参考对应系统的教程，如：
 

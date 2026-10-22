@@ -40,7 +40,7 @@ sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh)"
 # 或者使用 wget, 脚本会自动通过包管理器安装 curl
 sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
 
-# 如果需要绕过容器检测强制安装到系统中
+# 使用直接安装方式更新已有的非容器安装
 sudo bash -c ". <(curl -sSL https://doc.natfrp.com/launcher.sh) direct"
 ```
 
