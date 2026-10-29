@@ -454,13 +454,19 @@ motd=
 
 找到您想要进行 **SRV 解析** 的域名，**点击它**
 
-![](./_images/mc-srv-4.png)
+![](./_images/mc-cloudflare-domain-selection.png)
 
-然后点击最顶上的 **第三个** DNS
+然后点击左侧的 **DNS**
+
+![](./_images/mc-cloudflare-find-dns-settings.png)
+
+点击 **记录**
+
+![](./_images/mc-cloudflare-click-record.png)
 
 点击 **添加记录**
 
-![](./_images/mc-srv-5.png)
+![](./_images/mc-cloudflare-click-add-record.png)
 
 按下表进行填写，然后点击 **保存** 即可
 
@@ -473,11 +479,11 @@ motd=
 | 端口 | 远程端口 | 例: `12345` |
 | 目标 | 隧道域名 | 例: `frp-xxx.com` |
 
-![](./_images/mc-srv-6.png)
+![](./_images/mc-cloudflare-srv-set-record.png)
 
 保存完毕后需要 **等待** 10 分钟来让解析生效 (按照您设置的 **TTL** 来决定，一般为 10 分钟) 。
 
-- **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`，那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
-- **假设** 您的域名为: example.com，您的 **`.xx`** 去掉了，那么在游戏中添加服务器时，使用 `example.com` 即可连接。
+- **假设** 您的域名为: example.com，您的 **`.xx`** 设置为 `.sub`（填写了_minecraft._tcp.sub），那么在游戏中添加服务器时，使用 `sub.example.com` 地址即可连接。
+- **假设** 您的域名为: example.com，您的 **`.xx`** 去掉了（填写了_minecraft._tcp），那么在游戏中添加服务器时，使用 `example.com` 即可连接。
 
 ::::
