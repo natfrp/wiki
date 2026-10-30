@@ -1,6 +1,6 @@
 # 我的世界 (Minecraft) 基岩版服务器穿透指南 (NetherNet)
 
-使用 NetherNet 联机时，需要同时穿透 TCP 和 UDP。下文的 Endstone 和 LeviLamina 方案只需 **一条 TCP 隧道和一条 UDP 隧道**，多名玩家可以共用。
+使用 NetherNet 联机时，需要同时穿透 TCP 和 UDP。
 
 如果您使用的是旧版 RakNet 服务端，请参阅[旧版基岩版开服指南](/offtopic/mc-bedrock-server.md)。
 
@@ -10,11 +10,11 @@
 | --- | --- |
 | [Endstone](https://github.com/EndstoneMC/endstone) | 一条 TCP + 一条 UDP，按下文配置即可 |
 | [LeviLamina](https://github.com/LiteLDev/LeviLamina) | 开启单端口功能 (默认启用) 后，一条 TCP + 一条 UDP |
-| [原版 BDS](https://www.minecraft.net/zh-hans/download/server/bedrock/) | **不推荐**，除一条 TCP 外，每多一名在线玩家，就要多开一条 UDP 隧道 |
+| [原版 BDS](https://www.minecraft.net/zh-hans/download/server/bedrock/) | 一条 TCP + 一条 UDP，按下文配置即可 |
 
-例如，原版 BDS 两人同时在线需要三条隧道，十人则需要十一条。如果仍要使用原版，需要通过 `server-udp-ports` 逐个配置这些 UDP 端口的公网映射。
+旧版的 BDS 两人同时在线需要三条隧道，十人则需要十一条。如果仍要使用原版，需要通过 `server-udp-ports` 逐个配置这些 UDP 端口的公网映射。
 
-本教程只覆盖隧道数量固定的两种方案。
+注：新版（1.26.61及以后）已确认无此限制。
 
 ## 准备服务端 {#prepare-server}
 
@@ -44,6 +44,11 @@
 
 不要手动用其他版本的原版服务器覆盖安装工具下载的文件。
 
+@tab Bedrock Dedicated Server
+
+1. 从 [Minecraft 官方网站](https://www.minecraft.net/zh-hans/download/server/bedrock)下载 BDS。此处的教程使用Windows版本，Linux版本差异不大。
+1. 解压形如 `bedrock-server-1.26.61.1.zip` 的压缩包。
+
 ::::
 
 在 `server.properties` 中找到并修改以下项目，不要直接覆盖整个文件：
@@ -69,7 +74,7 @@ allow-list=false
 
 下文需要填写节点的公网 IPv4 地址，若您使用 **三线节点**，其他运营商的玩家连接时可能体验会受到影响。
 
-**TCP 和 UDP 两条隧道必须使用同一个节点。**
+对于 Endstone 和 LeviLamina，**TCP 和 UDP 两条隧道必须使用同一个节点。**，Bedrock Dedicated Server无此限制。
 
 ### TCP 隧道 {#tcp-tunnel}
 
@@ -78,6 +83,7 @@ allow-list=false
 - 隧道名称：`MCBE_TCP`
 - 隧道类型：`TCP`
 - 本地 IP：服务端与启动器在同一台电脑时填写 `127.0.0.1`
+- 远程端口留空自动生成
 - 本地端口：`19132`，如果改过 `server-port`，这里也要对应修改
 - 自动 HTTPS：启用
 - 自动 HTTPS 工作模式：点击 `高级` 即可看到此选项，选择 **反代至 HTTP**
@@ -96,6 +102,10 @@ Tunnel/MCBE_TCP 使用 >>mc.example.nyat.app:10086<< 连接你的隧道
 看到 `已从服务器为 ... 加载证书` 后，记下连接地址中的 **域名 `mc.example.nyat.app`** 和 **TCP 远程端口 `10086`**。这些是示例值，连接时请以您自己的日志为准。
 
 ### UDP 隧道 {#udp-tunnels}
+
+:::: tabs
+
+@tab Endstone & LeviLamina
 
 在 **同一个节点** 创建 UDP 隧道：
 
@@ -132,13 +142,25 @@ Get-NetUDPEndpoint -OwningProcess $mcServers.Id |
 
 启动 UDP 隧道，在“日志”中找到 `或使用 IP 地址连接` 一行，记下 **节点公网 IPv4 地址** 和 **UDP 远程端口**。例如 `114.51.4.191:10086` 中，IP 是 `114.51.4.191`，端口是 `10086`。
 
-## 填写公网地址 {#advertise-address}
+@tab Bedrock Dedicated Server
 
-在服务端控制台输入 `stop`，退出后按所用服务端选择下方标签。示例中的 `114.51.4.191` 和 `10086` 必须替换为刚才取得的 **节点公网 IPv4** 和 **UDP 远程端口**，请以 UDP 隧道日志为准。这里的 IP 必须填写数字地址，不能用节点域名代替。
+选择你喜欢的节点创建 UDP 隧道：
+
+- 隧道名称：`MCBE_UDP`
+- 隧道类型：`UDP`
+- 本地 IP：服务端与启动器在同一台电脑时填写 `127.0.0.1`
+- 远程端口留空自动生成
+- 本地端口：`19132`（或自己设置一个不冲突的，后面要用）
+
+::::
+
+## 填写公网地址 {#advertise-address}
 
 :::: tabs
 
 @tab Endstone
+
+在服务端控制台输入 `stop`，退出后按所用服务端选择下方标签。示例中的 `114.51.4.191` 和 `10086` 必须替换为刚才取得的 **节点公网 IPv4** 和 **UDP 远程端口**，请以 UDP 隧道日志为准。这里的 IP 必须填写数字地址，不能用节点域名代替。
 
 打开 `server.properties`，将 `server-udp-ports` 改为：
 
@@ -158,6 +180,8 @@ stun-servers = []
 保存后运行 `start.cmd`。
 
 @tab LeviLamina
+
+在服务端控制台输入 `stop`，退出后按所用服务端选择下方标签。示例中的 `114.51.4.191` 和 `10086` 必须替换为刚才取得的 **节点公网 IPv4** 和 **UDP 远程端口**，请以 UDP 隧道日志为准。这里的 IP 必须填写数字地址，不能用节点域名代替。
 
 打开 `plugins/LeviLamina/config/Config.json`，找到 `targeted` 下的 `netherNetPatch`，将其中三项改为：
 
@@ -184,6 +208,9 @@ pause
 
 以后都双击这个 `start.cmd` 启动。
 
+@tab Bedrock Dedicated Server
+
+打开 `server.properties`，找到`server-udp-ports=`这一行，填写格式为`server-udp-ports=节点域名:远程端口:自己设置的本地端口如19132`
 ::::
 
 确认服务器已启动，两条隧道也都处于开启状态，再让朋友连接。
@@ -210,7 +237,7 @@ pause
 
 ### 第一名玩家能进，第二名进不去 {#second-player}
 
-Endstone 请通过 `start.cmd` 启动；LeviLamina 请确认 `singlePort=true`，且脚本运行的是 `bedrock_server_mod.exe`。直接运行原版 `bedrock_server.exe` 仍受[原版 BDS 的端口限制](#server-options)影响。
+Endstone 请通过 `start.cmd` 启动；LeviLamina 请确认 `singlePort=true`，且脚本运行的是 `bedrock_server_mod.exe`。
 
 ### 能否改回 RakNet，只用 UDP {#raknet}
 
