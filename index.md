@@ -109,11 +109,6 @@ footer: CC-BY-NC-SA-4.0 Licensed with Additional Terms
 - 管理员会在满员时不定时清理最久不发言的成员
 - 添加一个群即可, 添加多个群会被管理拒绝加入
 
-### 社区论坛 {#community-forum}
-
-- [点击访问 SakuraFrp BBS](https://www.natfrpbbs.com)
-- **非官方论坛**，由社区人员管理
-
 ### 其他 IM 水群 {#community-other-im}
 
 - [Telegram](https://t.me/natfrp_unofficial) 桥接至 QQ 一群
