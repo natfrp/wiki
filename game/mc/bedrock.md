@@ -1,221 +1,185 @@
 # 我的世界 (Minecraft) 基岩版服务器穿透指南 (NetherNet)
 
-使用 NetherNet 联机时，需要同时穿透 TCP 和 UDP。下文的 Endstone 和 LeviLamina 方案只需 **一条 TCP 隧道和一条 UDP 隧道**，多名玩家可以共用。
+当您使用 `26.50` 及以上版本的基岩版服务端和游戏，您可能正被迫或默认使用 NetherNet（新联机协议）联机。
 
-如果您使用的是旧版 RakNet 服务端，请参阅[旧版基岩版开服指南](/offtopic/mc-bedrock-server.md)。
+以下内容假设您在使用 `26.60` (即 `1.26.60`) 及以上版本的基岩版服务端，如使用更早的版本配置可能无效。
 
-## 选择服务端 {#server-options}
-
-| 服务端 | 隧道安排 |
-| --- | --- |
-| [Endstone](https://github.com/EndstoneMC/endstone) | 一条 TCP + 一条 UDP，按下文配置即可 |
-| [LeviLamina](https://github.com/LiteLDev/LeviLamina) | 开启单端口功能 (默认启用) 后，一条 TCP + 一条 UDP |
-| [原版 BDS](https://www.minecraft.net/zh-hans/download/server/bedrock/) | **不推荐**，除一条 TCP 外，每多一名在线玩家，就要多开一条 UDP 隧道 |
-
-例如，原版 BDS 两人同时在线需要三条隧道，十人则需要十一条。如果仍要使用原版，需要通过 `server-udp-ports` 逐个配置这些 UDP 端口的公网映射。
-
-本教程只覆盖隧道数量固定的两种方案。
+如果您希望使用仍支持 RakNet（旧联机协议）的旧版服务端和游戏，请参阅 [旧版基岩版开服指南](/offtopic/mc-bedrock-server.md)。
 
 ## 准备服务端 {#prepare-server}
 
-选择一套服务端安装即可。请使用支持您游戏版本的最新稳定版，让安装工具下载配套文件；已有服务器请先备份世界。
+选择一套服务端下载安装即可。请使用 1.26.60 及以上版本。
 
 :::: tabs
 
-@tab Endstone
+@tab 官方 Bedrock Dedicated Server
 
-1. 从 [Endstone 发布页面](https://github.com/EndstoneMC/endstone/releases)下载名称以 `windows-x86_64.zip` 结尾的独立包，完整解压到新文件夹
-1. 双击 `start.cmd`，等待首次下载完成，控制台出现 `Server started.`
-1. 在控制台输入 `stop`，等待服务器退出，再打开 `bedrock_server` 文件夹中的 `server.properties`
+1. 从 [Minecraft 官方网站](https://www.minecraft.net/zh-hans/download/server/bedrock) 下载 Windows 版 或 Linux 版。
+1. 解压形如 `bedrock-server-版本号.zip` 的压缩包。
+1. 打开同一文件夹中的 `server.properties` 准备编辑
 
-以后都使用 `start.cmd` 启动，不要直接运行 `bedrock_server.exe`。
+@tab Endstone（插件服）
 
-@tab LeviLamina
+1. 从 [Endstone 发布页面](https://github.com/EndstoneMC/endstone/releases)下载名称以 `系统（如windows）-x86_64.zip` 结尾的独立包，完整解压到新文件夹
+1. 双击 `start.cmd`，等待 插件工具 下载和初始化完成，控制台出现 `Would you like to download it now? [Y/n]:` 时，输入 `Y` 并回车确认下载。
+1. 完成下载后您将看到 `Server started.`，在控制台输入 `stop` 回车，等待服务器退出
+1. 打开 `bedrock_server` 文件夹中的 `server.properties` 准备编辑
 
-1. 按[官方安装说明](https://lamina.levimc.org/zh/user_guides/install/)安装 lip 和所需运行库
-1. 新建一个服务器文件夹，在该文件夹中打开 PowerShell，执行：
+请注意此服务端要求您总是使用 `start.cmd` 启动，不要自己尝试进入 `bedrock_server` 目录运行 exe，否则插件将失效。
 
-   ```powershell
-   lip install github.com/LiteLDev/LeviLamina
-   ```
+@tab LeviLamina（插件服）
 
-1. 下载完成后，运行 `bedrock_server_mod.exe`，等待控制台出现 `Server started.`
+1. 按 [官方安装说明](https://lamina.levimc.org/zh/user_guides/install/) 安装 lip、所需运行库以及服务端
+1. 服务端安装完成后，运行 `bedrock_server_mod.exe`，等待控制台出现 `Server started.`
 1. 在控制台输入 `stop`，等待服务器退出，再打开同一文件夹中的 `server.properties`
-
-不要手动用其他版本的原版服务器覆盖安装工具下载的文件。
 
 ::::
 
-在 `server.properties` 中找到并修改以下项目，不要直接覆盖整个文件：
-
-```properties
-transport=nethernet
-server-port=19132
-online-mode=true
-allow-list=false
-```
-
-- `server-port`：服务器的本地端口，下面两条隧道都要填写这个数值
-- `online-mode=true`：保留账号验证，您和朋友使用自己的 Microsoft/Xbox 账号登录游戏
-- `allow-list=false`：关闭白名单，朋友拿到连接地址后就能加入，不必逐个添加名字
-
-如果您需要限制谁能加入，可保留 `allow-list=true`，启动后在控制台输入 `allowlist add "玩家昵称"`，添加您自己和朋友。
-
-保存后重新启动服务器，先在本机或局域网加入一次，确认能正常进入世界。
-
 ## 创建隧道 {#create-tunnels}
 
-在服务器电脑上[安装并登录 SakuraFrp 启动器](/launcher/usage.md)，选择支持 UDP 的 **多线节点**。
+在服务器电脑上 [安装并登录 SakuraFrp 启动器](/launcher/usage.md)，点击启动器的加号 或在 [网站隧道列表页](https://www.natfrp.com/tunnel/) 开始创建隧道。
 
-下文需要填写节点的公网 IPv4 地址，若您使用 **三线节点**，其他运营商的玩家连接时可能体验会受到影响。
+节点请选择支持 UDP 和 **未标记 `不可用于 MCBE`** 的 节点，我们更推荐名字里面带 **多线**（**不是** 三线）的节点。  
+因为 MCBE 游戏协议实现的兼容性问题，若您使用 **三线节点**，其他运营商的玩家连接时可能体验会受到影响。
 
-**TCP 和 UDP 两条隧道必须使用同一个节点。**
+开始创建一条 TCP 隧道，并跟随下面配置：
 
-### TCP 隧道 {#tcp-tunnel}
-
-创建一条 TCP 隧道：
-
-- 隧道名称：`MCBE_TCP`
+- 隧道名称：任意，如 `MCBE`
 - 隧道类型：`TCP`
 - 本地 IP：服务端与启动器在同一台电脑时填写 `127.0.0.1`
-- 本地端口：`19132`，如果改过 `server-port`，这里也要对应修改
+- 远程端口：留空
+- **本地端口：`19132`**，如果在后面的服务端配置中修改了 `server-port`，这里也要对应修改
 - 自动 HTTPS：启用
 - 自动 HTTPS 工作模式：点击 `高级` 即可看到此选项，选择 **反代至 HTTP**
+- 批量创建选项：选中创建 同远程端口 UDP 隧道
 
-按[子域绑定说明](/bestpractice/domain-bind.md#cname-for-site)，为 `MCBE_TCP` 创建 **CNAME** 绑定，**不要选 Minecraft Java 使用的 SRV 绑定**。
+点击创建后，您将会得到两个隧道，分别是 `设置名称_TCP` 和 `设置名称_UDP`，下面将其称为 `MCBE_TCP` 和 `MCBE_UDP`，如您指定了自己的名字，请自行脑内映射。
 
-启动或重启隧道，打开“日志”，确认已加载绑定域名的证书。下面是一段示例日志：
+按 [子域绑定说明](/bestpractice/domain-bind.md#cname-for-site)，为 `MCBE_TCP` 创建 **CNAME** 绑定，**不要选 Minecraft Java 使用的 SRV 绑定**。
+
+尝试启动或重启隧道，打开“日志”，确认已加载绑定域名的证书。下面是一段示例日志：
 
 ```log
 2077/08/25 09:29:49 I Tunnel/MCBE_TCP [233/10/xxxx] 连接节点成功, 运行 ID [10-xxxx]
 2077/08/25 09:29:49 I Tunnel/MCBE_TCP [233/10/xxxx] 已从服务器为 mc.example.nyat.app 加载证书 [CN = *.example.nyat.app, 2077-08-25 - 2077-11-23]
 Tunnel/MCBE_TCP TCP 隧道启动成功
 Tunnel/MCBE_TCP 使用 >>mc.example.nyat.app:10086<< 连接你的隧道
+Tunnel/MCBE_TCP 或使用 IP 地址连接: >>114.5.1.4<<
 ```
 
-看到 `已从服务器为 ... 加载证书` 后，记下连接地址中的 **域名 `mc.example.nyat.app`** 和 **TCP 远程端口 `10086`**。这些是示例值，连接时请以您自己的日志为准。
+看到 `已从服务器为 ... 加载证书` 后，记下连接地址中的 **连接域名 `mc.example.nyat.app`** 和 **远程端口 `10086`**，  
+如果存在 **连接 IP `114.5.1.4`**，也请记下该 IP。
 
-### UDP 隧道 {#udp-tunnels}
+这些是示例值，连接时请以您自己的日志为准。
 
-在 **同一个节点** 创建 UDP 隧道：
+## 修改配置文件 {#advertise-address}
 
-- 隧道名称：`MCBE_UDP`
-- 隧道类型：`UDP`
-- 本地 IP、本地端口：按下方步骤通过 **选择本地进程** 自动填写
-- 远程端口：设置为 TCP 隧道对应的远程端口
+完成前序步骤操作后，您现在应当拥有：
 
-1. 保持服务端运行，在“本地端口”右侧点击 **选择本地进程**：
+- 连接域名（`mc.example.nyat.app`）
+- 远程端口（`10086`）
+- 本地端口（`19132`）
+- 一个打开的 `server.properties` 文件
+- 可能还拥有连接 IP（`114.5.1.4`）
 
-   ![点击本地端口旁的选择本地进程](./_images/bedrock/launcher-select-process.png)
+::: details 如果您没有得到连接 IP，如何获取之
 
-1. 切换到 **UDP**，在筛选框输入 `bed`。Endstone 选择 `bedrock_server`，LeviLamina 选择 `bedrock_server_mod`。点击其中与 `server-port` 相同的端口，默认是 **19132**，不要选择 `7551`：
+如果您没有得到连接 IP，说明您正在使用一个 **三线/双线节点**，MCBE 对此类节点兼容性不佳，在网络不好的时候可能卡顿。
 
-   ![选择服务端进程下的 UDP 19132 监听项](./_images/bedrock/launcher-udp-process.png)
-
-选择后，启动器会自动填写本地 IP 和本地端口。列表中没有目标端口时，先尝试加入服务器，再点击“本地监听端口”右侧的刷新按钮。
-
-::: tip 每次启动前检查
-内网 IP 可能随电脑重启、Wi-Fi 重连或切换网络而变化。每次开启 UDP 隧道前，都要先启动服务端，重新选择本地进程或核对监听项，确认隧道中的本地 IP 和端口仍然正确
-:::
-
-::: details 使用 PowerShell 手动查询 (备用)
-TCP 与 UDP 的监听地址可能不同，不能直接照抄 `127.0.0.1`。启动服务端并尝试加入一次，再在服务器电脑的 PowerShell 中执行：
-
-```powershell
-$mcServers = Get-Process bedrock_server,bedrock_server_mod -ErrorAction SilentlyContinue
-Get-NetUDPEndpoint -OwningProcess $mcServers.Id |
-    Select-Object LocalAddress, LocalPort
-```
-
-找到 `LocalPort` 与 `server-port` 相同的 IPv4 行，将它的 `LocalAddress` 填入隧道。如果显示 `0.0.0.0` 或 `127.0.0.1`，同机运行时可以填写 `127.0.0.1`
-:::
-
-启动 UDP 隧道，在“日志”中找到 `或使用 IP 地址连接` 一行，记下 **节点公网 IPv4 地址** 和 **UDP 远程端口**。例如 `114.51.4.191:10086` 中，IP 是 `114.51.4.191`，端口是 `10086`。
-
-## 填写公网地址 {#advertise-address}
-
-在服务端控制台输入 `stop`，退出后按所用服务端选择下方标签。示例中的 `114.51.4.191` 和 `10086` 必须替换为刚才取得的 **节点公网 IPv4** 和 **UDP 远程端口**，请以 UDP 隧道日志为准。这里的 IP 必须填写数字地址，不能用节点域名代替。
+但如果您无论如何希望用这个节点，可以跟随下面的方法获得 IP：
 
 :::: tabs
+@tab Windows
+找到键盘上的 `徽标键`（通常是带有 Windows 徽标的键），或称 `Win 键`，下面所述 `Win` 即指该键。
 
-@tab Endstone
+按下 `Win + R` 打开运行窗口，输入 `cmd` 并回车，即可打开命令提示符。
 
-打开 `server.properties`，将 `server-udp-ports` 改为：
+在命令提示符中输入：
 
-```properties
-server-udp-ports=114.51.4.191:10086:19132
+```cmd
+nslookup 连接域名
 ```
 
-三个值依次是 **节点公网 IPv4、UDP 远程端口、本地端口**。最后的 `19132` 必须与 `server-port` 一致。只保留这一项映射，不要留下旧地址。
+并回车（Enter 键）执行。
 
-打开同一文件夹的 `endstone.toml`，在已有的 `[network]` 段中将 `stun-servers` 改为空列表：
+如对于 `mc.example.nyat.app`，运行：
 
-```toml
-[network]
-stun-servers = []
+```cmd
+nslookup mc.example.nyat.app
 ```
 
-保存后运行 `start.cmd`。
+结果将类似
 
-@tab LeviLamina
+```cmd
+服务器:  public1.alidns.com
+Address:  223.5.5.5
 
-打开 `plugins/LeviLamina/config/Config.json`，找到 `targeted` 下的 `netherNetPatch`，将其中三项改为：
-
-- `enable`：`true`
-- `singlePort`：`true`
-- `stunServers`：`[]`
-
-只修改这三项，保留文件中的其他内容。
-
-如果 `server.properties` 中已有启用的 `server-udp-ports=` 行，将这些行删除或在行首加 `#`，避免和上述设置重复。
-
-在 `bedrock_server_mod.exe` 所在文件夹新建 `start.cmd`，填写：
-
-```bat
-@echo off
-cd /d "%~dp0"
-set "SERVER_IP=114.51.4.191"
-set "SERVER_PORT=10086"
-bedrock_server_mod.exe
-pause
+非权威应答:
+名称:    mc.example.nyat.app
+Addresses:  114.5.1.4
 ```
 
-将 `114.51.4.191` 换成 **节点公网 IPv4**，`10086` 换成 **UDP 远程端口**。
+最下面的 `114.5.1.4` 即为节点公网 IPv4。
 
-以后都双击这个 `start.cmd` 启动。
-
+@tab Linux
+自己打开终端，ping 或者 nslookup 或者 dig 之，谢谢。
 ::::
 
-确认服务器已启动，两条隧道也都处于开启状态，再让朋友连接。
+在 `server.properties` 中找到并修改以下项目：  
+（搜索等号前的部分，并修改等号后的数值）
+
+```properties
+transport=nethernet
+server-port=本地端口
+server-udp-ports=连接 IP:远程端口:本地端口
+```
+
+- `transport`：传输协议，保持默认 `nethernet` 即可，如果您希望使用 RakNet，请参考  [旧版基岩版开服指南](/offtopic/mc-bedrock-server.md)
+- `server-port`：服务器的 **本地端口**，数值应当等于您已拥有的本地端口配置项，默认是 19132
+- `server-udp-ports`：填写格式为 `连接 IP:远程端口:本地端口`，确保与您已拥有的连接信息一致，最终结果类似 `114.5.1.4:10086:19132`
+
+::: details 您可能还希望修改
+
+```properties
+allow-list=false
+```
+
+- `allow-list=false`：关闭白名单，朋友拿到连接地址后就能加入，不必逐个添加名字
+
+如果未修改 `allow-list`，您将遇到 `您未获准加入此服务器` 错误，  
+需要启动后在控制台输入 `allowlist add "玩家昵称"` 添加您自己和朋友，或者直接设置为 `allow-list=false`。
+
+:::
+
+修改完成后，确认服务器已启动，两条隧道也都处于开启状态，然后即可加入。
+
+请确保 **两条隧道** 都应启动。
 
 ## 加入服务器 {#join-server}
 
-打开 Minecraft 基岩版，在“服务器”页面点击“添加服务器”。假设 **TCP 隧道** 绑定的域名为 `mc.example.nyat.app`，远程端口为 `10086`，填写：
+打开 Minecraft 基岩版，在 `服务器` 页面点击 `添加服务器`。填写：
 
 - 服务器名称：自行命名，例如 `SakuraFrp-Bedrock`
-- 服务器地址：`mc.example.nyat.app`
-- 端口：`10086`
+- 服务器地址：前述连接域名，如 `mc.example.nyat.app`
+- 端口：前述远程端口，如 `10086`
 
 ![添加新服务器时分别填写名称、域名和 TCP 远程端口](./_images/bedrock/bedrock-add-server.png)
 
-地址栏只填域名，不加 `https://` 或端口；端口栏填写 **TCP 隧道的远程端口**。
+点击 **添加并开始** 即可加入。
 
-点击“添加并开始”即可加入。下次联机时，先启动服务器和两条隧道，再从保存的服务器条目进入。结束联机后关闭隧道，在服务端控制台输入 `stop` 保存并退出。
+## 常见问题 {#common-issues}
 
-## 常见问题 {#faq}
+请确认玩家填写的是正确的 连接域名 和 远程端口，对应上面教程位置即为 `mc.example.nyat.app` 和 `10086`。
 
-### 服务器能显示，但进不去 {#cannot-join}
+请注意 **所有两个** 隧道都应启动。
 
-先检查 UDP 隧道是否开启，再核对配置中的 **节点公网 IPv4、UDP 远程端口、本地端口**。服务器能显示信息，不代表游戏连接已经正常。
+请确认启动器日志已加载可信证书，  
+日志内容应形如 `已从服务器为 mc.example.nyat.app 加载证书`，  
+而不是 `当前证书由 frpc 自动生成`。
 
-### 第一名玩家能进，第二名进不去 {#second-player}
+请确认已将 `自动 HTTPS 工作模式` （在 自动 HTTPS 设置后面的 **高级** 菜单中）设为 **反代至 HTTP**。
 
-Endstone 请通过 `start.cmd` 启动；LeviLamina 请确认 `singlePort=true`，且脚本运行的是 `bedrock_server_mod.exe`。直接运行原版 `bedrock_server.exe` 仍受[原版 BDS 的端口限制](#server-options)影响。
+使用自己的域名时需自行配置证书，参阅 [配置 frpc 使用的 SSL 证书](/frpc/ssl.md)。
 
-### 能否改回 RakNet，只用 UDP {#raknet}
-
-当前原版服务端已提示仅支持 NetherNet，不要根据旧配置注释改回 `raknet`。旧版本的单 UDP 方法保留在[旧版教程](/offtopic/mc-bedrock-server.md)。
-
-### 域名和证书正确，仍无法连接 {#https-error}
-
-确认玩家填写的是 **TCP 隧道** 的域名和远程端口，启动器日志已加载可信证书，并已将“自动 HTTPS 工作模式”设为 **反代至 HTTP**。其他证书问题参阅[自动 HTTPS 说明](/frpc/auto-https.md)。
+如遇 `您未获准加入此服务器`，请使用 控制台命令 `allowlist add "玩家昵称"` 添加您自己和朋友，  
+或者在 `server.properties` 中将 `allow-list` 设置为 `false` 关闭白名单功能。
