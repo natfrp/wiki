@@ -197,7 +197,7 @@ Windows 7 和 Server 2008 早已停止支持，微软已不再提供安全更新
 - 安装（或更新） `Microsoft Edge WebView2 运行时` 然后重启启动器即可 ([点击这里下载](https://go.microsoft.com/fwlink/p/?LinkId=2124703))
   - 若在安装时提示 `安装失败。已为系统安装 Microsoft Edge WebView2 Runtime。` ，则当前 WebView2 运行时文件可能已损坏。请前往 [设置 > 应用与功能](ms-settings:appsfeatures) 页面，找到 `Microsoft Edge Webview2 Runtime`，点击并选择 **修改** 按钮进行修复
 
-::: details 您也可以手动配置固定版本的 WebView2 运行时 (仅限高级用户)
+::: details 您也可以手动配置固定版本的 WebView2 运行时 (仅限专业用户)
 
 - 从 [Windows Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=webview2) 或 [此仓库 (由第三方提供, 请注意校验数字签名)](https://github.com/westinyang/WebView2RuntimeArchive/releases) 下载固定版本的运行时文件
   - Windows 10 / 11 用户直接下载最新版即可，注意选择正确的架构

@@ -48,7 +48,7 @@
 
 ::: tip
 如果在安装过程中碰到问题，请参阅 [启动器常见安装问题](/faq/launcher.md#install)  
-**高级用户** 也可以选择不装用户界面，使用 Web UI（配置复杂，仅限高级用户）
+**专业用户** 也可以选择不装用户界面，使用 Web UI（配置复杂，仅限专业用户）
 :::
 
 运行安装程序并根据向导提示进行安装，通常情况下一直点 **下一步** 即可。
@@ -436,7 +436,7 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
    - `ghcr.io/natfrp/launcher`
    - `registry.cn-hongkong.aliyuncs.com/natfrp/launcher`
 
-   如果您遇到了错误 `Bind for 0.0.0.0:7102 failed: port is already allocated`，请查找本机监听 `7102` 的程序关闭，或参考 [高级用户](#advance-docker) 替换监听端口。
+   如果您遇到了错误 `Bind for 0.0.0.0:7102 failed: port is already allocated`，请查找本机监听 `7102` 的程序关闭，或参考 [专业用户](#advance-docker) 替换监听端口。
 
 1. 获取连接信息
 
@@ -460,9 +460,9 @@ sudo bash -c ". <(wget -O- https://doc.natfrp.com/launcher.sh)"
    您只需本机打开 `https://127.0.0.1:<端口>` 即可访问 WebUI 管理界面。
 
    默认情况下 WebUI 向您连入的所有网络开放，如果您需要访问，可以使用 `https://内网IP:<端口>`，
-   如果您需要修改监听 IP，请参考 [高级用户](#advance-docker)。
+   如果您需要修改监听 IP，请参考 [专业用户](#advance-docker)。
 
-1. 高级用户 {#advance-docker}
+1. 专业用户 {#advance-docker}
 
    如果您需要自行配置，请先阅读 [配置文件详解](/launcher/manual.md#config)，然后将容器内的 `/run/config.json` 挂载编辑即可。
 

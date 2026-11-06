@@ -20,7 +20,7 @@ sidebar: false
 | --- | --- |
 | 文档阅读者 | `您` |
 | 本平台 | `SakuraFrp` |
-| 计算机知识丰富的 Geek / 专业用户 | `高级用户` |
+| 计算机知识丰富的 Geek / 专业用户 | `专业用户` |
 | HTTP 或 HTTPS 隧道 | `HTTP(S) 隧道` |
 | 提供内网穿透的服务器 | `节点` |
 | 用于演示的节点域名 | `frp-xxx.com`、`idea-leaper-1.natfrp.io` 等 |

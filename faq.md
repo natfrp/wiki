@@ -34,4 +34,4 @@ sidebar: false
 
 - 如果您在使用时遇到流量莫名损失的情况，建议您参阅 [安全实践-访问认证](/bestpractice/frpc-auth.md) 配置访问认证
 
-- 有一些 Geek 的问题？请参阅我们的 [高级用户相关说明](/geek.md)
+- 有一些 Geek 的问题？请参阅我们的 [专业用户相关说明](/geek.md)

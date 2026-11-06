@@ -1,7 +1,7 @@
 # frpc 用户手册
 
 ::: tip
-这是面向高级用户的手册，如果您尚不熟悉 frpc，请移步 [frpc 简明使用教程](/frpc/usage.md#running-frpc)
+这是面向专业用户的手册，如果您尚不熟悉 frpc，请移步 [frpc 简明使用教程](/frpc/usage.md#running-frpc)
 :::
 
 由 Sakura Frp 分发的 frpc 与上游开源版本有一定差异，部分配置项可能不受支持，请以此文档为准进行配置。
