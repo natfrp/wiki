@@ -46,7 +46,33 @@
 
 - 隧道名称：任意，如 `MCBE`
 - 隧道类型：`TCP`
-- 本地 IP：服务端与启动器在同一台电脑时填写 `127.0.0.1`
+- 本地 IP：受限于 BDS 的诡异设计，您总是应该在这里输入开服机器的局域网 IP （而不是 `127.0.0.1` 或 `localhost` 或其他环回）
+:::: details 如何获取本机局域网 IP {#get-local-ip}
+
+请在 **运行服务端 (BDS) 的电脑上** 执行以下操作，以获取填入 本地 IP 的内容。
+
+::: tabs
+@tab Windows
+找到键盘上的 `徽标键`（通常是带有 Windows 徽标的键），或称 `Win 键`，下面所述 `Win` 即指该键。
+
+按下 `Win + R` 打开运行窗口，在窗口的 `打开` 输入框中粘贴下面的命令并回车：
+
+```cmd
+powershell -NoProfile -Command "(Find-NetRoute -RemoteIPAddress 223.5.5.5 | Where-Object IPAddress).IPAddress";pause
+```
+
+在随后展示出的黑框框中您将看到两行文字，其中第一行即是您目前主要上网网卡的局域网 IP，可用于填写到 `本地 IP` 中。
+
+@tab Linux
+
+```bash
+ip -4 r g 223.5.5.5 | awk '{for (i=1; i<=NF; i++) if ($i=="src") {print $(i+1); found=1; exit}} END {if (!found) exit 1}'
+```
+
+:::
+
+::::
+
 - 远程端口：留空
 - **本地端口：`19132`**，如果在后面的服务端配置中修改了 `server-port`，这里也要对应修改
 - 自动 HTTPS：启用
